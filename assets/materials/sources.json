@@ -1,0 +1,174 @@
+[
+  {
+    "license": "CC0",
+    "maps": {
+      "ao": {
+        "file": "ao.jpg",
+        "md5": "551d5d76d24d14bbe1b9206c14246c50",
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/rough_plaster_brick_02/rough_plaster_brick_02_ao_2k.jpg"
+      },
+      "roughness": {
+        "file": "roughness.jpg",
+        "md5": "d8c6d6ccf0e68a390f42089dfc1de65e",
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/rough_plaster_brick_02/rough_plaster_brick_02_rough_2k.jpg"
+      },
+      "normal": {
+        "file": "normal.jpg",
+        "md5": "a9dabe432826ddb5631cc8dbdfe4b64f",
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/rough_plaster_brick_02/rough_plaster_brick_02_nor_gl_2k.jpg"
+      },
+      "albedo": {
+        "file": "albedo.jpg",
+        "md5": "a3514bffee0fe71307c9344491d66c02",
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/rough_plaster_brick_02/rough_plaster_brick_02_diff_2k.jpg"
+      }
+    },
+    "source": "https://polyhaven.com/a/rough_plaster_brick_02",
+    "authors": {
+      "Rob Tuytel": "All"
+    },
+    "id": "rough_plaster_brick_02",
+    "dimensions_mm": [
+      1500,
+      1500
+    ]
+  },
+  {
+    "license": "CC0",
+    "maps": {
+      "ao": {
+        "file": "ao.jpg",
+        "md5": "2515023779ca2c7a1e55721001859ecf",
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/concrete_floor_worn_001/concrete_floor_worn_001_ao_2k.jpg"
+      },
+      "roughness": {
+        "file": "roughness.jpg",
+        "md5": "169cac76d6499d7d70d1dbb237fcc976",
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/concrete_floor_worn_001/concrete_floor_worn_001_rough_2k.jpg"
+      },
+      "normal": {
+        "file": "normal.jpg",
+        "md5": "210fbc9fe40492177e79fdb4afda268e",
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/concrete_floor_worn_001/concrete_floor_worn_001_nor_gl_2k.jpg"
+      },
+      "albedo": {
+        "file": "albedo.jpg",
+        "md5": "6a3645f19f2ac4b7f60f43419c5d09ec",
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/concrete_floor_worn_001/concrete_floor_worn_001_diff_2k.jpg"
+      }
+    },
+    "source": "https://polyhaven.com/a/concrete_floor_worn_001",
+    "authors": {
+      "Dimitrios Savva": "Photography",
+      "Rico Cilliers": "Processing"
+    },
+    "id": "concrete_floor_worn_001",
+    "dimensions_mm": [
+      3000,
+      3000.000238418579
+    ]
+  },
+  {
+    "license": "CC0",
+    "maps": {
+      "ao": {
+        "file": "ao.jpg",
+        "md5": "7522edded443c95af62e56ed2b3a60ae",
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/wood_peeling_paint_weathered/wood_peeling_paint_weathered_ao_2k.jpg"
+      },
+      "roughness": {
+        "file": "roughness.jpg",
+        "md5": "ed178c55f0247322f4a97e44943bd311",
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/wood_peeling_paint_weathered/wood_peeling_paint_weathered_rough_2k.jpg"
+      },
+      "normal": {
+        "file": "normal.jpg",
+        "md5": "ac0ac16338d9e4f362a7cb87bf24ef3d",
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/wood_peeling_paint_weathered/wood_peeling_paint_weathered_nor_gl_2k.jpg"
+      },
+      "albedo": {
+        "file": "albedo.jpg",
+        "md5": "068bc6219393fa397ea419e8b399b310",
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/wood_peeling_paint_weathered/wood_peeling_paint_weathered_diff_2k.jpg"
+      }
+    },
+    "source": "https://polyhaven.com/a/wood_peeling_paint_weathered",
+    "authors": {
+      "Rob Tuytel": "Processing",
+      "Dimitrios Savva": "Photography"
+    },
+    "id": "wood_peeling_paint_weathered",
+    "dimensions_mm": [
+      761.9999647140503,
+      762.0000243186951
+    ]
+  },
+  {
+    "license": "CC0",
+    "maps": {
+      "ao": {
+        "file": "ao.jpg",
+        "md5": "1e35d6dca77e778a68ac0adacb936399",
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/rusty_corrugated_iron/rusty_corrugated_iron_ao_2k.jpg"
+      },
+      "roughness": {
+        "file": "roughness.jpg",
+        "md5": "475973440a6ce1c0086ac4475addd036",
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/rusty_corrugated_iron/rusty_corrugated_iron_rough_2k.jpg"
+      },
+      "normal": {
+        "file": "normal.jpg",
+        "md5": "4950f278ab34e7fc275ff96d8196d4c1",
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/rusty_corrugated_iron/rusty_corrugated_iron_nor_gl_2k.jpg"
+      },
+      "albedo": {
+        "file": "albedo.jpg",
+        "md5": "73a2ec580289d7bf27eb0e1c55fda0bc",
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/rusty_corrugated_iron/rusty_corrugated_iron_diff_2k.jpg"
+      }
+    },
+    "source": "https://polyhaven.com/a/rusty_corrugated_iron",
+    "authors": {
+      "Charlotte Baglioni": "All"
+    },
+    "id": "rusty_corrugated_iron",
+    "dimensions_mm": [
+      2000,
+      2000
+    ]
+  },
+  {
+    "license": "CC0",
+    "maps": {
+      "ao": {
+        "file": "ao.jpg",
+        "md5": "62b9e3354309d4ef9879c7a2c322683f",
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/grey_plaster/grey_plaster_ao_2k.jpg"
+      },
+      "roughness": {
+        "file": "roughness.jpg",
+        "md5": "1069c5716725c851374e13d08d320cc1",
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/grey_plaster/grey_plaster_rough_2k.jpg"
+      },
+      "normal": {
+        "file": "normal.jpg",
+        "md5": "0e39fd7528254ef19b8bad195d52514e",
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/grey_plaster/grey_plaster_nor_gl_2k.jpg"
+      },
+      "albedo": {
+        "file": "albedo.jpg",
+        "md5": "42190a8b8a5b2749c0d7e3a7354abfc8",
+        "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/2k/grey_plaster/grey_plaster_diff_2k.jpg"
+      }
+    },
+    "source": "https://polyhaven.com/a/grey_plaster",
+    "authors": {
+      "Rob Tuytel": "All"
+    },
+    "id": "grey_plaster",
+    "dimensions_mm": [
+      1000,
+      1000
+    ]
+  }
+]

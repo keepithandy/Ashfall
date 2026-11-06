@@ -1,0 +1,323 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://scenes/props/wooden_pallet.tscn" id="1_rs7a2"]
+[ext_resource type="PackedScene" path="res://scenes/props/shipping_crate.tscn" id="2_cemt8"]
+[ext_resource type="PackedScene" path="res://scenes/props/equipment_case.tscn" id="3_vkkl6"]
+[ext_resource type="PackedScene" path="res://scenes/props/steel_drum.tscn" id="4_jog8a"]
+[ext_resource type="PackedScene" path="res://scenes/props/rusted_drum.tscn" id="5_8co2c"]
+[ext_resource type="PackedScene" path="res://scenes/props/gas_cylinder.tscn" id="6_23aoq"]
+[ext_resource type="PackedScene" path="res://scenes/props/cable_spool.tscn" id="7_i40yy"]
+[ext_resource type="PackedScene" path="res://scenes/props/hand_truck.tscn" id="8_r3el2"]
+[ext_resource type="PackedScene" path="res://scenes/props/portable_generator.tscn" id="9_gr22a"]
+[ext_resource type="PackedScene" path="res://scenes/props/jerrycan.tscn" id="10_ormhq"]
+[ext_resource type="PackedScene" path="res://scenes/props/work_light.tscn" id="11_fmolb"]
+[ext_resource type="PackedScene" path="res://scenes/props/traffic_cone.tscn" id="12_awmst"]
+[ext_resource type="PackedScene" path="res://scenes/props/warning_sign.tscn" id="13_dfg1r"]
+[ext_resource type="PackedScene" path="res://scenes/props/wooden_bench.tscn" id="14_t41g5"]
+[ext_resource type="PackedScene" path="res://scenes/props/metal_bucket.tscn" id="15_ys327"]
+[ext_resource type="PackedScene" path="res://scenes/props/rubble_pile.tscn" id="16_wwml2"]
+[ext_resource type="PackedScene" path="res://scenes/props/pipe_bundle.tscn" id="17_2el7w"]
+[ext_resource type="PackedScene" path="res://scenes/props/electrical_cabinet.tscn" id="18_u87i0"]
+[ext_resource type="PackedScene" path="res://scenes/props/concrete_barrier.tscn" id="19_ovxcn"]
+[ext_resource type="PackedScene" path="res://scenes/props/shelving_unit.tscn" id="20_2iyxe"]
+[ext_resource type="PackedScene" path="res://scenes/props/filing_cabinet.tscn" id="21_8ar1e"]
+[ext_resource type="PackedScene" path="res://scenes/props/tool_box.tscn" id="22_mwubh"]
+[ext_resource type="PackedScene" path="res://scenes/props/desk_radio.tscn" id="23_j6emi"]
+[ext_resource type="PackedScene" path="res://scenes/props/enamel_mug.tscn" id="24_egmew"]
+[ext_resource type="PackedScene" path="res://scenes/props/radiator.tscn" id="25_81k57"]
+[ext_resource type="PackedScene" path="res://scenes/props/wall_fusebox.tscn" id="26_okexh"]
+[ext_resource type="PackedScene" path="res://scenes/props/valve_pipe.tscn" id="27_mh83m"]
+[ext_resource type="PackedScene" path="res://scenes/props/damaged_fence.tscn" id="28_ywrq4"]
+[ext_resource type="PackedScene" path="res://scenes/props/sandbag_stack.tscn" id="29_gqh3m"]
+[ext_resource type="PackedScene" path="res://scenes/props/field_cot.tscn" id="30_f0u46"]
+[ext_resource type="PackedScene" path="res://scenes/props/worn_mattress.tscn" id="31_phk3y"]
+
+[node name="CheckpointProps" type="Node3D" unique_id=1598520482]
+
+[node name="wooden_pallet_0" type="StaticBody3D" parent="." unique_id=805053178 instance=ExtResource("1_rs7a2")]
+transform = Transform3D(0.99280864, 0, 0.119712204, 0, 1, 0, -0.119712204, 0, 0.99280864, -15.7, 0, 10.3)
+metadata/prop_id = "wooden_pallet"
+metadata/display_name = "Wooden pallet"
+metadata/category = "Storage"
+metadata/approximate_size_metres = Vector3(1.2, 0.144, 0.8)
+metadata/physics = "Static set dressing; small debris has no collision"
+metadata/world_text_policy = "No attached text"
+
+[node name="shipping_crate_1" type="StaticBody3D" parent="." unique_id=1987317108 instance=ExtResource("2_cemt8")]
+transform = Transform3D(0.99280864, 0, 0.119712204, 0, 1, 0, -0.119712204, 0, 0.99280864, -15.7, 0.144, 10.3)
+metadata/prop_id = "shipping_crate"
+metadata/display_name = "Shipping crate"
+metadata/category = "Storage"
+metadata/approximate_size_metres = Vector3(0.9, 0.72, 0.7)
+metadata/physics = "Static set dressing; small debris has no collision"
+metadata/world_text_policy = "No attached text"
+
+[node name="equipment_case_2" type="StaticBody3D" parent="." unique_id=199137837 instance=ExtResource("3_vkkl6")]
+transform = Transform3D(0.9950042, 0, 0.09983342, 0, 1, 0, -0.09983342, 0, 0.9950042, -15.7, 0.864, 10.3)
+metadata/prop_id = "equipment_case"
+metadata/display_name = "Equipment case"
+metadata/category = "Storage"
+metadata/approximate_size_metres = Vector3(0.65, 0.34, 0.36)
+metadata/physics = "Static set dressing; small debris has no collision"
+metadata/world_text_policy = "No attached text"
+
+[node name="steel_drum_3" type="StaticBody3D" parent="." unique_id=1805672838 instance=ExtResource("4_jog8a")]
+transform = Transform3D(0.9800666, 0, 0.19866933, 0, 1, 0, -0.19866933, 0, 0.9800666, -15.4, 0, 12.1)
+metadata/prop_id = "steel_drum"
+metadata/display_name = "Olive steel drum"
+metadata/category = "Storage"
+metadata/approximate_size_metres = Vector3(0.62, 0.89, 0.62)
+metadata/physics = "Static set dressing; small debris has no collision"
+metadata/world_text_policy = "No attached text"
+
+[node name="rusted_drum_4" type="StaticBody3D" parent="." unique_id=666420651 instance=ExtResource("5_8co2c")]
+transform = Transform3D(0.9553365, 0, -0.29552022, 0, 1, 0, 0.29552022, 0, 0.9553365, -16.1, 0, 12.7)
+metadata/prop_id = "rusted_drum"
+metadata/display_name = "Rusted steel drum"
+metadata/category = "Storage"
+metadata/approximate_size_metres = Vector3(0.62, 0.89, 0.62)
+metadata/physics = "Static set dressing; small debris has no collision"
+metadata/world_text_policy = "No attached text"
+
+[node name="gas_cylinder_5" type="StaticBody3D" parent="." unique_id=566879714 instance=ExtResource("6_23aoq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.5, 0, 8.2)
+metadata/prop_id = "gas_cylinder"
+metadata/display_name = "Gas cylinder"
+metadata/category = "Utilities"
+metadata/approximate_size_metres = Vector3(0.36, 1.26, 0.36)
+metadata/physics = "Static set dressing; small debris has no collision"
+metadata/world_text_policy = "No attached text"
+
+[node name="cable_spool_6" type="StaticBody3D" parent="." unique_id=963330760 instance=ExtResource("7_i40yy")]
+transform = Transform3D(0.921061, 0, 0.38941833, 0, 1, 0, -0.38941833, 0, 0.921061, -15.4, 0, 7)
+metadata/prop_id = "cable_spool"
+metadata/display_name = "Cable spool"
+metadata/category = "Utilities"
+metadata/approximate_size_metres = Vector3(0.85, 0.72, 0.85)
+metadata/physics = "Static set dressing; small debris has no collision"
+metadata/world_text_policy = "No attached text"
+
+[node name="hand_truck_7" type="StaticBody3D" parent="." unique_id=677974495 instance=ExtResource("8_r3el2")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -14.2, 0, 11)
+metadata/prop_id = "hand_truck"
+metadata/display_name = "Hand truck"
+metadata/category = "Workshop"
+metadata/approximate_size_metres = Vector3(0.55, 1.18, 0.45)
+metadata/physics = "Static set dressing; small debris has no collision"
+metadata/world_text_policy = "No attached text"
+
+[node name="portable_generator_8" type="StaticBody3D" parent="." unique_id=1009606969 instance=ExtResource("9_gr22a")]
+transform = Transform3D(0.9887711, 0, 0.14943814, 0, 1, 0, -0.14943814, 0, 0.9887711, -5.4, 0, 9.6)
+metadata/prop_id = "portable_generator"
+metadata/display_name = "Portable generator"
+metadata/category = "Utilities"
+metadata/approximate_size_metres = Vector3(0.78, 0.64, 0.54)
+metadata/physics = "Static set dressing; small debris has no collision"
+metadata/world_text_policy = "No attached text"
+
+[node name="jerrycan_9" type="StaticBody3D" parent="." unique_id=1874267221 instance=ExtResource("10_ormhq")]
+transform = Transform3D(0.9800666, 0, -0.19866933, 0, 1, 0, 0.19866933, 0, 0.9800666, -5.85, 0, 8.9)
+metadata/prop_id = "jerrycan"
+metadata/display_name = "Fuel jerrycan"
+metadata/category = "Utilities"
+metadata/approximate_size_metres = Vector3(0.35, 0.48, 0.19)
+metadata/physics = "Static set dressing; small debris has no collision"
+metadata/world_text_policy = "No attached text"
+
+[node name="work_light_10" type="StaticBody3D" parent="." unique_id=266350791 instance=ExtResource("11_fmolb")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -5.1, 0, 8.2)
+metadata/prop_id = "work_light"
+metadata/display_name = "Tripod work light"
+metadata/category = "Workshop"
+metadata/approximate_size_metres = Vector3(0.9, 1.8, 0.9)
+metadata/physics = "Static set dressing; small debris has no collision"
+metadata/world_text_policy = "No attached text"
+
+[node name="traffic_cone_11" type="StaticBody3D" parent="." unique_id=1297862470 instance=ExtResource("12_awmst")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.9, 0, 12.5)
+metadata/prop_id = "traffic_cone"
+metadata/display_name = "Traffic cone"
+metadata/category = "Checkpoint"
+metadata/approximate_size_metres = Vector3(0.42, 0.72, 0.42)
+metadata/physics = "Static set dressing; small debris has no collision"
+metadata/world_text_policy = "No attached text"
+
+[node name="warning_sign_12" type="StaticBody3D" parent="." unique_id=1921864772 instance=ExtResource("13_dfg1r")]
+transform = Transform3D(0.9887711, 0, 0.14943814, 0, 1, 0, -0.14943814, 0, 0.9887711, -8.3, 0, 15.3)
+metadata/prop_id = "warning_sign"
+metadata/display_name = "Restricted area sign"
+metadata/category = "Checkpoint"
+metadata/approximate_size_metres = Vector3(0.76, 1.65, 0.52)
+metadata/physics = "Static set dressing; small debris has no collision"
+metadata/world_text_policy = "No attached text"
+
+[node name="wooden_bench_13" type="StaticBody3D" parent="." unique_id=1237398841 instance=ExtResource("14_t41g5")]
+transform = Transform3D(0.99875027, 0, 0.04997917, 0, 1, 0, -0.04997917, 0, 0.99875027, -13, 0, 15.7)
+metadata/prop_id = "wooden_bench"
+metadata/display_name = "Wooden bench"
+metadata/category = "Interiors"
+metadata/approximate_size_metres = Vector3(1.7, 0.85, 0.55)
+metadata/physics = "Static set dressing; small debris has no collision"
+metadata/world_text_policy = "No attached text"
+
+[node name="metal_bucket_14" type="StaticBody3D" parent="." unique_id=1281213523 instance=ExtResource("15_ys327")]
+transform = Transform3D(0.9800666, 0, 0.19866933, 0, 1, 0, -0.19866933, 0, 0.9800666, -13.9, 0, 14.8)
+metadata/prop_id = "metal_bucket"
+metadata/display_name = "Metal bucket"
+metadata/category = "Small objects"
+metadata/approximate_size_metres = Vector3(0.42, 0.42, 0.3)
+metadata/physics = "Static set dressing; small debris has no collision"
+metadata/world_text_policy = "No attached text"
+
+[node name="rubble_pile_15" type="Node3D" parent="." unique_id=1360895488 instance=ExtResource("16_wwml2")]
+transform = Transform3D(0.9800666, 0, 0.19866933, 0, 1, 0, -0.19866933, 0, 0.9800666, -12.8, 0, 17.1)
+metadata/prop_id = "rubble_pile"
+metadata/display_name = "Masonry debris"
+metadata/category = "Ground dressing"
+metadata/approximate_size_metres = Vector3(1.4, 0.22, 1)
+metadata/physics = "Static set dressing; small debris has no collision"
+metadata/world_text_policy = "No attached text"
+
+[node name="pipe_bundle_16" type="StaticBody3D" parent="." unique_id=1495831671 instance=ExtResource("17_2el7w")]
+transform = Transform3D(0.9887711, 0, 0.14943814, 0, 1, 0, -0.14943814, 0, 0.9887711, -15.3, 0, 5.2)
+metadata/prop_id = "pipe_bundle"
+metadata/display_name = "Pipe bundle"
+metadata/category = "Workshop"
+metadata/approximate_size_metres = Vector3(1.65, 0.46, 0.6)
+metadata/physics = "Static set dressing; small debris has no collision"
+metadata/world_text_policy = "No attached text"
+
+[node name="electrical_cabinet_17" type="StaticBody3D" parent="." unique_id=1261503824 instance=ExtResource("18_u87i0")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -14.2, 0, 6.9)
+metadata/prop_id = "electrical_cabinet"
+metadata/display_name = "Electrical cabinet"
+metadata/category = "Utilities"
+metadata/approximate_size_metres = Vector3(0.65, 1.5, 0.42)
+metadata/physics = "Static set dressing; small debris has no collision"
+metadata/world_text_policy = "No attached text"
+
+[node name="concrete_barrier_18" type="StaticBody3D" parent="." unique_id=1844181934 instance=ExtResource("19_ovxcn")]
+transform = Transform3D(0.99875027, 0, 0.04997917, 0, 1, 0, -0.04997917, 0, 0.99875027, -18.5, 0, 15.5)
+metadata/prop_id = "concrete_barrier"
+metadata/display_name = "Concrete barrier"
+metadata/category = "Checkpoint"
+metadata/approximate_size_metres = Vector3(2.2, 0.91, 0.6)
+metadata/physics = "Static set dressing; small debris has no collision"
+metadata/world_text_policy = "No attached text"
+
+[node name="shelving_unit_19" type="StaticBody3D" parent="." unique_id=257286524 instance=ExtResource("20_2iyxe")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.4, 0.18, 9.6)
+metadata/prop_id = "shelving_unit"
+metadata/display_name = "Steel shelving"
+metadata/category = "Interiors"
+metadata/approximate_size_metres = Vector3(1.25, 1.8, 0.48)
+metadata/physics = "Static set dressing; small debris has no collision"
+metadata/world_text_policy = "No attached text"
+
+[node name="filing_cabinet_20" type="StaticBody3D" parent="." unique_id=561710885 instance=ExtResource("21_8ar1e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.4, 0.18, 8.6)
+metadata/prop_id = "filing_cabinet"
+metadata/display_name = "Filing cabinet"
+metadata/category = "Interiors"
+metadata/approximate_size_metres = Vector3(0.48, 1.12, 0.6)
+metadata/physics = "Static set dressing; small debris has no collision"
+metadata/world_text_policy = "No attached text"
+
+[node name="tool_box_21" type="StaticBody3D" parent="." unique_id=1061146432 instance=ExtResource("22_mwubh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.5, 0.8375, 9.6)
+metadata/prop_id = "tool_box"
+metadata/display_name = "Steel toolbox"
+metadata/category = "Workshop"
+metadata/approximate_size_metres = Vector3(0.46, 0.31, 0.24)
+metadata/physics = "Static set dressing; small debris has no collision"
+metadata/world_text_policy = "No attached text"
+
+[node name="equipment_case_22" type="StaticBody3D" parent="." unique_id=1980942315 instance=ExtResource("3_vkkl6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.4, 1.3575, 9.6)
+metadata/prop_id = "equipment_case"
+metadata/display_name = "Equipment case"
+metadata/category = "Storage"
+metadata/approximate_size_metres = Vector3(0.65, 0.34, 0.36)
+metadata/physics = "Static set dressing; small debris has no collision"
+metadata/world_text_policy = "No attached text"
+
+[node name="desk_radio_23" type="StaticBody3D" parent="." unique_id=146989267 instance=ExtResource("23_j6emi")]
+transform = Transform3D(0.99820054, 0, 0.059964005, 0, 1, 0, -0.059964005, 0, 0.99820054, -10.5, 0.811, 10)
+metadata/prop_id = "desk_radio"
+metadata/display_name = "Desk radio"
+metadata/category = "Small objects"
+metadata/approximate_size_metres = Vector3(0.3, 0.32, 0.14)
+metadata/physics = "Static set dressing; small debris has no collision"
+metadata/world_text_policy = "No attached text"
+
+[node name="enamel_mug_24" type="StaticBody3D" parent="." unique_id=1709818637 instance=ExtResource("24_egmew")]
+transform = Transform3D(0.9553365, 0, 0.29552022, 0, 1, 0, -0.29552022, 0, 0.9553365, -9.4, 0.811, 10.15)
+metadata/prop_id = "enamel_mug"
+metadata/display_name = "Enamel mug"
+metadata/category = "Small objects"
+metadata/approximate_size_metres = Vector3(0.126, 0.135, 0.09)
+metadata/physics = "Static set dressing; small debris has no collision"
+metadata/world_text_policy = "No attached text"
+
+[node name="radiator_25" type="StaticBody3D" parent="." unique_id=495145746 instance=ExtResource("25_81k57")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -11.9, 0.18, 8.45)
+metadata/prop_id = "radiator"
+metadata/display_name = "Cast iron radiator"
+metadata/category = "Interiors"
+metadata/approximate_size_metres = Vector3(0.88, 0.73, 0.24)
+metadata/physics = "Static set dressing; small debris has no collision"
+metadata/world_text_policy = "No attached text"
+
+[node name="wall_fusebox_26" type="StaticBody3D" parent="." unique_id=98852136 instance=ExtResource("26_okexh")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -6.75, 1.3, 11.5)
+metadata/prop_id = "wall_fusebox"
+metadata/display_name = "Open wall fusebox"
+metadata/category = "Utilities"
+metadata/approximate_size_metres = Vector3(0.47, 0.5, 0.23)
+metadata/physics = "Static set dressing; small debris has no collision"
+metadata/world_text_policy = "No attached text"
+
+[node name="valve_pipe_27" type="StaticBody3D" parent="." unique_id=539436404 instance=ExtResource("27_mh83m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.1, 0, 10.4)
+metadata/prop_id = "valve_pipe"
+metadata/display_name = "Industrial valve pipe"
+metadata/category = "Utilities"
+metadata/approximate_size_metres = Vector3(0.48, 1.04, 0.34)
+metadata/physics = "Static set dressing; small debris has no collision"
+metadata/world_text_policy = "No attached text"
+
+[node name="damaged_fence_28" type="StaticBody3D" parent="." unique_id=1599528739 instance=ExtResource("28_ywrq4")]
+transform = Transform3D(0.9800666, 0, 0.19866933, 0, 1, 0, -0.19866933, 0, 0.9800666, -19.7, 0, 13.6)
+metadata/prop_id = "damaged_fence"
+metadata/display_name = "Damaged wire fence"
+metadata/category = "Checkpoint"
+metadata/approximate_size_metres = Vector3(1.92, 1.8, 0.24)
+metadata/physics = "Static set dressing; small debris has no collision"
+metadata/world_text_policy = "No attached text"
+
+[node name="sandbag_stack_29" type="StaticBody3D" parent="." unique_id=1219120359 instance=ExtResource("29_gqh3m")]
+transform = Transform3D(0.9950042, 0, 0.09983342, 0, 1, 0, -0.09983342, 0, 0.9950042, 7.9, 0, 15.4)
+metadata/prop_id = "sandbag_stack"
+metadata/display_name = "Sandbag barricade"
+metadata/category = "Checkpoint"
+metadata/approximate_size_metres = Vector3(1.5, 0.62, 0.65)
+metadata/physics = "Static set dressing; small debris has no collision"
+metadata/world_text_policy = "No attached text"
+
+[node name="field_cot_30" type="StaticBody3D" parent="." unique_id=2016638369 instance=ExtResource("30_f0u46")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.6, 0.16, 10)
+metadata/prop_id = "field_cot"
+metadata/display_name = "Abandoned field cot"
+metadata/category = "Interiors"
+metadata/approximate_size_metres = Vector3(0.83, 0.72, 1.98)
+metadata/physics = "Static set dressing; small debris has no collision"
+metadata/world_text_policy = "No attached text"
+
+[node name="worn_mattress_31" type="StaticBody3D" parent="." unique_id=1452569084 instance=ExtResource("31_phk3y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.6, 0.61, 10)
+metadata/prop_id = "worn_mattress"
+metadata/display_name = "Worn mattress"
+metadata/category = "Interiors"
+metadata/approximate_size_metres = Vector3(0.76, 0.15, 1.86)
+metadata/physics = "Static set dressing; small debris has no collision"
+metadata/world_text_policy = "No attached text"

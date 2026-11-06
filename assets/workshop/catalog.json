@@ -1,0 +1,42 @@
+[
+	{
+		"id": "discarded_tyre",
+		"scene": "res://scenes/workshop/discarded_tyre.tscn",
+		"size_metres": "(0.24, 0.68, 0.68)"
+	},
+	{
+		"id": "workbench_vise",
+		"scene": "res://scenes/workshop/workbench_vise.tscn",
+		"size_metres": "(1.5, 1.12, 0.7)"
+	},
+	{
+		"id": "wheelbarrow",
+		"scene": "res://scenes/workshop/wheelbarrow.tscn",
+		"size_metres": "(0.85, 0.72, 1.65)"
+	},
+	{
+		"id": "steel_ladder",
+		"scene": "res://scenes/workshop/steel_ladder.tscn",
+		"size_metres": "(0.52, 2.3, 0.12)"
+	},
+	{
+		"id": "fire_extinguisher",
+		"scene": "res://scenes/workshop/fire_extinguisher.tscn",
+		"size_metres": "(0.23, 0.61, 0.22)"
+	},
+	{
+		"id": "open_wood_crate",
+		"scene": "res://scenes/workshop/open_wood_crate.tscn",
+		"size_metres": "(0.7, 0.44, 0.52)"
+	},
+	{
+		"id": "coiled_hose",
+		"scene": "res://scenes/workshop/coiled_hose.tscn",
+		"size_metres": "(0.7, 0.09, 0.7)"
+	},
+	{
+		"id": "metal_chair",
+		"scene": "res://scenes/workshop/metal_chair.tscn",
+		"size_metres": "(0.5, 0.92, 0.55)"
+	}
+]

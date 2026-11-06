@@ -1,0 +1,178 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://prop_gallery.gd" id="1_wueq3"]
+[ext_resource type="PackedScene" path="res://scenes/nature/fern_clump.tscn" id="2_12at4"]
+[ext_resource type="PackedScene" path="res://scenes/nature/dry_bramble.tscn" id="3_uwmcv"]
+[ext_resource type="PackedScene" path="res://scenes/nature/reed_clump.tscn" id="4_pwynt"]
+[ext_resource type="PackedScene" path="res://scenes/nature/mossy_boulder.tscn" id="5_v73rn"]
+[ext_resource type="PackedScene" path="res://scenes/nature/fallen_log.tscn" id="6_r0813"]
+[ext_resource type="PackedScene" path="res://scenes/nature/tree_stump.tscn" id="7_gjc8e"]
+[ext_resource type="PackedScene" path="res://scenes/nature/dead_branch_pile.tscn" id="8_odle2"]
+[ext_resource type="PackedScene" path="res://scenes/nature/forest_pine.tscn" id="9_q8yh3"]
+[ext_resource type="PackedScene" path="res://scenes/nature/bare_tree.tscn" id="10_2wny4"]
+[ext_resource type="PackedScene" path="res://scenes/nature/low_shrub.tscn" id="11_qasar"]
+
+[node name="NaturalPropGallery" type="Node3D" unique_id=698193359]
+script = ExtResource("1_wueq3")
+
+[node name="Displays" type="Node3D" parent="." unique_id=1034838388]
+
+[node name="fern_clump" type="Node3D" parent="Displays" unique_id=936076103]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0, 0)
+metadata/title = "Fern Clump"
+
+[node name="FernClump" type="Node3D" parent="Displays/fern_clump" unique_id=368712719 instance=ExtResource("2_12at4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.08, 0)
+metadata/prop_id = "fern_clump"
+metadata/approximate_size_metres = Vector3(1.1, 0.65, 1.1)
+metadata/world_text_policy = "No attached text"
+
+[node name="Caption" type="Label3D" parent="Displays/fern_clump" unique_id=1378882147]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.16, 1.12)
+pixel_size = 0.0035
+text = "Fern Clump"
+font_size = 24
+
+[node name="dry_bramble" type="Node3D" parent="Displays" unique_id=1303085931]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.2, 0, 0)
+metadata/title = "Dry Bramble"
+
+[node name="DryBramble" type="Node3D" parent="Displays/dry_bramble" unique_id=990258690 instance=ExtResource("3_uwmcv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.08, 0)
+metadata/prop_id = "dry_bramble"
+metadata/approximate_size_metres = Vector3(1.4, 1.1, 1.4)
+metadata/world_text_policy = "No attached text"
+
+[node name="Caption" type="Label3D" parent="Displays/dry_bramble" unique_id=610985681]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.16, 1.12)
+pixel_size = 0.0035
+text = "Dry Bramble"
+font_size = 24
+
+[node name="reed_clump" type="Node3D" parent="Displays" unique_id=890066781]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.4, 0, 0)
+metadata/title = "Reed Clump"
+
+[node name="ReedClump" type="Node3D" parent="Displays/reed_clump" unique_id=1439983869 instance=ExtResource("4_pwynt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.08, 0)
+metadata/prop_id = "reed_clump"
+metadata/approximate_size_metres = Vector3(0.8, 1.5, 0.8)
+metadata/world_text_policy = "No attached text"
+
+[node name="Caption" type="Label3D" parent="Displays/reed_clump" unique_id=779325956]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.16, 1.12)
+pixel_size = 0.0035
+text = "Reed Clump"
+font_size = 24
+
+[node name="mossy_boulder" type="Node3D" parent="Displays" unique_id=1107298199]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.4, 0, 0)
+metadata/title = "Mossy Boulder"
+
+[node name="MossyBoulder" type="StaticBody3D" parent="Displays/mossy_boulder" unique_id=241944124 instance=ExtResource("5_v73rn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.08, 0)
+metadata/prop_id = "mossy_boulder"
+metadata/approximate_size_metres = Vector3(1.4, 0.9, 1.2)
+metadata/world_text_policy = "No attached text"
+
+[node name="Caption" type="Label3D" parent="Displays/mossy_boulder" unique_id=35688679]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.16, 1.12)
+pixel_size = 0.0035
+text = "Mossy Boulder"
+font_size = 24
+
+[node name="fallen_log" type="Node3D" parent="Displays" unique_id=249935814]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.2, 0, 0)
+metadata/title = "Fallen Log"
+
+[node name="FallenLog" type="StaticBody3D" parent="Displays/fallen_log" unique_id=1428252048 instance=ExtResource("6_r0813")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.08, 0)
+metadata/prop_id = "fallen_log"
+metadata/approximate_size_metres = Vector3(2.7, 0.55, 0.75)
+metadata/world_text_policy = "No attached text"
+
+[node name="Caption" type="Label3D" parent="Displays/fallen_log" unique_id=1902559213]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.16, 1.12)
+pixel_size = 0.0035
+text = "Fallen Log"
+font_size = 24
+
+[node name="tree_stump" type="Node3D" parent="Displays" unique_id=1898854084]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, 0)
+metadata/title = "Tree Stump"
+
+[node name="TreeStump" type="StaticBody3D" parent="Displays/tree_stump" unique_id=2023925187 instance=ExtResource("7_gjc8e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.08, 0)
+metadata/prop_id = "tree_stump"
+metadata/approximate_size_metres = Vector3(0.95, 0.65, 0.95)
+metadata/world_text_policy = "No attached text"
+
+[node name="Caption" type="Label3D" parent="Displays/tree_stump" unique_id=2089943635]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.16, 1.12)
+pixel_size = 0.0035
+text = "Tree Stump"
+font_size = 24
+
+[node name="dead_branch_pile" type="Node3D" parent="Displays" unique_id=1323061180]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0, -3)
+metadata/title = "Dead Branch Pile"
+
+[node name="DeadBranchPile" type="Node3D" parent="Displays/dead_branch_pile" unique_id=415636 instance=ExtResource("8_odle2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.08, 0)
+metadata/prop_id = "dead_branch_pile"
+metadata/approximate_size_metres = Vector3(1.8, 0.35, 1.3)
+metadata/world_text_policy = "No attached text"
+
+[node name="Caption" type="Label3D" parent="Displays/dead_branch_pile" unique_id=205307342]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.16, 1.12)
+pixel_size = 0.0035
+text = "Dead Branch Pile"
+font_size = 24
+
+[node name="forest_pine" type="Node3D" parent="Displays" unique_id=1829311929]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.2, 0, -3)
+metadata/title = "Forest Pine"
+
+[node name="ForestPine" type="StaticBody3D" parent="Displays/forest_pine" unique_id=2045173383 instance=ExtResource("9_q8yh3")]
+transform = Transform3D(0.24, 0, 0, 0, 0.24, 0, 0, 0, 0.24, 0, 0.08, 0)
+metadata/prop_id = "forest_pine"
+metadata/approximate_size_metres = Vector3(5.8, 8.6, 5.8)
+metadata/world_text_policy = "No attached text"
+
+[node name="Caption" type="Label3D" parent="Displays/forest_pine" unique_id=39919460]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.16, 1.12)
+pixel_size = 0.0035
+text = "Forest Pine (display at 24%)"
+font_size = 24
+
+[node name="bare_tree" type="Node3D" parent="Displays" unique_id=1393907074]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.4, 0, -3)
+metadata/title = "Bare Tree"
+
+[node name="BareTree" type="StaticBody3D" parent="Displays/bare_tree" unique_id=227768951 instance=ExtResource("10_2wny4")]
+transform = Transform3D(0.24, 0, 0, 0, 0.24, 0, 0, 0, 0.24, 0, 0.08, 0)
+metadata/prop_id = "bare_tree"
+metadata/approximate_size_metres = Vector3(4.4, 6.5, 4.4)
+metadata/world_text_policy = "No attached text"
+
+[node name="Caption" type="Label3D" parent="Displays/bare_tree" unique_id=283536734]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.16, 1.12)
+pixel_size = 0.0035
+text = "Bare Tree (display at 24%)"
+font_size = 24
+
+[node name="low_shrub" type="Node3D" parent="Displays" unique_id=1005271549]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.4, 0, -3)
+metadata/title = "Low Shrub"
+
+[node name="LowShrub" type="Node3D" parent="Displays/low_shrub" unique_id=399754643 instance=ExtResource("11_qasar")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.08, 0)
+metadata/prop_id = "low_shrub"
+metadata/approximate_size_metres = Vector3(1.5, 1.1, 1.5)
+metadata/world_text_policy = "No attached text"
+
+[node name="Caption" type="Label3D" parent="Displays/low_shrub" unique_id=1929837178]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.16, 1.12)
+pixel_size = 0.0035
+text = "Low Shrub"
+font_size = 24

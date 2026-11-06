@@ -1,0 +1,322 @@
+[
+	{
+		"category": "Storage",
+		"collision_shapes": 1,
+		"id": "steel_drum",
+		"name": "Olive steel drum",
+		"origin": "bottom centre",
+		"preview_scene": "res://scenes/props_preview/steel_drum.tscn",
+		"scene": "res://scenes/props/steel_drum.tscn",
+		"size_metres": "(0.62, 0.89, 0.62)"
+	},
+	{
+		"category": "Storage",
+		"collision_shapes": 1,
+		"id": "rusted_drum",
+		"name": "Rusted steel drum",
+		"origin": "bottom centre",
+		"preview_scene": "res://scenes/props_preview/rusted_drum.tscn",
+		"scene": "res://scenes/props/rusted_drum.tscn",
+		"size_metres": "(0.62, 0.89, 0.62)"
+	},
+	{
+		"category": "Storage",
+		"collision_shapes": 1,
+		"id": "wooden_pallet",
+		"name": "Wooden pallet",
+		"origin": "bottom centre",
+		"preview_scene": "res://scenes/props_preview/wooden_pallet.tscn",
+		"scene": "res://scenes/props/wooden_pallet.tscn",
+		"size_metres": "(1.2, 0.144, 0.8)"
+	},
+	{
+		"category": "Storage",
+		"collision_shapes": 1,
+		"id": "shipping_crate",
+		"name": "Shipping crate",
+		"origin": "bottom centre",
+		"preview_scene": "res://scenes/props_preview/shipping_crate.tscn",
+		"scene": "res://scenes/props/shipping_crate.tscn",
+		"size_metres": "(0.9, 0.72, 0.7)"
+	},
+	{
+		"category": "Storage",
+		"collision_shapes": 1,
+		"id": "equipment_case",
+		"name": "Equipment case",
+		"origin": "bottom centre",
+		"preview_scene": "res://scenes/props_preview/equipment_case.tscn",
+		"scene": "res://scenes/props/equipment_case.tscn",
+		"size_metres": "(0.65, 0.34, 0.36)"
+	},
+	{
+		"category": "Utilities",
+		"collision_shapes": 1,
+		"id": "jerrycan",
+		"name": "Fuel jerrycan",
+		"origin": "bottom centre",
+		"preview_scene": "res://scenes/props_preview/jerrycan.tscn",
+		"scene": "res://scenes/props/jerrycan.tscn",
+		"size_metres": "(0.35, 0.48, 0.19)"
+	},
+	{
+		"category": "Utilities",
+		"collision_shapes": 1,
+		"id": "gas_cylinder",
+		"name": "Gas cylinder",
+		"origin": "bottom centre",
+		"preview_scene": "res://scenes/props_preview/gas_cylinder.tscn",
+		"scene": "res://scenes/props/gas_cylinder.tscn",
+		"size_metres": "(0.36, 1.26, 0.36)"
+	},
+	{
+		"category": "Utilities",
+		"collision_shapes": 1,
+		"id": "cable_spool",
+		"name": "Cable spool",
+		"origin": "bottom centre",
+		"preview_scene": "res://scenes/props_preview/cable_spool.tscn",
+		"scene": "res://scenes/props/cable_spool.tscn",
+		"size_metres": "(0.85, 0.72, 0.85)"
+	},
+	{
+		"category": "Utilities",
+		"collision_shapes": 1,
+		"id": "portable_generator",
+		"name": "Portable generator",
+		"origin": "bottom centre",
+		"preview_scene": "res://scenes/props_preview/portable_generator.tscn",
+		"scene": "res://scenes/props/portable_generator.tscn",
+		"size_metres": "(0.78, 0.64, 0.54)"
+	},
+	{
+		"category": "Checkpoint",
+		"collision_shapes": 1,
+		"id": "traffic_cone",
+		"name": "Traffic cone",
+		"origin": "bottom centre",
+		"preview_scene": "res://scenes/props_preview/traffic_cone.tscn",
+		"scene": "res://scenes/props/traffic_cone.tscn",
+		"size_metres": "(0.42, 0.72, 0.42)"
+	},
+	{
+		"category": "Checkpoint",
+		"collision_shapes": 1,
+		"id": "concrete_barrier",
+		"name": "Concrete barrier",
+		"origin": "bottom centre",
+		"preview_scene": "res://scenes/props_preview/concrete_barrier.tscn",
+		"scene": "res://scenes/props/concrete_barrier.tscn",
+		"size_metres": "(2.2, 0.91, 0.6)"
+	},
+	{
+		"category": "Checkpoint",
+		"collision_shapes": 2,
+		"id": "warning_sign",
+		"name": "Restricted area sign",
+		"origin": "bottom centre",
+		"preview_scene": "res://scenes/props_preview/warning_sign.tscn",
+		"scene": "res://scenes/props/warning_sign.tscn",
+		"size_metres": "(0.76, 1.65, 0.52)"
+	},
+	{
+		"category": "Workshop",
+		"collision_shapes": 1,
+		"id": "work_light",
+		"name": "Tripod work light",
+		"origin": "bottom centre",
+		"preview_scene": "res://scenes/props_preview/work_light.tscn",
+		"scene": "res://scenes/props/work_light.tscn",
+		"size_metres": "(0.9, 1.8, 0.9)"
+	},
+	{
+		"category": "Workshop",
+		"collision_shapes": 1,
+		"id": "hand_truck",
+		"name": "Hand truck",
+		"origin": "bottom centre",
+		"preview_scene": "res://scenes/props_preview/hand_truck.tscn",
+		"scene": "res://scenes/props/hand_truck.tscn",
+		"size_metres": "(0.55, 1.18, 0.45)"
+	},
+	{
+		"category": "Workshop",
+		"collision_shapes": 1,
+		"id": "tool_box",
+		"name": "Steel toolbox",
+		"origin": "bottom centre",
+		"preview_scene": "res://scenes/props_preview/tool_box.tscn",
+		"scene": "res://scenes/props/tool_box.tscn",
+		"size_metres": "(0.46, 0.31, 0.24)"
+	},
+	{
+		"category": "Workshop",
+		"collision_shapes": 1,
+		"id": "pipe_bundle",
+		"name": "Pipe bundle",
+		"origin": "bottom centre",
+		"preview_scene": "res://scenes/props_preview/pipe_bundle.tscn",
+		"scene": "res://scenes/props/pipe_bundle.tscn",
+		"size_metres": "(1.65, 0.46, 0.6)"
+	},
+	{
+		"category": "Utilities",
+		"collision_shapes": 1,
+		"id": "electrical_cabinet",
+		"name": "Electrical cabinet",
+		"origin": "bottom centre",
+		"preview_scene": "res://scenes/props_preview/electrical_cabinet.tscn",
+		"scene": "res://scenes/props/electrical_cabinet.tscn",
+		"size_metres": "(0.65, 1.5, 0.42)"
+	},
+	{
+		"category": "Interiors",
+		"collision_shapes": 8,
+		"id": "shelving_unit",
+		"name": "Steel shelving",
+		"origin": "bottom centre",
+		"preview_scene": "res://scenes/props_preview/shelving_unit.tscn",
+		"scene": "res://scenes/props/shelving_unit.tscn",
+		"size_metres": "(1.25, 1.8, 0.48)"
+	},
+	{
+		"category": "Interiors",
+		"collision_shapes": 1,
+		"id": "filing_cabinet",
+		"name": "Filing cabinet",
+		"origin": "bottom centre",
+		"preview_scene": "res://scenes/props_preview/filing_cabinet.tscn",
+		"scene": "res://scenes/props/filing_cabinet.tscn",
+		"size_metres": "(0.48, 1.12, 0.6)"
+	},
+	{
+		"category": "Interiors",
+		"collision_shapes": 2,
+		"id": "wooden_bench",
+		"name": "Wooden bench",
+		"origin": "bottom centre",
+		"preview_scene": "res://scenes/props_preview/wooden_bench.tscn",
+		"scene": "res://scenes/props/wooden_bench.tscn",
+		"size_metres": "(1.7, 0.85, 0.55)"
+	},
+	{
+		"category": "Small objects",
+		"collision_shapes": 1,
+		"id": "desk_radio",
+		"name": "Desk radio",
+		"origin": "bottom centre",
+		"preview_scene": "res://scenes/props_preview/desk_radio.tscn",
+		"scene": "res://scenes/props/desk_radio.tscn",
+		"size_metres": "(0.3, 0.32, 0.14)"
+	},
+	{
+		"category": "Small objects",
+		"collision_shapes": 1,
+		"id": "metal_bucket",
+		"name": "Metal bucket",
+		"origin": "bottom centre",
+		"preview_scene": "res://scenes/props_preview/metal_bucket.tscn",
+		"scene": "res://scenes/props/metal_bucket.tscn",
+		"size_metres": "(0.42, 0.42, 0.3)"
+	},
+	{
+		"category": "Small objects",
+		"collision_shapes": 1,
+		"id": "enamel_mug",
+		"name": "Enamel mug",
+		"origin": "bottom centre",
+		"preview_scene": "res://scenes/props_preview/enamel_mug.tscn",
+		"scene": "res://scenes/props/enamel_mug.tscn",
+		"size_metres": "(0.126, 0.135, 0.09)"
+	},
+	{
+		"category": "Ground dressing",
+		"collision_shapes": 0,
+		"id": "rubble_pile",
+		"name": "Masonry debris",
+		"origin": "bottom centre",
+		"preview_scene": "res://scenes/props_preview/rubble_pile.tscn",
+		"scene": "res://scenes/props/rubble_pile.tscn",
+		"size_metres": "(1.4, 0.22, 1.0)"
+	},
+	{
+		"category": "Interiors",
+		"collision_shapes": 1,
+		"id": "radiator",
+		"name": "Cast iron radiator",
+		"origin": "bottom centre",
+		"preview_scene": "res://scenes/props_preview/radiator.tscn",
+		"scene": "res://scenes/props/radiator.tscn",
+		"size_metres": "(0.88, 0.73, 0.24)"
+	},
+	{
+		"category": "Interiors",
+		"collision_shapes": 1,
+		"id": "field_cot",
+		"name": "Abandoned field cot",
+		"origin": "bottom centre",
+		"preview_scene": "res://scenes/props_preview/field_cot.tscn",
+		"scene": "res://scenes/props/field_cot.tscn",
+		"size_metres": "(0.83, 0.72, 1.98)"
+	},
+	{
+		"category": "Interiors",
+		"collision_shapes": 1,
+		"id": "worn_mattress",
+		"name": "Worn mattress",
+		"origin": "bottom centre",
+		"preview_scene": "res://scenes/props_preview/worn_mattress.tscn",
+		"scene": "res://scenes/props/worn_mattress.tscn",
+		"size_metres": "(0.76, 0.15, 1.86)"
+	},
+	{
+		"category": "Utilities",
+		"collision_shapes": 1,
+		"id": "wall_fusebox",
+		"name": "Open wall fusebox",
+		"origin": "bottom centre",
+		"preview_scene": "res://scenes/props_preview/wall_fusebox.tscn",
+		"scene": "res://scenes/props/wall_fusebox.tscn",
+		"size_metres": "(0.47, 0.5, 0.23)"
+	},
+	{
+		"category": "Utilities",
+		"collision_shapes": 1,
+		"id": "valve_pipe",
+		"name": "Industrial valve pipe",
+		"origin": "bottom centre",
+		"preview_scene": "res://scenes/props_preview/valve_pipe.tscn",
+		"scene": "res://scenes/props/valve_pipe.tscn",
+		"size_metres": "(0.48, 1.04, 0.34)"
+	},
+	{
+		"category": "Interiors",
+		"collision_shapes": 1,
+		"id": "pendant_light",
+		"name": "Hanging industrial lamp",
+		"origin": "bottom centre",
+		"preview_scene": "res://scenes/props_preview/pendant_light.tscn",
+		"scene": "res://scenes/props/pendant_light.tscn",
+		"size_metres": "(0.42, 1.22, 0.42)"
+	},
+	{
+		"category": "Checkpoint",
+		"collision_shapes": 1,
+		"id": "damaged_fence",
+		"name": "Damaged wire fence",
+		"origin": "bottom centre",
+		"preview_scene": "res://scenes/props_preview/damaged_fence.tscn",
+		"scene": "res://scenes/props/damaged_fence.tscn",
+		"size_metres": "(1.92, 1.8, 0.24)"
+	},
+	{
+		"category": "Checkpoint",
+		"collision_shapes": 1,
+		"id": "sandbag_stack",
+		"name": "Sandbag barricade",
+		"origin": "bottom centre",
+		"preview_scene": "res://scenes/props_preview/sandbag_stack.tscn",
+		"scene": "res://scenes/props/sandbag_stack.tscn",
+		"size_metres": "(1.5, 0.62, 0.65)"
+	}
+]

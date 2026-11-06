@@ -1,0 +1,21 @@
+[gd_resource type="StandardMaterial3D" format=3]
+
+[ext_resource type="Texture2D" path="res://assets/materials/rough_plaster_brick_02/albedo.jpg" id="1_ne1jr"]
+[ext_resource type="Texture2D" path="res://assets/materials/rough_plaster_brick_02/ao.jpg" id="2_psphl"]
+[ext_resource type="Texture2D" path="res://assets/materials/rough_plaster_brick_02/normal.jpg" id="3_uj11t"]
+[ext_resource type="Texture2D" path="res://assets/materials/rough_plaster_brick_02/roughness.jpg" id="4_yprrp"]
+
+[resource]
+albedo_texture = ExtResource("1_ne1jr")
+roughness = 0.8
+roughness_texture = ExtResource("4_yprrp")
+normal_enabled = true
+normal_scale = 0.48
+normal_texture = ExtResource("3_uj11t")
+ao_enabled = true
+ao_light_affect = 0.35
+ao_texture = ExtResource("2_psphl")
+uv1_scale = Vector3(0.6666667, 0.6666667, 0.6666667)
+uv1_triplanar = true
+uv1_world_triplanar = true
+texture_filter = 5

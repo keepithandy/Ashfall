@@ -1,0 +1,84 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://scenes/workshop/workbench_vise.tscn" id="1_6gdmy"]
+[ext_resource type="PackedScene" path="res://scenes/workshop/open_wood_crate.tscn" id="2_wk61a"]
+[ext_resource type="PackedScene" path="res://scenes/workshop/metal_chair.tscn" id="3_luhre"]
+[ext_resource type="PackedScene" path="res://scenes/workshop/fire_extinguisher.tscn" id="4_oju2a"]
+[ext_resource type="PackedScene" path="res://scenes/workshop/discarded_tyre.tscn" id="5_3dj8d"]
+[ext_resource type="PackedScene" path="res://scenes/workshop/wheelbarrow.tscn" id="6_41hw6"]
+[ext_resource type="PackedScene" path="res://scenes/workshop/steel_ladder.tscn" id="7_5oqnv"]
+[ext_resource type="PackedScene" path="res://scenes/workshop/coiled_hose.tscn" id="8_6862p"]
+
+[node name="WorkshopDressing" type="Node3D" unique_id=1376963985]
+
+[node name="workbench_vise_0" type="StaticBody3D" parent="." unique_id=168563512 instance=ExtResource("1_6gdmy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 0, -14)
+metadata/prop_id = "workbench_vise"
+metadata/approximate_size_metres = Vector3(1.5, 1.12, 0.7)
+metadata/world_text_policy = "No attached text"
+
+[node name="open_wood_crate_1" type="StaticBody3D" parent="." unique_id=443045730 instance=ExtResource("2_wk61a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.65, 0.2275, -14)
+metadata/prop_id = "open_wood_crate"
+metadata/approximate_size_metres = Vector3(0.7, 0.44, 0.52)
+metadata/world_text_policy = "No attached text"
+
+[node name="metal_chair_2" type="StaticBody3D" parent="." unique_id=1709736415 instance=ExtResource("3_luhre")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 20.1, 0, -12.8)
+metadata/prop_id = "metal_chair"
+metadata/approximate_size_metres = Vector3(0.5, 0.92, 0.55)
+metadata/world_text_policy = "No attached text"
+
+[node name="fire_extinguisher_3" type="StaticBody3D" parent="." unique_id=183388973 instance=ExtResource("4_oju2a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.9, 0, -14.1)
+metadata/prop_id = "fire_extinguisher"
+metadata/approximate_size_metres = Vector3(0.23, 0.61, 0.22)
+metadata/world_text_policy = "No attached text"
+
+[node name="discarded_tyre_4" type="StaticBody3D" parent="." unique_id=475217316 instance=ExtResource("5_3dj8d")]
+transform = Transform3D(0.9800666, 0, 0.19866933, 0, 1, 0, -0.19866933, 0, 0.9800666, 22.5, 0, -1.5)
+metadata/prop_id = "discarded_tyre"
+metadata/approximate_size_metres = Vector3(0.24, 0.68, 0.68)
+metadata/world_text_policy = "No attached text"
+
+[node name="discarded_tyre_5" type="StaticBody3D" parent="." unique_id=645053025 instance=ExtResource("5_3dj8d")]
+transform = Transform3D(0.9553365, 0, -0.29552022, 0, 1, 0, 0.29552022, 0, 0.9553365, 22, 0, -2.3)
+metadata/prop_id = "discarded_tyre"
+metadata/approximate_size_metres = Vector3(0.24, 0.68, 0.68)
+metadata/world_text_policy = "No attached text"
+
+[node name="wheelbarrow_6" type="StaticBody3D" parent="." unique_id=978998490 instance=ExtResource("6_41hw6")]
+transform = Transform3D(0.921061, 0, 0.38941833, 0, 1, 0, -0.38941833, 0, 0.921061, -16, 0, 15.2)
+metadata/prop_id = "wheelbarrow"
+metadata/approximate_size_metres = Vector3(0.85, 0.72, 1.65)
+metadata/world_text_policy = "No attached text"
+
+[node name="steel_ladder_7" type="StaticBody3D" parent="." unique_id=19255947 instance=ExtResource("7_5oqnv")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -13.72, 0, 10)
+metadata/prop_id = "steel_ladder"
+metadata/approximate_size_metres = Vector3(0.52, 2.3, 0.12)
+metadata/world_text_policy = "No attached text"
+
+[node name="coiled_hose_8" type="StaticBody3D" parent="." unique_id=1916931713 instance=ExtResource("8_6862p")]
+transform = Transform3D(0.9800666, 0, 0.19866933, 0, 1, 0, -0.19866933, 0, 0.9800666, -23.5, 0, -1)
+metadata/prop_id = "coiled_hose"
+metadata/approximate_size_metres = Vector3(0.7, 0.09, 0.7)
+metadata/world_text_policy = "No attached text"
+
+[node name="fire_extinguisher_9" type="StaticBody3D" parent="." unique_id=1393527378 instance=ExtResource("4_oju2a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.5, 0.18, 12.7)
+metadata/prop_id = "fire_extinguisher"
+metadata/approximate_size_metres = Vector3(0.23, 0.61, 0.22)
+metadata/world_text_policy = "No attached text"
+
+[node name="open_wood_crate_10" type="StaticBody3D" parent="." unique_id=147990634 instance=ExtResource("2_wk61a")]
+transform = Transform3D(0.9950042, 0, 0.09983342, 0, 1, 0, -0.09983342, 0, 0.9950042, -18, 0, -33.8)
+metadata/prop_id = "open_wood_crate"
+metadata/approximate_size_metres = Vector3(0.7, 0.44, 0.52)
+metadata/world_text_policy = "No attached text"
+
+[node name="coiled_hose_11" type="StaticBody3D" parent="." unique_id=248045487 instance=ExtResource("8_6862p")]
+transform = Transform3D(0.9800666, 0, 0.19866933, 0, 1, 0, -0.19866933, 0, 0.9800666, 26.1, 0, -38)
+metadata/prop_id = "coiled_hose"
+metadata/approximate_size_metres = Vector3(0.7, 0.09, 0.7)
+metadata/world_text_policy = "No attached text"

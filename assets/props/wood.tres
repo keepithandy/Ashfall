@@ -1,0 +1,22 @@
+[gd_resource type="StandardMaterial3D" format=3]
+
+[ext_resource type="Texture2D" path="res://assets/props/reclaimed_wood.res" id="1_7xcc5"]
+[ext_resource type="Texture2D" path="res://assets/materials/wood_peeling_paint_weathered/ao.jpg" id="2_5v0g3"]
+[ext_resource type="Texture2D" path="res://assets/materials/wood_peeling_paint_weathered/normal.jpg" id="3_4tqq3"]
+[ext_resource type="Texture2D" path="res://assets/materials/wood_peeling_paint_weathered/roughness.jpg" id="4_eelhs"]
+
+[resource]
+albedo_color = Color(0.7254902, 0.67058825, 0.5686275, 1)
+albedo_texture = ExtResource("1_7xcc5")
+roughness = 0.8
+roughness_texture = ExtResource("4_eelhs")
+normal_enabled = true
+normal_scale = 0.32
+normal_texture = ExtResource("3_4tqq3")
+ao_enabled = true
+ao_light_affect = 0.35
+ao_texture = ExtResource("2_5v0g3")
+uv1_scale = Vector3(1.312336, 1.312336, 1.312336)
+uv1_triplanar = true
+uv1_world_triplanar = true
+texture_filter = 5

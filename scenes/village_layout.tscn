@@ -1,0 +1,129 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://scenes/houses/blue_porch_cottage.tscn" id="1_hux6q"]
+[ext_resource type="Texture2D" path="res://assets/props/reclaimed_wood.res" id="2_xvir2"]
+[ext_resource type="Texture2D" path="res://assets/materials/wood_peeling_paint_weathered/ao.jpg" id="3_bkf61"]
+[ext_resource type="Texture2D" path="res://assets/materials/wood_peeling_paint_weathered/normal.jpg" id="4_5k13u"]
+[ext_resource type="Texture2D" path="res://assets/materials/wood_peeling_paint_weathered/roughness.jpg" id="5_klrnt"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ok3mg"]
+albedo_color = Color(0.32156864, 0.29411766, 0.23921569, 1)
+roughness = 0.8
+
+[sub_resource type="BoxMesh" id="BoxMesh_gkc64"]
+size = Vector3(30, 0.02, 2.7)
+
+[sub_resource type="BoxMesh" id="BoxMesh_16a8l"]
+size = Vector3(2.3, 0.02, 9)
+
+[sub_resource type="BoxMesh" id="BoxMesh_8hdk1"]
+size = Vector3(2.7, 0.02, 31)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_joe8r"]
+albedo_color = Color(0.4862745, 0.67058825, 0.7137255, 1)
+albedo_texture = ExtResource("2_xvir2")
+roughness = 0.8
+roughness_texture = ExtResource("5_klrnt")
+normal_enabled = true
+normal_scale = 0.32
+normal_texture = ExtResource("4_5k13u")
+ao_enabled = true
+ao_light_affect = 0.35
+ao_texture = ExtResource("3_bkf61")
+uv1_scale = Vector3(1.312336, 1.312336, 1.312336)
+uv1_triplanar = true
+uv1_world_triplanar = true
+texture_filter = 5
+
+[sub_resource type="BoxMesh" id="BoxMesh_vvtb4"]
+size = Vector3(0.1, 0.9, 0.1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_nexcu"]
+size = Vector3(0.1, 0.9, 0.1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_voqtv"]
+size = Vector3(0.1, 0.9, 0.1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_vvn7o"]
+size = Vector3(0.1, 0.9, 0.1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_2rps6"]
+size = Vector3(0.1, 0.9, 0.1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_hchpq"]
+size = Vector3(0.1, 0.9, 0.1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_qi3wh"]
+size = Vector3(0.1, 0.9, 0.1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_o14vu"]
+size = Vector3(0.1, 0.9, 0.1)
+
+[node name="VillageLayout" type="Node3D" unique_id=984060192]
+
+[node name="FirstVillageCottage" type="Node3D" parent="." unique_id=1792120734 instance=ExtResource("1_hux6q")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -46, 0, 8)
+metadata/house_type = "Blue porch cottage"
+metadata/approximate_size_metres = Vector3(9, 5.5, 12)
+metadata/world_text_policy = "No attached text"
+
+[node name="VillageDirtLane" type="MeshInstance3D" parent="." unique_id=990480458]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -46, 0.025, 20)
+material_override = SubResource("StandardMaterial3D_ok3mg")
+mesh = SubResource("BoxMesh_gkc64")
+
+[node name="@MeshInstance3D@355" type="MeshInstance3D" parent="." unique_id=1088937144]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -46, 0.025, 16)
+material_override = SubResource("StandardMaterial3D_ok3mg")
+mesh = SubResource("BoxMesh_16a8l")
+
+[node name="@MeshInstance3D@356" type="MeshInstance3D" parent="." unique_id=1224001455]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -60, 0.025, 5)
+material_override = SubResource("StandardMaterial3D_ok3mg")
+mesh = SubResource("BoxMesh_8hdk1")
+
+[node name="@MeshInstance3D@357" type="MeshInstance3D" parent="." unique_id=1486873530]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -51, 0.45, 15)
+material_override = SubResource("StandardMaterial3D_joe8r")
+mesh = SubResource("BoxMesh_vvtb4")
+
+[node name="@MeshInstance3D@358" type="MeshInstance3D" parent="." unique_id=1945459738]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -51, 0.45, 15.75)
+material_override = SubResource("StandardMaterial3D_joe8r")
+mesh = SubResource("BoxMesh_nexcu")
+
+[node name="@MeshInstance3D@359" type="MeshInstance3D" parent="." unique_id=58992869]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -51, 0.45, 16.5)
+material_override = SubResource("StandardMaterial3D_joe8r")
+mesh = SubResource("BoxMesh_voqtv")
+
+[node name="@MeshInstance3D@360" type="MeshInstance3D" parent="." unique_id=1211523880]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -51, 0.45, 17.25)
+material_override = SubResource("StandardMaterial3D_joe8r")
+mesh = SubResource("BoxMesh_vvn7o")
+
+[node name="@MeshInstance3D@361" type="MeshInstance3D" parent="." unique_id=2113275946]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -41, 0.45, 15)
+material_override = SubResource("StandardMaterial3D_joe8r")
+mesh = SubResource("BoxMesh_2rps6")
+
+[node name="@MeshInstance3D@362" type="MeshInstance3D" parent="." unique_id=788742871]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -41, 0.45, 15.75)
+material_override = SubResource("StandardMaterial3D_joe8r")
+mesh = SubResource("BoxMesh_hchpq")
+
+[node name="@MeshInstance3D@363" type="MeshInstance3D" parent="." unique_id=1477530750]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -41, 0.45, 16.5)
+material_override = SubResource("StandardMaterial3D_joe8r")
+mesh = SubResource("BoxMesh_qi3wh")
+
+[node name="@MeshInstance3D@364" type="MeshInstance3D" parent="." unique_id=157141851]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -41, 0.45, 17.25)
+material_override = SubResource("StandardMaterial3D_joe8r")
+mesh = SubResource("BoxMesh_o14vu")
+
+[node name="FutureHousePlot_B" type="Marker3D" parent="." unique_id=983428227]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -63, 0, 8)
+
+[node name="FutureHousePlot_C" type="Marker3D" parent="." unique_id=790895102]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -46, 0, -10)

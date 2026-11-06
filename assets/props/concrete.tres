@@ -1,0 +1,21 @@
+[gd_resource type="StandardMaterial3D" format=3]
+
+[ext_resource type="Texture2D" path="res://assets/materials/concrete_floor_worn_001/albedo.jpg" id="1_sl0a7"]
+[ext_resource type="Texture2D" path="res://assets/materials/concrete_floor_worn_001/ao.jpg" id="2_4snu8"]
+[ext_resource type="Texture2D" path="res://assets/materials/concrete_floor_worn_001/normal.jpg" id="3_vfflb"]
+[ext_resource type="Texture2D" path="res://assets/materials/concrete_floor_worn_001/roughness.jpg" id="4_tval5"]
+
+[resource]
+albedo_texture = ExtResource("1_sl0a7")
+roughness = 0.8
+roughness_texture = ExtResource("4_tval5")
+normal_enabled = true
+normal_scale = 0.48
+normal_texture = ExtResource("3_vfflb")
+ao_enabled = true
+ao_light_affect = 0.35
+ao_texture = ExtResource("2_4snu8")
+uv1_scale = Vector3(0.33333334, 0.33333334, 0.33333334)
+uv1_triplanar = true
+uv1_world_triplanar = true
+texture_filter = 5

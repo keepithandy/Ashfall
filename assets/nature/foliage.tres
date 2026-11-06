@@ -1,0 +1,12 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://kai8lhp8fnmt"]
+
+[sub_resource type="Shader" id="Shader_gaygw"]
+code = "shader_type spatial;
+render_mode cull_disabled, specular_disabled;
+void vertex(){vec3 p=(MODEL_MATRIX*vec4(VERTEX,1.0)).xyz; VERTEX.x+=sin(TIME*0.9+p.x*0.6+p.z*0.4)*UV.y*0.02;}
+void fragment(){ALBEDO=COLOR.rgb*vec3(0.15,0.42,0.12); ROUGHNESS=0.96; NORMAL=FRONT_FACING?NORMAL:-NORMAL; BACKLIGHT=ALBEDO*0.08;}
+"
+
+[resource]
+render_priority = 0
+shader = SubResource("Shader_gaygw")

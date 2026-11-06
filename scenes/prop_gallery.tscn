@@ -1,0 +1,1032 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://prop_gallery.gd" id="1_a1v0o"]
+[ext_resource type="PackedScene" path="res://scenes/props_preview/steel_drum.tscn" id="2_yolik"]
+[ext_resource type="PackedScene" path="res://scenes/props_preview/rusted_drum.tscn" id="3_06f53"]
+[ext_resource type="PackedScene" path="res://scenes/props_preview/wooden_pallet.tscn" id="4_3ly30"]
+[ext_resource type="PackedScene" path="res://scenes/props_preview/shipping_crate.tscn" id="5_2saup"]
+[ext_resource type="PackedScene" path="res://scenes/props_preview/equipment_case.tscn" id="6_e031u"]
+[ext_resource type="PackedScene" path="res://scenes/props_preview/jerrycan.tscn" id="7_ylqij"]
+[ext_resource type="PackedScene" path="res://scenes/props_preview/gas_cylinder.tscn" id="8_jbt4d"]
+[ext_resource type="PackedScene" path="res://scenes/props_preview/cable_spool.tscn" id="9_vph8x"]
+[ext_resource type="PackedScene" path="res://scenes/props_preview/portable_generator.tscn" id="10_dmexa"]
+[ext_resource type="PackedScene" path="res://scenes/props_preview/traffic_cone.tscn" id="11_dgae2"]
+[ext_resource type="PackedScene" path="res://scenes/props_preview/concrete_barrier.tscn" id="12_muxyx"]
+[ext_resource type="PackedScene" path="res://scenes/props_preview/warning_sign.tscn" id="13_x3koo"]
+[ext_resource type="PackedScene" path="res://scenes/props_preview/work_light.tscn" id="14_q6cbt"]
+[ext_resource type="PackedScene" path="res://scenes/props_preview/hand_truck.tscn" id="15_5kyqp"]
+[ext_resource type="PackedScene" path="res://scenes/props_preview/tool_box.tscn" id="16_xiat4"]
+[ext_resource type="PackedScene" path="res://scenes/props_preview/pipe_bundle.tscn" id="17_85vtj"]
+[ext_resource type="PackedScene" path="res://scenes/props_preview/electrical_cabinet.tscn" id="18_r1e5v"]
+[ext_resource type="PackedScene" path="res://scenes/props_preview/shelving_unit.tscn" id="19_okecg"]
+[ext_resource type="PackedScene" path="res://scenes/props_preview/filing_cabinet.tscn" id="20_r0jwx"]
+[ext_resource type="PackedScene" path="res://scenes/props_preview/wooden_bench.tscn" id="21_7wesp"]
+[ext_resource type="PackedScene" path="res://scenes/props_preview/desk_radio.tscn" id="22_oa475"]
+[ext_resource type="PackedScene" path="res://scenes/props_preview/metal_bucket.tscn" id="23_lrsva"]
+[ext_resource type="PackedScene" path="res://scenes/props_preview/enamel_mug.tscn" id="24_2q2xh"]
+[ext_resource type="PackedScene" path="res://scenes/props_preview/rubble_pile.tscn" id="25_rhghm"]
+[ext_resource type="PackedScene" path="res://scenes/props_preview/radiator.tscn" id="26_fc2bu"]
+[ext_resource type="PackedScene" path="res://scenes/props_preview/field_cot.tscn" id="27_yadp5"]
+[ext_resource type="PackedScene" path="res://scenes/props_preview/worn_mattress.tscn" id="28_08s4m"]
+[ext_resource type="PackedScene" path="res://scenes/props_preview/wall_fusebox.tscn" id="29_70ugc"]
+[ext_resource type="PackedScene" path="res://scenes/props_preview/valve_pipe.tscn" id="30_c6g6o"]
+[ext_resource type="PackedScene" path="res://scenes/props_preview/pendant_light.tscn" id="31_ufkyh"]
+[ext_resource type="PackedScene" path="res://scenes/props_preview/damaged_fence.tscn" id="32_id2ww"]
+[ext_resource type="PackedScene" path="res://scenes/props_preview/sandbag_stack.tscn" id="33_7m72l"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8gh7p"]
+albedo_color = Color(0.25490198, 0.29411766, 0.30588236, 1)
+roughness = 0.8
+
+[sub_resource type="BoxMesh" id="BoxMesh_0iaj4"]
+size = Vector3(2.3, 0.08, 2.3)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ko6q7"]
+albedo_color = Color(0.25490198, 0.29411766, 0.30588236, 1)
+roughness = 0.8
+
+[sub_resource type="BoxMesh" id="BoxMesh_x5i5o"]
+size = Vector3(2.3, 0.08, 2.3)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8uwct"]
+albedo_color = Color(0.25490198, 0.29411766, 0.30588236, 1)
+roughness = 0.8
+
+[sub_resource type="BoxMesh" id="BoxMesh_umpvd"]
+size = Vector3(2.3, 0.08, 2.3)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_urdrb"]
+albedo_color = Color(0.25490198, 0.29411766, 0.30588236, 1)
+roughness = 0.8
+
+[sub_resource type="BoxMesh" id="BoxMesh_7718k"]
+size = Vector3(2.3, 0.08, 2.3)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bbqgt"]
+albedo_color = Color(0.25490198, 0.29411766, 0.30588236, 1)
+roughness = 0.8
+
+[sub_resource type="BoxMesh" id="BoxMesh_24ati"]
+size = Vector3(2.3, 0.08, 2.3)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_f13or"]
+albedo_color = Color(0.25490198, 0.29411766, 0.30588236, 1)
+roughness = 0.8
+
+[sub_resource type="BoxMesh" id="BoxMesh_1gos3"]
+size = Vector3(2.3, 0.08, 2.3)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ysd4t"]
+albedo_color = Color(0.25490198, 0.29411766, 0.30588236, 1)
+roughness = 0.8
+
+[sub_resource type="BoxMesh" id="BoxMesh_2w6nf"]
+size = Vector3(2.3, 0.08, 2.3)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_umuja"]
+albedo_color = Color(0.25490198, 0.29411766, 0.30588236, 1)
+roughness = 0.8
+
+[sub_resource type="BoxMesh" id="BoxMesh_sduhw"]
+size = Vector3(2.3, 0.08, 2.3)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qhs2u"]
+albedo_color = Color(0.25490198, 0.29411766, 0.30588236, 1)
+roughness = 0.8
+
+[sub_resource type="BoxMesh" id="BoxMesh_i1lhv"]
+size = Vector3(2.3, 0.08, 2.3)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ldnxd"]
+albedo_color = Color(0.25490198, 0.29411766, 0.30588236, 1)
+roughness = 0.8
+
+[sub_resource type="BoxMesh" id="BoxMesh_c3m28"]
+size = Vector3(2.3, 0.08, 2.3)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qs47h"]
+albedo_color = Color(0.25490198, 0.29411766, 0.30588236, 1)
+roughness = 0.8
+
+[sub_resource type="BoxMesh" id="BoxMesh_5ps02"]
+size = Vector3(2.3, 0.08, 2.3)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pqiut"]
+albedo_color = Color(0.25490198, 0.29411766, 0.30588236, 1)
+roughness = 0.8
+
+[sub_resource type="BoxMesh" id="BoxMesh_odf04"]
+size = Vector3(2.3, 0.08, 2.3)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pihda"]
+albedo_color = Color(0.25490198, 0.29411766, 0.30588236, 1)
+roughness = 0.8
+
+[sub_resource type="BoxMesh" id="BoxMesh_718ry"]
+size = Vector3(2.3, 0.08, 2.3)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6qmkh"]
+albedo_color = Color(0.25490198, 0.29411766, 0.30588236, 1)
+roughness = 0.8
+
+[sub_resource type="BoxMesh" id="BoxMesh_dytx5"]
+size = Vector3(2.3, 0.08, 2.3)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mepsd"]
+albedo_color = Color(0.25490198, 0.29411766, 0.30588236, 1)
+roughness = 0.8
+
+[sub_resource type="BoxMesh" id="BoxMesh_i2epe"]
+size = Vector3(2.3, 0.08, 2.3)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yhs1x"]
+albedo_color = Color(0.25490198, 0.29411766, 0.30588236, 1)
+roughness = 0.8
+
+[sub_resource type="BoxMesh" id="BoxMesh_4bj3y"]
+size = Vector3(2.3, 0.08, 2.3)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tm06t"]
+albedo_color = Color(0.25490198, 0.29411766, 0.30588236, 1)
+roughness = 0.8
+
+[sub_resource type="BoxMesh" id="BoxMesh_8ftax"]
+size = Vector3(2.3, 0.08, 2.3)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tqdpu"]
+albedo_color = Color(0.25490198, 0.29411766, 0.30588236, 1)
+roughness = 0.8
+
+[sub_resource type="BoxMesh" id="BoxMesh_5vmtk"]
+size = Vector3(2.3, 0.08, 2.3)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1llry"]
+albedo_color = Color(0.25490198, 0.29411766, 0.30588236, 1)
+roughness = 0.8
+
+[sub_resource type="BoxMesh" id="BoxMesh_3dm3y"]
+size = Vector3(2.3, 0.08, 2.3)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_undfl"]
+albedo_color = Color(0.25490198, 0.29411766, 0.30588236, 1)
+roughness = 0.8
+
+[sub_resource type="BoxMesh" id="BoxMesh_3hs6l"]
+size = Vector3(2.3, 0.08, 2.3)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tk3di"]
+albedo_color = Color(0.25490198, 0.29411766, 0.30588236, 1)
+roughness = 0.8
+
+[sub_resource type="BoxMesh" id="BoxMesh_e7bl2"]
+size = Vector3(2.3, 0.08, 2.3)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tyuw3"]
+albedo_color = Color(0.25490198, 0.29411766, 0.30588236, 1)
+roughness = 0.8
+
+[sub_resource type="BoxMesh" id="BoxMesh_hrpyg"]
+size = Vector3(2.3, 0.08, 2.3)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kptnr"]
+albedo_color = Color(0.25490198, 0.29411766, 0.30588236, 1)
+roughness = 0.8
+
+[sub_resource type="BoxMesh" id="BoxMesh_rnw23"]
+size = Vector3(2.3, 0.08, 2.3)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_elrt5"]
+albedo_color = Color(0.25490198, 0.29411766, 0.30588236, 1)
+roughness = 0.8
+
+[sub_resource type="BoxMesh" id="BoxMesh_fsawt"]
+size = Vector3(2.3, 0.08, 2.3)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_slgr2"]
+albedo_color = Color(0.25490198, 0.29411766, 0.30588236, 1)
+roughness = 0.8
+
+[sub_resource type="BoxMesh" id="BoxMesh_uh8yd"]
+size = Vector3(2.3, 0.08, 2.3)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bv1pi"]
+albedo_color = Color(0.25490198, 0.29411766, 0.30588236, 1)
+roughness = 0.8
+
+[sub_resource type="BoxMesh" id="BoxMesh_0a3yh"]
+size = Vector3(2.3, 0.08, 2.3)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1g2bp"]
+albedo_color = Color(0.25490198, 0.29411766, 0.30588236, 1)
+roughness = 0.8
+
+[sub_resource type="BoxMesh" id="BoxMesh_bm4y8"]
+size = Vector3(2.3, 0.08, 2.3)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_q6kwu"]
+albedo_color = Color(0.25490198, 0.29411766, 0.30588236, 1)
+roughness = 0.8
+
+[sub_resource type="BoxMesh" id="BoxMesh_ehrp5"]
+size = Vector3(2.3, 0.08, 2.3)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_af1x6"]
+albedo_color = Color(0.25490198, 0.29411766, 0.30588236, 1)
+roughness = 0.8
+
+[sub_resource type="BoxMesh" id="BoxMesh_ketvu"]
+size = Vector3(2.3, 0.08, 2.3)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hkxt8"]
+albedo_color = Color(0.25490198, 0.29411766, 0.30588236, 1)
+roughness = 0.8
+
+[sub_resource type="BoxMesh" id="BoxMesh_vk7qc"]
+size = Vector3(2.3, 0.08, 2.3)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hsv0d"]
+albedo_color = Color(0.25490198, 0.29411766, 0.30588236, 1)
+roughness = 0.8
+
+[sub_resource type="BoxMesh" id="BoxMesh_lxuux"]
+size = Vector3(2.3, 0.08, 2.3)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_no6ce"]
+albedo_color = Color(0.25490198, 0.29411766, 0.30588236, 1)
+roughness = 0.8
+
+[sub_resource type="BoxMesh" id="BoxMesh_w0wyt"]
+size = Vector3(2.3, 0.08, 2.3)
+
+[node name="PropGallery" type="Node3D" unique_id=40139401]
+script = ExtResource("1_a1v0o")
+
+[node name="Displays" type="Node3D" parent="." unique_id=1646318245]
+
+[node name="steel_drum" type="Node3D" parent="Displays" unique_id=1843398552]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0, 0)
+metadata/title = "Olive steel drum"
+
+[node name="SteelDrum" type="StaticBody3D" parent="Displays/steel_drum" unique_id=1805672838 instance=ExtResource("2_yolik")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.08, 0)
+metadata/prop_id = "steel_drum"
+metadata/display_name = "Olive steel drum"
+metadata/category = "Storage"
+metadata/approximate_size_metres = Vector3(0.62, 0.89, 0.62)
+metadata/physics = "Static set dressing; small debris has no collision"
+
+[node name="DisplayBase" type="MeshInstance3D" parent="Displays/steel_drum" unique_id=1462933540]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.04, 0)
+material_override = SubResource("StandardMaterial3D_8gh7p")
+mesh = SubResource("BoxMesh_0iaj4")
+
+[node name="Caption" type="Label3D" parent="Displays/steel_drum" unique_id=51178843]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.18, 1.12)
+pixel_size = 0.0038
+text = "01  Olive steel drum"
+font_size = 28
+outline_size = 2
+
+[node name="rusted_drum" type="Node3D" parent="Displays" unique_id=605090098]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.2, 0, 0)
+metadata/title = "Rusted steel drum"
+
+[node name="RustedDrum" type="StaticBody3D" parent="Displays/rusted_drum" unique_id=666420651 instance=ExtResource("3_06f53")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.08, 0)
+metadata/prop_id = "rusted_drum"
+metadata/display_name = "Rusted steel drum"
+metadata/category = "Storage"
+metadata/approximate_size_metres = Vector3(0.62, 0.89, 0.62)
+metadata/physics = "Static set dressing; small debris has no collision"
+
+[node name="DisplayBase" type="MeshInstance3D" parent="Displays/rusted_drum" unique_id=1357430434]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.04, 0)
+material_override = SubResource("StandardMaterial3D_ko6q7")
+mesh = SubResource("BoxMesh_x5i5o")
+
+[node name="Caption" type="Label3D" parent="Displays/rusted_drum" unique_id=1033723805]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.18, 1.12)
+pixel_size = 0.0038
+text = "02  Rusted steel drum"
+font_size = 28
+outline_size = 2
+
+[node name="wooden_pallet" type="Node3D" parent="Displays" unique_id=1566435513]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.4, 0, 0)
+metadata/title = "Wooden pallet"
+
+[node name="WoodenPallet" type="StaticBody3D" parent="Displays/wooden_pallet" unique_id=805053178 instance=ExtResource("4_3ly30")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.08, 0)
+metadata/prop_id = "wooden_pallet"
+metadata/display_name = "Wooden pallet"
+metadata/category = "Storage"
+metadata/approximate_size_metres = Vector3(1.2, 0.144, 0.8)
+metadata/physics = "Static set dressing; small debris has no collision"
+
+[node name="DisplayBase" type="MeshInstance3D" parent="Displays/wooden_pallet" unique_id=1296437787]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.04, 0)
+material_override = SubResource("StandardMaterial3D_8uwct")
+mesh = SubResource("BoxMesh_umpvd")
+
+[node name="Caption" type="Label3D" parent="Displays/wooden_pallet" unique_id=869411980]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.18, 1.12)
+pixel_size = 0.0038
+text = "03  Wooden pallet"
+font_size = 28
+outline_size = 2
+
+[node name="shipping_crate" type="Node3D" parent="Displays" unique_id=340841742]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.4, 0, 0)
+metadata/title = "Shipping crate"
+
+[node name="ShippingCrate" type="StaticBody3D" parent="Displays/shipping_crate" unique_id=1987317108 instance=ExtResource("5_2saup")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.08, 0)
+metadata/prop_id = "shipping_crate"
+metadata/display_name = "Shipping crate"
+metadata/category = "Storage"
+metadata/approximate_size_metres = Vector3(0.9, 0.72, 0.7)
+metadata/physics = "Static set dressing; small debris has no collision"
+
+[node name="DisplayBase" type="MeshInstance3D" parent="Displays/shipping_crate" unique_id=190449425]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.04, 0)
+material_override = SubResource("StandardMaterial3D_urdrb")
+mesh = SubResource("BoxMesh_7718k")
+
+[node name="Caption" type="Label3D" parent="Displays/shipping_crate" unique_id=1363144225]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.18, 1.12)
+pixel_size = 0.0038
+text = "04  Shipping crate"
+font_size = 28
+outline_size = 2
+
+[node name="equipment_case" type="Node3D" parent="Displays" unique_id=991776880]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.2, 0, 0)
+metadata/title = "Equipment case"
+
+[node name="EquipmentCase" type="StaticBody3D" parent="Displays/equipment_case" unique_id=199137837 instance=ExtResource("6_e031u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.08, 0)
+metadata/prop_id = "equipment_case"
+metadata/display_name = "Equipment case"
+metadata/category = "Storage"
+metadata/approximate_size_metres = Vector3(0.65, 0.34, 0.36)
+metadata/physics = "Static set dressing; small debris has no collision"
+
+[node name="DisplayBase" type="MeshInstance3D" parent="Displays/equipment_case" unique_id=795204070]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.04, 0)
+material_override = SubResource("StandardMaterial3D_bbqgt")
+mesh = SubResource("BoxMesh_24ati")
+
+[node name="Caption" type="Label3D" parent="Displays/equipment_case" unique_id=865150015]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.18, 1.12)
+pixel_size = 0.0038
+text = "05  Equipment case"
+font_size = 28
+outline_size = 2
+
+[node name="jerrycan" type="Node3D" parent="Displays" unique_id=354420718]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, 0)
+metadata/title = "Fuel jerrycan"
+
+[node name="Jerrycan" type="StaticBody3D" parent="Displays/jerrycan" unique_id=1874267221 instance=ExtResource("7_ylqij")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.08, 0)
+metadata/prop_id = "jerrycan"
+metadata/display_name = "Fuel jerrycan"
+metadata/category = "Utilities"
+metadata/approximate_size_metres = Vector3(0.35, 0.48, 0.19)
+metadata/physics = "Static set dressing; small debris has no collision"
+
+[node name="DisplayBase" type="MeshInstance3D" parent="Displays/jerrycan" unique_id=240490196]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.04, 0)
+material_override = SubResource("StandardMaterial3D_f13or")
+mesh = SubResource("BoxMesh_1gos3")
+
+[node name="Caption" type="Label3D" parent="Displays/jerrycan" unique_id=1031318948]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.18, 1.12)
+pixel_size = 0.0038
+text = "06  Fuel jerrycan"
+font_size = 28
+outline_size = 2
+
+[node name="gas_cylinder" type="Node3D" parent="Displays" unique_id=420574543]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0, -3)
+metadata/title = "Gas cylinder"
+
+[node name="GasCylinder" type="StaticBody3D" parent="Displays/gas_cylinder" unique_id=566879714 instance=ExtResource("8_jbt4d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.08, 0)
+metadata/prop_id = "gas_cylinder"
+metadata/display_name = "Gas cylinder"
+metadata/category = "Utilities"
+metadata/approximate_size_metres = Vector3(0.36, 1.26, 0.36)
+metadata/physics = "Static set dressing; small debris has no collision"
+
+[node name="DisplayBase" type="MeshInstance3D" parent="Displays/gas_cylinder" unique_id=2052143625]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.04, 0)
+material_override = SubResource("StandardMaterial3D_ysd4t")
+mesh = SubResource("BoxMesh_2w6nf")
+
+[node name="Caption" type="Label3D" parent="Displays/gas_cylinder" unique_id=871934854]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.18, 1.12)
+pixel_size = 0.0038
+text = "07  Gas cylinder"
+font_size = 28
+outline_size = 2
+
+[node name="cable_spool" type="Node3D" parent="Displays" unique_id=1549281968]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.2, 0, -3)
+metadata/title = "Cable spool"
+
+[node name="CableSpool" type="StaticBody3D" parent="Displays/cable_spool" unique_id=963330760 instance=ExtResource("9_vph8x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.08, 0)
+metadata/prop_id = "cable_spool"
+metadata/display_name = "Cable spool"
+metadata/category = "Utilities"
+metadata/approximate_size_metres = Vector3(0.85, 0.72, 0.85)
+metadata/physics = "Static set dressing; small debris has no collision"
+
+[node name="DisplayBase" type="MeshInstance3D" parent="Displays/cable_spool" unique_id=1145012799]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.04, 0)
+material_override = SubResource("StandardMaterial3D_umuja")
+mesh = SubResource("BoxMesh_sduhw")
+
+[node name="Caption" type="Label3D" parent="Displays/cable_spool" unique_id=1799870665]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.18, 1.12)
+pixel_size = 0.0038
+text = "08  Cable spool"
+font_size = 28
+outline_size = 2
+
+[node name="portable_generator" type="Node3D" parent="Displays" unique_id=271217662]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.4, 0, -3)
+metadata/title = "Portable generator"
+
+[node name="PortableGenerator" type="StaticBody3D" parent="Displays/portable_generator" unique_id=1009606969 instance=ExtResource("10_dmexa")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.08, 0)
+metadata/prop_id = "portable_generator"
+metadata/display_name = "Portable generator"
+metadata/category = "Utilities"
+metadata/approximate_size_metres = Vector3(0.78, 0.64, 0.54)
+metadata/physics = "Static set dressing; small debris has no collision"
+
+[node name="DisplayBase" type="MeshInstance3D" parent="Displays/portable_generator" unique_id=1108491119]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.04, 0)
+material_override = SubResource("StandardMaterial3D_qhs2u")
+mesh = SubResource("BoxMesh_i1lhv")
+
+[node name="Caption" type="Label3D" parent="Displays/portable_generator" unique_id=747611613]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.18, 1.12)
+pixel_size = 0.0038
+text = "09  Portable generator"
+font_size = 28
+outline_size = 2
+
+[node name="traffic_cone" type="Node3D" parent="Displays" unique_id=493227612]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.4, 0, -3)
+metadata/title = "Traffic cone"
+
+[node name="TrafficCone" type="StaticBody3D" parent="Displays/traffic_cone" unique_id=1297862470 instance=ExtResource("11_dgae2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.08, 0)
+metadata/prop_id = "traffic_cone"
+metadata/display_name = "Traffic cone"
+metadata/category = "Checkpoint"
+metadata/approximate_size_metres = Vector3(0.42, 0.72, 0.42)
+metadata/physics = "Static set dressing; small debris has no collision"
+
+[node name="DisplayBase" type="MeshInstance3D" parent="Displays/traffic_cone" unique_id=1011276864]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.04, 0)
+material_override = SubResource("StandardMaterial3D_ldnxd")
+mesh = SubResource("BoxMesh_c3m28")
+
+[node name="Caption" type="Label3D" parent="Displays/traffic_cone" unique_id=1231112693]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.18, 1.12)
+pixel_size = 0.0038
+text = "10  Traffic cone"
+font_size = 28
+outline_size = 2
+
+[node name="concrete_barrier" type="Node3D" parent="Displays" unique_id=984186171]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.2, 0, -3)
+metadata/title = "Concrete barrier"
+
+[node name="ConcreteBarrier" type="StaticBody3D" parent="Displays/concrete_barrier" unique_id=1844181934 instance=ExtResource("12_muxyx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.08, 0)
+metadata/prop_id = "concrete_barrier"
+metadata/display_name = "Concrete barrier"
+metadata/category = "Checkpoint"
+metadata/approximate_size_metres = Vector3(2.2, 0.91, 0.6)
+metadata/physics = "Static set dressing; small debris has no collision"
+
+[node name="DisplayBase" type="MeshInstance3D" parent="Displays/concrete_barrier" unique_id=1551200844]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.04, 0)
+material_override = SubResource("StandardMaterial3D_qs47h")
+mesh = SubResource("BoxMesh_5ps02")
+
+[node name="Caption" type="Label3D" parent="Displays/concrete_barrier" unique_id=44546455]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.18, 1.12)
+pixel_size = 0.0038
+text = "11  Concrete barrier"
+font_size = 28
+outline_size = 2
+
+[node name="warning_sign" type="Node3D" parent="Displays" unique_id=1260206683]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, -3)
+metadata/title = "Restricted area sign"
+
+[node name="WarningSign" type="StaticBody3D" parent="Displays/warning_sign" unique_id=1921864772 instance=ExtResource("13_x3koo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.08, 0)
+metadata/prop_id = "warning_sign"
+metadata/display_name = "Restricted area sign"
+metadata/category = "Checkpoint"
+metadata/approximate_size_metres = Vector3(0.76, 1.65, 0.52)
+metadata/physics = "Static set dressing; small debris has no collision"
+
+[node name="DisplayBase" type="MeshInstance3D" parent="Displays/warning_sign" unique_id=1384791512]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.04, 0)
+material_override = SubResource("StandardMaterial3D_pqiut")
+mesh = SubResource("BoxMesh_odf04")
+
+[node name="Caption" type="Label3D" parent="Displays/warning_sign" unique_id=952780199]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.18, 1.12)
+pixel_size = 0.0038
+text = "12  Restricted area sign"
+font_size = 28
+outline_size = 2
+
+[node name="work_light" type="Node3D" parent="Displays" unique_id=493481458]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0, -6)
+metadata/title = "Tripod work light"
+
+[node name="WorkLight" type="StaticBody3D" parent="Displays/work_light" unique_id=266350791 instance=ExtResource("14_q6cbt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.08, 0)
+metadata/prop_id = "work_light"
+metadata/display_name = "Tripod work light"
+metadata/category = "Workshop"
+metadata/approximate_size_metres = Vector3(0.9, 1.8, 0.9)
+metadata/physics = "Static set dressing; small debris has no collision"
+
+[node name="DisplayBase" type="MeshInstance3D" parent="Displays/work_light" unique_id=1484201177]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.04, 0)
+material_override = SubResource("StandardMaterial3D_pihda")
+mesh = SubResource("BoxMesh_718ry")
+
+[node name="Caption" type="Label3D" parent="Displays/work_light" unique_id=316978443]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.18, 1.12)
+pixel_size = 0.0038
+text = "13  Tripod work light"
+font_size = 28
+outline_size = 2
+
+[node name="hand_truck" type="Node3D" parent="Displays" unique_id=141597897]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.2, 0, -6)
+metadata/title = "Hand truck"
+
+[node name="HandTruck" type="StaticBody3D" parent="Displays/hand_truck" unique_id=677974495 instance=ExtResource("15_5kyqp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.08, 0)
+metadata/prop_id = "hand_truck"
+metadata/display_name = "Hand truck"
+metadata/category = "Workshop"
+metadata/approximate_size_metres = Vector3(0.55, 1.18, 0.45)
+metadata/physics = "Static set dressing; small debris has no collision"
+
+[node name="DisplayBase" type="MeshInstance3D" parent="Displays/hand_truck" unique_id=669194804]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.04, 0)
+material_override = SubResource("StandardMaterial3D_6qmkh")
+mesh = SubResource("BoxMesh_dytx5")
+
+[node name="Caption" type="Label3D" parent="Displays/hand_truck" unique_id=2081738617]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.18, 1.12)
+pixel_size = 0.0038
+text = "14  Hand truck"
+font_size = 28
+outline_size = 2
+
+[node name="tool_box" type="Node3D" parent="Displays" unique_id=593942203]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.4, 0, -6)
+metadata/title = "Steel toolbox"
+
+[node name="ToolBox" type="StaticBody3D" parent="Displays/tool_box" unique_id=1061146432 instance=ExtResource("16_xiat4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.08, 0)
+metadata/prop_id = "tool_box"
+metadata/display_name = "Steel toolbox"
+metadata/category = "Workshop"
+metadata/approximate_size_metres = Vector3(0.46, 0.31, 0.24)
+metadata/physics = "Static set dressing; small debris has no collision"
+
+[node name="DisplayBase" type="MeshInstance3D" parent="Displays/tool_box" unique_id=634491464]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.04, 0)
+material_override = SubResource("StandardMaterial3D_mepsd")
+mesh = SubResource("BoxMesh_i2epe")
+
+[node name="Caption" type="Label3D" parent="Displays/tool_box" unique_id=1823896576]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.18, 1.12)
+pixel_size = 0.0038
+text = "15  Steel toolbox"
+font_size = 28
+outline_size = 2
+
+[node name="pipe_bundle" type="Node3D" parent="Displays" unique_id=890709321]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.4, 0, -6)
+metadata/title = "Pipe bundle"
+
+[node name="PipeBundle" type="StaticBody3D" parent="Displays/pipe_bundle" unique_id=1495831671 instance=ExtResource("17_85vtj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.08, 0)
+metadata/prop_id = "pipe_bundle"
+metadata/display_name = "Pipe bundle"
+metadata/category = "Workshop"
+metadata/approximate_size_metres = Vector3(1.65, 0.46, 0.6)
+metadata/physics = "Static set dressing; small debris has no collision"
+
+[node name="DisplayBase" type="MeshInstance3D" parent="Displays/pipe_bundle" unique_id=498155780]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.04, 0)
+material_override = SubResource("StandardMaterial3D_yhs1x")
+mesh = SubResource("BoxMesh_4bj3y")
+
+[node name="Caption" type="Label3D" parent="Displays/pipe_bundle" unique_id=552055436]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.18, 1.12)
+pixel_size = 0.0038
+text = "16  Pipe bundle"
+font_size = 28
+outline_size = 2
+
+[node name="electrical_cabinet" type="Node3D" parent="Displays" unique_id=143885372]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.2, 0, -6)
+metadata/title = "Electrical cabinet"
+
+[node name="ElectricalCabinet" type="StaticBody3D" parent="Displays/electrical_cabinet" unique_id=1261503824 instance=ExtResource("18_r1e5v")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.08, 0)
+metadata/prop_id = "electrical_cabinet"
+metadata/display_name = "Electrical cabinet"
+metadata/category = "Utilities"
+metadata/approximate_size_metres = Vector3(0.65, 1.5, 0.42)
+metadata/physics = "Static set dressing; small debris has no collision"
+
+[node name="DisplayBase" type="MeshInstance3D" parent="Displays/electrical_cabinet" unique_id=432126594]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.04, 0)
+material_override = SubResource("StandardMaterial3D_tm06t")
+mesh = SubResource("BoxMesh_8ftax")
+
+[node name="Caption" type="Label3D" parent="Displays/electrical_cabinet" unique_id=1362502862]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.18, 1.12)
+pixel_size = 0.0038
+text = "17  Electrical cabinet"
+font_size = 28
+outline_size = 2
+
+[node name="shelving_unit" type="Node3D" parent="Displays" unique_id=2104588485]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, -6)
+metadata/title = "Steel shelving"
+
+[node name="ShelvingUnit" type="StaticBody3D" parent="Displays/shelving_unit" unique_id=257286524 instance=ExtResource("19_okecg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.08, 0)
+metadata/prop_id = "shelving_unit"
+metadata/display_name = "Steel shelving"
+metadata/category = "Interiors"
+metadata/approximate_size_metres = Vector3(1.25, 1.8, 0.48)
+metadata/physics = "Static set dressing; small debris has no collision"
+
+[node name="DisplayBase" type="MeshInstance3D" parent="Displays/shelving_unit" unique_id=302683364]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.04, 0)
+material_override = SubResource("StandardMaterial3D_tqdpu")
+mesh = SubResource("BoxMesh_5vmtk")
+
+[node name="Caption" type="Label3D" parent="Displays/shelving_unit" unique_id=601350449]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.18, 1.12)
+pixel_size = 0.0038
+text = "18  Steel shelving"
+font_size = 28
+outline_size = 2
+
+[node name="filing_cabinet" type="Node3D" parent="Displays" unique_id=661221771]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0, -9)
+metadata/title = "Filing cabinet"
+
+[node name="FilingCabinet" type="StaticBody3D" parent="Displays/filing_cabinet" unique_id=561710885 instance=ExtResource("20_r0jwx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.08, 0)
+metadata/prop_id = "filing_cabinet"
+metadata/display_name = "Filing cabinet"
+metadata/category = "Interiors"
+metadata/approximate_size_metres = Vector3(0.48, 1.12, 0.6)
+metadata/physics = "Static set dressing; small debris has no collision"
+
+[node name="DisplayBase" type="MeshInstance3D" parent="Displays/filing_cabinet" unique_id=291894591]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.04, 0)
+material_override = SubResource("StandardMaterial3D_1llry")
+mesh = SubResource("BoxMesh_3dm3y")
+
+[node name="Caption" type="Label3D" parent="Displays/filing_cabinet" unique_id=920347493]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.18, 1.12)
+pixel_size = 0.0038
+text = "19  Filing cabinet"
+font_size = 28
+outline_size = 2
+
+[node name="wooden_bench" type="Node3D" parent="Displays" unique_id=460922127]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.2, 0, -9)
+metadata/title = "Wooden bench"
+
+[node name="WoodenBench" type="StaticBody3D" parent="Displays/wooden_bench" unique_id=1237398841 instance=ExtResource("21_7wesp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.08, 0)
+metadata/prop_id = "wooden_bench"
+metadata/display_name = "Wooden bench"
+metadata/category = "Interiors"
+metadata/approximate_size_metres = Vector3(1.7, 0.85, 0.55)
+metadata/physics = "Static set dressing; small debris has no collision"
+
+[node name="DisplayBase" type="MeshInstance3D" parent="Displays/wooden_bench" unique_id=730301863]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.04, 0)
+material_override = SubResource("StandardMaterial3D_undfl")
+mesh = SubResource("BoxMesh_3hs6l")
+
+[node name="Caption" type="Label3D" parent="Displays/wooden_bench" unique_id=60570685]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.18, 1.12)
+pixel_size = 0.0038
+text = "20  Wooden bench"
+font_size = 28
+outline_size = 2
+
+[node name="desk_radio" type="Node3D" parent="Displays" unique_id=934185184]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.4, 0, -9)
+metadata/title = "Desk radio"
+
+[node name="DeskRadio" type="StaticBody3D" parent="Displays/desk_radio" unique_id=146989267 instance=ExtResource("22_oa475")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.08, 0)
+metadata/prop_id = "desk_radio"
+metadata/display_name = "Desk radio"
+metadata/category = "Small objects"
+metadata/approximate_size_metres = Vector3(0.3, 0.32, 0.14)
+metadata/physics = "Static set dressing; small debris has no collision"
+
+[node name="DisplayBase" type="MeshInstance3D" parent="Displays/desk_radio" unique_id=311845669]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.04, 0)
+material_override = SubResource("StandardMaterial3D_tk3di")
+mesh = SubResource("BoxMesh_e7bl2")
+
+[node name="Caption" type="Label3D" parent="Displays/desk_radio" unique_id=217432789]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.18, 1.12)
+pixel_size = 0.0038
+text = "21  Desk radio"
+font_size = 28
+outline_size = 2
+
+[node name="metal_bucket" type="Node3D" parent="Displays" unique_id=551608560]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.4, 0, -9)
+metadata/title = "Metal bucket"
+
+[node name="MetalBucket" type="StaticBody3D" parent="Displays/metal_bucket" unique_id=1281213523 instance=ExtResource("23_lrsva")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.08, 0)
+metadata/prop_id = "metal_bucket"
+metadata/display_name = "Metal bucket"
+metadata/category = "Small objects"
+metadata/approximate_size_metres = Vector3(0.42, 0.42, 0.3)
+metadata/physics = "Static set dressing; small debris has no collision"
+
+[node name="DisplayBase" type="MeshInstance3D" parent="Displays/metal_bucket" unique_id=1187025322]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.04, 0)
+material_override = SubResource("StandardMaterial3D_tyuw3")
+mesh = SubResource("BoxMesh_hrpyg")
+
+[node name="Caption" type="Label3D" parent="Displays/metal_bucket" unique_id=1113514107]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.18, 1.12)
+pixel_size = 0.0038
+text = "22  Metal bucket"
+font_size = 28
+outline_size = 2
+
+[node name="enamel_mug" type="Node3D" parent="Displays" unique_id=2008136960]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.2, 0, -9)
+metadata/title = "Enamel mug"
+
+[node name="EnamelMug" type="StaticBody3D" parent="Displays/enamel_mug" unique_id=1709818637 instance=ExtResource("24_2q2xh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.08, 0)
+metadata/prop_id = "enamel_mug"
+metadata/display_name = "Enamel mug"
+metadata/category = "Small objects"
+metadata/approximate_size_metres = Vector3(0.126, 0.135, 0.09)
+metadata/physics = "Static set dressing; small debris has no collision"
+
+[node name="DisplayBase" type="MeshInstance3D" parent="Displays/enamel_mug" unique_id=311018197]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.04, 0)
+material_override = SubResource("StandardMaterial3D_kptnr")
+mesh = SubResource("BoxMesh_rnw23")
+
+[node name="Caption" type="Label3D" parent="Displays/enamel_mug" unique_id=453308492]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.18, 1.12)
+pixel_size = 0.0038
+text = "23  Enamel mug"
+font_size = 28
+outline_size = 2
+
+[node name="rubble_pile" type="Node3D" parent="Displays" unique_id=894509736]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, -9)
+metadata/title = "Masonry debris"
+
+[node name="RubblePile" type="Node3D" parent="Displays/rubble_pile" unique_id=1360895488 instance=ExtResource("25_rhghm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.08, 0)
+metadata/prop_id = "rubble_pile"
+metadata/display_name = "Masonry debris"
+metadata/category = "Ground dressing"
+metadata/approximate_size_metres = Vector3(1.4, 0.22, 1)
+metadata/physics = "Static set dressing; small debris has no collision"
+
+[node name="DisplayBase" type="MeshInstance3D" parent="Displays/rubble_pile" unique_id=594466414]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.04, 0)
+material_override = SubResource("StandardMaterial3D_elrt5")
+mesh = SubResource("BoxMesh_fsawt")
+
+[node name="Caption" type="Label3D" parent="Displays/rubble_pile" unique_id=2063147549]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.18, 1.12)
+pixel_size = 0.0038
+text = "24  Masonry debris"
+font_size = 28
+outline_size = 2
+
+[node name="radiator" type="Node3D" parent="Displays" unique_id=543942525]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0, -12)
+metadata/title = "Cast iron radiator"
+
+[node name="Radiator" type="StaticBody3D" parent="Displays/radiator" unique_id=495145746 instance=ExtResource("26_fc2bu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.08, 0)
+metadata/prop_id = "radiator"
+metadata/display_name = "Cast iron radiator"
+metadata/category = "Interiors"
+metadata/approximate_size_metres = Vector3(0.88, 0.73, 0.24)
+metadata/physics = "Static set dressing; small debris has no collision"
+
+[node name="DisplayBase" type="MeshInstance3D" parent="Displays/radiator" unique_id=1413880557]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.04, 0)
+material_override = SubResource("StandardMaterial3D_slgr2")
+mesh = SubResource("BoxMesh_uh8yd")
+
+[node name="Caption" type="Label3D" parent="Displays/radiator" unique_id=926586101]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.18, 1.12)
+pixel_size = 0.0038
+text = "25  Cast iron radiator"
+font_size = 28
+outline_size = 2
+
+[node name="field_cot" type="Node3D" parent="Displays" unique_id=1368547109]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.2, 0, -12)
+metadata/title = "Abandoned field cot"
+
+[node name="FieldCot" type="StaticBody3D" parent="Displays/field_cot" unique_id=2016638369 instance=ExtResource("27_yadp5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.08, 0)
+metadata/prop_id = "field_cot"
+metadata/display_name = "Abandoned field cot"
+metadata/category = "Interiors"
+metadata/approximate_size_metres = Vector3(0.83, 0.72, 1.98)
+metadata/physics = "Static set dressing; small debris has no collision"
+
+[node name="DisplayBase" type="MeshInstance3D" parent="Displays/field_cot" unique_id=978217032]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.04, 0)
+material_override = SubResource("StandardMaterial3D_bv1pi")
+mesh = SubResource("BoxMesh_0a3yh")
+
+[node name="Caption" type="Label3D" parent="Displays/field_cot" unique_id=1938366240]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.18, 1.12)
+pixel_size = 0.0038
+text = "26  Abandoned field cot"
+font_size = 28
+outline_size = 2
+
+[node name="worn_mattress" type="Node3D" parent="Displays" unique_id=1798612760]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.4, 0, -12)
+metadata/title = "Worn mattress"
+
+[node name="WornMattress" type="StaticBody3D" parent="Displays/worn_mattress" unique_id=1452569084 instance=ExtResource("28_08s4m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.08, 0)
+metadata/prop_id = "worn_mattress"
+metadata/display_name = "Worn mattress"
+metadata/category = "Interiors"
+metadata/approximate_size_metres = Vector3(0.76, 0.15, 1.86)
+metadata/physics = "Static set dressing; small debris has no collision"
+
+[node name="DisplayBase" type="MeshInstance3D" parent="Displays/worn_mattress" unique_id=2091737396]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.04, 0)
+material_override = SubResource("StandardMaterial3D_1g2bp")
+mesh = SubResource("BoxMesh_bm4y8")
+
+[node name="Caption" type="Label3D" parent="Displays/worn_mattress" unique_id=265783210]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.18, 1.12)
+pixel_size = 0.0038
+text = "27  Worn mattress"
+font_size = 28
+outline_size = 2
+
+[node name="wall_fusebox" type="Node3D" parent="Displays" unique_id=1714520601]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.4, 0, -12)
+metadata/title = "Open wall fusebox"
+
+[node name="WallFusebox" type="StaticBody3D" parent="Displays/wall_fusebox" unique_id=98852136 instance=ExtResource("29_70ugc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.08, 0)
+metadata/prop_id = "wall_fusebox"
+metadata/display_name = "Open wall fusebox"
+metadata/category = "Utilities"
+metadata/approximate_size_metres = Vector3(0.47, 0.5, 0.23)
+metadata/physics = "Static set dressing; small debris has no collision"
+
+[node name="DisplayBase" type="MeshInstance3D" parent="Displays/wall_fusebox" unique_id=1448389980]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.04, 0)
+material_override = SubResource("StandardMaterial3D_q6kwu")
+mesh = SubResource("BoxMesh_ehrp5")
+
+[node name="Caption" type="Label3D" parent="Displays/wall_fusebox" unique_id=785421168]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.18, 1.12)
+pixel_size = 0.0038
+text = "28  Open wall fusebox"
+font_size = 28
+outline_size = 2
+
+[node name="valve_pipe" type="Node3D" parent="Displays" unique_id=1927237474]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.2, 0, -12)
+metadata/title = "Industrial valve pipe"
+
+[node name="ValvePipe" type="StaticBody3D" parent="Displays/valve_pipe" unique_id=539436404 instance=ExtResource("30_c6g6o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.08, 0)
+metadata/prop_id = "valve_pipe"
+metadata/display_name = "Industrial valve pipe"
+metadata/category = "Utilities"
+metadata/approximate_size_metres = Vector3(0.48, 1.04, 0.34)
+metadata/physics = "Static set dressing; small debris has no collision"
+
+[node name="DisplayBase" type="MeshInstance3D" parent="Displays/valve_pipe" unique_id=1270161155]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.04, 0)
+material_override = SubResource("StandardMaterial3D_af1x6")
+mesh = SubResource("BoxMesh_ketvu")
+
+[node name="Caption" type="Label3D" parent="Displays/valve_pipe" unique_id=2131498369]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.18, 1.12)
+pixel_size = 0.0038
+text = "29  Industrial valve pipe"
+font_size = 28
+outline_size = 2
+
+[node name="pendant_light" type="Node3D" parent="Displays" unique_id=802836507]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, -12)
+metadata/title = "Hanging industrial lamp"
+
+[node name="PendantLight" type="StaticBody3D" parent="Displays/pendant_light" unique_id=1645477926 instance=ExtResource("31_ufkyh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.08, 0)
+metadata/prop_id = "pendant_light"
+metadata/display_name = "Hanging industrial lamp"
+metadata/category = "Interiors"
+metadata/approximate_size_metres = Vector3(0.42, 1.22, 0.42)
+metadata/physics = "Static set dressing; small debris has no collision"
+
+[node name="DisplayBase" type="MeshInstance3D" parent="Displays/pendant_light" unique_id=1478589540]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.04, 0)
+material_override = SubResource("StandardMaterial3D_hkxt8")
+mesh = SubResource("BoxMesh_vk7qc")
+
+[node name="Caption" type="Label3D" parent="Displays/pendant_light" unique_id=84550244]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.18, 1.12)
+pixel_size = 0.0038
+text = "30  Hanging industrial lamp"
+font_size = 28
+outline_size = 2
+
+[node name="damaged_fence" type="Node3D" parent="Displays" unique_id=1725830450]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0, -15)
+metadata/title = "Damaged wire fence"
+
+[node name="DamagedFence" type="StaticBody3D" parent="Displays/damaged_fence" unique_id=1599528739 instance=ExtResource("32_id2ww")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.08, 0)
+metadata/prop_id = "damaged_fence"
+metadata/display_name = "Damaged wire fence"
+metadata/category = "Checkpoint"
+metadata/approximate_size_metres = Vector3(1.92, 1.8, 0.24)
+metadata/physics = "Static set dressing; small debris has no collision"
+
+[node name="DisplayBase" type="MeshInstance3D" parent="Displays/damaged_fence" unique_id=270674685]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.04, 0)
+material_override = SubResource("StandardMaterial3D_hsv0d")
+mesh = SubResource("BoxMesh_lxuux")
+
+[node name="Caption" type="Label3D" parent="Displays/damaged_fence" unique_id=592583922]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.18, 1.12)
+pixel_size = 0.0038
+text = "31  Damaged wire fence"
+font_size = 28
+outline_size = 2
+
+[node name="sandbag_stack" type="Node3D" parent="Displays" unique_id=272893911]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.2, 0, -15)
+metadata/title = "Sandbag barricade"
+
+[node name="SandbagStack" type="StaticBody3D" parent="Displays/sandbag_stack" unique_id=1219120359 instance=ExtResource("33_7m72l")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.08, 0)
+metadata/prop_id = "sandbag_stack"
+metadata/display_name = "Sandbag barricade"
+metadata/category = "Checkpoint"
+metadata/approximate_size_metres = Vector3(1.5, 0.62, 0.65)
+metadata/physics = "Static set dressing; small debris has no collision"
+
+[node name="DisplayBase" type="MeshInstance3D" parent="Displays/sandbag_stack" unique_id=735030192]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.04, 0)
+material_override = SubResource("StandardMaterial3D_no6ce")
+mesh = SubResource("BoxMesh_w0wyt")
+
+[node name="Caption" type="Label3D" parent="Displays/sandbag_stack" unique_id=1219692739]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.18, 1.12)
+pixel_size = 0.0038
+text = "32  Sandbag barricade"
+font_size = 28
+outline_size = 2

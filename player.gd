@@ -11,30 +11,38 @@ var crouching := false
 var footsteps: AudioStreamPlayer
 var was_moving := false
 var sprint_exhausted := false
+var collider: CollisionShape3D
+var capsule: CapsuleShape3D
+var body_model: Node3D
+var look_sway := Vector2.ZERO
+var jump_buffer := 0.0
+var coyote_time := 0.0
+var battery_charge := 100.0
+var noise_radius := 0.0
+var stamina_delay := 0.0
+var wall_retraction := 0.0
+const STANDING_HEIGHT := 1.8
+const CROUCH_HEIGHT := 1.15
 
 func _ready() -> void:
-	var shape := CollisionShape3D.new()
-	var capsule := CapsuleShape3D.new()
+	collider = CollisionShape3D.new()
+	capsule = CapsuleShape3D.new()
 	capsule.radius = 0.3
 	capsule.height = 1.8
-	shape.shape = capsule
-	shape.position.y = 0.9
-	add_child(shape)
+	collider.shape = capsule
+	collider.position.y = 0.9
+	add_child(collider)
+	floor_snap_length=0.25
 	camera = Camera3D.new()
 	camera.position.y = 1.62
 	camera.fov = 78
 	camera.far = 160
 	camera.current = true
 	add_child(camera)
-	torch = SpotLight3D.new()
-	torch.position = Vector3(0.22, -0.18, -0.1)
-	torch.light_color = Color(0.91, 0.92, 0.78)
-	torch.light_energy = 3.5
-	torch.spot_range = 24
-	torch.spot_angle = 34
-	torch.spot_attenuation = 0.75
-	torch.shadow_enabled = true
-	camera.add_child(torch)
+	body_model=Node3D.new()
+	body_model.set_script(load("res://first_person_body.gd"))
+	add_child(body_model)
+	torch=body_model.build(camera,self)
 	footsteps = AudioStreamPlayer.new()
 	footsteps.volume_db = -18
 	var wav := AudioStreamWAV.new()
@@ -65,37 +73,91 @@ func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion and Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
 		rotate_y(-event.relative.x * sensitivity)
 		camera.rotation.x = clampf(camera.rotation.x - event.relative.y * sensitivity, -1.4, 1.4)
+		look_sway=Vector2(clampf(event.relative.x*0.01,-1,1),clampf(event.relative.y*0.01,-1,1))
 	if event is InputEventKey and event.pressed and not event.echo:
 		if event.is_action_pressed("flashlight"):
-			torch.visible = not torch.visible
+			if torch.visible:
+				torch.visible=false
+			elif battery_charge>0:
+				torch.visible=true
+
+func can_stand() -> bool:
+	var standing := CapsuleShape3D.new()
+	standing.radius=0.3
+	standing.height=STANDING_HEIGHT
+	var query:=PhysicsShapeQueryParameters3D.new()
+	query.shape=standing
+	query.transform=Transform3D(Basis.IDENTITY,global_position+Vector3.UP*(STANDING_HEIGHT*0.5+0.035))
+	query.collision_mask=collision_mask
+	query.exclude=[get_rid()]
+	return get_world_3d().direct_space_state.intersect_shape(query,1).is_empty()
 
 func _physics_process(delta: float) -> void:
 	if not active:
 		return
 	var direction := Input.get_vector("move_left", "move_right", "move_forward", "move_back")
-	crouching = Input.is_action_pressed("crouch")
+	var wants_crouch:=Input.is_action_pressed("crouch")
+	if wants_crouch:
+		crouching=true
+	elif crouching and can_stand():
+		crouching=false
+	var height:=CROUCH_HEIGHT if crouching else STANDING_HEIGHT
+	if not is_equal_approx(capsule.height,height):
+		capsule.height=height
+		collider.position.y=height*0.5
 	if sprint_exhausted and stamina >= 25:
 		sprint_exhausted = false
-	var sprint := Input.is_action_pressed("sprint") and direction.y < -0.2 and stamina > 0 and not sprint_exhausted and not crouching
+	var sprint := Input.is_action_pressed("sprint") and direction.y < -0.2 and stamina > 0 and not sprint_exhausted and not crouching and is_on_floor()
 	var speed := 6.4 if sprint else (2.0 if crouching else 3.5)
-	stamina = clampf(stamina + (-24.0 if sprint else 16.0) * delta, 0, 100)
+	if direction.y > 0.1:
+		speed *= 0.8
+	if sprint:
+		stamina_delay=0.8
+		stamina=clampf(stamina-24.0*delta,0,100)
+	else:
+		stamina_delay=maxf(stamina_delay-delta,0)
+		if stamina_delay<=0:
+			stamina=clampf(stamina+16.0*delta,0,100)
 	if stamina <= 0:
 		sprint_exhausted = true
-	var forward := (transform.basis * Vector3(direction.x, 0, direction.y)).normalized()
-	velocity.x = move_toward(velocity.x, forward.x * speed, delta * 25)
-	velocity.z = move_toward(velocity.z, forward.z * speed, delta * 25)
+	var forward := transform.basis * Vector3(direction.x, 0, direction.y)
+	var acceleration:= (24.0 if direction.length()>0.1 else 30.0) if is_on_floor() else 5.0
+	velocity.x = move_toward(velocity.x, forward.x * speed, delta * acceleration)
+	velocity.z = move_toward(velocity.z, forward.z * speed, delta * acceleration)
+	jump_buffer=maxf(0.0,jump_buffer-delta)
+	coyote_time=0.1 if is_on_floor() else maxf(0.0,coyote_time-delta)
+	if Input.is_action_just_pressed("jump"):
+		jump_buffer=0.14
 	if not is_on_floor():
 		velocity.y -= 20 * delta
-	elif Input.is_action_just_pressed("jump") and not crouching:
+	if jump_buffer>0 and coyote_time>0 and not crouching:
 		velocity.y = 5.0
+		jump_buffer=0
+		coyote_time=0
 	move_and_slide()
-	var moving := direction.length() > 0.1 and is_on_floor()
+	var horizontal_speed:=Vector2(velocity.x,velocity.z).length()
+	var moving := horizontal_speed > 0.3 and is_on_floor()
+	noise_radius = (2.0 if crouching else (10.0 if sprint else 5.0)) if moving else 0.0
+	if torch.visible:
+		battery_charge=maxf(0,battery_charge-delta*0.28)
+		if battery_charge<=0:
+			torch.visible=false
 	if moving:
 		var old_step := int(step_time / PI)
-		step_time += delta * (13 if sprint else 9)
+		step_time += delta * clampf(horizontal_speed*2.6,4.0,14.0)
 		if int(step_time / PI) != old_step:
+			footsteps.volume_db = -27 if crouching else (-15 if sprint else -19)
 			footsteps.pitch_scale = randf_range(0.8, 1.1)
 			footsteps.play()
-	var bob := sin(step_time) * 0.025 if moving else 0.0
-	camera.position.y = lerpf(camera.position.y, (1.08 if crouching else 1.62) + bob, delta * 12)
-	camera.fov = lerpf(camera.fov, 84.0 if sprint else 78.0, delta * 5)
+	var bob := sin(step_time)*0.013*clampf(horizontal_speed/3.5,0.0,1.0) if moving else 0.0
+	camera.position.y = lerpf(camera.position.y, (0.99 if crouching else 1.62) + bob, 1.0-exp(-delta*12))
+	camera.fov = lerpf(camera.fov, 82.0 if sprint else 78.0, 1.0-exp(-delta*5))
+	# Pull the view model back when a wall is closer than the held light.
+	var query:=PhysicsRayQueryParameters3D.create(camera.global_position,camera.global_position-camera.global_basis.z*1.0)
+	query.exclude=[get_rid()]
+	query.collision_mask=collision_mask
+	var hit:=get_world_3d().direct_space_state.intersect_ray(query)
+	var target_retraction:=clampf(0.85-camera.global_position.distance_to(hit.position),0,0.65) if not hit.is_empty() else 0.0
+	wall_retraction=lerpf(wall_retraction,target_retraction,1.0-exp(-delta*18))
+	body_model.animate_motion(delta,clampf(horizontal_speed/6.4,0,1),step_time,crouching,is_on_floor(),look_sway,torch.visible,wall_retraction)
+	look_sway=look_sway.move_toward(Vector2.ZERO,delta*4)

@@ -49,10 +49,10 @@ func _ready() -> void:
 	message.size.x = 700
 	message.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	stats = label_at("", Vector2(34, 618), 13, muted)
-	pack_status = label_at("", Vector2(955, 30), 14, pale)
+	pack_status = label_at("", Vector2(900, 30), 13, pale)
 	health_bar = make_bar(Vector2(34, 650), Color("aa6052"))
 	stamina_bar = make_bar(Vector2(34, 668), Color("8a9274"))
-	label_at("WASD Move   SHIFT Sprint   CTRL Lower   F Torch   E Interact   H Bandage   ESC Pause", Vector2(340, 675), 12, muted)
+	label_at("WASD Move  SHIFT Sprint  CTRL Crouch  F Torch  R Battery  G Food  H Bandage  E Search  ESC Pause", Vector2(275, 675), 12, muted)
 	overlay = ColorRect.new()
 	overlay.color = Color(0.018, 0.023, 0.021, 0.93)
 	overlay.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
@@ -72,7 +72,7 @@ func _ready() -> void:
 	menu_body.position = Vector2(138, 255)
 	menu_body.add_theme_font_size_override("font_size", 20)
 	menu_body.add_theme_color_override("font_color", pale)
-	menu_body.text = "A FIELD EXPEDITION  /  EARLY PLAYABLE PROTOTYPE\n\nThe checkpoint went silent three days ago.\nRecover the sample inside the research station.\nReturn to the entry gate. Keep clear of the lights.\n\nHeadphones recommended. Follow the amber lamps."
+	menu_body.text = "A FIELD EXPEDITION  /  EARLY PLAYABLE PROTOTYPE\n\nRecover the sample at the research station and return.\nA creature stalks the village. Crouch to move quietly.\nH bandage  /  G food  /  R battery  /  F flashlight\n\nHeadphones recommended. Follow the amber lamps."
 	overlay.add_child(menu_body)
 	start_button = Button.new()
 	start_button.position = Vector2(138, 498)
@@ -179,7 +179,7 @@ func _process(_delta: float) -> void:
 	health_bar.value = game.player.health
 	stamina_bar.value = game.player.stamina
 	stats.text = "CONDITION %03d    /    STAMINA %03d" % [game.player.health, game.player.stamina]
-	pack_status.text = "PACK  /  BANDAGE %d   FOOD %d   BATTERIES %d" % [game.inventory.bandage,game.inventory.food_tin,game.inventory.batteries]
+	pack_status.text = "BANDAGE %d  FOOD %d  BAT %d   LIGHT %d%%" % [game.inventory.bandage,game.inventory.food_tin,game.inventory.batteries,game.player.battery_charge]
 	objective.text = "01 / RETURN TO THE ENTRY GATE" if game.has_sample else "01 / RECOVER THE RESEARCH SAMPLE"
 	var degrees := fposmod(rad_to_deg(-game.player.rotation.y), 360)
 	var directions := ["N", "NE", "E", "SE", "S", "SW", "W", "NW"]

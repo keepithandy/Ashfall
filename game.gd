@@ -108,6 +108,11 @@ func _ready() -> void:
 	player.set_script(PlayerScript)
 	player.position = Vector3(0, 0.1, 25)
 	add_child(player)
+	var stalker:=CharacterBody3D.new()
+	stalker.set_script(load("res://village_stalker.gd"))
+	stalker.game=self
+	stalker.position=Vector3(-57,0.1,14)
+	add_child(stalker)
 	if "--house-tour" in OS.get_cmdline_user_args():
 		player.position = Vector3(-4.4, 0.1, 16.2)
 		player.set_view_direction(Vector3(-10, 1.6, 12) - player.camera.global_position)
@@ -136,7 +141,7 @@ func setup_input() -> void:
 		"move_forward": KEY_W, "move_back": KEY_S, "move_left": KEY_A, "move_right": KEY_D,
 		"sprint": KEY_SHIFT, "crouch": KEY_CTRL, "jump": KEY_SPACE,
 		"flashlight": KEY_F, "interact": KEY_E, "pause": KEY_ESCAPE,
-		"use_bandage": KEY_H
+		"use_bandage": KEY_H, "use_food": KEY_G, "reload_battery": KEY_R
 	}
 	for action: String in keys:
 		if not InputMap.has_action(action):
@@ -326,6 +331,16 @@ func build_level() -> void:
 	cache.position=Vector3(-6.3,0,21.5)
 	cache.rotation.y=0.15
 	add_child(cache)
+	var village_cache: StaticBody3D=load("res://scenes/loot/supply_cache.tscn").instantiate()
+	village_cache.contents={"bandage":1,"food_tin":2,"batteries":1}
+	village_cache.position=Vector3(-48.1,0.18,10.0)
+	village_cache.rotation.y=-0.35
+	add_child(village_cache)
+	var yard_cache: StaticBody3D=load("res://scenes/loot/supply_cache.tscn").instantiate()
+	yard_cache.contents={"bandage":0,"food_tin":1,"batteries":2}
+	yard_cache.position=Vector3(-53,0,15)
+	yard_cache.rotation.y=0.4
+	add_child(yard_cache)
 
 func building(at: Vector3, dimensions: Vector2, research: bool) -> void:
 	var width := dimensions.x
@@ -460,13 +475,34 @@ func use_bandage() -> void:
 		player.health=minf(100,player.health+35)
 		show_message("Bandage used. Condition restored.")
 
+func use_food() -> void:
+	if inventory.food_tin<=0:
+		show_message("No food in your pack.")
+	elif player.stamina>=99.9:
+		show_message("Your stamina is already full.")
+	else:
+		inventory.food_tin-=1
+		player.stamina=minf(100,player.stamina+45)
+		player.sprint_exhausted=false
+		show_message("Food eaten. Stamina restored.")
+
+func reload_battery() -> void:
+	if inventory.batteries<=0:
+		show_message("No spare batteries in your pack.")
+	elif player.battery_charge>=99.9:
+		show_message("Flashlight battery is already full.")
+	else:
+		inventory.batteries-=1
+		player.battery_charge=minf(100,player.battery_charge+60)
+		show_message("Flashlight battery replaced. Press F to switch it on.")
+
 func pause_game() -> void:
 	player.active = false
 	player.velocity = Vector3.ZERO
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	hud.menu_title.text = "EXPEDITION PAUSED"
 	hud.menu_title.add_theme_font_size_override("font_size", 48)
-	hud.menu_body.text = "WASD — Move    /    Mouse — Look\nSHIFT — Sprint    /    SPACE — Jump\nCTRL — Lower viewpoint    /    F — Toggle torch\nE — Interact with an object in front of you\n\nRecover the sample at Station 04, then use the entry terminal.\nBlue-green rings mark dangerous anomalies. Give them space."
+	hud.menu_body.text = "WASD — Move    /    Mouse — Look\nSHIFT — Sprint    /    SPACE — Jump    /    CTRL — Crouch\nF — Torch    /    R — Battery    /    G — Food    /    H — Bandage\nE — Search or interact\n\nRecover the sample at Station 04, then use the entry terminal.\nThe village creature hears running. Crouching is quieter."
 	hud.start_button.text = "RESUME EXPEDITION"
 	hud.overlay.show()
 
@@ -496,6 +532,10 @@ func _unhandled_input(event: InputEvent) -> void:
 				interact_with(target)
 		elif event.is_action_pressed("use_bandage") and player.active:
 			use_bandage()
+		elif event.is_action_pressed("use_food") and player.active:
+			use_food()
+		elif event.is_action_pressed("reload_battery") and player.active:
+			reload_battery()
 
 func get_target() -> Object:
 	var start: Vector3 = player.camera.global_position

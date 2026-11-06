@@ -1,6 +1,6 @@
 extends StaticBody3D
 
-var contents := {"bandage": 2, "food_tin": 1, "batteries": 1}
+@export var contents := {"bandage": 2, "food_tin": 1, "batteries": 1}
 var lid: Node3D
 var display: Node3D
 var opened := false
@@ -40,6 +40,8 @@ func _ready() -> void:
 	display.name="VisibleContents"
 	add_child(display)
 	for entry in [["bandage",Vector3(-0.22,0.11,0.04)],["food_tin",Vector3(0,0.11,0)],["batteries",Vector3(0.21,0.11,0.03)]]:
+		if contents.get(entry[0],0)<=0:
+			continue
 		var model: Node3D=load("res://scenes/loot/"+entry[0]+".tscn").instantiate()
 		model.position=entry[1]
 		display.add_child(model)

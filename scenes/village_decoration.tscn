@@ -1,0 +1,340 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://scenes/workshop/wheelbarrow.tscn" id="1_y3wrb"]
+[ext_resource type="PackedScene" path="res://scenes/props/rusted_drum.tscn" id="2_88n70"]
+[ext_resource type="PackedScene" path="res://scenes/props/wooden_pallet.tscn" id="3_jl5il"]
+[ext_resource type="PackedScene" path="res://scenes/workshop/open_wood_crate.tscn" id="4_1nfe4"]
+[ext_resource type="PackedScene" path="res://scenes/props/metal_bucket.tscn" id="5_bbnuc"]
+[ext_resource type="PackedScene" path="res://scenes/workshop/discarded_tyre.tscn" id="6_n48mn"]
+[ext_resource type="PackedScene" path="res://scenes/workshop/coiled_hose.tscn" id="7_l85at"]
+[ext_resource type="PackedScene" path="res://scenes/workshop/metal_chair.tscn" id="8_emq2e"]
+[ext_resource type="PackedScene" path="res://scenes/props/wooden_bench.tscn" id="9_jxov3"]
+[ext_resource type="PackedScene" path="res://scenes/props/jerrycan.tscn" id="10_skxyc"]
+[ext_resource type="PackedScene" path="res://scenes/props/rubble_pile.tscn" id="11_1lyqh"]
+[ext_resource type="PackedScene" path="res://scenes/nature/dead_branch_pile.tscn" id="12_eymwb"]
+[ext_resource type="PackedScene" path="res://scenes/nature/tree_stump.tscn" id="13_11o6p"]
+[ext_resource type="PackedScene" path="res://scenes/props/damaged_fence.tscn" id="14_arpl3"]
+[ext_resource type="PackedScene" path="res://scenes/nature/fern_clump.tscn" id="15_sg5lt"]
+[ext_resource type="PackedScene" path="res://scenes/nature/low_shrub.tscn" id="16_qqlmw"]
+[ext_resource type="PackedScene" path="res://scenes/nature/dry_bramble.tscn" id="17_si6i7"]
+[ext_resource type="PackedScene" path="res://scenes/nature/mossy_boulder.tscn" id="18_w2n3a"]
+[ext_resource type="PackedScene" path="res://scenes/nature/fallen_log.tscn" id="19_34y5x"]
+[ext_resource type="PackedScene" path="res://scenes/nature/forest_pine.tscn" id="20_l0xvk"]
+[ext_resource type="PackedScene" path="res://scenes/nature/bare_tree.tscn" id="21_dh2us"]
+
+[node name="VillageDecoration" type="Node3D" unique_id=747093901]
+
+[node name="CottageYard" type="Node3D" parent="." unique_id=571149052]
+
+[node name="Wheelbarrow_00" type="StaticBody3D" parent="CottageYard" unique_id=978998490 instance=ExtResource("1_y3wrb")]
+transform = Transform3D(0.7960838, 0, 0.6051864, 0, 1, 0, -0.6051864, 0, 0.7960838, -52, 0, 13.5)
+metadata/prop_id = "wheelbarrow"
+metadata/approximate_size_metres = Vector3(0.85, 0.72, 1.65)
+metadata/world_text_policy = "No attached text"
+
+[node name="RustedDrum_01" type="StaticBody3D" parent="CottageYard" unique_id=666420651 instance=ExtResource("2_88n70")]
+transform = Transform3D(0.9553365, 0, 0.29552022, 0, 1, 0, -0.29552022, 0, 0.9553365, -51.9, 0, 11.9)
+metadata/prop_id = "rusted_drum"
+metadata/display_name = "Rusted steel drum"
+metadata/category = "Storage"
+metadata/approximate_size_metres = Vector3(0.62, 0.89, 0.62)
+metadata/physics = "Static set dressing; small debris has no collision"
+metadata/world_text_policy = "No attached text"
+
+[node name="WoodenPallet_02" type="StaticBody3D" parent="CottageYard" unique_id=805053178 instance=ExtResource("3_jl5il")]
+transform = Transform3D(0.9800666, 0, 0.19866933, 0, 1, 0, -0.19866933, 0, 0.9800666, -53.1, 0, 11.1)
+metadata/prop_id = "wooden_pallet"
+metadata/display_name = "Wooden pallet"
+metadata/category = "Storage"
+metadata/approximate_size_metres = Vector3(1.2, 0.144, 0.8)
+metadata/physics = "Static set dressing; small debris has no collision"
+metadata/world_text_policy = "No attached text"
+
+[node name="OpenWoodCrate_03" type="StaticBody3D" parent="CottageYard" unique_id=443045730 instance=ExtResource("4_1nfe4")]
+transform = Transform3D(0.99875027, 0, 0.04997917, 0, 1, 0, -0.04997917, 0, 0.99875027, -53.1, 0.145, 11.1)
+metadata/prop_id = "open_wood_crate"
+metadata/approximate_size_metres = Vector3(0.7, 0.44, 0.52)
+metadata/world_text_policy = "No attached text"
+
+[node name="MetalBucket_04" type="StaticBody3D" parent="CottageYard" unique_id=1281213523 instance=ExtResource("5_bbnuc")]
+transform = Transform3D(0.8253356, 0, 0.5646425, 0, 1, 0, -0.5646425, 0, 0.8253356, -51.4, 0, 14.1)
+metadata/prop_id = "metal_bucket"
+metadata/display_name = "Metal bucket"
+metadata/category = "Small objects"
+metadata/approximate_size_metres = Vector3(0.42, 0.42, 0.3)
+metadata/physics = "Static set dressing; small debris has no collision"
+metadata/world_text_policy = "No attached text"
+
+[node name="DiscardedTyre_05" type="StaticBody3D" parent="CottageYard" unique_id=606007632 instance=ExtResource("6_n48mn")]
+transform = Transform3D(0.9800666, 0, 0.19866933, 0, 1, 0, -0.19866933, 0, 0.9800666, -40.5, 0, 9.5)
+metadata/prop_id = "discarded_tyre"
+metadata/approximate_size_metres = Vector3(0.245, 0.695, 0.695)
+metadata/world_text_policy = "No attached text"
+
+[node name="CoiledHose_06" type="StaticBody3D" parent="CottageYard" unique_id=1916931713 instance=ExtResource("7_l85at")]
+transform = Transform3D(0.9800666, 0, 0.19866933, 0, 1, 0, -0.19866933, 0, 0.9800666, -40.4, 0, 11.1)
+metadata/prop_id = "coiled_hose"
+metadata/approximate_size_metres = Vector3(0.7, 0.09, 0.7)
+metadata/world_text_policy = "No attached text"
+
+[node name="MetalChair_07" type="StaticBody3D" parent="CottageYard" unique_id=1709736415 instance=ExtResource("8_emq2e")]
+transform = Transform3D(0.8253356, 0, -0.5646425, 0, 1, 0, 0.5646425, 0, 0.8253356, -43.4, 0, 13.3)
+metadata/prop_id = "metal_chair"
+metadata/approximate_size_metres = Vector3(0.5, 0.92, 0.55)
+metadata/world_text_policy = "No attached text"
+
+[node name="WoodenBench_08" type="StaticBody3D" parent="CottageYard" unique_id=1237398841 instance=ExtResource("9_jxov3")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -40.3, 0, 6.4)
+metadata/prop_id = "wooden_bench"
+metadata/display_name = "Wooden bench"
+metadata/category = "Interiors"
+metadata/approximate_size_metres = Vector3(1.7, 0.85, 0.55)
+metadata/physics = "Static set dressing; small debris has no collision"
+metadata/world_text_policy = "No attached text"
+
+[node name="Jerrycan_09" type="StaticBody3D" parent="CottageYard" unique_id=1874267221 instance=ExtResource("10_skxyc")]
+transform = Transform3D(0.8253356, 0, 0.5646425, 0, 1, 0, -0.5646425, 0, 0.8253356, -40.3, 0, 13.4)
+metadata/prop_id = "jerrycan"
+metadata/display_name = "Fuel jerrycan"
+metadata/category = "Utilities"
+metadata/approximate_size_metres = Vector3(0.35, 0.48, 0.19)
+metadata/physics = "Static set dressing; small debris has no collision"
+metadata/world_text_policy = "No attached text"
+
+[node name="RubblePile_10" type="Node3D" parent="CottageYard" unique_id=1360895488 instance=ExtResource("11_1lyqh")]
+transform = Transform3D(0.68835795, 0, 0.5797959, 0, 0.9, 0, -0.5797959, 0, 0.68835795, -50.9, 0, 4)
+metadata/prop_id = "rubble_pile"
+metadata/display_name = "Masonry debris"
+metadata/category = "Ground dressing"
+metadata/approximate_size_metres = Vector3(1.4, 0.22, 1)
+metadata/physics = "Static set dressing; small debris has no collision"
+metadata/world_text_policy = "No attached text"
+
+[node name="RubblePile_11" type="Node3D" parent="CottageYard" unique_id=876783110 instance=ExtResource("11_1lyqh")]
+transform = Transform3D(-0.25863165, 0, 0.7570401, 0, 0.8, 0, -0.7570401, 0, -0.25863165, -41.2, 0, 3.8)
+metadata/prop_id = "rubble_pile"
+metadata/display_name = "Masonry debris"
+metadata/category = "Ground dressing"
+metadata/approximate_size_metres = Vector3(1.4, 0.22, 1)
+metadata/physics = "Static set dressing; small debris has no collision"
+metadata/world_text_policy = "No attached text"
+
+[node name="DeadBranchPile_12" type="Node3D" parent="CottageYard" unique_id=415636 instance=ExtResource("12_eymwb")]
+transform = Transform3D(0.78982425, 0, 0.43148297, 0, 0.9, 0, -0.43148297, 0, 0.78982425, -52.9, 0, 6)
+metadata/prop_id = "dead_branch_pile"
+metadata/approximate_size_metres = Vector3(1.8, 0.35, 1.3)
+metadata/world_text_policy = "No attached text"
+
+[node name="TreeStump_13" type="StaticBody3D" parent="CottageYard" unique_id=2023925187 instance=ExtResource("13_11o6p")]
+transform = Transform3D(0.78405327, 0, 0.15893547, 0, 0.8, 0, -0.15893547, 0, 0.78405327, -54.8, 0, 8.1)
+metadata/prop_id = "tree_stump"
+metadata/approximate_size_metres = Vector3(0.95, 0.65, 0.95)
+metadata/world_text_policy = "No attached text"
+
+[node name="DamagedFence_14" type="StaticBody3D" parent="CottageYard" unique_id=1599528739 instance=ExtResource("14_arpl3")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -53.6, 0, 3.3)
+metadata/prop_id = "damaged_fence"
+metadata/display_name = "Damaged wire fence"
+metadata/category = "Checkpoint"
+metadata/approximate_size_metres = Vector3(1.92, 1.8, 0.24)
+metadata/physics = "Static set dressing; small debris has no collision"
+metadata/world_text_policy = "No attached text"
+
+[node name="DamagedFence_15" type="StaticBody3D" parent="CottageYard" unique_id=404791573 instance=ExtResource("14_arpl3")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -38.7, 0, 3.7)
+metadata/prop_id = "damaged_fence"
+metadata/display_name = "Damaged wire fence"
+metadata/category = "Checkpoint"
+metadata/approximate_size_metres = Vector3(1.92, 1.8, 0.24)
+metadata/physics = "Static set dressing; small debris has no collision"
+metadata/world_text_policy = "No attached text"
+
+[node name="Overgrowth" type="Node3D" parent="." unique_id=1908497281]
+
+[node name="FernClump_16" type="Node3D" parent="Overgrowth" unique_id=368712719 instance=ExtResource("15_sg5lt")]
+transform = Transform3D(0.85980284, 0, 0.26596817, 0, 0.9, 0, -0.26596817, 0, 0.85980284, -50.7, 0, 9.2)
+metadata/prop_id = "fern_clump"
+metadata/approximate_size_metres = Vector3(1.1, 0.65, 1.1)
+metadata/world_text_policy = "No attached text"
+
+[node name="FernClump_17" type="Node3D" parent="Overgrowth" unique_id=872731484 instance=ExtResource("15_sg5lt")]
+transform = Transform3D(0.28988618, 0, 0.7456313, 0, 0.8, 0, -0.7456313, 0, 0.28988618, -51.3, 0, 8.7)
+metadata/prop_id = "fern_clump"
+metadata/approximate_size_metres = Vector3(1.1, 0.65, 1.1)
+metadata/world_text_policy = "No attached text"
+
+[node name="FernClump_18" type="Node3D" parent="Overgrowth" unique_id=1620335908 instance=ExtResource("15_sg5lt")]
+transform = Transform3D(0.84575355, 0, 0.08485841, 0, 0.85, 0, -0.08485841, 0, 0.84575355, -41.3, 0, 5)
+metadata/prop_id = "fern_clump"
+metadata/approximate_size_metres = Vector3(1.1, 0.65, 1.1)
+metadata/world_text_policy = "No attached text"
+
+[node name="FernClump_19" type="Node3D" parent="Overgrowth" unique_id=904159249 instance=ExtResource("15_sg5lt")]
+transform = Transform3D(-0.77426344, 0, 0.70923626, 0, 1.05, 0, -0.70923626, 0, -0.77426344, -39.4, 0, 13)
+metadata/prop_id = "fern_clump"
+metadata/approximate_size_metres = Vector3(1.1, 0.65, 1.1)
+metadata/world_text_policy = "No attached text"
+
+[node name="FernClump_20" type="Node3D" parent="Overgrowth" unique_id=1039455108 instance=ExtResource("15_sg5lt")]
+transform = Transform3D(-0.12884454, 0, 0.9916648, 0, 1, 0, -0.9916648, 0, -0.12884454, -54.4, 0, 3.1)
+metadata/prop_id = "fern_clump"
+metadata/approximate_size_metres = Vector3(1.1, 0.65, 1.1)
+metadata/world_text_policy = "No attached text"
+
+[node name="LowShrub_21" type="Node3D" parent="Overgrowth" unique_id=399754643 instance=ExtResource("16_qqlmw")]
+transform = Transform3D(0.78405327, 0, 0.15893547, 0, 0.8, 0, -0.15893547, 0, 0.78405327, -54.7, 0, 6.4)
+metadata/prop_id = "low_shrub"
+metadata/approximate_size_metres = Vector3(1.5, 1.1, 1.5)
+metadata/world_text_policy = "No attached text"
+
+[node name="LowShrub_22" type="Node3D" parent="Overgrowth" unique_id=1799698482 instance=ExtResource("16_qqlmw")]
+transform = Transform3D(0.48627204, 0, 0.75732386, 0, 0.9, 0, -0.75732386, 0, 0.48627204, -52, 0, 2)
+metadata/prop_id = "low_shrub"
+metadata/approximate_size_metres = Vector3(1.5, 1.1, 1.5)
+metadata/world_text_policy = "No attached text"
+
+[node name="LowShrub_23" type="Node3D" parent="Overgrowth" unique_id=890407179 instance=ExtResource("16_qqlmw")]
+transform = Transform3D(-0.3786345, 0, 0.64740705, 0, 0.75, 0, -0.64740705, 0, -0.3786345, -39.4, 0, 9.8)
+metadata/prop_id = "low_shrub"
+metadata/approximate_size_metres = Vector3(1.5, 1.1, 1.5)
+metadata/world_text_policy = "No attached text"
+
+[node name="LowShrub_24" type="Node3D" parent="Overgrowth" unique_id=1321758939 instance=ExtResource("16_qqlmw")]
+transform = Transform3D(0.742802, 0, 0.50817823, 0, 0.9, 0, -0.50817823, 0, 0.742802, -37.6, 0, 15)
+metadata/prop_id = "low_shrub"
+metadata/approximate_size_metres = Vector3(1.5, 1.1, 1.5)
+metadata/world_text_policy = "No attached text"
+
+[node name="DryBramble_25" type="Node3D" parent="Overgrowth" unique_id=990258690 instance=ExtResource("17_si6i7")]
+transform = Transform3D(0.921061, 0, 0.38941833, 0, 1, 0, -0.38941833, 0, 0.921061, -55.6, 0, 11)
+metadata/prop_id = "dry_bramble"
+metadata/approximate_size_metres = Vector3(1.4, 1.1, 1.4)
+metadata/world_text_policy = "No attached text"
+
+[node name="DryBramble_26" type="Node3D" parent="Overgrowth" unique_id=2003729254 instance=ExtResource("17_si6i7")]
+transform = Transform3D(0.15297043, 0, 0.8869047, 0, 0.9, 0, -0.8869047, 0, 0.15297043, -51.3, 0, 2)
+metadata/prop_id = "dry_bramble"
+metadata/approximate_size_metres = Vector3(1.4, 1.1, 1.4)
+metadata/world_text_policy = "No attached text"
+
+[node name="DryBramble_27" type="Node3D" parent="Overgrowth" unique_id=1650903274 instance=ExtResource("17_si6i7")]
+transform = Transform3D(-0.37453216, 0, 0.81836766, 0, 0.9, 0, -0.81836766, 0, -0.37453216, -38.3, 0, 7.5)
+metadata/prop_id = "dry_bramble"
+metadata/approximate_size_metres = Vector3(1.4, 1.1, 1.4)
+metadata/world_text_policy = "No attached text"
+
+[node name="DryBramble_28" type="Node3D" parent="Overgrowth" unique_id=279368584 instance=ExtResource("17_si6i7")]
+transform = Transform3D(1.0508702, 0, 0.32507226, 0, 1.1, 0, -0.32507226, 0, 1.0508702, -37.2, 0, 13)
+metadata/prop_id = "dry_bramble"
+metadata/approximate_size_metres = Vector3(1.4, 1.1, 1.4)
+metadata/world_text_policy = "No attached text"
+
+[node name="MossyBoulder_29" type="StaticBody3D" parent="Overgrowth" unique_id=1338231845 instance=ExtResource("18_w2n3a")]
+transform = Transform3D(0.36287686, 0, 0.7129659, 0, 0.8, 0, -0.7129659, 0, 0.36287686, -55.7, 0, 5)
+metadata/prop_id = "mossy_boulder"
+metadata/approximate_size_metres = Vector3(1.4, 0.9, 1.2)
+metadata/world_text_policy = "No attached text"
+
+[node name="MossyBoulder_30" type="StaticBody3D" parent="Overgrowth" unique_id=506258270 instance=ExtResource("18_w2n3a")]
+transform = Transform3D(-0.5161756, 0, 0.4728242, 0, 0.7, 0, -0.4728242, 0, -0.5161756, -38.1, 0, 11.9)
+metadata/prop_id = "mossy_boulder"
+metadata/approximate_size_metres = Vector3(1.4, 0.9, 1.2)
+metadata/world_text_policy = "No attached text"
+
+[node name="DeadBranchPile_31" type="Node3D" parent="Overgrowth" unique_id=1837275316 instance=ExtResource("12_eymwb")]
+transform = Transform3D(0.05658976, 0, 0.797996, 0, 0.8, 0, -0.797996, 0, 0.05658976, -38.7, 0, 16.2)
+metadata/prop_id = "dead_branch_pile"
+metadata/approximate_size_metres = Vector3(1.8, 0.35, 1.3)
+metadata/world_text_policy = "No attached text"
+
+[node name="VillageEdges" type="Node3D" parent="." unique_id=848335303]
+
+[node name="FallenLog_32" type="StaticBody3D" parent="VillageEdges" unique_id=1428252048 instance=ExtResource("19_34y5x")]
+transform = Transform3D(0.68835795, 0, 0.5797959, 0, 0.9, 0, -0.5797959, 0, 0.68835795, -68, 0, 16)
+metadata/prop_id = "fallen_log"
+metadata/approximate_size_metres = Vector3(2.7, 0.55, 0.75)
+metadata/world_text_policy = "No attached text"
+
+[node name="TreeStump_33" type="StaticBody3D" parent="VillageEdges" unique_id=112045034 instance=ExtResource("13_11o6p")]
+transform = Transform3D(0.063663475, 0, 0.8977455, 0, 0.9, 0, -0.8977455, 0, 0.063663475, -65, 0, 24.5)
+metadata/prop_id = "tree_stump"
+metadata/approximate_size_metres = Vector3(0.95, 0.65, 0.95)
+metadata/world_text_policy = "No attached text"
+
+[node name="MossyBoulder_34" type="StaticBody3D" parent="VillageEdges" unique_id=1365236401 instance=ExtResource("18_w2n3a")]
+transform = Transform3D(0.921061, 0, 0.38941833, 0, 1, 0, -0.38941833, 0, 0.921061, -68, 0, 23.5)
+metadata/prop_id = "mossy_boulder"
+metadata/approximate_size_metres = Vector3(1.4, 0.9, 1.2)
+metadata/world_text_policy = "No attached text"
+
+[node name="ForestPine_35" type="StaticBody3D" parent="VillageEdges" unique_id=2045173383 instance=ExtResource("20_l0xvk")]
+transform = Transform3D(0.81203604, 0, 0.25119218, 0, 0.85, 0, -0.25119218, 0, 0.81203604, -69, 0, 15)
+metadata/prop_id = "forest_pine"
+metadata/approximate_size_metres = Vector3(5.8, 8.6, 5.8)
+metadata/world_text_policy = "No attached text"
+
+[node name="ForestPine_36" type="StaticBody3D" parent="VillageEdges" unique_id=1797842116 instance=ExtResource("20_l0xvk")]
+transform = Transform3D(0.3623577, 0, 0.9320391, 0, 1, 0, -0.9320391, 0, 0.3623577, -67, 0, 28)
+metadata/prop_id = "forest_pine"
+metadata/approximate_size_metres = Vector3(5.8, 8.6, 5.8)
+metadata/world_text_policy = "No attached text"
+
+[node name="BareTree_37" type="StaticBody3D" parent="VillageEdges" unique_id=227768951 instance=ExtResource("21_dh2us")]
+transform = Transform3D(0.88205993, 0, 0.17880239, 0, 0.9, 0, -0.17880239, 0, 0.88205993, -56, 0, -2)
+metadata/prop_id = "bare_tree"
+metadata/approximate_size_metres = Vector3(4.4, 6.5, 4.4)
+metadata/world_text_policy = "No attached text"
+
+[node name="BareTree_38" type="StaticBody3D" parent="VillageEdges" unique_id=1888233726 instance=ExtResource("21_dh2us")]
+transform = Transform3D(-0.22720204, 0, 0.9738476, 0, 1, 0, -0.9738476, 0, -0.22720204, -37, 0, -4)
+metadata/prop_id = "bare_tree"
+metadata/approximate_size_metres = Vector3(4.4, 6.5, 4.4)
+metadata/world_text_policy = "No attached text"
+
+[node name="ForestPine_39" type="StaticBody3D" parent="VillageEdges" unique_id=412471936 instance=ExtResource("20_l0xvk")]
+transform = Transform3D(-0.40387684, 0, 0.69056755, 0, 0.8, 0, -0.69056755, 0, -0.40387684, -35, 0, 10)
+metadata/prop_id = "forest_pine"
+metadata/approximate_size_metres = Vector3(5.8, 8.6, 5.8)
+metadata/world_text_policy = "No attached text"
+
+[node name="BareTree_40" type="StaticBody3D" parent="VillageEdges" unique_id=1081673182 instance=ExtResource("21_dh2us")]
+transform = Transform3D(0.7829019, 0, 0.3310056, 0, 0.85, 0, -0.3310056, 0, 0.7829019, -41, 0, 28)
+metadata/prop_id = "bare_tree"
+metadata/approximate_size_metres = Vector3(4.4, 6.5, 4.4)
+metadata/world_text_policy = "No attached text"
+
+[node name="LowShrub_41" type="Node3D" parent="VillageEdges" unique_id=755252337 instance=ExtResource("16_qqlmw")]
+transform = Transform3D(0.6967067, 0, 0.7173561, 0, 1, 0, -0.7173561, 0, 0.6967067, -66, 0, 19)
+metadata/prop_id = "low_shrub"
+metadata/approximate_size_metres = Vector3(1.5, 1.1, 1.5)
+metadata/world_text_policy = "No attached text"
+
+[node name="LowShrub_42" type="Node3D" parent="VillageEdges" unique_id=934978571 instance=ExtResource("16_qqlmw")]
+transform = Transform3D(0.07781092, 0, 1.0972445, 0, 1.1, 0, -1.0972445, 0, 0.07781092, -61.8, 0, 26)
+metadata/prop_id = "low_shrub"
+metadata/approximate_size_metres = Vector3(1.5, 1.1, 1.5)
+metadata/world_text_policy = "No attached text"
+
+[node name="FernClump_43" type="Node3D" parent="VillageEdges" unique_id=207006210 instance=ExtResource("15_sg5lt")]
+transform = Transform3D(0.7368488, 0, 0.31153467, 0, 0.8, 0, -0.31153467, 0, 0.7368488, -67, 0, 21)
+metadata/prop_id = "fern_clump"
+metadata/approximate_size_metres = Vector3(1.1, 0.65, 1.1)
+metadata/world_text_policy = "No attached text"
+
+[node name="FernClump_44" type="Node3D" parent="VillageEdges" unique_id=451055416 instance=ExtResource("15_sg5lt")]
+transform = Transform3D(-0.58850116, 0, 0.80849636, 0, 1, 0, -0.80849636, 0, -0.58850116, -63, 0, 26)
+metadata/prop_id = "fern_clump"
+metadata/approximate_size_metres = Vector3(1.1, 0.65, 1.1)
+metadata/world_text_policy = "No attached text"
+
+[node name="DryBramble_45" type="Node3D" parent="VillageEdges" unique_id=504009980 instance=ExtResource("17_si6i7")]
+transform = Transform3D(0.063663475, 0, 0.8977455, 0, 0.9, 0, -0.8977455, 0, 0.063663475, -59, 0, 27)
+metadata/prop_id = "dry_bramble"
+metadata/approximate_size_metres = Vector3(1.4, 1.1, 1.4)
+metadata/world_text_policy = "No attached text"
+
+[node name="DeadBranchPile_46" type="Node3D" parent="VillageEdges" unique_id=360792005 instance=ExtResource("12_eymwb")]
+transform = Transform3D(0.62703604, 0, 0.64562047, 0, 0.9, 0, -0.64562047, 0, 0.62703604, -43, 0, 27)
+metadata/prop_id = "dead_branch_pile"
+metadata/approximate_size_metres = Vector3(1.8, 0.35, 1.3)
+metadata/world_text_policy = "No attached text"

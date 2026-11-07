@@ -8,6 +8,12 @@ var opened := false
 func _ready() -> void:
 	name="LootContainer"
 	set_meta("interaction","loot_container")
+	# Saved editable worlds already contain the lid, contents, and collision.
+	if has_node("HingedLid") and has_node("VisibleContents"):
+		lid=get_node("HingedLid")
+		display=get_node("VisibleContents")
+		display.hide()
+		return
 	var wood: Material=load("res://assets/props/wood.tres")
 	var iron: Material=load("res://assets/props/iron.tres")
 	var lining:=StandardMaterial3D.new()

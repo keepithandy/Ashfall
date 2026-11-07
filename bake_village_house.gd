@@ -26,7 +26,7 @@ func _initialize() -> void:
 		var shape:=BoxMesh.new()
 		shape.size=Vector3(data.z,0.02,data.w)
 		path.mesh=shape
-		path.position=Vector3(data.x,0.025,data.y)
+		path.position=Vector3(data.x,-0.006,data.y)
 		path.material_override=ground_mat
 		village.add_child(path)
 		path.owner=village

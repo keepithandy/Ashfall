@@ -1,6 +1,10 @@
-[gd_scene load_steps=2 format=3]
+[gd_scene format=3 uid="uid://b1dqdnnvhavv4"]
 
-[ext_resource type="Script" path="res://game.gd" id="1"]
+[ext_resource type="Script" uid="uid://by77j41x5wi48" path="res://game.gd" id="1"]
+[ext_resource type="PackedScene" path="res://scenes/nature/mossy_boulder.tscn" id="2_0xm2m"]
 
-[node name="Ashfall" type="Node3D"]
+[node name="Ashfall" type="Node3D" unique_id=657994542]
 script = ExtResource("1")
+
+[node name="MossyBoulder" parent="." unique_id=1338231845 instance=ExtResource("2_0xm2m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.944906, 1.9073486e-06, -5.4980335)

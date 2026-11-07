@@ -26,6 +26,7 @@
 [ext_resource type="PackedScene" path="res://scenes/workshop/metal_chair.tscn" id="24_gt2gb"]
 [ext_resource type="PackedScene" path="res://scenes/workshop/open_wood_crate.tscn" id="25_qn2o8"]
 [ext_resource type="PackedScene" path="res://scenes/props/metal_bucket.tscn" id="26_1kram"]
+[ext_resource type="PackedScene" path="res://scenes/houses/cottage_detail.tscn" id="27_cottage_detail"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5j3sv"]
 albedo_color = Color(0.72156864, 0.6784314, 0.627451, 1)
@@ -1104,8 +1105,10 @@ metadata/house_type = "Blue porch cottage"
 metadata/approximate_size_metres = Vector3(9, 5.5, 12)
 metadata/world_text_policy = "No attached text"
 
+[node name="CottageDetail" parent="." instance=ExtResource("27_cottage_detail")]
+
 [node name="BrickFooting" type="StaticBody3D" parent="." unique_id=622688157]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.03, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.01, 0)
 
 [node name="Surface" type="MeshInstance3D" parent="BrickFooting" unique_id=59873527]
 material_override = SubResource("StandardMaterial3D_5j3sv")
@@ -2144,6 +2147,7 @@ material_override = ExtResource("5_pp4db")
 mesh = SubResource("BoxMesh_vl8bq")
 
 [node name="@CollisionShape3D@334" type="CollisionShape3D" parent="PorchDeck" unique_id=1757612956]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.02, 0)
 shape = SubResource("BoxShape3D_smx86")
 
 [node name="PorchPost" type="StaticBody3D" parent="." unique_id=174639315]

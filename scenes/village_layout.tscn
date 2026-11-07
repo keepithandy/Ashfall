@@ -68,17 +68,17 @@ metadata/approximate_size_metres = Vector3(9, 5.5, 12)
 metadata/world_text_policy = "No attached text"
 
 [node name="VillageDirtLane" type="MeshInstance3D" parent="." unique_id=990480458]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -46, 0.025, 20)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -46, -0.006, 20)
 material_override = SubResource("StandardMaterial3D_ok3mg")
 mesh = SubResource("BoxMesh_gkc64")
 
 [node name="@MeshInstance3D@355" type="MeshInstance3D" parent="." unique_id=1088937144]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -46, 0.025, 16)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -46, -0.006, 16)
 material_override = SubResource("StandardMaterial3D_ok3mg")
 mesh = SubResource("BoxMesh_16a8l")
 
 [node name="@MeshInstance3D@356" type="MeshInstance3D" parent="." unique_id=1224001455]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -60, 0.025, 5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -60, -0.006, 5)
 material_override = SubResource("StandardMaterial3D_ok3mg")
 mesh = SubResource("BoxMesh_8hdk1")
 

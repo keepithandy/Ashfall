@@ -13,7 +13,7 @@ func build_cottage() -> Node3D:
 	timber.albedo_color=Color("7cabb6")
 	var floor_wood: Material=load("res://assets/props/wood.tres")
 	var slate:=scanned("concrete_floor_worn_001",1.1,Color("68605b"))
-	box("BrickFooting",Vector3(0,0.03,0),Vector3(8.25,0.3,7.25),masonry,true)
+	box("BrickFooting",Vector3(0,-0.01,0),Vector3(8.25,0.3,7.25),masonry,true)
 	box("TimberFloor",Vector3(0,0.15,0),Vector3(7.98,0.06,6.98),floor_wood,true)
 	var front:=wall("CottageFront",Vector3(0,0,3.5),8,[Rect2(-3.08,1.12,1.56,1.46),Rect2(-0.62,0.14,1.24,2.3),Rect2(1.52,1.12,1.56,1.46)],0)
 	window_frame(front,Vector2(-2.3,1.85))
@@ -62,7 +62,10 @@ func build_cottage() -> Node3D:
 	pipe("RidgeFlashing",Vector3(0,5.12,-3.9),Vector3(0,5.12,4.0),0.075,iron)
 	box("Ceiling",Vector3(0,3.06,0),Vector3(7.66,0.08,6.66),plaster,true)
 	# Covered porch, with a gentle approach that can be walked up.
-	box("PorchDeck",Vector3(0,0.12,4.25),Vector3(3.05,0.12,1.65),floor_wood,true)
+	var deck:=box("PorchDeck",Vector3(0,0.12,4.25),Vector3(3.05,0.12,1.65),floor_wood,true)
+	for child in deck.get_children():
+		if child is CollisionShape3D:
+			child.position.y=0.02
 	for x in [-1.35,1.35]:
 		box("PorchPost",Vector3(x,1.42,4.92),Vector3(0.13,2.8,0.13),timber,true)
 		box("PorchSideRail",Vector3(x,0.97,4.25),Vector3(0.08,0.09,1.4),timber)
@@ -113,4 +116,6 @@ func build_cottage() -> Node3D:
 	root.set_meta("house_type","Blue porch cottage")
 	root.set_meta("approximate_size_metres",Vector3(9,5.5,12))
 	root.set_meta("world_text_policy","No attached text")
+	if ResourceLoader.exists("res://scenes/houses/cottage_detail.tscn"):
+		root.add_child(load("res://scenes/houses/cottage_detail.tscn").instantiate())
 	return root

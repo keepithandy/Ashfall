@@ -22,6 +22,7 @@ var smoke_test := false
 var ambience: AudioStreamPlayer
 var inventory := {"bandage": 0, "food_tin": 0, "batteries": 0}
 var open_container: StaticBody3D
+var baking_editable_world := false
 
 func material(color: Color, roughness: float = 0.9, emission: float = 0.0) -> StandardMaterial3D:
 	var mat := StandardMaterial3D.new()
@@ -92,7 +93,7 @@ func lamp(at: Vector3, tint: Color = Color("ffbd70")) -> void:
 	light.omni_range = 8
 	light.light_volumetric_fog_energy = 0.2
 	light.shadow_enabled = true
-	light.add_to_group("perimeter_lamps")
+	light.add_to_group("perimeter_lamps",true)
 	add_child(light)
 
 func _ready() -> void:
@@ -102,8 +103,14 @@ func _ready() -> void:
 	concrete = weathered(Color("858b87"), 1)
 	rust = weathered(Color("815f40"), 2)
 	dark = material(Color("292f2b"))
-	build_environment()
-	build_level()
+	var saved_world:=get_node_or_null("EditableWorld")
+	if is_instance_valid(saved_world):
+		bind_editable_world(saved_world)
+	else:
+		build_environment()
+		build_level()
+	if baking_editable_world:
+		return
 	player = CharacterBody3D.new()
 	player.set_script(PlayerScript)
 	player.position = Vector3(0, 0.1, 25)
@@ -135,6 +142,19 @@ func _ready() -> void:
 		run_house_review.call_deferred()
 	elif smoke_test:
 		run_smoke_test.call_deferred()
+
+func bind_editable_world(world: Node) -> void:
+	# Use the saved editor nodes as the actual gameplay objects.
+	for object in world.find_children("*","StaticBody3D",true,false):
+		match object.get_meta("interaction",""):
+			"sample": sample=object
+			"supplies": supplies=object
+			"gate": gate=object
+	for object in world.find_children("*","Node3D",true,false):
+		if object.is_in_group("world_anomalies"):
+			anomalies.append(object)
+	if not is_instance_valid(sample) or not is_instance_valid(supplies) or not is_instance_valid(gate):
+		push_error("Editable world is missing a sample, medical supplies, or extraction terminal.")
 
 func setup_input() -> void:
 	var keys := {
@@ -207,9 +227,9 @@ func build_level() -> void:
 		collision.shape = shape
 		collision.position = Vector3(boundary.x,5,boundary.y)
 		bounds.add_child(collision)
-	box(Vector3(0, 0.012, -6), Vector3(7, 0.025, 77), weathered(Color("4a4d47"), 7), false)
+	box(Vector3(0, -0.0085, -6), Vector3(7, 0.025, 77), weathered(Color("4a4d47"), 7), false)
 	for z in range(-42, 30, 6):
-		box(Vector3(0, 0.03, z), Vector3(0.13, 0.025, 2.2), material(Color("b1ad82")), false)
+		box(Vector3(0, -0.0065, z), Vector3(0.13, 0.025, 2.2), material(Color("b1ad82")), false)
 	for x in [-32, 32]:
 		if x == -32:
 			# A five-metre opening connects the village lane to the existing level.
@@ -318,7 +338,7 @@ func build_level() -> void:
 	glow.light_energy = 1.5
 	glow.omni_range = 5
 	sample.add_child(glow)
-	supplies = box(Vector3(-10, 0.99, 10), Vector3(0.5, 0.28, 0.4), material(Color("b5ac8a"))) as StaticBody3D
+	supplies = box(Vector3(-10, 0.9485, 10), Vector3(0.5, 0.28, 0.4), material(Color("b5ac8a"))) as StaticBody3D
 	supplies.set_meta("interaction", "supplies")
 	# The medical marker is geometry, not attached lettering.
 	box(Vector3(0,0.01,0.205),Vector3(0.03,0.12,0.009),material(Color("a74635")),false,supplies)
@@ -371,6 +391,7 @@ func make_anomaly(at: Vector3, radius: float) -> void:
 	var root := Node3D.new()
 	root.position = at
 	root.set_meta("radius", radius)
+	root.add_to_group("world_anomalies",true)
 	add_child(root)
 	anomalies.append(root)
 	var glow_mat := material(Color("71b8ae"), 0.4, 0.9)

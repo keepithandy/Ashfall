@@ -1,14 +1,23 @@
-[gd_scene load_steps=3 format=3]
+[gd_scene load_steps=4 format=3]
 
 [ext_resource type="PackedScene" path="res://assets/decorative_interiors/models/damaged_kitchen_cupboard.glb" id="1_visual"]
 
-[sub_resource type="BoxShape3D" id="decorative_shape"]
-size = Vector3(1.35, 1.84, 0.82)
+[sub_resource type="BoxShape3D" id="collision_0"]
+size = Vector3(1.22, 1.77, 0.64)
+
+[sub_resource type="BoxShape3D" id="collision_1"]
+size = Vector3(0.6, 1.1, 0.12)
 
 [node name="DamagedKitchenCupboard" type="StaticBody3D"]
 
 [node name="Visual" parent="." instance=ExtResource("1_visual")]
 
-[node name="StaticCollision" type="CollisionShape3D" parent="."]
-position = Vector3(0, 0.92, 0)
-shape = SubResource("decorative_shape")
+[node name="MainCabinet" type="CollisionShape3D" parent="."]
+position = Vector3(0, 0.91, 0.12)
+shape = SubResource("collision_0")
+
+[node name="OpenDoor" type="CollisionShape3D" parent="."]
+position = Vector3(0.4, 0.59, -0.45)
+rotation = Vector3(0, 0.23, 0)
+shape = SubResource("collision_1")
+

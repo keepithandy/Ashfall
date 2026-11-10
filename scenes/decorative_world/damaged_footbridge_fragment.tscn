@@ -1,22 +1,43 @@
-[gd_scene load_steps=4 format=3]
+[gd_scene load_steps=7 format=3]
 
 [ext_resource type="PackedScene" path="res://assets/decorative_world/models/damaged_footbridge_fragment.glb" id="1_model"]
 
-[sub_resource type="BoxShape3D" id="shape_0"]
-size = Vector3(3.8, 0.3, 1.62)
+[sub_resource type="BoxShape3D" id="collision_0"]
+size = Vector3(3.83, 0.17, 1.49)
 
-[sub_resource type="BoxShape3D" id="shape_1"]
-size = Vector3(3.3, 0.35, 0.13)
+[sub_resource type="BoxShape3D" id="collision_1"]
+size = Vector3(3.4, 0.3, 0.15)
+
+[sub_resource type="BoxShape3D" id="collision_2"]
+size = Vector3(3.3, 0.17, 0.15)
+
+[sub_resource type="BoxShape3D" id="collision_3"]
+size = Vector3(0.17, 0.52, 0.23)
+
+[sub_resource type="BoxShape3D" id="collision_4"]
+size = Vector3(0.17, 0.52, 0.23)
 
 [node name="DamagedFootbridgeFragment" type="StaticBody3D"]
 
 [node name="Visual" parent="." instance=ExtResource("1_model")]
 
 [node name="Deck" type="CollisionShape3D" parent="."]
-position = Vector3(0, 0.24, 0)
-shape = SubResource("shape_0")
+position = Vector3(0, 0.25, 0)
+shape = SubResource("collision_0")
 
 [node name="LeftRail" type="CollisionShape3D" parent="."]
-position = Vector3(0, 0.97, -0.75)
-shape = SubResource("shape_1")
+position = Vector3(0, 0.99, -0.74)
+shape = SubResource("collision_1")
+
+[node name="RightRailStumps" type="CollisionShape3D" parent="."]
+position = Vector3(0, 0.43, 0.74)
+shape = SubResource("collision_2")
+
+[node name="LeftEndSupport" type="CollisionShape3D" parent="."]
+position = Vector3(-1.5, 0.25, 0)
+shape = SubResource("collision_3")
+
+[node name="RightEndSupport" type="CollisionShape3D" parent="."]
+position = Vector3(1.5, 0.25, 0)
+shape = SubResource("collision_4")
 

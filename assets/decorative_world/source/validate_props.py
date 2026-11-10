@@ -47,8 +47,8 @@ def check_glb(path):
     for acc in accessors:
         if acc["bufferView"] >= len(views):
             raise ValueError("Bad accessor buffer view reference")
-        if acc.get("componentType") != 5126 or acc.get("type") != "VEC3" or acc["count"] <= 0:
-            raise ValueError("Invalid position or normal accessor")
+        if acc.get("componentType") != 5126 or acc.get("type") not in ("VEC2", "VEC3") or acc["count"] <= 0:
+            raise ValueError("Invalid GLB vertex accessor")
         if any(not math.isfinite(v) for v in acc.get("min", []) + acc.get("max", [])):
             raise ValueError("Non-finite bounds")
     if not obj.get("meshes") or not obj.get("materials"):
@@ -63,6 +63,10 @@ def check_glb(path):
             pa, na = accessors[i], accessors[j]
             if primitive.get("mode", 4) != 4 or pa["count"] != na["count"] or pa["count"] % 3:
                 raise ValueError("Invalid primitive triangle count")
+            uv_id = primitive["attributes"].get("TEXCOORD_0")
+            if uv_id is not None:
+                if uv_id >= len(accessors) or accessors[uv_id]["type"] != "VEC2" or accessors[uv_id]["count"] != pa["count"]:
+                    raise ValueError("Invalid UV accessor")
             if primitive.get("material", 0) >= len(obj["materials"]):
                 raise ValueError("Material index out of range")
             triangles += pa["count"] // 3

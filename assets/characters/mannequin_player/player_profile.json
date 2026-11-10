@@ -1,0 +1,28 @@
+{
+  "model": "male mannequin",
+  "body_mesh": "MaleMannequinBody",
+  "hand_drop": 0.18,
+  "neck_aim_weight": 0.0,
+  "wrist_rest": [
+    0.5027346014976501,
+    1.1136350631713867,
+    -0.2060166895389557
+  ],
+  "ankle_heights": {
+    "R": 0.07447369396686554,
+    "L": 0.07447359710931778
+  },
+  "rig_id": "mannequin_humanoid_v1",
+  "fingertip_lengths": {
+    "thumb": 0.03150911256670952,
+    "index": 0.030040374025702477,
+    "middle": 0.03056110255420208,
+    "ring": 0.030239537358283997,
+    "pinky": 0.022597361356019974
+  },
+  "anatomical_palm_normal": [
+    -0.7599072456359863,
+    -0.6500226855278015,
+    -0.0033990140073001385
+  ]
+}

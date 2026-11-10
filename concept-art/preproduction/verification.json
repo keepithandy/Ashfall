@@ -1,0 +1,115 @@
+{
+  "date": "2026-11-09",
+  "indexedAssets": 71,
+  "localReferences": 126,
+  "verifiedPackageFiles": 77,
+  "blenderSources": 13,
+  "blenderMissingImages": 0,
+  "godotIgnore": true,
+  "images": [
+    {
+      "file": "anomaly-sequence-v01.png",
+      "width": 1536,
+      "height": 1024,
+      "sha256": "504768a691ff8422d1b7beb76e0a8facd007c180de8ba091a9182ca6dab1998f"
+    },
+    {
+      "file": "bolt_action_rifle_7_62-source-review.png",
+      "width": 1200,
+      "height": 700,
+      "sha256": "74b3a13080d633956106fe99120ffdc44a2b1da4ed9c7df9447c9ad89b973982"
+    },
+    {
+      "file": "checkpoint-package-v01.png",
+      "width": 1536,
+      "height": 1024,
+      "sha256": "f354c94ae9171b86c615a3a70ce4698d3cb5519d556c94bff7eff442693cfe41"
+    },
+    {
+      "file": "cottage-households-v01.png",
+      "width": 1536,
+      "height": 1024,
+      "sha256": "7a0107aa046a15ec3cc908b2dfea82153f393448eace08e456c6d12b396b3b85"
+    },
+    {
+      "file": "cottage-kitchen-contents-v01.png",
+      "width": 1536,
+      "height": 1024,
+      "sha256": "6549a8dbda783d66e5a6089c77282c5305d7165c14c104f35c8e71cd7a9370c3"
+    },
+    {
+      "file": "crossroads-dusk-v01.png",
+      "width": 1672,
+      "height": 941,
+      "sha256": "08a93131e5ae0f4bf5d78ae60e4e03d1c81b5606f6f222457dd61a6031444dc6"
+    },
+    {
+      "file": "crossroads-interior-v01.png",
+      "width": 1672,
+      "height": 941,
+      "sha256": "f09b1835ef3a80524585f500d72e925920735843aecffbe1a88b5ab29de86f8f"
+    },
+    {
+      "file": "crossroads-yard-v01.png",
+      "width": 1672,
+      "height": 941,
+      "sha256": "f8fd6704fd3a7e9416048f7a70ffb63cbb8f1687edce1cc5ba02633d5f1c42b7"
+    },
+    {
+      "file": "dining_table-source-review.png",
+      "width": 1200,
+      "height": 700,
+      "sha256": "7a6656aa9822522aaae76b7c16e4be2e3a204ba670c749c8dc20afbdc28c2857"
+    },
+    {
+      "file": "layout-preview.png",
+      "width": 1240,
+      "height": 800,
+      "sha256": "a22d2df3d97ca66e34fc1a7227b2cf728b8da3902bd8417307c4aa7e9eaff7b0"
+    },
+    {
+      "file": "listener-v01.png",
+      "width": 1672,
+      "height": 941,
+      "sha256": "cbcfbe1ca7590c7083557d343406b9762ffa08941bc2ef69a0931a69d93bb213"
+    },
+    {
+      "file": "relay-package-v01.png",
+      "width": 1672,
+      "height": 941,
+      "sha256": "01a73bff9921c22fda626c2c8acc3c3decf7495d8a2bcb082ec9a535fe92fb87"
+    },
+    {
+      "file": "research-package-v01.png",
+      "width": 1536,
+      "height": 1024,
+      "sha256": "9a7461baed05c76a80f8ba7059131aea5fbb7495f33fcad78259c476a29abb86"
+    },
+    {
+      "file": "review-index-preview.png",
+      "width": 1440,
+      "height": 1100,
+      "sha256": "debd594184c23b7165f025fcbb258908a7aa207e1f94082e95454179d16deefe"
+    },
+    {
+      "file": "service_pistol-source-review.png",
+      "width": 1200,
+      "height": 700,
+      "sha256": "9b94833bad30fdb703b039279bda9186c4b2b013cb05517a2b0efa7a53ca70fb"
+    }
+  ],
+  "sink": {
+    "source": "https://www.innerscene.com/tools/library/3d-parts/apron-sink-farmhouse-sink-d48bb2ce",
+    "download": "https://www.innerscene.com/api/library/apron-sink-farmhouse-sink-d48bb2ce/download",
+    "license": "CC0, as stated on source listing",
+    "sha256": "51cf754f048b50fc536c9ce0fa40da15b6121bba010344e731b6ca5574243979",
+    "bytes": 203696,
+    "meshes": 5,
+    "materials": 2,
+    "animations": 0,
+    "externalBuffers": [],
+    "nativeSource": "GLB only acquired; no native Blender source advertised/verified",
+    "inspection": "GLB structure inspected; not rendered or imported into Godot"
+  },
+  "failures": []
+}

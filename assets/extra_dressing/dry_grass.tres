@@ -1,0 +1,13 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://n54nhvlrtmxs"]
+
+[sub_resource type="Shader" id="Shader_xr825"]
+code = "shader_type spatial;
+render_mode cull_disabled, specular_disabled;
+void vertex(){vec3 w=(MODEL_MATRIX*vec4(VERTEX,1.0)).xyz;float sway=sin(TIME*1.15+w.x*1.8+w.z*1.1);VERTEX.x+=sway*UV.y*UV.y*0.018;VERTEX.z+=cos(TIME*0.8+w.z)*UV.y*UV.y*0.008;}
+void fragment(){float veins=sin(UV.x*27.0)*0.025;ALBEDO=mix(vec3(0.15,0.15,0.075),vec3(0.40,0.33,0.16),UV.y)*COLOR.rgb+veins;ROUGHNESS=0.96;NORMAL=FRONT_FACING?NORMAL:-NORMAL;BACKLIGHT=ALBEDO*0.18;}
+"
+
+[resource]
+resource_name = "dry_grass"
+render_priority = 0
+shader = SubResource("Shader_xr825")

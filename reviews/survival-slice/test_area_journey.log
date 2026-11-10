@@ -1,0 +1,24 @@
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS: Outbound passage reachable by ordinary interaction ray
+PASS: Unpowered passage stays locked
+PASS: Diagnostic opens normal area link
+PASS: Arrival stands on solid ground
+PASS: Travel preserves condition and pack
+PASS: Return passage reachable by ordinary interaction ray
+PASS: West flank supports ordinary player traversal: (288.0, 0.000586, -10.77335)
+PASS: East flank supports ordinary player traversal
+PASS: Recorder reachable through interaction ray
+PASS: Recorder sets return objective
+PASS: Reports deliver and reward once
+PASS: Repeat report cannot duplicate reward
+PASS: Revisit retains record and encounter roll
+PASS: Looted cache remains empty after returning
+PASS: Relay creature detects exposed player
+PASS: Relay creature searches after losing contact
+PASS: Relay search eventually gives up
+PASS: Pursuit routes around solid wall: 0.78593534231186
+PASS: Inactive area suspends pursuit and audio
+AREA_JOURNEY: failures=0
+WARNING: 6 ObjectDB instances were leaked at exit (run with `--verbose` for details).
+   at: cleanup (core/object/object.cpp:2536)

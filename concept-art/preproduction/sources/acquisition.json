@@ -1,0 +1,618 @@
+[
+  {
+    "asset": "painted_wooden_cabinet",
+    "path": "C:\\Users\\quali\\OneDrive\\Desktop\\source\\Ashfall\\concept-art\\preproduction\\sources\\painted_wooden_cabinet\\painted_wooden_cabinet_1k.blend",
+    "url": "https://dl.polyhaven.org/file/ph-assets/Models/blend/1k/painted_wooden_cabinet/painted_wooden_cabinet_1k.blend",
+    "md5": "1894410a2bb8d52181328c064139d751",
+    "license": "CC0",
+    "license_url": "https://polyhaven.com/license"
+  },
+  {
+    "asset": "painted_wooden_cabinet",
+    "path": "C:\\Users\\quali\\OneDrive\\Desktop\\source\\Ashfall\\concept-art\\preproduction\\sources\\painted_wooden_cabinet\\textures\\painted_wooden_cabinet_diff_1k.jpg",
+    "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/painted_wooden_cabinet/painted_wooden_cabinet_diff_1k.jpg",
+    "md5": "cab7d6088249cb2687e0c79b2cdf62c5",
+    "license": "CC0",
+    "license_url": "https://polyhaven.com/license"
+  },
+  {
+    "asset": "painted_wooden_cabinet",
+    "path": "C:\\Users\\quali\\OneDrive\\Desktop\\source\\Ashfall\\concept-art\\preproduction\\sources\\painted_wooden_cabinet\\textures\\painted_wooden_cabinet_rough_1k.exr",
+    "url": "https://dl.polyhaven.org/file/ph-assets/Models/exr/1k/painted_wooden_cabinet/painted_wooden_cabinet_rough_1k.exr",
+    "md5": "0cb971db49bb35aac730dd598346f5d6",
+    "license": "CC0",
+    "license_url": "https://polyhaven.com/license"
+  },
+  {
+    "asset": "painted_wooden_cabinet",
+    "path": "C:\\Users\\quali\\OneDrive\\Desktop\\source\\Ashfall\\concept-art\\preproduction\\sources\\painted_wooden_cabinet\\textures\\painted_wooden_cabinet_metal_1k.exr",
+    "url": "https://dl.polyhaven.org/file/ph-assets/Models/exr/1k/painted_wooden_cabinet/painted_wooden_cabinet_metal_1k.exr",
+    "md5": "e9a819a159385b5e117c748c2f5339b8",
+    "license": "CC0",
+    "license_url": "https://polyhaven.com/license"
+  },
+  {
+    "asset": "painted_wooden_cabinet",
+    "path": "C:\\Users\\quali\\OneDrive\\Desktop\\source\\Ashfall\\concept-art\\preproduction\\sources\\painted_wooden_cabinet\\textures\\painted_wooden_cabinet_nor_gl_1k.exr",
+    "url": "https://dl.polyhaven.org/file/ph-assets/Models/exr/1k/painted_wooden_cabinet/painted_wooden_cabinet_nor_gl_1k.exr",
+    "md5": "7d6932488df569d244299d4159019375",
+    "license": "CC0",
+    "license_url": "https://polyhaven.com/license"
+  },
+  {
+    "asset": "electric_stove",
+    "path": "C:\\Users\\quali\\OneDrive\\Desktop\\source\\Ashfall\\concept-art\\preproduction\\sources\\electric_stove\\electric_stove_1k.blend",
+    "url": "https://dl.polyhaven.org/file/ph-assets/Models/blend/1k/electric_stove/electric_stove_1k.blend",
+    "md5": "b7b6ceaf4c5f6d02bca09a86f888be61",
+    "license": "CC0",
+    "license_url": "https://polyhaven.com/license"
+  },
+  {
+    "asset": "electric_stove",
+    "path": "C:\\Users\\quali\\OneDrive\\Desktop\\source\\Ashfall\\concept-art\\preproduction\\sources\\electric_stove\\textures\\electric_stove_metal_1k.exr",
+    "url": "https://dl.polyhaven.org/file/ph-assets/Models/exr/1k/electric_stove/electric_stove_metal_1k.exr",
+    "md5": "fc00bfe9bd59d164f2ae2a40cb39ceb4",
+    "license": "CC0",
+    "license_url": "https://polyhaven.com/license"
+  },
+  {
+    "asset": "electric_stove",
+    "path": "C:\\Users\\quali\\OneDrive\\Desktop\\source\\Ashfall\\concept-art\\preproduction\\sources\\electric_stove\\textures\\electric_stove_nor_gl_1k.exr",
+    "url": "https://dl.polyhaven.org/file/ph-assets/Models/exr/1k/electric_stove/electric_stove_nor_gl_1k.exr",
+    "md5": "7d9745cea554be11d9b6f6f0abc36327",
+    "license": "CC0",
+    "license_url": "https://polyhaven.com/license"
+  },
+  {
+    "asset": "electric_stove",
+    "path": "C:\\Users\\quali\\OneDrive\\Desktop\\source\\Ashfall\\concept-art\\preproduction\\sources\\electric_stove\\textures\\electric_stove_rough_1k.exr",
+    "url": "https://dl.polyhaven.org/file/ph-assets/Models/exr/1k/electric_stove/electric_stove_rough_1k.exr",
+    "md5": "bd8e0012eaf5c271b99e1e8316ff1c4d",
+    "license": "CC0",
+    "license_url": "https://polyhaven.com/license"
+  },
+  {
+    "asset": "electric_stove",
+    "path": "C:\\Users\\quali\\OneDrive\\Desktop\\source\\Ashfall\\concept-art\\preproduction\\sources\\electric_stove\\textures\\electric_stove_diff_1k.jpg",
+    "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/electric_stove/electric_stove_diff_1k.jpg",
+    "md5": "dd6ba5a62587e4172853321ec58388fe",
+    "license": "CC0",
+    "license_url": "https://polyhaven.com/license"
+  },
+  {
+    "asset": "electric_stove",
+    "path": "C:\\Users\\quali\\OneDrive\\Desktop\\source\\Ashfall\\concept-art\\preproduction\\sources\\electric_stove\\textures\\electric_stove_opacity_1k.png",
+    "url": "https://dl.polyhaven.org/file/ph-assets/Models/png/1k/electric_stove/electric_stove_opacity_1k.png",
+    "md5": "12ddef9ab991d0c854890e8c34f40e6f",
+    "license": "CC0",
+    "license_url": "https://polyhaven.com/license"
+  },
+  {
+    "asset": "small_wooden_table_01",
+    "path": "C:\\Users\\quali\\OneDrive\\Desktop\\source\\Ashfall\\concept-art\\preproduction\\sources\\small_wooden_table_01\\small_wooden_table_01_1k.blend",
+    "url": "https://dl.polyhaven.org/file/ph-assets/Models/blend/1k/small_wooden_table_01/small_wooden_table_01_1k.blend",
+    "md5": "6c64f0be25f3bc6379af0538132c27e1",
+    "license": "CC0",
+    "license_url": "https://polyhaven.com/license"
+  },
+  {
+    "asset": "small_wooden_table_01",
+    "path": "C:\\Users\\quali\\OneDrive\\Desktop\\source\\Ashfall\\concept-art\\preproduction\\sources\\small_wooden_table_01\\textures\\small_wooden_table_01_rough_1k.jpg",
+    "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/small_wooden_table_01/small_wooden_table_01_rough_1k.jpg",
+    "md5": "6acbfa5e11c26f755667d23e259ebcef",
+    "license": "CC0",
+    "license_url": "https://polyhaven.com/license"
+  },
+  {
+    "asset": "small_wooden_table_01",
+    "path": "C:\\Users\\quali\\OneDrive\\Desktop\\source\\Ashfall\\concept-art\\preproduction\\sources\\small_wooden_table_01\\textures\\small_wooden_table_01_nor_gl_1k.exr",
+    "url": "https://dl.polyhaven.org/file/ph-assets/Models/exr/1k/small_wooden_table_01/small_wooden_table_01_nor_gl_1k.exr",
+    "md5": "7276196679a5a7733a5dc1893ca3ac57",
+    "license": "CC0",
+    "license_url": "https://polyhaven.com/license"
+  },
+  {
+    "asset": "small_wooden_table_01",
+    "path": "C:\\Users\\quali\\OneDrive\\Desktop\\source\\Ashfall\\concept-art\\preproduction\\sources\\small_wooden_table_01\\textures\\small_wooden_table_01_diff_1k.jpg",
+    "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/small_wooden_table_01/small_wooden_table_01_diff_1k.jpg",
+    "md5": "cc2a3aad1992a1cb09dd407def42d102",
+    "license": "CC0",
+    "license_url": "https://polyhaven.com/license"
+  },
+  {
+    "asset": "small_wooden_table_01",
+    "path": "C:\\Users\\quali\\OneDrive\\Desktop\\source\\Ashfall\\concept-art\\preproduction\\sources\\small_wooden_table_01\\textures\\small_wooden_table_01_metal_1k.exr",
+    "url": "https://dl.polyhaven.org/file/ph-assets/Models/exr/1k/small_wooden_table_01/small_wooden_table_01_metal_1k.exr",
+    "md5": "73489eff792122f671a814feebc6141a",
+    "license": "CC0",
+    "license_url": "https://polyhaven.com/license"
+  },
+  {
+    "asset": "painted_wooden_chair_01",
+    "path": "C:\\Users\\quali\\OneDrive\\Desktop\\source\\Ashfall\\concept-art\\preproduction\\sources\\painted_wooden_chair_01\\painted_wooden_chair_01_1k.blend",
+    "url": "https://dl.polyhaven.org/file/ph-assets/Models/blend/1k/painted_wooden_chair_01/painted_wooden_chair_01_1k.blend",
+    "md5": "6fa840f5df3cfe51125b6861e60f602e",
+    "license": "CC0",
+    "license_url": "https://polyhaven.com/license"
+  },
+  {
+    "asset": "painted_wooden_chair_01",
+    "path": "C:\\Users\\quali\\OneDrive\\Desktop\\source\\Ashfall\\concept-art\\preproduction\\sources\\painted_wooden_chair_01\\textures\\painted_wooden_chair_01_diff_1k.jpg",
+    "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/painted_wooden_chair_01/painted_wooden_chair_01_diff_1k.jpg",
+    "md5": "94c34f4a211eec5bd30017564e09be4c",
+    "license": "CC0",
+    "license_url": "https://polyhaven.com/license"
+  },
+  {
+    "asset": "painted_wooden_chair_01",
+    "path": "C:\\Users\\quali\\OneDrive\\Desktop\\source\\Ashfall\\concept-art\\preproduction\\sources\\painted_wooden_chair_01\\textures\\painted_wooden_chair_01_metal_1k.exr",
+    "url": "https://dl.polyhaven.org/file/ph-assets/Models/exr/1k/painted_wooden_chair_01/painted_wooden_chair_01_metal_1k.exr",
+    "md5": "24ecf260710c0e89e774128aec344430",
+    "license": "CC0",
+    "license_url": "https://polyhaven.com/license"
+  },
+  {
+    "asset": "painted_wooden_chair_01",
+    "path": "C:\\Users\\quali\\OneDrive\\Desktop\\source\\Ashfall\\concept-art\\preproduction\\sources\\painted_wooden_chair_01\\textures\\painted_wooden_chair_01_rough_1k.jpg",
+    "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/painted_wooden_chair_01/painted_wooden_chair_01_rough_1k.jpg",
+    "md5": "e535cdc1cb898165269f6235ef4673eb",
+    "license": "CC0",
+    "license_url": "https://polyhaven.com/license"
+  },
+  {
+    "asset": "painted_wooden_chair_01",
+    "path": "C:\\Users\\quali\\OneDrive\\Desktop\\source\\Ashfall\\concept-art\\preproduction\\sources\\painted_wooden_chair_01\\textures\\painted_wooden_chair_01_nor_gl_1k.exr",
+    "url": "https://dl.polyhaven.org/file/ph-assets/Models/exr/1k/painted_wooden_chair_01/painted_wooden_chair_01_nor_gl_1k.exr",
+    "md5": "173569f3f99e1d278a96c24a932a3607",
+    "license": "CC0",
+    "license_url": "https://polyhaven.com/license"
+  },
+  {
+    "asset": "old_bed_frame",
+    "path": "C:\\Users\\quali\\OneDrive\\Desktop\\source\\Ashfall\\concept-art\\preproduction\\sources\\old_bed_frame\\old_bed_frame_1k.blend",
+    "url": "https://dl.polyhaven.org/file/ph-assets/Models/blend/1k/old_bed_frame/old_bed_frame_1k.blend",
+    "md5": "26194f815f2343e439a919fd689ca807",
+    "license": "CC0",
+    "license_url": "https://polyhaven.com/license"
+  },
+  {
+    "asset": "old_bed_frame",
+    "path": "C:\\Users\\quali\\OneDrive\\Desktop\\source\\Ashfall\\concept-art\\preproduction\\sources\\old_bed_frame\\textures\\old_bed_frame_diff_1k.jpg",
+    "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/old_bed_frame/old_bed_frame_diff_1k.jpg",
+    "md5": "f8ce1aa5413c1473f3bfa5ba95ea72ee",
+    "license": "CC0",
+    "license_url": "https://polyhaven.com/license"
+  },
+  {
+    "asset": "old_bed_frame",
+    "path": "C:\\Users\\quali\\OneDrive\\Desktop\\source\\Ashfall\\concept-art\\preproduction\\sources\\old_bed_frame\\textures\\old_bed_frame_metal_1k.exr",
+    "url": "https://dl.polyhaven.org/file/ph-assets/Models/exr/1k/old_bed_frame/old_bed_frame_metal_1k.exr",
+    "md5": "02005de4b06477ca045e8c74d1093660",
+    "license": "CC0",
+    "license_url": "https://polyhaven.com/license"
+  },
+  {
+    "asset": "old_bed_frame",
+    "path": "C:\\Users\\quali\\OneDrive\\Desktop\\source\\Ashfall\\concept-art\\preproduction\\sources\\old_bed_frame\\textures\\old_bed_frame_nor_gl_1k.exr",
+    "url": "https://dl.polyhaven.org/file/ph-assets/Models/exr/1k/old_bed_frame/old_bed_frame_nor_gl_1k.exr",
+    "md5": "0c88f936275a4b110d638b25fc89af31",
+    "license": "CC0",
+    "license_url": "https://polyhaven.com/license"
+  },
+  {
+    "asset": "old_bed_frame",
+    "path": "C:\\Users\\quali\\OneDrive\\Desktop\\source\\Ashfall\\concept-art\\preproduction\\sources\\old_bed_frame\\textures\\old_bed_frame_rough_1k.exr",
+    "url": "https://dl.polyhaven.org/file/ph-assets/Models/exr/1k/old_bed_frame/old_bed_frame_rough_1k.exr",
+    "md5": "5e8911c65aa7a2df5a950aa7928bd99d",
+    "license": "CC0",
+    "license_url": "https://polyhaven.com/license"
+  },
+  {
+    "asset": "metal_office_desk",
+    "path": "C:\\Users\\quali\\OneDrive\\Desktop\\source\\Ashfall\\concept-art\\preproduction\\sources\\metal_office_desk\\metal_office_desk_1k.blend",
+    "url": "https://dl.polyhaven.org/file/ph-assets/Models/blend/1k/metal_office_desk/metal_office_desk_1k.blend",
+    "md5": "2ed8daf5a55f756a5c3c330baffb3770",
+    "license": "CC0",
+    "license_url": "https://polyhaven.com/license"
+  },
+  {
+    "asset": "metal_office_desk",
+    "path": "C:\\Users\\quali\\OneDrive\\Desktop\\source\\Ashfall\\concept-art\\preproduction\\sources\\metal_office_desk\\textures\\metal_office_desk_diff_1k.jpg",
+    "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/metal_office_desk/metal_office_desk_diff_1k.jpg",
+    "md5": "6a27263c95811fa902ddea6476d610e9",
+    "license": "CC0",
+    "license_url": "https://polyhaven.com/license"
+  },
+  {
+    "asset": "metal_office_desk",
+    "path": "C:\\Users\\quali\\OneDrive\\Desktop\\source\\Ashfall\\concept-art\\preproduction\\sources\\metal_office_desk\\textures\\metal_office_desk_metal_1k.exr",
+    "url": "https://dl.polyhaven.org/file/ph-assets/Models/exr/1k/metal_office_desk/metal_office_desk_metal_1k.exr",
+    "md5": "d18c7ad7e26c10211ae284403b7c5da5",
+    "license": "CC0",
+    "license_url": "https://polyhaven.com/license"
+  },
+  {
+    "asset": "metal_office_desk",
+    "path": "C:\\Users\\quali\\OneDrive\\Desktop\\source\\Ashfall\\concept-art\\preproduction\\sources\\metal_office_desk\\textures\\metal_office_desk_nor_gl_1k.exr",
+    "url": "https://dl.polyhaven.org/file/ph-assets/Models/exr/1k/metal_office_desk/metal_office_desk_nor_gl_1k.exr",
+    "md5": "13d7622ec2e38fbfed884283e99962f5",
+    "license": "CC0",
+    "license_url": "https://polyhaven.com/license"
+  },
+  {
+    "asset": "metal_office_desk",
+    "path": "C:\\Users\\quali\\OneDrive\\Desktop\\source\\Ashfall\\concept-art\\preproduction\\sources\\metal_office_desk\\textures\\metal_office_desk_rough_1k.exr",
+    "url": "https://dl.polyhaven.org/file/ph-assets/Models/exr/1k/metal_office_desk/metal_office_desk_rough_1k.exr",
+    "md5": "7e8e84038af8b72557f9a5074a4e2d32",
+    "license": "CC0",
+    "license_url": "https://polyhaven.com/license"
+  },
+  {
+    "asset": "chemistry_set",
+    "path": "C:\\Users\\quali\\OneDrive\\Desktop\\source\\Ashfall\\concept-art\\preproduction\\sources\\chemistry_set\\chemistry_set_1k.blend",
+    "url": "https://dl.polyhaven.org/file/ph-assets/Models/blend/1k/chemistry_set/chemistry_set_1k.blend",
+    "md5": "e79a902b61fe4c736ae9de06da0d80ea",
+    "license": "CC0",
+    "license_url": "https://polyhaven.com/license"
+  },
+  {
+    "asset": "chemistry_set",
+    "path": "C:\\Users\\quali\\OneDrive\\Desktop\\source\\Ashfall\\concept-art\\preproduction\\sources\\chemistry_set\\textures\\chemistry_set_alpha_1k.png",
+    "url": "https://dl.polyhaven.org/file/ph-assets/Models/png/1k/chemistry_set/chemistry_set_alpha_1k.png",
+    "md5": "ec3ea39382775df3f289d965af35dfd9",
+    "license": "CC0",
+    "license_url": "https://polyhaven.com/license"
+  },
+  {
+    "asset": "chemistry_set",
+    "path": "C:\\Users\\quali\\OneDrive\\Desktop\\source\\Ashfall\\concept-art\\preproduction\\sources\\chemistry_set\\textures\\chemistry_set_diff_1k.jpg",
+    "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/chemistry_set/chemistry_set_diff_1k.jpg",
+    "md5": "a93571004c8974d96093010561128bbe",
+    "license": "CC0",
+    "license_url": "https://polyhaven.com/license"
+  },
+  {
+    "asset": "chemistry_set",
+    "path": "C:\\Users\\quali\\OneDrive\\Desktop\\source\\Ashfall\\concept-art\\preproduction\\sources\\chemistry_set\\textures\\chemistry_set_metal_1k.exr",
+    "url": "https://dl.polyhaven.org/file/ph-assets/Models/exr/1k/chemistry_set/chemistry_set_metal_1k.exr",
+    "md5": "4c3784f77adde815fe412ffa5ece46ec",
+    "license": "CC0",
+    "license_url": "https://polyhaven.com/license"
+  },
+  {
+    "asset": "chemistry_set",
+    "path": "C:\\Users\\quali\\OneDrive\\Desktop\\source\\Ashfall\\concept-art\\preproduction\\sources\\chemistry_set\\textures\\chemistry_set_nor_gl_1k.exr",
+    "url": "https://dl.polyhaven.org/file/ph-assets/Models/exr/1k/chemistry_set/chemistry_set_nor_gl_1k.exr",
+    "md5": "351b25a0684c32d404f3b6ea42e78c62",
+    "license": "CC0",
+    "license_url": "https://polyhaven.com/license"
+  },
+  {
+    "asset": "chemistry_set",
+    "path": "C:\\Users\\quali\\OneDrive\\Desktop\\source\\Ashfall\\concept-art\\preproduction\\sources\\chemistry_set\\textures\\chemistry_set_rough_1k.exr",
+    "url": "https://dl.polyhaven.org/file/ph-assets/Models/exr/1k/chemistry_set/chemistry_set_rough_1k.exr",
+    "md5": "8a0b06d6bfe34b2eb1a565f9d8b0a6b7",
+    "license": "CC0",
+    "license_url": "https://polyhaven.com/license"
+  },
+  {
+    "asset": "industrial_microscope",
+    "path": "C:\\Users\\quali\\OneDrive\\Desktop\\source\\Ashfall\\concept-art\\preproduction\\sources\\industrial_microscope\\industrial_microscope_1k.blend",
+    "url": "https://dl.polyhaven.org/file/ph-assets/Models/blend/1k/industrial_microscope/industrial_microscope_1k.blend",
+    "md5": "a567de6498d53280b81029a1c7da90d7",
+    "license": "CC0",
+    "license_url": "https://polyhaven.com/license"
+  },
+  {
+    "asset": "industrial_microscope",
+    "path": "C:\\Users\\quali\\OneDrive\\Desktop\\source\\Ashfall\\concept-art\\preproduction\\sources\\industrial_microscope\\textures\\industrial_microscope_diff_1k.jpg",
+    "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/industrial_microscope/industrial_microscope_diff_1k.jpg",
+    "md5": "d98e729ea074d94a3a3e34050bc68a94",
+    "license": "CC0",
+    "license_url": "https://polyhaven.com/license"
+  },
+  {
+    "asset": "industrial_microscope",
+    "path": "C:\\Users\\quali\\OneDrive\\Desktop\\source\\Ashfall\\concept-art\\preproduction\\sources\\industrial_microscope\\textures\\industrial_microscope_metal_1k.exr",
+    "url": "https://dl.polyhaven.org/file/ph-assets/Models/exr/1k/industrial_microscope/industrial_microscope_metal_1k.exr",
+    "md5": "efa770ed22fe82446741373986687634",
+    "license": "CC0",
+    "license_url": "https://polyhaven.com/license"
+  },
+  {
+    "asset": "industrial_microscope",
+    "path": "C:\\Users\\quali\\OneDrive\\Desktop\\source\\Ashfall\\concept-art\\preproduction\\sources\\industrial_microscope\\textures\\industrial_microscope_nor_gl_1k.exr",
+    "url": "https://dl.polyhaven.org/file/ph-assets/Models/exr/1k/industrial_microscope/industrial_microscope_nor_gl_1k.exr",
+    "md5": "ec3441ca11cbec2e755097741eaceeba",
+    "license": "CC0",
+    "license_url": "https://polyhaven.com/license"
+  },
+  {
+    "asset": "industrial_microscope",
+    "path": "C:\\Users\\quali\\OneDrive\\Desktop\\source\\Ashfall\\concept-art\\preproduction\\sources\\industrial_microscope\\textures\\industrial_microscope_rough_1k.exr",
+    "url": "https://dl.polyhaven.org/file/ph-assets/Models/exr/1k/industrial_microscope/industrial_microscope_rough_1k.exr",
+    "md5": "67bcf8b9767036369b88cd7b5a16f70b",
+    "license": "CC0",
+    "license_url": "https://polyhaven.com/license"
+  },
+  {
+    "asset": "retro_multimeter",
+    "path": "C:\\Users\\quali\\OneDrive\\Desktop\\source\\Ashfall\\concept-art\\preproduction\\sources\\retro_multimeter\\retro_multimeter_1k.blend",
+    "url": "https://dl.polyhaven.org/file/ph-assets/Models/blend/1k/retro_multimeter/retro_multimeter_1k.blend",
+    "md5": "20767e18dfa3c8dd6c03c41094e9bbcf",
+    "license": "CC0",
+    "license_url": "https://polyhaven.com/license"
+  },
+  {
+    "asset": "retro_multimeter",
+    "path": "C:\\Users\\quali\\OneDrive\\Desktop\\source\\Ashfall\\concept-art\\preproduction\\sources\\retro_multimeter\\textures\\retro_multimeter_alpha_1k.png",
+    "url": "https://dl.polyhaven.org/file/ph-assets/Models/png/1k/retro_multimeter/retro_multimeter_alpha_1k.png",
+    "md5": "913f86a0a78a846114a731b6e3fd4933",
+    "license": "CC0",
+    "license_url": "https://polyhaven.com/license"
+  },
+  {
+    "asset": "retro_multimeter",
+    "path": "C:\\Users\\quali\\OneDrive\\Desktop\\source\\Ashfall\\concept-art\\preproduction\\sources\\retro_multimeter\\textures\\retro_multimeter_diff_1k.jpg",
+    "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/retro_multimeter/retro_multimeter_diff_1k.jpg",
+    "md5": "47901b8cbb376b1a3a94425c83647cf4",
+    "license": "CC0",
+    "license_url": "https://polyhaven.com/license"
+  },
+  {
+    "asset": "retro_multimeter",
+    "path": "C:\\Users\\quali\\OneDrive\\Desktop\\source\\Ashfall\\concept-art\\preproduction\\sources\\retro_multimeter\\textures\\retro_multimeter_metal_1k.exr",
+    "url": "https://dl.polyhaven.org/file/ph-assets/Models/exr/1k/retro_multimeter/retro_multimeter_metal_1k.exr",
+    "md5": "4714e4948543fa20ebb25becb4248428",
+    "license": "CC0",
+    "license_url": "https://polyhaven.com/license"
+  },
+  {
+    "asset": "retro_multimeter",
+    "path": "C:\\Users\\quali\\OneDrive\\Desktop\\source\\Ashfall\\concept-art\\preproduction\\sources\\retro_multimeter\\textures\\retro_multimeter_nor_gl_1k.exr",
+    "url": "https://dl.polyhaven.org/file/ph-assets/Models/exr/1k/retro_multimeter/retro_multimeter_nor_gl_1k.exr",
+    "md5": "96c3eb5c3476a2bf57bf9c2ccb01a36e",
+    "license": "CC0",
+    "license_url": "https://polyhaven.com/license"
+  },
+  {
+    "asset": "retro_multimeter",
+    "path": "C:\\Users\\quali\\OneDrive\\Desktop\\source\\Ashfall\\concept-art\\preproduction\\sources\\retro_multimeter\\textures\\retro_multimeter_rough_1k.exr",
+    "url": "https://dl.polyhaven.org/file/ph-assets/Models/exr/1k/retro_multimeter/retro_multimeter_rough_1k.exr",
+    "md5": "786067dda7f285d486b6f58994ce43f3",
+    "license": "CC0",
+    "license_url": "https://polyhaven.com/license"
+  },
+  {
+    "asset": "cassette_player",
+    "path": "C:\\Users\\quali\\OneDrive\\Desktop\\source\\Ashfall\\concept-art\\preproduction\\sources\\cassette_player\\cassette_player_1k.blend",
+    "url": "https://dl.polyhaven.org/file/ph-assets/Models/blend/1k/cassette_player/cassette_player_1k.blend",
+    "md5": "1bb066a77ae0d5457f12a2e72b3a1c0f",
+    "license": "CC0",
+    "license_url": "https://polyhaven.com/license"
+  },
+  {
+    "asset": "cassette_player",
+    "path": "C:\\Users\\quali\\OneDrive\\Desktop\\source\\Ashfall\\concept-art\\preproduction\\sources\\cassette_player\\textures\\cassette_player_body_diff_1k.png",
+    "url": "https://dl.polyhaven.org/file/ph-assets/Models/png/1k/cassette_player/cassette_player_body_diff_1k.png",
+    "md5": "0cad0079efaa8f11ef4a92c5022a4b84",
+    "license": "CC0",
+    "license_url": "https://polyhaven.com/license"
+  },
+  {
+    "asset": "cassette_player",
+    "path": "C:\\Users\\quali\\OneDrive\\Desktop\\source\\Ashfall\\concept-art\\preproduction\\sources\\cassette_player\\textures\\cassette_player_tape_nor_gl_1k.png",
+    "url": "https://dl.polyhaven.org/file/ph-assets/Models/png/1k/cassette_player/cassette_player_tape_nor_gl_1k.png",
+    "md5": "837a1120e3eb5ddf4f896084ae4f1c3f",
+    "license": "CC0",
+    "license_url": "https://polyhaven.com/license"
+  },
+  {
+    "asset": "cassette_player",
+    "path": "C:\\Users\\quali\\OneDrive\\Desktop\\source\\Ashfall\\concept-art\\preproduction\\sources\\cassette_player\\textures\\cassette_player_body_opacity_1k.png",
+    "url": "https://dl.polyhaven.org/file/ph-assets/Models/png/1k/cassette_player/cassette_player_body_opacity_1k.png",
+    "md5": "59d5efe97194c5e78c7c10add204adc8",
+    "license": "CC0",
+    "license_url": "https://polyhaven.com/license"
+  },
+  {
+    "asset": "cassette_player",
+    "path": "C:\\Users\\quali\\OneDrive\\Desktop\\source\\Ashfall\\concept-art\\preproduction\\sources\\cassette_player\\textures\\cassette_player_tape_orangeblue_diff_1k.png",
+    "url": "https://dl.polyhaven.org/file/ph-assets/Models/png/1k/cassette_player/cassette_player_tape_orangeblue_diff_1k.png",
+    "md5": "e180506b265dd43b1db3e63e406093fe",
+    "license": "CC0",
+    "license_url": "https://polyhaven.com/license"
+  },
+  {
+    "asset": "cassette_player",
+    "path": "C:\\Users\\quali\\OneDrive\\Desktop\\source\\Ashfall\\concept-art\\preproduction\\sources\\cassette_player\\textures\\cassette_player_tape_roughness_1k.png",
+    "url": "https://dl.polyhaven.org/file/ph-assets/Models/png/1k/cassette_player/cassette_player_tape_roughness_1k.png",
+    "md5": "9eb0bca34309b73edeb89fa8b96f9ac5",
+    "license": "CC0",
+    "license_url": "https://polyhaven.com/license"
+  },
+  {
+    "asset": "cassette_player",
+    "path": "C:\\Users\\quali\\OneDrive\\Desktop\\source\\Ashfall\\concept-art\\preproduction\\sources\\cassette_player\\textures\\cassette_player_body_metallic_1k.png",
+    "url": "https://dl.polyhaven.org/file/ph-assets/Models/png/1k/cassette_player/cassette_player_body_metallic_1k.png",
+    "md5": "6ef823ca20bdb5756816202380871b9a",
+    "license": "CC0",
+    "license_url": "https://polyhaven.com/license"
+  },
+  {
+    "asset": "cassette_player",
+    "path": "C:\\Users\\quali\\OneDrive\\Desktop\\source\\Ashfall\\concept-art\\preproduction\\sources\\cassette_player\\textures\\cassette_player_tape_metallic_1k.png",
+    "url": "https://dl.polyhaven.org/file/ph-assets/Models/png/1k/cassette_player/cassette_player_tape_metallic_1k.png",
+    "md5": "ee3fff04b8a8360daf5c85e2c732acd7",
+    "license": "CC0",
+    "license_url": "https://polyhaven.com/license"
+  },
+  {
+    "asset": "cassette_player",
+    "path": "C:\\Users\\quali\\OneDrive\\Desktop\\source\\Ashfall\\concept-art\\preproduction\\sources\\cassette_player\\textures\\cassette_player_body_roughness_1k.png",
+    "url": "https://dl.polyhaven.org/file/ph-assets/Models/png/1k/cassette_player/cassette_player_body_roughness_1k.png",
+    "md5": "0406ea79aff690f0b23ddb90b2e3091f",
+    "license": "CC0",
+    "license_url": "https://polyhaven.com/license"
+  },
+  {
+    "asset": "cassette_player",
+    "path": "C:\\Users\\quali\\OneDrive\\Desktop\\source\\Ashfall\\concept-art\\preproduction\\sources\\cassette_player\\textures\\cassette_player_body_nor_gl_1k.png",
+    "url": "https://dl.polyhaven.org/file/ph-assets/Models/png/1k/cassette_player/cassette_player_body_nor_gl_1k.png",
+    "md5": "27000eeddd6be3057d2534884ebe8ef4",
+    "license": "CC0",
+    "license_url": "https://polyhaven.com/license"
+  },
+  {
+    "asset": "service_pistol",
+    "path": "C:\\Users\\quali\\OneDrive\\Desktop\\source\\Ashfall\\concept-art\\preproduction\\sources\\service_pistol\\service_pistol_1k.blend",
+    "url": "https://dl.polyhaven.org/file/ph-assets/Models/blend/1k/service_pistol/service_pistol_1k.blend",
+    "md5": "10948580b37d4dfe522d25a6ff7e9927",
+    "license": "CC0",
+    "license_url": "https://polyhaven.com/license"
+  },
+  {
+    "asset": "service_pistol",
+    "path": "C:\\Users\\quali\\OneDrive\\Desktop\\source\\Ashfall\\concept-art\\preproduction\\sources\\service_pistol\\textures\\service_pistol_rough_1k.exr",
+    "url": "https://dl.polyhaven.org/file/ph-assets/Models/exr/1k/service_pistol/service_pistol_rough_1k.exr",
+    "md5": "68fcef8d4c039601382ec8dc76061c3a",
+    "license": "CC0",
+    "license_url": "https://polyhaven.com/license"
+  },
+  {
+    "asset": "service_pistol",
+    "path": "C:\\Users\\quali\\OneDrive\\Desktop\\source\\Ashfall\\concept-art\\preproduction\\sources\\service_pistol\\textures\\service_pistol_diff_1k.jpg",
+    "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/service_pistol/service_pistol_diff_1k.jpg",
+    "md5": "9954be782e3d946c1c73d7d4f476687e",
+    "license": "CC0",
+    "license_url": "https://polyhaven.com/license"
+  },
+  {
+    "asset": "service_pistol",
+    "path": "C:\\Users\\quali\\OneDrive\\Desktop\\source\\Ashfall\\concept-art\\preproduction\\sources\\service_pistol\\textures\\service_pistol_nor_gl_1k.exr",
+    "url": "https://dl.polyhaven.org/file/ph-assets/Models/exr/1k/service_pistol/service_pistol_nor_gl_1k.exr",
+    "md5": "ca611ba91eddd357c834a645d4aeea8d",
+    "license": "CC0",
+    "license_url": "https://polyhaven.com/license"
+  },
+  {
+    "asset": "service_pistol",
+    "path": "C:\\Users\\quali\\OneDrive\\Desktop\\source\\Ashfall\\concept-art\\preproduction\\sources\\service_pistol\\textures\\service_pistol_metal_1k.exr",
+    "url": "https://dl.polyhaven.org/file/ph-assets/Models/exr/1k/service_pistol/service_pistol_metal_1k.exr",
+    "md5": "932e4ebdeb33dd1eb42c0cf3497c7cb4",
+    "license": "CC0",
+    "license_url": "https://polyhaven.com/license"
+  },
+  {
+    "asset": "bolt_action_rifle_7_62",
+    "path": "C:\\Users\\quali\\OneDrive\\Desktop\\source\\Ashfall\\concept-art\\preproduction\\sources\\bolt_action_rifle_7_62\\bolt_action_rifle_7_62_1k.blend",
+    "url": "https://dl.polyhaven.org/file/ph-assets/Models/blend/1k/bolt_action_rifle_7_62/bolt_action_rifle_7_62_1k.blend",
+    "md5": "0cd962031498b40c4a127e77db18ae36",
+    "license": "CC0",
+    "license_url": "https://polyhaven.com/license"
+  },
+  {
+    "asset": "bolt_action_rifle_7_62",
+    "path": "C:\\Users\\quali\\OneDrive\\Desktop\\source\\Ashfall\\concept-art\\preproduction\\sources\\bolt_action_rifle_7_62\\textures\\bolt_action_rifle_7_62_accesories_alpha_1k.png",
+    "url": "https://dl.polyhaven.org/file/ph-assets/Models/png/1k/bolt_action_rifle_7_62/bolt_action_rifle_7_62_accesories_alpha_1k.png",
+    "md5": "c7a2571b2727453c596fd763fbb1f392",
+    "license": "CC0",
+    "license_url": "https://polyhaven.com/license"
+  },
+  {
+    "asset": "bolt_action_rifle_7_62",
+    "path": "C:\\Users\\quali\\OneDrive\\Desktop\\source\\Ashfall\\concept-art\\preproduction\\sources\\bolt_action_rifle_7_62\\textures\\bolt_action_rifle_7_62_accesories_diff_1k.png",
+    "url": "https://dl.polyhaven.org/file/ph-assets/Models/png/1k/bolt_action_rifle_7_62/bolt_action_rifle_7_62_accesories_diff_1k.png",
+    "md5": "d0a8f3ee637584c1b8de220e49443398",
+    "license": "CC0",
+    "license_url": "https://polyhaven.com/license"
+  },
+  {
+    "asset": "bolt_action_rifle_7_62",
+    "path": "C:\\Users\\quali\\OneDrive\\Desktop\\source\\Ashfall\\concept-art\\preproduction\\sources\\bolt_action_rifle_7_62\\textures\\bolt_action_rifle_7_62_accesories_metal_1k.png",
+    "url": "https://dl.polyhaven.org/file/ph-assets/Models/png/1k/bolt_action_rifle_7_62/bolt_action_rifle_7_62_accesories_metal_1k.png",
+    "md5": "98fb3d72f0fbeac8bacc13a70c3098ad",
+    "license": "CC0",
+    "license_url": "https://polyhaven.com/license"
+  },
+  {
+    "asset": "bolt_action_rifle_7_62",
+    "path": "C:\\Users\\quali\\OneDrive\\Desktop\\source\\Ashfall\\concept-art\\preproduction\\sources\\bolt_action_rifle_7_62\\textures\\bolt_action_rifle_7_62_accesories_nor_gl_1k.png",
+    "url": "https://dl.polyhaven.org/file/ph-assets/Models/png/1k/bolt_action_rifle_7_62/bolt_action_rifle_7_62_accesories_nor_gl_1k.png",
+    "md5": "5ad259651c64de2942408dd722f3168a",
+    "license": "CC0",
+    "license_url": "https://polyhaven.com/license"
+  },
+  {
+    "asset": "bolt_action_rifle_7_62",
+    "path": "C:\\Users\\quali\\OneDrive\\Desktop\\source\\Ashfall\\concept-art\\preproduction\\sources\\bolt_action_rifle_7_62\\textures\\bolt_action_rifle_7_62_accesories_rough_1k.png",
+    "url": "https://dl.polyhaven.org/file/ph-assets/Models/png/1k/bolt_action_rifle_7_62/bolt_action_rifle_7_62_accesories_rough_1k.png",
+    "md5": "d2de81304a2fcf50155ad7fa79072da6",
+    "license": "CC0",
+    "license_url": "https://polyhaven.com/license"
+  },
+  {
+    "asset": "bolt_action_rifle_7_62",
+    "path": "C:\\Users\\quali\\OneDrive\\Desktop\\source\\Ashfall\\concept-art\\preproduction\\sources\\bolt_action_rifle_7_62\\textures\\bolt_action_rifle_7_62_diff_1k.jpg",
+    "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/bolt_action_rifle_7_62/bolt_action_rifle_7_62_diff_1k.jpg",
+    "md5": "43bfcb606edaf9728d98db42e9b16f0a",
+    "license": "CC0",
+    "license_url": "https://polyhaven.com/license"
+  },
+  {
+    "asset": "bolt_action_rifle_7_62",
+    "path": "C:\\Users\\quali\\OneDrive\\Desktop\\source\\Ashfall\\concept-art\\preproduction\\sources\\bolt_action_rifle_7_62\\textures\\bolt_action_rifle_7_62_metal_1k.exr",
+    "url": "https://dl.polyhaven.org/file/ph-assets/Models/exr/1k/bolt_action_rifle_7_62/bolt_action_rifle_7_62_metal_1k.exr",
+    "md5": "67455506da2075f2bd87dae84d869cdf",
+    "license": "CC0",
+    "license_url": "https://polyhaven.com/license"
+  },
+  {
+    "asset": "bolt_action_rifle_7_62",
+    "path": "C:\\Users\\quali\\OneDrive\\Desktop\\source\\Ashfall\\concept-art\\preproduction\\sources\\bolt_action_rifle_7_62\\textures\\bolt_action_rifle_7_62_nor_gl_1k.exr",
+    "url": "https://dl.polyhaven.org/file/ph-assets/Models/exr/1k/bolt_action_rifle_7_62/bolt_action_rifle_7_62_nor_gl_1k.exr",
+    "md5": "45622b510c749ae5570d9391154c24a7",
+    "license": "CC0",
+    "license_url": "https://polyhaven.com/license"
+  },
+  {
+    "asset": "bolt_action_rifle_7_62",
+    "path": "C:\\Users\\quali\\OneDrive\\Desktop\\source\\Ashfall\\concept-art\\preproduction\\sources\\bolt_action_rifle_7_62\\textures\\bolt_action_rifle_7_62_rough_1k.exr",
+    "url": "https://dl.polyhaven.org/file/ph-assets/Models/exr/1k/bolt_action_rifle_7_62/bolt_action_rifle_7_62_rough_1k.exr",
+    "md5": "5d8c1cb3f8e524e4475d0314f986730b",
+    "license": "CC0",
+    "license_url": "https://polyhaven.com/license"
+  },
+  {
+    "asset": "dining_table",
+    "path": "C:\\Users\\quali\\OneDrive\\Desktop\\source\\Ashfall\\concept-art\\preproduction\\sources\\dining_table\\dining_table_1k.blend",
+    "url": "https://dl.polyhaven.org/file/ph-assets/Models/blend/1k/dining_table/dining_table_1k.blend",
+    "md5": "e1fcb930604551f62ae58b711a4131ae",
+    "license": "CC0",
+    "license_url": "https://polyhaven.com/license"
+  },
+  {
+    "asset": "dining_table",
+    "path": "C:\\Users\\quali\\OneDrive\\Desktop\\source\\Ashfall\\concept-art\\preproduction\\sources\\dining_table\\textures\\dining_table_diff_1k.jpg",
+    "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/dining_table/dining_table_diff_1k.jpg",
+    "md5": "a309bb6839c628305059775d7480c8b7",
+    "license": "CC0",
+    "license_url": "https://polyhaven.com/license"
+  },
+  {
+    "asset": "dining_table",
+    "path": "C:\\Users\\quali\\OneDrive\\Desktop\\source\\Ashfall\\concept-art\\preproduction\\sources\\dining_table\\textures\\dining_table_nor_gl_1k.exr",
+    "url": "https://dl.polyhaven.org/file/ph-assets/Models/exr/1k/dining_table/dining_table_nor_gl_1k.exr",
+    "md5": "1140d1ee73f110c7a07f2025f66a735c",
+    "license": "CC0",
+    "license_url": "https://polyhaven.com/license"
+  },
+  {
+    "asset": "dining_table",
+    "path": "C:\\Users\\quali\\OneDrive\\Desktop\\source\\Ashfall\\concept-art\\preproduction\\sources\\dining_table\\textures\\dining_table_rough_1k.exr",
+    "url": "https://dl.polyhaven.org/file/ph-assets/Models/exr/1k/dining_table/dining_table_rough_1k.exr",
+    "md5": "78a68770dbe2a005d2a700bfd47d2971",
+    "license": "CC0",
+    "license_url": "https://polyhaven.com/license"
+  }
+]

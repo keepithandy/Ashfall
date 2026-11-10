@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="PackedScene" path="res://assets/crossroads_props/exposed_roots.glb" id="1"]
+[ext_resource type="Script" path="res://assets/crossroads_props/shared_materials.gd" id="2"]
+
+[node name="exposed_roots" type="Node3D"]
+script = ExtResource("2")
+
+[node name="Visual" parent="." instance=ExtResource("1")]

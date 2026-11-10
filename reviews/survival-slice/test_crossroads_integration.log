@@ -1,0 +1,21 @@
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS: station saved in main scene
+PASS: station placement belongs to the main scene
+PASS: exactly one station at runtime
+PASS: station meshes have normals and tangent space
+PASS: floor has correctly oriented, flat top normals
+PASS: interior and yard dressing load in the playable scene
+PASS: Blender roof replaces the old roof visuals
+PASS: roof collision remains active
+PASS: foundation supports player at (-5.5, 0.0, -3.5)
+PASS: foundation supports player at (5.5, 0.0, -3.5)
+PASS: foundation supports player at (-5.5, 0.0, 3.5)
+PASS: foundation supports player at (5.5, 0.0, 3.5)
+PASS: player can target closed door
+PASS: game interaction opens hinged door
+PASS: standing player walks through doorway: (23.99782, 0.206795, 27.66162)
+PASS: player remains on station floor
+PASS: standing player can leave across the ramp: (3.996866, -0.190773, 5.504391)
+PASS: front wall blocks passage
+CROSSROADS_INTEGRATION: 0 failure(s)

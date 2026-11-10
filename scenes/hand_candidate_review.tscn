@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://scripts/review/hand_grip_review.gd" id="1"]
+[ext_resource type="PackedScene" path="res://scenes/characters/mannequin_hand_candidate.tscn" id="2"]
+
+[node name="HandCandidateReview" type="Node3D"]
+script = ExtResource("1")
+character_scene = ExtResource("2")
+capture_directory = "res://reviews/hand_candidate"

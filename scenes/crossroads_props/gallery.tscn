@@ -1,0 +1,53 @@
+[gd_scene load_steps=12 format=3]
+[ext_resource type="PackedScene" path="res://scenes/crossroads_props/hydraulic_jack.tscn" id="1"]
+[ext_resource type="PackedScene" path="res://scenes/crossroads_props/work_trestle.tscn" id="2"]
+[ext_resource type="PackedScene" path="res://scenes/crossroads_props/exposed_roots.tscn" id="3"]
+[ext_resource type="PackedScene" path="res://scenes/crossroads_props/mushroom_cluster.tscn" id="4"]
+[sub_resource type="StandardMaterial3D" id="base_mat"]
+albedo_color = Color(0.18, 0.19, 0.17, 1)
+roughness = 0.94
+[sub_resource type="BoxMesh" id="base_mesh"]
+material = SubResource("base_mat")
+size = Vector3(1.6, 0.12, 1.5)
+[sub_resource type="Environment" id="env"]
+background_mode = 1
+background_color = Color(0.105, 0.12, 0.12, 1)
+ambient_light_source = 3
+ambient_light_color = Color(0.7, 0.75, 0.72, 1)
+ambient_light_energy = 0.8
+tonemap_mode = 2
+[node name="CrossroadsPropsGallery" type="Node3D"]
+[node name="Environment" type="WorldEnvironment" parent="."]
+environment = SubResource("env")
+[node name="Sun" type="DirectionalLight3D" parent="."]
+rotation_degrees = Vector3(-48, -30, 0)
+light_energy = 1.35
+shadow_enabled = true
+[node name="Camera" type="Camera3D" parent="."]
+position = Vector3(4.6, 4.7, 7.6)
+rotation_degrees = Vector3(-28, 31, 0)
+projection = 1
+size = 5.2
+current = true
+[node name="BaseJack" type="MeshInstance3D" parent="."]
+position = Vector3(-1.05, -0.06, 1)
+mesh = SubResource("base_mesh")
+[node name="Jack" parent="." instance=ExtResource("1")]
+position = Vector3(-1.05, 0, 1)
+[node name="BaseTrestle" type="MeshInstance3D" parent="."]
+position = Vector3(1.05, -0.06, 1)
+mesh = SubResource("base_mesh")
+[node name="Trestle" parent="." instance=ExtResource("2")]
+position = Vector3(1.05, 0, 1)
+[node name="BaseRoots" type="MeshInstance3D" parent="."]
+position = Vector3(-1.05, -0.06, -1)
+mesh = SubResource("base_mesh")
+[node name="Roots" parent="." instance=ExtResource("3")]
+position = Vector3(-1.05, 0, -1)
+[node name="BaseMushrooms" type="MeshInstance3D" parent="."]
+position = Vector3(1.05, -0.06, -1)
+mesh = SubResource("base_mesh")
+[node name="Mushrooms" parent="." instance=ExtResource("4")]
+position = Vector3(1.05, 0, -1)
+scale = Vector3(2.5, 2.5, 2.5)
+

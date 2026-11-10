@@ -1,0 +1,40 @@
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS: load hydraulic_jack
+PASS: mesh present hydraulic_jack
+PASS: shared materials mapped hydraulic_jack
+BOUNDS hydraulic_jack [P: (-0.7824, 0.0, -0.171), S: (1.1306, 1.0512, 0.342)]
+PASS: ground origin hydraulic_jack
+PASS: jack metre scale
+PASS: collision policy hydraulic_jack
+PASS: no prop text hydraulic_jack
+PASS: vertical physics ray hydraulic_jack
+PASS: load work_trestle
+PASS: mesh present work_trestle
+PASS: shared materials mapped work_trestle
+BOUNDS work_trestle [P: (-0.56, 0.0, -0.2694), S: (1.12, 0.8347, 0.5388)]
+PASS: ground origin work_trestle
+PASS: trestle metre scale
+PASS: collision policy work_trestle
+PASS: no prop text work_trestle
+PASS: vertical physics ray work_trestle
+PASS: load exposed_roots
+PASS: mesh present exposed_roots
+PASS: shared materials mapped exposed_roots
+BOUNDS exposed_roots [P: (-0.7198, 0.0, -0.6865), S: (1.3862, 0.4501, 1.2848)]
+PASS: ground origin exposed_roots
+PASS: roots metre scale
+PASS: collision policy exposed_roots
+PASS: no prop text exposed_roots
+PASS: vertical physics ray exposed_roots
+PASS: load mushroom_cluster
+PASS: mesh present mushroom_cluster
+PASS: shared materials mapped mushroom_cluster
+BOUNDS mushroom_cluster [P: (-0.223, 0.0031, -0.1847), S: (0.4571, 0.2311, 0.3571)]
+PASS: ground origin mushroom_cluster
+PASS: mushroom metre scale
+PASS: collision policy mushroom_cluster
+PASS: no prop text mushroom_cluster
+PASS: vertical physics ray mushroom_cluster
+PASS: gallery scene loads
+PROP_RESULT: 0 failure(s)

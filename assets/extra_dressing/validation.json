@@ -1,0 +1,54 @@
+{
+	"assets": [
+		{
+			"bounds_m": "(1.2, 0.81342, 0.70873)",
+			"collision_shapes": 5,
+			"id": "wood_sawhorse",
+			"meshes": 3,
+			"triangles": 1104
+		},
+		{
+			"bounds_m": "(0.244, 1.23497, 0.060714)",
+			"collision_shapes": 2,
+			"id": "garden_shovel",
+			"meshes": 3,
+			"triangles": 792
+		},
+		{
+			"bounds_m": "(1.3, 0.065557, 0.92)",
+			"collision_shapes": 1,
+			"id": "scrap_sheet",
+			"meshes": 2,
+			"triangles": 5088
+		},
+		{
+			"bounds_m": "(0.814389, 0.467677, 0.545182)",
+			"collision_shapes": 1,
+			"id": "firewood_stack",
+			"meshes": 3,
+			"triangles": 652
+		},
+		{
+			"bounds_m": "(0.42502, 0.167443, 0.408919)",
+			"collision_shapes": 0,
+			"id": "mushroom_cluster",
+			"meshes": 2,
+			"triangles": 5112
+		},
+		{
+			"bounds_m": "(0.608302, 0.553834, 0.631112)",
+			"collision_shapes": 0,
+			"id": "dry_grass_tuft",
+			"meshes": 2,
+			"triangles": 2624
+		},
+		{
+			"bounds_m": "(1.094898, 0.184958, 1.008963)",
+			"collision_shapes": 0,
+			"id": "stone_scatter",
+			"meshes": 1,
+			"triangles": 2464
+		}
+	],
+	"failures": 0
+}

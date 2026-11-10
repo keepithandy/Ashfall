@@ -1,0 +1,80 @@
+[gd_scene load_steps=8 format=3]
+
+[ext_resource type="PackedScene" path="res://assets/crossroads_v03/scenes/maintenance_station_v03.tscn" id="1_station"]
+[ext_resource type="Script" path="res://assets/crossroads_v03/scripts/walkthrough_player.gd" id="2_walk"]
+[ext_resource type="Script" path="res://assets/crossroads_v03/scripts/inspection_stage.gd" id="3_stage"]
+
+[sub_resource type="BoxMesh" id="GroundMesh"]
+size = Vector3(52, 0.20, 52)
+
+[sub_resource type="BoxShape3D" id="GroundShape"]
+size = Vector3(52, 0.20, 52)
+
+[sub_resource type="CapsuleShape3D" id="PlayerShape"]
+radius = 0.31
+height = 1.75
+
+[sub_resource type="Environment" id="SkyEnvironment"]
+background_mode = 1
+background_color = Color(0.34, 0.36, 0.34, 1)
+ambient_light_source = 1
+ambient_light_color = Color(0.65, 0.68, 0.69, 1)
+ambient_light_energy = 0.65
+
+[node name="CrossroadsMaintenanceInspection" type="Node3D"]
+script = ExtResource("3_stage")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("SkyEnvironment")
+
+[node name="Daylight" type="DirectionalLight3D" parent="."]
+rotation = Vector3(-0.9, -0.6, 0)
+light_energy = 0.92
+shadow_enabled = true
+
+[node name="Ground" type="MeshInstance3D" parent="."]
+position = Vector3(0, -0.20, 0)
+mesh = SubResource("GroundMesh")
+
+[node name="GroundCollision" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="GroundCollision"]
+position = Vector3(0, -0.20, 0)
+shape = SubResource("GroundShape")
+
+[node name="Station" parent="." instance=ExtResource("1_station")]
+
+[node name="Player" type="CharacterBody3D" parent="."]
+position = Vector3(3.95, 0.0, 9.0)
+script = ExtResource("2_walk")
+
+[node name="PlayerCollider" type="CollisionShape3D" parent="Player"]
+position = Vector3(0, 0.88, 0)
+shape = SubResource("PlayerShape")
+
+[node name="Head" type="Node3D" parent="Player"]
+position = Vector3(0, 1.58, 0)
+
+[node name="Camera3D" type="Camera3D" parent="Player/Head"]
+current = true
+fov = 76.0
+
+[node name="InteractRay" type="RayCast3D" parent="Player/Head/Camera3D"]
+target_position = Vector3(0, 0, -2.8)
+collision_mask = 1
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="Instructions" type="Label" parent="UI"]
+offset_left = 15.0
+offset_top = 14.0
+offset_right = 850.0
+offset_bottom = 120.0
+text = "ASHFALL | CROSSROADS v0.3\nWASD move  •  Mouse look  •  E interact  •  R roof  •  ESC mouse"
+
+[node name="TargetHint" type="Label" parent="UI"]
+offset_left = 15.0
+offset_top = 115.0
+offset_right = 650.0
+offset_bottom = 160.0
+text = ""

@@ -1,0 +1,1785 @@
+[gd_scene format=3 uid="uid://c66wn265csv8p"]
+
+[ext_resource type="Script" uid="uid://s6yk4xee5w17" path="res://scripts/testing/ashfall_gallery_fly_camera.gd" id="1_flycam"]
+[ext_resource type="PackedScene" path="res://scenes/checkpoint_house.tscn" id="asset_001"]
+[ext_resource type="PackedScene" path="res://scenes/houses/blue_porch_cottage.tscn" id="asset_002"]
+[ext_resource type="PackedScene" path="res://assets/crossroads_v03/scenes/maintenance_station_v03.tscn" id="asset_003"]
+[ext_resource type="PackedScene" path="res://scenes/crossroads_kit/corner_1m.tscn" id="asset_004"]
+[ext_resource type="PackedScene" path="res://scenes/crossroads_kit/floor_4m.tscn" id="asset_005"]
+[ext_resource type="PackedScene" path="res://scenes/crossroads_kit/metal_door.tscn" id="asset_006"]
+[ext_resource type="PackedScene" path="res://scenes/crossroads_kit/roof_4m.tscn" id="asset_007"]
+[ext_resource type="PackedScene" path="res://scenes/crossroads_kit/wall_door_4m.tscn" id="asset_008"]
+[ext_resource type="PackedScene" path="res://scenes/crossroads_kit/wall_solid_2m.tscn" id="asset_009"]
+[ext_resource type="PackedScene" path="res://scenes/crossroads_kit/wall_solid_4m.tscn" id="asset_010"]
+[ext_resource type="PackedScene" path="res://scenes/crossroads_kit/wall_window_4m.tscn" id="asset_011"]
+[ext_resource type="PackedScene" path="res://assets/crossroads_v03/scenes/electrical_cabinet.tscn" id="asset_012"]
+[ext_resource type="PackedScene" path="res://assets/crossroads_v03/scenes/floor_slab_4m.tscn" id="asset_013"]
+[ext_resource type="PackedScene" path="res://assets/crossroads_v03/scenes/industrial_workbench.tscn" id="asset_014"]
+[ext_resource type="PackedScene" path="res://assets/crossroads_v03/scenes/roof_panel_4m.tscn" id="asset_015"]
+[ext_resource type="PackedScene" path="res://assets/crossroads_v03/scenes/wall_doorway_4m.tscn" id="asset_016"]
+[ext_resource type="PackedScene" path="res://assets/crossroads_v03/scenes/wall_garage_4m.tscn" id="asset_017"]
+[ext_resource type="PackedScene" path="res://assets/crossroads_v03/scenes/wall_solid_4m.tscn" id="asset_018"]
+[ext_resource type="PackedScene" path="res://assets/crossroads_v03/scenes/wall_window_4m.tscn" id="asset_019"]
+[ext_resource type="PackedScene" path="res://assets/crossroads_refined/damaged_wall.tscn" id="asset_020"]
+[ext_resource type="PackedScene" path="res://assets/crossroads_v02/scenes/damaged_wall_v02.tscn" id="asset_021"]
+[ext_resource type="PackedScene" path="res://assets/crossroads_v02/scenes/steel_door_v02.tscn" id="asset_022"]
+[ext_resource type="PackedScene" path="res://scenes/props/cable_spool.tscn" id="asset_023"]
+[ext_resource type="PackedScene" path="res://scenes/props/concrete_barrier.tscn" id="asset_024"]
+[ext_resource type="PackedScene" path="res://scenes/props/damaged_fence.tscn" id="asset_025"]
+[ext_resource type="PackedScene" path="res://scenes/props/desk_radio.tscn" id="asset_026"]
+[ext_resource type="PackedScene" path="res://scenes/props/electrical_cabinet.tscn" id="asset_027"]
+[ext_resource type="PackedScene" path="res://scenes/props/enamel_mug.tscn" id="asset_028"]
+[ext_resource type="PackedScene" path="res://scenes/props/equipment_case.tscn" id="asset_029"]
+[ext_resource type="PackedScene" path="res://scenes/props/field_cot.tscn" id="asset_030"]
+[ext_resource type="PackedScene" path="res://scenes/props/filing_cabinet.tscn" id="asset_031"]
+[ext_resource type="PackedScene" path="res://scenes/props/gas_cylinder.tscn" id="asset_032"]
+[ext_resource type="PackedScene" path="res://scenes/props/hand_truck.tscn" id="asset_033"]
+[ext_resource type="PackedScene" path="res://scenes/props/jerrycan.tscn" id="asset_034"]
+[ext_resource type="PackedScene" path="res://scenes/props/metal_bucket.tscn" id="asset_035"]
+[ext_resource type="PackedScene" path="res://scenes/props/pendant_light.tscn" id="asset_036"]
+[ext_resource type="PackedScene" path="res://scenes/props/pipe_bundle.tscn" id="asset_037"]
+[ext_resource type="PackedScene" path="res://scenes/props/portable_generator.tscn" id="asset_038"]
+[ext_resource type="PackedScene" path="res://scenes/props/radiator.tscn" id="asset_039"]
+[ext_resource type="PackedScene" path="res://scenes/props/rubble_pile.tscn" id="asset_040"]
+[ext_resource type="PackedScene" path="res://scenes/props/rusted_drum.tscn" id="asset_041"]
+[ext_resource type="PackedScene" path="res://scenes/props/sandbag_stack.tscn" id="asset_042"]
+[ext_resource type="PackedScene" path="res://scenes/props/shelving_unit.tscn" id="asset_043"]
+[ext_resource type="PackedScene" path="res://scenes/props/shipping_crate.tscn" id="asset_044"]
+[ext_resource type="PackedScene" path="res://scenes/props/steel_drum.tscn" id="asset_045"]
+[ext_resource type="PackedScene" path="res://scenes/props/tool_box.tscn" id="asset_046"]
+[ext_resource type="PackedScene" path="res://scenes/props/traffic_cone.tscn" id="asset_047"]
+[ext_resource type="PackedScene" path="res://scenes/props/valve_pipe.tscn" id="asset_048"]
+[ext_resource type="PackedScene" path="res://scenes/props/wall_fusebox.tscn" id="asset_049"]
+[ext_resource type="PackedScene" path="res://scenes/props/warning_sign.tscn" id="asset_050"]
+[ext_resource type="PackedScene" path="res://scenes/props/wooden_bench.tscn" id="asset_051"]
+[ext_resource type="PackedScene" path="res://scenes/props/wooden_pallet.tscn" id="asset_052"]
+[ext_resource type="PackedScene" path="res://scenes/props/work_light.tscn" id="asset_053"]
+[ext_resource type="PackedScene" path="res://scenes/props/worn_mattress.tscn" id="asset_054"]
+[ext_resource type="PackedScene" path="res://scenes/workshop/coiled_hose.tscn" id="asset_055"]
+[ext_resource type="PackedScene" path="res://scenes/workshop/discarded_tyre.tscn" id="asset_056"]
+[ext_resource type="PackedScene" path="res://scenes/workshop/fire_extinguisher.tscn" id="asset_057"]
+[ext_resource type="PackedScene" path="res://scenes/workshop/metal_chair.tscn" id="asset_058"]
+[ext_resource type="PackedScene" path="res://scenes/workshop/open_wood_crate.tscn" id="asset_059"]
+[ext_resource type="PackedScene" path="res://scenes/workshop/steel_ladder.tscn" id="asset_060"]
+[ext_resource type="PackedScene" path="res://scenes/workshop/wheelbarrow.tscn" id="asset_061"]
+[ext_resource type="PackedScene" path="res://scenes/workshop/workbench_vise.tscn" id="asset_062"]
+[ext_resource type="PackedScene" path="res://scenes/crossroads_props/exposed_roots.tscn" id="asset_063"]
+[ext_resource type="PackedScene" path="res://scenes/crossroads_props/hydraulic_jack.tscn" id="asset_064"]
+[ext_resource type="PackedScene" path="res://scenes/crossroads_props/mushroom_cluster.tscn" id="asset_065"]
+[ext_resource type="PackedScene" path="res://scenes/crossroads_props/work_trestle.tscn" id="asset_066"]
+[ext_resource type="PackedScene" path="res://scenes/extra_dressing/dry_grass_tuft.tscn" id="asset_067"]
+[ext_resource type="PackedScene" path="res://scenes/extra_dressing/firewood_stack.tscn" id="asset_068"]
+[ext_resource type="PackedScene" path="res://scenes/extra_dressing/garden_shovel.tscn" id="asset_069"]
+[ext_resource type="PackedScene" path="res://scenes/extra_dressing/mushroom_cluster.tscn" id="asset_070"]
+[ext_resource type="PackedScene" path="res://scenes/extra_dressing/scrap_sheet.tscn" id="asset_071"]
+[ext_resource type="PackedScene" path="res://scenes/extra_dressing/stone_scatter.tscn" id="asset_072"]
+[ext_resource type="PackedScene" path="res://scenes/extra_dressing/wood_sawhorse.tscn" id="asset_073"]
+[ext_resource type="PackedScene" path="res://scenes/nature/bare_tree.tscn" id="asset_074"]
+[ext_resource type="PackedScene" path="res://scenes/nature/dead_branch_pile.tscn" id="asset_075"]
+[ext_resource type="PackedScene" path="res://scenes/nature/dry_bramble.tscn" id="asset_076"]
+[ext_resource type="PackedScene" path="res://scenes/nature/fallen_log.tscn" id="asset_077"]
+[ext_resource type="PackedScene" path="res://scenes/nature/fern_clump.tscn" id="asset_078"]
+[ext_resource type="PackedScene" path="res://scenes/nature/forest_pine.tscn" id="asset_079"]
+[ext_resource type="PackedScene" path="res://scenes/nature/low_shrub.tscn" id="asset_080"]
+[ext_resource type="PackedScene" path="res://scenes/nature/mossy_boulder.tscn" id="asset_081"]
+[ext_resource type="PackedScene" path="res://scenes/nature/reed_clump.tscn" id="asset_082"]
+[ext_resource type="PackedScene" path="res://scenes/nature/tree_stump.tscn" id="asset_083"]
+[ext_resource type="PackedScene" path="res://scenes/items/handheld_flashlight.tscn" id="asset_084"]
+[ext_resource type="PackedScene" path="res://scenes/items/held_antiseptic.tscn" id="asset_085"]
+[ext_resource type="PackedScene" path="res://scenes/items/held_bandage.tscn" id="asset_086"]
+[ext_resource type="PackedScene" path="res://scenes/items/held_batteries.tscn" id="asset_087"]
+[ext_resource type="PackedScene" path="res://scenes/items/held_detector.tscn" id="asset_088"]
+[ext_resource type="PackedScene" path="res://scenes/items/held_field_radio.tscn" id="asset_089"]
+[ext_resource type="PackedScene" path="res://scenes/items/held_food_tin.tscn" id="asset_090"]
+[ext_resource type="PackedScene" path="res://scenes/items/held_water_bottle.tscn" id="asset_091"]
+[ext_resource type="PackedScene" path="res://scenes/loot/bandage.tscn" id="asset_092"]
+[ext_resource type="PackedScene" path="res://scenes/loot/batteries.tscn" id="asset_093"]
+[ext_resource type="PackedScene" path="res://scenes/loot/food_tin.tscn" id="asset_094"]
+
+[sub_resource type="Environment" id="ShowroomEnvironment"]
+background_mode = 1
+background_color = Color(0.2, 0.25, 0.29, 1)
+ambient_light_source = 2
+ambient_light_color = Color(0.84, 0.88, 0.93, 1)
+ambient_light_energy = 0.8
+reflected_light_source = 1
+tonemap_mode = 2
+
+[sub_resource type="StandardMaterial3D" id="GroundMaterial"]
+albedo_color = Color(0.11, 0.14, 0.17, 1)
+
+[sub_resource type="BoxMesh" id="GroundMesh"]
+material = SubResource("GroundMaterial")
+size = Vector3(122, 0.3, 266)
+
+[sub_resource type="BoxShape3D" id="GroundShape"]
+size = Vector3(122, 0.3, 266)
+
+[sub_resource type="StandardMaterial3D" id="BuildingMaterial"]
+albedo_color = Color(0.25, 0.29, 0.32, 1)
+
+[sub_resource type="BoxMesh" id="BuildingPlateMesh"]
+material = SubResource("BuildingMaterial")
+size = Vector3(24, 0.08, 22)
+
+[sub_resource type="StandardMaterial3D" id="ModuleMaterial"]
+albedo_color = Color(0.23, 0.28, 0.29, 1)
+
+[sub_resource type="BoxMesh" id="ModulePlateMesh"]
+material = SubResource("ModuleMaterial")
+size = Vector3(8.6, 0.08, 8.6)
+
+[sub_resource type="StandardMaterial3D" id="PropMaterial"]
+albedo_color = Color(0.2, 0.24, 0.27, 1)
+
+[sub_resource type="BoxMesh" id="PropPlateMesh"]
+material = SubResource("PropMaterial")
+size = Vector3(8.6, 0.08, 8.6)
+
+[node name="AshfallAssetShowroom" type="Node3D" unique_id=659040449]
+
+[node name="Environment" type="WorldEnvironment" parent="." unique_id=1202322750]
+environment = SubResource("ShowroomEnvironment")
+
+[node name="Sun" type="DirectionalLight3D" parent="." unique_id=948088400]
+transform = Transform3D(0.7960838, 0.4740588, -0.37618992, 0, 0.62161, 0.7833269, 0.6051864, -0.62359387, 0.49485365, 0, 0, 0)
+light_energy = 1.2
+shadow_enabled = true
+
+[node name="Floor" type="StaticBody3D" parent="." unique_id=1121438218]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.17, 103)
+
+[node name="Mesh" type="MeshInstance3D" parent="Floor" unique_id=511335407]
+mesh = SubResource("GroundMesh")
+
+[node name="Collision" type="CollisionShape3D" parent="Floor" unique_id=1123310176]
+shape = SubResource("GroundShape")
+
+[node name="GalleryFlyCamera" type="Camera3D" parent="." unique_id=1292648496]
+transform = Transform3D(-1, 7.110824e-08, -3.1798777e-07, 0, 0.97589743, 0.21822962, 3.2584137e-07, 0.21822962, -0.97589743, -22, 10, -27)
+current = true
+far = 350.0
+script = ExtResource("1_flycam")
+
+[node name="Help" type="Label3D" parent="." unique_id=1236806642]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9, -16)
+pixel_size = 0.009
+billboard = 1
+no_depth_test = true
+text = "ASHFALL / ASSET SHOWROOM
+F6: run this scene | WASD: fly | mouse: look | Q/E: down/up | SHIFT: fast | ESC: release mouse"
+font_size = 52
+outline_size = 8
+
+[node name="01_Buildings" type="Node3D" parent="." unique_id=1257378537]
+
+[node name="SectionHeading" type="Label3D" parent="01_Buildings" unique_id=1548841503]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -52, 5, 0)
+pixel_size = 0.006
+billboard = 1
+no_depth_test = true
+text = "01 | BUILDINGS (3)"
+font_size = 48
+outline_size = 10
+
+[node name="A01_checkpoint_house_Platform" type="MeshInstance3D" parent="01_Buildings" unique_id=1789542842]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -32, -0.045, 0)
+mesh = SubResource("BuildingPlateMesh")
+
+[node name="A01_checkpoint_house" parent="01_Buildings" unique_id=1183596344 instance=ExtResource("asset_001")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -32, 0, 0)
+
+[node name="Label_01" type="Label3D" parent="01_Buildings" unique_id=773050308]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -32, 7, 10)
+pixel_size = 0.007
+billboard = 1
+no_depth_test = true
+text = "01  Checkpoint House"
+font_size = 36
+outline_size = 8
+
+[node name="A02_blue_porch_cottage_Platform" type="MeshInstance3D" parent="01_Buildings" unique_id=123565078]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.045, 0)
+mesh = SubResource("BuildingPlateMesh")
+
+[node name="A02_blue_porch_cottage" parent="01_Buildings" unique_id=1241717906 instance=ExtResource("asset_002")]
+
+[node name="Label_02" type="Label3D" parent="01_Buildings" unique_id=491672695]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7, 10)
+pixel_size = 0.007
+billboard = 1
+no_depth_test = true
+text = "02  Blue Porch Cottage"
+font_size = 36
+outline_size = 8
+
+[node name="A03_maintenance_station_v03_Platform" type="MeshInstance3D" parent="01_Buildings" unique_id=1917628786]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32, -0.045, 0)
+mesh = SubResource("BuildingPlateMesh")
+
+[node name="A03_maintenance_station_v03" parent="01_Buildings" unique_id=1102753152 instance=ExtResource("asset_003")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32, 0, 0)
+
+[node name="Label_03" type="Label3D" parent="01_Buildings" unique_id=1469466634]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32, 7, 10)
+pixel_size = 0.007
+billboard = 1
+no_depth_test = true
+text = "03  Maintenance Station V03"
+font_size = 36
+outline_size = 8
+
+[node name="02_Crossroads_modular_kit" type="Node3D" parent="." unique_id=1642119267]
+
+[node name="SectionHeading" type="Label3D" parent="02_Crossroads_modular_kit" unique_id=1470679638]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -52, 5, 34)
+pixel_size = 0.006
+billboard = 1
+no_depth_test = true
+text = "02 | CROSSROADS MODULAR KIT (8)"
+font_size = 48
+outline_size = 10
+
+[node name="A01_corner_1m_Platform" type="MeshInstance3D" parent="02_Crossroads_modular_kit" unique_id=318693402]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -38.5, -0.045, 34)
+mesh = SubResource("ModulePlateMesh")
+
+[node name="A01_corner_1m" parent="02_Crossroads_modular_kit" unique_id=485212 instance=ExtResource("asset_004")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -38.5, 0, 34)
+
+[node name="Label_01" type="Label3D" parent="02_Crossroads_modular_kit" unique_id=1276354053]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -38.5, 2.8, 37)
+pixel_size = 0.007
+billboard = 1
+no_depth_test = true
+text = "01  Corner 1M"
+font_size = 36
+outline_size = 8
+
+[node name="A02_floor_4m_Platform" type="MeshInstance3D" parent="02_Crossroads_modular_kit" unique_id=903800942]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27.5, -0.045, 34)
+mesh = SubResource("ModulePlateMesh")
+
+[node name="A02_floor_4m" parent="02_Crossroads_modular_kit" unique_id=1187406022 instance=ExtResource("asset_005")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27.5, 0, 34)
+
+[node name="Label_02" type="Label3D" parent="02_Crossroads_modular_kit" unique_id=2096297161]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27.5, 2.8, 37)
+pixel_size = 0.007
+billboard = 1
+no_depth_test = true
+text = "02  Floor 4M"
+font_size = 36
+outline_size = 8
+
+[node name="A03_metal_door_Platform" type="MeshInstance3D" parent="02_Crossroads_modular_kit" unique_id=961661703]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.5, -0.045, 34)
+mesh = SubResource("ModulePlateMesh")
+
+[node name="A03_metal_door" parent="02_Crossroads_modular_kit" unique_id=293110145 instance=ExtResource("asset_006")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.5, 0, 34)
+
+[node name="Label_03" type="Label3D" parent="02_Crossroads_modular_kit" unique_id=1275479483]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.5, 2.8, 37)
+pixel_size = 0.007
+billboard = 1
+no_depth_test = true
+text = "03  Metal Door"
+font_size = 36
+outline_size = 8
+
+[node name="A04_roof_4m_Platform" type="MeshInstance3D" parent="02_Crossroads_modular_kit" unique_id=935728892]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.5, -0.045, 34)
+mesh = SubResource("ModulePlateMesh")
+
+[node name="A04_roof_4m" parent="02_Crossroads_modular_kit" unique_id=658832575 instance=ExtResource("asset_007")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.5, 0, 34)
+
+[node name="Label_04" type="Label3D" parent="02_Crossroads_modular_kit" unique_id=2060717991]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.5, 2.8, 37)
+pixel_size = 0.007
+billboard = 1
+no_depth_test = true
+text = "04  Roof 4M"
+font_size = 36
+outline_size = 8
+
+[node name="A05_wall_door_4m_Platform" type="MeshInstance3D" parent="02_Crossroads_modular_kit" unique_id=1426492233]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.5, -0.045, 34)
+mesh = SubResource("ModulePlateMesh")
+
+[node name="A05_wall_door_4m" parent="02_Crossroads_modular_kit" unique_id=1513880445 instance=ExtResource("asset_008")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.5, 0, 34)
+
+[node name="Label_05" type="Label3D" parent="02_Crossroads_modular_kit" unique_id=1710919899]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.5, 2.8, 37)
+pixel_size = 0.007
+billboard = 1
+no_depth_test = true
+text = "05  Wall Door 4M"
+font_size = 36
+outline_size = 8
+
+[node name="A06_wall_solid_2m_Platform" type="MeshInstance3D" parent="02_Crossroads_modular_kit" unique_id=70839275]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.5, -0.045, 34)
+mesh = SubResource("ModulePlateMesh")
+
+[node name="A06_wall_solid_2m" parent="02_Crossroads_modular_kit" unique_id=1823847296 instance=ExtResource("asset_009")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.5, 0, 34)
+
+[node name="Label_06" type="Label3D" parent="02_Crossroads_modular_kit" unique_id=1362864031]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.5, 2.8, 37)
+pixel_size = 0.007
+billboard = 1
+no_depth_test = true
+text = "06  Wall Solid 2M"
+font_size = 36
+outline_size = 8
+
+[node name="A07_wall_solid_4m_Platform" type="MeshInstance3D" parent="02_Crossroads_modular_kit" unique_id=1090558884]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27.5, -0.045, 34)
+mesh = SubResource("ModulePlateMesh")
+
+[node name="A07_wall_solid_4m" parent="02_Crossroads_modular_kit" unique_id=1889789418 instance=ExtResource("asset_010")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27.5, 0, 34)
+
+[node name="Label_07" type="Label3D" parent="02_Crossroads_modular_kit" unique_id=696499324]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27.5, 2.8, 37)
+pixel_size = 0.007
+billboard = 1
+no_depth_test = true
+text = "07  Wall Solid 4M"
+font_size = 36
+outline_size = 8
+
+[node name="A08_wall_window_4m_Platform" type="MeshInstance3D" parent="02_Crossroads_modular_kit" unique_id=1471980471]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 38.5, -0.045, 34)
+mesh = SubResource("ModulePlateMesh")
+
+[node name="A08_wall_window_4m" parent="02_Crossroads_modular_kit" unique_id=908112496 instance=ExtResource("asset_011")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 38.5, 0, 34)
+
+[node name="Label_08" type="Label3D" parent="02_Crossroads_modular_kit" unique_id=1445740082]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 38.5, 2.8, 37)
+pixel_size = 0.007
+billboard = 1
+no_depth_test = true
+text = "08  Wall Window 4M"
+font_size = 36
+outline_size = 8
+
+[node name="03_Crossroads_v03_modules" type="Node3D" parent="." unique_id=716531515]
+
+[node name="SectionHeading" type="Label3D" parent="03_Crossroads_v03_modules" unique_id=1602537066]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -52, 5, 48)
+pixel_size = 0.006
+billboard = 1
+no_depth_test = true
+text = "03 | CROSSROADS V03 MODULES (8)"
+font_size = 48
+outline_size = 10
+
+[node name="A01_electrical_cabinet_Platform" type="MeshInstance3D" parent="03_Crossroads_v03_modules" unique_id=645225644]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -38.5, -0.045, 48)
+mesh = SubResource("ModulePlateMesh")
+
+[node name="A01_electrical_cabinet" parent="03_Crossroads_v03_modules" unique_id=812214017 instance=ExtResource("asset_012")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -38.5, 0, 48)
+
+[node name="Label_01" type="Label3D" parent="03_Crossroads_v03_modules" unique_id=125028921]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -38.5, 2.8, 51)
+pixel_size = 0.007
+billboard = 1
+no_depth_test = true
+text = "01  Electrical Cabinet"
+font_size = 36
+outline_size = 8
+
+[node name="A02_floor_slab_4m_Platform" type="MeshInstance3D" parent="03_Crossroads_v03_modules" unique_id=1662739909]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27.5, -0.045, 48)
+mesh = SubResource("ModulePlateMesh")
+
+[node name="A02_floor_slab_4m" parent="03_Crossroads_v03_modules" unique_id=1493221858 instance=ExtResource("asset_013")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27.5, 0, 48)
+
+[node name="Label_02" type="Label3D" parent="03_Crossroads_v03_modules" unique_id=1593520189]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27.5, 2.8, 51)
+pixel_size = 0.007
+billboard = 1
+no_depth_test = true
+text = "02  Floor Slab 4M"
+font_size = 36
+outline_size = 8
+
+[node name="A03_industrial_workbench_Platform" type="MeshInstance3D" parent="03_Crossroads_v03_modules" unique_id=234039997]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.5, -0.045, 48)
+mesh = SubResource("ModulePlateMesh")
+
+[node name="A03_industrial_workbench" parent="03_Crossroads_v03_modules" unique_id=554192910 instance=ExtResource("asset_014")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.5, 0, 48)
+
+[node name="Label_03" type="Label3D" parent="03_Crossroads_v03_modules" unique_id=1634528121]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.5, 2.8, 51)
+pixel_size = 0.007
+billboard = 1
+no_depth_test = true
+text = "03  Industrial Workbench"
+font_size = 36
+outline_size = 8
+
+[node name="A04_roof_panel_4m_Platform" type="MeshInstance3D" parent="03_Crossroads_v03_modules" unique_id=358535308]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.5, -0.045, 48)
+mesh = SubResource("ModulePlateMesh")
+
+[node name="A04_roof_panel_4m" parent="03_Crossroads_v03_modules" unique_id=1171200653 instance=ExtResource("asset_015")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.5, 0, 48)
+
+[node name="Label_04" type="Label3D" parent="03_Crossroads_v03_modules" unique_id=1952853000]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.5, 2.8, 51)
+pixel_size = 0.007
+billboard = 1
+no_depth_test = true
+text = "04  Roof Panel 4M"
+font_size = 36
+outline_size = 8
+
+[node name="A05_wall_doorway_4m_Platform" type="MeshInstance3D" parent="03_Crossroads_v03_modules" unique_id=1174430012]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.5, -0.045, 48)
+mesh = SubResource("ModulePlateMesh")
+
+[node name="A05_wall_doorway_4m" parent="03_Crossroads_v03_modules" unique_id=2096407970 instance=ExtResource("asset_016")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.5, 0, 48)
+
+[node name="Label_05" type="Label3D" parent="03_Crossroads_v03_modules" unique_id=90254469]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.5, 2.8, 51)
+pixel_size = 0.007
+billboard = 1
+no_depth_test = true
+text = "05  Wall Doorway 4M"
+font_size = 36
+outline_size = 8
+
+[node name="A06_wall_garage_4m_Platform" type="MeshInstance3D" parent="03_Crossroads_v03_modules" unique_id=1622037998]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.5, -0.045, 48)
+mesh = SubResource("ModulePlateMesh")
+
+[node name="A06_wall_garage_4m" parent="03_Crossroads_v03_modules" unique_id=1549251973 instance=ExtResource("asset_017")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.5, 0, 48)
+
+[node name="Label_06" type="Label3D" parent="03_Crossroads_v03_modules" unique_id=1946070217]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.5, 2.8, 51)
+pixel_size = 0.007
+billboard = 1
+no_depth_test = true
+text = "06  Wall Garage 4M"
+font_size = 36
+outline_size = 8
+
+[node name="A07_wall_solid_4m_Platform" type="MeshInstance3D" parent="03_Crossroads_v03_modules" unique_id=2055523971]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27.5, -0.045, 48)
+mesh = SubResource("ModulePlateMesh")
+
+[node name="A07_wall_solid_4m" parent="03_Crossroads_v03_modules" unique_id=105006363 instance=ExtResource("asset_018")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27.5, 0, 48)
+
+[node name="Label_07" type="Label3D" parent="03_Crossroads_v03_modules" unique_id=215193706]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27.5, 2.8, 51)
+pixel_size = 0.007
+billboard = 1
+no_depth_test = true
+text = "07  Wall Solid 4M"
+font_size = 36
+outline_size = 8
+
+[node name="A08_wall_window_4m_Platform" type="MeshInstance3D" parent="03_Crossroads_v03_modules" unique_id=287417446]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 38.5, -0.045, 48)
+mesh = SubResource("ModulePlateMesh")
+
+[node name="A08_wall_window_4m" parent="03_Crossroads_v03_modules" unique_id=19157152 instance=ExtResource("asset_019")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 38.5, 0, 48)
+
+[node name="Label_08" type="Label3D" parent="03_Crossroads_v03_modules" unique_id=1286417828]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 38.5, 2.8, 51)
+pixel_size = 0.007
+billboard = 1
+no_depth_test = true
+text = "08  Wall Window 4M"
+font_size = 36
+outline_size = 8
+
+[node name="04_Other_construction_variants" type="Node3D" parent="." unique_id=2013050025]
+
+[node name="SectionHeading" type="Label3D" parent="04_Other_construction_variants" unique_id=1567399452]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -52, 5, 62)
+pixel_size = 0.006
+billboard = 1
+no_depth_test = true
+text = "04 | OTHER CONSTRUCTION VARIANTS (3)"
+font_size = 48
+outline_size = 10
+
+[node name="A01_damaged_wall_Platform" type="MeshInstance3D" parent="04_Other_construction_variants" unique_id=2049562124]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -38.5, -0.045, 62)
+mesh = SubResource("ModulePlateMesh")
+
+[node name="A01_damaged_wall" parent="04_Other_construction_variants" unique_id=1883087435 instance=ExtResource("asset_020")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -38.5, 0, 62)
+
+[node name="Label_01" type="Label3D" parent="04_Other_construction_variants" unique_id=1249509788]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -38.5, 2.8, 65)
+pixel_size = 0.007
+billboard = 1
+no_depth_test = true
+text = "01  Damaged Wall"
+font_size = 36
+outline_size = 8
+
+[node name="A02_damaged_wall_v02_Platform" type="MeshInstance3D" parent="04_Other_construction_variants" unique_id=646216362]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27.5, -0.045, 62)
+mesh = SubResource("ModulePlateMesh")
+
+[node name="A02_damaged_wall_v02" parent="04_Other_construction_variants" unique_id=1430428021 instance=ExtResource("asset_021")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27.5, 0, 62)
+
+[node name="Label_02" type="Label3D" parent="04_Other_construction_variants" unique_id=1308468744]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27.5, 2.8, 65)
+pixel_size = 0.007
+billboard = 1
+no_depth_test = true
+text = "02  Damaged Wall V02"
+font_size = 36
+outline_size = 8
+
+[node name="A03_steel_door_v02_Platform" type="MeshInstance3D" parent="04_Other_construction_variants" unique_id=1863633115]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.5, -0.045, 62)
+mesh = SubResource("ModulePlateMesh")
+
+[node name="A03_steel_door_v02" parent="04_Other_construction_variants" unique_id=1974520741 instance=ExtResource("asset_022")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.5, 0, 62)
+
+[node name="Label_03" type="Label3D" parent="04_Other_construction_variants" unique_id=734243215]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.5, 2.8, 65)
+pixel_size = 0.007
+billboard = 1
+no_depth_test = true
+text = "03  Steel Door V02"
+font_size = 36
+outline_size = 8
+
+[node name="05_Industrial_and_household_props" type="Node3D" parent="." unique_id=2006189676]
+
+[node name="SectionHeading" type="Label3D" parent="05_Industrial_and_household_props" unique_id=198315974]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -52, 5, 78)
+pixel_size = 0.006
+billboard = 1
+no_depth_test = true
+text = "05 | INDUSTRIAL AND HOUSEHOLD PROPS (32)"
+font_size = 48
+outline_size = 10
+
+[node name="A01_cable_spool_Platform" type="MeshInstance3D" parent="05_Industrial_and_household_props" unique_id=1427299298]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -42, -0.045, 78)
+mesh = SubResource("PropPlateMesh")
+
+[node name="A01_cable_spool" parent="05_Industrial_and_household_props" unique_id=1202829509 instance=ExtResource("asset_023")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -42, 0, 78)
+
+[node name="Label_01" type="Label3D" parent="05_Industrial_and_household_props" unique_id=381143584]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -42, 2.8, 81)
+pixel_size = 0.007
+billboard = 1
+no_depth_test = true
+text = "01  Cable Spool"
+font_size = 36
+outline_size = 8
+
+[node name="A02_concrete_barrier_Platform" type="MeshInstance3D" parent="05_Industrial_and_household_props" unique_id=2095800499]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30, -0.045, 78)
+mesh = SubResource("PropPlateMesh")
+
+[node name="A02_concrete_barrier" parent="05_Industrial_and_household_props" unique_id=489143695 instance=ExtResource("asset_024")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30, 0, 78)
+
+[node name="Label_02" type="Label3D" parent="05_Industrial_and_household_props" unique_id=1101766063]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30, 2.8, 81)
+pixel_size = 0.007
+billboard = 1
+no_depth_test = true
+text = "02  Concrete Barrier"
+font_size = 36
+outline_size = 8
+
+[node name="A03_damaged_fence_Platform" type="MeshInstance3D" parent="05_Industrial_and_household_props" unique_id=1300933947]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18, -0.045, 78)
+mesh = SubResource("PropPlateMesh")
+
+[node name="A03_damaged_fence" parent="05_Industrial_and_household_props" unique_id=1385789023 instance=ExtResource("asset_025")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 0, 78)
+
+[node name="Label_03" type="Label3D" parent="05_Industrial_and_household_props" unique_id=355140333]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 2.8, 81)
+pixel_size = 0.007
+billboard = 1
+no_depth_test = true
+text = "03  Damaged Fence"
+font_size = 36
+outline_size = 8
+
+[node name="A04_desk_radio_Platform" type="MeshInstance3D" parent="05_Industrial_and_household_props" unique_id=1639941471]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, -0.045, 78)
+mesh = SubResource("PropPlateMesh")
+
+[node name="A04_desk_radio" parent="05_Industrial_and_household_props" unique_id=1455818388 instance=ExtResource("asset_026")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, 78)
+
+[node name="Label_04" type="Label3D" parent="05_Industrial_and_household_props" unique_id=1393871452]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 2.8, 81)
+pixel_size = 0.007
+billboard = 1
+no_depth_test = true
+text = "04  Desk Radio"
+font_size = 36
+outline_size = 8
+
+[node name="A05_electrical_cabinet_Platform" type="MeshInstance3D" parent="05_Industrial_and_household_props" unique_id=347189814]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, -0.045, 78)
+mesh = SubResource("PropPlateMesh")
+
+[node name="A05_electrical_cabinet" parent="05_Industrial_and_household_props" unique_id=242914367 instance=ExtResource("asset_027")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 78)
+
+[node name="Label_05" type="Label3D" parent="05_Industrial_and_household_props" unique_id=1625090761]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 2.8, 81)
+pixel_size = 0.007
+billboard = 1
+no_depth_test = true
+text = "05  Electrical Cabinet"
+font_size = 36
+outline_size = 8
+
+[node name="A06_enamel_mug_Platform" type="MeshInstance3D" parent="05_Industrial_and_household_props" unique_id=995134677]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18, -0.045, 78)
+mesh = SubResource("PropPlateMesh")
+
+[node name="A06_enamel_mug" parent="05_Industrial_and_household_props" unique_id=1955680656 instance=ExtResource("asset_028")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18, 0, 78)
+
+[node name="Label_06" type="Label3D" parent="05_Industrial_and_household_props" unique_id=447954881]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18, 2.8, 81)
+pixel_size = 0.007
+billboard = 1
+no_depth_test = true
+text = "06  Enamel Mug"
+font_size = 36
+outline_size = 8
+
+[node name="A07_equipment_case_Platform" type="MeshInstance3D" parent="05_Industrial_and_household_props" unique_id=551860017]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30, -0.045, 78)
+mesh = SubResource("PropPlateMesh")
+
+[node name="A07_equipment_case" parent="05_Industrial_and_household_props" unique_id=2015462702 instance=ExtResource("asset_029")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30, 0, 78)
+
+[node name="Label_07" type="Label3D" parent="05_Industrial_and_household_props" unique_id=1396522218]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30, 2.8, 81)
+pixel_size = 0.007
+billboard = 1
+no_depth_test = true
+text = "07  Equipment Case"
+font_size = 36
+outline_size = 8
+
+[node name="A08_field_cot_Platform" type="MeshInstance3D" parent="05_Industrial_and_household_props" unique_id=518240293]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 42, -0.045, 78)
+mesh = SubResource("PropPlateMesh")
+
+[node name="A08_field_cot" parent="05_Industrial_and_household_props" unique_id=1780917940 instance=ExtResource("asset_030")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 42, 0, 78)
+
+[node name="Label_08" type="Label3D" parent="05_Industrial_and_household_props" unique_id=465607819]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 42, 2.8, 81)
+pixel_size = 0.007
+billboard = 1
+no_depth_test = true
+text = "08  Field Cot"
+font_size = 36
+outline_size = 8
+
+[node name="A09_filing_cabinet_Platform" type="MeshInstance3D" parent="05_Industrial_and_household_props" unique_id=1243838226]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -42, -0.045, 90)
+mesh = SubResource("PropPlateMesh")
+
+[node name="A09_filing_cabinet" parent="05_Industrial_and_household_props" unique_id=1631462044 instance=ExtResource("asset_031")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -42, 0, 90)
+
+[node name="Label_09" type="Label3D" parent="05_Industrial_and_household_props" unique_id=493988848]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -42, 2.8, 93)
+pixel_size = 0.007
+billboard = 1
+no_depth_test = true
+text = "09  Filing Cabinet"
+font_size = 36
+outline_size = 8
+
+[node name="A10_gas_cylinder_Platform" type="MeshInstance3D" parent="05_Industrial_and_household_props" unique_id=1797717632]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30, -0.045, 90)
+mesh = SubResource("PropPlateMesh")
+
+[node name="A10_gas_cylinder" parent="05_Industrial_and_household_props" unique_id=2141612542 instance=ExtResource("asset_032")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30, 0, 90)
+
+[node name="Label_10" type="Label3D" parent="05_Industrial_and_household_props" unique_id=1885631841]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30, 2.8, 93)
+pixel_size = 0.007
+billboard = 1
+no_depth_test = true
+text = "10  Gas Cylinder"
+font_size = 36
+outline_size = 8
+
+[node name="A11_hand_truck_Platform" type="MeshInstance3D" parent="05_Industrial_and_household_props" unique_id=144457857]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18, -0.045, 90)
+mesh = SubResource("PropPlateMesh")
+
+[node name="A11_hand_truck" parent="05_Industrial_and_household_props" unique_id=1153755643 instance=ExtResource("asset_033")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 0, 90)
+
+[node name="Label_11" type="Label3D" parent="05_Industrial_and_household_props" unique_id=1692016471]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 2.8, 93)
+pixel_size = 0.007
+billboard = 1
+no_depth_test = true
+text = "11  Hand Truck"
+font_size = 36
+outline_size = 8
+
+[node name="A12_jerrycan_Platform" type="MeshInstance3D" parent="05_Industrial_and_household_props" unique_id=2096147845]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, -0.045, 90)
+mesh = SubResource("PropPlateMesh")
+
+[node name="A12_jerrycan" parent="05_Industrial_and_household_props" unique_id=1925938606 instance=ExtResource("asset_034")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, 90)
+
+[node name="Label_12" type="Label3D" parent="05_Industrial_and_household_props" unique_id=564232836]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 2.8, 93)
+pixel_size = 0.007
+billboard = 1
+no_depth_test = true
+text = "12  Jerrycan"
+font_size = 36
+outline_size = 8
+
+[node name="A13_metal_bucket_Platform" type="MeshInstance3D" parent="05_Industrial_and_household_props" unique_id=1528034699]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, -0.045, 90)
+mesh = SubResource("PropPlateMesh")
+
+[node name="A13_metal_bucket" parent="05_Industrial_and_household_props" unique_id=1943003616 instance=ExtResource("asset_035")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 90)
+
+[node name="Label_13" type="Label3D" parent="05_Industrial_and_household_props" unique_id=1087113708]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 2.8, 93)
+pixel_size = 0.007
+billboard = 1
+no_depth_test = true
+text = "13  Metal Bucket"
+font_size = 36
+outline_size = 8
+
+[node name="A14_pendant_light_Platform" type="MeshInstance3D" parent="05_Industrial_and_household_props" unique_id=1204571780]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18, -0.045, 90)
+mesh = SubResource("PropPlateMesh")
+
+[node name="A14_pendant_light" parent="05_Industrial_and_household_props" unique_id=1477921494 instance=ExtResource("asset_036")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18, 0, 90)
+
+[node name="Label_14" type="Label3D" parent="05_Industrial_and_household_props" unique_id=1184432292]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18, 2.8, 93)
+pixel_size = 0.007
+billboard = 1
+no_depth_test = true
+text = "14  Pendant Light"
+font_size = 36
+outline_size = 8
+
+[node name="A15_pipe_bundle_Platform" type="MeshInstance3D" parent="05_Industrial_and_household_props" unique_id=1181691391]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30, -0.045, 90)
+mesh = SubResource("PropPlateMesh")
+
+[node name="A15_pipe_bundle" parent="05_Industrial_and_household_props" unique_id=1393297840 instance=ExtResource("asset_037")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30, 0, 90)
+
+[node name="Label_15" type="Label3D" parent="05_Industrial_and_household_props" unique_id=124167100]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30, 2.8, 93)
+pixel_size = 0.007
+billboard = 1
+no_depth_test = true
+text = "15  Pipe Bundle"
+font_size = 36
+outline_size = 8
+
+[node name="A16_portable_generator_Platform" type="MeshInstance3D" parent="05_Industrial_and_household_props" unique_id=942184773]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 42, -0.045, 90)
+mesh = SubResource("PropPlateMesh")
+
+[node name="A16_portable_generator" parent="05_Industrial_and_household_props" unique_id=517352372 instance=ExtResource("asset_038")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 42, 0, 90)
+
+[node name="Label_16" type="Label3D" parent="05_Industrial_and_household_props" unique_id=364994330]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 42, 2.8, 93)
+pixel_size = 0.007
+billboard = 1
+no_depth_test = true
+text = "16  Portable Generator"
+font_size = 36
+outline_size = 8
+
+[node name="A17_radiator_Platform" type="MeshInstance3D" parent="05_Industrial_and_household_props" unique_id=1191528884]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -42, -0.045, 102)
+mesh = SubResource("PropPlateMesh")
+
+[node name="A17_radiator" parent="05_Industrial_and_household_props" unique_id=2064998760 instance=ExtResource("asset_039")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -42, 0, 102)
+
+[node name="Label_17" type="Label3D" parent="05_Industrial_and_household_props" unique_id=1849335635]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -42, 2.8, 105)
+pixel_size = 0.007
+billboard = 1
+no_depth_test = true
+text = "17  Radiator"
+font_size = 36
+outline_size = 8
+
+[node name="A18_rubble_pile_Platform" type="MeshInstance3D" parent="05_Industrial_and_household_props" unique_id=400292260]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30, -0.045, 102)
+mesh = SubResource("PropPlateMesh")
+
+[node name="A18_rubble_pile" parent="05_Industrial_and_household_props" unique_id=1631048723 instance=ExtResource("asset_040")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30, 0, 102)
+
+[node name="Label_18" type="Label3D" parent="05_Industrial_and_household_props" unique_id=141085629]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30, 2.8, 105)
+pixel_size = 0.007
+billboard = 1
+no_depth_test = true
+text = "18  Rubble Pile"
+font_size = 36
+outline_size = 8
+
+[node name="A19_rusted_drum_Platform" type="MeshInstance3D" parent="05_Industrial_and_household_props" unique_id=688773445]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18, -0.045, 102)
+mesh = SubResource("PropPlateMesh")
+
+[node name="A19_rusted_drum" parent="05_Industrial_and_household_props" unique_id=1760273483 instance=ExtResource("asset_041")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 0, 102)
+
+[node name="Label_19" type="Label3D" parent="05_Industrial_and_household_props" unique_id=711808233]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 2.8, 105)
+pixel_size = 0.007
+billboard = 1
+no_depth_test = true
+text = "19  Rusted Drum"
+font_size = 36
+outline_size = 8
+
+[node name="A20_sandbag_stack_Platform" type="MeshInstance3D" parent="05_Industrial_and_household_props" unique_id=1829630074]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, -0.045, 102)
+mesh = SubResource("PropPlateMesh")
+
+[node name="A20_sandbag_stack" parent="05_Industrial_and_household_props" unique_id=2033430722 instance=ExtResource("asset_042")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, 102)
+
+[node name="Label_20" type="Label3D" parent="05_Industrial_and_household_props" unique_id=1352245566]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 2.8, 105)
+pixel_size = 0.007
+billboard = 1
+no_depth_test = true
+text = "20  Sandbag Stack"
+font_size = 36
+outline_size = 8
+
+[node name="A21_shelving_unit_Platform" type="MeshInstance3D" parent="05_Industrial_and_household_props" unique_id=2114330272]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, -0.045, 102)
+mesh = SubResource("PropPlateMesh")
+
+[node name="A21_shelving_unit" parent="05_Industrial_and_household_props" unique_id=629789188 instance=ExtResource("asset_043")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 102)
+
+[node name="Label_21" type="Label3D" parent="05_Industrial_and_household_props" unique_id=46895685]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 2.8, 105)
+pixel_size = 0.007
+billboard = 1
+no_depth_test = true
+text = "21  Shelving Unit"
+font_size = 36
+outline_size = 8
+
+[node name="A22_shipping_crate_Platform" type="MeshInstance3D" parent="05_Industrial_and_household_props" unique_id=1542734992]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18, -0.045, 102)
+mesh = SubResource("PropPlateMesh")
+
+[node name="A22_shipping_crate" parent="05_Industrial_and_household_props" unique_id=217639330 instance=ExtResource("asset_044")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18, 0, 102)
+
+[node name="Label_22" type="Label3D" parent="05_Industrial_and_household_props" unique_id=1577764894]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18, 2.8, 105)
+pixel_size = 0.007
+billboard = 1
+no_depth_test = true
+text = "22  Shipping Crate"
+font_size = 36
+outline_size = 8
+
+[node name="A23_steel_drum_Platform" type="MeshInstance3D" parent="05_Industrial_and_household_props" unique_id=1416918028]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30, -0.045, 102)
+mesh = SubResource("PropPlateMesh")
+
+[node name="A23_steel_drum" parent="05_Industrial_and_household_props" unique_id=1161799788 instance=ExtResource("asset_045")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30, 0, 102)
+
+[node name="Label_23" type="Label3D" parent="05_Industrial_and_household_props" unique_id=1857823661]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30, 2.8, 105)
+pixel_size = 0.007
+billboard = 1
+no_depth_test = true
+text = "23  Steel Drum"
+font_size = 36
+outline_size = 8
+
+[node name="A24_tool_box_Platform" type="MeshInstance3D" parent="05_Industrial_and_household_props" unique_id=554447762]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 42, -0.045, 102)
+mesh = SubResource("PropPlateMesh")
+
+[node name="A24_tool_box" parent="05_Industrial_and_household_props" unique_id=625639494 instance=ExtResource("asset_046")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 42, 0, 102)
+
+[node name="Label_24" type="Label3D" parent="05_Industrial_and_household_props" unique_id=603853011]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 42, 2.8, 105)
+pixel_size = 0.007
+billboard = 1
+no_depth_test = true
+text = "24  Tool Box"
+font_size = 36
+outline_size = 8
+
+[node name="A25_traffic_cone_Platform" type="MeshInstance3D" parent="05_Industrial_and_household_props" unique_id=92592797]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -42, -0.045, 114)
+mesh = SubResource("PropPlateMesh")
+
+[node name="A25_traffic_cone" parent="05_Industrial_and_household_props" unique_id=547276175 instance=ExtResource("asset_047")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -42, 0, 114)
+
+[node name="Label_25" type="Label3D" parent="05_Industrial_and_household_props" unique_id=1048378778]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -42, 2.8, 117)
+pixel_size = 0.007
+billboard = 1
+no_depth_test = true
+text = "25  Traffic Cone"
+font_size = 36
+outline_size = 8
+
+[node name="A26_valve_pipe_Platform" type="MeshInstance3D" parent="05_Industrial_and_household_props" unique_id=1591450416]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30, -0.045, 114)
+mesh = SubResource("PropPlateMesh")
+
+[node name="A26_valve_pipe" parent="05_Industrial_and_household_props" unique_id=330420644 instance=ExtResource("asset_048")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30, 0, 114)
+
+[node name="Label_26" type="Label3D" parent="05_Industrial_and_household_props" unique_id=1141745010]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30, 2.8, 117)
+pixel_size = 0.007
+billboard = 1
+no_depth_test = true
+text = "26  Valve Pipe"
+font_size = 36
+outline_size = 8
+
+[node name="A27_wall_fusebox_Platform" type="MeshInstance3D" parent="05_Industrial_and_household_props" unique_id=462053229]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18, -0.045, 114)
+mesh = SubResource("PropPlateMesh")
+
+[node name="A27_wall_fusebox" parent="05_Industrial_and_household_props" unique_id=1474613071 instance=ExtResource("asset_049")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 0, 114)
+
+[node name="Label_27" type="Label3D" parent="05_Industrial_and_household_props" unique_id=1955908150]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 2.8, 117)
+pixel_size = 0.007
+billboard = 1
+no_depth_test = true
+text = "27  Wall Fusebox"
+font_size = 36
+outline_size = 8
+
+[node name="A28_warning_sign_Platform" type="MeshInstance3D" parent="05_Industrial_and_household_props" unique_id=2093894986]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, -0.045, 114)
+mesh = SubResource("PropPlateMesh")
+
+[node name="A28_warning_sign" parent="05_Industrial_and_household_props" unique_id=1097069890 instance=ExtResource("asset_050")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, 114)
+
+[node name="Label_28" type="Label3D" parent="05_Industrial_and_household_props" unique_id=1527377524]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 2.8, 117)
+pixel_size = 0.007
+billboard = 1
+no_depth_test = true
+text = "28  Warning Sign"
+font_size = 36
+outline_size = 8
+
+[node name="A29_wooden_bench_Platform" type="MeshInstance3D" parent="05_Industrial_and_household_props" unique_id=527889481]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, -0.045, 114)
+mesh = SubResource("PropPlateMesh")
+
+[node name="A29_wooden_bench" parent="05_Industrial_and_household_props" unique_id=710269538 instance=ExtResource("asset_051")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 114)
+
+[node name="Label_29" type="Label3D" parent="05_Industrial_and_household_props" unique_id=1477248088]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 2.8, 117)
+pixel_size = 0.007
+billboard = 1
+no_depth_test = true
+text = "29  Wooden Bench"
+font_size = 36
+outline_size = 8
+
+[node name="A30_wooden_pallet_Platform" type="MeshInstance3D" parent="05_Industrial_and_household_props" unique_id=2116091465]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18, -0.045, 114)
+mesh = SubResource("PropPlateMesh")
+
+[node name="A30_wooden_pallet" parent="05_Industrial_and_household_props" unique_id=1063608263 instance=ExtResource("asset_052")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18, 0, 114)
+
+[node name="Label_30" type="Label3D" parent="05_Industrial_and_household_props" unique_id=1314926073]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18, 2.8, 117)
+pixel_size = 0.007
+billboard = 1
+no_depth_test = true
+text = "30  Wooden Pallet"
+font_size = 36
+outline_size = 8
+
+[node name="A31_work_light_Platform" type="MeshInstance3D" parent="05_Industrial_and_household_props" unique_id=52851753]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30, -0.045, 114)
+mesh = SubResource("PropPlateMesh")
+
+[node name="A31_work_light" parent="05_Industrial_and_household_props" unique_id=325443447 instance=ExtResource("asset_053")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30, 0, 114)
+
+[node name="Label_31" type="Label3D" parent="05_Industrial_and_household_props" unique_id=315514505]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30, 2.8, 117)
+pixel_size = 0.007
+billboard = 1
+no_depth_test = true
+text = "31  Work Light"
+font_size = 36
+outline_size = 8
+
+[node name="A32_worn_mattress_Platform" type="MeshInstance3D" parent="05_Industrial_and_household_props" unique_id=690138551]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 42, -0.045, 114)
+mesh = SubResource("PropPlateMesh")
+
+[node name="A32_worn_mattress" parent="05_Industrial_and_household_props" unique_id=856032760 instance=ExtResource("asset_054")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 42, 0, 114)
+
+[node name="Label_32" type="Label3D" parent="05_Industrial_and_household_props" unique_id=1986740583]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 42, 2.8, 117)
+pixel_size = 0.007
+billboard = 1
+no_depth_test = true
+text = "32  Worn Mattress"
+font_size = 36
+outline_size = 8
+
+[node name="06_Workshop_equipment" type="Node3D" parent="." unique_id=2116582193]
+
+[node name="SectionHeading" type="Label3D" parent="06_Workshop_equipment" unique_id=268357967]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -52, 5, 132)
+pixel_size = 0.006
+billboard = 1
+no_depth_test = true
+text = "06 | WORKSHOP EQUIPMENT (8)"
+font_size = 48
+outline_size = 10
+
+[node name="A01_coiled_hose_Platform" type="MeshInstance3D" parent="06_Workshop_equipment" unique_id=838286548]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -42, -0.045, 132)
+mesh = SubResource("PropPlateMesh")
+
+[node name="A01_coiled_hose" parent="06_Workshop_equipment" unique_id=1133697621 instance=ExtResource("asset_055")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -42, 0, 132)
+
+[node name="Label_01" type="Label3D" parent="06_Workshop_equipment" unique_id=628974064]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -42, 2.8, 135)
+pixel_size = 0.007
+billboard = 1
+no_depth_test = true
+text = "01  Coiled Hose"
+font_size = 36
+outline_size = 8
+
+[node name="A02_discarded_tyre_Platform" type="MeshInstance3D" parent="06_Workshop_equipment" unique_id=1559266413]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30, -0.045, 132)
+mesh = SubResource("PropPlateMesh")
+
+[node name="A02_discarded_tyre" parent="06_Workshop_equipment" unique_id=506775589 instance=ExtResource("asset_056")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30, 0, 132)
+
+[node name="Label_02" type="Label3D" parent="06_Workshop_equipment" unique_id=613144956]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30, 2.8, 135)
+pixel_size = 0.007
+billboard = 1
+no_depth_test = true
+text = "02  Discarded Tyre"
+font_size = 36
+outline_size = 8
+
+[node name="A03_fire_extinguisher_Platform" type="MeshInstance3D" parent="06_Workshop_equipment" unique_id=1424837498]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18, -0.045, 132)
+mesh = SubResource("PropPlateMesh")
+
+[node name="A03_fire_extinguisher" parent="06_Workshop_equipment" unique_id=867626370 instance=ExtResource("asset_057")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 0, 132)
+
+[node name="Label_03" type="Label3D" parent="06_Workshop_equipment" unique_id=1002815537]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 2.8, 135)
+pixel_size = 0.007
+billboard = 1
+no_depth_test = true
+text = "03  Fire Extinguisher"
+font_size = 36
+outline_size = 8
+
+[node name="A04_metal_chair_Platform" type="MeshInstance3D" parent="06_Workshop_equipment" unique_id=378237314]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, -0.045, 132)
+mesh = SubResource("PropPlateMesh")
+
+[node name="A04_metal_chair" parent="06_Workshop_equipment" unique_id=1630184081 instance=ExtResource("asset_058")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, 132)
+
+[node name="Label_04" type="Label3D" parent="06_Workshop_equipment" unique_id=1026798424]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 2.8, 135)
+pixel_size = 0.007
+billboard = 1
+no_depth_test = true
+text = "04  Metal Chair"
+font_size = 36
+outline_size = 8
+
+[node name="A05_open_wood_crate_Platform" type="MeshInstance3D" parent="06_Workshop_equipment" unique_id=1286089300]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, -0.045, 132)
+mesh = SubResource("PropPlateMesh")
+
+[node name="A05_open_wood_crate" parent="06_Workshop_equipment" unique_id=2052141710 instance=ExtResource("asset_059")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 132)
+
+[node name="Label_05" type="Label3D" parent="06_Workshop_equipment" unique_id=85716047]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 2.8, 135)
+pixel_size = 0.007
+billboard = 1
+no_depth_test = true
+text = "05  Open Wood Crate"
+font_size = 36
+outline_size = 8
+
+[node name="A06_steel_ladder_Platform" type="MeshInstance3D" parent="06_Workshop_equipment" unique_id=799907227]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18, -0.045, 132)
+mesh = SubResource("PropPlateMesh")
+
+[node name="A06_steel_ladder" parent="06_Workshop_equipment" unique_id=1829547187 instance=ExtResource("asset_060")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18, 0, 132)
+
+[node name="Label_06" type="Label3D" parent="06_Workshop_equipment" unique_id=1294236096]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18, 2.8, 135)
+pixel_size = 0.007
+billboard = 1
+no_depth_test = true
+text = "06  Steel Ladder"
+font_size = 36
+outline_size = 8
+
+[node name="A07_wheelbarrow_Platform" type="MeshInstance3D" parent="06_Workshop_equipment" unique_id=557756333]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30, -0.045, 132)
+mesh = SubResource("PropPlateMesh")
+
+[node name="A07_wheelbarrow" parent="06_Workshop_equipment" unique_id=208075481 instance=ExtResource("asset_061")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30, 0, 132)
+
+[node name="Label_07" type="Label3D" parent="06_Workshop_equipment" unique_id=1841505347]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30, 2.8, 135)
+pixel_size = 0.007
+billboard = 1
+no_depth_test = true
+text = "07  Wheelbarrow"
+font_size = 36
+outline_size = 8
+
+[node name="A08_workbench_vise_Platform" type="MeshInstance3D" parent="06_Workshop_equipment" unique_id=1908845016]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 42, -0.045, 132)
+mesh = SubResource("PropPlateMesh")
+
+[node name="A08_workbench_vise" parent="06_Workshop_equipment" unique_id=557181483 instance=ExtResource("asset_062")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 42, 0, 132)
+
+[node name="Label_08" type="Label3D" parent="06_Workshop_equipment" unique_id=1477521870]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 42, 2.8, 135)
+pixel_size = 0.007
+billboard = 1
+no_depth_test = true
+text = "08  Workbench Vise"
+font_size = 36
+outline_size = 8
+
+[node name="07_Crossroads_field_props" type="Node3D" parent="." unique_id=96236129]
+
+[node name="SectionHeading" type="Label3D" parent="07_Crossroads_field_props" unique_id=1718825975]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -52, 5, 146)
+pixel_size = 0.006
+billboard = 1
+no_depth_test = true
+text = "07 | CROSSROADS FIELD PROPS (4)"
+font_size = 48
+outline_size = 10
+
+[node name="A01_exposed_roots_Platform" type="MeshInstance3D" parent="07_Crossroads_field_props" unique_id=1405927686]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -42, -0.045, 146)
+mesh = SubResource("PropPlateMesh")
+
+[node name="A01_exposed_roots" parent="07_Crossroads_field_props" unique_id=808857347 instance=ExtResource("asset_063")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -42, 0, 146)
+
+[node name="Label_01" type="Label3D" parent="07_Crossroads_field_props" unique_id=259742341]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -42, 2.8, 149)
+pixel_size = 0.007
+billboard = 1
+no_depth_test = true
+text = "01  Exposed Roots"
+font_size = 36
+outline_size = 8
+
+[node name="A02_hydraulic_jack_Platform" type="MeshInstance3D" parent="07_Crossroads_field_props" unique_id=536355975]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30, -0.045, 146)
+mesh = SubResource("PropPlateMesh")
+
+[node name="A02_hydraulic_jack" parent="07_Crossroads_field_props" unique_id=173787873 instance=ExtResource("asset_064")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30, 0, 146)
+
+[node name="Label_02" type="Label3D" parent="07_Crossroads_field_props" unique_id=1340091689]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30, 2.8, 149)
+pixel_size = 0.007
+billboard = 1
+no_depth_test = true
+text = "02  Hydraulic Jack"
+font_size = 36
+outline_size = 8
+
+[node name="A03_mushroom_cluster_Platform" type="MeshInstance3D" parent="07_Crossroads_field_props" unique_id=1078838504]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18, -0.045, 146)
+mesh = SubResource("PropPlateMesh")
+
+[node name="A03_mushroom_cluster" parent="07_Crossroads_field_props" unique_id=1821812003 instance=ExtResource("asset_065")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 0, 146)
+
+[node name="Label_03" type="Label3D" parent="07_Crossroads_field_props" unique_id=1205884312]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 2.8, 149)
+pixel_size = 0.007
+billboard = 1
+no_depth_test = true
+text = "03  Mushroom Cluster"
+font_size = 36
+outline_size = 8
+
+[node name="A04_work_trestle_Platform" type="MeshInstance3D" parent="07_Crossroads_field_props" unique_id=1302233873]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, -0.045, 146)
+mesh = SubResource("PropPlateMesh")
+
+[node name="A04_work_trestle" parent="07_Crossroads_field_props" unique_id=2076077317 instance=ExtResource("asset_066")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, 146)
+
+[node name="Label_04" type="Label3D" parent="07_Crossroads_field_props" unique_id=1123453351]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 2.8, 149)
+pixel_size = 0.007
+billboard = 1
+no_depth_test = true
+text = "04  Work Trestle"
+font_size = 36
+outline_size = 8
+
+[node name="08_Extra_environment_dressing" type="Node3D" parent="." unique_id=1883483296]
+
+[node name="SectionHeading" type="Label3D" parent="08_Extra_environment_dressing" unique_id=1542326958]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -52, 5, 160)
+pixel_size = 0.006
+billboard = 1
+no_depth_test = true
+text = "08 | EXTRA ENVIRONMENT DRESSING (7)"
+font_size = 48
+outline_size = 10
+
+[node name="A01_dry_grass_tuft_Platform" type="MeshInstance3D" parent="08_Extra_environment_dressing" unique_id=1061534841]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -42, -0.045, 160)
+mesh = SubResource("PropPlateMesh")
+
+[node name="A01_dry_grass_tuft" parent="08_Extra_environment_dressing" unique_id=320211135 instance=ExtResource("asset_067")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -42, 0, 160)
+
+[node name="Label_01" type="Label3D" parent="08_Extra_environment_dressing" unique_id=139437878]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -42, 2.8, 163)
+pixel_size = 0.007
+billboard = 1
+no_depth_test = true
+text = "01  Dry Grass Tuft"
+font_size = 36
+outline_size = 8
+
+[node name="A02_firewood_stack_Platform" type="MeshInstance3D" parent="08_Extra_environment_dressing" unique_id=118129816]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30, -0.045, 160)
+mesh = SubResource("PropPlateMesh")
+
+[node name="A02_firewood_stack" parent="08_Extra_environment_dressing" unique_id=845974168 instance=ExtResource("asset_068")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30, 0, 160)
+
+[node name="Label_02" type="Label3D" parent="08_Extra_environment_dressing" unique_id=136749192]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30, 2.8, 163)
+pixel_size = 0.007
+billboard = 1
+no_depth_test = true
+text = "02  Firewood Stack"
+font_size = 36
+outline_size = 8
+
+[node name="A03_garden_shovel_Platform" type="MeshInstance3D" parent="08_Extra_environment_dressing" unique_id=145482060]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18, -0.045, 160)
+mesh = SubResource("PropPlateMesh")
+
+[node name="A03_garden_shovel" parent="08_Extra_environment_dressing" unique_id=886394217 instance=ExtResource("asset_069")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 0, 160)
+
+[node name="Label_03" type="Label3D" parent="08_Extra_environment_dressing" unique_id=88360146]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 2.8, 163)
+pixel_size = 0.007
+billboard = 1
+no_depth_test = true
+text = "03  Garden Shovel"
+font_size = 36
+outline_size = 8
+
+[node name="A04_mushroom_cluster_Platform" type="MeshInstance3D" parent="08_Extra_environment_dressing" unique_id=273080291]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, -0.045, 160)
+mesh = SubResource("PropPlateMesh")
+
+[node name="A04_mushroom_cluster" parent="08_Extra_environment_dressing" unique_id=1181656726 instance=ExtResource("asset_070")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, 160)
+
+[node name="Label_04" type="Label3D" parent="08_Extra_environment_dressing" unique_id=655286522]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 2.8, 163)
+pixel_size = 0.007
+billboard = 1
+no_depth_test = true
+text = "04  Mushroom Cluster"
+font_size = 36
+outline_size = 8
+
+[node name="A05_scrap_sheet_Platform" type="MeshInstance3D" parent="08_Extra_environment_dressing" unique_id=960424069]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, -0.045, 160)
+mesh = SubResource("PropPlateMesh")
+
+[node name="A05_scrap_sheet" parent="08_Extra_environment_dressing" unique_id=707191772 instance=ExtResource("asset_071")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 160)
+
+[node name="Label_05" type="Label3D" parent="08_Extra_environment_dressing" unique_id=1644396481]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 2.8, 163)
+pixel_size = 0.007
+billboard = 1
+no_depth_test = true
+text = "05  Scrap Sheet"
+font_size = 36
+outline_size = 8
+
+[node name="A06_stone_scatter_Platform" type="MeshInstance3D" parent="08_Extra_environment_dressing" unique_id=104823799]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18, -0.045, 160)
+mesh = SubResource("PropPlateMesh")
+
+[node name="A06_stone_scatter" parent="08_Extra_environment_dressing" unique_id=291570517 instance=ExtResource("asset_072")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18, 0, 160)
+
+[node name="Label_06" type="Label3D" parent="08_Extra_environment_dressing" unique_id=951647575]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18, 2.8, 163)
+pixel_size = 0.007
+billboard = 1
+no_depth_test = true
+text = "06  Stone Scatter"
+font_size = 36
+outline_size = 8
+
+[node name="A07_wood_sawhorse_Platform" type="MeshInstance3D" parent="08_Extra_environment_dressing" unique_id=589907266]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30, -0.045, 160)
+mesh = SubResource("PropPlateMesh")
+
+[node name="A07_wood_sawhorse" parent="08_Extra_environment_dressing" unique_id=840113856 instance=ExtResource("asset_073")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30, 0, 160)
+
+[node name="Label_07" type="Label3D" parent="08_Extra_environment_dressing" unique_id=596188474]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30, 2.8, 163)
+pixel_size = 0.007
+billboard = 1
+no_depth_test = true
+text = "07  Wood Sawhorse"
+font_size = 36
+outline_size = 8
+
+[node name="09_Nature" type="Node3D" parent="." unique_id=926065463]
+
+[node name="SectionHeading" type="Label3D" parent="09_Nature" unique_id=2090249291]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -52, 5, 174)
+pixel_size = 0.006
+billboard = 1
+no_depth_test = true
+text = "09 | NATURE (10)"
+font_size = 48
+outline_size = 10
+
+[node name="A01_bare_tree_Platform" type="MeshInstance3D" parent="09_Nature" unique_id=1011989456]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -45.5, -0.045, 174)
+mesh = SubResource("PropPlateMesh")
+
+[node name="A01_bare_tree" parent="09_Nature" unique_id=978499216 instance=ExtResource("asset_074")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -45.5, 0, 174)
+
+[node name="Label_01" type="Label3D" parent="09_Nature" unique_id=1309798659]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -45.5, 4.5, 177)
+pixel_size = 0.007
+billboard = 1
+no_depth_test = true
+text = "01  Bare Tree"
+font_size = 36
+outline_size = 8
+
+[node name="A02_dead_branch_pile_Platform" type="MeshInstance3D" parent="09_Nature" unique_id=1176239340]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -32.5, -0.045, 174)
+mesh = SubResource("PropPlateMesh")
+
+[node name="A02_dead_branch_pile" parent="09_Nature" unique_id=271806609 instance=ExtResource("asset_075")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -32.5, 0, 174)
+
+[node name="Label_02" type="Label3D" parent="09_Nature" unique_id=1840424135]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -32.5, 2.8, 177)
+pixel_size = 0.007
+billboard = 1
+no_depth_test = true
+text = "02  Dead Branch Pile"
+font_size = 36
+outline_size = 8
+
+[node name="A03_dry_bramble_Platform" type="MeshInstance3D" parent="09_Nature" unique_id=2079245447]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.5, -0.045, 174)
+mesh = SubResource("PropPlateMesh")
+
+[node name="A03_dry_bramble" parent="09_Nature" unique_id=659967640 instance=ExtResource("asset_076")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.5, 0, 174)
+
+[node name="Label_03" type="Label3D" parent="09_Nature" unique_id=852212354]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.5, 2.8, 177)
+pixel_size = 0.007
+billboard = 1
+no_depth_test = true
+text = "03  Dry Bramble"
+font_size = 36
+outline_size = 8
+
+[node name="A04_fallen_log_Platform" type="MeshInstance3D" parent="09_Nature" unique_id=169416672]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.5, -0.045, 174)
+mesh = SubResource("PropPlateMesh")
+
+[node name="A04_fallen_log" parent="09_Nature" unique_id=3347957 instance=ExtResource("asset_077")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.5, 0, 174)
+
+[node name="Label_04" type="Label3D" parent="09_Nature" unique_id=1710873405]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.5, 2.8, 177)
+pixel_size = 0.007
+billboard = 1
+no_depth_test = true
+text = "04  Fallen Log"
+font_size = 36
+outline_size = 8
+
+[node name="A05_fern_clump_Platform" type="MeshInstance3D" parent="09_Nature" unique_id=1178159226]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.5, -0.045, 174)
+mesh = SubResource("PropPlateMesh")
+
+[node name="A05_fern_clump" parent="09_Nature" unique_id=1829619640 instance=ExtResource("asset_078")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.5, 0, 174)
+
+[node name="Label_05" type="Label3D" parent="09_Nature" unique_id=2121636553]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.5, 2.8, 177)
+pixel_size = 0.007
+billboard = 1
+no_depth_test = true
+text = "05  Fern Clump"
+font_size = 36
+outline_size = 8
+
+[node name="A06_forest_pine_Platform" type="MeshInstance3D" parent="09_Nature" unique_id=1983217746]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.5, -0.045, 174)
+mesh = SubResource("PropPlateMesh")
+
+[node name="A06_forest_pine" parent="09_Nature" unique_id=129952917 instance=ExtResource("asset_079")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.5, 0, 174)
+
+[node name="Label_06" type="Label3D" parent="09_Nature" unique_id=1092118924]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.5, 4.5, 177)
+pixel_size = 0.007
+billboard = 1
+no_depth_test = true
+text = "06  Forest Pine"
+font_size = 36
+outline_size = 8
+
+[node name="A07_low_shrub_Platform" type="MeshInstance3D" parent="09_Nature" unique_id=301202929]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32.5, -0.045, 174)
+mesh = SubResource("PropPlateMesh")
+
+[node name="A07_low_shrub" parent="09_Nature" unique_id=1707935645 instance=ExtResource("asset_080")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32.5, 0, 174)
+
+[node name="Label_07" type="Label3D" parent="09_Nature" unique_id=1402633748]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32.5, 2.8, 177)
+pixel_size = 0.007
+billboard = 1
+no_depth_test = true
+text = "07  Low Shrub"
+font_size = 36
+outline_size = 8
+
+[node name="A08_mossy_boulder_Platform" type="MeshInstance3D" parent="09_Nature" unique_id=1728639251]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 45.5, -0.045, 174)
+mesh = SubResource("PropPlateMesh")
+
+[node name="A08_mossy_boulder" parent="09_Nature" unique_id=466638770 instance=ExtResource("asset_081")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 45.5, 0, 174)
+
+[node name="Label_08" type="Label3D" parent="09_Nature" unique_id=1884832820]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 45.5, 2.8, 177)
+pixel_size = 0.007
+billboard = 1
+no_depth_test = true
+text = "08  Mossy Boulder"
+font_size = 36
+outline_size = 8
+
+[node name="A09_reed_clump_Platform" type="MeshInstance3D" parent="09_Nature" unique_id=1647387823]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -45.5, -0.045, 187)
+mesh = SubResource("PropPlateMesh")
+
+[node name="A09_reed_clump" parent="09_Nature" unique_id=1033138030 instance=ExtResource("asset_082")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -45.5, 0, 187)
+
+[node name="Label_09" type="Label3D" parent="09_Nature" unique_id=1987291446]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -45.5, 2.8, 190)
+pixel_size = 0.007
+billboard = 1
+no_depth_test = true
+text = "09  Reed Clump"
+font_size = 36
+outline_size = 8
+
+[node name="A10_tree_stump_Platform" type="MeshInstance3D" parent="09_Nature" unique_id=1444684915]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -32.5, -0.045, 187)
+mesh = SubResource("PropPlateMesh")
+
+[node name="A10_tree_stump" parent="09_Nature" unique_id=812332704 instance=ExtResource("asset_083")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -32.5, 0, 187)
+
+[node name="Label_10" type="Label3D" parent="09_Nature" unique_id=1289173113]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -32.5, 2.8, 190)
+pixel_size = 0.007
+billboard = 1
+no_depth_test = true
+text = "10  Tree Stump"
+font_size = 36
+outline_size = 8
+
+[node name="10_Field_gear_and_pickups" type="Node3D" parent="." unique_id=758688380]
+
+[node name="SectionHeading" type="Label3D" parent="10_Field_gear_and_pickups" unique_id=758644017]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -52, 5, 204)
+pixel_size = 0.006
+billboard = 1
+no_depth_test = true
+text = "10 | FIELD GEAR AND PICKUPS (11)"
+font_size = 48
+outline_size = 10
+
+[node name="A01_handheld_flashlight_Platform" type="MeshInstance3D" parent="10_Field_gear_and_pickups" unique_id=854422389]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -42, -0.045, 204)
+mesh = SubResource("PropPlateMesh")
+
+[node name="A01_handheld_flashlight" parent="10_Field_gear_and_pickups" unique_id=1786539353 instance=ExtResource("asset_084")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -42, 0, 204)
+
+[node name="Label_01" type="Label3D" parent="10_Field_gear_and_pickups" unique_id=200870902]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -42, 2.8, 207)
+pixel_size = 0.007
+billboard = 1
+no_depth_test = true
+text = "01  Handheld Flashlight"
+font_size = 36
+outline_size = 8
+
+[node name="A02_held_antiseptic_Platform" type="MeshInstance3D" parent="10_Field_gear_and_pickups" unique_id=1792388756]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30, -0.045, 204)
+mesh = SubResource("PropPlateMesh")
+
+[node name="A02_held_antiseptic" parent="10_Field_gear_and_pickups" unique_id=1449561006 instance=ExtResource("asset_085")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30, 0, 204)
+
+[node name="Label_02" type="Label3D" parent="10_Field_gear_and_pickups" unique_id=258707519]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30, 2.8, 207)
+pixel_size = 0.007
+billboard = 1
+no_depth_test = true
+text = "02  Held Antiseptic"
+font_size = 36
+outline_size = 8
+
+[node name="A03_held_bandage_Platform" type="MeshInstance3D" parent="10_Field_gear_and_pickups" unique_id=501243030]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18, -0.045, 204)
+mesh = SubResource("PropPlateMesh")
+
+[node name="A03_held_bandage" parent="10_Field_gear_and_pickups" unique_id=850322315 instance=ExtResource("asset_086")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 0, 204)
+
+[node name="Label_03" type="Label3D" parent="10_Field_gear_and_pickups" unique_id=649516547]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 2.8, 207)
+pixel_size = 0.007
+billboard = 1
+no_depth_test = true
+text = "03  Held Bandage"
+font_size = 36
+outline_size = 8
+
+[node name="A04_held_batteries_Platform" type="MeshInstance3D" parent="10_Field_gear_and_pickups" unique_id=1304764857]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, -0.045, 204)
+mesh = SubResource("PropPlateMesh")
+
+[node name="A04_held_batteries" parent="10_Field_gear_and_pickups" unique_id=85327576 instance=ExtResource("asset_087")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, 204)
+
+[node name="Label_04" type="Label3D" parent="10_Field_gear_and_pickups" unique_id=213040721]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 2.8, 207)
+pixel_size = 0.007
+billboard = 1
+no_depth_test = true
+text = "04  Held Batteries"
+font_size = 36
+outline_size = 8
+
+[node name="A05_held_detector_Platform" type="MeshInstance3D" parent="10_Field_gear_and_pickups" unique_id=611246703]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, -0.045, 204)
+mesh = SubResource("PropPlateMesh")
+
+[node name="A05_held_detector" parent="10_Field_gear_and_pickups" unique_id=2045701429 instance=ExtResource("asset_088")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 204)
+
+[node name="Label_05" type="Label3D" parent="10_Field_gear_and_pickups" unique_id=1746752481]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 2.8, 207)
+pixel_size = 0.007
+billboard = 1
+no_depth_test = true
+text = "05  Held Detector"
+font_size = 36
+outline_size = 8
+
+[node name="A06_held_field_radio_Platform" type="MeshInstance3D" parent="10_Field_gear_and_pickups" unique_id=1505631112]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18, -0.045, 204)
+mesh = SubResource("PropPlateMesh")
+
+[node name="A06_held_field_radio" parent="10_Field_gear_and_pickups" unique_id=1789646201 instance=ExtResource("asset_089")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18, 0, 204)
+
+[node name="Label_06" type="Label3D" parent="10_Field_gear_and_pickups" unique_id=469763064]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18, 2.8, 207)
+pixel_size = 0.007
+billboard = 1
+no_depth_test = true
+text = "06  Held Field Radio"
+font_size = 36
+outline_size = 8
+
+[node name="A07_held_food_tin_Platform" type="MeshInstance3D" parent="10_Field_gear_and_pickups" unique_id=572427104]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30, -0.045, 204)
+mesh = SubResource("PropPlateMesh")
+
+[node name="A07_held_food_tin" parent="10_Field_gear_and_pickups" unique_id=1509507472 instance=ExtResource("asset_090")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30, 0, 204)
+
+[node name="Label_07" type="Label3D" parent="10_Field_gear_and_pickups" unique_id=676497209]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30, 2.8, 207)
+pixel_size = 0.007
+billboard = 1
+no_depth_test = true
+text = "07  Held Food Tin"
+font_size = 36
+outline_size = 8
+
+[node name="A08_held_water_bottle_Platform" type="MeshInstance3D" parent="10_Field_gear_and_pickups" unique_id=227710807]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 42, -0.045, 204)
+mesh = SubResource("PropPlateMesh")
+
+[node name="A08_held_water_bottle" parent="10_Field_gear_and_pickups" unique_id=1836248723 instance=ExtResource("asset_091")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 42, 0, 204)
+
+[node name="Label_08" type="Label3D" parent="10_Field_gear_and_pickups" unique_id=466419666]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 42, 2.8, 207)
+pixel_size = 0.007
+billboard = 1
+no_depth_test = true
+text = "08  Held Water Bottle"
+font_size = 36
+outline_size = 8
+
+[node name="A09_bandage_Platform" type="MeshInstance3D" parent="10_Field_gear_and_pickups" unique_id=340807269]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -42, -0.045, 216)
+mesh = SubResource("PropPlateMesh")
+
+[node name="A09_bandage" parent="10_Field_gear_and_pickups" unique_id=1278170502 instance=ExtResource("asset_092")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -42, 0, 216)
+
+[node name="Label_09" type="Label3D" parent="10_Field_gear_and_pickups" unique_id=1250131683]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -42, 2.8, 219)
+pixel_size = 0.007
+billboard = 1
+no_depth_test = true
+text = "09  Bandage"
+font_size = 36
+outline_size = 8
+
+[node name="A10_batteries_Platform" type="MeshInstance3D" parent="10_Field_gear_and_pickups" unique_id=1044680398]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30, -0.045, 216)
+mesh = SubResource("PropPlateMesh")
+
+[node name="A10_batteries" parent="10_Field_gear_and_pickups" unique_id=1277675617 instance=ExtResource("asset_093")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30, 0, 216)
+
+[node name="Label_10" type="Label3D" parent="10_Field_gear_and_pickups" unique_id=1370037904]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30, 2.8, 219)
+pixel_size = 0.007
+billboard = 1
+no_depth_test = true
+text = "10  Batteries"
+font_size = 36
+outline_size = 8
+
+[node name="A11_food_tin_Platform" type="MeshInstance3D" parent="10_Field_gear_and_pickups" unique_id=982449198]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18, -0.045, 216)
+mesh = SubResource("PropPlateMesh")
+
+[node name="A11_food_tin" parent="10_Field_gear_and_pickups" unique_id=737638151 instance=ExtResource("asset_094")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 0, 216)
+
+[node name="Label_11" type="Label3D" parent="10_Field_gear_and_pickups" unique_id=66680590]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 2.8, 219)
+pixel_size = 0.007
+billboard = 1
+no_depth_test = true
+text = "11  Food Tin"
+font_size = 36
+outline_size = 8

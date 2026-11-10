@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="PackedScene" path="res://assets/crossroads_v03/geometry/electrical_cabinet_v03.glb" id="1_mesh"]
+
+[sub_resource type="BoxShape3D" id="Collider0"]
+size = Vector3(0.75, 1.88, 0.38)
+
+[node name="electrical_cabinet" type="Node3D"]
+
+[node name="Visual" parent="." instance=ExtResource("1_mesh")]
+
+[node name="Solid" type="StaticBody3D" parent="."]
+
+[node name="Collision0" type="CollisionShape3D" parent="Solid"]
+position = Vector3(0, 0.94, 0)
+shape = SubResource("Collider0")

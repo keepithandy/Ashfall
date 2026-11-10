@@ -1,6 +1,6 @@
 [gd_scene format=3]
 
-[ext_resource type="Script" path="res://prop_gallery.gd" id="1_h7s2u"]
+[ext_resource type="Script" path="res://scripts/review/prop_gallery.gd" id="1_h7s2u"]
 [ext_resource type="PackedScene" path="res://scenes/workshop/discarded_tyre.tscn" id="2_34752"]
 [ext_resource type="PackedScene" path="res://scenes/workshop/workbench_vise.tscn" id="3_v7h5v"]
 [ext_resource type="PackedScene" path="res://scenes/workshop/wheelbarrow.tscn" id="4_b2mxy"]

@@ -1,0 +1,106 @@
+[gd_scene load_steps=12 format=3]
+
+[ext_resource type="PackedScene" path="res://scenes/crossroads_kit/floor_4m.tscn" id="1"]
+[ext_resource type="PackedScene" path="res://scenes/crossroads_kit/roof_4m.tscn" id="2"]
+[ext_resource type="PackedScene" path="res://scenes/crossroads_kit/wall_solid_4m.tscn" id="3"]
+[ext_resource type="PackedScene" path="res://scenes/crossroads_kit/wall_solid_2m.tscn" id="4"]
+[ext_resource type="PackedScene" path="res://scenes/crossroads_kit/wall_window_4m.tscn" id="5"]
+[ext_resource type="PackedScene" path="res://scenes/crossroads_kit/wall_door_4m.tscn" id="6"]
+[ext_resource type="PackedScene" path="res://scenes/crossroads_kit/corner_1m.tscn" id="7"]
+[ext_resource type="PackedScene" path="res://scenes/crossroads_kit/metal_door.tscn" id="8"]
+
+[sub_resource type="ProceduralSkyMaterial" id="SkyMat"]
+sky_top_color = Color(0.25, 0.31, 0.34, 1)
+sky_horizon_color = Color(0.56, 0.57, 0.54, 1)
+ground_bottom_color = Color(0.16, 0.16, 0.14, 1)
+ground_horizon_color = Color(0.45, 0.45, 0.42, 1)
+[sub_resource type="Sky" id="Sky"]
+sky_material = SubResource("SkyMat")
+[sub_resource type="Environment" id="Env"]
+background_mode = 2
+sky = SubResource("Sky")
+ambient_light_source = 3
+ambient_light_color = Color(0.62, 0.68, 0.68, 1)
+ambient_light_energy = 0.75
+tonemap_mode = 2
+[node name="CrossroadsKitDemo" type="Node3D"]
+[node name="Environment" type="WorldEnvironment" parent="."]
+environment = SubResource("Env")
+[node name="Sun" type="DirectionalLight3D" parent="."]
+rotation_degrees = Vector3(-52, -28, 0)
+light_color = Color(1, 0.93, 0.82, 1)
+light_energy = 1.4
+shadow_enabled = true
+[node name="Camera" type="Camera3D" parent="."]
+position = Vector3(12, 8.5, 8)
+rotation_degrees = Vector3(-27, 34, 0)
+current = true
+fov = 45.0
+
+[node name="Floor_0_0" parent="." instance=ExtResource("1")]
+position = Vector3(0, 0, 0)
+
+[node name="Floor_0_4" parent="." instance=ExtResource("1")]
+position = Vector3(0, 0, -4)
+
+[node name="Floor_4_0" parent="." instance=ExtResource("1")]
+position = Vector3(4, 0, 0)
+
+[node name="Floor_4_4" parent="." instance=ExtResource("1")]
+position = Vector3(4, 0, -4)
+
+[node name="Corner0" parent="." instance=ExtResource("7")]
+position = Vector3(0, 0, 0)
+
+[node name="Corner1" parent="." instance=ExtResource("7")]
+position = Vector3(8, 0, 0)
+rotation_degrees = Vector3(0, 90, 0)
+
+[node name="Corner2" parent="." instance=ExtResource("7")]
+position = Vector3(8, 0, -8)
+rotation_degrees = Vector3(0, 180, 0)
+
+[node name="Corner3" parent="." instance=ExtResource("7")]
+position = Vector3(0, 0, -8)
+rotation_degrees = Vector3(0, 270, 0)
+
+[node name="WallLarge0" parent="." instance=ExtResource("6")]
+position = Vector3(1, 0, 0)
+
+[node name="WallLarge1" parent="." instance=ExtResource("5")]
+position = Vector3(8, 0, -1)
+rotation_degrees = Vector3(0, 90, 0)
+
+[node name="WallLarge2" parent="." instance=ExtResource("3")]
+position = Vector3(7, 0, -8)
+rotation_degrees = Vector3(0, 180, 0)
+
+[node name="WallLarge3" parent="." instance=ExtResource("5")]
+position = Vector3(0, 0, -7)
+rotation_degrees = Vector3(0, 270, 0)
+
+[node name="WallShort0" parent="." instance=ExtResource("4")]
+position = Vector3(5, 0, 0)
+
+[node name="WallShort1" parent="." instance=ExtResource("4")]
+position = Vector3(8, 0, -5)
+rotation_degrees = Vector3(0, 90, 0)
+
+[node name="WallShort2" parent="." instance=ExtResource("4")]
+position = Vector3(3, 0, -8)
+rotation_degrees = Vector3(0, 180, 0)
+
+[node name="WallShort3" parent="." instance=ExtResource("4")]
+position = Vector3(0, 0, -3)
+rotation_degrees = Vector3(0, 270, 0)
+
+[node name="OpenDoor" parent="." instance=ExtResource("8")]
+position = Vector3(2.39, 0, 0)
+rotation_degrees = Vector3(0, -65, 0)
+
+[node name="Roof0" parent="." instance=ExtResource("2")]
+position = Vector3(0, 3.2, -4)
+
+[node name="Roof1" parent="." instance=ExtResource("2")]
+position = Vector3(4, 3.2, -4)
+

@@ -1,0 +1,42 @@
+[gd_resource type="Resource" script_class="HandGripProfile" format=3 uid="uid://b5d31r1dk8s28"]
+
+[ext_resource type="Script" uid="uid://dtuswodm207ft" path="res://scripts/runtime/hand_grip_profile.gd" id="1"]
+[ext_resource type="PackedScene" path="res://scenes/items/handheld_flashlight.tscn" id="2"]
+
+[resource]
+script = ExtResource("1")
+item_id = &"flashlight"
+display_name = "Flashlight"
+model_scene = ExtResource("2")
+attachment_transform = Transform3D(0.85331833, 0.09944009, 0.5118198, 0.4350608, -0.67680424, -0.5938497, 0.28734964, 0.72941554, -0.6207924, -0.039225534, 0.10907635, -0.011241667)
+finger_rotations = {
+"index1.R": Quaternion(-0.24852575, 0.089287385, -0.17950155, 0.94765085),
+"index2.R": Quaternion(-0.22982953, 9.5602e-08, 0.36928764, 0.90044725),
+"index3.R": Quaternion(-0.19086918, 9.818052e-08, 0.33731842, 0.921838),
+"middle1.R": Quaternion(-0.2922774, 0.13404687, 0.073879875, 0.9440059),
+"middle2.R": Quaternion(-0.21757951, 6.4814905e-08, 0.37663525, 0.90044713),
+"middle3.R": Quaternion(-0.19394974, 1.0170465e-07, 0.39384785, 0.8984806),
+"pinky1.R": Quaternion(-0.36551273, 0.20541942, 0.050935403, 0.90642655),
+"pinky2.R": Quaternion(-0.16578028, -9.500782e-08, 0.39920858, 0.901748),
+"pinky3.R": Quaternion(-0.08858368, -6.9003214e-08, 0.23411071, 0.9681659),
+"ring1.R": Quaternion(-0.25042927, 0.076850265, 0.23057877, 0.93713003),
+"ring2.R": Quaternion(-0.1651078, 2.821812e-08, 0.3021364, 0.9388573),
+"ring3.R": Quaternion(-0.15001073, 1.942216e-08, 0.3558669, 0.9224184),
+"thumb1.R": Quaternion(-0.07568006, 0.011405777, 0.12325458, 0.98941946),
+"thumb2.R": Quaternion(0.253319, -1.3018003e-07, -0.29999232, 0.9196925),
+"thumb3.R": Quaternion(0.13775066, -5.6273098e-08, -0.2107336, 0.9677893)
+}
+pose_animation = &"Hand_flashlight"
+contact_targets = {
+"index": Vector3(-0.005132832, -0.029415535, -0.007541731),
+"middle": Vector3(-0.01273607, -0.02700763, 0.018259667),
+"pinky": Vector3(0.0014717514, -0.028822448, 0.06),
+"ring": Vector3(-0.014998168, -0.025820041, 0.040800236),
+"thumb": Vector3(0, 0.0298, -0.047)
+}
+hand_offset = Vector3(0.17, -0.1, -0.39)
+elbow_offset = Vector3(0.46, -0.08, 0.1)
+aim_forward = Vector3(-0.2160668, 0.2575171, -0.9418069)
+aim_up = Vector3(-0.08500293, 0.95596814, 0.28089026)
+emits_light = true
+beam_transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.1302)

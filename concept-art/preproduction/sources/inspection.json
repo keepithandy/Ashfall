@@ -1,0 +1,1295 @@
+[
+  {
+    "asset": "bolt_action_rifle_7_62",
+    "source": "bolt_action_rifle_7_62_1k.blend",
+    "dimensions_scene_units": [
+      1.2309749126434326,
+      0.0665869489312172,
+      0.20451291650533676
+    ],
+    "unit_scale": 1.0,
+    "mesh_objects": 7,
+    "polygons": 11675,
+    "armatures": 0,
+    "actions": 0,
+    "missing_images": [],
+    "objects": [
+      {
+        "name": "bolt_action_rifle_7_62_scope",
+        "dimensions": [
+          0.050128161907196045,
+          0.03807920217514038,
+          0.10756745934486389
+        ]
+      },
+      {
+        "name": "bolt_action_rifle_7_62_wrap",
+        "dimensions": [
+          0.22597858309745789,
+          0.0400993749499321,
+          0.1140817329287529
+        ]
+      },
+      {
+        "name": "bolt_action_rifle_7_62",
+        "dimensions": [
+          1.2309749126434326,
+          0.04298148676753044,
+          0.18265683948993683
+        ]
+      },
+      {
+        "name": "bolt_action_rifle_7_62_bolt_b",
+        "dimensions": [
+          0.14329157769680023,
+          0.023293474689126015,
+          0.025147274136543274
+        ]
+      },
+      {
+        "name": "bolt_action_rifle_7_62_bolt_a",
+        "dimensions": [
+          0.1226988434791565,
+          0.0497174896299839,
+          0.04399309307336807
+        ]
+      },
+      {
+        "name": "bolt_action_rifle_7_62_bullet_54mm",
+        "dimensions": [
+          0.07685032486915588,
+          0.01452932134270668,
+          0.01452932134270668
+        ]
+      },
+      {
+        "name": "bolt_action_rifle_7_62_trigger",
+        "dimensions": [
+          0.014687001705169678,
+          0.007000003010034561,
+          0.03864631801843643
+        ]
+      }
+    ]
+  },
+  {
+    "asset": "cassette_player",
+    "source": "cassette_player_1k.blend",
+    "dimensions_scene_units": [
+      0.12946044653654099,
+      0.04887990656585117,
+      0.23681782186031342
+    ],
+    "unit_scale": 1.0,
+    "mesh_objects": 2,
+    "polygons": 2525,
+    "armatures": 0,
+    "actions": 0,
+    "missing_images": [],
+    "objects": [
+      {
+        "name": "cassette_player_body",
+        "dimensions": [
+          0.12946045398712158,
+          0.23681782186031342,
+          0.048879899084568024
+        ]
+      },
+      {
+        "name": "cassette_player_tape",
+        "dimensions": [
+          0.10050002485513687,
+          0.06471918523311615,
+          0.007092392072081566
+        ]
+      }
+    ]
+  },
+  {
+    "asset": "chemistry_set",
+    "source": "chemistry_set_1k.blend",
+    "dimensions_scene_units": [
+      1.0783504843711853,
+      0.35392560064792633,
+      0.42901350278407335
+    ],
+    "unit_scale": 1.0,
+    "mesh_objects": 50,
+    "polygons": 21251,
+    "armatures": 0,
+    "actions": 0,
+    "missing_images": [],
+    "objects": [
+      {
+        "name": "chemistry_set_beaker_large",
+        "dimensions": [
+          0.10711610317230225,
+          0.09316127002239227,
+          0.31234824657440186
+        ]
+      },
+      {
+        "name": "chemistry_set_beaker_med",
+        "dimensions": [
+          0.09657702594995499,
+          0.09079718589782715,
+          0.12114761024713516
+        ]
+      },
+      {
+        "name": "chemistry_set_beaker_small",
+        "dimensions": [
+          0.06280634552240372,
+          0.05904757231473923,
+          0.0729999914765358
+        ]
+      },
+      {
+        "name": "chemistry_set_test_tube_a",
+        "dimensions": [
+          0.015379123389720917,
+          0.015379123389720917,
+          0.14952880144119263
+        ]
+      },
+      {
+        "name": "chemistry_set_test_tube_b",
+        "dimensions": [
+          0.015379123389720917,
+          0.015379123389720917,
+          0.14952880144119263
+        ]
+      },
+      {
+        "name": "chemistry_set_test_tube_content_a",
+        "dimensions": [
+          0.012655887752771378,
+          0.012655886821448803,
+          0.05510137602686882
+        ]
+      },
+      {
+        "name": "chemistry_set_test_tube_content_b",
+        "dimensions": [
+          0.012655887752771378,
+          0.012655886821448803,
+          0.05510137230157852
+        ]
+      },
+      {
+        "name": "chemistry_set_test_tube_content_c",
+        "dimensions": [
+          0.012655887752771378,
+          0.012655886821448803,
+          0.05510137602686882
+        ]
+      },
+      {
+        "name": "chemistry_set_test_tube_content_d",
+        "dimensions": [
+          0.01278713159263134,
+          0.012787130661308765,
+          0.08583525568246841
+        ]
+      },
+      {
+        "name": "chemistry_set_test_tube_content_e",
+        "dimensions": [
+          0.01278713159263134,
+          0.012787130661308765,
+          0.08583525568246841
+        ]
+      },
+      {
+        "name": "chemistry_set_test_tube_content_f",
+        "dimensions": [
+          0.01278713159263134,
+          0.012787130661308765,
+          0.08583525568246841
+        ]
+      },
+      {
+        "name": "chemistry_set_clamp",
+        "dimensions": [
+          0.14234916865825653,
+          0.017339475452899933,
+          0.006883644498884678
+        ]
+      },
+      {
+        "name": "chemistry_set_clamp_stand",
+        "dimensions": [
+          0.19536380469799042,
+          0.12446584552526474,
+          0.4199269115924835
+        ]
+      },
+      {
+        "name": "chemistry_set_bottle_dark_a",
+        "dimensions": [
+          0.04958490654826164,
+          0.049584902822971344,
+          0.06839440017938614
+        ]
+      },
+      {
+        "name": "chemistry_set_bottle_dark_a_lid",
+        "dimensions": [
+          0.027587076649069786,
+          0.027587074786424637,
+          0.031182143837213516
+        ]
+      },
+      {
+        "name": "chemistry_set_bottle_dark_b",
+        "dimensions": [
+          0.04920372739434242,
+          0.049203723669052124,
+          0.06462308764457703
+        ]
+      },
+      {
+        "name": "chemistry_set_bottle_dark_b_cork",
+        "dimensions": [
+          0.028994407504796982,
+          0.028994400054216385,
+          0.02391674369573593
+        ]
+      },
+      {
+        "name": "chemistry_set_bottle_dark_c",
+        "dimensions": [
+          0.0495549738407135,
+          0.0495549701154232,
+          0.10054206103086472
+        ]
+      },
+      {
+        "name": "chemistry_set_bottle_dark_c_lid",
+        "dimensions": [
+          0.02210133522748947,
+          0.02210133709013462,
+          0.03119564801454544
+        ]
+      },
+      {
+        "name": "chemistry_set_bottle_dark_d",
+        "dimensions": [
+          0.04987791180610657,
+          0.049877915531396866,
+          0.09984669834375381
+        ]
+      },
+      {
+        "name": "chemistry_set_bottle_dark_d_cork",
+        "dimensions": [
+          0.016949698328971863,
+          0.016949694603681564,
+          0.02207469940185547
+        ]
+      },
+      {
+        "name": "chemistry_set_bottle_dark_e",
+        "dimensions": [
+          0.04976801574230194,
+          0.04976801201701164,
+          0.08636628091335297
+        ]
+      },
+      {
+        "name": "chemistry_set_bottle_dark_e_dropper",
+        "dimensions": [
+          0.023258689790964127,
+          0.023258689790964127,
+          0.11006013303995132
+        ]
+      },
+      {
+        "name": "chemistry_set_bottle_clear_a",
+        "dimensions": [
+          0.04958490654826164,
+          0.049584902822971344,
+          0.06839440017938614
+        ]
+      },
+      {
+        "name": "chemistry_set_bottle_clear_b",
+        "dimensions": [
+          0.04920372739434242,
+          0.049203723669052124,
+          0.06462308764457703
+        ]
+      },
+      {
+        "name": "chemistry_set_bottle_clear_b_cork",
+        "dimensions": [
+          0.028994407504796982,
+          0.028994400054216385,
+          0.02391674369573593
+        ]
+      },
+      {
+        "name": "chemistry_set_bottle_clear_c",
+        "dimensions": [
+          0.0495549738407135,
+          0.0495549701154232,
+          0.10054206103086472
+        ]
+      },
+      {
+        "name": "chemistry_set_bottle_clear_c_lid",
+        "dimensions": [
+          0.02210133522748947,
+          0.02210133709013462,
+          0.03119564801454544
+        ]
+      },
+      {
+        "name": "chemistry_set_bottle_clear_d",
+        "dimensions": [
+          0.04987791180610657,
+          0.049877915531396866,
+          0.09984669834375381
+        ]
+      },
+      {
+        "name": "chemistry_set_bottle_clear_d_cork",
+        "dimensions": [
+          0.016949698328971863,
+          0.016949694603681564,
+          0.02207469940185547
+        ]
+      },
+      {
+        "name": "chemistry_set_bottle_clear_e",
+        "dimensions": [
+          0.04976801574230194,
+          0.04976801201701164,
+          0.08636628091335297
+        ]
+      },
+      {
+        "name": "chemistry_set_bottle_clear_e_dropper",
+        "dimensions": [
+          0.023258689790964127,
+          0.023258689790964127,
+          0.1081855446100235
+        ]
+      },
+      {
+        "name": "chemistry_set_bottle_clear_lid",
+        "dimensions": [
+          0.027587076649069786,
+          0.027587074786424637,
+          0.031182143837213516
+        ]
+      },
+      {
+        "name": "chemistry_set_bottle_content_a",
+        "dimensions": [
+          0.045356154441833496,
+          0.0453561469912529,
+          0.019233930855989456
+        ]
+      },
+      {
+        "name": "chemistry_set_bottle_content_b",
+        "dimensions": [
+          0.045356154441833496,
+          0.0453561469912529,
+          0.019233930855989456
+        ]
+      },
+      {
+        "name": "chemistry_set_bottle_content_c",
+        "dimensions": [
+          0.045356154441833496,
+          0.0453561469912529,
+          0.019233908504247665
+        ]
+      },
+      {
+        "name": "chemistry_set_bottle_content_d",
+        "dimensions": [
+          0.045356154441833496,
+          0.0453561469912529,
+          0.030385170131921768
+        ]
+      },
+      {
+        "name": "chemistry_set_bottle_content_e",
+        "dimensions": [
+          0.045356154441833496,
+          0.0453561469912529,
+          0.03139283135533333
+        ]
+      },
+      {
+        "name": "chemistry_set_bottle_content_f",
+        "dimensions": [
+          0.045356154441833496,
+          0.0453561469912529,
+          0.03139283135533333
+        ]
+      },
+      {
+        "name": "chemistry_set_bottle_label_a",
+        "dimensions": [
+          0.026972167193889618,
+          0.004648977890610695,
+          0.010401150211691856
+        ]
+      },
+      {
+        "name": "chemistry_set_bottle_label_b",
+        "dimensions": [
+          0.026972167193889618,
+          0.004648977890610695,
+          0.010401150211691856
+        ]
+      },
+      {
+        "name": "chemistry_set_bottle_label_c",
+        "dimensions": [
+          0.026972167193889618,
+          0.004648977890610695,
+          0.010401150211691856
+        ]
+      },
+      {
+        "name": "chemistry_set_bottle_label_d",
+        "dimensions": [
+          0.026972167193889618,
+          0.004682697355747223,
+          0.01560172438621521
+        ]
+      },
+      {
+        "name": "chemistry_set_bottle_label_e",
+        "dimensions": [
+          0.026972167193889618,
+          0.004682697355747223,
+          0.01560172438621521
+        ]
+      },
+      {
+        "name": "chemistry_set_bottle_label_f",
+        "dimensions": [
+          0.026972167193889618,
+          0.004682697355747223,
+          0.01560172438621521
+        ]
+      },
+      {
+        "name": "chemistry_set_bottle_label_g",
+        "dimensions": [
+          0.026972167193889618,
+          0.004682697355747223,
+          0.01560172438621521
+        ]
+      },
+      {
+        "name": "chemistry_set_clamp_tool",
+        "dimensions": [
+          0.18441663682460785,
+          0.018040558323264122,
+          0.01804056018590927
+        ]
+      },
+      {
+        "name": "chemistry_set_bunsen_burner",
+        "dimensions": [
+          0.07801119238138199,
+          0.08811841905117035,
+          0.1529380828142166
+        ]
+      },
+      {
+        "name": "chemistry_set_test_tube_stand_a",
+        "dimensions": [
+          0.27876001596450806,
+          0.050529152154922485,
+          0.12116993963718414
+        ]
+      },
+      {
+        "name": "chemistry_set_test_tube_stand_b",
+        "dimensions": [
+          0.13686206936836243,
+          0.15779486298561096,
+          0.29738229513168335
+        ]
+      }
+    ]
+  },
+  {
+    "asset": "dining_table",
+    "source": "dining_table_1k.blend",
+    "dimensions_scene_units": [
+      2.255895972251892,
+      1.3902360200881958,
+      0.876989221200347
+    ],
+    "unit_scale": 1.0,
+    "mesh_objects": 2,
+    "polygons": 1048,
+    "armatures": 0,
+    "actions": 0,
+    "missing_images": [],
+    "objects": [
+      {
+        "name": "dining_table",
+        "dimensions": [
+          2.047031879425049,
+          1.1523597240447998,
+          0.7906934022903442
+        ]
+      },
+      {
+        "name": "dining_table_cloth",
+        "dimensions": [
+          2.2558960914611816,
+          1.3902360200881958,
+          0.4800926446914673
+        ]
+      }
+    ]
+  },
+  {
+    "asset": "electric_stove",
+    "source": "electric_stove_1k.blend",
+    "dimensions_scene_units": [
+      1.0967501401901245,
+      1.0967501401901245,
+      0.8586971759796143
+    ],
+    "unit_scale": 1.0,
+    "mesh_objects": 23,
+    "polygons": 7486,
+    "armatures": 1,
+    "actions": 0,
+    "missing_images": [],
+    "objects": [
+      {
+        "name": "stovetop",
+        "dimensions": [
+          0.5000000596046448,
+          0.6102550029754639,
+          0.8586971759796143
+        ]
+      },
+      {
+        "name": "sheet",
+        "dimensions": [
+          0.449307918548584,
+          0.38933807611465454,
+          0.016495048999786377
+        ]
+      },
+      {
+        "name": "hinge_bottom_attachment_left",
+        "dimensions": [
+          0.0012200772762298584,
+          0.024620264768600464,
+          0.009374774992465973
+        ]
+      },
+      {
+        "name": "hinge_bottom_rotator_left",
+        "dimensions": [
+          0.0012201666831970215,
+          0.0759783685207367,
+          0.014485090970993042
+        ]
+      },
+      {
+        "name": "hinge_top_rotator_left",
+        "dimensions": [
+          0.0012201666831970215,
+          0.0759783685207367,
+          0.014485061168670654
+        ]
+      },
+      {
+        "name": "hinge_top_attachment_left",
+        "dimensions": [
+          0.0012200772762298584,
+          0.024620264768600464,
+          0.009374767541885376
+        ]
+      },
+      {
+        "name": "grid",
+        "dimensions": [
+          0.4494079053401947,
+          0.40036526322364807,
+          0.01492011547088623
+        ]
+      },
+      {
+        "name": "dial_1",
+        "dimensions": [
+          0.044895827770233154,
+          0.018023371696472168,
+          0.044895827770233154
+        ]
+      },
+      {
+        "name": "handle_bottom_attachment",
+        "dimensions": [
+          0.5025947690010071,
+          0.08465424180030823,
+          0.24969688057899475
+        ]
+      },
+      {
+        "name": "door_top",
+        "dimensions": [
+          0.5025947093963623,
+          0.08425608277320862,
+          0.370191365480423
+        ]
+      },
+      {
+        "name": "dial_2",
+        "dimensions": [
+          0.04489582031965256,
+          0.018023401498794556,
+          0.044895827770233154
+        ]
+      },
+      {
+        "name": "dial_3",
+        "dimensions": [
+          0.044895827770233154,
+          0.018023401498794556,
+          0.044895827770233154
+        ]
+      },
+      {
+        "name": "dial_4",
+        "dimensions": [
+          0.044895827770233154,
+          0.018023401498794556,
+          0.044895827770233154
+        ]
+      },
+      {
+        "name": "dial_5",
+        "dimensions": [
+          0.044895827770233154,
+          0.018023401498794556,
+          0.044895827770233154
+        ]
+      },
+      {
+        "name": "dial_6",
+        "dimensions": [
+          0.044895827770233154,
+          0.018023401498794556,
+          0.044895827770233154
+        ]
+      },
+      {
+        "name": "hinge_top_attachment_right",
+        "dimensions": [
+          0.0012200474739074707,
+          0.024620234966278076,
+          0.009374767541885376
+        ]
+      },
+      {
+        "name": "hinge_bottom_attachment_right",
+        "dimensions": [
+          0.0012200474739074707,
+          0.024620234966278076,
+          0.00937478244304657
+        ]
+      },
+      {
+        "name": "hinge_bottom_rotator_right",
+        "dimensions": [
+          0.0012201666831970215,
+          0.0759783387184143,
+          0.014485090970993042
+        ]
+      },
+      {
+        "name": "hinge_top_rotator_right",
+        "dimensions": [
+          0.0012201666831970215,
+          0.0759783387184143,
+          0.014485090970993042
+        ]
+      },
+      {
+        "name": "wdg_move",
+        "dimensions": [
+          1.0967501401901245,
+          1.0967501401901245,
+          0.0
+        ]
+      },
+      {
+        "name": "wdg_arrow",
+        "dimensions": [
+          0.5330162048339844,
+          0.46160566806793213,
+          0.0
+        ]
+      },
+      {
+        "name": "wdg_rotate",
+        "dimensions": [
+          0.5305551886558533,
+          0.5319426655769348,
+          0.0
+        ]
+      },
+      {
+        "name": "wdg_move2",
+        "dimensions": [
+          0.5352739691734314,
+          0.5352739691734314,
+          0.0
+        ]
+      }
+    ]
+  },
+  {
+    "asset": "industrial_microscope",
+    "source": "industrial_microscope_1k.blend",
+    "dimensions_scene_units": [
+      0.21453481912612915,
+      0.4980906546115875,
+      0.4617440301226452
+    ],
+    "unit_scale": 1.0,
+    "mesh_objects": 2,
+    "polygons": 9371,
+    "armatures": 0,
+    "actions": 0,
+    "missing_images": [],
+    "objects": [
+      {
+        "name": "industrial_microscope_cable",
+        "dimensions": [
+          0.14964228868484497,
+          0.13424481451511383,
+          0.08899792283773422
+        ]
+      },
+      {
+        "name": "industrial_microscope",
+        "dimensions": [
+          0.21453481912612915,
+          0.446599543094635,
+          0.460121750831604
+        ]
+      }
+    ]
+  },
+  {
+    "asset": "metal_office_desk",
+    "source": "metal_office_desk_1k.blend",
+    "dimensions_scene_units": [
+      2.0000003576278687,
+      0.9472135305404663,
+      0.7875000089406967
+    ],
+    "unit_scale": 1.0,
+    "mesh_objects": 9,
+    "polygons": 3557,
+    "armatures": 0,
+    "actions": 0,
+    "missing_images": [],
+    "objects": [
+      {
+        "name": "metal_office_desk_drawer_06",
+        "dimensions": [
+          0.41133296489715576,
+          0.7786852121353149,
+          0.1619279384613037
+        ]
+      },
+      {
+        "name": "metal_office_desk_tray_01",
+        "dimensions": [
+          0.41345351934432983,
+          0.5519028902053833,
+          0.02276068925857544
+        ]
+      },
+      {
+        "name": "metal_office_desk",
+        "dimensions": [
+          2.000000476837158,
+          0.9170824885368347,
+          0.7875000238418579
+        ]
+      },
+      {
+        "name": "metal_office_desk_drawer_04",
+        "dimensions": [
+          0.41133296489715576,
+          0.7786853909492493,
+          0.1619279384613037
+        ]
+      },
+      {
+        "name": "metal_office_desk_drawer_03",
+        "dimensions": [
+          0.41133296489715576,
+          0.7786852121353149,
+          0.1619279384613037
+        ]
+      },
+      {
+        "name": "metal_office_desk_drawer_05",
+        "dimensions": [
+          0.41133296489715576,
+          0.7786852717399597,
+          0.16192790865898132
+        ]
+      },
+      {
+        "name": "metal_office_desk_drawer_02",
+        "dimensions": [
+          0.41133296489715576,
+          0.7786852717399597,
+          0.1619279384613037
+        ]
+      },
+      {
+        "name": "metal_office_desk_drawer_01",
+        "dimensions": [
+          0.41133296489715576,
+          0.7786853909492493,
+          0.16192787885665894
+        ]
+      },
+      {
+        "name": "metal_office_desk_tray_02",
+        "dimensions": [
+          0.4134534001350403,
+          0.5519029498100281,
+          0.02276068925857544
+        ]
+      }
+    ]
+  },
+  {
+    "asset": "old_bed_frame",
+    "source": "old_bed_frame_1k.blend",
+    "dimensions_scene_units": [
+      0.9046578407287598,
+      2.0017260313034058,
+      1.2014837953575999
+    ],
+    "unit_scale": 1.0,
+    "mesh_objects": 1,
+    "polygons": 25087,
+    "armatures": 0,
+    "actions": 0,
+    "missing_images": [],
+    "objects": [
+      {
+        "name": "old_bed_frame",
+        "dimensions": [
+          0.9046578407287598,
+          2.0017261505126953,
+          1.2014838457107544
+        ]
+      }
+    ]
+  },
+  {
+    "asset": "painted_wooden_cabinet",
+    "source": "painted_wooden_cabinet_1k.blend",
+    "dimensions_scene_units": [
+      1.194674551486969,
+      0.6166356205940247,
+      1.1818697528215125
+    ],
+    "unit_scale": 1.0,
+    "mesh_objects": 5,
+    "polygons": 1335,
+    "armatures": 0,
+    "actions": 0,
+    "missing_images": [],
+    "objects": [
+      {
+        "name": "painted_wooden_cabinet",
+        "dimensions": [
+          1.1946744918823242,
+          0.5464778542518616,
+          1.1818697452545166
+        ]
+      },
+      {
+        "name": "painted_wooden_cabinet_door_02",
+        "dimensions": [
+          0.5591747164726257,
+          0.05237182602286339,
+          0.7256490588188171
+        ]
+      },
+      {
+        "name": "painted_wooden_cabinet_door_01",
+        "dimensions": [
+          0.5658183693885803,
+          0.024174747988581657,
+          0.7256489992141724
+        ]
+      },
+      {
+        "name": "painted_wooden_cabinet_drawer_02",
+        "dimensions": [
+          0.5103602409362793,
+          0.42253559827804565,
+          0.2189009189605713
+        ]
+      },
+      {
+        "name": "painted_wooden_cabinet_drawer_01",
+        "dimensions": [
+          0.5103603601455688,
+          0.42253559827804565,
+          0.2189009189605713
+        ]
+      }
+    ]
+  },
+  {
+    "asset": "painted_wooden_chair_01",
+    "source": "painted_wooden_chair_01_1k.blend",
+    "dimensions_scene_units": [
+      0.43175144493579865,
+      0.5398241728544235,
+      0.9564821355743334
+    ],
+    "unit_scale": 1.0,
+    "mesh_objects": 1,
+    "polygons": 380,
+    "armatures": 0,
+    "actions": 0,
+    "missing_images": [],
+    "objects": [
+      {
+        "name": "painted_wooden_chair_01",
+        "dimensions": [
+          0.43175143003463745,
+          0.5398241877555847,
+          0.9564821124076843
+        ]
+      }
+    ]
+  },
+  {
+    "asset": "retro_multimeter",
+    "source": "retro_multimeter_1k.blend",
+    "dimensions_scene_units": [
+      0.21597424149513245,
+      0.2026422657072544,
+      0.2786375405266881
+    ],
+    "unit_scale": 1.0,
+    "mesh_objects": 20,
+    "polygons": 7026,
+    "armatures": 0,
+    "actions": 20,
+    "missing_images": [],
+    "objects": [
+      {
+        "name": "retro_multimeter_LOD0",
+        "dimensions": [
+          0.12999987602233887,
+          0.07567229866981506,
+          0.220078244805336
+        ]
+      },
+      {
+        "name": "retro_multimeter_buttons_LOD0",
+        "dimensions": [
+          0.042278073728084564,
+          0.02018040046095848,
+          0.007312379777431488
+        ]
+      },
+      {
+        "name": "retro_multimeter_handle_LOD0",
+        "dimensions": [
+          0.14068551361560822,
+          0.0257661584764719,
+          0.08606159687042236
+        ]
+      },
+      {
+        "name": "retro_multimeter_dial_LOD0",
+        "dimensions": [
+          0.042052168399095535,
+          0.013775378465652466,
+          0.042052194476127625
+        ]
+      },
+      {
+        "name": "retro_multimeter_knob_LOD0",
+        "dimensions": [
+          0.013238437473773956,
+          0.016580849885940552,
+          0.013238433748483658
+        ]
+      },
+      {
+        "name": "retro_multimeter_cables_LOD0",
+        "dimensions": [
+          0.21597421169281006,
+          0.13039594888687134,
+          0.028398308902978897
+        ]
+      },
+      {
+        "name": "retro_multimeter_needle_LOD0",
+        "dimensions": [
+          0.0005712938727810979,
+          3.725290298461914e-09,
+          0.05749630928039551
+        ]
+      },
+      {
+        "name": "retro_multimeter_buttons_LOD1",
+        "dimensions": [
+          0.042278073728084564,
+          0.02018040046095848,
+          0.007312379777431488
+        ]
+      },
+      {
+        "name": "retro_multimeter_handle_LOD1",
+        "dimensions": [
+          0.14068551361560822,
+          0.0257661584764719,
+          0.08606159687042236
+        ]
+      },
+      {
+        "name": "retro_multimeter_dial_LOD1",
+        "dimensions": [
+          0.042052168399095535,
+          0.013775371015071869,
+          0.042052194476127625
+        ]
+      },
+      {
+        "name": "retro_multimeter_knob_LOD1",
+        "dimensions": [
+          0.013238437473773956,
+          0.016580849885940552,
+          0.013238433748483658
+        ]
+      },
+      {
+        "name": "retro_multimeter_cables_LOD1",
+        "dimensions": [
+          0.21597421169281006,
+          0.13039594888687134,
+          0.02838914282619953
+        ]
+      },
+      {
+        "name": "retro_multimeter_needle_LOD1",
+        "dimensions": [
+          0.0005712938727810979,
+          3.725290298461914e-09,
+          0.05749630928039551
+        ]
+      },
+      {
+        "name": "retro_multimeter_LOD1",
+        "dimensions": [
+          0.12999987602233887,
+          0.07586456835269928,
+          0.220078244805336
+        ]
+      },
+      {
+        "name": "retro_multimeter_buttons_LOD2",
+        "dimensions": [
+          0.042278073728084564,
+          0.02018040046095848,
+          0.007312379777431488
+        ]
+      },
+      {
+        "name": "retro_multimeter_handle_LOD2",
+        "dimensions": [
+          0.14068551361560822,
+          0.0257661584764719,
+          0.08606162667274475
+        ]
+      },
+      {
+        "name": "retro_multimeter_dial_LOD2",
+        "dimensions": [
+          0.04176017642021179,
+          0.012291625142097473,
+          0.041334718465805054
+        ]
+      },
+      {
+        "name": "retro_multimeter_knob_LOD2",
+        "dimensions": [
+          0.013238437473773956,
+          0.016580849885940552,
+          0.013238433748483658
+        ]
+      },
+      {
+        "name": "retro_multimeter_cables_LOD2",
+        "dimensions": [
+          0.2136300951242447,
+          0.13039594888687134,
+          0.02838914282619953
+        ]
+      },
+      {
+        "name": "retro_multimeter_LOD2",
+        "dimensions": [
+          0.12999987602233887,
+          0.07342907786369324,
+          0.220078244805336
+        ]
+      }
+    ]
+  },
+  {
+    "asset": "service_pistol",
+    "source": "service_pistol_1k.blend",
+    "dimensions_scene_units": [
+      0.3016076236963272,
+      0.03182433918118477,
+      0.28066837787628174
+    ],
+    "unit_scale": 1.0,
+    "mesh_objects": 11,
+    "polygons": 16531,
+    "armatures": 0,
+    "actions": 0,
+    "missing_images": [],
+    "objects": [
+      {
+        "name": "service_pistol_pistol_a",
+        "dimensions": [
+          0.2219170778989792,
+          0.031398121267557144,
+          0.1286410242319107
+        ]
+      },
+      {
+        "name": "service_pistol_slide_a",
+        "dimensions": [
+          0.14243397116661072,
+          0.029174882918596268,
+          0.03224821388721466
+        ]
+      },
+      {
+        "name": "service_pistol_magazine_loaded",
+        "dimensions": [
+          0.05691713094711304,
+          0.01761382631957531,
+          0.10723493248224258
+        ]
+      },
+      {
+        "name": "service_pistol_magazine_empty",
+        "dimensions": [
+          0.05691713094711304,
+          0.01761382631957531,
+          0.10586055368185043
+        ]
+      },
+      {
+        "name": "service_pistol_bullet",
+        "dimensions": [
+          0.009727634489536285,
+          0.009727558121085167,
+          0.029335113242268562
+        ]
+      },
+      {
+        "name": "service_pistol_hammer_a",
+        "dimensions": [
+          0.017195040360093117,
+          0.004209668375551701,
+          0.015901431441307068
+        ]
+      },
+      {
+        "name": "service_pistol_trigger_a",
+        "dimensions": [
+          0.01989324390888214,
+          0.0070000020787119865,
+          0.034797605127096176
+        ]
+      },
+      {
+        "name": "service_pistol_pistol_b",
+        "dimensions": [
+          0.2219170778989792,
+          0.02713899314403534,
+          0.1286410242319107
+        ]
+      },
+      {
+        "name": "service_pistol_slide_b",
+        "dimensions": [
+          0.14243397116661072,
+          0.029174882918596268,
+          0.03224821388721466
+        ]
+      },
+      {
+        "name": "service_pistol_hammer_b",
+        "dimensions": [
+          0.017195040360093117,
+          0.004209668375551701,
+          0.015901431441307068
+        ]
+      },
+      {
+        "name": "service_pistol_trigger_b",
+        "dimensions": [
+          0.01989324390888214,
+          0.0070000020787119865,
+          0.034797605127096176
+        ]
+      }
+    ]
+  },
+  {
+    "asset": "small_wooden_table_01",
+    "source": "small_wooden_table_01_1k.blend",
+    "dimensions_scene_units": [
+      0.9161878228187561,
+      0.43996262550354004,
+      0.5330857671797276
+    ],
+    "unit_scale": 1.0,
+    "mesh_objects": 1,
+    "polygons": 1744,
+    "armatures": 0,
+    "actions": 0,
+    "missing_images": [],
+    "objects": [
+      {
+        "name": "small_wooden_table_01",
+        "dimensions": [
+          0.9161878228187561,
+          0.43996262550354004,
+          0.5330857634544373
+        ]
+      }
+    ]
+  }
+]

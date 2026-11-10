@@ -1,0 +1,11 @@
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+WARNING: Cannot equip Flashlight: Grip is for a different hand rig
+   at: push_warning (core/variant/variant_utility.cpp:1033)
+   GDScript backtrace (most recent call first):
+       [0] equip (res://held_item_controller.gd:59)
+       [1] equip_item (res://full_body_character.gd:103)
+       [2] run (res://tests/test_grip_transitions.gd:59)
+       [3] frames (res://tests/test_grip_transitions.gd:33)
+GRIP_TRANSITION_METRICS: max_wrist_m=0.05789053440094 wrist_rad=0.27410861849785 finger_rad=0.15440462529659
+GRIP_TRANSITIONS_CHECK: failures=0

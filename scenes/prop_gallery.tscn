@@ -1,6 +1,6 @@
 [gd_scene format=3]
 
-[ext_resource type="Script" path="res://prop_gallery.gd" id="1_a1v0o"]
+[ext_resource type="Script" path="res://scripts/review/prop_gallery.gd" id="1_a1v0o"]
 [ext_resource type="PackedScene" path="res://scenes/props_preview/steel_drum.tscn" id="2_yolik"]
 [ext_resource type="PackedScene" path="res://scenes/props_preview/rusted_drum.tscn" id="3_06f53"]
 [ext_resource type="PackedScene" path="res://scenes/props_preview/wooden_pallet.tscn" id="4_3ly30"]

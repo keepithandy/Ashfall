@@ -1,0 +1,47 @@
+{
+  "height_m": 1.8,
+  "base_vertices": 13380,
+  "base_faces": 13378,
+  "bone_count": 56,
+  "material": "neutral matte clay",
+  "wardrobe_included": false,
+  "design": "Adult male display mannequin, bald, unpainted and with a smooth neutral groin",
+  "source_cage": "Continuous original body/neck/head topology, with editable subdivision",
+  "joints_blender": {
+    "joint-pelvis": [
+      -4.7947822795491035e-11,
+      0.0,
+      0.9666404128074646
+    ],
+    "joint-head": [
+      -0.0,
+      0.041444286704063416,
+      1.6483705043792725
+    ],
+    "joint-r-ankle": [
+      0.20218375325202942,
+      0.012525956146419048,
+      0.07447369396686554
+    ],
+    "joint-r-knee": [
+      0.15705324709415436,
+      0.02471212111413479,
+      0.5222675800323486
+    ],
+    "joint-r-hand": [
+      0.5027346014976501,
+      0.2060166895389557,
+      1.1136350631713867
+    ],
+    "joint-r-shoulder": [
+      0.19375847280025482,
+      0.015102709643542767,
+      1.4411336183547974
+    ],
+    "joint-neck": [
+      -0.0,
+      0.008525680750608444,
+      1.5490896701812744
+    ]
+  }
+}

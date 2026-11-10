@@ -1,0 +1,14 @@
+[gd_scene load_steps=4 format=3]
+
+[ext_resource type="Script" path="res://scripts/runtime/full_body_character.gd" id="1"]
+[ext_resource type="PackedScene" path="res://assets/characters/hand_authoring/hand_authoring.glb" id="2"]
+[ext_resource type="Resource" path="res://assets/grips/flashlight.tres" id="3"]
+
+[node name="MannequinHandCandidate" type="Node3D"]
+script = ExtResource("1")
+model_path = NodePath("Mannequin")
+character_profile_path = "res://assets/characters/mannequin_player/player_profile.json"
+split_continuous_head = true
+default_held_item = ExtResource("3")
+
+[node name="Mannequin" parent="." instance=ExtResource("2")]

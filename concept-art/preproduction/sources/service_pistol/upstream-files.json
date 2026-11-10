@@ -1,0 +1,782 @@
+{
+  "Diffuse": {
+    "4k": {
+      "jpg": {
+        "size": 11653606,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/4k/service_pistol/service_pistol_diff_4k.jpg",
+        "md5": "147ba0b3ec4483d4ebf60f9d91e95351"
+      },
+      "exr": {
+        "size": 23648651,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/exr/4k/service_pistol/service_pistol_diff_4k.exr",
+        "md5": "f6edee59a8db7de7f8f76abee2b504fc"
+      },
+      "png": {
+        "md5": "e21105dce2e2b5d406ed0317b06a2379",
+        "size": 57741063,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/png/4k/service_pistol/service_pistol_diff_4k.png"
+      }
+    },
+    "2k": {
+      "png": {
+        "md5": "88ad6c081e50c96bba6075b3f5229641",
+        "size": 17863156,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/png/2k/service_pistol/service_pistol_diff_2k.png"
+      },
+      "exr": {
+        "md5": "a59e77ce288c780984d2490db64cb05a",
+        "size": 5401089,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/exr/2k/service_pistol/service_pistol_diff_2k.exr"
+      },
+      "jpg": {
+        "md5": "7286351f137744dd4571ad05e35f2bbf",
+        "size": 2867337,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/2k/service_pistol/service_pistol_diff_2k.jpg"
+      }
+    },
+    "1k": {
+      "png": {
+        "size": 5004884,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/png/1k/service_pistol/service_pistol_diff_1k.png",
+        "md5": "40878b6c4df77aef6966287fed10fe1f"
+      },
+      "exr": {
+        "size": 1340805,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/exr/1k/service_pistol/service_pistol_diff_1k.exr",
+        "md5": "985596b1fef08f1d8a00206651ceefc1"
+      },
+      "jpg": {
+        "md5": "9954be782e3d946c1c73d7d4f476687e",
+        "size": 718216,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/service_pistol/service_pistol_diff_1k.jpg"
+      }
+    }
+  },
+  "Rough": {
+    "4k": {
+      "exr": {
+        "md5": "634d093eddcf7064ddae4e0bfe4a7f0a",
+        "size": 12600095,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/exr/4k/service_pistol/service_pistol_rough_4k.exr"
+      },
+      "png": {
+        "md5": "d8304e1149d73822c4c85481b2601965",
+        "size": 13486878,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/png/4k/service_pistol/service_pistol_rough_4k.png"
+      },
+      "jpg": {
+        "md5": "a551db88e05424deb10ea93f31a84b9b",
+        "size": 11862537,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/4k/service_pistol/service_pistol_rough_4k.jpg"
+      }
+    },
+    "2k": {
+      "jpg": {
+        "md5": "c5fe6670f6d794a7eb5fdd34e0703ffc",
+        "size": 2973157,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/2k/service_pistol/service_pistol_rough_2k.jpg"
+      },
+      "exr": {
+        "md5": "aff41ecd42a635ef9f60437fada56f66",
+        "size": 3295333,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/exr/2k/service_pistol/service_pistol_rough_2k.exr"
+      },
+      "png": {
+        "md5": "69cb3a5bffe100d61c64804e47fa3d0f",
+        "size": 6104697,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/png/2k/service_pistol/service_pistol_rough_2k.png"
+      }
+    },
+    "1k": {
+      "exr": {
+        "md5": "68fcef8d4c039601382ec8dc76061c3a",
+        "size": 872358,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/exr/1k/service_pistol/service_pistol_rough_1k.exr"
+      },
+      "png": {
+        "md5": "17b11d68adc309dad993954985cbe507",
+        "size": 1761929,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/png/1k/service_pistol/service_pistol_rough_1k.png"
+      },
+      "jpg": {
+        "size": 755875,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/service_pistol/service_pistol_rough_1k.jpg",
+        "md5": "32fcaca5d617499b354eaa4bafedc2da"
+      }
+    }
+  },
+  "nor_gl": {
+    "4k": {
+      "exr": {
+        "md5": "33a8a19319a7de0601c26855ad1351fb",
+        "size": 12366432,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/exr/4k/service_pistol/service_pistol_nor_gl_4k.exr"
+      },
+      "png": {
+        "md5": "efdb0d26b6b43ce1c18a0dfa6684e960",
+        "size": 46759998,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/png/4k/service_pistol/service_pistol_nor_gl_4k.png"
+      },
+      "jpg": {
+        "md5": "61b18b21883e1ce33cdc0eaa03a0cf11",
+        "size": 6451856,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/4k/service_pistol/service_pistol_nor_gl_4k.jpg"
+      }
+    },
+    "2k": {
+      "exr": {
+        "size": 3738887,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/exr/2k/service_pistol/service_pistol_nor_gl_2k.exr",
+        "md5": "b9cacc4a839b33418e33b8958ba50dc6"
+      },
+      "png": {
+        "md5": "aaf7376cc2905a95053df128d813873b",
+        "size": 15892958,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/png/2k/service_pistol/service_pistol_nor_gl_2k.png"
+      },
+      "jpg": {
+        "md5": "23c072f21319624353e9b3751517d956",
+        "size": 1911475,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/2k/service_pistol/service_pistol_nor_gl_2k.jpg"
+      }
+    },
+    "1k": {
+      "jpg": {
+        "size": 588720,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/service_pistol/service_pistol_nor_gl_1k.jpg",
+        "md5": "208b6ba1dadddf152899337a0249a158"
+      },
+      "exr": {
+        "size": 1201508,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/exr/1k/service_pistol/service_pistol_nor_gl_1k.exr",
+        "md5": "ca611ba91eddd357c834a645d4aeea8d"
+      },
+      "png": {
+        "size": 4457647,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/png/1k/service_pistol/service_pistol_nor_gl_1k.png",
+        "md5": "3230f43a0eb75a887d7da39ed14bc3f5"
+      }
+    }
+  },
+  "fbx": {
+    "4k": {
+      "fbx": {
+        "include": {
+          "textures/service_pistol_rough_4k.exr": {
+            "md5": "634d093eddcf7064ddae4e0bfe4a7f0a",
+            "size": 12600095,
+            "url": "https://dl.polyhaven.org/file/ph-assets/Models/exr/4k/service_pistol/service_pistol_rough_4k.exr"
+          },
+          "textures/service_pistol_nor_gl_4k.exr": {
+            "size": 12366432,
+            "url": "https://dl.polyhaven.org/file/ph-assets/Models/exr/4k/service_pistol/service_pistol_nor_gl_4k.exr",
+            "md5": "33a8a19319a7de0601c26855ad1351fb"
+          },
+          "textures/service_pistol_metal_4k.exr": {
+            "size": 1759003,
+            "url": "https://dl.polyhaven.org/file/ph-assets/Models/exr/4k/service_pistol/service_pistol_metal_4k.exr",
+            "md5": "de5dea378b382bd4e26f3aa41321c533"
+          },
+          "textures/service_pistol_diff_4k.jpg": {
+            "md5": "147ba0b3ec4483d4ebf60f9d91e95351",
+            "size": 11653606,
+            "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/4k/service_pistol/service_pistol_diff_4k.jpg"
+          }
+        },
+        "md5": "d8570e8b765ba61843199d604b32bb57",
+        "size": 1095644,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/fbx/4k/service_pistol/service_pistol_4k.fbx"
+      }
+    },
+    "2k": {
+      "fbx": {
+        "size": 1095644,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/fbx/2k/service_pistol/service_pistol_2k.fbx",
+        "include": {
+          "textures/service_pistol_rough_2k.exr": {
+            "md5": "aff41ecd42a635ef9f60437fada56f66",
+            "size": 3295333,
+            "url": "https://dl.polyhaven.org/file/ph-assets/Models/exr/2k/service_pistol/service_pistol_rough_2k.exr"
+          },
+          "textures/service_pistol_nor_gl_2k.exr": {
+            "size": 3738887,
+            "url": "https://dl.polyhaven.org/file/ph-assets/Models/exr/2k/service_pistol/service_pistol_nor_gl_2k.exr",
+            "md5": "b9cacc4a839b33418e33b8958ba50dc6"
+          },
+          "textures/service_pistol_diff_2k.jpg": {
+            "md5": "7286351f137744dd4571ad05e35f2bbf",
+            "size": 2867337,
+            "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/2k/service_pistol/service_pistol_diff_2k.jpg"
+          },
+          "textures/service_pistol_metal_2k.exr": {
+            "size": 666674,
+            "url": "https://dl.polyhaven.org/file/ph-assets/Models/exr/2k/service_pistol/service_pistol_metal_2k.exr",
+            "md5": "89e970881aadf95821cb8ac98a70952f"
+          }
+        },
+        "md5": "97db77a59c60df1e979f834e6b7de1cb"
+      }
+    },
+    "1k": {
+      "fbx": {
+        "size": 1095644,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/fbx/1k/service_pistol/service_pistol_1k.fbx",
+        "include": {
+          "textures/service_pistol_rough_1k.exr": {
+            "md5": "68fcef8d4c039601382ec8dc76061c3a",
+            "size": 872358,
+            "url": "https://dl.polyhaven.org/file/ph-assets/Models/exr/1k/service_pistol/service_pistol_rough_1k.exr"
+          },
+          "textures/service_pistol_diff_1k.jpg": {
+            "size": 718216,
+            "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/service_pistol/service_pistol_diff_1k.jpg",
+            "md5": "9954be782e3d946c1c73d7d4f476687e"
+          },
+          "textures/service_pistol_nor_gl_1k.exr": {
+            "md5": "ca611ba91eddd357c834a645d4aeea8d",
+            "size": 1201508,
+            "url": "https://dl.polyhaven.org/file/ph-assets/Models/exr/1k/service_pistol/service_pistol_nor_gl_1k.exr"
+          },
+          "textures/service_pistol_metal_1k.exr": {
+            "md5": "932e4ebdeb33dd1eb42c0cf3497c7cb4",
+            "size": 252842,
+            "url": "https://dl.polyhaven.org/file/ph-assets/Models/exr/1k/service_pistol/service_pistol_metal_1k.exr"
+          }
+        },
+        "md5": "ece5f47e153232adcfc31a60c503bfaf"
+      }
+    }
+  },
+  "nor_dx": {
+    "1k": {
+      "jpg": {
+        "size": 590403,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/service_pistol/service_pistol_nor_dx_1k.jpg",
+        "md5": "a8ffff95236d11ae069e5080f7627050"
+      },
+      "png": {
+        "md5": "b644c380b8decbf17cb1814598b5d80b",
+        "size": 4468376,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/png/1k/service_pistol/service_pistol_nor_dx_1k.png"
+      },
+      "exr": {
+        "md5": "f5cff904975779501c854d214e3f52fd",
+        "size": 1201871,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/exr/1k/service_pistol/service_pistol_nor_dx_1k.exr"
+      }
+    },
+    "4k": {
+      "png": {
+        "size": 46731412,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/png/4k/service_pistol/service_pistol_nor_dx_4k.png",
+        "md5": "a4195b1b126abeeff8cf48488ac63745"
+      },
+      "exr": {
+        "size": 12358284,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/exr/4k/service_pistol/service_pistol_nor_dx_4k.exr",
+        "md5": "feecade8c7addde5cf63799ed652d7d2"
+      },
+      "jpg": {
+        "md5": "edd1ff5318e2de083f282d441bc99fbc",
+        "size": 6334139,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/4k/service_pistol/service_pistol_nor_dx_4k.jpg"
+      }
+    },
+    "2k": {
+      "png": {
+        "md5": "97f607df5683968b20d53d563eedb5e2",
+        "size": 15935404,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/png/2k/service_pistol/service_pistol_nor_dx_2k.png"
+      },
+      "exr": {
+        "size": 3728694,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/exr/2k/service_pistol/service_pistol_nor_dx_2k.exr",
+        "md5": "bc6f994063c5165314914145fb9b98db"
+      },
+      "jpg": {
+        "size": 1914461,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/2k/service_pistol/service_pistol_nor_dx_2k.jpg",
+        "md5": "1efd8a256cd2b532f3af70b97985f1d6"
+      }
+    }
+  },
+  "Displacement": {
+    "1k": {
+      "png": {
+        "md5": "143f1a3afcffac9ec95c6db890451d9a",
+        "size": 555872,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/png/1k/service_pistol/service_pistol_disp_1k.png"
+      },
+      "exr": {
+        "size": 65039,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/exr/1k/service_pistol/service_pistol_disp_1k.exr",
+        "md5": "b8f8c1308a37b8985dec8e7a287ef581"
+      },
+      "jpg": {
+        "size": 31629,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/service_pistol/service_pistol_disp_1k.jpg",
+        "md5": "9b2c48ccf94d6a1eabc3de3e46630ab2"
+      }
+    },
+    "4k": {
+      "exr": {
+        "md5": "3dbb48eabad3aae5412c5d8830d0809f",
+        "size": 579556,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/exr/4k/service_pistol/service_pistol_disp_4k.exr"
+      },
+      "png": {
+        "md5": "f5c1f14234a94dc61a1886023ca9271e",
+        "size": 5107114,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/png/4k/service_pistol/service_pistol_disp_4k.png"
+      },
+      "jpg": {
+        "md5": "49a867fc9b8c52185289cf2dbbd5f11c",
+        "size": 389506,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/4k/service_pistol/service_pistol_disp_4k.jpg"
+      }
+    },
+    "2k": {
+      "png": {
+        "md5": "cdf6edf69b5720482823b552cd7f83e4",
+        "size": 1720698,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/png/2k/service_pistol/service_pistol_disp_2k.png"
+      },
+      "exr": {
+        "md5": "726c6b1f905a556b23d08d68c84408ef",
+        "size": 194342,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/exr/2k/service_pistol/service_pistol_disp_2k.exr"
+      },
+      "jpg": {
+        "size": 113202,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/2k/service_pistol/service_pistol_disp_2k.jpg",
+        "md5": "68f70eb700f16b86daa1988f4a76f52d"
+      }
+    }
+  },
+  "AO": {
+    "4k": {
+      "jpg": {
+        "size": 6670418,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/4k/service_pistol/service_pistol_ao_4k.jpg",
+        "md5": "94f8e3aa65e47314299201987095a0e4"
+      },
+      "png": {
+        "md5": "adfdf8af8bcb8daf5bbbe4ae1007403a",
+        "size": 8614129,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/png/4k/service_pistol/service_pistol_ao_4k.png"
+      },
+      "exr": {
+        "size": 8208356,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/exr/4k/service_pistol/service_pistol_ao_4k.exr",
+        "md5": "ab2045c06c1002d93fff774a9c312b3c"
+      }
+    },
+    "2k": {
+      "jpg": {
+        "size": 1628054,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/2k/service_pistol/service_pistol_ao_2k.jpg",
+        "md5": "2f6589ad78d4eb8c5818dcd4b86e67a5"
+      },
+      "exr": {
+        "size": 1992433,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/exr/2k/service_pistol/service_pistol_ao_2k.exr",
+        "md5": "c0cba3346d6c03f79f90422ef28cece9"
+      },
+      "png": {
+        "md5": "47e1a1253fe9d8b77e04923d39e9bc39",
+        "size": 4645218,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/png/2k/service_pistol/service_pistol_ao_2k.png"
+      }
+    },
+    "1k": {
+      "jpg": {
+        "size": 446005,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/service_pistol/service_pistol_ao_1k.jpg",
+        "md5": "f60e4a77f0e13f5aec84e4971ad0b1ed"
+      },
+      "png": {
+        "size": 1467900,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/png/1k/service_pistol/service_pistol_ao_1k.png",
+        "md5": "dee914211b8b01d292eb36986b3488e1"
+      },
+      "exr": {
+        "md5": "5d544c48c09875af5bfea950f5475dda",
+        "size": 552876,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/exr/1k/service_pistol/service_pistol_ao_1k.exr"
+      }
+    }
+  },
+  "Metal": {
+    "4k": {
+      "exr": {
+        "size": 1759003,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/exr/4k/service_pistol/service_pistol_metal_4k.exr",
+        "md5": "de5dea378b382bd4e26f3aa41321c533"
+      },
+      "png": {
+        "md5": "01eaa4bec76c81b2d84bd00a8ee63c69",
+        "size": 1241597,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/png/4k/service_pistol/service_pistol_metal_4k.png"
+      },
+      "jpg": {
+        "md5": "3e19b131545a4b07911c4735689f679d",
+        "size": 1767857,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/4k/service_pistol/service_pistol_metal_4k.jpg"
+      }
+    },
+    "2k": {
+      "exr": {
+        "md5": "89e970881aadf95821cb8ac98a70952f",
+        "size": 666674,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/exr/2k/service_pistol/service_pistol_metal_2k.exr"
+      },
+      "png": {
+        "size": 566723,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/png/2k/service_pistol/service_pistol_metal_2k.png",
+        "md5": "18c06e4bc624dd4aa200e99a990b6bcc"
+      },
+      "jpg": {
+        "size": 604443,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/2k/service_pistol/service_pistol_metal_2k.jpg",
+        "md5": "2a00e0bc7786553841b76d0d2f9e97e9"
+      }
+    },
+    "1k": {
+      "png": {
+        "md5": "7fa7df4be5650f058d22dccc87876b60",
+        "size": 239456,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/png/1k/service_pistol/service_pistol_metal_1k.png"
+      },
+      "exr": {
+        "md5": "932e4ebdeb33dd1eb42c0cf3497c7cb4",
+        "size": 252842,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/exr/1k/service_pistol/service_pistol_metal_1k.exr"
+      },
+      "jpg": {
+        "size": 208720,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/service_pistol/service_pistol_metal_1k.jpg",
+        "md5": "ab4f5674a02ed55ee32bab33c63b242d"
+      }
+    }
+  },
+  "arm": {
+    "4k": {
+      "jpg": {
+        "md5": "9a37c118cbd18234a02050b768f193b4",
+        "size": 14138083,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/4k/service_pistol/service_pistol_arm_4k.jpg"
+      },
+      "exr": {
+        "md5": "6356c21d9e195653140ba26429a35666",
+        "size": 32362708,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/exr/4k/service_pistol/service_pistol_arm_4k.exr"
+      },
+      "png": {
+        "size": 21394013,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/png/4k/service_pistol/service_pistol_arm_4k.png",
+        "md5": "e864d9b1590fe46eaddfa6dbec889832"
+      }
+    },
+    "2k": {
+      "png": {
+        "size": 5583976,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/png/2k/service_pistol/service_pistol_arm_2k.png",
+        "md5": "714bd862f8ecdf7086aa8ac50da0bd72"
+      },
+      "exr": {
+        "md5": "1f44f9f6923e9920256d5cfcbb14eef9",
+        "size": 8244350,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/exr/2k/service_pistol/service_pistol_arm_2k.exr"
+      },
+      "jpg": {
+        "md5": "4a6066692ccc093b5493ba52f3b389ff",
+        "size": 3546327,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/2k/service_pistol/service_pistol_arm_2k.jpg"
+      }
+    },
+    "1k": {
+      "png": {
+        "md5": "e261ca0c0437ef02b70b71ce3c0769df",
+        "size": 1456071,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/png/1k/service_pistol/service_pistol_arm_1k.png"
+      },
+      "exr": {
+        "md5": "48ecae141f5048cc4257b24bc19ed8de",
+        "size": 2150239,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/exr/1k/service_pistol/service_pistol_arm_1k.exr"
+      },
+      "jpg": {
+        "md5": "c5ffe4a53cfb9ab9ceb18c44d5b6270f",
+        "size": 921086,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/service_pistol/service_pistol_arm_1k.jpg"
+      }
+    }
+  },
+  "blend": {
+    "4k": {
+      "blend": {
+        "size": 594822,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/blend/4k/service_pistol/service_pistol_4k.blend",
+        "include": {
+          "textures/service_pistol_metal_4k.exr": {
+            "md5": "de5dea378b382bd4e26f3aa41321c533",
+            "size": 1759003,
+            "url": "https://dl.polyhaven.org/file/ph-assets/Models/exr/4k/service_pistol/service_pistol_metal_4k.exr"
+          },
+          "textures/service_pistol_diff_4k.jpg": {
+            "md5": "147ba0b3ec4483d4ebf60f9d91e95351",
+            "size": 11653606,
+            "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/4k/service_pistol/service_pistol_diff_4k.jpg"
+          },
+          "textures/service_pistol_nor_gl_4k.exr": {
+            "md5": "33a8a19319a7de0601c26855ad1351fb",
+            "size": 12366432,
+            "url": "https://dl.polyhaven.org/file/ph-assets/Models/exr/4k/service_pistol/service_pistol_nor_gl_4k.exr"
+          },
+          "textures/service_pistol_rough_4k.exr": {
+            "md5": "634d093eddcf7064ddae4e0bfe4a7f0a",
+            "size": 12600095,
+            "url": "https://dl.polyhaven.org/file/ph-assets/Models/exr/4k/service_pistol/service_pistol_rough_4k.exr"
+          }
+        },
+        "md5": "50c729ccee0f59aedad4887b3eb31b3c"
+      }
+    },
+    "2k": {
+      "blend": {
+        "size": 594822,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/blend/2k/service_pistol/service_pistol_2k.blend",
+        "include": {
+          "textures/service_pistol_rough_2k.exr": {
+            "md5": "aff41ecd42a635ef9f60437fada56f66",
+            "size": 3295333,
+            "url": "https://dl.polyhaven.org/file/ph-assets/Models/exr/2k/service_pistol/service_pistol_rough_2k.exr"
+          },
+          "textures/service_pistol_nor_gl_2k.exr": {
+            "size": 3738887,
+            "url": "https://dl.polyhaven.org/file/ph-assets/Models/exr/2k/service_pistol/service_pistol_nor_gl_2k.exr",
+            "md5": "b9cacc4a839b33418e33b8958ba50dc6"
+          },
+          "textures/service_pistol_diff_2k.jpg": {
+            "size": 2867337,
+            "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/2k/service_pistol/service_pistol_diff_2k.jpg",
+            "md5": "7286351f137744dd4571ad05e35f2bbf"
+          },
+          "textures/service_pistol_metal_2k.exr": {
+            "size": 666674,
+            "url": "https://dl.polyhaven.org/file/ph-assets/Models/exr/2k/service_pistol/service_pistol_metal_2k.exr",
+            "md5": "89e970881aadf95821cb8ac98a70952f"
+          }
+        },
+        "md5": "2c1eb5b191bf72cafc03b5ba7920a91a"
+      }
+    },
+    "1k": {
+      "blend": {
+        "size": 594822,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/blend/1k/service_pistol/service_pistol_1k.blend",
+        "include": {
+          "textures/service_pistol_rough_1k.exr": {
+            "md5": "68fcef8d4c039601382ec8dc76061c3a",
+            "size": 872358,
+            "url": "https://dl.polyhaven.org/file/ph-assets/Models/exr/1k/service_pistol/service_pistol_rough_1k.exr"
+          },
+          "textures/service_pistol_diff_1k.jpg": {
+            "size": 718216,
+            "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/service_pistol/service_pistol_diff_1k.jpg",
+            "md5": "9954be782e3d946c1c73d7d4f476687e"
+          },
+          "textures/service_pistol_nor_gl_1k.exr": {
+            "md5": "ca611ba91eddd357c834a645d4aeea8d",
+            "size": 1201508,
+            "url": "https://dl.polyhaven.org/file/ph-assets/Models/exr/1k/service_pistol/service_pistol_nor_gl_1k.exr"
+          },
+          "textures/service_pistol_metal_1k.exr": {
+            "md5": "932e4ebdeb33dd1eb42c0cf3497c7cb4",
+            "size": 252842,
+            "url": "https://dl.polyhaven.org/file/ph-assets/Models/exr/1k/service_pistol/service_pistol_metal_1k.exr"
+          }
+        },
+        "md5": "10948580b37d4dfe522d25a6ff7e9927"
+      }
+    }
+  },
+  "usd": {
+    "1k": {
+      "usd": {
+        "include": {
+          "textures/service_pistol_rough_1k.exr": {
+            "size": 872358,
+            "url": "https://dl.polyhaven.org/file/ph-assets/Models/exr/1k/service_pistol/service_pistol_rough_1k.exr",
+            "md5": "68fcef8d4c039601382ec8dc76061c3a"
+          },
+          "textures/service_pistol_diff_1k.jpg": {
+            "size": 718216,
+            "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/service_pistol/service_pistol_diff_1k.jpg",
+            "md5": "9954be782e3d946c1c73d7d4f476687e"
+          },
+          "textures/service_pistol_nor_gl_1k.exr": {
+            "size": 1201508,
+            "url": "https://dl.polyhaven.org/file/ph-assets/Models/exr/1k/service_pistol/service_pistol_nor_gl_1k.exr",
+            "md5": "ca611ba91eddd357c834a645d4aeea8d"
+          },
+          "textures/service_pistol_metal_1k.exr": {
+            "md5": "932e4ebdeb33dd1eb42c0cf3497c7cb4",
+            "size": 252842,
+            "url": "https://dl.polyhaven.org/file/ph-assets/Models/exr/1k/service_pistol/service_pistol_metal_1k.exr"
+          }
+        },
+        "md5": "48e10e08a0b89fe21b1d41060c1a5d17",
+        "size": 1425307,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/usd/1k/service_pistol/service_pistol_1k.usdc"
+      }
+    },
+    "4k": {
+      "usd": {
+        "size": 1425308,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/usd/4k/service_pistol/service_pistol_4k.usdc",
+        "include": {
+          "textures/service_pistol_metal_4k.exr": {
+            "md5": "de5dea378b382bd4e26f3aa41321c533",
+            "size": 1759003,
+            "url": "https://dl.polyhaven.org/file/ph-assets/Models/exr/4k/service_pistol/service_pistol_metal_4k.exr"
+          },
+          "textures/service_pistol_diff_4k.jpg": {
+            "md5": "147ba0b3ec4483d4ebf60f9d91e95351",
+            "size": 11653606,
+            "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/4k/service_pistol/service_pistol_diff_4k.jpg"
+          },
+          "textures/service_pistol_nor_gl_4k.exr": {
+            "md5": "33a8a19319a7de0601c26855ad1351fb",
+            "size": 12366432,
+            "url": "https://dl.polyhaven.org/file/ph-assets/Models/exr/4k/service_pistol/service_pistol_nor_gl_4k.exr"
+          },
+          "textures/service_pistol_rough_4k.exr": {
+            "size": 12600095,
+            "url": "https://dl.polyhaven.org/file/ph-assets/Models/exr/4k/service_pistol/service_pistol_rough_4k.exr",
+            "md5": "634d093eddcf7064ddae4e0bfe4a7f0a"
+          }
+        },
+        "md5": "99c3996b09ae966e7a82b5c3a5021139"
+      }
+    },
+    "2k": {
+      "usd": {
+        "include": {
+          "textures/service_pistol_rough_2k.exr": {
+            "size": 3295333,
+            "url": "https://dl.polyhaven.org/file/ph-assets/Models/exr/2k/service_pistol/service_pistol_rough_2k.exr",
+            "md5": "aff41ecd42a635ef9f60437fada56f66"
+          },
+          "textures/service_pistol_nor_gl_2k.exr": {
+            "md5": "b9cacc4a839b33418e33b8958ba50dc6",
+            "size": 3738887,
+            "url": "https://dl.polyhaven.org/file/ph-assets/Models/exr/2k/service_pistol/service_pistol_nor_gl_2k.exr"
+          },
+          "textures/service_pistol_diff_2k.jpg": {
+            "size": 2867337,
+            "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/2k/service_pistol/service_pistol_diff_2k.jpg",
+            "md5": "7286351f137744dd4571ad05e35f2bbf"
+          },
+          "textures/service_pistol_metal_2k.exr": {
+            "size": 666674,
+            "url": "https://dl.polyhaven.org/file/ph-assets/Models/exr/2k/service_pistol/service_pistol_metal_2k.exr",
+            "md5": "89e970881aadf95821cb8ac98a70952f"
+          }
+        },
+        "md5": "68008eaec939f231a34d3fe02e3a68f5",
+        "size": 1425304,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/usd/2k/service_pistol/service_pistol_2k.usdc"
+      }
+    }
+  },
+  "gltf": {
+    "1k": {
+      "gltf": {
+        "include": {
+          "service_pistol.bin": {
+            "size": 1052048,
+            "url": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/4k/service_pistol/service_pistol.bin",
+            "md5": "d9113b4f3c452ccb58698fde28450546"
+          },
+          "textures/service_pistol_arm_1k.jpg": {
+            "size": 921086,
+            "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/service_pistol/service_pistol_arm_1k.jpg",
+            "md5": "c5ffe4a53cfb9ab9ceb18c44d5b6270f"
+          },
+          "textures/service_pistol_diff_1k.jpg": {
+            "md5": "9954be782e3d946c1c73d7d4f476687e",
+            "size": 718216,
+            "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/service_pistol/service_pistol_diff_1k.jpg"
+          },
+          "textures/service_pistol_nor_gl_1k.jpg": {
+            "size": 588720,
+            "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/service_pistol/service_pistol_nor_gl_1k.jpg",
+            "md5": "208b6ba1dadddf152899337a0249a158"
+          }
+        },
+        "md5": "2c191ca39d102066b0e6b1021f38fc69",
+        "size": 17614,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/1k/service_pistol/service_pistol_1k.gltf"
+      }
+    },
+    "4k": {
+      "gltf": {
+        "include": {
+          "textures/service_pistol_arm_4k.jpg": {
+            "md5": "9a37c118cbd18234a02050b768f193b4",
+            "size": 14138083,
+            "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/4k/service_pistol/service_pistol_arm_4k.jpg"
+          },
+          "service_pistol.bin": {
+            "size": 1052048,
+            "url": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/4k/service_pistol/service_pistol.bin",
+            "md5": "d9113b4f3c452ccb58698fde28450546"
+          },
+          "textures/service_pistol_nor_gl_4k.jpg": {
+            "size": 6451856,
+            "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/4k/service_pistol/service_pistol_nor_gl_4k.jpg",
+            "md5": "61b18b21883e1ce33cdc0eaa03a0cf11"
+          },
+          "textures/service_pistol_diff_4k.jpg": {
+            "size": 11653606,
+            "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/4k/service_pistol/service_pistol_diff_4k.jpg",
+            "md5": "147ba0b3ec4483d4ebf60f9d91e95351"
+          }
+        },
+        "md5": "b659c6bed6385e507a9b55938ff1900d",
+        "size": 17614,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/4k/service_pistol/service_pistol_4k.gltf"
+      }
+    },
+    "2k": {
+      "gltf": {
+        "include": {
+          "textures/service_pistol_arm_2k.jpg": {
+            "size": 3546327,
+            "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/2k/service_pistol/service_pistol_arm_2k.jpg",
+            "md5": "4a6066692ccc093b5493ba52f3b389ff"
+          },
+          "textures/service_pistol_nor_gl_2k.jpg": {
+            "size": 1911475,
+            "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/2k/service_pistol/service_pistol_nor_gl_2k.jpg",
+            "md5": "23c072f21319624353e9b3751517d956"
+          },
+          "service_pistol.bin": {
+            "md5": "d9113b4f3c452ccb58698fde28450546",
+            "size": 1052048,
+            "url": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/4k/service_pistol/service_pistol.bin"
+          },
+          "textures/service_pistol_diff_2k.jpg": {
+            "size": 2867337,
+            "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/2k/service_pistol/service_pistol_diff_2k.jpg",
+            "md5": "7286351f137744dd4571ad05e35f2bbf"
+          }
+        },
+        "md5": "edf725ffcdf25b42d5bde1630d1689da",
+        "size": 17614,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/2k/service_pistol/service_pistol_2k.gltf"
+      }
+    }
+  }
+}

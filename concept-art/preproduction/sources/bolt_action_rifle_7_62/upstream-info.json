@@ -1,0 +1,56 @@
+{
+  "type": 2,
+  "name": "Bolt Action Rifle 7.62",
+  "categories": [
+    "collection: project_lighthouse",
+    "weapons",
+    "firearms"
+  ],
+  "tags": [
+    "vintage",
+    "worn",
+    "old",
+    "weathered",
+    "aged",
+    "gun",
+    "scope",
+    "bullet"
+  ],
+  "description": "Free 8K model of a classic bolt-action 7.62 rifle with long barrel, worn wood stock, cloth-wrapped butt, detachable magazine, small scope, and weathered metal.",
+  "authors": {
+    "Mateusz Sadek": "All"
+  },
+  "donated": true,
+  "max_resolution": [
+    8192,
+    8192
+  ],
+  "polycount": 19985,
+  "files_hash": "151d4108d40bfd38a062ac462e8b4ad7e3df2e98",
+  "texel_density": 18568.187728189034,
+  "dimensions": [
+    1230.9749126434326,
+    66.5869489312172,
+    204.51291650533676
+  ],
+  "date_published": 1782777600,
+  "staging": null,
+  "category_id": "aa6f11e5-0e7c-52e1-95d7-dd6c4482152b",
+  "category": "Weapons/Firearms/Rifles",
+  "collections": [
+    "project_lighthouse"
+  ],
+  "attributes": {
+    "condition": [
+      "weathered"
+    ],
+    "material": [
+      "metal",
+      "wood",
+      "fabric"
+    ]
+  },
+  "img_version": "849d4d83",
+  "download_count": 5142,
+  "thumbnail_url": "https://cdn.polyhaven.com/asset_img/thumbs/bolt_action_rifle_7_62.png?width=256&height=256&format=webp&v=849d4d83"
+}

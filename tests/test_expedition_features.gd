@@ -18,7 +18,7 @@ func frames(n: int) -> void:
 		await physics_frame
 
 func run() -> void:
-	game=load("res://main.tscn").instantiate()
+	game=load("res://scenes/legacy/main.tscn").instantiate()
 	root.add_child(game)
 	game.smoke_test=true
 	game.resume_game()

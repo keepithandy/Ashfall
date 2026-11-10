@@ -1,0 +1,72 @@
+[gd_scene load_steps=15 format=3]
+
+[ext_resource type="PackedScene" path="res://scenes/houses/blue_porch_cottage.tscn" id="1"]
+[ext_resource type="PackedScene" path="res://scenes/workshop/workbench_vise.tscn" id="2"]
+[ext_resource type="PackedScene" path="res://scenes/props/desk_radio.tscn" id="3"]
+[ext_resource type="PackedScene" path="res://scenes/props/concrete_barrier.tscn" id="4"]
+[ext_resource type="Material" path="res://assets/crossroads_props/materials/root_soil.tres" id="5"]
+[ext_resource type="PackedScene" path="res://scenes/props/electrical_cabinet.tscn" id="6"]
+[ext_resource type="PackedScene" path="res://scenes/props/pipe_bundle.tscn" id="7"]
+[ext_resource type="PackedScene" path="res://scenes/props/steel_drum.tscn" id="8"]
+[ext_resource type="PackedScene" path="res://scenes/workshop/wheelbarrow.tscn" id="9"]
+[ext_resource type="PackedScene" path="res://scenes/props/wooden_bench.tscn" id="10"]
+[sub_resource type="BoxMesh" id="ground_mesh"]
+size = Vector3(42,1,48)
+[sub_resource type="BoxShape3D" id="ground_shape"]
+size = Vector3(42,1,48)
+[sub_resource type="BoxShape3D" id="record_shape"]
+size = Vector3(0.8,0.5,0.5)
+[sub_resource type="BoxShape3D" id="fence_shape"]
+size = Vector3(1,4,48)
+
+[node name="NorthRelay" type="Node3D"]
+position = Vector3(300,0,0)
+[node name="Ground" type="StaticBody3D" parent="."]
+position = Vector3(0,-0.5,0)
+[node name="Mesh" type="MeshInstance3D" parent="Ground"]
+mesh = SubResource("ground_mesh")
+material_override = ExtResource("5")
+[node name="Collision" type="CollisionShape3D" parent="Ground"]
+shape = SubResource("ground_shape")
+[node name="RelayCottage" parent="." instance=ExtResource("1")]
+[node name="Workbench" parent="." instance=ExtResource("2")]
+position = Vector3(0,0,-11)
+[node name="Recorder" type="StaticBody3D" parent="."]
+position = Vector3(0,0.86,-11)
+[node name="Model" parent="Recorder" instance=ExtResource("3")]
+[node name="Collision" type="CollisionShape3D" parent="Recorder"]
+shape = SubResource("record_shape")
+[node name="WestCover" parent="." instance=ExtResource("4")]
+position = Vector3(-10,0,8)
+[node name="EastCover" parent="." instance=ExtResource("4")]
+position = Vector3(10,0,8)
+[node name="RelayYardDressing" type="Node3D" parent="."]
+[node name="ServiceCabinet" parent="RelayYardDressing" instance=ExtResource("6")]
+position = Vector3(17,0,-18)
+rotation = Vector3(0,-1.5708,0)
+[node name="StoredPipes" parent="RelayYardDressing" instance=ExtResource("7")]
+position = Vector3(17,0,-15)
+[node name="ServiceDrum" parent="RelayYardDressing" instance=ExtResource("8")]
+position = Vector3(17,0,-20)
+[node name="Wheelbarrow" parent="RelayYardDressing" instance=ExtResource("9")]
+position = Vector3(-17,0,-17)
+rotation = Vector3(0,0.7,0)
+[node name="YardBench" parent="RelayYardDressing" instance=ExtResource("10")]
+position = Vector3(-17,0,-20)
+rotation = Vector3(0,1.5708,0)
+[node name="Bounds" type="StaticBody3D" parent="."]
+[node name="West" type="CollisionShape3D" parent="Bounds"]
+position = Vector3(-21,2,0)
+shape = SubResource("fence_shape")
+[node name="East" type="CollisionShape3D" parent="Bounds"]
+position = Vector3(21,2,0)
+shape = SubResource("fence_shape")
+[node name="North" type="CollisionShape3D" parent="Bounds"]
+position = Vector3(0,2,-24)
+rotation = Vector3(0,1.5707963,0)
+shape = SubResource("fence_shape")
+[node name="South" type="CollisionShape3D" parent="Bounds"]
+position = Vector3(0,2,24)
+rotation = Vector3(0,1.5707963,0)
+shape = SubResource("fence_shape")
+

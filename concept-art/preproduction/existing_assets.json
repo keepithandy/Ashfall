@@ -1,0 +1,499 @@
+[
+  {
+    "id": "cable_spool",
+    "category": "scenes/props",
+    "path": "scenes/props/cable_spool.tscn",
+    "status": "existing_preserve",
+    "review": "file exists; detailed suitability review pending"
+  },
+  {
+    "id": "concrete_barrier",
+    "category": "scenes/props",
+    "path": "scenes/props/concrete_barrier.tscn",
+    "status": "existing_preserve",
+    "review": "file exists; detailed suitability review pending"
+  },
+  {
+    "id": "damaged_fence",
+    "category": "scenes/props",
+    "path": "scenes/props/damaged_fence.tscn",
+    "status": "existing_preserve",
+    "review": "file exists; detailed suitability review pending"
+  },
+  {
+    "id": "desk_radio",
+    "category": "scenes/props",
+    "path": "scenes/props/desk_radio.tscn",
+    "status": "existing_preserve",
+    "review": "file exists; detailed suitability review pending"
+  },
+  {
+    "id": "electrical_cabinet",
+    "category": "scenes/props",
+    "path": "scenes/props/electrical_cabinet.tscn",
+    "status": "existing_preserve",
+    "review": "file exists; detailed suitability review pending"
+  },
+  {
+    "id": "enamel_mug",
+    "category": "scenes/props",
+    "path": "scenes/props/enamel_mug.tscn",
+    "status": "existing_preserve",
+    "review": "file exists; detailed suitability review pending"
+  },
+  {
+    "id": "equipment_case",
+    "category": "scenes/props",
+    "path": "scenes/props/equipment_case.tscn",
+    "status": "existing_preserve",
+    "review": "file exists; detailed suitability review pending"
+  },
+  {
+    "id": "field_cot",
+    "category": "scenes/props",
+    "path": "scenes/props/field_cot.tscn",
+    "status": "existing_preserve",
+    "review": "file exists; detailed suitability review pending"
+  },
+  {
+    "id": "filing_cabinet",
+    "category": "scenes/props",
+    "path": "scenes/props/filing_cabinet.tscn",
+    "status": "existing_preserve",
+    "review": "file exists; detailed suitability review pending"
+  },
+  {
+    "id": "gas_cylinder",
+    "category": "scenes/props",
+    "path": "scenes/props/gas_cylinder.tscn",
+    "status": "existing_preserve",
+    "review": "file exists; detailed suitability review pending"
+  },
+  {
+    "id": "hand_truck",
+    "category": "scenes/props",
+    "path": "scenes/props/hand_truck.tscn",
+    "status": "existing_preserve",
+    "review": "file exists; detailed suitability review pending"
+  },
+  {
+    "id": "jerrycan",
+    "category": "scenes/props",
+    "path": "scenes/props/jerrycan.tscn",
+    "status": "existing_preserve",
+    "review": "file exists; detailed suitability review pending"
+  },
+  {
+    "id": "metal_bucket",
+    "category": "scenes/props",
+    "path": "scenes/props/metal_bucket.tscn",
+    "status": "existing_preserve",
+    "review": "file exists; detailed suitability review pending"
+  },
+  {
+    "id": "pendant_light",
+    "category": "scenes/props",
+    "path": "scenes/props/pendant_light.tscn",
+    "status": "existing_preserve",
+    "review": "file exists; detailed suitability review pending"
+  },
+  {
+    "id": "pipe_bundle",
+    "category": "scenes/props",
+    "path": "scenes/props/pipe_bundle.tscn",
+    "status": "existing_preserve",
+    "review": "file exists; detailed suitability review pending"
+  },
+  {
+    "id": "portable_generator",
+    "category": "scenes/props",
+    "path": "scenes/props/portable_generator.tscn",
+    "status": "existing_preserve",
+    "review": "file exists; detailed suitability review pending"
+  },
+  {
+    "id": "radiator",
+    "category": "scenes/props",
+    "path": "scenes/props/radiator.tscn",
+    "status": "existing_preserve",
+    "review": "file exists; detailed suitability review pending"
+  },
+  {
+    "id": "rubble_pile",
+    "category": "scenes/props",
+    "path": "scenes/props/rubble_pile.tscn",
+    "status": "existing_preserve",
+    "review": "file exists; detailed suitability review pending"
+  },
+  {
+    "id": "rusted_drum",
+    "category": "scenes/props",
+    "path": "scenes/props/rusted_drum.tscn",
+    "status": "existing_preserve",
+    "review": "file exists; detailed suitability review pending"
+  },
+  {
+    "id": "sandbag_stack",
+    "category": "scenes/props",
+    "path": "scenes/props/sandbag_stack.tscn",
+    "status": "existing_preserve",
+    "review": "file exists; detailed suitability review pending"
+  },
+  {
+    "id": "shelving_unit",
+    "category": "scenes/props",
+    "path": "scenes/props/shelving_unit.tscn",
+    "status": "existing_preserve",
+    "review": "file exists; detailed suitability review pending"
+  },
+  {
+    "id": "shipping_crate",
+    "category": "scenes/props",
+    "path": "scenes/props/shipping_crate.tscn",
+    "status": "existing_preserve",
+    "review": "file exists; detailed suitability review pending"
+  },
+  {
+    "id": "steel_drum",
+    "category": "scenes/props",
+    "path": "scenes/props/steel_drum.tscn",
+    "status": "existing_preserve",
+    "review": "file exists; detailed suitability review pending"
+  },
+  {
+    "id": "tool_box",
+    "category": "scenes/props",
+    "path": "scenes/props/tool_box.tscn",
+    "status": "existing_preserve",
+    "review": "file exists; detailed suitability review pending"
+  },
+  {
+    "id": "traffic_cone",
+    "category": "scenes/props",
+    "path": "scenes/props/traffic_cone.tscn",
+    "status": "existing_preserve",
+    "review": "file exists; detailed suitability review pending"
+  },
+  {
+    "id": "valve_pipe",
+    "category": "scenes/props",
+    "path": "scenes/props/valve_pipe.tscn",
+    "status": "existing_preserve",
+    "review": "file exists; detailed suitability review pending"
+  },
+  {
+    "id": "wall_fusebox",
+    "category": "scenes/props",
+    "path": "scenes/props/wall_fusebox.tscn",
+    "status": "existing_preserve",
+    "review": "file exists; detailed suitability review pending"
+  },
+  {
+    "id": "warning_sign",
+    "category": "scenes/props",
+    "path": "scenes/props/warning_sign.tscn",
+    "status": "existing_preserve",
+    "review": "file exists; detailed suitability review pending"
+  },
+  {
+    "id": "wooden_bench",
+    "category": "scenes/props",
+    "path": "scenes/props/wooden_bench.tscn",
+    "status": "existing_preserve",
+    "review": "file exists; detailed suitability review pending"
+  },
+  {
+    "id": "wooden_pallet",
+    "category": "scenes/props",
+    "path": "scenes/props/wooden_pallet.tscn",
+    "status": "existing_preserve",
+    "review": "file exists; detailed suitability review pending"
+  },
+  {
+    "id": "work_light",
+    "category": "scenes/props",
+    "path": "scenes/props/work_light.tscn",
+    "status": "existing_preserve",
+    "review": "file exists; detailed suitability review pending"
+  },
+  {
+    "id": "worn_mattress",
+    "category": "scenes/props",
+    "path": "scenes/props/worn_mattress.tscn",
+    "status": "existing_preserve",
+    "review": "file exists; detailed suitability review pending"
+  },
+  {
+    "id": "coiled_hose",
+    "category": "scenes/workshop",
+    "path": "scenes/workshop/coiled_hose.tscn",
+    "status": "existing_preserve",
+    "review": "file exists; detailed suitability review pending"
+  },
+  {
+    "id": "discarded_tyre",
+    "category": "scenes/workshop",
+    "path": "scenes/workshop/discarded_tyre.tscn",
+    "status": "existing_preserve",
+    "review": "file exists; detailed suitability review pending"
+  },
+  {
+    "id": "fire_extinguisher",
+    "category": "scenes/workshop",
+    "path": "scenes/workshop/fire_extinguisher.tscn",
+    "status": "existing_preserve",
+    "review": "file exists; detailed suitability review pending"
+  },
+  {
+    "id": "metal_chair",
+    "category": "scenes/workshop",
+    "path": "scenes/workshop/metal_chair.tscn",
+    "status": "existing_preserve",
+    "review": "file exists; detailed suitability review pending"
+  },
+  {
+    "id": "open_wood_crate",
+    "category": "scenes/workshop",
+    "path": "scenes/workshop/open_wood_crate.tscn",
+    "status": "existing_preserve",
+    "review": "file exists; detailed suitability review pending"
+  },
+  {
+    "id": "steel_ladder",
+    "category": "scenes/workshop",
+    "path": "scenes/workshop/steel_ladder.tscn",
+    "status": "existing_preserve",
+    "review": "file exists; detailed suitability review pending"
+  },
+  {
+    "id": "wheelbarrow",
+    "category": "scenes/workshop",
+    "path": "scenes/workshop/wheelbarrow.tscn",
+    "status": "existing_preserve",
+    "review": "file exists; detailed suitability review pending"
+  },
+  {
+    "id": "workbench_vise",
+    "category": "scenes/workshop",
+    "path": "scenes/workshop/workbench_vise.tscn",
+    "status": "existing_preserve",
+    "review": "file exists; detailed suitability review pending"
+  },
+  {
+    "id": "bare_tree",
+    "category": "scenes/nature",
+    "path": "scenes/nature/bare_tree.tscn",
+    "status": "existing_preserve",
+    "review": "file exists; detailed suitability review pending"
+  },
+  {
+    "id": "dead_branch_pile",
+    "category": "scenes/nature",
+    "path": "scenes/nature/dead_branch_pile.tscn",
+    "status": "existing_preserve",
+    "review": "file exists; detailed suitability review pending"
+  },
+  {
+    "id": "dry_bramble",
+    "category": "scenes/nature",
+    "path": "scenes/nature/dry_bramble.tscn",
+    "status": "existing_preserve",
+    "review": "file exists; detailed suitability review pending"
+  },
+  {
+    "id": "fallen_log",
+    "category": "scenes/nature",
+    "path": "scenes/nature/fallen_log.tscn",
+    "status": "existing_preserve",
+    "review": "file exists; detailed suitability review pending"
+  },
+  {
+    "id": "fern_clump",
+    "category": "scenes/nature",
+    "path": "scenes/nature/fern_clump.tscn",
+    "status": "existing_preserve",
+    "review": "file exists; detailed suitability review pending"
+  },
+  {
+    "id": "forest_pine",
+    "category": "scenes/nature",
+    "path": "scenes/nature/forest_pine.tscn",
+    "status": "existing_preserve",
+    "review": "file exists; detailed suitability review pending"
+  },
+  {
+    "id": "low_shrub",
+    "category": "scenes/nature",
+    "path": "scenes/nature/low_shrub.tscn",
+    "status": "existing_preserve",
+    "review": "file exists; detailed suitability review pending"
+  },
+  {
+    "id": "mossy_boulder",
+    "category": "scenes/nature",
+    "path": "scenes/nature/mossy_boulder.tscn",
+    "status": "existing_preserve",
+    "review": "file exists; detailed suitability review pending"
+  },
+  {
+    "id": "reed_clump",
+    "category": "scenes/nature",
+    "path": "scenes/nature/reed_clump.tscn",
+    "status": "existing_preserve",
+    "review": "file exists; detailed suitability review pending"
+  },
+  {
+    "id": "tree_stump",
+    "category": "scenes/nature",
+    "path": "scenes/nature/tree_stump.tscn",
+    "status": "existing_preserve",
+    "review": "file exists; detailed suitability review pending"
+  },
+  {
+    "id": "dry_grass_tuft",
+    "category": "scenes/extra_dressing",
+    "path": "scenes/extra_dressing/dry_grass_tuft.tscn",
+    "status": "existing_preserve",
+    "review": "file exists; detailed suitability review pending"
+  },
+  {
+    "id": "firewood_stack",
+    "category": "scenes/extra_dressing",
+    "path": "scenes/extra_dressing/firewood_stack.tscn",
+    "status": "existing_preserve",
+    "review": "file exists; detailed suitability review pending"
+  },
+  {
+    "id": "garden_shovel",
+    "category": "scenes/extra_dressing",
+    "path": "scenes/extra_dressing/garden_shovel.tscn",
+    "status": "existing_preserve",
+    "review": "file exists; detailed suitability review pending"
+  },
+  {
+    "id": "mushroom_cluster",
+    "category": "scenes/extra_dressing",
+    "path": "scenes/extra_dressing/mushroom_cluster.tscn",
+    "status": "existing_preserve",
+    "review": "file exists; detailed suitability review pending"
+  },
+  {
+    "id": "scrap_sheet",
+    "category": "scenes/extra_dressing",
+    "path": "scenes/extra_dressing/scrap_sheet.tscn",
+    "status": "existing_preserve",
+    "review": "file exists; detailed suitability review pending"
+  },
+  {
+    "id": "stone_scatter",
+    "category": "scenes/extra_dressing",
+    "path": "scenes/extra_dressing/stone_scatter.tscn",
+    "status": "existing_preserve",
+    "review": "file exists; detailed suitability review pending"
+  },
+  {
+    "id": "wood_sawhorse",
+    "category": "scenes/extra_dressing",
+    "path": "scenes/extra_dressing/wood_sawhorse.tscn",
+    "status": "existing_preserve",
+    "review": "file exists; detailed suitability review pending"
+  },
+  {
+    "id": "handheld_flashlight",
+    "category": "scenes/items",
+    "path": "scenes/items/handheld_flashlight.tscn",
+    "status": "existing_preserve",
+    "review": "file exists; detailed suitability review pending"
+  },
+  {
+    "id": "held_antiseptic",
+    "category": "scenes/items",
+    "path": "scenes/items/held_antiseptic.tscn",
+    "status": "existing_preserve",
+    "review": "file exists; detailed suitability review pending"
+  },
+  {
+    "id": "held_bandage",
+    "category": "scenes/items",
+    "path": "scenes/items/held_bandage.tscn",
+    "status": "existing_preserve",
+    "review": "file exists; detailed suitability review pending"
+  },
+  {
+    "id": "held_batteries",
+    "category": "scenes/items",
+    "path": "scenes/items/held_batteries.tscn",
+    "status": "existing_preserve",
+    "review": "file exists; detailed suitability review pending"
+  },
+  {
+    "id": "held_detector",
+    "category": "scenes/items",
+    "path": "scenes/items/held_detector.tscn",
+    "status": "existing_preserve",
+    "review": "file exists; detailed suitability review pending"
+  },
+  {
+    "id": "held_field_radio",
+    "category": "scenes/items",
+    "path": "scenes/items/held_field_radio.tscn",
+    "status": "existing_preserve",
+    "review": "file exists; detailed suitability review pending"
+  },
+  {
+    "id": "held_food_tin",
+    "category": "scenes/items",
+    "path": "scenes/items/held_food_tin.tscn",
+    "status": "existing_preserve",
+    "review": "file exists; detailed suitability review pending"
+  },
+  {
+    "id": "held_water_bottle",
+    "category": "scenes/items",
+    "path": "scenes/items/held_water_bottle.tscn",
+    "status": "existing_preserve",
+    "review": "file exists; detailed suitability review pending"
+  },
+  {
+    "id": "checkpoint-study",
+    "category": "existing_concept",
+    "path": "concept-art/checkpoint-study.png",
+    "status": "reference_existing",
+    "review": "existing project art"
+  },
+  {
+    "id": "checkpoint",
+    "category": "existing_concept",
+    "path": "concept-art/checkpoint.png",
+    "status": "reference_existing",
+    "review": "existing project art"
+  },
+  {
+    "id": "cottage-kit-study",
+    "category": "existing_concept",
+    "path": "concept-art/cottage-kit-study.png",
+    "status": "reference_existing",
+    "review": "existing project art"
+  },
+  {
+    "id": "village",
+    "category": "existing_concept",
+    "path": "concept-art/village.png",
+    "status": "reference_existing",
+    "review": "existing project art"
+  },
+  {
+    "id": "wetland-anomaly",
+    "category": "existing_concept",
+    "path": "concept-art/wetland-anomaly.png",
+    "status": "reference_existing",
+    "review": "existing project art"
+  },
+  {
+    "id": "workshop-props-study",
+    "category": "existing_concept",
+    "path": "concept-art/workshop-props-study.png",
+    "status": "reference_existing",
+    "review": "existing project art"
+  }
+]

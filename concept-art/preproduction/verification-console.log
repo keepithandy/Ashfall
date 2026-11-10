@@ -1,0 +1,100 @@
+{
+  "date": "2026-11-09",
+  "indexedAssets": 71,
+  "localReferences": 126,
+  "verifiedPackageFiles": 77,
+  "blenderSources": 13,
+  "blenderMissingImages": 0,
+  "godotIgnore": true,
+  "images": [
+    {
+      "file": "anomaly-sequence-v01.png",
+      "width": 1536,
+      "height": 1024
+    },
+    {
+      "file": "bolt_action_rifle_7_62-source-review.png",
+      "width": 1200,
+      "height": 700
+    },
+    {
+      "file": "checkpoint-package-v01.png",
+      "width": 1536,
+      "height": 1024
+    },
+    {
+      "file": "cottage-households-v01.png",
+      "width": 1536,
+      "height": 1024
+    },
+    {
+      "file": "cottage-kitchen-contents-v01.png",
+      "width": 1536,
+      "height": 1024
+    },
+    {
+      "file": "crossroads-dusk-v01.png",
+      "width": 1672,
+      "height": 941
+    },
+    {
+      "file": "crossroads-interior-v01.png",
+      "width": 1672,
+      "height": 941
+    },
+    {
+      "file": "crossroads-yard-v01.png",
+      "width": 1672,
+      "height": 941
+    },
+    {
+      "file": "dining_table-source-review.png",
+      "width": 1200,
+      "height": 700
+    },
+    {
+      "file": "layout-preview.png",
+      "width": 1240,
+      "height": 800
+    },
+    {
+      "file": "listener-v01.png",
+      "width": 1672,
+      "height": 941
+    },
+    {
+      "file": "relay-package-v01.png",
+      "width": 1672,
+      "height": 941
+    },
+    {
+      "file": "research-package-v01.png",
+      "width": 1536,
+      "height": 1024
+    },
+    {
+      "file": "review-index-preview.png",
+      "width": 1440,
+      "height": 1100
+    },
+    {
+      "file": "service_pistol-source-review.png",
+      "width": 1200,
+      "height": 700
+    }
+  ],
+  "sink": {
+    "source": "https://www.innerscene.com/tools/library/3d-parts/apron-sink-farmhouse-sink-d48bb2ce",
+    "download": "https://www.innerscene.com/api/library/apron-sink-farmhouse-sink-d48bb2ce/download",
+    "license": "CC0, as stated on source listing",
+    "sha256": "51cf754f048b50fc536c9ce0fa40da15b6121bba010344e731b6ca5574243979",
+    "bytes": 203696,
+    "meshes": 5,
+    "materials": 2,
+    "animations": 0,
+    "externalBuffers": [],
+    "nativeSource": "GLB only acquired; no native Blender source advertised/verified",
+    "inspection": "GLB structure inspected; not rendered or imported into Godot"
+  },
+  "failures": []
+}

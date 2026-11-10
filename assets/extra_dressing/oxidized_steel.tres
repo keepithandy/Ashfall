@@ -1,0 +1,23 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://13jml7svqs2c"]
+
+[sub_resource type="Shader" id="Shader_0macw"]
+code = "shader_type spatial;
+render_mode cull_disabled;
+varying vec3 local_pos;
+float hash3(vec3 p){return fract(sin(dot(p,vec3(17.13,83.71,39.17)))*43758.5453);}
+float noise3(vec3 p){vec3 i=floor(p);vec3 f=fract(p);f=f*f*(3.0-2.0*f);return mix(mix(mix(hash3(i),hash3(i+vec3(1,0,0)),f.x),mix(hash3(i+vec3(0,1,0)),hash3(i+vec3(1,1,0)),f.x),f.y),mix(mix(hash3(i+vec3(0,0,1)),hash3(i+vec3(1,0,1)),f.x),mix(hash3(i+vec3(0,1,1)),hash3(i+vec3(1,1,1)),f.x),f.y),f.z);}
+void vertex(){local_pos=VERTEX;}
+void fragment(){
+
+ float n=noise3(local_pos*18.0);float fine=noise3(local_pos*190.0);
+ float oxide=smoothstep(0.35,0.62,n);
+ ALBEDO=mix(vec3(0.065,0.078,0.073),mix(vec3(0.085,0.035,0.014),vec3(0.18,0.075,0.024),fine),oxide);
+ METALLIC=mix(0.75,0.06,oxide);ROUGHNESS=mix(0.48,0.96,oxide);
+ 
+NORMAL=FRONT_FACING?NORMAL:-NORMAL;
+}"
+
+[resource]
+resource_name = "oxidized_steel"
+render_priority = 0
+shader = SubResource("Shader_0macw")

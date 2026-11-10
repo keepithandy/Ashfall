@@ -1,0 +1,22 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://c8bd7rcpu4oe5"]
+
+[sub_resource type="Shader" id="Shader_vtep3"]
+code = "shader_type spatial;
+render_mode cull_disabled;
+varying vec3 local_pos;
+float hash3(vec3 p){return fract(sin(dot(p,vec3(17.13,83.71,39.17)))*43758.5453);}
+float noise3(vec3 p){vec3 i=floor(p);vec3 f=fract(p);f=f*f*(3.0-2.0*f);return mix(mix(mix(hash3(i),hash3(i+vec3(1,0,0)),f.x),mix(hash3(i+vec3(0,1,0)),hash3(i+vec3(1,1,0)),f.x),f.y),mix(mix(hash3(i+vec3(0,0,1)),hash3(i+vec3(1,0,1)),f.x),mix(hash3(i+vec3(0,1,1)),hash3(i+vec3(1,1,1)),f.x),f.y),f.z);}
+void vertex(){local_pos=VERTEX;}
+void fragment(){
+
+ float n=noise3(local_pos*55.0); float pits=noise3(local_pos*220.0);
+ ALBEDO=mix(vec3(0.09,0.10,0.10),vec3(0.24,0.25,0.22),n)*mix(0.8,1.05,pits);
+ METALLIC=0.75; ROUGHNESS=0.46+n*0.3;
+ 
+NORMAL=FRONT_FACING?NORMAL:-NORMAL;
+}"
+
+[resource]
+resource_name = "worn_steel"
+render_priority = 0
+shader = SubResource("Shader_vtep3")

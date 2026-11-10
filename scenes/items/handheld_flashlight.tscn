@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="PackedScene" path="res://assets/items/handheld_flashlight.glb" id="1"]
+
+[node name="HandheldFlashlight" type="Node3D"]
+
+[node name="Model" parent="." instance=ExtResource("1")]
+
+[node name="BeamOrigin" type="Marker3D" parent="."]
+position = Vector3(0,0,-0.1302)
+
+[node name="ThumbSwitch" type="Marker3D" parent="."]
+position = Vector3(0,0.02772,-0.047)

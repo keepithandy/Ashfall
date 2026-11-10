@@ -1,0 +1,11 @@
+{
+  "transferred_vertices": 0,
+  "source_license": "CC0",
+  "source_sha256": "0f3641d651ae3d00ad6b4ccee43142edb109d3bd909d27d9e4139ef1beed8625",
+  "pose_assets": [
+    "flashlight",
+    "food_tin",
+    "open"
+  ],
+  "bones": 58
+}

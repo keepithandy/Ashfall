@@ -1,0 +1,63 @@
+{
+  "donated": true,
+  "name": "Electric Stove",
+  "type": 2,
+  "version_required": {
+    "blend": "3.6.5"
+  },
+  "tags": [
+    "kitchen appliance",
+    "cooking equipment",
+    "stovetop",
+    "oven",
+    "cooktop",
+    "simple",
+    "white",
+    "cooking",
+    "kitchen"
+  ],
+  "authors": {
+    "Kuutti Siitonen": "All"
+  },
+  "info": null,
+  "date_published": 1702252800,
+  "staging": null,
+  "sponsors": [
+    "297038"
+  ],
+  "max_resolution": [
+    8192,
+    8192
+  ],
+  "polycount": 13914,
+  "texel_density": 2784.8859931956013,
+  "dimensions": [
+    502.59482860565186,
+    647.6211845874786,
+    858.6971759796143
+  ],
+  "categories": [
+    "electronics",
+    "appliances",
+    "rigged",
+    "props"
+  ],
+  "files_hash": "750ee10bdfe78eb6b0b620ef7b5a898e436fb696",
+  "description": "Free 8K model: compact white electric stove with four worn hotplates, front control knobs, oven window and subtle rust/weathering; rigged.",
+  "category_id": "920c0586-f6bc-5ceb-b0a9-48161da19eba",
+  "category": "Electronics & Appliances/Home Appliances/Stoves & Heaters",
+  "attributes": {
+    "condition": [
+      "worn"
+    ],
+    "material": [
+      "metal",
+      "plastic",
+      "glass"
+    ],
+    "rigged": true
+  },
+  "img_version": "d1d95171",
+  "download_count": 11489,
+  "thumbnail_url": "https://cdn.polyhaven.com/asset_img/thumbs/electric_stove.png?width=256&height=256&format=webp&v=d1d95171"
+}

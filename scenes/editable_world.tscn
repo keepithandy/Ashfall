@@ -34,7 +34,7 @@
 [ext_resource type="Material" path="res://assets/props/enamel.tres" id="32_65vls"]
 [ext_resource type="Material" path="res://assets/props/masonry.tres" id="33_fg58h"]
 [ext_resource type="Shader" path="res://assets/workshop/worn_tyre.gdshader" id="34_mps3h"]
-[ext_resource type="Script" path="res://loot_container.gd" id="35_f8t0t"]
+[ext_resource type="Script" path="res://scripts/runtime/loot_container.gd" id="35_f8t0t"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_7ngxc"]
 sky_top_color = Color(0.03137255, 0.07058824, 0.11764706, 1)

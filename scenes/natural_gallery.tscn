@@ -1,6 +1,6 @@
 [gd_scene format=3]
 
-[ext_resource type="Script" path="res://prop_gallery.gd" id="1_wueq3"]
+[ext_resource type="Script" path="res://scripts/review/prop_gallery.gd" id="1_wueq3"]
 [ext_resource type="PackedScene" path="res://scenes/nature/fern_clump.tscn" id="2_12at4"]
 [ext_resource type="PackedScene" path="res://scenes/nature/dry_bramble.tscn" id="3_uwmcv"]
 [ext_resource type="PackedScene" path="res://scenes/nature/reed_clump.tscn" id="4_pwynt"]

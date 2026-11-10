@@ -1,0 +1,40 @@
+{
+  "height_m": 1.81,
+  "bone_count": 57,
+  "components": [
+    "Jacket",
+    "Neckwear",
+    "Trousers",
+    "Boots",
+    "Equipment",
+    "Gloves",
+    "Head",
+    "Hair",
+    "Eyes",
+    "Satchel",
+    "Flashlight"
+  ],
+  "triangles": 287596,
+  "animations": [
+    "Idle",
+    "Walk",
+    "Run",
+    "WalkBack",
+    "StrafeLeft",
+    "StrafeRight",
+    "CrouchIdle",
+    "CrouchWalk",
+    "Airborne"
+  ],
+  "torch_center_blender": [
+    0.42544156312942505,
+    0.07581385225057602,
+    0.9236753582954407
+  ],
+  "torch_beam_blender": [
+    0.42544156312942505,
+    0.2308138608932495,
+    0.9236753582954407
+  ],
+  "face_status": "CC0 MakeHuman anatomical base, adult morph and core skin, eyes and short hair. Further sculpting and texture refinement needed for photorealism."
+}

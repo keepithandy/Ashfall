@@ -1,0 +1,22 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://dak1t260n3pqp"]
+
+[sub_resource type="Shader" id="Shader_rtp6f"]
+code = "shader_type spatial;
+render_mode cull_disabled;
+varying vec3 local_pos;
+float hash3(vec3 p){return fract(sin(dot(p,vec3(17.13,83.71,39.17)))*43758.5453);}
+float noise3(vec3 p){vec3 i=floor(p);vec3 f=fract(p);f=f*f*(3.0-2.0*f);return mix(mix(mix(hash3(i),hash3(i+vec3(1,0,0)),f.x),mix(hash3(i+vec3(0,1,0)),hash3(i+vec3(1,1,0)),f.x),f.y),mix(mix(hash3(i+vec3(0,0,1)),hash3(i+vec3(1,0,1)),f.x),mix(hash3(i+vec3(0,1,1)),hash3(i+vec3(1,1,1)),f.x),f.y),f.z);}
+void vertex(){local_pos=VERTEX;}
+void fragment(){
+
+ vec3 p=local_pos;float n=noise3(p*vec3(37.0,18.0,4.0));float ridges=noise3(p*vec3(155.0,90.0,7.0));
+ ALBEDO=mix(vec3(0.035,0.026,0.016),vec3(0.13,0.098,0.062),n)*mix(0.65,1.12,ridges);
+ ROUGHNESS=0.99;
+ 
+NORMAL=FRONT_FACING?NORMAL:-NORMAL;
+}"
+
+[resource]
+resource_name = "rough_bark"
+render_priority = 0
+shader = SubResource("Shader_rtp6f")

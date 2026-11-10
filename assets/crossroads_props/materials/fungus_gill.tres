@@ -1,0 +1,22 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://drnyestnlaku0"]
+
+[sub_resource type="Gradient" id="ramp"]
+offsets = PackedFloat32Array(0, 0.5, 1)
+colors = PackedColorArray(0.24, 0.205, 0.155, 1, 0.34, 0.29, 0.22, 1, 0.45, 0.39, 0.3, 1)
+
+[sub_resource type="FastNoiseLite" id="noise"]
+seed = 81
+frequency = 0.028
+fractal_octaves = 4
+
+[sub_resource type="NoiseTexture2D" id="map"]
+noise = SubResource("noise")
+color_ramp = SubResource("ramp")
+seamless = true
+
+[resource]
+albedo_texture = SubResource("map")
+roughness = 0.96
+uv1_scale = Vector3(10, 10, 10)
+uv1_triplanar = true
+texture_filter = 5

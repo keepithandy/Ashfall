@@ -1,0 +1,14 @@
+{
+  "parts": {
+    "field_jacket": "Jacket",
+    "collar_and_underlayer": "Neckwear",
+    "cargo_trousers": "Trousers",
+    "boots": "Boots",
+    "gloves": "Gloves",
+    "belt_and_strap": "Equipment",
+    "shoulder_bag": "Satchel",
+    "flashlight": "Flashlight"
+  },
+  "fitting": "Original dressed rig. Not yet refitted to the separate mannequin.",
+  "source_preserved": true
+}

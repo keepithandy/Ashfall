@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://scripts/review/character_review.gd" id="1"]
+[ext_resource type="PackedScene" path="res://scenes/characters/mannequin_player.tscn" id="2"]
+
+[node name="PlayerMannequinReview" type="Node3D"]
+script = ExtResource("1")
+character_scene = ExtResource("2")
+capture_directory = "res://reviews/player_mannequin"
+review_title = "PLAYABLE MANNEQUIN"

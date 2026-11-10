@@ -1,0 +1,37 @@
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS: load floor_4m
+PASS: meshes present floor_4m
+PASS: collision present floor_4m
+PASS: load wall_solid_4m
+PASS: meshes present wall_solid_4m
+PASS: collision present wall_solid_4m
+PASS: load wall_solid_2m
+PASS: meshes present wall_solid_2m
+PASS: collision present wall_solid_2m
+PASS: load wall_window_4m
+PASS: meshes present wall_window_4m
+PASS: collision present wall_window_4m
+PASS: window opening has four collision sections
+PASS: load wall_door_4m
+PASS: meshes present wall_door_4m
+PASS: collision present wall_door_4m
+PASS: door opening has three collision sections
+PASS: load corner_1m
+PASS: meshes present corner_1m
+PASS: collision present corner_1m
+PASS: load roof_4m
+PASS: meshes present roof_4m
+PASS: collision present roof_4m
+PASS: load metal_door
+PASS: meshes present metal_door
+PASS: collision present metal_door
+PASS: demo loads
+PASS: independent door in assembled scene
+PASS: floor uses four metre grid
+PASS: roof aligns to wall height
+PASS: shared materials applied
+PASS: open doorway permits passage
+PASS: solid wall blocks passage
+PASS: window opening remains clear
+RESULT: 0 failure(s)

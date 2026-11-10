@@ -1,0 +1,13 @@
+{
+  "source": "https://www.innerscene.com/tools/library/3d-parts/apron-sink-farmhouse-sink-d48bb2ce",
+  "download": "https://www.innerscene.com/api/library/apron-sink-farmhouse-sink-d48bb2ce/download",
+  "license": "CC0, as stated on source listing",
+  "sha256": "51cf754f048b50fc536c9ce0fa40da15b6121bba010344e731b6ca5574243979",
+  "bytes": 203696,
+  "meshes": 5,
+  "materials": 2,
+  "animations": 0,
+  "externalBuffers": [],
+  "nativeSource": "GLB only acquired; no native Blender source advertised/verified",
+  "inspection": "GLB structure inspected; not rendered or imported into Godot"
+}

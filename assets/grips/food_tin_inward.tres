@@ -1,0 +1,37 @@
+[gd_resource type="Resource" script_class="HandGripProfile" load_steps=3 format=3]
+[ext_resource type="Script" path="res://scripts/runtime/hand_grip_profile.gd" id="1"]
+[ext_resource type="PackedScene" path="res://scenes/items/held_food_tin.tscn" id="2"]
+[resource]
+script = ExtResource("1")
+item_id = &"food_tin"
+display_name = "Food tin"
+model_scene = ExtResource("2")
+attachment_transform = Transform3D(-0.853318334, -0.0994401053, 0.51181972, -0.435060799, 0.676804245, -0.593849599, -0.287349641, -0.729415655, -0.62079227, -0.0358225107, 0.0886030644, -0.0452308357)
+finger_rotations = {
+"index1.R": Quaternion(-0.246311933, 0.0884920359, -0.177902594, 0.948604405),
+"index2.R": Quaternion(-0.139918312, 5.82017066e-08, 0.224819273, 0.96430254),
+"index3.R": Quaternion(-0.10410466, 5.35500249e-08, 0.183981597, 0.977401137),
+"middle1.R": Quaternion(0.131378293, -0.055011671, 0.0808115453, 0.986500382),
+"middle2.R": Quaternion(-0.123999335, 3.69382427e-08, 0.214645773, 0.968788624),
+"middle3.R": Quaternion(-0.234483212, 1.22959861e-07, 0.476157933, 0.847520649),
+"ring1.R": Quaternion(0.25053978, -0.0953718424, 0.145584494, 0.95233357),
+"ring2.R": Quaternion(-0.153120458, 2.61693955e-08, 0.280200332, 0.94765085),
+"ring3.R": Quaternion(-0.151979133, 1.9677012e-08, 0.360536486, 0.920280278),
+"pinky1.R": Quaternion(-0.0760889724, 0.0198255405, 0.0610341392, 0.995033801),
+"pinky2.R": Quaternion(-0.0961838365, -5.51224595e-08, 0.231616303, 0.968040586),
+"pinky3.R": Quaternion(-0.107453488, -8.37020551e-08, 0.283980221, 0.952790082),
+"thumb1.R": Quaternion(-0.238033816, 0.596479714, 0.203312561, 0.739064217),
+"thumb2.R": Quaternion(0.00645157881, -3.31545058e-09, -0.007640264, 0.999950111),
+"thumb3.R": Quaternion(0.302134335, -1.23426176e-07, -0.462210953, 0.83371222)
+}
+contact_targets = {
+"index": Vector3(-0.0260455217, 0.0444283783, -0.0425417051),
+"middle": Vector3(-0.0275134146, 0.0435346067, -0.0417402983),
+"ring": Vector3(-0.0286196712, 0.0428154692, -0.0191997383),
+"pinky": Vector3(-0.0306199659, 0.0401580334, 0.0294904187),
+"thumb": Vector3(0.0488031134, -0.0164470747, -0.00802375097)
+}
+aim_forward = Vector3(0.0850029364, -0.955968261, -0.280890286)
+aim_up = Vector3(-0.216066763, 0.25751707, -0.941806793)
+hand_offset = Vector3(0.17,-0.1,-0.39)
+elbow_offset = Vector3(0.46,-0.08,0.1)

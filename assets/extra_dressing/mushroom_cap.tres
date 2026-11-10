@@ -1,0 +1,21 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://c7x2k5ianpyem"]
+
+[sub_resource type="Shader" id="Shader_drma0"]
+code = "shader_type spatial;
+render_mode cull_disabled;
+varying vec3 local_pos;
+float hash3(vec3 p){return fract(sin(dot(p,vec3(17.13,83.71,39.17)))*43758.5453);}
+float noise3(vec3 p){vec3 i=floor(p);vec3 f=fract(p);f=f*f*(3.0-2.0*f);return mix(mix(mix(hash3(i),hash3(i+vec3(1,0,0)),f.x),mix(hash3(i+vec3(0,1,0)),hash3(i+vec3(1,1,0)),f.x),f.y),mix(mix(hash3(i+vec3(0,0,1)),hash3(i+vec3(1,0,1)),f.x),mix(hash3(i+vec3(0,1,1)),hash3(i+vec3(1,1,1)),f.x),f.y),f.z);}
+void vertex(){local_pos=VERTEX;}
+void fragment(){
+
+ float n=noise3(local_pos*90.0);float speck=noise3(local_pos*700.0);
+ ALBEDO=mix(vec3(0.16,0.085,0.045),vec3(0.40,0.27,0.15),n)*mix(0.87,1.12,speck);ROUGHNESS=0.8;
+ 
+NORMAL=FRONT_FACING?NORMAL:-NORMAL;
+}"
+
+[resource]
+resource_name = "mushroom_cap"
+render_priority = 0
+shader = SubResource("Shader_drma0")

@@ -1,0 +1,38 @@
+[gd_resource type="Resource" script_class="HandGripProfile" load_steps=3 format=3]
+[ext_resource type="Script" path="res://scripts/runtime/hand_grip_profile.gd" id="1"]
+[ext_resource type="PackedScene" path="res://scenes/items/held_field_radio.tscn" id="2"]
+[resource]
+script = ExtResource("1")
+item_id = &"field_radio"
+display_name = "Field receiver"
+pose_animation = &"Hand_field_radio"
+model_scene = ExtResource("2")
+attachment_transform = Transform3D(-0.853318334, -0.0994401053, 0.51181972, -0.435060799, 0.676804245, -0.593849599, -0.287349641, -0.729415655, -0.62079227, -0.0297127217, 0.0884718895, -0.0400680006)
+finger_rotations = {
+"index1.R": Quaternion(-0.248525754, 0.0892873853, -0.179501548, 0.94765085),
+"index2.R": Quaternion(-0.182670534, 7.59853052e-08, 0.293513089, 0.93833977),
+"index3.R": Quaternion(-0.135149956, 6.95193094e-08, 0.238847196, 0.961606324),
+"middle1.R": Quaternion(0.0801314861, -0.0426512174, 0.0801794156, 0.992638528),
+"middle2.R": Quaternion(-0.230326533, 6.8612124e-08, 0.398700655, 0.88768661),
+"middle3.R": Quaternion(-0.166735187, 8.74337047e-08, 0.338584095, 0.926045477),
+"ring1.R": Quaternion(0.196513176, -0.114477731, 0.203053921, 0.952389956),
+"ring2.R": Quaternion(-0.197504714, 3.37549864e-08, 0.361420602, 0.91124481),
+"ring3.R": Quaternion(-0.137562588, 1.78104749e-08, 0.326336443, 0.935190499),
+"pinky1.R": Quaternion(0.281970829, -0.12655744, 0.151967227, 0.938819349),
+"pinky2.R": Quaternion(-0.163702339, -9.3816972e-08, 0.394204825, 0.904325247),
+"pinky3.R": Quaternion(-0.104583584, -8.146651e-08, 0.276395589, 0.955336452),
+"thumb1.R": Quaternion(-0.044982966, 0.729449153, 0.248274773, 0.635798931),
+"thumb2.R": Quaternion(0.183250725, -9.41721154e-08, -0.217014179, 0.958813965),
+"thumb3.R": Quaternion(0.300307304, -1.22679793e-07, -0.459415913, 0.835914314)
+}
+contact_targets = {
+"index": Vector3(-0.00613686768, 0.0410437435, -0.0425416753),
+"middle": Vector3(-0.00984690432, 0.0403148681, -0.0267402697),
+"ring": Vector3(-0.0106166657, 0.0401190296, -0.00419970788),
+"pinky": Vector3(-0.0223685838, 0.0337623544, 0.0194904488),
+"thumb": Vector3(0.0383440331, -0.0158740375, -0.0230237208)
+}
+aim_forward = Vector3(0.0850029364, -0.955968261, -0.280890286)
+aim_up = Vector3(-0.216066763, 0.25751707, -0.941806793)
+hand_offset = Vector3(0.17,-0.1,-0.39)
+elbow_offset = Vector3(0.46,-0.08,0.1)

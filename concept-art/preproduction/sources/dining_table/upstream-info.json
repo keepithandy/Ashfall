@@ -1,0 +1,54 @@
+{
+  "type": 2,
+  "name": "Dining Table",
+  "categories": [
+    "collection: project_lighthouse",
+    "furniture",
+    "table"
+  ],
+  "category": "Furniture/Tables/Dining Tables",
+  "tags": [
+    "old",
+    "scratched",
+    "cloth-covered",
+    "rectangular",
+    "checkered-tablecloth",
+    "tapered-legs",
+    "worn"
+  ],
+  "description": "Free 8K rustic wooden dining table with worn grain and tapered legs, draped in a blue-beige gingham cloth with realistic folds and subtle frays.",
+  "authors": {
+    "Aron Łyczek": "All"
+  },
+  "donated": true,
+  "category_id": "dfe0e21f-ebb5-57e6-b76e-1b2c58bae1a3",
+  "max_resolution": [
+    8192,
+    8192
+  ],
+  "polycount": 1048,
+  "files_hash": "5d15c817890f7babe434f57fc9d78c9a9a6ed9e1",
+  "texel_density": 1985.843238463546,
+  "dimensions": [
+    2255.895972251892,
+    1390.2360200881958,
+    876.989221200347
+  ],
+  "date_published": 1783036800,
+  "staging": null,
+  "collections": [
+    "project_lighthouse"
+  ],
+  "attributes": {
+    "material": [
+      "wood",
+      "fabric"
+    ],
+    "condition": [
+      "worn"
+    ]
+  },
+  "img_version": "1e739968",
+  "download_count": 2849,
+  "thumbnail_url": "https://cdn.polyhaven.com/asset_img/thumbs/dining_table.png?width=256&height=256&format=webp&v=1e739968"
+}

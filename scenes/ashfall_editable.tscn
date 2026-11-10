@@ -1,15 +1,25 @@
 [gd_scene format=3 uid="uid://c1qwb5rewpf0c"]
 
-[ext_resource type="Script" uid="uid://by77j41x5wi48" path="res://game.gd" id="1_gamld"]
+[ext_resource type="Script" uid="uid://by77j41x5wi48" path="res://scripts/runtime/game.gd" id="1_gamld"]
 [ext_resource type="PackedScene" path="res://scenes/nature/mossy_boulder.tscn" id="2_unn1h"]
 [ext_resource type="PackedScene" path="res://scenes/editable_world.tscn" id="3_j0lqb"]
-[ext_resource type="PackedScene" path="res://scenes/props/cable_spool.tscn" id="4_unn1h"]
-[ext_resource type="PackedScene" path="res://scenes/village_decoration.tscn" id="5_villagedecor"]
-[ext_resource type="PackedScene" path="res://scenes/props/damaged_fence.tscn" id="6_7o0kk"]
-[ext_resource type="PackedScene" path="res://scenes/nature/bare_tree.tscn" id="7_a8rcb"]
+[ext_resource type="PackedScene" path="res://scenes/extra_dressing/scrap_sheet.tscn" id="6_37vhr"]
+[ext_resource type="PackedScene" path="res://scenes/extra_dressing/wood_sawhorse.tscn" id="7_f58v0"]
 [ext_resource type="PackedScene" path="res://scenes/houses/cottage_detail.tscn" id="8_cottage_detail"]
 [ext_resource type="PackedScene" path="res://scenes/natural_ground.tscn" id="9_natural_ground"]
-[ext_resource type="PackedScene" path="res://scenes/nature/dead_branch_pile.tscn" id="10_crkeg"]
+[ext_resource type="PackedScene" path="res://assets/crossroads_v03/scenes/maintenance_station_v03.tscn" id="10_crossroads"]
+[ext_resource type="Material" path="res://assets/crossroads_v02/materials/concrete_v02.tres" id="11_ramp_material"]
+[ext_resource type="MultiMesh" uid="uid://dotnwa0dr3ji6" path="res://assets/crossroads_integration/vegetation/Grass_2_1.res" id="12_grass21"]
+[ext_resource type="MultiMesh" uid="uid://dn3eypdgr5u5g" path="res://assets/crossroads_integration/vegetation/Grass_2_2.res" id="13_grass22"]
+[ext_resource type="MultiMesh" uid="uid://cilv1io1ol5sp" path="res://assets/crossroads_integration/vegetation/LowStones.res" id="14_stones"]
+[ext_resource type="MultiMesh" uid="uid://bcqfybamxvsk7" path="res://assets/crossroads_integration/vegetation/DryLeafLitter.res" id="15_leaves"]
+
+[sub_resource type="BoxMesh" id="CrossroadsEntranceRampMesh"]
+material = ExtResource("11_ramp_material")
+size = Vector3(1.7, 0.08, 1.6)
+
+[sub_resource type="BoxShape3D" id="CrossroadsEntranceRampCollision"]
+size = Vector3(1.7, 0.08, 1.6)
 
 [node name="Ashfall" type="Node3D" unique_id=657994542]
 script = ExtResource("1_gamld")
@@ -21,6 +31,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.944906, 1.9073486e-06, -5.
 
 [node name="Geometry_059" parent="EditableWorld/Lighting" parent_id_path=PackedInt32Array(799467115, 1219592188) index="2" unique_id=473563822]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -35, 2.6, 25.636024)
+
+[node name="Geometry_062" parent="EditableWorld/Lighting" parent_id_path=PackedInt32Array(799467115, 1219592188) index="3" unique_id=1577550712]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -44.10975, 2.6, 18.3)
 
 [node name="Ground" parent="EditableWorld/TerrainAndStructures" parent_id_path=PackedInt32Array(799467115, 819915983) index="0" unique_id=1476993116]
 visible = false
@@ -37,481 +50,138 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.8360252)
 [node name="Mesh_001" parent="EditableWorld/TerrainAndStructures/Geometry_058" parent_id_path=PackedInt32Array(799467115, 211534364) index="0" unique_id=717414863]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.8360252)
 
+[node name="Mesh_001" parent="EditableWorld/TerrainAndStructures/Geometry_060" parent_id_path=PackedInt32Array(799467115, 1736852788) index="0" unique_id=1706934312]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.8474312, 0, 0)
+
+[node name="Collision_002" parent="EditableWorld/TerrainAndStructures/Geometry_060" parent_id_path=PackedInt32Array(799467115, 1736852788) index="1" unique_id=1108877107]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.8680305, 0, 0)
+
+[node name="Mesh_001" parent="EditableWorld/TerrainAndStructures/Geometry_061" parent_id_path=PackedInt32Array(799467115, 1868913868) index="0" unique_id=764504449]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.8418007, 0, 0)
+
 [node name="CottageDetail" parent="EditableWorld/Buildings/VillageLayout/FirstVillageCottage" parent_id_path=PackedInt32Array(799467115, 1792120734) index="73" unique_id=148831428 instance=ExtResource("8_cottage_detail")]
+
+[node name="Grass_2_1" parent="EditableWorld/Vegetation/NaturalDressing" parent_id_path=PackedInt32Array(799467115, 372341445) index="46" unique_id=483924167]
+multimesh = ExtResource("12_grass21")
+
+[node name="Grass_2_2" parent="EditableWorld/Vegetation/NaturalDressing" parent_id_path=PackedInt32Array(799467115, 372341445) index="47" unique_id=978994552]
+multimesh = ExtResource("13_grass22")
+
+[node name="LowStones" parent="EditableWorld/Vegetation/NaturalDressing" parent_id_path=PackedInt32Array(799467115, 372341445) index="48" unique_id=511126689]
+multimesh = ExtResource("14_stones")
+
+[node name="DryLeafLitter" parent="EditableWorld/Vegetation/NaturalDressing" parent_id_path=PackedInt32Array(799467115, 372341445) index="49" unique_id=2080583466]
+multimesh = ExtResource("15_leaves")
 
 [node name="NaturalGround" parent="." unique_id=1212239396 instance=ExtResource("9_natural_ground")]
 
-[node name="CableSpool" parent="." unique_id=963330760 instance=ExtResource("4_unn1h")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.585798, 0.022145033, 17.554104)
+[node name="TerrainMesh" parent="NaturalGround" index="0" unique_id=830820582]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.009119034, -0.052429438, 0.07240677)
 
-[node name="VillageDecoration" parent="." unique_id=1387036209 instance=ExtResource("5_villagedecor")]
+[node name="ScrapSheet" parent="NaturalGround" unique_id=1713972542 instance=ExtResource("6_37vhr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.518026, 0, 17.549652)
 
-[node name="DamagedFence_16" parent="VillageDecoration/CottageYard" parent_id_path=PackedInt32Array(1387036209, 571149052) index="15" unique_id=1599528739 instance=ExtResource("6_7o0kk")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -53.6, 0, 5.173293)
+[node name="WoodSawhorse" parent="NaturalGround" unique_id=1099725707 instance=ExtResource("7_f58v0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.798206, 0, 20.23235)
 
-[node name="DamagedFence_17" parent="VillageDecoration/CottageYard" parent_id_path=PackedInt32Array(1387036209, 571149052) index="16" unique_id=808763541 instance=ExtResource("6_7o0kk")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -53.6, 0, 7.073453)
+[node name="CrossroadsMaintenanceStation" parent="." unique_id=95358426 instance=ExtResource("10_crossroads")]
+transform = Transform3D(-0.005705965, 0, -0.9999837, 0, 1, 0, 0.9999837, 0, -0.005705965, 26.564575, 0.20690918, 23.674866)
 
-[node name="DamagedFence_21" parent="VillageDecoration/CottageYard" parent_id_path=PackedInt32Array(1387036209, 571149052) index="18" unique_id=491477568 instance=ExtResource("6_7o0kk")]
-transform = Transform3D(-0.9998599, 0, -0.016736886, 0, 1, 0, 0.016736886, 0, -0.9998599, -52.644047, 0, 2.3466296)
+[node name="Floor_00" parent="CrossroadsMaintenanceStation/Foundation" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, -2)
 
-[node name="BareTree_40" parent="VillageDecoration/VillageEdges" parent_id_path=PackedInt32Array(1387036209, 848335303) index="8" unique_id=1081673182]
-transform = Transform3D(0.7829019, 0, 0.3310056, 0, 0.85, 0, -0.3310056, 0, 0.7829019, -41, 0, 30.836025)
+[node name="Floor_01" parent="CrossroadsMaintenanceStation/Foundation" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 2)
 
-[node name="BareTree_41" parent="VillageDecoration/VillageEdges" parent_id_path=PackedInt32Array(1387036209, 848335303) index="9" unique_id=227768951 instance=ExtResource("7_a8rcb")]
-transform = Transform3D(0.7829019, 0, 0.3310056, 0, 0.85, 0, -0.3310056, 0, 0.7829019, -44.02289, 0, 30.836025)
+[node name="Floor_10" parent="CrossroadsMaintenanceStation/Foundation" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2)
 
-[node name="BareTree_42" parent="VillageDecoration/VillageEdges" parent_id_path=PackedInt32Array(1387036209, 848335303) index="10" unique_id=1359301 instance=ExtResource("7_a8rcb")]
-transform = Transform3D(0.7829019, 0, 0.3310056, 0, 0.85, 0, -0.3310056, 0, 0.7829019, -44.02289, 0, 36.29481)
+[node name="Floor_11" parent="CrossroadsMaintenanceStation/Foundation" index="3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2)
 
-[node name="BareTree_43" parent="VillageDecoration/VillageEdges" parent_id_path=PackedInt32Array(1387036209, 848335303) index="11" unique_id=253509867 instance=ExtResource("7_a8rcb")]
-transform = Transform3D(0.7829019, 0, 0.3310056, 0, 0.85, 0, -0.3310056, 0, 0.7829019, -41.91329, 0, 36.29481)
+[node name="Floor_20" parent="CrossroadsMaintenanceStation/Foundation" index="4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, -2)
 
-[node name="BareTree_44" parent="VillageDecoration/VillageEdges" parent_id_path=PackedInt32Array(1387036209, 848335303) index="12" unique_id=683236138 instance=ExtResource("7_a8rcb")]
-transform = Transform3D(0.7829019, 0, 0.3310056, 0, 0.85, 0, -0.3310056, 0, 0.7829019, -41.91329, 0, 33.68323)
+[node name="Floor_21" parent="CrossroadsMaintenanceStation/Foundation" index="5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 2)
 
-[node name="BareTree_45" parent="VillageDecoration/VillageEdges" parent_id_path=PackedInt32Array(1387036209, 848335303) index="13" unique_id=1577145116 instance=ExtResource("7_a8rcb")]
-transform = Transform3D(0.7829019, 0, 0.3310056, 0, 0.85, 0, -0.3310056, 0, 0.7829019, -47.782555, 0, 33.68323)
+[node name="Front_0" parent="CrossroadsMaintenanceStation/ExteriorWalls" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 4)
 
-[node name="BareTree_46" parent="VillageDecoration/VillageEdges" parent_id_path=PackedInt32Array(1387036209, 848335303) index="14" unique_id=1778848097 instance=ExtResource("7_a8rcb")]
-transform = Transform3D(0.7829019, 0, 0.3310056, 0, 0.85, 0, -0.3310056, 0, 0.7829019, -47.782555, 0, 38.36574)
+[node name="Front_4" parent="CrossroadsMaintenanceStation/ExteriorWalls" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4)
 
-[node name="BareTree_47" parent="VillageDecoration/VillageEdges" parent_id_path=PackedInt32Array(1387036209, 848335303) index="15" unique_id=1589353012 instance=ExtResource("7_a8rcb")]
-transform = Transform3D(0.7829019, 0, 0.3310056, 0, 0.85, 0, -0.3310056, 0, 0.7829019, -47.782555, 0, 43.075466)
+[node name="Front_8" parent="CrossroadsMaintenanceStation/ExteriorWalls" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 4)
 
-[node name="BareTree_48" parent="VillageDecoration/VillageEdges" parent_id_path=PackedInt32Array(1387036209, 848335303) index="16" unique_id=1946733064 instance=ExtResource("7_a8rcb")]
-transform = Transform3D(0.7829019, 0, 0.3310056, 0, 0.85, 0, -0.3310056, 0, 0.7829019, -43.091236, 0, 43.075466)
+[node name="Rear_0" parent="CrossroadsMaintenanceStation/ExteriorWalls" index="3"]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -4, 0, -4)
 
-[node name="BareTree_49" parent="VillageDecoration/VillageEdges" parent_id_path=PackedInt32Array(1387036209, 848335303) index="17" unique_id=146627170 instance=ExtResource("7_a8rcb")]
-transform = Transform3D(0.7829019, 0, 0.3310056, 0, 0.85, 0, -0.3310056, 0, 0.7829019, -41.091236, 0, 39.68577)
+[node name="Rear_4" parent="CrossroadsMaintenanceStation/ExteriorWalls" index="4"]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, -4)
 
-[node name="BareTree_50" parent="VillageDecoration/VillageEdges" parent_id_path=PackedInt32Array(1387036209, 848335303) index="18" unique_id=609471515 instance=ExtResource("7_a8rcb")]
-transform = Transform3D(0.7829019, 0, 0.3310056, 0, 0.85, 0, -0.3310056, 0, 0.7829019, -41.091236, 0, 39.68577)
+[node name="Rear_8" parent="CrossroadsMaintenanceStation/ExteriorWalls" index="5"]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 4, 0, -4)
 
-[node name="BareTree_51" parent="VillageDecoration/VillageEdges" parent_id_path=PackedInt32Array(1387036209, 848335303) index="19" unique_id=878901080 instance=ExtResource("7_a8rcb")]
-transform = Transform3D(0.7829019, 0, 0.3310056, 0, 0.85, 0, -0.3310056, 0, 0.7829019, -49.877445, 0, 30.836025)
+[node name="Left_-2" parent="CrossroadsMaintenanceStation/ExteriorWalls" index="6"]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -6, 0, -2)
 
-[node name="BareTree_52" parent="VillageDecoration/VillageEdges" parent_id_path=PackedInt32Array(1387036209, 848335303) index="20" unique_id=774380079 instance=ExtResource("7_a8rcb")]
-transform = Transform3D(0.7829019, 0, 0.3310056, 0, 0.85, 0, -0.3310056, 0, 0.7829019, -52.900333, 0, 30.836025)
+[node name="Right_-2" parent="CrossroadsMaintenanceStation/ExteriorWalls" index="7"]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 6, 0, -2)
 
-[node name="BareTree_53" parent="VillageDecoration/VillageEdges" parent_id_path=PackedInt32Array(1387036209, 848335303) index="21" unique_id=683514673 instance=ExtResource("7_a8rcb")]
-transform = Transform3D(0.7829019, 0, 0.3310056, 0, 0.85, 0, -0.3310056, 0, 0.7829019, -52.900333, 0, 36.29481)
+[node name="Left_2" parent="CrossroadsMaintenanceStation/ExteriorWalls" index="8"]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -6, 0, 2)
 
-[node name="BareTree_54" parent="VillageDecoration/VillageEdges" parent_id_path=PackedInt32Array(1387036209, 848335303) index="22" unique_id=819139299 instance=ExtResource("7_a8rcb")]
-transform = Transform3D(0.7829019, 0, 0.3310056, 0, 0.85, 0, -0.3310056, 0, 0.7829019, -50.790733, 0, 36.29481)
+[node name="Right_2" parent="CrossroadsMaintenanceStation/ExteriorWalls" index="9"]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 6, 0, 2)
 
-[node name="BareTree_55" parent="VillageDecoration/VillageEdges" parent_id_path=PackedInt32Array(1387036209, 848335303) index="23" unique_id=1415116133 instance=ExtResource("7_a8rcb")]
-transform = Transform3D(0.7829019, 0, 0.3310056, 0, 0.85, 0, -0.3310056, 0, 0.7829019, -50.790733, 0, 33.68323)
+[node name="Roof_00" parent="CrossroadsMaintenanceStation/Roof" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 3.28, -2)
 
-[node name="BareTree_56" parent="VillageDecoration/VillageEdges" parent_id_path=PackedInt32Array(1387036209, 848335303) index="24" unique_id=972713049 instance=ExtResource("7_a8rcb")]
-transform = Transform3D(0.7829019, 0, 0.3310056, 0, 0.85, 0, -0.3310056, 0, 0.7829019, -56.66, 0, 33.68323)
+[node name="Roof_01" parent="CrossroadsMaintenanceStation/Roof" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 3.28, 2)
 
-[node name="BareTree_57" parent="VillageDecoration/VillageEdges" parent_id_path=PackedInt32Array(1387036209, 848335303) index="25" unique_id=548742541 instance=ExtResource("7_a8rcb")]
-transform = Transform3D(0.7829019, 0, 0.3310056, 0, 0.85, 0, -0.3310056, 0, 0.7829019, -56.66, 0, 38.36574)
+[node name="Roof_10" parent="CrossroadsMaintenanceStation/Roof" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.28, -2)
 
-[node name="BareTree_58" parent="VillageDecoration/VillageEdges" parent_id_path=PackedInt32Array(1387036209, 848335303) index="26" unique_id=758755191 instance=ExtResource("7_a8rcb")]
-transform = Transform3D(0.7829019, 0, 0.3310056, 0, 0.85, 0, -0.3310056, 0, 0.7829019, -56.66, 0, 40.23944)
+[node name="Roof_11" parent="CrossroadsMaintenanceStation/Roof" index="3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.28, 2)
 
-[node name="BareTree_59" parent="VillageDecoration/VillageEdges" parent_id_path=PackedInt32Array(1387036209, 848335303) index="27" unique_id=2060059374 instance=ExtResource("7_a8rcb")]
-transform = Transform3D(0.7829019, 0, 0.3310056, 0, 0.85, 0, -0.3310056, 0, 0.7829019, -51.96868, 0, 40.23944)
+[node name="Roof_20" parent="CrossroadsMaintenanceStation/Roof" index="4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 3.28, -2)
 
-[node name="BareTree_60" parent="VillageDecoration/VillageEdges" parent_id_path=PackedInt32Array(1387036209, 848335303) index="28" unique_id=1926786767 instance=ExtResource("7_a8rcb")]
-transform = Transform3D(0.7829019, 0, 0.3310056, 0, 0.85, 0, -0.3310056, 0, 0.7829019, -49.96868, 0, 39.68577)
+[node name="Roof_21" parent="CrossroadsMaintenanceStation/Roof" index="5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 3.28, 2)
 
-[node name="BareTree_71" parent="VillageDecoration/VillageEdges" parent_id_path=PackedInt32Array(1387036209, 848335303) index="29" unique_id=1359515588 instance=ExtResource("7_a8rcb")]
-transform = Transform3D(0.7829019, 0, 0.3310056, 0, 0.85, 0, -0.3310056, 0, 0.7829019, -47.782555, 0, 27.37386)
+[node name="WorkBench" parent="CrossroadsMaintenanceStation/Equipment" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.2, 0.01, -2.95)
 
-[node name="BareTree_72" parent="VillageDecoration/VillageEdges" parent_id_path=PackedInt32Array(1387036209, 848335303) index="30" unique_id=2005924321 instance=ExtResource("7_a8rcb")]
-transform = Transform3D(0.7829019, 0, 0.3310056, 0, 0.85, 0, -0.3310056, 0, 0.7829019, -52.900333, 0, 17.75718)
+[node name="ElectricalCabinet" parent="CrossroadsMaintenanceStation/Equipment" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.3, 0.01, -3.68)
 
-[node name="BareTree_73" parent="VillageDecoration/VillageEdges" parent_id_path=PackedInt32Array(1387036209, 848335303) index="31" unique_id=1530934526 instance=ExtResource("7_a8rcb")]
-transform = Transform3D(0.7829019, 0, 0.3310056, 0, 0.85, 0, -0.3310056, 0, 0.7829019, -56.66, 0, 22.664135)
+[node name="PersonnelDoor" parent="CrossroadsMaintenanceStation/Equipment" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.39, 0, 4)
 
-[node name="BareTree_74" parent="VillageDecoration/VillageEdges" parent_id_path=PackedInt32Array(1387036209, 848335303) index="32" unique_id=1356300747 instance=ExtResource("7_a8rcb")]
-transform = Transform3D(0.7829019, 0, 0.3310056, 0, 0.85, 0, -0.3310056, 0, 0.7829019, -56.66, 0, 27.37386)
+[node name="DoorCollider" parent="CrossroadsMaintenanceStation/Equipment/PersonnelDoor/DoorHinge" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.61, 1.2, 0)
 
-[node name="BareTree_75" parent="VillageDecoration/VillageEdges" parent_id_path=PackedInt32Array(1387036209, 848335303) index="33" unique_id=396646187 instance=ExtResource("7_a8rcb")]
-transform = Transform3D(0.7829019, 0, 0.3310056, 0, 0.85, 0, -0.3310056, 0, 0.7829019, -51.96868, 0, 27.37386)
+[node name="HydraulicJack" parent="CrossroadsMaintenanceStation/Equipment" index="3"]
+transform = Transform3D(0.9393727, 0, 0.3428978, 0, 1, 0, -0.3428978, 0, 0.9393727, -1.8, 0.01, -2.6)
 
-[node name="BareTree_77" parent="VillageDecoration/VillageEdges" parent_id_path=PackedInt32Array(1387036209, 848335303) index="34" unique_id=1099917831 instance=ExtResource("7_a8rcb")]
-transform = Transform3D(0.7829019, 0, 0.3310056, 0, 0.85, 0, -0.3310056, 0, 0.7829019, -36.10175, 0, 27.37386)
+[node name="WorkTrestle" parent="CrossroadsMaintenanceStation/Equipment" index="4"]
+transform = Transform3D(7.54979e-08, 0, 1, 0, 1, 0, -1, 0, 7.54979e-08, -4.6, 0.01, 1)
 
-[node name="BareTree_78" parent="VillageDecoration/VillageEdges" parent_id_path=PackedInt32Array(1387036209, 848335303) index="35" unique_id=406883269 instance=ExtResource("7_a8rcb")]
-transform = Transform3D(0.7829019, 0, 0.3310056, 0, 0.85, 0, -0.3310056, 0, 0.7829019, -41.21953, 0, 17.75718)
+[node name="EntranceRamp" type="StaticBody3D" parent="CrossroadsMaintenanceStation" unique_id=390735597]
+transform = Transform3D(1, 0, 0, 0, 0.9915619, -0.12963414, 0, 0.12963414, 0.9915619, 4, -0.142, 4.8)
 
-[node name="BareTree_80" parent="VillageDecoration/VillageEdges" parent_id_path=PackedInt32Array(1387036209, 848335303) index="36" unique_id=224560032 instance=ExtResource("7_a8rcb")]
-transform = Transform3D(0.7829019, 0, 0.3310056, 0, 0.85, 0, -0.3310056, 0, 0.7829019, -44.979195, 0, 27.37386)
+[node name="Concrete" type="MeshInstance3D" parent="CrossroadsMaintenanceStation/EntranceRamp" unique_id=1072191869]
+mesh = SubResource("CrossroadsEntranceRampMesh")
 
-[node name="BareTree_81" parent="VillageDecoration/VillageEdges" parent_id_path=PackedInt32Array(1387036209, 848335303) index="37" unique_id=1065754699 instance=ExtResource("7_a8rcb")]
-transform = Transform3D(0.7829019, 0, 0.3310056, 0, 0.85, 0, -0.3310056, 0, 0.7829019, -40.287876, 0, 27.37386)
-
-[node name="BareTree_83" parent="VillageDecoration/VillageEdges" parent_id_path=PackedInt32Array(1387036209, 848335303) index="38" unique_id=871588005 instance=ExtResource("7_a8rcb")]
-transform = Transform3D(0.7829019, 0, 0.3310056, 0, 0.85, 0, -0.3310056, 0, 0.7829019, -36.10175, 0, 27.37386)
-
-[node name="BareTree_84" parent="VillageDecoration/VillageEdges" parent_id_path=PackedInt32Array(1387036209, 848335303) index="39" unique_id=1693338799 instance=ExtResource("7_a8rcb")]
-transform = Transform3D(0.7829019, 0, 0.3310056, 0, 0.85, 0, -0.3310056, 0, 0.7829019, -41.21953, 0, 17.75718)
-
-[node name="BareTree_86" parent="VillageDecoration/VillageEdges" parent_id_path=PackedInt32Array(1387036209, 848335303) index="40" unique_id=841720058 instance=ExtResource("7_a8rcb")]
-transform = Transform3D(0.7829019, 0, 0.3310056, 0, 0.85, 0, -0.3310056, 0, 0.7829019, -44.979195, 0, 27.37386)
-
-[node name="BareTree_87" parent="VillageDecoration/VillageEdges" parent_id_path=PackedInt32Array(1387036209, 848335303) index="41" unique_id=1130246048 instance=ExtResource("7_a8rcb")]
-transform = Transform3D(0.7829019, 0, 0.3310056, 0, 0.85, 0, -0.3310056, 0, 0.7829019, -40.287876, 0, 27.37386)
-
-[node name="BareTree_61" parent="VillageDecoration/VillageEdges" parent_id_path=PackedInt32Array(1387036209, 848335303) index="42" unique_id=1200410434 instance=ExtResource("7_a8rcb")]
-transform = Transform3D(0.7829019, 0, 0.3310056, 0, 0.85, 0, -0.3310056, 0, 0.7829019, -33.61667, 0, 28)
-
-[node name="BareTree_62" parent="VillageDecoration/VillageEdges" parent_id_path=PackedInt32Array(1387036209, 848335303) index="43" unique_id=285694968 instance=ExtResource("7_a8rcb")]
-transform = Transform3D(0.7829019, 0, 0.3310056, 0, 0.85, 0, -0.3310056, 0, 0.7829019, -36.639557, 0, 30.836025)
-
-[node name="BareTree_63" parent="VillageDecoration/VillageEdges" parent_id_path=PackedInt32Array(1387036209, 848335303) index="44" unique_id=1278776418 instance=ExtResource("7_a8rcb")]
-transform = Transform3D(0.7829019, 0, 0.3310056, 0, 0.85, 0, -0.3310056, 0, 0.7829019, -36.639557, 0, 36.29481)
-
-[node name="BareTree_64" parent="VillageDecoration/VillageEdges" parent_id_path=PackedInt32Array(1387036209, 848335303) index="45" unique_id=884072013 instance=ExtResource("7_a8rcb")]
-transform = Transform3D(0.7829019, 0, 0.3310056, 0, 0.85, 0, -0.3310056, 0, 0.7829019, -34.529957, 0, 33.458786)
-
-[node name="BareTree_65" parent="VillageDecoration/VillageEdges" parent_id_path=PackedInt32Array(1387036209, 848335303) index="46" unique_id=1782343175 instance=ExtResource("7_a8rcb")]
-transform = Transform3D(0.7829019, 0, 0.3310056, 0, 0.85, 0, -0.3310056, 0, 0.7829019, -34.529957, 0, 30.847206)
-
-[node name="BareTree_66" parent="VillageDecoration/VillageEdges" parent_id_path=PackedInt32Array(1387036209, 848335303) index="47" unique_id=109533054 instance=ExtResource("7_a8rcb")]
-transform = Transform3D(0.7829019, 0, 0.3310056, 0, 0.85, 0, -0.3310056, 0, 0.7829019, -40.399223, 0, 33.68323)
-
-[node name="BareTree_67" parent="VillageDecoration/VillageEdges" parent_id_path=PackedInt32Array(1387036209, 848335303) index="48" unique_id=1705927444 instance=ExtResource("7_a8rcb")]
-transform = Transform3D(0.7829019, 0, 0.3310056, 0, 0.85, 0, -0.3310056, 0, 0.7829019, -40.399223, 0, 38.36574)
-
-[node name="BareTree_68" parent="VillageDecoration/VillageEdges" parent_id_path=PackedInt32Array(1387036209, 848335303) index="49" unique_id=541469784 instance=ExtResource("7_a8rcb")]
-transform = Transform3D(0.7829019, 0, 0.3310056, 0, 0.85, 0, -0.3310056, 0, 0.7829019, -40.399223, 0, 43.075466)
-
-[node name="BareTree_69" parent="VillageDecoration/VillageEdges" parent_id_path=PackedInt32Array(1387036209, 848335303) index="50" unique_id=182822725 instance=ExtResource("7_a8rcb")]
-transform = Transform3D(0.7829019, 0, 0.3310056, 0, 0.85, 0, -0.3310056, 0, 0.7829019, -35.707905, 0, 43.075466)
-
-[node name="BareTree_70" parent="VillageDecoration/VillageEdges" parent_id_path=PackedInt32Array(1387036209, 848335303) index="51" unique_id=833545865 instance=ExtResource("7_a8rcb")]
-transform = Transform3D(0.7829019, 0, 0.3310056, 0, 0.85, 0, -0.3310056, 0, 0.7829019, -33.707905, 0, 36.849743)
-
-[node name="DryBramble_45" parent="VillageDecoration/VillageEdges" parent_id_path=PackedInt32Array(1387036209, 848335303) index="56" unique_id=504009980]
-transform = Transform3D(0.063663475, 0, 0.8977455, 0, 0.9, 0, -0.8977455, 0, 0.063663475, -59, 0, 29.836025)
-
-[node name="DeadBranchPile_46" parent="VillageDecoration/VillageEdges" parent_id_path=PackedInt32Array(1387036209, 848335303) index="57" unique_id=360792005]
-transform = Transform3D(0.62703604, 0, 0.64562047, 0, 0.9, 0, -0.64562047, 0, 0.62703604, -43, 0, 29.836025)
-
-[node name="BareTree_76" parent="VillageDecoration/VillageEdges" parent_id_path=PackedInt32Array(1387036209, 848335303) index="58" unique_id=358999711 instance=ExtResource("7_a8rcb")]
-transform = Transform3D(0.7829019, 0, 0.3310056, 0, 0.85, 0, -0.3310056, 0, 0.7829019, -57.96885, 0, 30.836025)
-
-[node name="BareTree_79" parent="VillageDecoration/VillageEdges" parent_id_path=PackedInt32Array(1387036209, 848335303) index="59" unique_id=333601118 instance=ExtResource("7_a8rcb")]
-transform = Transform3D(0.7829019, 0, 0.3310056, 0, 0.85, 0, -0.3310056, 0, 0.7829019, -60.991737, 0, 30.836025)
-
-[node name="BareTree_82" parent="VillageDecoration/VillageEdges" parent_id_path=PackedInt32Array(1387036209, 848335303) index="60" unique_id=1756889879 instance=ExtResource("7_a8rcb")]
-transform = Transform3D(0.7829019, 0, 0.3310056, 0, 0.85, 0, -0.3310056, 0, 0.7829019, -60.991737, 0, 36.29481)
-
-[node name="BareTree_85" parent="VillageDecoration/VillageEdges" parent_id_path=PackedInt32Array(1387036209, 848335303) index="61" unique_id=991679756 instance=ExtResource("7_a8rcb")]
-transform = Transform3D(0.7829019, 0, 0.3310056, 0, 0.85, 0, -0.3310056, 0, 0.7829019, -58.882137, 0, 36.29481)
-
-[node name="BareTree_88" parent="VillageDecoration/VillageEdges" parent_id_path=PackedInt32Array(1387036209, 848335303) index="62" unique_id=2018912647 instance=ExtResource("7_a8rcb")]
-transform = Transform3D(0.7829019, 0, 0.3310056, 0, 0.85, 0, -0.3310056, 0, 0.7829019, -58.882137, 0, 33.68323)
-
-[node name="BareTree_89" parent="VillageDecoration/VillageEdges" parent_id_path=PackedInt32Array(1387036209, 848335303) index="63" unique_id=1710255718 instance=ExtResource("7_a8rcb")]
-transform = Transform3D(0.7829019, 0, 0.3310056, 0, 0.85, 0, -0.3310056, 0, 0.7829019, -64.7514, 0, 33.68323)
-
-[node name="BareTree_90" parent="VillageDecoration/VillageEdges" parent_id_path=PackedInt32Array(1387036209, 848335303) index="64" unique_id=1574981935 instance=ExtResource("7_a8rcb")]
-transform = Transform3D(0.7829019, 0, 0.3310056, 0, 0.85, 0, -0.3310056, 0, 0.7829019, -64.7514, 0, 38.36574)
-
-[node name="BareTree_91" parent="VillageDecoration/VillageEdges" parent_id_path=PackedInt32Array(1387036209, 848335303) index="65" unique_id=1498188105 instance=ExtResource("7_a8rcb")]
-transform = Transform3D(0.7829019, 0, 0.3310056, 0, 0.85, 0, -0.3310056, 0, 0.7829019, -64.7514, 0, 43.075466)
-
-[node name="BareTree_92" parent="VillageDecoration/VillageEdges" parent_id_path=PackedInt32Array(1387036209, 848335303) index="66" unique_id=240863445 instance=ExtResource("7_a8rcb")]
-transform = Transform3D(0.7829019, 0, 0.3310056, 0, 0.85, 0, -0.3310056, 0, 0.7829019, -60.060085, 0, 43.075466)
-
-[node name="BareTree_93" parent="VillageDecoration/VillageEdges" parent_id_path=PackedInt32Array(1387036209, 848335303) index="67" unique_id=676157620 instance=ExtResource("7_a8rcb")]
-transform = Transform3D(0.7829019, 0, 0.3310056, 0, 0.85, 0, -0.3310056, 0, 0.7829019, -58.060085, 0, 39.68577)
-
-[node name="BareTree_94" parent="VillageDecoration/VillageEdges" parent_id_path=PackedInt32Array(1387036209, 848335303) index="68" unique_id=1910437479 instance=ExtResource("7_a8rcb")]
-transform = Transform3D(0.7829019, 0, 0.3310056, 0, 0.85, 0, -0.3310056, 0, 0.7829019, -58.060085, 0, 39.68577)
-
-[node name="BareTree_95" parent="VillageDecoration/VillageEdges" parent_id_path=PackedInt32Array(1387036209, 848335303) index="69" unique_id=56728773 instance=ExtResource("7_a8rcb")]
-transform = Transform3D(0.7829019, 0, 0.3310056, 0, 0.85, 0, -0.3310056, 0, 0.7829019, -66.8463, 0, 30.836025)
-
-[node name="BareTree_96" parent="VillageDecoration/VillageEdges" parent_id_path=PackedInt32Array(1387036209, 848335303) index="70" unique_id=1371592124 instance=ExtResource("7_a8rcb")]
-transform = Transform3D(0.7829019, 0, 0.3310056, 0, 0.85, 0, -0.3310056, 0, 0.7829019, -67.75958, 0, 36.29481)
-
-[node name="BareTree_97" parent="VillageDecoration/VillageEdges" parent_id_path=PackedInt32Array(1387036209, 848335303) index="71" unique_id=1041384876 instance=ExtResource("7_a8rcb")]
-transform = Transform3D(0.7829019, 0, 0.3310056, 0, 0.85, 0, -0.3310056, 0, 0.7829019, -67.75958, 0, 33.68323)
-
-[node name="BareTree_98" parent="VillageDecoration/VillageEdges" parent_id_path=PackedInt32Array(1387036209, 848335303) index="72" unique_id=332957513 instance=ExtResource("7_a8rcb")]
-transform = Transform3D(0.7829019, 0, 0.3310056, 0, 0.85, 0, -0.3310056, 0, 0.7829019, -66.93753, 0, 39.68577)
-
-[node name="BareTree_99" parent="VillageDecoration/VillageEdges" parent_id_path=PackedInt32Array(1387036209, 848335303) index="73" unique_id=1448391119 instance=ExtResource("7_a8rcb")]
-transform = Transform3D(0.7829019, 0, 0.3310056, 0, 0.85, 0, -0.3310056, 0, 0.7829019, -57.256725, 0, 27.37386)
-
-[node name="BareTree_100" parent="VillageDecoration/VillageEdges" parent_id_path=PackedInt32Array(1387036209, 848335303) index="74" unique_id=701483839 instance=ExtResource("7_a8rcb")]
-transform = Transform3D(0.7829019, 0, 0.3310056, 0, 0.85, 0, -0.3310056, 0, 0.7829019, -57.256725, 0, 27.37386)
-
-[node name="BareTree_101" parent="VillageDecoration/VillageEdges" parent_id_path=PackedInt32Array(1387036209, 848335303) index="75" unique_id=1069448244 instance=ExtResource("7_a8rcb")]
-transform = Transform3D(0.7829019, 0, 0.3310056, 0, 0.85, 0, -0.3310056, 0, 0.7829019, -57.368073, 0, 33.68323)
-
-[node name="BareTree_102" parent="VillageDecoration/VillageEdges" parent_id_path=PackedInt32Array(1387036209, 848335303) index="76" unique_id=169176496 instance=ExtResource("7_a8rcb")]
-transform = Transform3D(0.7829019, 0, 0.3310056, 0, 0.85, 0, -0.3310056, 0, 0.7829019, -57.368073, 0, 38.36574)
-
-[node name="BareTree_103" parent="VillageDecoration/VillageEdges" parent_id_path=PackedInt32Array(1387036209, 848335303) index="77" unique_id=1854254575 instance=ExtResource("7_a8rcb")]
-transform = Transform3D(0.7829019, 0, 0.3310056, 0, 0.85, 0, -0.3310056, 0, 0.7829019, -57.368073, 0, 43.075466)
-
-[node name="BareTree_104" parent="VillageDecoration/VillageEdges" parent_id_path=PackedInt32Array(1387036209, 848335303) index="78" unique_id=1607197695 instance=ExtResource("7_a8rcb")]
-transform = Transform3D(0.7829019, 0, 0.3310056, 0, 0.85, 0, -0.3310056, 0, 0.7829019, -52.676754, 0, 43.075466)
-
-[node name="DeadBranchPile_47" parent="VillageDecoration/VillageEdges" parent_id_path=PackedInt32Array(1387036209, 848335303) index="79" unique_id=415636 instance=ExtResource("10_crkeg")]
-transform = Transform3D(0.62703604, 0, 0.64562047, 0, 0.9, 0, -0.64562047, 0, 0.62703604, -59.96885, 0, 29.836025)
-
-[node name="BareTree_107" parent="VillageDecoration/VillageEdges" parent_id_path=PackedInt32Array(1387036209, 848335303) index="80" unique_id=1815786791 instance=ExtResource("7_a8rcb")]
-transform = Transform3D(0.7829019, 0, 0.3310056, 0, 0.85, 0, -0.3310056, 0, 0.7829019, -60.991737, 0, 25.69165)
-
-[node name="BareTree_108" parent="VillageDecoration/VillageEdges" parent_id_path=PackedInt32Array(1387036209, 848335303) index="81" unique_id=893014866 instance=ExtResource("7_a8rcb")]
-transform = Transform3D(0.7829019, 0, 0.3310056, 0, 0.85, 0, -0.3310056, 0, 0.7829019, -58.882137, 0, 25.69165)
-
-[node name="BareTree_109" parent="VillageDecoration/VillageEdges" parent_id_path=PackedInt32Array(1387036209, 848335303) index="82" unique_id=169299483 instance=ExtResource("7_a8rcb")]
-transform = Transform3D(0.7829019, 0, 0.3310056, 0, 0.85, 0, -0.3310056, 0, 0.7829019, -58.882137, 0, 23.08007)
-
-[node name="BareTree_110" parent="VillageDecoration/VillageEdges" parent_id_path=PackedInt32Array(1387036209, 848335303) index="83" unique_id=121424767 instance=ExtResource("7_a8rcb")]
-transform = Transform3D(0.7829019, 0, 0.3310056, 0, 0.85, 0, -0.3310056, 0, 0.7829019, -64.7514, 0, 23.08007)
-
-[node name="BareTree_111" parent="VillageDecoration/VillageEdges" parent_id_path=PackedInt32Array(1387036209, 848335303) index="84" unique_id=1104285190 instance=ExtResource("7_a8rcb")]
-transform = Transform3D(0.7829019, 0, 0.3310056, 0, 0.85, 0, -0.3310056, 0, 0.7829019, -64.7514, 0, 27.76258)
-
-[node name="BareTree_112" parent="VillageDecoration/VillageEdges" parent_id_path=PackedInt32Array(1387036209, 848335303) index="85" unique_id=1942814766 instance=ExtResource("7_a8rcb")]
-transform = Transform3D(0.7829019, 0, 0.3310056, 0, 0.85, 0, -0.3310056, 0, 0.7829019, -64.7514, 0, 32.472305)
-
-[node name="BareTree_113" parent="VillageDecoration/VillageEdges" parent_id_path=PackedInt32Array(1387036209, 848335303) index="86" unique_id=601353728 instance=ExtResource("7_a8rcb")]
-transform = Transform3D(0.7829019, 0, 0.3310056, 0, 0.85, 0, -0.3310056, 0, 0.7829019, -60.060085, 0, 32.472305)
-
-[node name="BareTree_114" parent="VillageDecoration/VillageEdges" parent_id_path=PackedInt32Array(1387036209, 848335303) index="87" unique_id=953419322 instance=ExtResource("7_a8rcb")]
-transform = Transform3D(0.7829019, 0, 0.3310056, 0, 0.85, 0, -0.3310056, 0, 0.7829019, -58.060085, 0, 29.082607)
-
-[node name="BareTree_115" parent="VillageDecoration/VillageEdges" parent_id_path=PackedInt32Array(1387036209, 848335303) index="88" unique_id=1651637568 instance=ExtResource("7_a8rcb")]
-transform = Transform3D(0.7829019, 0, 0.3310056, 0, 0.85, 0, -0.3310056, 0, 0.7829019, -58.060085, 0, 29.082607)
-
-[node name="BareTree_116" parent="VillageDecoration/VillageEdges" parent_id_path=PackedInt32Array(1387036209, 848335303) index="89" unique_id=895990730 instance=ExtResource("7_a8rcb")]
-transform = Transform3D(0.7829019, 0, 0.3310056, 0, 0.85, 0, -0.3310056, 0, 0.7829019, -66.8463, 0, 20.232864)
-
-[node name="BareTree_117" parent="VillageDecoration/VillageEdges" parent_id_path=PackedInt32Array(1387036209, 848335303) index="90" unique_id=1447377336 instance=ExtResource("7_a8rcb")]
-transform = Transform3D(0.7829019, 0, 0.3310056, 0, 0.85, 0, -0.3310056, 0, 0.7829019, -67.75958, 0, 25.69165)
-
-[node name="BareTree_118" parent="VillageDecoration/VillageEdges" parent_id_path=PackedInt32Array(1387036209, 848335303) index="91" unique_id=517882724 instance=ExtResource("7_a8rcb")]
-transform = Transform3D(0.7829019, 0, 0.3310056, 0, 0.85, 0, -0.3310056, 0, 0.7829019, -67.75958, 0, 23.08007)
-
-[node name="BareTree_119" parent="VillageDecoration/VillageEdges" parent_id_path=PackedInt32Array(1387036209, 848335303) index="92" unique_id=549831755 instance=ExtResource("7_a8rcb")]
-transform = Transform3D(0.7829019, 0, 0.3310056, 0, 0.85, 0, -0.3310056, 0, 0.7829019, -66.93753, 0, 29.082607)
-
-[node name="BareTree_120" parent="VillageDecoration/VillageEdges" parent_id_path=PackedInt32Array(1387036209, 848335303) index="93" unique_id=977748615 instance=ExtResource("7_a8rcb")]
-transform = Transform3D(0.7829019, 0, 0.3310056, 0, 0.85, 0, -0.3310056, 0, 0.7829019, -57.256725, 0, 16.770699)
-
-[node name="BareTree_121" parent="VillageDecoration/VillageEdges" parent_id_path=PackedInt32Array(1387036209, 848335303) index="94" unique_id=1957017579 instance=ExtResource("7_a8rcb")]
-transform = Transform3D(0.7829019, 0, 0.3310056, 0, 0.85, 0, -0.3310056, 0, 0.7829019, -57.256725, 0, 16.770699)
-
-[node name="BareTree_122" parent="VillageDecoration/VillageEdges" parent_id_path=PackedInt32Array(1387036209, 848335303) index="95" unique_id=598753245 instance=ExtResource("7_a8rcb")]
-transform = Transform3D(0.7829019, 0, 0.3310056, 0, 0.85, 0, -0.3310056, 0, 0.7829019, -57.368073, 0, 23.08007)
-
-[node name="BareTree_123" parent="VillageDecoration/VillageEdges" parent_id_path=PackedInt32Array(1387036209, 848335303) index="96" unique_id=1973500183 instance=ExtResource("7_a8rcb")]
-transform = Transform3D(0.7829019, 0, 0.3310056, 0, 0.85, 0, -0.3310056, 0, 0.7829019, -57.368073, 0, 27.76258)
-
-[node name="BareTree_124" parent="VillageDecoration/VillageEdges" parent_id_path=PackedInt32Array(1387036209, 848335303) index="97" unique_id=497698826 instance=ExtResource("7_a8rcb")]
-transform = Transform3D(0.7829019, 0, 0.3310056, 0, 0.85, 0, -0.3310056, 0, 0.7829019, -57.368073, 0, 32.472305)
-
-[node name="BareTree_125" parent="VillageDecoration/VillageEdges" parent_id_path=PackedInt32Array(1387036209, 848335303) index="98" unique_id=584745236 instance=ExtResource("7_a8rcb")]
-transform = Transform3D(0.7829019, 0, 0.3310056, 0, 0.85, 0, -0.3310056, 0, 0.7829019, -52.676754, 0, 32.472305)
-
-[node name="DeadBranchPile_48" parent="VillageDecoration/VillageEdges" parent_id_path=PackedInt32Array(1387036209, 848335303) index="99" unique_id=1828008726 instance=ExtResource("10_crkeg")]
-transform = Transform3D(0.62703604, 0, 0.64562047, 0, 0.9, 0, -0.64562047, 0, 0.62703604, -59.96885, 0, 19.232864)
-
-[node name="BareTree_126" parent="VillageDecoration/VillageEdges" parent_id_path=PackedInt32Array(1387036209, 848335303) index="100" unique_id=1935610717 instance=ExtResource("7_a8rcb")]
-transform = Transform3D(0.7829019, 0, 0.3310056, 0, 0.85, 0, -0.3310056, 0, 0.7829019, -57.96885, 0, 6.388096)
-
-[node name="BareTree_127" parent="VillageDecoration/VillageEdges" parent_id_path=PackedInt32Array(1387036209, 848335303) index="101" unique_id=363973804 instance=ExtResource("7_a8rcb")]
-transform = Transform3D(0.7829019, 0, 0.3310056, 0, 0.85, 0, -0.3310056, 0, 0.7829019, -60.991737, 0, 6.388096)
-
-[node name="BareTree_128" parent="VillageDecoration/VillageEdges" parent_id_path=PackedInt32Array(1387036209, 848335303) index="102" unique_id=582413412 instance=ExtResource("7_a8rcb")]
-transform = Transform3D(0.7829019, 0, 0.3310056, 0, 0.85, 0, -0.3310056, 0, 0.7829019, -60.991737, 0, 11.846882)
-
-[node name="BareTree_129" parent="VillageDecoration/VillageEdges" parent_id_path=PackedInt32Array(1387036209, 848335303) index="103" unique_id=612413164 instance=ExtResource("7_a8rcb")]
-transform = Transform3D(0.7829019, 0, 0.3310056, 0, 0.85, 0, -0.3310056, 0, 0.7829019, -58.882137, 0, 11.846882)
-
-[node name="BareTree_130" parent="VillageDecoration/VillageEdges" parent_id_path=PackedInt32Array(1387036209, 848335303) index="104" unique_id=1637939963 instance=ExtResource("7_a8rcb")]
-transform = Transform3D(0.7829019, 0, 0.3310056, 0, 0.85, 0, -0.3310056, 0, 0.7829019, -58.882137, 0, 9.235302)
-
-[node name="BareTree_131" parent="VillageDecoration/VillageEdges" parent_id_path=PackedInt32Array(1387036209, 848335303) index="105" unique_id=776568911 instance=ExtResource("7_a8rcb")]
-transform = Transform3D(0.7829019, 0, 0.3310056, 0, 0.85, 0, -0.3310056, 0, 0.7829019, -64.7514, 0, 9.235302)
-
-[node name="BareTree_132" parent="VillageDecoration/VillageEdges" parent_id_path=PackedInt32Array(1387036209, 848335303) index="106" unique_id=126103683 instance=ExtResource("7_a8rcb")]
-transform = Transform3D(0.7829019, 0, 0.3310056, 0, 0.85, 0, -0.3310056, 0, 0.7829019, -64.7514, 0, 13.917812)
-
-[node name="BareTree_133" parent="VillageDecoration/VillageEdges" parent_id_path=PackedInt32Array(1387036209, 848335303) index="107" unique_id=1719717113 instance=ExtResource("7_a8rcb")]
-transform = Transform3D(0.7829019, 0, 0.3310056, 0, 0.85, 0, -0.3310056, 0, 0.7829019, -64.7514, 0, 18.627537)
-
-[node name="BareTree_135" parent="VillageDecoration/VillageEdges" parent_id_path=PackedInt32Array(1387036209, 848335303) index="108" unique_id=401182569 instance=ExtResource("7_a8rcb")]
-transform = Transform3D(0.7829019, 0, 0.3310056, 0, 0.85, 0, -0.3310056, 0, 0.7829019, -58.060085, 0, 15.237839)
-
-[node name="BareTree_136" parent="VillageDecoration/VillageEdges" parent_id_path=PackedInt32Array(1387036209, 848335303) index="109" unique_id=403028159 instance=ExtResource("7_a8rcb")]
-transform = Transform3D(0.7829019, 0, 0.3310056, 0, 0.85, 0, -0.3310056, 0, 0.7829019, -58.060085, 0, 15.237839)
-
-[node name="BareTree_137" parent="VillageDecoration/VillageEdges" parent_id_path=PackedInt32Array(1387036209, 848335303) index="110" unique_id=1632166887 instance=ExtResource("7_a8rcb")]
-transform = Transform3D(0.7829019, 0, 0.3310056, 0, 0.85, 0, -0.3310056, 0, 0.7829019, -66.8463, 0, 6.388096)
-
-[node name="BareTree_138" parent="VillageDecoration/VillageEdges" parent_id_path=PackedInt32Array(1387036209, 848335303) index="111" unique_id=1175208623 instance=ExtResource("7_a8rcb")]
-transform = Transform3D(0.7829019, 0, 0.3310056, 0, 0.85, 0, -0.3310056, 0, 0.7829019, -67.75958, 0, 11.846882)
-
-[node name="BareTree_139" parent="VillageDecoration/VillageEdges" parent_id_path=PackedInt32Array(1387036209, 848335303) index="112" unique_id=612944304 instance=ExtResource("7_a8rcb")]
-transform = Transform3D(0.7829019, 0, 0.3310056, 0, 0.85, 0, -0.3310056, 0, 0.7829019, -67.75958, 0, 9.235302)
-
-[node name="BareTree_140" parent="VillageDecoration/VillageEdges" parent_id_path=PackedInt32Array(1387036209, 848335303) index="113" unique_id=527466830 instance=ExtResource("7_a8rcb")]
-transform = Transform3D(0.7829019, 0, 0.3310056, 0, 0.85, 0, -0.3310056, 0, 0.7829019, -66.93753, 0, 15.237839)
-
-[node name="BareTree_141" parent="VillageDecoration/VillageEdges" parent_id_path=PackedInt32Array(1387036209, 848335303) index="114" unique_id=1318300379 instance=ExtResource("7_a8rcb")]
-transform = Transform3D(0.7829019, 0, 0.3310056, 0, 0.85, 0, -0.3310056, 0, 0.7829019, -57.256725, 0, 2.92593)
-
-[node name="BareTree_142" parent="VillageDecoration/VillageEdges" parent_id_path=PackedInt32Array(1387036209, 848335303) index="115" unique_id=545095672 instance=ExtResource("7_a8rcb")]
-transform = Transform3D(0.7829019, 0, 0.3310056, 0, 0.85, 0, -0.3310056, 0, 0.7829019, -57.256725, 0, 2.92593)
-
-[node name="BareTree_143" parent="VillageDecoration/VillageEdges" parent_id_path=PackedInt32Array(1387036209, 848335303) index="116" unique_id=1158004687 instance=ExtResource("7_a8rcb")]
-transform = Transform3D(0.7829019, 0, 0.3310056, 0, 0.85, 0, -0.3310056, 0, 0.7829019, -57.368073, 0, 9.235302)
-
-[node name="BareTree_144" parent="VillageDecoration/VillageEdges" parent_id_path=PackedInt32Array(1387036209, 848335303) index="117" unique_id=798546217 instance=ExtResource("7_a8rcb")]
-transform = Transform3D(0.7829019, 0, 0.3310056, 0, 0.85, 0, -0.3310056, 0, 0.7829019, -57.368073, 0, 13.917812)
-
-[node name="BareTree_146" parent="VillageDecoration/VillageEdges" parent_id_path=PackedInt32Array(1387036209, 848335303) index="118" unique_id=1526452403 instance=ExtResource("7_a8rcb")]
-transform = Transform3D(0.7829019, 0, 0.3310056, 0, 0.85, 0, -0.3310056, 0, 0.7829019, -52.676754, 0, 18.627537)
-
-[node name="DeadBranchPile_49" parent="VillageDecoration/VillageEdges" parent_id_path=PackedInt32Array(1387036209, 848335303) index="119" unique_id=1415423305 instance=ExtResource("10_crkeg")]
-transform = Transform3D(0.62703604, 0, 0.64562047, 0, 0.9, 0, -0.64562047, 0, 0.62703604, -59.96885, 0, 5.388096)
-
-[node name="BareTree_147" parent="VillageDecoration/VillageEdges" parent_id_path=PackedInt32Array(1387036209, 848335303) index="120" unique_id=1858567062 instance=ExtResource("7_a8rcb")]
-transform = Transform3D(0.7829019, 0, 0.3310056, 0, 0.85, 0, -0.3310056, 0, 0.7829019, -57.96885, 0, -7.55315)
-
-[node name="BareTree_148" parent="VillageDecoration/VillageEdges" parent_id_path=PackedInt32Array(1387036209, 848335303) index="121" unique_id=624680825 instance=ExtResource("7_a8rcb")]
-transform = Transform3D(0.7829019, 0, 0.3310056, 0, 0.85, 0, -0.3310056, 0, 0.7829019, -60.991737, 0, -7.55315)
-
-[node name="BareTree_149" parent="VillageDecoration/VillageEdges" parent_id_path=PackedInt32Array(1387036209, 848335303) index="122" unique_id=2080091655 instance=ExtResource("7_a8rcb")]
-transform = Transform3D(0.7829019, 0, 0.3310056, 0, 0.85, 0, -0.3310056, 0, 0.7829019, -60.991737, 0, -2.0943642)
-
-[node name="BareTree_150" parent="VillageDecoration/VillageEdges" parent_id_path=PackedInt32Array(1387036209, 848335303) index="123" unique_id=1810964156 instance=ExtResource("7_a8rcb")]
-transform = Transform3D(0.7829019, 0, 0.3310056, 0, 0.85, 0, -0.3310056, 0, 0.7829019, -58.882137, 0, -2.0943642)
-
-[node name="BareTree_151" parent="VillageDecoration/VillageEdges" parent_id_path=PackedInt32Array(1387036209, 848335303) index="124" unique_id=567492540 instance=ExtResource("7_a8rcb")]
-transform = Transform3D(0.7829019, 0, 0.3310056, 0, 0.85, 0, -0.3310056, 0, 0.7829019, -58.882137, 0, -4.705944)
-
-[node name="BareTree_152" parent="VillageDecoration/VillageEdges" parent_id_path=PackedInt32Array(1387036209, 848335303) index="125" unique_id=293048431 instance=ExtResource("7_a8rcb")]
-transform = Transform3D(0.7829019, 0, 0.3310056, 0, 0.85, 0, -0.3310056, 0, 0.7829019, -64.7514, 0, -4.705944)
-
-[node name="BareTree_153" parent="VillageDecoration/VillageEdges" parent_id_path=PackedInt32Array(1387036209, 848335303) index="126" unique_id=672717366 instance=ExtResource("7_a8rcb")]
-transform = Transform3D(0.7829019, 0, 0.3310056, 0, 0.85, 0, -0.3310056, 0, 0.7829019, -64.7514, 0, -0.023433685)
-
-[node name="BareTree_154" parent="VillageDecoration/VillageEdges" parent_id_path=PackedInt32Array(1387036209, 848335303) index="127" unique_id=1834895930 instance=ExtResource("7_a8rcb")]
-transform = Transform3D(0.7829019, 0, 0.3310056, 0, 0.85, 0, -0.3310056, 0, 0.7829019, -64.7514, 0, 4.6862907)
-
-[node name="BareTree_155" parent="VillageDecoration/VillageEdges" parent_id_path=PackedInt32Array(1387036209, 848335303) index="128" unique_id=1371766760 instance=ExtResource("7_a8rcb")]
-transform = Transform3D(0.7829019, 0, 0.3310056, 0, 0.85, 0, -0.3310056, 0, 0.7829019, -60.060085, 0, 4.6862907)
-
-[node name="BareTree_156" parent="VillageDecoration/VillageEdges" parent_id_path=PackedInt32Array(1387036209, 848335303) index="129" unique_id=164431674 instance=ExtResource("7_a8rcb")]
-transform = Transform3D(0.7829019, 0, 0.3310056, 0, 0.85, 0, -0.3310056, 0, 0.7829019, -58.060085, 0, 1.2965927)
-
-[node name="BareTree_157" parent="VillageDecoration/VillageEdges" parent_id_path=PackedInt32Array(1387036209, 848335303) index="130" unique_id=1657405639 instance=ExtResource("7_a8rcb")]
-transform = Transform3D(0.7829019, 0, 0.3310056, 0, 0.85, 0, -0.3310056, 0, 0.7829019, -58.060085, 0, 1.2965927)
-
-[node name="BareTree_158" parent="VillageDecoration/VillageEdges" parent_id_path=PackedInt32Array(1387036209, 848335303) index="131" unique_id=165261450 instance=ExtResource("7_a8rcb")]
-transform = Transform3D(0.7829019, 0, 0.3310056, 0, 0.85, 0, -0.3310056, 0, 0.7829019, -66.8463, 0, -7.55315)
-
-[node name="BareTree_159" parent="VillageDecoration/VillageEdges" parent_id_path=PackedInt32Array(1387036209, 848335303) index="132" unique_id=1704550354 instance=ExtResource("7_a8rcb")]
-transform = Transform3D(0.7829019, 0, 0.3310056, 0, 0.85, 0, -0.3310056, 0, 0.7829019, -67.75958, 0, -2.0943642)
-
-[node name="BareTree_160" parent="VillageDecoration/VillageEdges" parent_id_path=PackedInt32Array(1387036209, 848335303) index="133" unique_id=52471748 instance=ExtResource("7_a8rcb")]
-transform = Transform3D(0.7829019, 0, 0.3310056, 0, 0.85, 0, -0.3310056, 0, 0.7829019, -67.75958, 0, -4.705944)
-
-[node name="BareTree_161" parent="VillageDecoration/VillageEdges" parent_id_path=PackedInt32Array(1387036209, 848335303) index="134" unique_id=1849699443 instance=ExtResource("7_a8rcb")]
-transform = Transform3D(0.7829019, 0, 0.3310056, 0, 0.85, 0, -0.3310056, 0, 0.7829019, -66.93753, 0, 1.2965927)
-
-[node name="BareTree_162" parent="VillageDecoration/VillageEdges" parent_id_path=PackedInt32Array(1387036209, 848335303) index="135" unique_id=200868244 instance=ExtResource("7_a8rcb")]
-transform = Transform3D(0.7829019, 0, 0.3310056, 0, 0.85, 0, -0.3310056, 0, 0.7829019, -57.256725, 0, -11.015316)
-
-[node name="BareTree_163" parent="VillageDecoration/VillageEdges" parent_id_path=PackedInt32Array(1387036209, 848335303) index="136" unique_id=1750777810 instance=ExtResource("7_a8rcb")]
-transform = Transform3D(0.7829019, 0, 0.3310056, 0, 0.85, 0, -0.3310056, 0, 0.7829019, -57.256725, 0, -11.015316)
-
-[node name="BareTree_164" parent="VillageDecoration/VillageEdges" parent_id_path=PackedInt32Array(1387036209, 848335303) index="137" unique_id=2038987398 instance=ExtResource("7_a8rcb")]
-transform = Transform3D(0.7829019, 0, 0.3310056, 0, 0.85, 0, -0.3310056, 0, 0.7829019, -57.368073, 0, -4.705944)
-
-[node name="BareTree_165" parent="VillageDecoration/VillageEdges" parent_id_path=PackedInt32Array(1387036209, 848335303) index="138" unique_id=864969693 instance=ExtResource("7_a8rcb")]
-transform = Transform3D(0.7829019, 0, 0.3310056, 0, 0.85, 0, -0.3310056, 0, 0.7829019, -57.368073, 0, -0.023433685)
-
-[node name="BareTree_166" parent="VillageDecoration/VillageEdges" parent_id_path=PackedInt32Array(1387036209, 848335303) index="139" unique_id=92265456 instance=ExtResource("7_a8rcb")]
-transform = Transform3D(0.7829019, 0, 0.3310056, 0, 0.85, 0, -0.3310056, 0, 0.7829019, -57.368073, 0, 4.6862907)
-
-[node name="BareTree_167" parent="VillageDecoration/VillageEdges" parent_id_path=PackedInt32Array(1387036209, 848335303) index="140" unique_id=1621099854 instance=ExtResource("7_a8rcb")]
-transform = Transform3D(0.7829019, 0, 0.3310056, 0, 0.85, 0, -0.3310056, 0, 0.7829019, -52.676754, 0, 4.6862907)
-
-[node name="DeadBranchPile_50" parent="VillageDecoration/VillageEdges" parent_id_path=PackedInt32Array(1387036209, 848335303) index="141" unique_id=1335355596 instance=ExtResource("10_crkeg")]
-transform = Transform3D(0.62703604, 0, 0.64562047, 0, 0.9, 0, -0.64562047, 0, 0.62703604, -59.96885, 0, -8.55315)
-
-[node name="BareTree_168" parent="VillageDecoration/VillageEdges" parent_id_path=PackedInt32Array(1387036209, 848335303) index="142" unique_id=540174940 instance=ExtResource("7_a8rcb")]
-transform = Transform3D(0.7829019, 0, 0.3310056, 0, 0.85, 0, -0.3310056, 0, 0.7829019, -57.96885, 0, -7.55315)
-
-[node name="BareTree_169" parent="VillageDecoration/VillageEdges" parent_id_path=PackedInt32Array(1387036209, 848335303) index="143" unique_id=723509594 instance=ExtResource("7_a8rcb")]
-transform = Transform3D(0.7829019, 0, 0.3310056, 0, 0.85, 0, -0.3310056, 0, 0.7829019, -60.991737, 0, -7.55315)
-
-[node name="BareTree_170" parent="VillageDecoration/VillageEdges" parent_id_path=PackedInt32Array(1387036209, 848335303) index="144" unique_id=1505076641 instance=ExtResource("7_a8rcb")]
-transform = Transform3D(0.7829019, 0, 0.3310056, 0, 0.85, 0, -0.3310056, 0, 0.7829019, -60.991737, 0, -2.0943642)
-
-[node name="BareTree_171" parent="VillageDecoration/VillageEdges" parent_id_path=PackedInt32Array(1387036209, 848335303) index="145" unique_id=1602518908 instance=ExtResource("7_a8rcb")]
-transform = Transform3D(0.7829019, 0, 0.3310056, 0, 0.85, 0, -0.3310056, 0, 0.7829019, -58.882137, 0, -2.0943642)
-
-[node name="BareTree_172" parent="VillageDecoration/VillageEdges" parent_id_path=PackedInt32Array(1387036209, 848335303) index="146" unique_id=46847690 instance=ExtResource("7_a8rcb")]
-transform = Transform3D(0.7829019, 0, 0.3310056, 0, 0.85, 0, -0.3310056, 0, 0.7829019, -58.882137, 0, -4.705944)
-
-[node name="BareTree_173" parent="VillageDecoration/VillageEdges" parent_id_path=PackedInt32Array(1387036209, 848335303) index="147" unique_id=196766191 instance=ExtResource("7_a8rcb")]
-transform = Transform3D(0.7829019, 0, 0.3310056, 0, 0.85, 0, -0.3310056, 0, 0.7829019, -64.7514, 0, -4.705944)
-
-[node name="BareTree_174" parent="VillageDecoration/VillageEdges" parent_id_path=PackedInt32Array(1387036209, 848335303) index="148" unique_id=1089579293 instance=ExtResource("7_a8rcb")]
-transform = Transform3D(0.7829019, 0, 0.3310056, 0, 0.85, 0, -0.3310056, 0, 0.7829019, -64.7514, 0, -0.023433685)
-
-[node name="BareTree_175" parent="VillageDecoration/VillageEdges" parent_id_path=PackedInt32Array(1387036209, 848335303) index="149" unique_id=169317829 instance=ExtResource("7_a8rcb")]
-transform = Transform3D(0.7829019, 0, 0.3310056, 0, 0.85, 0, -0.3310056, 0, 0.7829019, -64.7514, 0, 4.6862907)
-
-[node name="BareTree_176" parent="VillageDecoration/VillageEdges" parent_id_path=PackedInt32Array(1387036209, 848335303) index="150" unique_id=826839759 instance=ExtResource("7_a8rcb")]
-transform = Transform3D(0.7829019, 0, 0.3310056, 0, 0.85, 0, -0.3310056, 0, 0.7829019, -60.060085, 0, 4.6862907)
-
-[node name="BareTree_177" parent="VillageDecoration/VillageEdges" parent_id_path=PackedInt32Array(1387036209, 848335303) index="151" unique_id=45528701 instance=ExtResource("7_a8rcb")]
-transform = Transform3D(0.7829019, 0, 0.3310056, 0, 0.85, 0, -0.3310056, 0, 0.7829019, -58.060085, 0, 1.2965927)
-
-[node name="BareTree_178" parent="VillageDecoration/VillageEdges" parent_id_path=PackedInt32Array(1387036209, 848335303) index="152" unique_id=1578459214 instance=ExtResource("7_a8rcb")]
-transform = Transform3D(0.7829019, 0, 0.3310056, 0, 0.85, 0, -0.3310056, 0, 0.7829019, -58.060085, 0, 1.2965927)
-
-[node name="BareTree_179" parent="VillageDecoration/VillageEdges" parent_id_path=PackedInt32Array(1387036209, 848335303) index="153" unique_id=1875522914 instance=ExtResource("7_a8rcb")]
-transform = Transform3D(0.7829019, 0, 0.3310056, 0, 0.85, 0, -0.3310056, 0, 0.7829019, -66.8463, 0, -7.55315)
-
-[node name="BareTree_180" parent="VillageDecoration/VillageEdges" parent_id_path=PackedInt32Array(1387036209, 848335303) index="154" unique_id=1099026215 instance=ExtResource("7_a8rcb")]
-transform = Transform3D(0.7829019, 0, 0.3310056, 0, 0.85, 0, -0.3310056, 0, 0.7829019, -67.75958, 0, -2.0943642)
-
-[node name="BareTree_181" parent="VillageDecoration/VillageEdges" parent_id_path=PackedInt32Array(1387036209, 848335303) index="155" unique_id=25239664 instance=ExtResource("7_a8rcb")]
-transform = Transform3D(0.7829019, 0, 0.3310056, 0, 0.85, 0, -0.3310056, 0, 0.7829019, -67.75958, 0, -4.705944)
-
-[node name="BareTree_182" parent="VillageDecoration/VillageEdges" parent_id_path=PackedInt32Array(1387036209, 848335303) index="156" unique_id=325203219 instance=ExtResource("7_a8rcb")]
-transform = Transform3D(0.7829019, 0, 0.3310056, 0, 0.85, 0, -0.3310056, 0, 0.7829019, -66.93753, 0, 1.2965927)
-
-[node name="BareTree_183" parent="VillageDecoration/VillageEdges" parent_id_path=PackedInt32Array(1387036209, 848335303) index="157" unique_id=1447643971 instance=ExtResource("7_a8rcb")]
-transform = Transform3D(0.7829019, 0, 0.3310056, 0, 0.85, 0, -0.3310056, 0, 0.7829019, -57.256725, 0, -11.015316)
-
-[node name="BareTree_184" parent="VillageDecoration/VillageEdges" parent_id_path=PackedInt32Array(1387036209, 848335303) index="158" unique_id=874326149 instance=ExtResource("7_a8rcb")]
-transform = Transform3D(0.7829019, 0, 0.3310056, 0, 0.85, 0, -0.3310056, 0, 0.7829019, -57.256725, 0, -11.015316)
-
-[node name="BareTree_185" parent="VillageDecoration/VillageEdges" parent_id_path=PackedInt32Array(1387036209, 848335303) index="159" unique_id=2074579313 instance=ExtResource("7_a8rcb")]
-transform = Transform3D(0.7829019, 0, 0.3310056, 0, 0.85, 0, -0.3310056, 0, 0.7829019, -57.368073, 0, -4.705944)
-
-[node name="BareTree_186" parent="VillageDecoration/VillageEdges" parent_id_path=PackedInt32Array(1387036209, 848335303) index="160" unique_id=1617822665 instance=ExtResource("7_a8rcb")]
-transform = Transform3D(0.7829019, 0, 0.3310056, 0, 0.85, 0, -0.3310056, 0, 0.7829019, -57.368073, 0, -0.023433685)
-
-[node name="BareTree_187" parent="VillageDecoration/VillageEdges" parent_id_path=PackedInt32Array(1387036209, 848335303) index="161" unique_id=2021415010 instance=ExtResource("7_a8rcb")]
-transform = Transform3D(0.7829019, 0, 0.3310056, 0, 0.85, 0, -0.3310056, 0, 0.7829019, -57.368073, 0, 4.6862907)
-
-[node name="BareTree_188" parent="VillageDecoration/VillageEdges" parent_id_path=PackedInt32Array(1387036209, 848335303) index="162" unique_id=1556320658 instance=ExtResource("7_a8rcb")]
-transform = Transform3D(0.7829019, 0, 0.3310056, 0, 0.85, 0, -0.3310056, 0, 0.7829019, -52.676754, 0, 4.6862907)
-
-[node name="DeadBranchPile_51" parent="VillageDecoration/VillageEdges" parent_id_path=PackedInt32Array(1387036209, 848335303) index="163" unique_id=591503043 instance=ExtResource("10_crkeg")]
-transform = Transform3D(0.62703604, 0, 0.64562047, 0, 0.9, 0, -0.64562047, 0, 0.62703604, -59.96885, 0, -8.55315)
+[node name="Collision" type="CollisionShape3D" parent="CrossroadsMaintenanceStation/EntranceRamp" unique_id=518459718]
+shape = SubResource("CrossroadsEntranceRampCollision")
 
 [editable path="EditableWorld"]
 [editable path="EditableWorld/Buildings/VillageLayout/FirstVillageCottage/CottageDetail"]
 [editable path="NaturalGround"]
-[editable path="VillageDecoration"]
+[editable path="CrossroadsMaintenanceStation"]
+[editable path="CrossroadsMaintenanceStation/Equipment/PersonnelDoor"]

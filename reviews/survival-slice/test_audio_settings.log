@@ -1,0 +1,13 @@
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS: footsteps use their own channel
+PASS: default footsteps are quieter
+PASS: wind uses its own channel
+PASS: world cues use effects channel
+PASS: creature uses effects channel
+PASS: slider changes the footstep volume
+PASS: volume reaches audio engine
+PASS: zero mutes the channel
+PASS: settings persist across sessions
+PASS: Escape returns to the pause menu
+AUDIO_SETTINGS: 0 failure(s)

@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="PackedScene" path="res://assets/characters/wardrobe/boots.glb" id="1"]
+
+[node name="BootsAsset" type="Node3D"]
+
+[node name="Boots" parent="." instance=ExtResource("1")]

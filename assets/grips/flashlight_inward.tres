@@ -1,0 +1,40 @@
+[gd_resource type="Resource" script_class="HandGripProfile" load_steps=3 format=3]
+[ext_resource type="Script" path="res://scripts/runtime/hand_grip_profile.gd" id="1"]
+[ext_resource type="PackedScene" path="res://scenes/items/handheld_flashlight.tscn" id="2"]
+[resource]
+script = ExtResource("1")
+item_id = &"flashlight"
+display_name = "Inward grip diagnostic"
+model_scene = ExtResource("2")
+attachment_transform = Transform3D(0.853318334, 0.0994400904, 0.51181978, 0.435060799, -0.676804245, -0.593849719, 0.287349641, 0.729415536, -0.620792389, -0.0392255336, 0.109076351, -0.011241667)
+pose_animation = &"Hand_flashlight"
+finger_rotations = {
+"index1.R": Quaternion(-0.248525754, 0.0892873853, -0.179501548, 0.94765085),
+"index2.R": Quaternion(-0.229829535, 9.56019974e-08, 0.36928764, 0.900447249),
+"index3.R": Quaternion(-0.190869182, 9.81805215e-08, 0.33731842, 0.921837986),
+"middle1.R": Quaternion(-0.292277396, 0.134046867, 0.0738798752, 0.944005907),
+"middle2.R": Quaternion(-0.217579514, 6.48149054e-08, 0.376635253, 0.90044713),
+"middle3.R": Quaternion(-0.193949744, 1.0170465e-07, 0.393847853, 0.898480594),
+"ring1.R": Quaternion(-0.250429273, 0.0768502653, 0.230578765, 0.937130034),
+"ring2.R": Quaternion(-0.165107802, 2.82181194e-08, 0.302136391, 0.938857317),
+"ring3.R": Quaternion(-0.150010735, 1.94221599e-08, 0.355866909, 0.922418416),
+"pinky1.R": Quaternion(-0.365512729, 0.205419421, 0.0509354025, 0.906426549),
+"pinky2.R": Quaternion(-0.165780276, -9.50078203e-08, 0.399208575, 0.901748002),
+"pinky3.R": Quaternion(-0.088583678, -6.90032138e-08, 0.234110713, 0.968165874),
+"thumb1.R": Quaternion(-0.0756800622, 0.0114057772, 0.123254582, 0.98941946),
+"thumb2.R": Quaternion(0.253318995, -1.30180027e-07, -0.299992323, 0.919692516),
+"thumb3.R": Quaternion(0.137750655, -5.62730982e-08, -0.210733607, 0.967789292)
+}
+contact_targets = {
+"index": Vector3(-0.0051328321, -0.0294155348, -0.007541731),
+"middle": Vector3(-0.01273607, -0.0270076301, 0.0182596669),
+"ring": Vector3(-0.0149981678, -0.0258200411, 0.0408002362),
+"pinky": Vector3(0.00147175137, -0.0288224481, 0.0599999987),
+"thumb": Vector3(0, 0.0297999997, -0.0469999984)
+}
+aim_forward = Vector3(-0.216066793, 0.257517099, -0.941806912)
+aim_up = Vector3(-0.085002929, 0.955968142, 0.280890256)
+hand_offset = Vector3(0.17,-0.1,-0.39)
+elbow_offset = Vector3(0.46,-0.08,0.1)
+emits_light = true
+beam_transform = Transform3D(1,0,0,0,1,0,0,0,1,0,0,-0.1302)

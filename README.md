@@ -4,22 +4,27 @@ An original, early 3D expedition prototype inspired by the atmosphere of surviva
 
 ## Play
 
-Double-click **Play Ashfall.cmd**, then choose **Enter the perimeter**. To edit the project, double-click **Open Godot Editor.cmd**. Press **F5** in Godot to play. Keep the adjacent `Godot` folder alongside this project; the launchers use that portable editor. No separate installation, account, or paid assets are required.
+Double-click **Play Ashfall.cmd**, then choose **ENTER STATION 04**. To edit the project, double-click **Open Godot Editor.cmd**. Press **F5** in Godot to play. Keep the adjacent `Godot` folder alongside this project; the launchers use that portable editor. No separate installation, account, or paid assets are required.
 
 ## Your first expedition
 
-Follow the road north, through the checkpoint. The research station is the large building on the left at the far end. Enter through its front doorway and collect the glowing sample from the table. Return south and interact with the entry gate terminal, beside the green lamp.
+The main scene is Station 04, including the evacuation area, northern isolation ward and new street lamps. Follow the road north, through the checkpoint. The research station is the large building on the left at the far end. Enter through its front doorway and collect the glowing sample from the table. Return south and interact with the entry gate terminal, beside the green lamp.
 
 Give the blue-green anomaly rings plenty of space. Medical supplies are in the left checkpoint hut near the entrance. There is no time limit.
+
+Choose **Audio** on the opening or pause screen to adjust master volume, wind,
+footsteps, and creature/world sounds. Settings are saved between sessions.
 
 | Control | Action |
 | --- | --- |
 | WASD / Mouse | Move / look |
 | Shift | Sprint, using stamina |
 | Space | Jump |
-| Ctrl | Lower viewpoint (collision height remains standing) |
+| Ctrl | Crouch, with reduced collision height |
 | F | Toggle flashlight |
 | E | Interact with an object under the crosshair within 3.5 metres |
+| Tab | Open inventory and select, carry, or use items |
+| Q | Use the carried item |
 | Escape | Pause and release the mouse |
 
 ## Included
@@ -30,7 +35,7 @@ The surrounding environment is a blockout built by `game.gd` when you run the sc
 
 ## Current limits
 
-No enemies, weapons, inventory screen, saved progress, or open-world simulation yet. Progress resets when you restart. The surrounding level is still a simple blockout. Forward+ rendering is selected for material detail, contact shadows, indirect screen-space lighting, and subtle bloom; the project has been tested with Vulkan on this PC's RTX 4080 SUPER.
+No weapons, saved progress, or open-world simulation yet. Progress and the eight-item test loadout reset when you restart. The inventory shows item icons and quantities, with carry/use/stow actions; see [INVENTORY_NOTES.md](INVENTORY_NOTES.md), or run **Inspect Inventory.cmd**. Forward+ rendering is selected for material detail, contact shadows, indirect screen-space lighting, and subtle bloom; the project has been tested with Vulkan on this PC's RTX 4080 SUPER.
 
 ## Verification
 
@@ -52,3 +57,22 @@ $env:APPDATA = Join-Path (Get-Location) '..\Godot\userdata'
 - `project.godot`: project settings.
 
 Official engine source and license: https://godotengine.org and https://godotengine.org/license/ . The editor executables were downloaded from the official Godot Windows download page and their Windows publisher signatures validated as Prehensile Tales B.V. The local launchers keep settings and user data inside the adjacent portable Godot folder.
+
+## Connected survival slice
+
+Crossroads now powers a service passage to North Relay. Retrieve the generator diagnostic, use the lit passage east of the starting road, recover the recorder behind the relay cottage, and return to the entry gate. Inventory, looted caches and objectives persist between area visits within the expedition. See [SURVIVAL_SLICE.md](SURVIVAL_SLICE.md) for the route, architecture, validation and remaining work.
+
+
+## Project folders
+
+- `scenes/ashfall_station_main.tscn`: current playable main scene.
+- `scripts/runtime`: gameplay systems.
+- `scripts/authoring`: asset builders and baking tools.
+- `scripts/review` and `tools/launchers`: asset inspection tools.
+- `assets`: models, textures and editable source assets.
+- `docs/notes`: design notes, roadmaps and asset documentation.
+- `concept-art/archive`: earlier reference images and previews.
+- `scenes/legacy`: previous main scene, retained for reference.
+- `reviews` and `tests`: development captures and checks.
+
+Double-click **Play Ashfall.cmd** in this folder to enter the new scene.

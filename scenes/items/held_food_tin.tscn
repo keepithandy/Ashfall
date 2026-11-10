@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="PackedScene" path="res://scenes/loot/food_tin.tscn" id="1"]
+
+[node name="HeldFoodTin" type="Node3D"]
+
+[node name="Model" parent="." instance=ExtResource("1")]
+position = Vector3(0,0,0.071)
+rotation = Vector3(-1.570796327,0,0)

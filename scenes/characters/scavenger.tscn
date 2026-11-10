@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://scripts/runtime/full_body_character.gd" id="1"]
+[ext_resource type="PackedScene" path="res://assets/characters/scavenger/ashfall_scavenger.glb" id="2"]
+
+[node name="FullBodyCharacter" type="Node3D"]
+script = ExtResource("1")
+
+[node name="Scavenger" parent="." instance=ExtResource("2")]

@@ -1,0 +1,45 @@
+[gd_scene load_steps=7 format=3]
+
+[ext_resource type="Script" path="res://assets/crossroads_v02/scripts/preview_scene.gd" id="1_preview"]
+[ext_resource type="PackedScene" path="res://assets/crossroads_v02/scenes/steel_door_v02.tscn" id="2_door"]
+[ext_resource type="PackedScene" path="res://assets/crossroads_v02/scenes/damaged_wall_v02.tscn" id="3_wall"]
+
+[sub_resource type="BoxMesh" id="FloorMesh"]
+size = Vector3(8, 0.2, 8)
+
+[sub_resource type="StandardMaterial3D" id="FloorMaterial"]
+albedo_color = Color(0.26, 0.26, 0.24, 1)
+roughness = 0.95
+
+[sub_resource type="BoxShape3D" id="FloorCollision"]
+size = Vector3(8, 0.2, 8)
+
+[node name="CrossroadsV02Preview" type="Node3D"]
+script = ExtResource("1_preview")
+
+[node name="Sun" type="DirectionalLight3D" parent="."]
+rotation = Vector3(-0.75, -0.5, 0)
+light_energy = 1.1
+shadow_enabled = true
+
+[node name="Camera" type="Camera3D" parent="."]
+position = Vector3(4.4, 2.7, 5.7)
+rotation = Vector3(-0.14, 0.66, 0)
+current = true
+
+[node name="Floor" type="MeshInstance3D" parent="."]
+position = Vector3(0, -0.1, 0)
+mesh = SubResource("FloorMesh")
+surface_material_override/0 = SubResource("FloorMaterial")
+
+[node name="FloorBody" type="StaticBody3D" parent="."]
+
+[node name="FloorCollider" type="CollisionShape3D" parent="FloorBody"]
+position = Vector3(0, -0.1, 0)
+shape = SubResource("FloorCollision")
+
+[node name="DamagedWall" parent="." instance=ExtResource("3_wall")]
+position = Vector3(-0.7, 0, -1.5)
+
+[node name="Door" parent="." instance=ExtResource("2_door")]
+position = Vector3(-1.1, 0, 1.1)

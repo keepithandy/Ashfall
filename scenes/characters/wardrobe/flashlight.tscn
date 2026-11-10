@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="PackedScene" path="res://assets/characters/wardrobe/flashlight.glb" id="1"]
+
+[node name="FlashlightAsset" type="Node3D"]
+
+[node name="Flashlight" parent="." instance=ExtResource("1")]

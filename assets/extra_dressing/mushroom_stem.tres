@@ -1,0 +1,21 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://d3cq1vtesv6ln"]
+
+[sub_resource type="Shader" id="Shader_roifs"]
+code = "shader_type spatial;
+render_mode cull_disabled;
+varying vec3 local_pos;
+float hash3(vec3 p){return fract(sin(dot(p,vec3(17.13,83.71,39.17)))*43758.5453);}
+float noise3(vec3 p){vec3 i=floor(p);vec3 f=fract(p);f=f*f*(3.0-2.0*f);return mix(mix(mix(hash3(i),hash3(i+vec3(1,0,0)),f.x),mix(hash3(i+vec3(0,1,0)),hash3(i+vec3(1,1,0)),f.x),f.y),mix(mix(hash3(i+vec3(0,0,1)),hash3(i+vec3(1,0,1)),f.x),mix(hash3(i+vec3(0,1,1)),hash3(i+vec3(1,1,1)),f.x),f.y),f.z);}
+void vertex(){local_pos=VERTEX;}
+void fragment(){
+
+ float fibre=noise3(local_pos*vec3(480.0,25.0,480.0));
+ ALBEDO=mix(vec3(0.22,0.16,0.095),vec3(0.43,0.35,0.22),fibre);ROUGHNESS=0.92;
+ 
+NORMAL=FRONT_FACING?NORMAL:-NORMAL;
+}"
+
+[resource]
+resource_name = "mushroom_stem"
+render_priority = 0
+shader = SubResource("Shader_roifs")

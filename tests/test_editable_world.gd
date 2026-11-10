@@ -30,9 +30,12 @@ func run() -> void:
 	game.resume_game()
 	await physics_frame
 	check(game.sample==sample and game.sample.position.is_equal_approx(changed_position),"Gameplay regenerated or ignored an edited object")
-	check(game.anomalies.size()==3,"Anomalies were not connected")
-	check(game.find_children("*","WorldEnvironment",true,false).size()==1,"Duplicate or missing environment")
-	check(game.find_children("*","Label3D",true,false).is_empty(),"Attached world text found")
+	check(game.anomalies.size()==4,"Three perimeter anomalies and one relay anomaly must be connected")
+	var world_environments := 0
+	for environment: WorldEnvironment in game.find_children("*","WorldEnvironment",true,false):
+		if environment.get_viewport()==game.get_viewport():world_environments+=1
+	check(world_environments==1,"Duplicate or missing gameplay environment")
+	check(world.find_children("*","Label3D",true,false).is_empty(),"Attached world text found")
 	var caches:=[]
 	for node in world.find_children("*","StaticBody3D",true,false):
 		if node.get_meta("interaction","")=="loot_container":
@@ -41,10 +44,11 @@ func run() -> void:
 	if caches.size()==3:
 		check(caches[0].contents.bandage==2 and caches[1].contents.food_tin==2 and caches[2].contents.batteries==2,"Saved cache contents were lost")
 		var count: int=caches[0].get_child_count()
+		var before_bandages: int=game.inventory.bandage
 		game.open_loot(caches[0])
 		game.take_loot()
 		game.close_loot()
-		check(game.inventory.bandage==2 and caches[0].contents.is_empty() and caches[0].get_child_count()==count,"Loot interaction did not work or duplicated geometry")
+		check(game.inventory.bandage==before_bandages+2 and caches[0].contents.is_empty() and caches[0].get_child_count()==count,"Loot interaction did not work or duplicated geometry")
 	check(world.find_children("*","MultiMeshInstance3D",true,false).size()>0,"Vegetation batches missing")
 	print("EDITABLE_WORLD_CHECK: failures=",errors)
 	quit(1 if errors else 0)

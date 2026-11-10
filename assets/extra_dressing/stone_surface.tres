@@ -1,0 +1,23 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://dtd78j5e552k8"]
+
+[sub_resource type="Shader" id="Shader_2l1jf"]
+code = "shader_type spatial;
+render_mode cull_disabled;
+varying vec3 local_pos;
+float hash3(vec3 p){return fract(sin(dot(p,vec3(17.13,83.71,39.17)))*43758.5453);}
+float noise3(vec3 p){vec3 i=floor(p);vec3 f=fract(p);f=f*f*(3.0-2.0*f);return mix(mix(mix(hash3(i),hash3(i+vec3(1,0,0)),f.x),mix(hash3(i+vec3(0,1,0)),hash3(i+vec3(1,1,0)),f.x),f.y),mix(mix(hash3(i+vec3(0,0,1)),hash3(i+vec3(1,0,1)),f.x),mix(hash3(i+vec3(0,1,1)),hash3(i+vec3(1,1,1)),f.x),f.y),f.z);}
+void vertex(){local_pos=VERTEX;}
+void fragment(){
+
+ float broad=noise3(local_pos*17.0);float grain=noise3(local_pos*280.0);
+ ALBEDO=mix(vec3(0.085,0.09,0.08),vec3(0.21,0.20,0.17),broad)*mix(0.85,1.12,grain)*COLOR.rgb;
+ float dirt=1.0-smoothstep(0.0,0.055,local_pos.y);ALBEDO=mix(ALBEDO,ALBEDO*vec3(0.64,0.58,0.48),dirt*0.6);
+ ROUGHNESS=0.95;
+ 
+NORMAL=FRONT_FACING?NORMAL:-NORMAL;
+}"
+
+[resource]
+resource_name = "stone_surface"
+render_priority = 0
+shader = SubResource("Shader_2l1jf")

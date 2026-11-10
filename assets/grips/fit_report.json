@@ -1,0 +1,268 @@
+{
+  "flashlight": {
+    "index": {
+      "target_error_mm": 1.14,
+      "root_mm": [
+        34.6,
+        7.5,
+        12.9
+      ],
+      "tip_mm": [
+        -5.1,
+        8.5,
+        -30.1
+      ],
+      "target_mm": [
+        -5.1,
+        7.5,
+        -29.4
+      ],
+      "pad_clearance_mm": 6.13,
+      "minimum_centerline_clearance_mm": 6.13,
+      "angles_degrees": [
+        0.0,
+        51.6,
+        45.6,
+        37.2
+      ]
+    },
+    "middle": {
+      "target_error_mm": 0.66,
+      "root_mm": [
+        47.5,
+        -18.3,
+        4.2
+      ],
+      "tip_mm": [
+        -13.2,
+        -18.4,
+        -26.6
+      ],
+      "target_mm": [
+        -12.7,
+        -18.3,
+        -27.0
+      ],
+      "pad_clearance_mm": 5.3,
+      "minimum_centerline_clearance_mm": 5.3,
+      "angles_degrees": [
+        25.8,
+        51.6,
+        52.1,
+        28.9
+      ]
+    },
+    "ring": {
+      "target_error_mm": 1.07,
+      "root_mm": [
+        50.9,
+        -40.8,
+        0.2
+      ],
+      "tip_mm": [
+        -14.3,
+        -40.8,
+        -26.7
+      ],
+      "target_mm": [
+        -15.0,
+        -40.8,
+        -25.8
+      ],
+      "pad_clearance_mm": 5.91,
+      "minimum_centerline_clearance_mm": 5.91,
+      "angles_degrees": [
+        38.3,
+        40.3,
+        45.4,
+        14.6
+      ]
+    },
+    "pinky": {
+      "target_error_mm": 1.97,
+      "root_mm": [
+        46.5,
+        -64.5,
+        -4.8
+      ],
+      "tip_mm": [
+        2.4,
+        -61.8,
+        -28.9
+      ],
+      "target_mm": [
+        1.5,
+        -60.0,
+        -28.8
+      ],
+      "pad_clearance_mm": 4.66,
+      "minimum_centerline_clearance_mm": 4.66,
+      "angles_degrees": [
+        26.1,
+        51.2,
+        29.0,
+        43.0
+      ]
+    },
+    "thumb": {
+      "target_error_mm": 3.05,
+      "root_mm": [
+        0.0,
+        -32.0,
+        65.5
+      ],
+      "tip_mm": [
+        2.2,
+        46.2,
+        31.7
+      ],
+      "target_mm": [
+        0.0,
+        47.0,
+        29.8
+      ],
+      "pad_clearance_mm": 7.46,
+      "minimum_centerline_clearance_mm": 7.46,
+      "angles_degrees": [
+        -16.2,
+        46.2,
+        29.2,
+        6.6,
+        6.6
+      ]
+    }
+  },
+  "food_tin": {
+    "index": {
+      "target_error_mm": 3.05,
+      "root_mm": [
+        -50.4,
+        42.5,
+        -23.5
+      ],
+      "tip_mm": [
+        -23.5,
+        43.2,
+        46.0
+      ],
+      "target_mm": [
+        -26.0,
+        42.5,
+        44.4
+      ],
+      "pad_clearance_mm": 5.62,
+      "minimum_centerline_clearance_mm": 5.25,
+      "angles_degrees": [
+        0.0,
+        30.7,
+        24.4,
+        36.9
+      ]
+    },
+    "middle": {
+      "target_error_mm": 0.96,
+      "root_mm": [
+        -63.3,
+        16.7,
+        -14.8
+      ],
+      "tip_mm": [
+        -26.6,
+        41.4,
+        43.7
+      ],
+      "target_mm": [
+        -27.5,
+        41.7,
+        43.5
+      ],
+      "pad_clearance_mm": 5.22,
+      "minimum_centerline_clearance_mm": 5.22,
+      "angles_degrees": [
+        0.0,
+        28.7,
+        64.1,
+        -18.9
+      ]
+    },
+    "ring": {
+      "target_error_mm": 1.42,
+      "root_mm": [
+        -66.7,
+        -5.8,
+        -10.7
+      ],
+      "tip_mm": [
+        -27.6,
+        19.0,
+        43.8
+      ],
+      "target_mm": [
+        -28.6,
+        19.2,
+        42.8
+      ],
+      "pad_clearance_mm": 5.79,
+      "minimum_centerline_clearance_mm": 5.79,
+      "angles_degrees": [
+        0.0,
+        37.2,
+        46.1,
+        -35.5
+      ]
+    },
+    "pinky": {
+      "target_error_mm": 1.19,
+      "root_mm": [
+        -62.3,
+        -29.5,
+        -5.8
+      ],
+      "tip_mm": [
+        -31.8,
+        -29.5,
+        40.1
+      ],
+      "target_mm": [
+        -30.6,
+        -29.5,
+        40.2
+      ],
+      "pad_clearance_mm": 5.15,
+      "minimum_centerline_clearance_mm": 5.15,
+      "angles_degrees": [
+        10.2,
+        29.0,
+        35.4,
+        5.2
+      ]
+    },
+    "thumb": {
+      "target_error_mm": 0.56,
+      "root_mm": [
+        -15.8,
+        3.0,
+        -76.1
+      ],
+      "tip_mm": [
+        48.8,
+        7.5,
+        -16.6
+      ],
+      "target_mm": [
+        48.8,
+        8.0,
+        -16.4
+      ],
+      "pad_clearance_mm": 5.55,
+      "minimum_centerline_clearance_mm": 5.55,
+      "angles_degrees": [
+        -34.4,
+        1.1,
+        67.0,
+        -31.9,
+        48.4
+      ]
+    }
+  }
+}

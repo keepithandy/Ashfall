@@ -1,0 +1,127 @@
+[gd_scene load_steps=16 format=3]
+
+[ext_resource type="PackedScene" path="res://assets/crossroads_v03/scenes/wall_solid_4m.tscn" id="1_wall_solid_4m"]
+[ext_resource type="PackedScene" path="res://assets/crossroads_v03/scenes/wall_window_4m.tscn" id="2_wall_window_4m"]
+[ext_resource type="PackedScene" path="res://assets/crossroads_v03/scenes/wall_doorway_4m.tscn" id="3_wall_doorway_4m"]
+[ext_resource type="PackedScene" path="res://assets/crossroads_v03/scenes/wall_garage_4m.tscn" id="4_wall_garage_4m"]
+[ext_resource type="PackedScene" path="res://assets/crossroads_v03/scenes/floor_slab_4m.tscn" id="5_floor_slab_4m"]
+[ext_resource type="PackedScene" path="res://assets/crossroads_v03/scenes/roof_panel_4m.tscn" id="6_roof_panel_4m"]
+[ext_resource type="PackedScene" path="res://assets/crossroads_v03/scenes/industrial_workbench.tscn" id="7_industrial_workbench"]
+[ext_resource type="PackedScene" path="res://assets/crossroads_v03/scenes/electrical_cabinet.tscn" id="8_electrical_cabinet"]
+[ext_resource type="PackedScene" path="res://assets/crossroads_v02/scenes/steel_door_v02.tscn" id="9_door"]
+[ext_resource type="PackedScene" path="res://assets/crossroads_refined/damaged_wall.tscn" id="10_damaged"]
+[ext_resource type="PackedScene" path="res://scenes/crossroads_props/hydraulic_jack.tscn" id="11_jack"]
+[ext_resource type="PackedScene" path="res://scenes/crossroads_props/work_trestle.tscn" id="12_trestle"]
+[ext_resource type="PackedScene" path="res://scenes/crossroads_kit/maintenance_dressing.tscn" id="13_dressing"]
+[ext_resource type="PackedScene" path="res://assets/crossroads_refined/architecture_pass.glb" id="14_refined"]
+
+[node name="MaintenanceStation" type="Node3D"]
+
+[node name="Foundation" type="Node3D" parent="."]
+
+[node name="Floor_00" parent="Foundation" instance=ExtResource("5_floor_slab_4m")]
+position = Vector3(-4, 0, -2)
+
+[node name="Floor_01" parent="Foundation" instance=ExtResource("5_floor_slab_4m")]
+position = Vector3(-4, 0, 2)
+
+[node name="Floor_10" parent="Foundation" instance=ExtResource("5_floor_slab_4m")]
+position = Vector3(0, 0, -2)
+
+[node name="Floor_11" parent="Foundation" instance=ExtResource("5_floor_slab_4m")]
+position = Vector3(0, 0, 2)
+
+[node name="Floor_20" parent="Foundation" instance=ExtResource("5_floor_slab_4m")]
+position = Vector3(4, 0, -2)
+
+[node name="Floor_21" parent="Foundation" instance=ExtResource("5_floor_slab_4m")]
+position = Vector3(4, 0, 2)
+
+[node name="ExteriorWalls" type="Node3D" parent="."]
+
+[node name="Front_0" parent="ExteriorWalls" instance=ExtResource("2_wall_window_4m")]
+position = Vector3(-4, 0, 4)
+
+[node name="Front_4" parent="ExteriorWalls" instance=ExtResource("4_wall_garage_4m")]
+position = Vector3(0, 0, 4)
+
+[node name="Front_8" parent="ExteriorWalls" instance=ExtResource("3_wall_doorway_4m")]
+position = Vector3(4, 0, 4)
+
+[node name="Rear_0" parent="ExteriorWalls" instance=ExtResource("1_wall_solid_4m")]
+position = Vector3(-4, 0, -4)
+rotation = Vector3(0, 3.14159265, 0)
+
+[node name="Rear_4" parent="ExteriorWalls" instance=ExtResource("2_wall_window_4m")]
+position = Vector3(0, 0, -4)
+rotation = Vector3(0, 3.14159265, 0)
+
+[node name="Rear_8" parent="ExteriorWalls" instance=ExtResource("10_damaged")]
+position = Vector3(4, 0, -4)
+rotation = Vector3(0, 3.14159265, 0)
+
+[node name="Left_-2" parent="ExteriorWalls" instance=ExtResource("1_wall_solid_4m")]
+position = Vector3(-6, 0, -2)
+rotation = Vector3(0, -1.570796327, 0)
+
+[node name="Right_-2" parent="ExteriorWalls" instance=ExtResource("1_wall_solid_4m")]
+position = Vector3(6, 0, -2)
+rotation = Vector3(0, 1.570796327, 0)
+
+[node name="Left_2" parent="ExteriorWalls" instance=ExtResource("1_wall_solid_4m")]
+position = Vector3(-6, 0, 2)
+rotation = Vector3(0, -1.570796327, 0)
+
+[node name="Right_2" parent="ExteriorWalls" instance=ExtResource("1_wall_solid_4m")]
+position = Vector3(6, 0, 2)
+rotation = Vector3(0, 1.570796327, 0)
+
+[node name="Roof" type="Node3D" parent="."]
+visible = false
+
+[node name="Roof_00" parent="Roof" instance=ExtResource("6_roof_panel_4m")]
+position = Vector3(-4, 3.28, -2)
+
+[node name="Roof_01" parent="Roof" instance=ExtResource("6_roof_panel_4m")]
+position = Vector3(-4, 3.28, 2)
+
+[node name="Roof_10" parent="Roof" instance=ExtResource("6_roof_panel_4m")]
+position = Vector3(0, 3.28, -2)
+
+[node name="Roof_11" parent="Roof" instance=ExtResource("6_roof_panel_4m")]
+position = Vector3(0, 3.28, 2)
+
+[node name="Roof_20" parent="Roof" instance=ExtResource("6_roof_panel_4m")]
+position = Vector3(4, 3.28, -2)
+
+[node name="Roof_21" parent="Roof" instance=ExtResource("6_roof_panel_4m")]
+position = Vector3(4, 3.28, 2)
+
+[node name="Equipment" type="Node3D" parent="."]
+
+[node name="WorkBench" parent="Equipment" instance=ExtResource("7_industrial_workbench")]
+position = Vector3(-4.2, 0.01, -2.95)
+
+[node name="ElectricalCabinet" parent="Equipment" instance=ExtResource("8_electrical_cabinet")]
+position = Vector3(4.3, 0.01, -3.68)
+
+[node name="PersonnelDoor" parent="Equipment" instance=ExtResource("9_door")]
+position = Vector3(3.39, 0.0, 4.0)
+
+[node name="DoorHinge" parent="Equipment/PersonnelDoor" index="0"]
+swing_direction = 1.0
+metadata/interaction = "crossroads_door"
+
+[node name="HydraulicJack" parent="Equipment" instance=ExtResource("11_jack")]
+position = Vector3(-1.8, 0.01, -2.6)
+rotation = Vector3(0, 0.35, 0)
+
+[node name="WorkTrestle" parent="Equipment" instance=ExtResource("12_trestle")]
+position = Vector3(-4.6, 0.01, 1.0)
+rotation = Vector3(0, 1.5707963, 0)
+
+[node name="MaintenanceDressing" parent="." instance=ExtResource("13_dressing")]
+
+[node name="BlenderArchitecturalRefinement" parent="." instance=ExtResource("14_refined")]
+
+[editable path="Equipment/PersonnelDoor"]

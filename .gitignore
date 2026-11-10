@@ -2,3 +2,5 @@
 *.tmp
 *.blend1
 previews/player-v2/export_temp/
+__pycache__/
+*.pyc

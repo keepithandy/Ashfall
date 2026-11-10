@@ -1,0 +1,964 @@
+{
+  "Diffuse": {
+    "8k": {
+      "jpg": {
+        "size": 5691339,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/8k/painted_wooden_chair_01/painted_wooden_chair_01_diff_8k.jpg",
+        "md5": "703f6b145b4eefbb50a0ee4a43e8eb20"
+      },
+      "png": {
+        "size": 116382736,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/png/8k/painted_wooden_chair_01/painted_wooden_chair_01_diff_8k.png",
+        "md5": "f0e869e1b760816f3f6a37f97d416316"
+      },
+      "exr": {
+        "size": 32982141,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/exr/8k/painted_wooden_chair_01/painted_wooden_chair_01_diff_8k.exr",
+        "md5": "98398c8b19a52fd5d434b03c20ab6ec5"
+      }
+    },
+    "4k": {
+      "jpg": {
+        "size": 1769999,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/4k/painted_wooden_chair_01/painted_wooden_chair_01_diff_4k.jpg",
+        "md5": "c8533a5da20b53245bc255c11b19c336"
+      },
+      "png": {
+        "size": 49171478,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/png/4k/painted_wooden_chair_01/painted_wooden_chair_01_diff_4k.png",
+        "md5": "a7f93df03b92225492c569502379f810"
+      },
+      "exr": {
+        "size": 9574045,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/exr/4k/painted_wooden_chair_01/painted_wooden_chair_01_diff_4k.exr",
+        "md5": "92be6dd4436fbde1de5c737fc25fa6dd"
+      }
+    },
+    "2k": {
+      "jpg": {
+        "size": 540489,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/2k/painted_wooden_chair_01/painted_wooden_chair_01_diff_2k.jpg",
+        "md5": "bc227634cd2b6584f3f18bac808e25cf"
+      },
+      "png": {
+        "size": 15220134,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/png/2k/painted_wooden_chair_01/painted_wooden_chair_01_diff_2k.png",
+        "md5": "0b84d216cf97ef37667062b557e1610d"
+      },
+      "exr": {
+        "size": 2936050,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/exr/2k/painted_wooden_chair_01/painted_wooden_chair_01_diff_2k.exr",
+        "md5": "aa15e6d07d80605a15f22b23cf520f4c"
+      }
+    },
+    "1k": {
+      "jpg": {
+        "size": 168040,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/painted_wooden_chair_01/painted_wooden_chair_01_diff_1k.jpg",
+        "md5": "94c34f4a211eec5bd30017564e09be4c"
+      },
+      "png": {
+        "size": 4401423,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/png/1k/painted_wooden_chair_01/painted_wooden_chair_01_diff_1k.png",
+        "md5": "cc3035abae2c6929e12b7fe17c74676c"
+      },
+      "exr": {
+        "size": 903542,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/exr/1k/painted_wooden_chair_01/painted_wooden_chair_01_diff_1k.exr",
+        "md5": "c8b94a5fcf3365ab3088fbe4360b505d"
+      }
+    }
+  },
+  "nor_dx": {
+    "8k": {
+      "jpg": {
+        "size": 6633371,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/8k/painted_wooden_chair_01/painted_wooden_chair_01_nor_dx_8k.jpg",
+        "md5": "ab3f7b5b659e272e66aa7bc1c25da2c1"
+      },
+      "png": {
+        "size": 193351471,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/png/8k/painted_wooden_chair_01/painted_wooden_chair_01_nor_dx_8k.png",
+        "md5": "704d36dea04ab3274e1b2879c35ed8bf"
+      },
+      "exr": {
+        "size": 46917024,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/exr/8k/painted_wooden_chair_01/painted_wooden_chair_01_nor_dx_8k.exr",
+        "md5": "00d184ecf50e4f33508ad7efe14db272"
+      }
+    },
+    "4k": {
+      "jpg": {
+        "size": 1869540,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/4k/painted_wooden_chair_01/painted_wooden_chair_01_nor_dx_4k.jpg",
+        "md5": "9a833778116d8ed424b61ac73d047891"
+      },
+      "png": {
+        "size": 61140832,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/png/4k/painted_wooden_chair_01/painted_wooden_chair_01_nor_dx_4k.png",
+        "md5": "bf08645fc67af14cc2ca79603953a912"
+      },
+      "exr": {
+        "size": 14154926,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/exr/4k/painted_wooden_chair_01/painted_wooden_chair_01_nor_dx_4k.exr",
+        "md5": "4120852f230df0eef89f410bc173c364"
+      }
+    },
+    "2k": {
+      "jpg": {
+        "size": 497878,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/2k/painted_wooden_chair_01/painted_wooden_chair_01_nor_dx_2k.jpg",
+        "md5": "3c483f67a5ffd0169b8250603fce049b"
+      },
+      "png": {
+        "size": 16842114,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/png/2k/painted_wooden_chair_01/painted_wooden_chair_01_nor_dx_2k.png",
+        "md5": "7c0bb822ffd1a500b935c8087c101e2e"
+      },
+      "exr": {
+        "size": 3837366,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/exr/2k/painted_wooden_chair_01/painted_wooden_chair_01_nor_dx_2k.exr",
+        "md5": "4ccae36dee77e1f3054dbafac56b2a79"
+      }
+    },
+    "1k": {
+      "jpg": {
+        "size": 139011,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/painted_wooden_chair_01/painted_wooden_chair_01_nor_dx_1k.jpg",
+        "md5": "91b143d70c4baf8e1041421a8e623f9d"
+      },
+      "png": {
+        "size": 4396884,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/png/1k/painted_wooden_chair_01/painted_wooden_chair_01_nor_dx_1k.png",
+        "md5": "081c173bf448a1498962f38c958dde01"
+      },
+      "exr": {
+        "size": 1006140,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/exr/1k/painted_wooden_chair_01/painted_wooden_chair_01_nor_dx_1k.exr",
+        "md5": "cf2fea34eac13845611a9c87e69e8ed5"
+      }
+    }
+  },
+  "nor_gl": {
+    "8k": {
+      "jpg": {
+        "size": 6649826,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/8k/painted_wooden_chair_01/painted_wooden_chair_01_nor_gl_8k.jpg",
+        "md5": "32e2ee9b80f136c4034f7853f585e129"
+      },
+      "png": {
+        "size": 193325080,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/png/8k/painted_wooden_chair_01/painted_wooden_chair_01_nor_gl_8k.png",
+        "md5": "c0134427587d79a16af788c92515401a"
+      },
+      "exr": {
+        "size": 46874842,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/exr/8k/painted_wooden_chair_01/painted_wooden_chair_01_nor_gl_8k.exr",
+        "md5": "1eb6619d9b73ab1487038979709a0058"
+      }
+    },
+    "4k": {
+      "jpg": {
+        "size": 1875166,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/4k/painted_wooden_chair_01/painted_wooden_chair_01_nor_gl_4k.jpg",
+        "md5": "b943588fcf5ffa6bfb8a4c3c62fac8dd"
+      },
+      "png": {
+        "size": 61133841,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/png/4k/painted_wooden_chair_01/painted_wooden_chair_01_nor_gl_4k.png",
+        "md5": "da6be18ffbe83b9b839512eef02f0853"
+      },
+      "exr": {
+        "size": 14143010,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/exr/4k/painted_wooden_chair_01/painted_wooden_chair_01_nor_gl_4k.exr",
+        "md5": "83b63c34de964e74730b39169b541a08"
+      }
+    },
+    "2k": {
+      "jpg": {
+        "size": 499193,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/2k/painted_wooden_chair_01/painted_wooden_chair_01_nor_gl_2k.jpg",
+        "md5": "6fd3dc868e8c9ae838f3eaaaa09cc8c2"
+      },
+      "png": {
+        "size": 16842446,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/png/2k/painted_wooden_chair_01/painted_wooden_chair_01_nor_gl_2k.png",
+        "md5": "beeb7bd1918f1b103b7d3efc7bda111f"
+      },
+      "exr": {
+        "size": 3832258,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/exr/2k/painted_wooden_chair_01/painted_wooden_chair_01_nor_gl_2k.exr",
+        "md5": "66b396014fbda0bd5cd91b75769d00a3"
+      }
+    },
+    "1k": {
+      "jpg": {
+        "size": 140110,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/painted_wooden_chair_01/painted_wooden_chair_01_nor_gl_1k.jpg",
+        "md5": "5150e3034d2f69b0d7f0576955e51e3e"
+      },
+      "png": {
+        "size": 4396876,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/png/1k/painted_wooden_chair_01/painted_wooden_chair_01_nor_gl_1k.png",
+        "md5": "e0da9ce1377cdb75e9d1e728f6798d1f"
+      },
+      "exr": {
+        "size": 1005346,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/exr/1k/painted_wooden_chair_01/painted_wooden_chair_01_nor_gl_1k.exr",
+        "md5": "173569f3f99e1d278a96c24a932a3607"
+      }
+    }
+  },
+  "blend": {
+    "8k": {
+      "blend": {
+        "include": {
+          "textures/painted_wooden_chair_01_nor_gl_8k.exr": {
+            "size": 46874842,
+            "url": "https://dl.polyhaven.org/file/ph-assets/Models/exr/8k/painted_wooden_chair_01/painted_wooden_chair_01_nor_gl_8k.exr",
+            "md5": "1eb6619d9b73ab1487038979709a0058"
+          },
+          "textures/painted_wooden_chair_01_metal_8k.exr": {
+            "size": 150384,
+            "url": "https://dl.polyhaven.org/file/ph-assets/Models/exr/8k/painted_wooden_chair_01/painted_wooden_chair_01_metal_8k.exr",
+            "md5": "50361fd40d028fa6032864b81fcc65e5"
+          },
+          "textures/painted_wooden_chair_01_diff_8k.jpg": {
+            "size": 5691339,
+            "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/8k/painted_wooden_chair_01/painted_wooden_chair_01_diff_8k.jpg",
+            "md5": "703f6b145b4eefbb50a0ee4a43e8eb20"
+          },
+          "textures/painted_wooden_chair_01_rough_8k.jpg": {
+            "size": 4976882,
+            "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/8k/painted_wooden_chair_01/painted_wooden_chair_01_rough_8k.jpg",
+            "md5": "6f9120f0eaf22b373057b2fbdbbf58f1"
+          }
+        },
+        "size": 140905,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/blend/8k/painted_wooden_chair_01/painted_wooden_chair_01_8k.blend",
+        "md5": "db3bd01ab37fc6418bdcc7309f676fd4"
+      }
+    },
+    "4k": {
+      "blend": {
+        "include": {
+          "textures/painted_wooden_chair_01_diff_4k.jpg": {
+            "size": 1769999,
+            "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/4k/painted_wooden_chair_01/painted_wooden_chair_01_diff_4k.jpg",
+            "md5": "c8533a5da20b53245bc255c11b19c336"
+          },
+          "textures/painted_wooden_chair_01_metal_4k.exr": {
+            "size": 42864,
+            "url": "https://dl.polyhaven.org/file/ph-assets/Models/exr/4k/painted_wooden_chair_01/painted_wooden_chair_01_metal_4k.exr",
+            "md5": "5d3b58ffe35dbea95e2c3169879eb855"
+          },
+          "textures/painted_wooden_chair_01_nor_gl_4k.exr": {
+            "size": 14143010,
+            "url": "https://dl.polyhaven.org/file/ph-assets/Models/exr/4k/painted_wooden_chair_01/painted_wooden_chair_01_nor_gl_4k.exr",
+            "md5": "83b63c34de964e74730b39169b541a08"
+          },
+          "textures/painted_wooden_chair_01_rough_4k.jpg": {
+            "size": 1422287,
+            "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/4k/painted_wooden_chair_01/painted_wooden_chair_01_rough_4k.jpg",
+            "md5": "377c750708775e6c13f10ea9f71ab923"
+          }
+        },
+        "size": 141019,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/blend/4k/painted_wooden_chair_01/painted_wooden_chair_01_4k.blend",
+        "md5": "a722563b6dcf90243b18fd3eff4ef395"
+      }
+    },
+    "2k": {
+      "blend": {
+        "include": {
+          "textures/painted_wooden_chair_01_nor_gl_2k.exr": {
+            "size": 3832258,
+            "url": "https://dl.polyhaven.org/file/ph-assets/Models/exr/2k/painted_wooden_chair_01/painted_wooden_chair_01_nor_gl_2k.exr",
+            "md5": "66b396014fbda0bd5cd91b75769d00a3"
+          },
+          "textures/painted_wooden_chair_01_diff_2k.jpg": {
+            "size": 540489,
+            "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/2k/painted_wooden_chair_01/painted_wooden_chair_01_diff_2k.jpg",
+            "md5": "bc227634cd2b6584f3f18bac808e25cf"
+          },
+          "textures/painted_wooden_chair_01_rough_2k.jpg": {
+            "size": 417784,
+            "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/2k/painted_wooden_chair_01/painted_wooden_chair_01_rough_2k.jpg",
+            "md5": "c9c47f13044d620a3d33e354ec11f1b0"
+          },
+          "textures/painted_wooden_chair_01_metal_2k.exr": {
+            "size": 13296,
+            "url": "https://dl.polyhaven.org/file/ph-assets/Models/exr/2k/painted_wooden_chair_01/painted_wooden_chair_01_metal_2k.exr",
+            "md5": "99274ddebd770ab27d959b83b70efa21"
+          }
+        },
+        "size": 140995,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/blend/2k/painted_wooden_chair_01/painted_wooden_chair_01_2k.blend",
+        "md5": "b22e3e27afb957e87fbc96c6037b62c5"
+      }
+    },
+    "1k": {
+      "blend": {
+        "include": {
+          "textures/painted_wooden_chair_01_diff_1k.jpg": {
+            "size": 168040,
+            "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/painted_wooden_chair_01/painted_wooden_chair_01_diff_1k.jpg",
+            "md5": "94c34f4a211eec5bd30017564e09be4c"
+          },
+          "textures/painted_wooden_chair_01_metal_1k.exr": {
+            "size": 4784,
+            "url": "https://dl.polyhaven.org/file/ph-assets/Models/exr/1k/painted_wooden_chair_01/painted_wooden_chair_01_metal_1k.exr",
+            "md5": "24ecf260710c0e89e774128aec344430"
+          },
+          "textures/painted_wooden_chair_01_rough_1k.jpg": {
+            "size": 124636,
+            "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/painted_wooden_chair_01/painted_wooden_chair_01_rough_1k.jpg",
+            "md5": "e535cdc1cb898165269f6235ef4673eb"
+          },
+          "textures/painted_wooden_chair_01_nor_gl_1k.exr": {
+            "size": 1005346,
+            "url": "https://dl.polyhaven.org/file/ph-assets/Models/exr/1k/painted_wooden_chair_01/painted_wooden_chair_01_nor_gl_1k.exr",
+            "md5": "173569f3f99e1d278a96c24a932a3607"
+          }
+        },
+        "size": 141023,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/blend/1k/painted_wooden_chair_01/painted_wooden_chair_01_1k.blend",
+        "md5": "6fa840f5df3cfe51125b6861e60f602e"
+      }
+    }
+  },
+  "gltf": {
+    "8k": {
+      "gltf": {
+        "include": {
+          "textures/painted_wooden_chair_01_nor_gl_8k.jpg": {
+            "size": 6649826,
+            "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/8k/painted_wooden_chair_01/painted_wooden_chair_01_nor_gl_8k.jpg",
+            "md5": "32e2ee9b80f136c4034f7853f585e129"
+          },
+          "textures/painted_wooden_chair_01_diff_8k.jpg": {
+            "size": 5691339,
+            "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/8k/painted_wooden_chair_01/painted_wooden_chair_01_diff_8k.jpg",
+            "md5": "703f6b145b4eefbb50a0ee4a43e8eb20"
+          },
+          "painted_wooden_chair_01.bin": {
+            "size": 37112,
+            "url": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/8k/painted_wooden_chair_01/painted_wooden_chair_01.bin",
+            "md5": "7fd011acaef4730770108a7932191768"
+          },
+          "textures/painted_wooden_chair_01_arm_8k.jpg": {
+            "size": 4834206,
+            "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/8k/painted_wooden_chair_01/painted_wooden_chair_01_arm_8k.jpg",
+            "md5": "42cd11d425a5bbe3e3b8b735b29a0f2d"
+          }
+        },
+        "size": 2785,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/8k/painted_wooden_chair_01/painted_wooden_chair_01_8k.gltf",
+        "md5": "95f8cbe8ad62f3e723ccb46723c227de"
+      }
+    },
+    "4k": {
+      "gltf": {
+        "include": {
+          "textures/painted_wooden_chair_01_diff_4k.jpg": {
+            "size": 1769999,
+            "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/4k/painted_wooden_chair_01/painted_wooden_chair_01_diff_4k.jpg",
+            "md5": "c8533a5da20b53245bc255c11b19c336"
+          },
+          "textures/painted_wooden_chair_01_nor_gl_4k.jpg": {
+            "size": 1875166,
+            "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/4k/painted_wooden_chair_01/painted_wooden_chair_01_nor_gl_4k.jpg",
+            "md5": "b943588fcf5ffa6bfb8a4c3c62fac8dd"
+          },
+          "painted_wooden_chair_01.bin": {
+            "size": 37112,
+            "url": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/8k/painted_wooden_chair_01/painted_wooden_chair_01.bin",
+            "md5": "7fd011acaef4730770108a7932191768"
+          },
+          "textures/painted_wooden_chair_01_arm_4k.jpg": {
+            "size": 1443595,
+            "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/4k/painted_wooden_chair_01/painted_wooden_chair_01_arm_4k.jpg",
+            "md5": "4b1656c79ae2830a3d1a2844ddabc5a9"
+          }
+        },
+        "size": 2785,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/4k/painted_wooden_chair_01/painted_wooden_chair_01_4k.gltf",
+        "md5": "c800b1077093077d1848caf28482ba43"
+      }
+    },
+    "2k": {
+      "gltf": {
+        "include": {
+          "textures/painted_wooden_chair_01_nor_gl_2k.jpg": {
+            "size": 499193,
+            "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/2k/painted_wooden_chair_01/painted_wooden_chair_01_nor_gl_2k.jpg",
+            "md5": "6fd3dc868e8c9ae838f3eaaaa09cc8c2"
+          },
+          "textures/painted_wooden_chair_01_diff_2k.jpg": {
+            "size": 540489,
+            "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/2k/painted_wooden_chair_01/painted_wooden_chair_01_diff_2k.jpg",
+            "md5": "bc227634cd2b6584f3f18bac808e25cf"
+          },
+          "textures/painted_wooden_chair_01_arm_2k.jpg": {
+            "size": 452527,
+            "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/2k/painted_wooden_chair_01/painted_wooden_chair_01_arm_2k.jpg",
+            "md5": "b1fad7186a62205394bd1bc5dd30b62d"
+          },
+          "painted_wooden_chair_01.bin": {
+            "size": 37112,
+            "url": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/8k/painted_wooden_chair_01/painted_wooden_chair_01.bin",
+            "md5": "7fd011acaef4730770108a7932191768"
+          }
+        },
+        "size": 2785,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/2k/painted_wooden_chair_01/painted_wooden_chair_01_2k.gltf",
+        "md5": "3ec4f92b791b4de1bc0d82a52b4a65ae"
+      }
+    },
+    "1k": {
+      "gltf": {
+        "include": {
+          "textures/painted_wooden_chair_01_diff_1k.jpg": {
+            "size": 168040,
+            "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/painted_wooden_chair_01/painted_wooden_chair_01_diff_1k.jpg",
+            "md5": "94c34f4a211eec5bd30017564e09be4c"
+          },
+          "textures/painted_wooden_chair_01_nor_gl_1k.jpg": {
+            "size": 140110,
+            "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/painted_wooden_chair_01/painted_wooden_chair_01_nor_gl_1k.jpg",
+            "md5": "5150e3034d2f69b0d7f0576955e51e3e"
+          },
+          "painted_wooden_chair_01.bin": {
+            "size": 37112,
+            "url": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/8k/painted_wooden_chair_01/painted_wooden_chair_01.bin",
+            "md5": "7fd011acaef4730770108a7932191768"
+          },
+          "textures/painted_wooden_chair_01_arm_1k.jpg": {
+            "size": 144503,
+            "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/painted_wooden_chair_01/painted_wooden_chair_01_arm_1k.jpg",
+            "md5": "2ee02ed8f2dda4303428eaf6443f928a"
+          }
+        },
+        "size": 2785,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/gltf/1k/painted_wooden_chair_01/painted_wooden_chair_01_1k.gltf",
+        "md5": "28e739db9799cdadf820ead2b486d463"
+      }
+    }
+  },
+  "usd": {
+    "8k": {
+      "usd": {
+        "include": {
+          "textures/painted_wooden_chair_01_nor_gl_8k.exr": {
+            "size": 46874842,
+            "url": "https://dl.polyhaven.org/file/ph-assets/Models/exr/8k/painted_wooden_chair_01/painted_wooden_chair_01_nor_gl_8k.exr",
+            "md5": "1eb6619d9b73ab1487038979709a0058"
+          },
+          "textures/painted_wooden_chair_01_metal_8k.exr": {
+            "size": 150384,
+            "url": "https://dl.polyhaven.org/file/ph-assets/Models/exr/8k/painted_wooden_chair_01/painted_wooden_chair_01_metal_8k.exr",
+            "md5": "50361fd40d028fa6032864b81fcc65e5"
+          },
+          "textures/painted_wooden_chair_01_diff_8k.jpg": {
+            "size": 5691339,
+            "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/8k/painted_wooden_chair_01/painted_wooden_chair_01_diff_8k.jpg",
+            "md5": "703f6b145b4eefbb50a0ee4a43e8eb20"
+          },
+          "textures/painted_wooden_chair_01_rough_8k.jpg": {
+            "size": 4976882,
+            "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/8k/painted_wooden_chair_01/painted_wooden_chair_01_rough_8k.jpg",
+            "md5": "6f9120f0eaf22b373057b2fbdbbf58f1"
+          }
+        },
+        "size": 41970,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/usd/8k/painted_wooden_chair_01/painted_wooden_chair_01_8k.usdc",
+        "md5": "489030045308f00dbb6df11a758ada62"
+      }
+    },
+    "4k": {
+      "usd": {
+        "include": {
+          "textures/painted_wooden_chair_01_diff_4k.jpg": {
+            "size": 1769999,
+            "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/4k/painted_wooden_chair_01/painted_wooden_chair_01_diff_4k.jpg",
+            "md5": "c8533a5da20b53245bc255c11b19c336"
+          },
+          "textures/painted_wooden_chair_01_metal_4k.exr": {
+            "size": 42864,
+            "url": "https://dl.polyhaven.org/file/ph-assets/Models/exr/4k/painted_wooden_chair_01/painted_wooden_chair_01_metal_4k.exr",
+            "md5": "5d3b58ffe35dbea95e2c3169879eb855"
+          },
+          "textures/painted_wooden_chair_01_nor_gl_4k.exr": {
+            "size": 14143010,
+            "url": "https://dl.polyhaven.org/file/ph-assets/Models/exr/4k/painted_wooden_chair_01/painted_wooden_chair_01_nor_gl_4k.exr",
+            "md5": "83b63c34de964e74730b39169b541a08"
+          },
+          "textures/painted_wooden_chair_01_rough_4k.jpg": {
+            "size": 1422287,
+            "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/4k/painted_wooden_chair_01/painted_wooden_chair_01_rough_4k.jpg",
+            "md5": "377c750708775e6c13f10ea9f71ab923"
+          }
+        },
+        "size": 41970,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/usd/4k/painted_wooden_chair_01/painted_wooden_chair_01_4k.usdc",
+        "md5": "ec852222dd49ad8780c3abafbc669580"
+      }
+    },
+    "2k": {
+      "usd": {
+        "include": {
+          "textures/painted_wooden_chair_01_nor_gl_2k.exr": {
+            "size": 3832258,
+            "url": "https://dl.polyhaven.org/file/ph-assets/Models/exr/2k/painted_wooden_chair_01/painted_wooden_chair_01_nor_gl_2k.exr",
+            "md5": "66b396014fbda0bd5cd91b75769d00a3"
+          },
+          "textures/painted_wooden_chair_01_diff_2k.jpg": {
+            "size": 540489,
+            "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/2k/painted_wooden_chair_01/painted_wooden_chair_01_diff_2k.jpg",
+            "md5": "bc227634cd2b6584f3f18bac808e25cf"
+          },
+          "textures/painted_wooden_chair_01_rough_2k.jpg": {
+            "size": 417784,
+            "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/2k/painted_wooden_chair_01/painted_wooden_chair_01_rough_2k.jpg",
+            "md5": "c9c47f13044d620a3d33e354ec11f1b0"
+          },
+          "textures/painted_wooden_chair_01_metal_2k.exr": {
+            "size": 13296,
+            "url": "https://dl.polyhaven.org/file/ph-assets/Models/exr/2k/painted_wooden_chair_01/painted_wooden_chair_01_metal_2k.exr",
+            "md5": "99274ddebd770ab27d959b83b70efa21"
+          }
+        },
+        "size": 41970,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/usd/2k/painted_wooden_chair_01/painted_wooden_chair_01_2k.usdc",
+        "md5": "e681c3951cfc8fc2587584b7bc87afe7"
+      }
+    },
+    "1k": {
+      "usd": {
+        "include": {
+          "textures/painted_wooden_chair_01_diff_1k.jpg": {
+            "size": 168040,
+            "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/painted_wooden_chair_01/painted_wooden_chair_01_diff_1k.jpg",
+            "md5": "94c34f4a211eec5bd30017564e09be4c"
+          },
+          "textures/painted_wooden_chair_01_metal_1k.exr": {
+            "size": 4784,
+            "url": "https://dl.polyhaven.org/file/ph-assets/Models/exr/1k/painted_wooden_chair_01/painted_wooden_chair_01_metal_1k.exr",
+            "md5": "24ecf260710c0e89e774128aec344430"
+          },
+          "textures/painted_wooden_chair_01_rough_1k.jpg": {
+            "size": 124636,
+            "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/painted_wooden_chair_01/painted_wooden_chair_01_rough_1k.jpg",
+            "md5": "e535cdc1cb898165269f6235ef4673eb"
+          },
+          "textures/painted_wooden_chair_01_nor_gl_1k.exr": {
+            "size": 1005346,
+            "url": "https://dl.polyhaven.org/file/ph-assets/Models/exr/1k/painted_wooden_chair_01/painted_wooden_chair_01_nor_gl_1k.exr",
+            "md5": "173569f3f99e1d278a96c24a932a3607"
+          }
+        },
+        "size": 41970,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/usd/1k/painted_wooden_chair_01/painted_wooden_chair_01_1k.usdc",
+        "md5": "8555e52919f773f7a4416acfadc3994f"
+      }
+    }
+  },
+  "Metal": {
+    "8k": {
+      "jpg": {
+        "size": 786828,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/8k/painted_wooden_chair_01/painted_wooden_chair_01_metal_8k.jpg",
+        "md5": "5f26c2cf9864f606a385079105582ab9"
+      },
+      "png": {
+        "size": 130732,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/png/8k/painted_wooden_chair_01/painted_wooden_chair_01_metal_8k.png",
+        "md5": "000d871f6e52179ea8541ed5ebbb5e7a"
+      },
+      "exr": {
+        "size": 150384,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/exr/8k/painted_wooden_chair_01/painted_wooden_chair_01_metal_8k.exr",
+        "md5": "50361fd40d028fa6032864b81fcc65e5"
+      }
+    },
+    "4k": {
+      "jpg": {
+        "size": 197004,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/4k/painted_wooden_chair_01/painted_wooden_chair_01_metal_4k.jpg",
+        "md5": "921d904a81bd79b20edf344db2775b2c"
+      },
+      "png": {
+        "size": 32763,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/png/4k/painted_wooden_chair_01/painted_wooden_chair_01_metal_4k.png",
+        "md5": "261834d04201f95d9188ee9c24a90bff"
+      },
+      "exr": {
+        "size": 42864,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/exr/4k/painted_wooden_chair_01/painted_wooden_chair_01_metal_4k.exr",
+        "md5": "5d3b58ffe35dbea95e2c3169879eb855"
+      }
+    },
+    "2k": {
+      "jpg": {
+        "size": 49548,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/2k/painted_wooden_chair_01/painted_wooden_chair_01_metal_2k.jpg",
+        "md5": "55a2f4c6c290ccc7dca012bae0d5413e"
+      },
+      "png": {
+        "size": 8264,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/png/2k/painted_wooden_chair_01/painted_wooden_chair_01_metal_2k.png",
+        "md5": "d1b4236811cde253fe1d58c79386c101"
+      },
+      "exr": {
+        "size": 13296,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/exr/2k/painted_wooden_chair_01/painted_wooden_chair_01_metal_2k.exr",
+        "md5": "99274ddebd770ab27d959b83b70efa21"
+      }
+    },
+    "1k": {
+      "jpg": {
+        "size": 12684,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/painted_wooden_chair_01/painted_wooden_chair_01_metal_1k.jpg",
+        "md5": "e8c0e6464de97eac1caa382a44a2682f"
+      },
+      "png": {
+        "size": 2155,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/png/1k/painted_wooden_chair_01/painted_wooden_chair_01_metal_1k.png",
+        "md5": "3984ebd3e0aff11d149c2c40985d22f3"
+      },
+      "exr": {
+        "size": 4784,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/exr/1k/painted_wooden_chair_01/painted_wooden_chair_01_metal_1k.exr",
+        "md5": "24ecf260710c0e89e774128aec344430"
+      }
+    }
+  },
+  "arm": {
+    "8k": {
+      "jpg": {
+        "size": 4834206,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/8k/painted_wooden_chair_01/painted_wooden_chair_01_arm_8k.jpg",
+        "md5": "42cd11d425a5bbe3e3b8b735b29a0f2d"
+      },
+      "png": {
+        "size": 156437185,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/png/8k/painted_wooden_chair_01/painted_wooden_chair_01_arm_8k.png",
+        "md5": "4c89a316d21d04509ad60addfd3845e0"
+      },
+      "exr": {
+        "size": 54492421,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/exr/8k/painted_wooden_chair_01/painted_wooden_chair_01_arm_8k.exr",
+        "md5": "3db4c3c4d3bceb21e075fbb79ddac330"
+      }
+    },
+    "4k": {
+      "jpg": {
+        "size": 1443595,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/4k/painted_wooden_chair_01/painted_wooden_chair_01_arm_4k.jpg",
+        "md5": "4b1656c79ae2830a3d1a2844ddabc5a9"
+      },
+      "png": {
+        "size": 44376822,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/png/4k/painted_wooden_chair_01/painted_wooden_chair_01_arm_4k.png",
+        "md5": "d1ab1e02eac5cf4ee165a3e5f1402f91"
+      },
+      "exr": {
+        "size": 13144017,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/exr/4k/painted_wooden_chair_01/painted_wooden_chair_01_arm_4k.exr",
+        "md5": "a2f2b37750df047375bf7f106c43b319"
+      }
+    },
+    "2k": {
+      "jpg": {
+        "size": 452527,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/2k/painted_wooden_chair_01/painted_wooden_chair_01_arm_2k.jpg",
+        "md5": "b1fad7186a62205394bd1bc5dd30b62d"
+      },
+      "png": {
+        "size": 12577086,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/png/2k/painted_wooden_chair_01/painted_wooden_chair_01_arm_2k.png",
+        "md5": "4e0c94932e04fb052932e7a441a3d782"
+      },
+      "exr": {
+        "size": 3739725,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/exr/2k/painted_wooden_chair_01/painted_wooden_chair_01_arm_2k.exr",
+        "md5": "39644e6e304aa819a77286f5d9ed7fdc"
+      }
+    },
+    "1k": {
+      "jpg": {
+        "size": 144503,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/painted_wooden_chair_01/painted_wooden_chair_01_arm_1k.jpg",
+        "md5": "2ee02ed8f2dda4303428eaf6443f928a"
+      },
+      "png": {
+        "size": 3389264,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/png/1k/painted_wooden_chair_01/painted_wooden_chair_01_arm_1k.png",
+        "md5": "7bdc445ba2f059316a28903eb2f32525"
+      },
+      "exr": {
+        "size": 1131518,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/exr/1k/painted_wooden_chair_01/painted_wooden_chair_01_arm_1k.exr",
+        "md5": "6a78b4ef0b9fe6f9c8487a20421561f6"
+      }
+    }
+  },
+  "fbx": {
+    "8k": {
+      "fbx": {
+        "include": {
+          "textures/painted_wooden_chair_01_nor_gl_8k.exr": {
+            "size": 46874842,
+            "url": "https://dl.polyhaven.org/file/ph-assets/Models/exr/8k/painted_wooden_chair_01/painted_wooden_chair_01_nor_gl_8k.exr",
+            "md5": "1eb6619d9b73ab1487038979709a0058"
+          },
+          "textures/painted_wooden_chair_01_metal_8k.exr": {
+            "size": 150384,
+            "url": "https://dl.polyhaven.org/file/ph-assets/Models/exr/8k/painted_wooden_chair_01/painted_wooden_chair_01_metal_8k.exr",
+            "md5": "50361fd40d028fa6032864b81fcc65e5"
+          },
+          "textures/painted_wooden_chair_01_diff_8k.jpg": {
+            "size": 5691339,
+            "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/8k/painted_wooden_chair_01/painted_wooden_chair_01_diff_8k.jpg",
+            "md5": "703f6b145b4eefbb50a0ee4a43e8eb20"
+          },
+          "textures/painted_wooden_chair_01_rough_8k.jpg": {
+            "size": 4976882,
+            "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/8k/painted_wooden_chair_01/painted_wooden_chair_01_rough_8k.jpg",
+            "md5": "6f9120f0eaf22b373057b2fbdbbf58f1"
+          }
+        },
+        "size": 45884,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/fbx/8k/painted_wooden_chair_01/painted_wooden_chair_01_8k.fbx",
+        "md5": "8b53bd724ca5d68a501e6602d5ba85ef"
+      }
+    },
+    "4k": {
+      "fbx": {
+        "include": {
+          "textures/painted_wooden_chair_01_diff_4k.jpg": {
+            "size": 1769999,
+            "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/4k/painted_wooden_chair_01/painted_wooden_chair_01_diff_4k.jpg",
+            "md5": "c8533a5da20b53245bc255c11b19c336"
+          },
+          "textures/painted_wooden_chair_01_metal_4k.exr": {
+            "size": 42864,
+            "url": "https://dl.polyhaven.org/file/ph-assets/Models/exr/4k/painted_wooden_chair_01/painted_wooden_chair_01_metal_4k.exr",
+            "md5": "5d3b58ffe35dbea95e2c3169879eb855"
+          },
+          "textures/painted_wooden_chair_01_nor_gl_4k.exr": {
+            "size": 14143010,
+            "url": "https://dl.polyhaven.org/file/ph-assets/Models/exr/4k/painted_wooden_chair_01/painted_wooden_chair_01_nor_gl_4k.exr",
+            "md5": "83b63c34de964e74730b39169b541a08"
+          },
+          "textures/painted_wooden_chair_01_rough_4k.jpg": {
+            "size": 1422287,
+            "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/4k/painted_wooden_chair_01/painted_wooden_chair_01_rough_4k.jpg",
+            "md5": "377c750708775e6c13f10ea9f71ab923"
+          }
+        },
+        "size": 45884,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/fbx/4k/painted_wooden_chair_01/painted_wooden_chair_01_4k.fbx",
+        "md5": "ae795347885cf042e98d2044fd55b683"
+      }
+    },
+    "2k": {
+      "fbx": {
+        "include": {
+          "textures/painted_wooden_chair_01_nor_gl_2k.exr": {
+            "size": 3832258,
+            "url": "https://dl.polyhaven.org/file/ph-assets/Models/exr/2k/painted_wooden_chair_01/painted_wooden_chair_01_nor_gl_2k.exr",
+            "md5": "66b396014fbda0bd5cd91b75769d00a3"
+          },
+          "textures/painted_wooden_chair_01_diff_2k.jpg": {
+            "size": 540489,
+            "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/2k/painted_wooden_chair_01/painted_wooden_chair_01_diff_2k.jpg",
+            "md5": "bc227634cd2b6584f3f18bac808e25cf"
+          },
+          "textures/painted_wooden_chair_01_rough_2k.jpg": {
+            "size": 417784,
+            "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/2k/painted_wooden_chair_01/painted_wooden_chair_01_rough_2k.jpg",
+            "md5": "c9c47f13044d620a3d33e354ec11f1b0"
+          },
+          "textures/painted_wooden_chair_01_metal_2k.exr": {
+            "size": 13296,
+            "url": "https://dl.polyhaven.org/file/ph-assets/Models/exr/2k/painted_wooden_chair_01/painted_wooden_chair_01_metal_2k.exr",
+            "md5": "99274ddebd770ab27d959b83b70efa21"
+          }
+        },
+        "size": 45884,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/fbx/2k/painted_wooden_chair_01/painted_wooden_chair_01_2k.fbx",
+        "md5": "4984f94ae987c536c8eedb34ba4e430b"
+      }
+    },
+    "1k": {
+      "fbx": {
+        "include": {
+          "textures/painted_wooden_chair_01_diff_1k.jpg": {
+            "size": 168040,
+            "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/painted_wooden_chair_01/painted_wooden_chair_01_diff_1k.jpg",
+            "md5": "94c34f4a211eec5bd30017564e09be4c"
+          },
+          "textures/painted_wooden_chair_01_metal_1k.exr": {
+            "size": 4784,
+            "url": "https://dl.polyhaven.org/file/ph-assets/Models/exr/1k/painted_wooden_chair_01/painted_wooden_chair_01_metal_1k.exr",
+            "md5": "24ecf260710c0e89e774128aec344430"
+          },
+          "textures/painted_wooden_chair_01_rough_1k.jpg": {
+            "size": 124636,
+            "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/painted_wooden_chair_01/painted_wooden_chair_01_rough_1k.jpg",
+            "md5": "e535cdc1cb898165269f6235ef4673eb"
+          },
+          "textures/painted_wooden_chair_01_nor_gl_1k.exr": {
+            "size": 1005346,
+            "url": "https://dl.polyhaven.org/file/ph-assets/Models/exr/1k/painted_wooden_chair_01/painted_wooden_chair_01_nor_gl_1k.exr",
+            "md5": "173569f3f99e1d278a96c24a932a3607"
+          }
+        },
+        "size": 45884,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/fbx/1k/painted_wooden_chair_01/painted_wooden_chair_01_1k.fbx",
+        "md5": "1ef5a5bdf32a979c55357f35d01c96f9"
+      }
+    }
+  },
+  "AO": {
+    "8k": {
+      "jpg": {
+        "size": 3706948,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/8k/painted_wooden_chair_01/painted_wooden_chair_01_ao_8k.jpg",
+        "md5": "6189e66025e4efd9c7b7173c8d802666"
+      },
+      "png": {
+        "size": 86255012,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/png/8k/painted_wooden_chair_01/painted_wooden_chair_01_ao_8k.png",
+        "md5": "9e1f0be9c68aca9f88a46853ff2e52e6"
+      },
+      "exr": {
+        "size": 51462238,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/exr/8k/painted_wooden_chair_01/painted_wooden_chair_01_ao_8k.exr",
+        "md5": "5a02ddd665b2c714149fee44afba729a"
+      }
+    },
+    "4k": {
+      "jpg": {
+        "size": 748998,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/4k/painted_wooden_chair_01/painted_wooden_chair_01_ao_4k.jpg",
+        "md5": "737cabaa256375a4c5818f32e08741b6"
+      },
+      "png": {
+        "size": 22417090,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/png/4k/painted_wooden_chair_01/painted_wooden_chair_01_ao_4k.png",
+        "md5": "beffeca85e7e766b277814d672384bed"
+      },
+      "exr": {
+        "size": 12514058,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/exr/4k/painted_wooden_chair_01/painted_wooden_chair_01_ao_4k.exr",
+        "md5": "fbbde0155d4e71e9917df976f6ca890e"
+      }
+    },
+    "2k": {
+      "jpg": {
+        "size": 258284,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/2k/painted_wooden_chair_01/painted_wooden_chair_01_ao_2k.jpg",
+        "md5": "f570fe97303ee9092a7ce0d4e30e9eba"
+      },
+      "png": {
+        "size": 5535442,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/png/2k/painted_wooden_chair_01/painted_wooden_chair_01_ao_2k.png",
+        "md5": "1b1b3a9c93454da49fc4e218567818e7"
+      },
+      "exr": {
+        "size": 2947644,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/exr/2k/painted_wooden_chair_01/painted_wooden_chair_01_ao_2k.exr",
+        "md5": "b0304935cfde05675dbafc6067b10a8b"
+      }
+    },
+    "1k": {
+      "jpg": {
+        "size": 105061,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/painted_wooden_chair_01/painted_wooden_chair_01_ao_1k.jpg",
+        "md5": "09a717e0d170435a8bd63544c409d6ab"
+      },
+      "png": {
+        "size": 1368861,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/png/1k/painted_wooden_chair_01/painted_wooden_chair_01_ao_1k.png",
+        "md5": "f9cc97d8dc724e87339f6f644f08c243"
+      },
+      "exr": {
+        "size": 743630,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/exr/1k/painted_wooden_chair_01/painted_wooden_chair_01_ao_1k.exr",
+        "md5": "c4f1d927bf4772b4f8308f5c8da3ec1d"
+      }
+    }
+  },
+  "Rough": {
+    "8k": {
+      "jpg": {
+        "size": 4976882,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/8k/painted_wooden_chair_01/painted_wooden_chair_01_rough_8k.jpg",
+        "md5": "6f9120f0eaf22b373057b2fbdbbf58f1"
+      },
+      "png": {
+        "size": 27329718,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/png/8k/painted_wooden_chair_01/painted_wooden_chair_01_rough_8k.png",
+        "md5": "ebd7c225aaa2273bb4b0f0cf8fcda830"
+      },
+      "exr": {
+        "size": 29630366,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/exr/8k/painted_wooden_chair_01/painted_wooden_chair_01_rough_8k.exr",
+        "md5": "59a93af332c354bd8338c6e9c74803ce"
+      }
+    },
+    "4k": {
+      "jpg": {
+        "size": 1422287,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/4k/painted_wooden_chair_01/painted_wooden_chair_01_rough_4k.jpg",
+        "md5": "377c750708775e6c13f10ea9f71ab923"
+      },
+      "png": {
+        "size": 14443423,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/png/4k/painted_wooden_chair_01/painted_wooden_chair_01_rough_4k.png",
+        "md5": "ab1349b072fb9b425e0b65b7e63af976"
+      },
+      "exr": {
+        "size": 10878456,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/exr/4k/painted_wooden_chair_01/painted_wooden_chair_01_rough_4k.exr",
+        "md5": "194792b9cf674edce62eba7a3238f181"
+      }
+    },
+    "2k": {
+      "jpg": {
+        "size": 417784,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/2k/painted_wooden_chair_01/painted_wooden_chair_01_rough_2k.jpg",
+        "md5": "c9c47f13044d620a3d33e354ec11f1b0"
+      },
+      "png": {
+        "size": 5260563,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/png/2k/painted_wooden_chair_01/painted_wooden_chair_01_rough_2k.png",
+        "md5": "4215f0386f565a9dfcbb4b81fbccb264"
+      },
+      "exr": {
+        "size": 3403979,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/exr/2k/painted_wooden_chair_01/painted_wooden_chair_01_rough_2k.exr",
+        "md5": "0f43e3b773654894aaf0b797aaac335b"
+      }
+    },
+    "1k": {
+      "jpg": {
+        "size": 124636,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/jpg/1k/painted_wooden_chair_01/painted_wooden_chair_01_rough_1k.jpg",
+        "md5": "e535cdc1cb898165269f6235ef4673eb"
+      },
+      "png": {
+        "size": 1554616,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/png/1k/painted_wooden_chair_01/painted_wooden_chair_01_rough_1k.png",
+        "md5": "3025fb10fbe5c4849c1eae9e438bd96b"
+      },
+      "exr": {
+        "size": 967934,
+        "url": "https://dl.polyhaven.org/file/ph-assets/Models/exr/1k/painted_wooden_chair_01/painted_wooden_chair_01_rough_1k.exr",
+        "md5": "b92c684c59867a88f49acc4283f42def"
+      }
+    }
+  }
+}

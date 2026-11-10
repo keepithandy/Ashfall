@@ -1,0 +1,15 @@
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+PASS: main game opens inventory and pauses movement
+PASS: grid contains 27 slots
+PASS: owned items have icons
+PASS: stack quantity is displayed
+PASS: use button applies item effect
+PASS: used-up stack becomes an empty slot
+PASS: newly acquired stack reappears
+PASS: carry button equips selected item
+PASS: stow button empties hand
+PASS: Tab closes inventory and resumes movement
+INVENTORY_GRID: 0 failure(s)
+WARNING: 2 ObjectDB instances were leaked at exit (run with `--verbose` for details).
+   at: cleanup (core/object/object.cpp:2536)

@@ -1,0 +1,38 @@
+[gd_resource type="Resource" script_class="HandGripProfile" load_steps=3 format=3]
+[ext_resource type="Script" path="res://scripts/runtime/hand_grip_profile.gd" id="1"]
+[ext_resource type="PackedScene" path="res://scenes/items/held_bandage.tscn" id="2"]
+[resource]
+script = ExtResource("1")
+item_id = &"bandage"
+display_name = "Cotton bandage"
+pose_animation = &"Hand_bandage"
+model_scene = ExtResource("2")
+attachment_transform = Transform3D(-0.853318334, -0.0994401053, 0.51181972, -0.435060799, 0.676804245, -0.593849599, -0.287349641, -0.729415655, -0.62079227, -0.036586225, 0.088619411, -0.0458760634)
+finger_rotations = {
+"index1.R": Quaternion(-0.248525754, 0.0892873853, -0.179501548, 0.94765085),
+"index2.R": Quaternion(-0.144752413, 6.02125425e-08, 0.232586652, 0.961743414),
+"index3.R": Quaternion(-0.10410466, 5.35500249e-08, 0.183981597, 0.977401137),
+"middle1.R": Quaternion(0.140470922, -0.058818996, 0.0864044651, 0.984551966),
+"middle2.R": Quaternion(-0.143758565, 4.28243361e-08, 0.248849466, 0.957813859),
+"middle3.R": Quaternion(-0.208305493, 1.09232609e-07, 0.42299962, 0.881861746),
+"ring1.R": Quaternion(-0.140241683, 0.0384433977, 0.089572981, 0.985307574),
+"ring2.R": Quaternion(-0.170498371, 2.91394073e-08, 0.312000781, 0.93465811),
+"ring3.R": Quaternion(-0.071260415, 9.22621446e-09, 0.169049397, 0.983028114),
+"pinky1.R": Quaternion(-0.0930516273, 0.0225981623, 0.0902837589, 0.991301954),
+"pinky2.R": Quaternion(-0.0846303776, -4.85012386e-08, 0.203794912, 0.975348949),
+"pinky3.R": Quaternion(-0.105935104, -8.25192927e-08, 0.279967397, 0.954146862),
+"thumb1.R": Quaternion(-0.232783347, 0.598935902, 0.20788911, 0.737475395),
+"thumb2.R": Quaternion(0.0225762893, -1.16018999e-08, -0.0267359074, 0.999387562),
+"thumb3.R": Quaternion(0.287617743, -1.17495929e-07, -0.440003157, 0.850689888)
+}
+contact_targets = {
+"index": Vector3(-0.0243761074, 0.0442273133, -0.0425417051),
+"middle": Vector3(-0.026157489, 0.0431976356, -0.0417402983),
+"ring": Vector3(-0.0140406238, 0.0485088751, 0.00580026209),
+"pinky": Vector3(-0.0295028426, 0.039747104, 0.0294904187),
+"thumb": Vector3(0.0477097705, -0.0165537875, -0.00802375097)
+}
+aim_forward = Vector3(0.0850029364, -0.955968261, -0.280890286)
+aim_up = Vector3(-0.216066763, 0.25751707, -0.941806793)
+hand_offset = Vector3(0.17,-0.1,-0.39)
+elbow_offset = Vector3(0.46,-0.08,0.1)

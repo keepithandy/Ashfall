@@ -1,0 +1,96 @@
+[gd_scene load_steps=15 format=3]
+
+[ext_resource type="PackedScene" path="res://scenes/props/shelving_unit.tscn" id="1_shelf"]
+[ext_resource type="PackedScene" path="res://scenes/props/tool_box.tscn" id="2_tools"]
+[ext_resource type="PackedScene" path="res://scenes/props/jerrycan.tscn" id="3_can"]
+[ext_resource type="PackedScene" path="res://scenes/props/rusted_drum.tscn" id="4_drum"]
+[ext_resource type="PackedScene" path="res://scenes/props/wooden_pallet.tscn" id="5_pallet"]
+[ext_resource type="PackedScene" path="res://scenes/props/pipe_bundle.tscn" id="6_pipes"]
+[ext_resource type="PackedScene" path="res://scenes/props/portable_generator.tscn" id="7_generator"]
+[ext_resource type="PackedScene" path="res://scenes/workshop/coiled_hose.tscn" id="8_hose"]
+[ext_resource type="PackedScene" path="res://scenes/workshop/fire_extinguisher.tscn" id="9_extinguisher"]
+[ext_resource type="PackedScene" path="res://scenes/workshop/discarded_tyre.tscn" id="10_tyre"]
+[ext_resource type="PackedScene" path="res://scenes/workshop/open_wood_crate.tscn" id="11_crate"]
+[ext_resource type="PackedScene" path="res://scenes/props/pendant_light.tscn" id="12_lamp"]
+
+[ext_resource type="Script" path="res://scripts/runtime/crossroads_encounter.gd" id="13_encounter"]
+[ext_resource type="Script" path="res://scripts/runtime/village_stalker.gd" id="14_threat"]
+
+[node name="MaintenanceDressing" type="Node3D"]
+script = ExtResource("13_encounter")
+
+[node name="StationThreat" type="CharacterBody3D" parent="."]
+position = Vector3(4, 0.1, 13)
+script = ExtResource("14_threat")
+
+[node name="Interior" type="Node3D" parent="."]
+
+[node name="SparePartsShelf" parent="Interior" instance=ExtResource("1_shelf")]
+position = Vector3(-2.2, 0.01, -3.58)
+
+[node name="WorkbenchTools" parent="Interior" instance=ExtResource("2_tools")]
+position = Vector3(-4.25, 0.98, -2.94)
+rotation = Vector3(0, 0.25, 0)
+
+[node name="Generator" parent="Interior" instance=ExtResource("7_generator")]
+position = Vector3(1.2, 0.01, -3.1)
+rotation = Vector3(0, -0.22, 0)
+
+[node name="FuelCan" parent="Interior" instance=ExtResource("3_can")]
+position = Vector3(2.2, 0.01, -3.3)
+rotation = Vector3(0, 0.32, 0)
+
+[node name="FireExtinguisher" parent="Interior" instance=ExtResource("9_extinguisher")]
+position = Vector3(5.48, 0.01, 1.8)
+rotation = Vector3(0, -1.3, 0)
+
+[node name="CeilingLamp" parent="Interior" instance=ExtResource("12_lamp")]
+position = Vector3(-1.3, 2.67, -1.2)
+
+[node name="WorkLight" type="OmniLight3D" parent="Interior"]
+position = Vector3(-1.3, 2.6, -1.2)
+light_color = Color(1, 0.77, 0.52, 1)
+light_energy = 0.55
+omni_range = 5.5
+omni_attenuation = 1.5
+
+[node name="ServiceYard" type="Node3D" parent="."]
+
+[node name="Pallet" parent="ServiceYard" instance=ExtResource("5_pallet")]
+position = Vector3(-4.7, -0.205, 5.5)
+rotation = Vector3(0, 0.08, 0)
+
+[node name="SupplyCrate" parent="ServiceYard" instance=ExtResource("11_crate")]
+position = Vector3(-4.7, -0.06, 5.5)
+rotation = Vector3(0, -0.12, 0)
+
+[node name="RustedDrum" parent="ServiceYard" instance=ExtResource("4_drum")]
+position = Vector3(-2.8, -0.205, 5.1)
+
+[node name="PipeBundle" parent="ServiceYard" instance=ExtResource("6_pipes")]
+position = Vector3(-0.1, -0.205, 5.4)
+rotation = Vector3(0, 0.08, 0)
+
+[node name="CoiledHose" parent="ServiceYard" instance=ExtResource("8_hose")]
+position = Vector3(1.5, -0.205, 5.55)
+rotation = Vector3(0, 0.8, 0)
+
+[node name="DiscardedTyre" parent="ServiceYard" instance=ExtResource("10_tyre")]
+position = Vector3(-5.55, 0.14, 4.75)
+rotation = Vector3(0, 0.2, 1.5707963)
+
+[node name="GeneratorLabel" type="Label3D" parent="Interior"]
+position = Vector3(1.2, 1.35, -3.85)
+text = "RELAY DIAGNOSTIC\nE — START / RETRIEVE"
+font_size = 32
+pixel_size = 0.002
+modulate = Color(0.7, 0.66, 0.48, 1)
+
+[node name="InteriorCover" type="Marker3D" parent="Interior"]
+position = Vector3(-4.8, 0, -2.7)
+metadata/purpose = "Crouch behind the solid rear wall, away from window sightlines."
+
+[node name="YardCover" type="Marker3D" parent="ServiceYard"]
+position = Vector3(-6.8, 0, -2.7)
+metadata/purpose = "Break line of sight around the west building corner; no automatic invisibility."
+

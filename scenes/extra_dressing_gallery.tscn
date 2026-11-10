@@ -1,0 +1,327 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/review/extra_dressing_gallery.gd" id="1_ofjwt"]
+[ext_resource type="PackedScene" path="res://scenes/extra_dressing/wood_sawhorse.tscn" id="2_pkjlv"]
+[ext_resource type="PackedScene" path="res://scenes/extra_dressing/garden_shovel.tscn" id="3_yjctk"]
+[ext_resource type="PackedScene" path="res://scenes/extra_dressing/scrap_sheet.tscn" id="4_tonjb"]
+[ext_resource type="PackedScene" path="res://scenes/extra_dressing/firewood_stack.tscn" id="5_2wrsg"]
+[ext_resource type="PackedScene" path="res://scenes/extra_dressing/mushroom_cluster.tscn" id="6_2w0go"]
+[ext_resource type="PackedScene" path="res://scenes/extra_dressing/dry_grass_tuft.tscn" id="7_ioqy3"]
+[ext_resource type="PackedScene" path="res://scenes/extra_dressing/stone_scatter.tscn" id="8_4ycda"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5k4si"]
+albedo_color = Color(0.1882353, 0.23921569, 0.2509804, 1)
+roughness = 0.85
+
+[sub_resource type="BoxMesh" id="BoxMesh_calhl"]
+size = Vector3(2.2, 0.14, 2.05)
+
+[sub_resource type="BoxMesh" id="BoxMesh_vwy2d"]
+size = Vector3(2.2, 0.14, 2.05)
+
+[sub_resource type="BoxMesh" id="BoxMesh_yx36p"]
+size = Vector3(2.2, 0.14, 2.05)
+
+[sub_resource type="BoxMesh" id="BoxMesh_0hqbd"]
+size = Vector3(2.2, 0.14, 2.05)
+
+[sub_resource type="BoxMesh" id="BoxMesh_o1dy8"]
+size = Vector3(2.2, 0.14, 2.05)
+
+[sub_resource type="BoxMesh" id="BoxMesh_y3y8w"]
+size = Vector3(2.2, 0.14, 2.05)
+
+[sub_resource type="BoxMesh" id="BoxMesh_cok6e"]
+size = Vector3(2.2, 0.14, 2.05)
+
+[sub_resource type="Environment" id="Environment_o2sse"]
+background_mode = 1
+background_color = Color(0.12156863, 0.15686275, 0.1764706, 1)
+ambient_light_source = 2
+ambient_light_color = Color(0.73333335, 0.7882353, 0.8156863, 1)
+ambient_light_energy = 0.65
+tonemap_mode = 2
+
+[node name="ExtraDressingGallery" type="Node3D" unique_id=1641426414]
+script = ExtResource("1_ofjwt")
+
+[node name="Displays" type="Node3D" parent="." unique_id=2112487211]
+
+[node name="wood_sawhorse" type="Node3D" parent="Displays" unique_id=512237751]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.2, 0, -1.9)
+metadata/title = "Timber sawhorse"
+metadata/id = "wood_sawhorse"
+
+[node name="WorldAsset" type="StaticBody3D" parent="Displays/wood_sawhorse" unique_id=1099725707 instance=ExtResource("2_pkjlv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.14, 0)
+metadata/prop_id = "wood_sawhorse"
+metadata/display_name = "Weathered timber sawhorse"
+metadata/approximate_size_metres = Vector3(1.2, 0.81342, 0.70873016)
+metadata/world_text_policy = "No attached text"
+metadata/asset_revision = 2
+
+[node name="DisplayPlinth" type="MeshInstance3D" parent="Displays/wood_sawhorse" unique_id=903429120]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.07, 0)
+material_override = SubResource("StandardMaterial3D_5k4si")
+mesh = SubResource("BoxMesh_calhl")
+
+[node name="GalleryName" type="Label3D" parent="Displays/wood_sawhorse" unique_id=1750905179]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.33, 1.08)
+pixel_size = 0.0035
+billboard = 1
+no_depth_test = true
+modulate = Color(0.8784314, 0.8509804, 0.78039217, 1)
+text = "01  /  Timber sawhorse"
+font_size = 44
+outline_size = 6
+
+[node name="GallerySize" type="Label3D" parent="Displays/wood_sawhorse" unique_id=681877240]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.13, 1.15)
+pixel_size = 0.0032
+billboard = 1
+no_depth_test = true
+modulate = Color(0.5921569, 0.7019608, 0.69411767, 1)
+text = "1.20 × 0.81 × 0.71 m"
+outline_size = 5
+
+[node name="garden_shovel" type="Node3D" parent="Displays" unique_id=1309195624]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.4, 0, -1.9)
+metadata/title = "Garden shovel"
+metadata/id = "garden_shovel"
+
+[node name="WorldAsset" type="StaticBody3D" parent="Displays/garden_shovel" unique_id=1829638654 instance=ExtResource("3_yjctk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.14, 0)
+metadata/prop_id = "garden_shovel"
+metadata/display_name = "Worn garden shovel"
+metadata/approximate_size_metres = Vector3(0.244, 1.2349696, 0.060713913)
+metadata/world_text_policy = "No attached text"
+metadata/asset_revision = 2
+
+[node name="DisplayPlinth" type="MeshInstance3D" parent="Displays/garden_shovel" unique_id=1115690807]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.07, 0)
+material_override = SubResource("StandardMaterial3D_5k4si")
+mesh = SubResource("BoxMesh_vwy2d")
+
+[node name="GalleryName" type="Label3D" parent="Displays/garden_shovel" unique_id=1735320565]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.33, 1.08)
+pixel_size = 0.0035
+billboard = 1
+no_depth_test = true
+modulate = Color(0.8784314, 0.8509804, 0.78039217, 1)
+text = "02  /  Garden shovel"
+font_size = 44
+outline_size = 6
+
+[node name="GallerySize" type="Label3D" parent="Displays/garden_shovel" unique_id=144601800]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.13, 1.15)
+pixel_size = 0.0032
+billboard = 1
+no_depth_test = true
+modulate = Color(0.5921569, 0.7019608, 0.69411767, 1)
+text = "0.24 × 1.23 × 0.06 m"
+outline_size = 5
+
+[node name="scrap_sheet" type="Node3D" parent="Displays" unique_id=912551835]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.4, 0, -1.9)
+metadata/title = "Corrugated steel"
+metadata/id = "scrap_sheet"
+
+[node name="WorldAsset" type="StaticBody3D" parent="Displays/scrap_sheet" unique_id=1713972542 instance=ExtResource("4_tonjb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.14, 0)
+metadata/prop_id = "scrap_sheet"
+metadata/display_name = "Bent corrugated steel"
+metadata/approximate_size_metres = Vector3(1.3, 0.065556936, 0.92)
+metadata/world_text_policy = "No attached text"
+metadata/asset_revision = 2
+
+[node name="DisplayPlinth" type="MeshInstance3D" parent="Displays/scrap_sheet" unique_id=419735090]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.07, 0)
+material_override = SubResource("StandardMaterial3D_5k4si")
+mesh = SubResource("BoxMesh_yx36p")
+
+[node name="GalleryName" type="Label3D" parent="Displays/scrap_sheet" unique_id=676841242]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.33, 1.08)
+pixel_size = 0.0035
+billboard = 1
+no_depth_test = true
+modulate = Color(0.8784314, 0.8509804, 0.78039217, 1)
+text = "03  /  Corrugated steel"
+font_size = 44
+outline_size = 6
+
+[node name="GallerySize" type="Label3D" parent="Displays/scrap_sheet" unique_id=321506762]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.13, 1.15)
+pixel_size = 0.0032
+billboard = 1
+no_depth_test = true
+modulate = Color(0.5921569, 0.7019608, 0.69411767, 1)
+text = "1.30 × 0.07 × 0.92 m"
+outline_size = 5
+
+[node name="firewood_stack" type="Node3D" parent="Displays" unique_id=346343917]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.2, 0, -1.9)
+metadata/title = "Firewood stack"
+metadata/id = "firewood_stack"
+
+[node name="WorldAsset" type="StaticBody3D" parent="Displays/firewood_stack" unique_id=918479036 instance=ExtResource("5_2wrsg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.14, 0)
+metadata/prop_id = "firewood_stack"
+metadata/display_name = "Split firewood stack"
+metadata/approximate_size_metres = Vector3(0.81438935, 0.46767738, 0.5451822)
+metadata/world_text_policy = "No attached text"
+metadata/asset_revision = 2
+
+[node name="DisplayPlinth" type="MeshInstance3D" parent="Displays/firewood_stack" unique_id=1604670425]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.07, 0)
+material_override = SubResource("StandardMaterial3D_5k4si")
+mesh = SubResource("BoxMesh_0hqbd")
+
+[node name="GalleryName" type="Label3D" parent="Displays/firewood_stack" unique_id=1896112196]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.33, 1.08)
+pixel_size = 0.0035
+billboard = 1
+no_depth_test = true
+modulate = Color(0.8784314, 0.8509804, 0.78039217, 1)
+text = "04  /  Firewood stack"
+font_size = 44
+outline_size = 6
+
+[node name="GallerySize" type="Label3D" parent="Displays/firewood_stack" unique_id=934799418]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.13, 1.15)
+pixel_size = 0.0032
+billboard = 1
+no_depth_test = true
+modulate = Color(0.5921569, 0.7019608, 0.69411767, 1)
+text = "0.81 × 0.47 × 0.55 m"
+outline_size = 5
+
+[node name="mushroom_cluster" type="Node3D" parent="Displays" unique_id=1937917136]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.8, 0, 1.8)
+metadata/title = "Woodland mushrooms"
+metadata/id = "mushroom_cluster"
+
+[node name="WorldAsset" type="Node3D" parent="Displays/mushroom_cluster" unique_id=1444727368 instance=ExtResource("6_2w0go")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.14, 0)
+metadata/prop_id = "mushroom_cluster"
+metadata/display_name = "Woodland mushrooms"
+metadata/approximate_size_metres = Vector3(0.42502016, 0.16744313, 0.40891913)
+metadata/world_text_policy = "No attached text"
+metadata/asset_revision = 2
+
+[node name="DisplayPlinth" type="MeshInstance3D" parent="Displays/mushroom_cluster" unique_id=1445164750]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.07, 0)
+material_override = SubResource("StandardMaterial3D_5k4si")
+mesh = SubResource("BoxMesh_o1dy8")
+
+[node name="GalleryName" type="Label3D" parent="Displays/mushroom_cluster" unique_id=1157539265]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.33, 1.08)
+pixel_size = 0.0035
+billboard = 1
+no_depth_test = true
+modulate = Color(0.8784314, 0.8509804, 0.78039217, 1)
+text = "05  /  Woodland mushrooms"
+font_size = 44
+outline_size = 6
+
+[node name="GallerySize" type="Label3D" parent="Displays/mushroom_cluster" unique_id=1595805555]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.13, 1.15)
+pixel_size = 0.0032
+billboard = 1
+no_depth_test = true
+modulate = Color(0.5921569, 0.7019608, 0.69411767, 1)
+text = "0.43 × 0.17 × 0.41 m"
+outline_size = 5
+
+[node name="dry_grass_tuft" type="Node3D" parent="Displays" unique_id=1092113171]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.8)
+metadata/title = "Dry meadow grass"
+metadata/id = "dry_grass_tuft"
+
+[node name="WorldAsset" type="Node3D" parent="Displays/dry_grass_tuft" unique_id=2039158928 instance=ExtResource("7_ioqy3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.14, 0)
+metadata/prop_id = "dry_grass_tuft"
+metadata/display_name = "Dry meadow grass"
+metadata/approximate_size_metres = Vector3(0.60830235, 0.5538338, 0.6311118)
+metadata/world_text_policy = "No attached text"
+metadata/asset_revision = 2
+
+[node name="DisplayPlinth" type="MeshInstance3D" parent="Displays/dry_grass_tuft" unique_id=2049807769]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.07, 0)
+material_override = SubResource("StandardMaterial3D_5k4si")
+mesh = SubResource("BoxMesh_y3y8w")
+
+[node name="GalleryName" type="Label3D" parent="Displays/dry_grass_tuft" unique_id=1963048833]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.33, 1.08)
+pixel_size = 0.0035
+billboard = 1
+no_depth_test = true
+modulate = Color(0.8784314, 0.8509804, 0.78039217, 1)
+text = "06  /  Dry meadow grass"
+font_size = 44
+outline_size = 6
+
+[node name="GallerySize" type="Label3D" parent="Displays/dry_grass_tuft" unique_id=688346278]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.13, 1.15)
+pixel_size = 0.0032
+billboard = 1
+no_depth_test = true
+modulate = Color(0.5921569, 0.7019608, 0.69411767, 1)
+text = "0.61 × 0.55 × 0.63 m"
+outline_size = 5
+
+[node name="stone_scatter" type="Node3D" parent="Displays" unique_id=416282723]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.8, 0, 1.8)
+metadata/title = "Stone scatter"
+metadata/id = "stone_scatter"
+
+[node name="WorldAsset" type="Node3D" parent="Displays/stone_scatter" unique_id=1269512317 instance=ExtResource("8_4ycda")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.14, 0)
+metadata/prop_id = "stone_scatter"
+metadata/display_name = "Weathered stone scatter"
+metadata/approximate_size_metres = Vector3(1.0948977, 0.1849576, 1.0089628)
+metadata/world_text_policy = "No attached text"
+metadata/asset_revision = 2
+
+[node name="DisplayPlinth" type="MeshInstance3D" parent="Displays/stone_scatter" unique_id=1569025574]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.07, 0)
+material_override = SubResource("StandardMaterial3D_5k4si")
+mesh = SubResource("BoxMesh_cok6e")
+
+[node name="GalleryName" type="Label3D" parent="Displays/stone_scatter" unique_id=1348513314]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.33, 1.08)
+pixel_size = 0.0035
+billboard = 1
+no_depth_test = true
+modulate = Color(0.8784314, 0.8509804, 0.78039217, 1)
+text = "07  /  Stone scatter"
+font_size = 44
+outline_size = 6
+
+[node name="GallerySize" type="Label3D" parent="Displays/stone_scatter" unique_id=1611037821]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.13, 1.15)
+pixel_size = 0.0032
+billboard = 1
+no_depth_test = true
+modulate = Color(0.5921569, 0.7019608, 0.69411767, 1)
+text = "1.09 × 0.18 × 1.01 m"
+outline_size = 5
+
+[node name="Camera" type="Camera3D" parent="." unique_id=820291385]
+transform = Transform3D(1, 0, 0, 0, 0.77166915, 0.6360242, 0, -0.6360242, 0.77166915, 0, 10.6, 12.8)
+projection = 1
+current = true
+size = 8.2
+
+[node name="Key" type="DirectionalLight3D" parent="." unique_id=1914354889]
+transform = Transform3D(0.88294756, 0.3488854, -0.3141378, 0, 0.66913056, 0.74314487, 0.46947157, -0.656158, 0.5908072, 0, 0, 0)
+light_color = Color(1, 0.9019608, 0.7764706, 1)
+light_energy = 1.35
+shadow_enabled = true
+
+[node name="Fill" type="DirectionalLight3D" parent="." unique_id=563459372]
+transform = Transform3D(-0.70710677, -0.3747095, 0.5996606, 0, 0.8480481, 0.52991927, -0.70710677, 0.3747095, -0.5996606, 0, 0, 0)
+light_color = Color(0.76862746, 0.84705883, 0.89411765, 1)
+light_energy = 0.55
+
+[node name="Environment" type="WorldEnvironment" parent="." unique_id=983324667]
+environment = SubResource("Environment_o2sse")

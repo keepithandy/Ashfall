@@ -1,0 +1,13 @@
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+Vulkan 1.4.341 - Forward+ - Using Device #0: NVIDIA - NVIDIA GeForce RTX 4080 SUPER
+
+PASS: Grass_2_1 excludes only the station and apron
+PASS: Grass_2_1 preserves every outside instance
+PASS: Grass_2_2 excludes only the station and apron
+PASS: Grass_2_2 preserves every outside instance
+PASS: LowStones excludes only the station and apron
+PASS: LowStones preserves every outside instance
+PASS: DryLeafLitter excludes only the station and apron
+PASS: DryLeafLitter preserves every outside instance
+PASS: four local vegetation batches adjusted
+CROSSROADS_DRESSING: 0 failure(s)

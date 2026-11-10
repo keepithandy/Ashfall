@@ -5,6 +5,8 @@ on:
     paths:
       - 'assets/decorative_world/**'
       - 'scenes/decorative_world/**'
+      - 'assets/decorative_interiors/**'
+      - 'scenes/decorative_interiors/**'
       - '.github/workflows/decorative-world-props.yml'
   workflow_dispatch:
 
@@ -20,6 +22,8 @@ jobs:
         uses: actions/checkout@v4
       - name: Check glTF structure, Godot references, collision and non-interactivity
         run: python3 assets/decorative_world/source/validate_props.py
+      - name: Validate abandoned interiors GLB structure and non-interactivity
+        run: python3 assets/decorative_interiors/source/validate_interiors.py
       - name: Download Godot 4.7.2 stable
         shell: bash
         run: |
@@ -80,3 +84,53 @@ jobs:
               quit(0)
           GDSCRIPT
           "$GODOT" --headless --path "$CHECK_ROOT" --script res://validate_gallery.gd
+      - name: Import abandoned interiors and instantiate the gallery in Godot
+        shell: bash
+        run: |
+          set -euo pipefail
+          CHECK_ROOT="$RUNNER_TEMP/ashfall-interiors-check"
+          GODOT="$RUNNER_TEMP/godot/Godot_v4.7.2-stable_linux.x86_64"
+          mkdir -p "$CHECK_ROOT/assets/decorative_interiors/models" "$CHECK_ROOT/scenes/decorative_interiors"
+          cp assets/decorative_interiors/models/*.glb "$CHECK_ROOT/assets/decorative_interiors/models/"
+          cp scenes/decorative_interiors/*.tscn "$CHECK_ROOT/scenes/decorative_interiors/"
+          printf 'config_version=5\n[application]\nconfig/name="Ashfall Interior Prop Check"\n' > "$CHECK_ROOT/project.godot"
+          "$GODOT" --headless --path "$CHECK_ROOT" --editor --import
+          cat > "$CHECK_ROOT/validate_interiors.gd" <<'GDSCRIPT'
+          extends SceneTree
+
+          func _initialize() -> void:
+              var gallery: PackedScene = load("res://scenes/decorative_interiors/gallery_all_16.tscn")
+              if gallery == null:
+                  push_error("Interior gallery did not load")
+                  quit(1)
+                  return
+              var instance: Node = gallery.instantiate()
+              if instance == null:
+                  push_error("Interior gallery did not instantiate")
+                  quit(1)
+                  return
+              var expected: PackedStringArray = [
+                  "sagging_sofa", "battered_armchair", "cracked_crt_television",
+                  "crooked_wall_mirror", "splintered_dining_table", "damaged_kitchen_cupboard",
+                  "broken_crockery_scatter", "rusted_enamel_kettle", "tilted_wooden_dresser",
+                  "torn_interior_curtains", "threadbare_area_rug", "faded_photo_frames",
+                  "fallen_ceiling_tile_pile", "broken_ceiling_fan", "peeling_wallpaper_panels",
+                  "dusty_cardboard_box_stack", "sagging_sofa_torn",
+              ]
+              for name in expected:
+                  var prop: Node = instance.get_node_or_null(NodePath(name))
+                  if prop == null or not (prop is StaticBody3D):
+                      push_error("Missing static interior prop: " + name)
+                      instance.free()
+                      quit(1)
+                      return
+                  if prop.get_child_count() == 0:
+                      push_error("Missing visual for interior prop: " + name)
+                      instance.free()
+                      quit(1)
+                      return
+              print("PASS: Godot loaded 16 distinct decorative interior models and sofa variant")
+              instance.free()
+              quit(0)
+          GDSCRIPT
+          "$GODOT" --headless --path "$CHECK_ROOT" --script res://validate_interiors.gd

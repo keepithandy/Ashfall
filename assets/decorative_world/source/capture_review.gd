@@ -82,10 +82,11 @@ func _capture() -> void:
             stage.add_child(prop)
             var found := false
             var bbox := AABB()
-            for mesh in prop.find_children("*", "MeshInstance3D", true, false):
-                if not (mesh is MeshInstance3D) or mesh.mesh == null:
+            for child in prop.find_children("*", "MeshInstance3D", true, false):
+                var mesh_instance := child as MeshInstance3D
+                if mesh_instance == null or mesh_instance.mesh == null:
                     continue
-                var bounds := mesh.global_transform * mesh.get_aabb()
+                var bounds: AABB = mesh_instance.global_transform * mesh_instance.get_aabb()
                 bbox = bbox.merge(bounds) if found else bounds
                 found = true
             if not found:

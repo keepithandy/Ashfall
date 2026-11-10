@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="PackedScene" path="res://assets/decorative_world/models/broken_drainage_culvert.glb" id="1_model"]
+
+[sub_resource type="BoxShape3D" id="shape_0"]
+size = Vector3(1.85, 1.9, 2.16)
+
+[node name="BrokenDrainageCulvert" type="StaticBody3D"]
+
+[node name="Visual" parent="." instance=ExtResource("1_model")]
+
+[node name="ConcretePipe" type="CollisionShape3D" parent="."]
+position = Vector3(0, 1, 0)
+shape = SubResource("shape_0")
+

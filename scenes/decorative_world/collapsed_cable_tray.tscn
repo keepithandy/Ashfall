@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3]
+
+[ext_resource type="PackedScene" path="res://assets/decorative_world/models/collapsed_cable_tray.glb" id="1_model"]
+
+[sub_resource type="BoxShape3D" id="shape_0"]
+size = Vector3(3.3, 0.35, 1.2)
+
+[sub_resource type="BoxShape3D" id="shape_1"]
+size = Vector3(0.16, 0.95, 0.22)
+
+[sub_resource type="BoxShape3D" id="shape_2"]
+size = Vector3(0.16, 0.95, 0.22)
+
+[node name="CollapsedCableTray" type="StaticBody3D"]
+
+[node name="Visual" parent="." instance=ExtResource("1_model")]
+
+[node name="CableTray" type="CollisionShape3D" parent="."]
+position = Vector3(0, 1.04, 0)
+shape = SubResource("shape_0")
+
+[node name="SupportLeft" type="CollisionShape3D" parent="."]
+position = Vector3(-1.3, 0.49, 0)
+shape = SubResource("shape_1")
+
+[node name="SupportRight" type="CollisionShape3D" parent="."]
+position = Vector3(1.15, 0.49, 0)
+shape = SubResource("shape_2")
+

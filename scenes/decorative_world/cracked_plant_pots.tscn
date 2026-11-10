@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="PackedScene" path="res://assets/decorative_world/models/cracked_plant_pots.glb" id="1_model"]
+
+[sub_resource type="BoxShape3D" id="shape_0"]
+size = Vector3(1.43, 0.66, 1.28)
+
+[node name="CrackedPlantPots" type="StaticBody3D"]
+
+[node name="Visual" parent="." instance=ExtResource("1_model")]
+
+[node name="PlantPotGroup" type="CollisionShape3D" parent="."]
+position = Vector3(0, 0.33, 0)
+shape = SubResource("shape_0")
+

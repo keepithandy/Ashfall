@@ -1,26 +1,71 @@
-# Ashfall — Decorative World Props (roadside first pass)
+# Decorative world props — 16-asset draft pack
 
-This is an **original, static, non-interactive prop set** for environmental dressing across Ashfall. No loot, inventory, crafting, script, quest, interaction or gameplay hooks.
+**Scope:** Static, non-interactive 3D scenery only. These are environmental dressing assets, **not** inventory objects, loot, usable containers, quests, or gameplay systems. The work is isolated to a feature branch and draft pull request. Nothing is added to the main station scene.
 
-## Assets and size (metres)
+## Current assets (16 of 16 requested unique items modeled)
 
-| Prop | Visual | Godot scene | Approx. footprint |
-| --- | --- | --- | --- |
-| Bent guardrail | `assets/decorative_world/models/bent_guardrail.glb` | `scenes/decorative_world/bent_guardrail.tscn` | 4.2 × 0.3 × 1.0 |
-| Abandoned bus shelter | `assets/decorative_world/models/collapsed_bus_shelter.glb` | `scenes/decorative_world/collapsed_bus_shelter.tscn` | 3.4 × 1.6 × 2.5 |
-| Tire pile | `assets/decorative_world/models/discarded_tire_pile.glb` | `scenes/decorative_world/discarded_tire_pile.tscn` | 1.2 × 1.2 × 2.0 |
-| Fallen utility pole | `assets/decorative_world/models/fallen_utility_pole.glb` | `scenes/decorative_world/fallen_utility_pole.tscn` | 4.5 × 1.9 × 3.2 |
+### Roads and checkpoints
+1. Bent guardrail — `bent_guardrail`
+2. Abandoned/collapsed bus shelter — `collapsed_bus_shelter`
+3. Tire pile — `discarded_tire_pile`
+4. Fallen utility pole with dead cables — `fallen_utility_pole`
 
-Open `scenes/decorative_world/gallery_roadside.tscn` to inspect all four side-by-side. They are **not placed** in the main level.
+### Residential and abandoned settlements
+5. Rusted roadside mailbox — `rusted_mailbox`
+6. Sagging porch chair — `sagging_porch_chair`
+7. Cracked clay plant pots with dead branches — `cracked_plant_pots`
+8. Torn clothesline with faded cloth — `torn_clothesline`
 
-Each scene has simple static collision, no scripts, and references its original glTF 2.0 binary model. Models contain roughness/metallic PBR material factors and several weathered/rusted detail surfaces. The models were procedurally authored specifically for Ashfall, not imported from third-party asset packs.
+### Industrial and maintenance
+9. Crushed ventilation duct — `crushed_ventilation_duct`
+10. Collapsed cable tray — `collapsed_cable_tray`
+11. Corroded sheet-metal stack — `corroded_sheet_metal_stack`
+12. Broken industrial window frame — `broken_factory_window`
 
-## Validation status
+### Wilderness and outskirts
+13. Rotting picnic table — `rotting_picnic_table`
+14. Damaged footbridge fragment — `damaged_footbridge_fragment`
+15. Roadside memorial — `roadside_memorial`
+16. Cracked concrete drainage culvert — `broken_drainage_culvert`
 
-- Generated meshes are self-contained glTF 2.0 assets with explicit positions/normals, material definitions, and binary buffer chunks.
-- No Godot editor is available in the authoring environment, so **Godot import, appearance, collision, and performance are not yet playtested**.
-- Consider this a **first asset pass**, not a production-art sign-off. It needs editor inspection and art refinement (including texture work and alternate damage variants) before merge.
+## Directory structure
 
-## Scope guardrails
+- `models/<prop>.glb`: self-contained, original glTF 2.0 binary geometry with PBR factors and visible weathering geometry
+- `../../scenes/decorative_world/<prop>.tscn`: reusable Godot 4 `StaticBody3D` scene with simple collision
+- `../../scenes/decorative_world/gallery_roadside.tscn`: original first-four gallery
+- `../../scenes/decorative_world/gallery_all_16.tscn`: overview of all sixteen models in four thematic rows
+- `source/generate_props.cjs`: reproducible Node.js 18+ procedural authoring source for the twelve new props (first four were authored in the first PR commit)
+- `source/.gdignore`: keep source code out of Godot's asset importer
 
-Do not turn these props into pickups or usable items. Do not add signals, animations, rigidbody interactions, or new scripts to these scene assets. Preserve main scene, station lighting, gameplay and save files. Issue #3 tracks the broader 16-prop expansion.
+To rebuild the 12 new model files, from the project root run:
+
+```powershell
+node assets/decorative_world/source/generate_props.cjs
+```
+
+Node.js is required to execute the source generator; exported GLBs are already included in this PR.
+
+## Placement guidance
+
+**Roads:** Combine guardrails, shelter, tires, utility poles, and scattered roadside debris irregularly. Avoid overly symmetrical repetition.
+
+**Residential:** Mailboxes, chairs, planters and clotheslines at roadsides or homes, with different rotations and small offset variation.
+
+**Industrial:** Use duct, cable tray, oxidized sheet-metal and shattered window with existing cabinets, drums and workbenches. Keep silhouette clear for gameplay navigation.
+
+**Wilderness:** Place the old picnic table, broken bridge fragment, memorial and culvert in convincing edge-of-settlement or drainage sites. These are scenery only; no crossing, activation or search mechanic.
+
+## Quality / test gates before merge
+
+- [ ] Import all 16 GLBs in target Godot version and confirm no errors.
+- [ ] Open `gallery_all_16.tscn`, verify orientation, scale, pivot and geometry for each prop.
+- [ ] Inspect PBR material colors/transparency under dark and neutral lighting; improve realism with authored textures/normal maps where needed.
+- [ ] Confirm normals/winding, no gaps or floating geometry, and acceptable triangle counts.
+- [ ] Verify static collision alignment in Godot's debug collision view; correct overly broad box collisions on irregular props.
+- [ ] Add purposeful intact/weathered/heavily damaged variants for common reusable props as art quality requires.
+- [ ] Confirm props are not scripted, interactive, pickupable or persisted in save data.
+- [ ] Check imported gallery and PR changes in CI or locally; no unrelated project modifications.
+- [ ] Place approved props into level scenes only in a separate deliberate dressing pass.
+- [ ] Review visually in-game before promotion from draft to ready-for-merge.
+
+**Honest state:** All sixteen distinct asset definitions are present, but this is still a **procedurally modeled first pass** with simple PBR material factors. It is NOT Godot-playtested or approved as final realistic production art. Keep this PR a draft and DO NOT MERGE until the gates above pass.

@@ -36,3 +36,16 @@ Visual evidence: https://github.com/keepithandy/Ashfall/actions/runs/42889787382
 **DO NOT MERGE** until each of the six gates is demonstrably completed. Automated Godot import success is not evidence of visually finished production assets.
 
 The intended direction is grounded, realistic, weathered, performance-aware post-apocalyptic scenery. The current models are a functioning first pass, not that final standard.
+
+## Follow-up implemented during same review
+
+- Replaced nine overly broad collision definitions with more targeted compound boxes or a cylinder. The culvert passage now has a collision-free interior opening; that design still needs player-controller collision testing.
+- Added four reusable non-interactive damage variants and three independent staging example scenes. They are not embedded in the current playable station.
+- Generated original 128×128 tileable procedural albedo, normal and metallic/roughness maps and baked them into every one of the 33 glTF 2.0 assets. The source is `source/upgrade_pbr_surfaces.py`.
+- Structural and Godot 4.7.2 import checks pass for both prop packs, variant and staging scenes.
+- Re-rendered all 32 unique props **with baked maps** in Godot/OpenGL. New render artifact: workflow run **42892196183**.
+  https://github.com/keepithandy/Ashfall/actions/runs/42892196183
+
+**Visual re-review:** The texture pass improves surface variation, especially on cupboards and other large planar surfaces, but the sofa, armchair, television, dresser, fan, and other geometries still present a blocky prototype look; the results do not meet grounded production-art quality. Multiple angled in-level review and high-quality model refinement are still necessary.
+
+**Merge policy remains:** PR #4 stays a draft and must not be merged just because its automated CI passes.

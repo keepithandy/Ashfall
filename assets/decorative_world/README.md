@@ -68,4 +68,8 @@ Node.js is required to execute the source generator; exported GLBs are already i
 - [ ] Place approved props into level scenes only in a separate deliberate dressing pass.
 - [ ] Review visually in-game before promotion from draft to ready-for-merge.
 
-**Honest state:** All sixteen distinct asset definitions are present, but this is still a **procedurally modeled first pass** with simple PBR material factors. It is NOT Godot-playtested or approved as final realistic production art. Keep this PR a draft and DO NOT MERGE until the gates above pass.
+**Honest state:** All sixteen distinct asset definitions are present, but this is still a **procedurally modeled first pass** with baked tileable procedural albedo, normal, and metallic/roughness maps. It is NOT Godot-playtested or approved as final realistic production art. Keep this PR a draft and DO NOT MERGE until the gates above pass.
+
+## Latest technical-art pass (November 10, 2026)
+
+All 33 GLBs have been processed with an original, reproducible procedural PBR surface pass (`assets/decorative_world/source/upgrade_pbr_surfaces.py`). Maps are embedded in the GLB files with UVs. **This improves surface variation but does not establish photorealistic or production-ready art.** The geometry still needs in-editor art review and refinement. See `assets/decorative_world/ART_REVIEW_2026-11-10.md` and PR #4 for outstanding gates.

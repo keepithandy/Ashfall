@@ -115,6 +115,27 @@ If neither diagnostic renders, the likely issue is shader selection or
 compilation rather than cloud artistic tuning: inspect Godot's Output and
 Debugger panels.
 
+## Brightness correction from in-game screenshot
+
+A follow-up gameplay screenshot showed nearly white cloud faces and very dark
+negative spaces. The revision keeps the working moving-cloud silhouette, but
+reduces its luminance using a lower cloud-light palette, darker horizon haze,
+and an adjustable `sky_brightness` parameter (default `0.78`). Cloud shapes,
+coverage, and animation speeds are unchanged.
+
+The revised dark gray/blue palette targets **heavy overcast rather than an
+overexposed pale sky**. The dark clear-sky color is raised slightly so open
+gaps do not read as black voids. The `sky_brightness` multiplier is applied
+only to the visible normal sky, **not** the cloud diagnostic colors or the sky
+radiance cubemap, which preserves existing scene illumination. Ground-level
+fog density and the directional light remain unchanged.
+
+To tune further, select `WorldEnvironment > Environment > Sky > Sky Material
+> Shader Parameters` and set `sky_brightness` between `0.65` and `0.9`.
+The parameter `cloud_darkening` (default `0.18`) adjusts the cloud banks
+independently. Verify daylight readability and cloud edge movement before
+considering environmental exposure or ground lighting changes.
+
 ## Required validation (in Godot)
 
 1. Open the project with Godot **4.7.2**, preferably in Forward+ mode. Let imports finish.

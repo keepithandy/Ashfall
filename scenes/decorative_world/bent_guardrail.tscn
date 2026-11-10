@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="PackedScene" path="res://assets/decorative_world/models/bent_guardrail.glb" id="1_model"]
+
+[sub_resource type="BoxShape3D" id="collision_0"]
+size = Vector3(4.25, 0.52, 0.31)
+
+[node name="BentGuardrail" type="StaticBody3D"]
+
+[node name="Visual" parent="." instance=ExtResource("1_model")]
+
+[node name="RailCollision" type="CollisionShape3D" parent="."]
+position = Vector3(0, 0.72, -0.03)
+shape = SubResource("collision_0")

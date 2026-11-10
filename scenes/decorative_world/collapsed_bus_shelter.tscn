@@ -1,0 +1,42 @@
+[gd_scene load_steps=7 format=3]
+
+[ext_resource type="PackedScene" path="res://assets/decorative_world/models/collapsed_bus_shelter.glb" id="1_model"]
+
+[sub_resource type="BoxShape3D" id="collision_0"]
+size = Vector3(0.18, 2.37, 0.18)
+
+[sub_resource type="BoxShape3D" id="collision_1"]
+size = Vector3(0.18, 2.37, 0.18)
+
+[sub_resource type="BoxShape3D" id="collision_2"]
+size = Vector3(0.18, 2.37, 0.18)
+
+[sub_resource type="BoxShape3D" id="collision_3"]
+size = Vector3(0.18, 2.37, 0.18)
+
+[sub_resource type="BoxShape3D" id="collision_4"]
+size = Vector3(3.45, 0.2, 1.6)
+
+[node name="CollapsedBusShelter" type="StaticBody3D"]
+
+[node name="Visual" parent="." instance=ExtResource("1_model")]
+
+[node name="RearLeft" type="CollisionShape3D" parent="."]
+position = Vector3(-1.53, 1.185, 0.57)
+shape = SubResource("collision_0")
+
+[node name="RearRight" type="CollisionShape3D" parent="."]
+position = Vector3(1.53, 1.185, 0.57)
+shape = SubResource("collision_1")
+
+[node name="FrontLeft" type="CollisionShape3D" parent="."]
+position = Vector3(-1.53, 1.185, -0.57)
+shape = SubResource("collision_2")
+
+[node name="FrontRight" type="CollisionShape3D" parent="."]
+position = Vector3(1.53, 1.185, -0.57)
+shape = SubResource("collision_3")
+
+[node name="Roof" type="CollisionShape3D" parent="."]
+position = Vector3(0, 2.39, 0)
+shape = SubResource("collision_4")

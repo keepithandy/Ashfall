@@ -1,0 +1,41 @@
+[gd_scene load_steps=8 format=3]
+
+[ext_resource type="PackedScene" path="res://scenes/decorative_world/bent_guardrail.tscn" id="1_a"]
+[ext_resource type="PackedScene" path="res://scenes/decorative_world/collapsed_bus_shelter.tscn" id="2_b"]
+[ext_resource type="PackedScene" path="res://scenes/decorative_world/discarded_tire_pile.tscn" id="3_c"]
+[ext_resource type="PackedScene" path="res://scenes/decorative_world/fallen_utility_pole.tscn" id="4_d"]
+
+[sub_resource type="BoxMesh" id="ground_mesh"]
+size = Vector3(28, 0.1, 12)
+
+[sub_resource type="StandardMaterial3D" id="ground_mat"]
+albedo_color = Color(0.13, 0.15, 0.13, 1)
+roughness = 0.95
+
+[node name="DecorativeWorldGallery" type="Node3D"]
+
+[node name="Ground" type="MeshInstance3D" parent="."]
+mesh = SubResource("ground_mesh")
+surface_material_override/0 = SubResource("ground_mat")
+
+[node name="Guardrail" parent="." instance=ExtResource("1_a")]
+position = Vector3(-9, 0, 0)
+
+[node name="BusShelter" parent="." instance=ExtResource("2_b")]
+position = Vector3(-3, 0, 0)
+
+[node name="TirePile" parent="." instance=ExtResource("3_c")]
+position = Vector3(3, 0, 0)
+
+[node name="FallenPole" parent="." instance=ExtResource("4_d")]
+position = Vector3(9, 0, 0)
+
+[node name="InspectionLight" type="DirectionalLight3D" parent="."]
+rotation = Vector3(-0.85, -0.45, 0)
+light_energy = 1.0
+shadow_enabled = true
+
+[node name="InspectionCamera" type="Camera3D" parent="."]
+position = Vector3(0, 6.3, 17)
+rotation = Vector3(-0.35, 0, 0)
+current = true

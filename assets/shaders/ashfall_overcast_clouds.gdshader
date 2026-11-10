@@ -9,11 +9,11 @@ render_mode disable_fog;
 // Fog is disabled FOR THE SKY ONLY. Existing ground / volumetric fog
 // continues to render over the world without washing out cloud edges.
 
-uniform vec3 high_sky_color : source_color = vec3(0.058, 0.084, 0.103);
-uniform vec3 horizon_sky_color : source_color = vec3(0.23, 0.26, 0.27);
-uniform vec3 cloud_shadow_color : source_color = vec3(0.17, 0.19, 0.20);
-uniform vec3 cloud_light_color : source_color = vec3(0.72, 0.73, 0.69);
-uniform vec3 cloud_silver_color : source_color = vec3(0.78, 0.76, 0.67);
+uniform vec3 high_sky_color : source_color = vec3(0.082, 0.102, 0.117);
+uniform vec3 horizon_sky_color : source_color = vec3(0.16, 0.18, 0.19);
+uniform vec3 cloud_shadow_color : source_color = vec3(0.14, 0.16, 0.17);
+uniform vec3 cloud_light_color : source_color = vec3(0.50, 0.52, 0.51);
+uniform vec3 cloud_silver_color : source_color = vec3(0.52, 0.53, 0.50);
 
 // These are authoring controls, also inspectable on Station 04's sky material.
 uniform float coverage : hint_range(0.0, 1.0) = 0.59;
@@ -22,6 +22,8 @@ uniform float cloud_scale : hint_range(0.3, 5.0) = 1.42;
 uniform float cloud_contrast : hint_range(0.5, 3.0) = 1.65;
 // Darken cloud banks without crushing the blue-black gaps between them.
 uniform float cloud_darkening : hint_range(0.0, 0.5) = 0.18;
+// Scene sky only: leave existing ground light/fog energy untouched.
+uniform float sky_brightness : hint_range(0.45, 1.0) = 0.78;
 uniform float wind_speed : hint_range(0.0, 0.25) = 0.075;
 uniform vec2 wind_direction = vec2(0.84, 0.54);
 uniform float high_layer_strength : hint_range(0.0, 0.8) = 0.30;
@@ -75,7 +77,7 @@ vec3 background_sky(vec3 direction) {
     vec3 sky = mix(high_sky_color, horizon_sky_color, horizon);
     // Haze on the horizon is authored here so disabling sky fog doesn't
     // leave a hard color discontinuity against the foggy terrain.
-    return mix(vec3(0.19, 0.22, 0.225), sky, smoothstep(-0.08, 0.18, direction.y));
+    return mix(vec3(0.13, 0.15, 0.16), sky, smoothstep(-0.08, 0.18, direction.y));
 }
 
 void sky() {
@@ -146,6 +148,8 @@ void sky() {
             final_color = mix(vec3(0.04, 0.04, 0.10),
                               vec3(0.95, 0.15, 0.75), stripe);
         }
-        COLOR = final_color;
+        // Applied after diagnostics: the diagnostic colors must remain
+        // unmistakable when troubleshooting rendering/animation.
+        COLOR = diagnostic_mode == 0 ? final_color * sky_brightness : final_color;
     }
 }

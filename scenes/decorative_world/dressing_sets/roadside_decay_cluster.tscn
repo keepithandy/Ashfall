@@ -1,0 +1,35 @@
+[gd_scene load_steps=7 format=3]
+
+[ext_resource type="PackedScene" path="res://scenes/decorative_world/collapsed_bus_shelter.tscn" id="item_1"]
+[ext_resource type="PackedScene" path="res://scenes/decorative_world/variants/guardrail_crash_damaged.tscn" id="item_2"]
+[ext_resource type="PackedScene" path="res://scenes/decorative_world/discarded_tire_pile.tscn" id="item_3"]
+[ext_resource type="PackedScene" path="res://scenes/decorative_world/fallen_utility_pole.tscn" id="item_4"]
+[ext_resource type="PackedScene" path="res://scenes/decorative_world/variants/mailbox_torn_door.tscn" id="item_5"]
+[ext_resource type="PackedScene" path="res://scenes/decorative_world/roadside_memorial.tscn" id="item_6"]
+
+[node name="roadside_decay_cluster" type="Node3D"]
+
+[node name="Dressing1" parent="." instance=ExtResource("item_1")]
+position = Vector3(0, 0, -5)
+rotation = Vector3(0, 0.18, 0)
+
+[node name="Dressing2" parent="." instance=ExtResource("item_2")]
+position = Vector3(-5.9, 0, -2)
+rotation = Vector3(0, 0.11, 0)
+
+[node name="Dressing3" parent="." instance=ExtResource("item_3")]
+position = Vector3(3.4, 0, -3.9)
+rotation = Vector3(0, -0.27, 0)
+
+[node name="Dressing4" parent="." instance=ExtResource("item_4")]
+position = Vector3(6.4, 0, 2.6)
+rotation = Vector3(0, -0.67, 0)
+
+[node name="Dressing5" parent="." instance=ExtResource("item_5")]
+position = Vector3(-5.1, 0, 3.9)
+rotation = Vector3(0, -0.12, 0)
+
+[node name="Dressing6" parent="." instance=ExtResource("item_6")]
+position = Vector3(1.7, 0, 4.5)
+rotation = Vector3(0, 0.2, 0)
+

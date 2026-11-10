@@ -1,0 +1,35 @@
+[gd_scene load_steps=7 format=3]
+
+[ext_resource type="PackedScene" path="res://scenes/decorative_interiors/splintered_dining_table.tscn" id="item_1"]
+[ext_resource type="PackedScene" path="res://scenes/decorative_interiors/damaged_kitchen_cupboard.tscn" id="item_2"]
+[ext_resource type="PackedScene" path="res://scenes/decorative_interiors/broken_crockery_scatter.tscn" id="item_3"]
+[ext_resource type="PackedScene" path="res://scenes/decorative_interiors/rusted_enamel_kettle.tscn" id="item_4"]
+[ext_resource type="PackedScene" path="res://scenes/decorative_interiors/peeling_wallpaper_panels.tscn" id="item_5"]
+[ext_resource type="PackedScene" path="res://scenes/decorative_interiors/tilted_wooden_dresser.tscn" id="item_6"]
+
+[node name="abandoned_kitchen" type="Node3D"]
+
+[node name="Dressing1" parent="." instance=ExtResource("item_1")]
+position = Vector3(0, 0, 0)
+rotation = Vector3(0, 0.13, 0)
+
+[node name="Dressing2" parent="." instance=ExtResource("item_2")]
+position = Vector3(-3.1, 0, -2.4)
+rotation = Vector3(0, 0, 0)
+
+[node name="Dressing3" parent="." instance=ExtResource("item_3")]
+position = Vector3(1.3, 0, -1)
+rotation = Vector3(0, 0.65, 0)
+
+[node name="Dressing4" parent="." instance=ExtResource("item_4")]
+position = Vector3(-1, 0, 0.2)
+rotation = Vector3(0, 0, 0)
+
+[node name="Dressing5" parent="." instance=ExtResource("item_5")]
+position = Vector3(3.1, 0, -1.1)
+rotation = Vector3(0, -1.57, 0)
+
+[node name="Dressing6" parent="." instance=ExtResource("item_6")]
+position = Vector3(2.2, 0, 3.1)
+rotation = Vector3(0, 0.15, 0)
+

@@ -14,8 +14,69 @@ permissions:
 jobs:
   validate-decorative-props:
     runs-on: ubuntu-latest
+    timeout-minutes: 12
     steps:
       - name: Check out the PR
         uses: actions/checkout@v4
       - name: Check glTF structure, Godot references, collision and non-interactivity
         run: python3 assets/decorative_world/source/validate_props.py
+      - name: Download Godot 4.7.2 stable
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p "$RUNNER_TEMP/godot"
+          curl -fL --retry 3 \
+            "https://github.com/godotengine/godot/releases/download/4.7.2-stable/Godot_v4.7.2-stable_linux.x86_64.zip" \
+            -o "$RUNNER_TEMP/godot/linux-godot.zip"
+          unzip -q "$RUNNER_TEMP/godot/linux-godot.zip" -d "$RUNNER_TEMP/godot"
+          chmod +x "$RUNNER_TEMP/godot/Godot_v4.7.2-stable_linux.x86_64"
+      - name: Import all props and instantiate gallery in isolated Godot project
+        shell: bash
+        run: |
+          set -euo pipefail
+          CHECK_ROOT="$RUNNER_TEMP/ashfall-decorative-check"
+          GODOT="$RUNNER_TEMP/godot/Godot_v4.7.2-stable_linux.x86_64"
+          mkdir -p "$CHECK_ROOT/assets/decorative_world/models" "$CHECK_ROOT/scenes/decorative_world"
+          cp assets/decorative_world/models/*.glb "$CHECK_ROOT/assets/decorative_world/models/"
+          cp scenes/decorative_world/*.tscn "$CHECK_ROOT/scenes/decorative_world/"
+          printf 'config_version=5\n[application]\nconfig/name="Ashfall Prop Import Check"\n' > "$CHECK_ROOT/project.godot"
+          "$GODOT" --headless --path "$CHECK_ROOT" --editor --import
+          cat > "$CHECK_ROOT/validate_gallery.gd" <<'GDSCRIPT'
+          extends SceneTree
+
+          func _initialize() -> void:
+              var gallery: PackedScene = load("res://scenes/decorative_world/gallery_all_16.tscn")
+              if gallery == null:
+                  push_error("Decorative gallery did not load")
+                  quit(1)
+                  return
+              var instance: Node = gallery.instantiate()
+              if instance == null:
+                  push_error("Decorative gallery did not instantiate")
+                  quit(1)
+                  return
+              var expected: PackedStringArray = [
+                  "bent_guardrail", "collapsed_bus_shelter", "discarded_tire_pile",
+                  "fallen_utility_pole", "rusted_mailbox", "sagging_porch_chair",
+                  "cracked_plant_pots", "torn_clothesline", "crushed_ventilation_duct",
+                  "collapsed_cable_tray", "corroded_sheet_metal_stack", "broken_factory_window",
+                  "rotting_picnic_table", "damaged_footbridge_fragment", "roadside_memorial",
+                  "broken_drainage_culvert",
+              ]
+              for name in expected:
+                  var prop: Node = instance.get_node_or_null(NodePath(name))
+                  if prop == null or not (prop is StaticBody3D):
+                      push_error("Missing non-interactive prop: " + name)
+                      instance.free()
+                      quit(1)
+                      return
+                  if prop.get_child_count() == 0:
+                      push_error("Prop has no model: " + name)
+                      instance.free()
+                      quit(1)
+                      return
+              print("PASS: Godot loaded and instantiated all 16 static decorative props")
+              instance.free()
+              quit(0)
+          GDSCRIPT
+          "$GODOT" --headless --path "$CHECK_ROOT" --script res://validate_gallery.gd

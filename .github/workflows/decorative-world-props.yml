@@ -192,3 +192,54 @@ jobs:
           name: ashfall-prop-render-review
           path: ashfall-review/
           retention-days: 30
+      - name: Validate staged decorative layouts and damage variants in isolated Godot
+        shell: bash
+        run: |
+          set -euo pipefail
+          CHECK_ROOT="$RUNNER_TEMP/ashfall-staging-check"
+          GODOT="$RUNNER_TEMP/godot/Godot_v4.7.2-stable_linux.x86_64"
+          mkdir -p "$CHECK_ROOT/assets/decorative_world/models" \
+            "$CHECK_ROOT/assets/decorative_interiors/models" \
+            "$CHECK_ROOT/scenes/decorative_world/variants" \
+            "$CHECK_ROOT/scenes/decorative_world/dressing_sets" \
+            "$CHECK_ROOT/scenes/decorative_interiors/variants" \
+            "$CHECK_ROOT/scenes/decorative_interiors/dressing_sets"
+          cp assets/decorative_world/models/*.glb "$CHECK_ROOT/assets/decorative_world/models/"
+          cp assets/decorative_interiors/models/*.glb "$CHECK_ROOT/assets/decorative_interiors/models/"
+          cp scenes/decorative_world/*.tscn "$CHECK_ROOT/scenes/decorative_world/"
+          cp scenes/decorative_interiors/*.tscn "$CHECK_ROOT/scenes/decorative_interiors/"
+          cp scenes/decorative_world/variants/*.tscn "$CHECK_ROOT/scenes/decorative_world/variants/"
+          cp scenes/decorative_world/dressing_sets/*.tscn "$CHECK_ROOT/scenes/decorative_world/dressing_sets/"
+          cp scenes/decorative_interiors/variants/*.tscn "$CHECK_ROOT/scenes/decorative_interiors/variants/"
+          cp scenes/decorative_interiors/dressing_sets/*.tscn "$CHECK_ROOT/scenes/decorative_interiors/dressing_sets/"
+          printf 'config_version=5\n[application]\nconfig/name="Ashfall Staging Review"\n' > "$CHECK_ROOT/project.godot"
+          "$GODOT" --headless --path "$CHECK_ROOT" --editor --import
+          cat > "$CHECK_ROOT/check_staging.gd" <<'GDSCRIPT'
+          extends SceneTree
+
+          func _initialize() -> void:
+              var review_scenes: PackedStringArray = [
+                  "res://scenes/decorative_world/variants/mailbox_torn_door.tscn",
+                  "res://scenes/decorative_world/variants/guardrail_crash_damaged.tscn",
+                  "res://scenes/decorative_interiors/variants/crt_shattered_screen.tscn",
+                  "res://scenes/decorative_interiors/variants/collapsed_cardboard_stack.tscn",
+                  "res://scenes/decorative_world/dressing_sets/roadside_decay_cluster.tscn",
+                  "res://scenes/decorative_interiors/dressing_sets/abandoned_living_room.tscn",
+                  "res://scenes/decorative_interiors/dressing_sets/abandoned_kitchen.tscn",
+              ]
+              for scene_path in review_scenes:
+                  var p: PackedScene = load(scene_path)
+                  if p == null:
+                      push_error("Cannot load staged scene: " + scene_path)
+                      quit(1)
+                      return
+                  var scene: Node = p.instantiate()
+                  if scene == null:
+                      push_error("Cannot instantiate staged scene: " + scene_path)
+                      quit(1)
+                      return
+                  scene.free()
+              print("PASS: All four decorative variants and three safe staging layouts loaded")
+              quit(0)
+          GDSCRIPT
+          "$GODOT" --headless --path "$CHECK_ROOT" --script res://check_staging.gd

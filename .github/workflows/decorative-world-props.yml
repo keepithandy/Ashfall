@@ -134,3 +134,61 @@ jobs:
               quit(0)
           GDSCRIPT
           "$GODOT" --headless --path "$CHECK_ROOT" --script res://validate_interiors.gd
+      - name: Render isolated model previews for visual art QA
+        shell: bash
+        run: |
+          set -euo pipefail
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq xvfb libgl1-mesa-dri libgl1
+          CHECK_ROOT="$RUNNER_TEMP/ashfall-review-project"
+          GODOT="$RUNNER_TEMP/godot/Godot_v4.7.2-stable_linux.x86_64"
+          mkdir -p "$CHECK_ROOT/assets/decorative_world/models" \
+            "$CHECK_ROOT/assets/decorative_interiors/models" \
+            "$CHECK_ROOT/scenes/decorative_world" \
+            "$CHECK_ROOT/scenes/decorative_interiors" \
+            "$CHECK_ROOT/source" "$RUNNER_TEMP/ashfall-review"
+          cp assets/decorative_world/models/*.glb "$CHECK_ROOT/assets/decorative_world/models/"
+          cp assets/decorative_interiors/models/*.glb "$CHECK_ROOT/assets/decorative_interiors/models/"
+          cp scenes/decorative_world/*.tscn "$CHECK_ROOT/scenes/decorative_world/"
+          cp scenes/decorative_interiors/*.tscn "$CHECK_ROOT/scenes/decorative_interiors/"
+          cp assets/decorative_world/source/capture_review.gd "$CHECK_ROOT/source/capture_review.gd"
+          printf 'config_version=5\n[application]\nconfig/name="Ashfall Prop Render Review"\n[rendering]\nrenderer/rendering_method="gl_compatibility"\n' > "$CHECK_ROOT/project.godot"
+          "$GODOT" --headless --path "$CHECK_ROOT" --editor --import
+          export LIBGL_ALWAYS_SOFTWARE=1
+          export MESA_GL_VERSION_OVERRIDE=3.3
+          export ASHFALL_REVIEW_DIR="$RUNNER_TEMP/ashfall-review"
+          xvfb-run -a -s "-screen 0 800x600x24" \
+            "$GODOT" --path "$CHECK_ROOT" --rendering-method gl_compatibility \
+            --rendering-driver opengl3 --resolution 800x600 \
+            --script res://source/capture_review.gd
+          python3 -m pip install --quiet Pillow
+          python3 - <<'PYTHON'
+          from pathlib import Path
+          from PIL import Image, ImageDraw
+          import os
+          root=Path(os.environ["ASHFALL_REVIEW_DIR"])
+          pngs=sorted(root.glob("*.png"))
+          if len(pngs)!=32:
+              raise RuntimeError(f"Expected 32 renders, got {len(pngs)}")
+          for prefix in ("decorative_world", "decorative_interiors"):
+              names=sorted(root.glob(prefix+"__*.png"))
+              board=Image.new("RGB",(4*300,4*245),(28,31,31))
+              draw=ImageDraw.Draw(board)
+              for i,src in enumerate(names):
+                  tile=Image.open(src).convert("RGB")
+                  tile.thumbnail((292,212))
+                  x=(i%4)*300+int((300-tile.width)/2)
+                  y=(i//4)*245
+                  board.paste(tile,(x,y))
+                  draw.text(((i%4)*300+8,y+215),src.stem.split("__",1)[1][:33],fill=(230,228,218))
+              board.save(root/(prefix+"_contact_sheet.jpg"),quality=80,optimize=True)
+          print("PASS: Rendered and created 2 visual contact sheets")
+          PYTHON
+          mkdir -p "$GITHUB_WORKSPACE/ashfall-review"
+          cp "$RUNNER_TEMP/ashfall-review/"* "$GITHUB_WORKSPACE/ashfall-review/"
+      - name: Attach real-time Godot rendering evidence for manual art review
+        uses: actions/upload-artifact@v4
+        with:
+          name: ashfall-prop-render-review
+          path: ashfall-review/
+          retention-days: 30

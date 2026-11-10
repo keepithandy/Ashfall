@@ -1,0 +1,44 @@
+name: Apply Ashfall Decorative PBR Texture Pass
+
+on:
+  pull_request:
+    paths:
+      - 'assets/decorative_world/source/upgrade_pbr_surfaces.py'
+      - '.github/workflows/ashfall-prop-texturing.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  texture-pass:
+    if: github.head_ref == 'feat/decorative-roadside-props' && github.event.pull_request.head.repo.full_name == 'keepithandy/Ashfall'
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Check out the decorative props feature branch
+        uses: actions/checkout@v4
+        with:
+          ref: feat/decorative-roadside-props
+          persist-credentials: true
+      - name: Install image generation dependency
+        run: python3 -m pip install --quiet Pillow
+      - name: Bake original procedural PBR maps and UVs into the GLB files
+        run: python3 assets/decorative_world/source/upgrade_pbr_surfaces.py
+      - name: Verify modified GLB structure and prefab references
+        run: |
+          python3 assets/decorative_world/source/validate_props.py
+          python3 assets/decorative_interiors/source/validate_interiors.py
+      - name: Commit textured models back to feature branch
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add assets/decorative_world/models/*.glb assets/decorative_interiors/models/*.glb
+          if git diff --cached --quiet; then
+            echo "Textures already current; no commit required."
+          else
+            git commit -m "Apply original tileable PBR albedo, normal and roughness maps"
+            git push origin HEAD:feat/decorative-roadside-props
+          fi

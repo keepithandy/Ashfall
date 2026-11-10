@@ -4,13 +4,13 @@ render_mode use_half_res_pass;
 // Station 04 - procedurally animated, overcast cloud banks.
 // Cloud detail runs at half screen resolution. Ambient radiance uses a cheaper
 // approximation so the dynamic cloud cover does not dominate the frame budget.
-uniform vec3 horizon_color : source_color = vec3(0.25, 0.28, 0.29);
-uniform vec3 zenith_color : source_color = vec3(0.052, 0.079, 0.105);
-uniform vec3 undercloud_color : source_color = vec3(0.17, 0.19, 0.20);
-uniform vec3 sunlit_cloud_color : source_color = vec3(0.47, 0.49, 0.48);
+uniform vec3 horizon_color : source_color = vec3(0.24, 0.27, 0.29);
+uniform vec3 zenith_color : source_color = vec3(0.049, 0.073, 0.089);
+uniform vec3 undercloud_color : source_color = vec3(0.19, 0.22, 0.23);
+uniform vec3 sunlit_cloud_color : source_color = vec3(0.64, 0.66, 0.63);
 uniform vec3 sun_glow_color : source_color = vec3(0.64, 0.65, 0.59);
-uniform float cloud_coverage : hint_range(0.0, 1.0) = 0.74;
-uniform float cloud_softness : hint_range(0.05, 0.7) = 0.17;
+uniform float cloud_coverage : hint_range(0.0, 1.0) = 0.63;
+uniform float cloud_softness : hint_range(0.05, 0.7) = 0.095;
 uniform float cloud_scale : hint_range(0.5, 6.0) = 2.15;
 uniform float cloud_detail : hint_range(0.0, 2.0) = 0.76;
 uniform float cloud_speed : hint_range(0.0, 0.1) = 0.005;
@@ -64,12 +64,14 @@ vec4 cloud_banks(vec3 dir) {
     float distant = fbm(uv * 0.61 + wind * 0.34 + vec2(37.6, 15.9));
 
     float density = primary * 0.88 + wisps * 0.12 * cloud_detail;
-    float cutoff = mix(0.73, 0.23, cloud_coverage);
+    // Keep breakup between cloud banks even in stormy conditions.
+    // Earlier low cutoff made nearly the entire sky opaque, with no edges.
+    float cutoff = mix(0.78, 0.44, cloud_coverage);
     float main_bank = smoothstep(cutoff - cloud_softness, cutoff + cloud_softness, density);
-    float high_veil = smoothstep(0.30, 0.72, distant) * cloud_coverage * 0.52;
+    float high_veil = smoothstep(0.40, 0.77, distant) * cloud_coverage * 0.28;
     float cloud_alpha = max(main_bank, high_veil) * smoothstep(-0.06, 0.18, dir.y);
 
-    float lit = clamp(0.17 + 0.64 * density + 0.17 * dir.y, 0.0, 1.0);
+    float lit = clamp(0.07 + 0.94 * density + 0.13 * dir.y, 0.0, 1.0);
     vec3 cloud_tint = mix(undercloud_color, sunlit_cloud_color, lit);
     if (LIGHT0_ENABLED) {
         float alignment = max(dot(dir, LIGHT0_DIRECTION), 0.0);
@@ -98,6 +100,7 @@ void sky() {
             float alignment = max(dot(dir, LIGHT0_DIRECTION), 0.0);
             base += sun_glow_color * pow(alignment, 28.0) * sun_glow_strength * 0.14;
         }
+        // Preserve dark open-sky gaps so individual banks remain legible.
         COLOR = mix(base, HALF_RES_COLOR.rgb, clamp(HALF_RES_COLOR.a, 0.0, 1.0));
     }
 }

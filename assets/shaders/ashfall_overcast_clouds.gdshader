@@ -20,6 +20,8 @@ uniform float coverage : hint_range(0.0, 1.0) = 0.59;
 uniform float edge_softness : hint_range(0.02, 0.25) = 0.077;
 uniform float cloud_scale : hint_range(0.3, 5.0) = 1.42;
 uniform float cloud_contrast : hint_range(0.5, 3.0) = 1.65;
+// Darken cloud banks without crushing the blue-black gaps between them.
+uniform float cloud_darkening : hint_range(0.0, 0.5) = 0.18;
 uniform float wind_speed : hint_range(0.0, 0.25) = 0.075;
 uniform vec2 wind_direction = vec2(0.84, 0.54);
 uniform float high_layer_strength : hint_range(0.0, 0.8) = 0.30;
@@ -125,6 +127,9 @@ void sky() {
             cloud_color += cloud_silver_color * pow(facing_sun, 18.0) * edge * 0.10;
         }
 
+        // Apply after the restrained sun rim so the whole cloud bank stays
+        // moody, while open-sky contrast and animation remain unchanged.
+        cloud_color *= 1.0 - cloud_darkening;
         vec3 final_color = mix(sky_base, cloud_color, cloud_alpha);
 
         if (diagnostic_mode == 1) {

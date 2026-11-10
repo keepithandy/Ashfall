@@ -44,8 +44,12 @@ python assets/decorative_interiors/source/validate_interiors.py
 - [x] No item pickups, interactions, inventory edits, gameplay scripts or main-scene changes
 - [ ] Godot 4.7 headless import and gallery load pass
 - [ ] Visual inspection in Godot and art refinement: materials, damage, scale, pivots, collision
-- [ ] Add convincing texture/normal/roughness maps as needed; current GLBs have only base-color PBR material factors
+- [ ] Add convincing texture/normal/roughness maps as needed; current GLBs have baked procedural albedo, normal, and roughness maps
 - [ ] Verify repeated props and variants under Ashfall's dark lighting
 - [ ] User approval before merge
 
 **Status:** The models are a first-pass procedurally authored art pack, not yet production-art finished. Keep draft PR #4 unmerged. The 16 exterior decorative props in `assets/decorative_world` also await in-editor visual art review.
+
+## Latest technical-art pass (November 10, 2026)
+
+All 33 GLBs have been processed with an original, reproducible procedural PBR surface pass (`assets/decorative_world/source/upgrade_pbr_surfaces.py`). Maps are embedded in the GLB files with UVs. **This improves surface variation but does not establish photorealistic or production-ready art.** The geometry still needs in-editor art review and refinement. See `assets/decorative_world/ART_REVIEW_2026-11-10.md` and PR #4 for outstanding gates.

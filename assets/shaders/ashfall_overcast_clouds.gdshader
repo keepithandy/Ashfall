@@ -13,7 +13,7 @@ uniform float cloud_coverage : hint_range(0.0, 1.0) = 0.63;
 uniform float cloud_softness : hint_range(0.05, 0.7) = 0.095;
 uniform float cloud_scale : hint_range(0.5, 6.0) = 2.15;
 uniform float cloud_detail : hint_range(0.0, 2.0) = 0.76;
-uniform float cloud_speed : hint_range(0.0, 0.1) = 0.005;
+uniform float cloud_speed : hint_range(0.0, 0.20) = 0.065;
 uniform vec2 wind_direction = vec2(0.93, 0.36);
 uniform float sun_glow_strength : hint_range(0.0, 1.0) = 0.16;
 
@@ -57,11 +57,12 @@ vec4 cloud_banks(vec3 dir) {
 
     // Project two cloud decks from the hemisphere to an overhead wind plane.
     vec2 plane = dir.xz / max(dir.y + 0.20, 0.25);
-    vec2 wind = normalize(wind_direction + vec2(0.0001)) * TIME * cloud_speed;
+    // Use seconds, not frames. Default moves perceptibly within a few seconds.
+    vec2 wind = normalize(wind_direction + vec2(0.0001)) * (TIME * cloud_speed);
     vec2 uv = plane * cloud_scale;
     float primary = fbm(uv + wind);
-    float wisps = fbm(uv * 2.72 - wind * 0.55 + vec2(15.2, 9.7));
-    float distant = fbm(uv * 0.61 + wind * 0.34 + vec2(37.6, 15.9));
+    float wisps = fbm(uv * 2.72 - wind * 1.15 + vec2(15.2, 9.7));
+    float distant = fbm(uv * 0.61 + wind * 0.53 + vec2(37.6, 15.9));
 
     float density = primary * 0.88 + wisps * 0.12 * cloud_detail;
     // Keep breakup between cloud banks even in stormy conditions.

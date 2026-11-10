@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://b02v2hymfsfc8"]
 
+[ext_resource type="Shader" path="res://assets/shaders/ashfall_overcast_clouds.gdshader" id="clouds"]
 [ext_resource type="PackedScene" path="res://scenes/extra_dressing/mushroom_cluster.tscn" id="35_hd5ph"]
 [ext_resource type="PackedScene" path="res://scenes/nature/bare_tree.tscn" id="bare"]
 [ext_resource type="PackedScene" path="res://scenes/props/concrete_barrier.tscn" id="barrier"]
@@ -36,13 +37,12 @@
 [ext_resource type="PackedScene" path="res://scenes/workshop/workbench_vise.tscn" id="vise"]
 [ext_resource type="PackedScene" path="res://scenes/workshop/wheelbarrow.tscn" id="wheel"]
 
-[sub_resource type="ProceduralSkyMaterial" id="sky_m"]
-sky_top_color = Color(0.035, 0.063, 0.091, 1)
-sky_horizon_color = Color(0.18, 0.19, 0.19, 1)
-ground_bottom_color = Color(0.12, 0.14, 0.13, 1)
-ground_horizon_color = Color(0.16, 0.18, 0.16, 1)
+[sub_resource type="ShaderMaterial" id="sky_m"]
+shader = ExtResource("clouds")
 
 [sub_resource type="Sky" id="sky"]
+process_mode = 3
+radiance_size = 3
 sky_material = SubResource("sky_m")
 
 [sub_resource type="Environment" id="environment"]
@@ -58,8 +58,9 @@ fog_enabled = true
 fog_light_color = Color(0.22, 0.26, 0.25, 1)
 fog_light_energy = 0.45
 fog_density = 0.0075
-fog_sky_affect = 0.42
+fog_sky_affect = 0.10
 volumetric_fog_enabled = true
+volumetric_fog_sky_affect = 0.12
 volumetric_fog_density = 0.005
 volumetric_fog_albedo = Color(0.47, 0.55, 0.52, 1)
 volumetric_fog_length = 65.0

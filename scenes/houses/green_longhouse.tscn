@@ -23,6 +23,8 @@
 [ext_resource type="PackedScene" path="res://scenes/props/radiator.tscn" id="21_mxfe0"]
 [ext_resource type="Material" path="res://assets/props/rust.tres" id="22_qeoer"]
 
+[ext_resource type="Script" path="res://scripts/authoring/house_weathering.gd" id="house_weathering"]
+
 [sub_resource type="BoxMesh" id="BoxMesh_xg18e"]
 size = Vector3(12.3, 0.28, 7.3)
 
@@ -2684,3 +2686,7 @@ mesh = SubResource("CylinderMesh_dwl6w")
 [node name="@CollisionShape3D@247" type="CollisionShape3D" parent="Radiator" unique_id=1599691048]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.365, 0)
 shape = SubResource("BoxShape3D_cy376")
+
+[node name="ArchitecturalWeathering" type="Node3D" parent="."]
+script = ExtResource("house_weathering")
+house_style = 0

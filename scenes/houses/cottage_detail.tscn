@@ -15,6 +15,8 @@
 [ext_resource type="Texture2D" path="res://assets/materials/concrete_floor_worn_001/normal.jpg" id="13_vwxxb"]
 [ext_resource type="Texture2D" path="res://assets/materials/concrete_floor_worn_001/roughness.jpg" id="14_6lvwj"]
 
+[ext_resource type="Script" path="res://scripts/authoring/house_weathering.gd" id="house_weathering"]
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jfyx2"]
 albedo_color = Color(0.6313726, 0.59607846, 0.53333336, 1)
 albedo_texture = ExtResource("1_x8wva")
@@ -1200,3 +1202,7 @@ mesh = SubResource("ArrayMesh_jcfn5")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.18, 3.8)
 material_override = SubResource("StandardMaterial3D_sc85f")
 mesh = SubResource("ArrayMesh_u0ed6")
+
+[node name="ArchitecturalWeathering" type="Node3D" parent="."]
+script = ExtResource("house_weathering")
+house_style = 4

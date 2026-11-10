@@ -28,6 +28,8 @@
 [ext_resource type="PackedScene" path="res://scenes/props/metal_bucket.tscn" id="26_1kram"]
 [ext_resource type="PackedScene" path="res://scenes/houses/cottage_detail.tscn" id="27_cottage_detail"]
 
+[ext_resource type="Script" path="res://scripts/authoring/house_weathering.gd" id="house_weathering"]
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5j3sv"]
 albedo_color = Color(0.72156864, 0.6784314, 0.627451, 1)
 albedo_texture = ExtResource("1_4y5ci")
@@ -2428,3 +2430,7 @@ metadata/category = "Small objects"
 metadata/approximate_size_metres = Vector3(0.42, 0.42, 0.3)
 metadata/physics = "Static set dressing; small debris has no collision"
 metadata/world_text_policy = "No attached text"
+
+[node name="ArchitecturalWeathering" type="Node3D" parent="."]
+script = ExtResource("house_weathering")
+house_style = 3

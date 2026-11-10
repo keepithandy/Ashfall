@@ -1,0 +1,21 @@
+name: Decorative World Props Validation
+
+on:
+  pull_request:
+    paths:
+      - 'assets/decorative_world/**'
+      - 'scenes/decorative_world/**'
+      - '.github/workflows/decorative-world-props.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate-decorative-props:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the PR
+        uses: actions/checkout@v4
+      - name: Check glTF structure, Godot references, collision and non-interactivity
+        run: python3 assets/decorative_world/source/validate_props.py

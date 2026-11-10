@@ -1,76 +1,103 @@
 shader_type sky;
+render_mode use_half_res_pass;
 
-uniform vec3 horizon_color : source_color = vec3(0.26, 0.30, 0.31);
-uniform vec3 zenith_color : source_color = vec3(0.065, 0.095, 0.12);
-uniform vec3 lower_cloud_color : source_color = vec3(0.16, 0.19, 0.20);
-uniform vec3 upper_cloud_color : source_color = vec3(0.47, 0.50, 0.49);
-uniform vec3 sun_glow_color : source_color = vec3(0.65, 0.67, 0.60);
-uniform float cloud_coverage : hint_range(0.0, 1.0) = 0.70;
-uniform float cloud_softness : hint_range(0.05, 0.7) = 0.27;
-uniform float cloud_scale : hint_range(0.5, 6.0) = 2.2;
-uniform float cloud_detail : hint_range(0.1, 2.0) = 0.85;
+// Station 04 - procedurally animated, overcast cloud banks.
+// Cloud detail runs at half screen resolution. Ambient radiance uses a cheaper
+// approximation so the dynamic cloud cover does not dominate the frame budget.
+uniform vec3 horizon_color : source_color = vec3(0.25, 0.28, 0.29);
+uniform vec3 zenith_color : source_color = vec3(0.052, 0.079, 0.105);
+uniform vec3 undercloud_color : source_color = vec3(0.17, 0.19, 0.20);
+uniform vec3 sunlit_cloud_color : source_color = vec3(0.47, 0.49, 0.48);
+uniform vec3 sun_glow_color : source_color = vec3(0.64, 0.65, 0.59);
+uniform float cloud_coverage : hint_range(0.0, 1.0) = 0.74;
+uniform float cloud_softness : hint_range(0.05, 0.7) = 0.17;
+uniform float cloud_scale : hint_range(0.5, 6.0) = 2.15;
+uniform float cloud_detail : hint_range(0.0, 2.0) = 0.76;
 uniform float cloud_speed : hint_range(0.0, 0.1) = 0.005;
 uniform vec2 wind_direction = vec2(0.93, 0.36);
-uniform float sun_glow_strength : hint_range(0.0, 1.0) = 0.18;
+uniform float sun_glow_strength : hint_range(0.0, 1.0) = 0.16;
 
 float hash21(vec2 p) {
-    p = fract(p * vec2(123.34, 456.21));
-    p += dot(p, p + 45.32);
-    return fract(p.x * p.y);
+    vec3 p3 = fract(vec3(p.xyx) * 0.1031);
+    p3 += dot(p3, p3.yzx + 33.33);
+    return fract((p3.x + p3.y) * p3.z);
 }
 
-float noise2d(vec2 p) {
-    vec2 cell = floor(p);
-    vec2 local_pos = fract(p);
-    vec2 fade = local_pos * local_pos * (3.0 - 2.0 * local_pos);
-    return mix(
-        mix(hash21(cell), hash21(cell + vec2(1.0, 0.0)), fade.x),
-        mix(hash21(cell + vec2(0.0, 1.0)), hash21(cell + vec2(1.0, 1.0)), fade.x),
-        fade.y
-    );
+float smooth_noise(vec2 p) {
+    vec2 i = floor(p);
+    vec2 f = fract(p);
+    vec2 u = f * f * (3.0 - 2.0 * f);
+    return mix(mix(hash21(i), hash21(i + vec2(1.0, 0.0)), u.x),
+               mix(hash21(i + vec2(0.0, 1.0)), hash21(i + vec2(1.0, 1.0)), u.x), u.y);
 }
 
-float cloud_fbm(vec2 p) {
+float fbm(vec2 p) {
     float sum = 0.0;
-    float amplitude = 0.52;
-    mat2 rotation = mat2(vec2(0.80, 0.60), vec2(-0.60, 0.80));
-    for (int i = 0; i < 5; i++) {
-        sum += amplitude * noise2d(p);
-        p = rotation * p * 2.02 + vec2(4.8, 1.3);
-        amplitude *= 0.49;
+    float weight = 0.52;
+    mat2 rotate2d = mat2(vec2(0.8, 0.6), vec2(-0.6, 0.8));
+    for (int layer = 0; layer < 5; layer++) {
+        sum += smooth_noise(p) * weight;
+        p = rotate2d * p * 2.03 + vec2(3.91, 1.37);
+        weight *= 0.49;
     }
     return sum;
 }
 
-void sky() {
-    vec3 direction = normalize(EYEDIR);
-    float altitude = max(direction.y, 0.0);
-    float horizon = pow(1.0 - altitude, 2.2);
-    vec3 color = mix(zenith_color, horizon_color, horizon);
+vec3 atmosphere(vec3 dir) {
+    float above = clamp(dir.y, 0.0, 1.0);
+    float horizon = pow(1.0 - above, 2.1);
+    vec3 sky_tint = mix(zenith_color, horizon_color, horizon);
+    return mix(vec3(0.12, 0.15, 0.15), sky_tint, smoothstep(-0.12, 0.08, dir.y));
+}
 
-    // Two windswept cloud decks: distinct altitude, scale, and motion.
-    // Angular projection prevents cloud shapes stretching at the horizon.
-    vec2 plane = direction.xz / max(direction.y + 0.17, 0.23);
-    vec2 wind = normalize(wind_direction + vec2(0.0001)) * TIME * cloud_speed;
-    vec2 p = plane * cloud_scale + wind;
-    float main_noise = cloud_fbm(p);
-    float fine_noise = cloud_fbm(p * 2.8 + vec2(13.1, 4.7) - wind * 0.55);
-    float banks = main_noise * 0.86 + fine_noise * 0.14 * cloud_detail;
-    float threshold = mix(0.67, 0.28, cloud_coverage);
-    float bank = smoothstep(threshold - cloud_softness, threshold + cloud_softness, banks);
-    float distant_deck = cloud_fbm(plane * (cloud_scale * 0.55) - wind * 0.62 + vec2(48.0, 17.0));
-    float veil = smoothstep(0.32, 0.72, distant_deck) * cloud_coverage * 0.43;
-    float cloud = max(bank, veil) * smoothstep(-0.04, 0.12, direction.y);
-    float light_variation = clamp(bank * 0.57 + main_noise * 0.5 + altitude * 0.1, 0.0, 1.0);
-    vec3 cloud_tint = mix(lower_cloud_color, upper_cloud_color, light_variation);
-
-    // Brightening is restrained: most of Station 04 should remain overcast.
-    if (!AT_CUBEMAP_PASS) {
-        float sun_alignment = max(dot(direction, LIGHT0_DIRECTION), 0.0);
-        float glow = pow(sun_alignment, 18.0) * sun_glow_strength;
-        cloud_tint += sun_glow_color * glow * 0.22;
-        color += sun_glow_color * glow * (1.0 - cloud) * 0.18;
+vec4 cloud_banks(vec3 dir) {
+    if (dir.y < -0.07) {
+        return vec4(undercloud_color, 0.0);
     }
 
-    COLOR = mix(color, cloud_tint, clamp(cloud, 0.0, 1.0));
+    // Project two cloud decks from the hemisphere to an overhead wind plane.
+    vec2 plane = dir.xz / max(dir.y + 0.20, 0.25);
+    vec2 wind = normalize(wind_direction + vec2(0.0001)) * TIME * cloud_speed;
+    vec2 uv = plane * cloud_scale;
+    float primary = fbm(uv + wind);
+    float wisps = fbm(uv * 2.72 - wind * 0.55 + vec2(15.2, 9.7));
+    float distant = fbm(uv * 0.61 + wind * 0.34 + vec2(37.6, 15.9));
+
+    float density = primary * 0.88 + wisps * 0.12 * cloud_detail;
+    float cutoff = mix(0.73, 0.23, cloud_coverage);
+    float main_bank = smoothstep(cutoff - cloud_softness, cutoff + cloud_softness, density);
+    float high_veil = smoothstep(0.30, 0.72, distant) * cloud_coverage * 0.52;
+    float cloud_alpha = max(main_bank, high_veil) * smoothstep(-0.06, 0.18, dir.y);
+
+    float lit = clamp(0.17 + 0.64 * density + 0.17 * dir.y, 0.0, 1.0);
+    vec3 cloud_tint = mix(undercloud_color, sunlit_cloud_color, lit);
+    if (LIGHT0_ENABLED) {
+        float alignment = max(dot(dir, LIGHT0_DIRECTION), 0.0);
+        float silver_edge = pow(alignment, 24.0) * sun_glow_strength;
+        cloud_tint += sun_glow_color * silver_edge * (1.0 - main_bank * 0.45) * 0.28;
+    }
+    return vec4(cloud_tint, clamp(cloud_alpha, 0.0, 1.0));
+}
+
+void sky() {
+    vec3 dir = normalize(EYEDIR);
+    vec3 base = atmosphere(dir);
+
+    if (AT_CUBEMAP_PASS) {
+        // Reflection/ambient cubemap: approximate broad cloud occlusion.
+        // TIME in the background demands REALTIME sky mode; keeping the cubemap
+        // simple prevents six extra full procedural cloud evaluations per frame.
+        COLOR = mix(base, mix(undercloud_color, sunlit_cloud_color, 0.37),
+                    cloud_coverage * smoothstep(-0.02, 0.3, dir.y) * 0.86);
+    } else if (AT_HALF_RES_PASS) {
+        vec4 clouds = cloud_banks(dir);
+        COLOR = clouds.rgb;
+        ALPHA = clouds.a;
+    } else {
+        if (LIGHT0_ENABLED) {
+            float alignment = max(dot(dir, LIGHT0_DIRECTION), 0.0);
+            base += sun_glow_color * pow(alignment, 28.0) * sun_glow_strength * 0.14;
+        }
+        COLOR = mix(base, HALF_RES_COLOR.rgb, clamp(HALF_RES_COLOR.a, 0.0, 1.0));
+    }
 }

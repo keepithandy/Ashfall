@@ -38,8 +38,9 @@ cloud detail and palette are adjustable from the sky `ShaderMaterial`.
   not an expensive per-pixel cloud calculation on all six cube faces.
 - The `Sky` is set to **Realtime** process mode and **256 px radiance**, because
   sky shaders using `TIME` can update the radiance cubemap every frame.
-- The existing sky fog remains enabled; cloud visibility may be reduced near
-  the horizon because the atmosphere is intentionally dense.
+- Ground-level fog remains enabled, but its sky contribution has been deliberately
+  reduced (`fog_sky_affect = 0.10`, `volumetric_fog_sky_affect = 0.12`) so
+  distant overcast banks are legible while the ground stays threatening.
 
 **Important limitation:** This is an atmospheric **procedural sky shader**, not
 physically simulated 3D cloud volumes. It does not yet cast cloud shadows onto
@@ -54,17 +55,38 @@ expand `Environment > Sky > Sky Material > Shader Parameters`. Notable parameter
 
 | Parameter | Default | Meaning |
 | --- | --- | --- |
-| `cloud_coverage` | 0.74 | More coverage means more continuous overcast |
-| `cloud_softness` | 0.17 | How diffuse the cloud boundaries are |
+| `cloud_coverage` | 0.63 | More coverage means more continuous overcast |
+| `cloud_softness` | 0.095 | How diffuse the cloud boundaries are |
 | `cloud_scale` | 2.15 | Apparent frequency of cloud formations |
 | `cloud_detail` | 0.76 | High-frequency variation |
-| `cloud_speed` | 0.005 | Animation speed in shader time |
+| `cloud_speed` | 0.065 | Animation speed in shader time |
 | `wind_direction` | (0.93, 0.36) | Horizontal sky-plane wind direction |
 | `sun_glow_strength` | 0.16 | Brightness around the directional sun |
 
 To assess performance, compare the main scene against `main` under equal
 resolution, camera position and GPU conditions. Keep the most fog-heavy viewpoints
 in the comparison to ensure clouds are actually visible.
+
+
+### Visibility and motion correction
+
+Following the first on-device test, the initial clouds were reported **too faint
+and apparently stationary**. This branch now:
+
+- Reduces *both* non-volumetric and volumetric fog's influence on sky rendering,
+  rather than reducing actual fog density around the buildings.
+- Increases cloud-to-sky contrast and changes coverage thresholds so there are
+  open-sky gaps and discernible cloud-bank edges, not a uniform gray ceiling.
+- Changes drift from `0.005` to `0.065` shader-space units per second (13×),
+  with the wispy secondary deck moving at a different speed and direction.
+- Leaves `TIME` inside the sky shader, so movement advances continuously without
+  adding a gameplay timer or script-side uniform updates.
+
+**Animation test:** look about 45 degrees upward, keep the camera stationary for
+15–20 seconds and watch a cloud edge against the darker sky gap. Then inspect
+around the horizon. If the sky still appears completely uniform or still, check
+Godot's shader compiler/output log and confirm `cloud_speed` in the active sky
+material is not overridden to `0.005` or `0.0`. Restart the scene after pulling.
 
 ## Required validation (in Godot)
 

@@ -20,6 +20,7 @@ func _initialize() -> void:
     var mushrooms := level.get_node_or_null("MushroomCluster") as Node3D
     var horizon := level.get_node_or_null("EditableWorld/Terrain/HorizonRelief") as Node3D
     var treeline := level.get_node_or_null("EditableWorld/Terrain/DistantTreeLine") as Node3D
+    var near_canopies := level.get_node_or_null("EditableWorld/Vegetation/NearCanopyFill") as Node3D
     var litter := level.get_node_or_null("EditableWorld/GroundLitter") as Node3D
 
     if ground_body == null or ground_visual == null or ground_collision == null:
@@ -144,6 +145,43 @@ func _initialize() -> void:
             treeline.call("_build")
             if forest.get_child_count() != original_batches:
                 failures.append("Forest builder is not idempotent")
+
+    # Existing 46 manually placed pines should receive visual crowns only.
+    # Never rewrite their scenes, positions, collisions or game scripts.
+    if near_canopies == null or near_canopies.get_script() == null:
+        failures.append("Authored forest canopy overlay is missing")
+    else:
+        near_canopies.call("_build")
+        var crown_group := near_canopies.get_node_or_null("CanopyBatches") as Node3D
+        if crown_group == null:
+            failures.append("Near forest canopy batches failed to build")
+        else:
+            var sum_canopies := 0
+            for child in crown_group.get_children():
+                var crowns := child as MultiMeshInstance3D
+                if crowns == null or crowns.multimesh == null:
+                    failures.append("Near canopy batch is invalid")
+                    continue
+                sum_canopies += crowns.multimesh.instance_count
+                if crowns.multimesh.mesh == null or crowns.multimesh.mesh.get_surface_count() != 2:
+                    failures.append("Near canopy foliage mesh does not contain bark and needles")
+            if sum_canopies != 46:
+                failures.append("Existing pine canopy coverage changed unexpectedly")
+            if int(near_canopies.get("generated_canopy_count")) != 46:
+                failures.append("Near canopy builder did not locate all authored pines")
+            var before := crown_group.get_child_count()
+            near_canopies.call("_build")
+            if crown_group.get_child_count() != before:
+                failures.append("Near canopy builder is not idempotent")
+
+    if horizon != null and horizon.get_script() != null:
+        var ridge_noise: FastNoiseLite = horizon.call("_make_noise") as FastNoiseLite
+        var ridge_near: Vector3 = horizon.call("_point", 0.42, 9.0, ridge_noise)
+        var ridge_far: Vector3 = horizon.call("_point", 0.42, 550.0, ridge_noise)
+        if ridge_far.y <= ridge_near.y + 8.0:
+            failures.append("Far ridge does not rise above the flat-ground horizon")
+        if absf(ridge_far.x) <= 230.0 and absf(ridge_far.z) <= 230.0:
+            failures.append("Visual relief no longer extends beyond the flat ground edge")
 
     if litter == null or litter.get_script() == null:
         failures.append("Collision-free ground dressing script is not attached")

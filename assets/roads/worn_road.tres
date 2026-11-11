@@ -1,0 +1,11 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3]
+
+[ext_resource type="Texture2D" path="res://assets/materials/concrete_floor_worn_001/albedo.jpg" id="1"]
+
+[resource]
+albedo_color = Color(0.57, 0.55, 0.48, 1)
+albedo_texture = ExtResource("1")
+roughness = 0.98
+metallic = 0.0
+cull_mode = 2
+texture_filter = 5

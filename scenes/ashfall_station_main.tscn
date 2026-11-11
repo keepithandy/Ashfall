@@ -4,6 +4,7 @@
 [ext_resource type="Shader" path="res://assets/shaders/station04_ground.gdshader" id="terrain_shader"]
 [ext_resource type="Script" path="res://scripts/runtime/station04_horizon.gd" id="horizon_script"]
 [ext_resource type="Script" path="res://scripts/runtime/station04_treeline.gd" id="treeline_script"]
+[ext_resource type="Script" path="res://scripts/runtime/station04_near_canopies.gd" id="near_canopy_script"]
 [ext_resource type="Script" path="res://scripts/runtime/station04_surface_dressing.gd" id="surface_dressing_script"]
 [ext_resource type="Script" path="res://scripts/runtime/station04_wet_ground.gd" id="wet_ground_script"]
 [ext_resource type="Texture2D" path="res://assets/materials/forest_ground_05/normal.jpg" id="forest_normal_texture"]
@@ -63,20 +64,20 @@ background_mode = 2
 sky = SubResource("sky")
 ambient_light_source = 2
 ambient_light_color = Color(0.46, 0.52, 0.55, 1)
-ambient_light_energy = 0.30
+ambient_light_energy = 0.46
 tonemap_mode = 2
 ssao_enabled = true
 ssao_intensity = 0.90
 fog_enabled = true
-fog_light_color = Color(0.22, 0.26, 0.25, 1)
-fog_light_energy = 0.45
-fog_density = 0.0068
+fog_light_color = Color(0.32, 0.37, 0.35, 1)
+fog_light_energy = 0.58
+fog_density = 0.0046
 fog_sky_affect = 0.10
 volumetric_fog_enabled = true
 volumetric_fog_sky_affect = 0.12
-volumetric_fog_density = 0.0046
+volumetric_fog_density = 0.0036
 volumetric_fog_albedo = Color(0.44, 0.51, 0.49, 1)
-volumetric_fog_length = 70.0
+volumetric_fog_length = 110.0
 
 [sub_resource type="FogMaterial" id="fog_research"]
 density = 0.010
@@ -111,6 +112,8 @@ emission_energy_multiplier = 1.7
 
 [sub_resource type="ShaderMaterial" id="ground_mat"]
 shader = ExtResource("terrain_shader")
+shader_parameter/soil_tint = Color(0.78, 0.77, 0.71, 1)
+shader_parameter/road_tint = Color(0.66, 0.66, 0.60, 1)
 shader_parameter/forest_albedo = ExtResource("forest_ground_texture")
 shader_parameter/concrete_albedo = ExtResource("road_surface_texture")
 shader_parameter/forest_normal = ExtResource("forest_normal_texture")
@@ -191,7 +194,7 @@ environment = SubResource("environment")
 [node name="OvercastSun" type="DirectionalLight3D" parent="." unique_id=986619216]
 transform = Transform3D(0.8571673, 0.30273178, -0.41667455, 0, 0.809017, 0.58778524, 0.5150381, -0.5038303, 0.6934629, 0, 0, 0)
 light_color = Color(0.72, 0.78, 0.78, 1)
-light_energy = 0.49
+light_energy = 0.58
 shadow_enabled = true
 directional_shadow_max_distance = 90.0
 
@@ -624,6 +627,10 @@ transform = Transform3D(0.9517921, 0, -0.30674377, 0, 1, 0, 0.30674377, 0, 0.951
 
 [node name="Pine46" parent="EditableWorld/Vegetation" unique_id=414258001 instance=ExtResource("pine")]
 transform = Transform3D(0.87891674, 0, 0.4769752, 0, 1, 0, -0.4769752, 0, 0.87891674, 68.664, 0, 49.398)
+
+[node name="NearCanopyFill" type="Node3D" parent="EditableWorld/Vegetation"]
+script = ExtResource("near_canopy_script")
+metadata/environment_only = "Collision-free spruce foliage overlay for existing authored pines."
 
 [node name="Shrub01" parent="EditableWorld/Vegetation" unique_id=2112191764 instance=ExtResource("shrub")]
 transform = Transform3D(0.7693904, 0, 0.6387788, 0, 1, 0, -0.6387788, 0, 0.7693904, -36.427, 0, 29.603)

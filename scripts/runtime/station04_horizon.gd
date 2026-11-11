@@ -7,13 +7,13 @@ extends Node3D
 ## the ray intersection with that rectangle, then begin the mesh OUTSIDE it.
 ## The relief never extends into the traversable district, even at corners.
 
-@export_range(64, 192, 16) var angular_segments: int = 128
-@export_range(0.0, 20.0, 0.5) var relief_height: float = 9.0
+@export_range(64, 256, 16) var angular_segments: int = 160
+@export_range(0.0, 30.0, 0.5) var relief_height: float = 15.0
 @export var show_relief: bool = true
 
 const PLAY_X := 86.0
 const PLAY_Z := 81.0
-const OFFSETS := [9.0, 15.0, 23.0, 35.0, 52.0, 75.0, 100.0, 130.0]
+const OFFSETS := [9.0, 15.0, 23.0, 35.0, 52.0, 75.0, 100.0, 130.0, 165.0, 200.0, 245.0, 290.0, 340.0, 400.0, 470.0, 550.0, 640.0]
 
 func _ready() -> void:
     if show_relief:
@@ -25,13 +25,21 @@ func _perimeter_radius(angle: float) -> float:
     return minf(x, z)
 
 func _height_at(angle: float, distance_from_wall: float, x: float, z: float, noise: FastNoiseLite) -> float:
-    # Leave a lower-than-ground seam at the near edge; fade up outside the wall.
-    var fade := smoothstep(15.0, 90.0, distance_from_wall)
-    var relief_noise := noise.get_noise_2d(x, z)
-    var eastern_ridge := maxf(0.0, cos(angle - 0.45))
-    var western_ridge := maxf(0.0, cos(angle - 2.7))
-    var shape := 3.2 + 3.0 * relief_noise + 3.5 * eastern_ridge * eastern_ridge + 1.6 * western_ridge
-    return -0.045 + maxf(0.5, shape) * fade * relief_height / 9.0
+    # Start below the unchanged flat gameplay ground. The rolling relief
+    # rises gently through it outside the collision perimeter, avoiding a
+    # visible seam or a new slope under buildings, gates or navigation.
+    var fade := smoothstep(18.0, 89.0, distance_from_wall)
+    var broad := noise.get_noise_2d(x * 0.48, z * 0.48)
+    var intermediate := noise.get_noise_2d(x * 0.97 + 37.0, z * 0.97 - 21.0)
+    var folds := sin(angle * 3.0 + 0.72) + 0.47 * sin(angle * 6.0 - 0.9)
+    var near_rise := maxf(1.8, 6.7 + 5.2 * broad + 3.5 * folds + 1.8 * intermediate)
+    # Two progressively farther ridges hide the 460 m flat ground's hard edge
+    # from ordinary standing eye heights. These are purely visual meshes.
+    var middle := smoothstep(115.0, 315.0, distance_from_wall)
+    var distant := smoothstep(290.0, 550.0, distance_from_wall)
+    var middle_height := (10.0 + 4.0 * absf(sin(angle * 4.3 + intermediate))) * middle
+    var distant_height := (5.0 + 5.5 * broad + 2.6 * folds) * distant
+    return -0.10 + (near_rise * fade + middle_height + distant_height) * relief_height / 12.0
 
 func _point(angle: float, offset: float, noise: FastNoiseLite) -> Vector3:
     var r := _perimeter_radius(angle) + offset

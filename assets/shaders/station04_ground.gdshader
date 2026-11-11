@@ -27,6 +27,7 @@ uniform float patch_strength : hint_range(0.0, 0.5) = 0.12;
 uniform float verge_grit : hint_range(0.0, 1.0) = 0.32;
 uniform float foundation_weathering : hint_range(0.0, 0.5) = 0.18;
 uniform float industrial_staining : hint_range(0.0, 0.60) = 0.18;
+uniform float drainage_grit : hint_range(0.0, 0.45) = 0.16;
 
 varying vec3 terrain_world;
 
@@ -110,6 +111,14 @@ void fragment() {
     float tire_pair = 1.0 - smoothstep(0.16, 0.45, abs(abs(ground.x + tire_wander) - 1.06));
     tire_pair *= road * (1.0 - yard);
     compacted *= 1.0 - tire_pair * 0.12;
+
+    // Broken roadside drainage discoloration follows the existing approach,
+    // with low-frequency interruptions rather than a painted continuous line.
+    float drainage_noise = value_noise(vec2(ground.z * 0.23, 19.0));
+    float drainage_edges = 1.0 - smoothstep(0.18, 0.75, abs(abs(ground.x) - 3.1));
+    float drainage_mask = drainage_edges * shoulder_mask * (1.0 - yard);
+    drainage_mask *= smoothstep(0.33, 0.64, drainage_noise);
+    compacted *= 1.0 - drainage_grit * drainage_mask;
 
     // Localized damp patches, with no fake raised water plane or collision.
     float damp_noise = value_noise(ground * 0.15 + vec2(13.3, -9.2));

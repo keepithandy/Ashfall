@@ -254,6 +254,8 @@ func _layout_hud() -> void:
 	footer_hint.size = Vector2(w - 52, 20)
 	if w < 1100:
 		footer_hint.text = "[TAB] PACK  /  [E] USE  /  [ESC] MENU  /  [F10] THEME"
+	else:
+		footer_hint.text = "[TAB] PACK  /  [E] USE  /  [F] LIGHT  /  [ESC] MENU  /  [F10] " + THEME_NAMES[field_theme_mode]
 	loot_panel.position = Vector2((w - loot_panel.size.x) * 0.5, (h - loot_panel.size.y) * 0.5)
 	queue_redraw()
 
@@ -423,6 +425,14 @@ func _process(_delta: float) -> void:
 	health_bar.value = game.player.health
 	stamina_bar.value = game.player.stamina
 	stats.text = "CONDITION %03d    /    STAMINA %03d" % [int(game.player.health), int(game.player.stamina)]
+	var minutes := int(game.elapsed / 60.0)
+	journal_stamp.text = "ENTRY RECORD  /  %02d:%02d   /   %s" % [minutes, int(game.elapsed) % 60, "SAMPLE SECURED" if game.has_sample else "IN PROGRESS"]
+	var condition := "CRITICAL" if game.player.health < 25.0 else ("WOUNDED" if game.player.health < 60.0 else "STABLE")
+	vital_status.text = "FIELD ASSESSMENT  /  " + condition
+	var motion := "CROUCHING" if game.player.crouching else ("RUNNING" if game.player.noise_radius >= 9.0 else ("MOVING" if game.player.noise_radius >= 4.0 else "STILL"))
+	field_activity.text = "MOVEMENT  /  " + motion
+	if game.hazard_strength > 0.08:
+		field_activity.text = "WARNING  /  UNSTABLE FIELD"
 	pack_status.text = "BANDAGE %d  /  FOOD %d\nBATTERIES %d  /  LIGHT %d%%" % [game.inventory.bandage, game.inventory.food_tin, game.inventory.batteries, int(game.player.battery_charge)]
 	var carried: Dictionary = ItemCatalog.entry(game.equipped_item_id)
 	pack_status.text += "\nHAND  /  " + str(carried.get("name", "Empty")).to_upper()
@@ -434,7 +444,9 @@ func _process(_delta: float) -> void:
 	var degrees := fposmod(rad_to_deg(-game.player.rotation.y), 360)
 	var directions := ["N", "NE", "E", "SE", "S", "SW", "W", "NW"]
 	bearing.text = "· · ·    %s   %03d°    · · ·" % [directions[int((degrees + 22.5) / 45) % 8], int(degrees)]
-	detector_status.text=game.anomaly_readout() if game.detector_enabled else ""
+	detector_status.text = game.anomaly_readout() if game.detector_enabled else "SENSOR STANDBY\nEQUIP METER TO SCAN"
+	if game.hazard_strength > 0.08:
+		detector_status.text = "SIGNAL DISTORTION\nMOVE OUT OF THE FIELD"
 	queue_redraw()
 
 func _draw() -> void:
@@ -444,27 +456,31 @@ func _draw() -> void:
 	var h := size.y
 	if w < 700 or h < 460:
 		return
-	var left_w := minf(430.0, w * 0.42)
-	var right_w := minf(300.0, w * 0.31)
-	_draw_field_panel(Rect2(22, 20, left_w, 214))
-	_draw_field_panel(Rect2(w - right_w - 22, 20, right_w, 116))
+	var left_w := minf(420.0, w * 0.40)
+	var right_w := minf(292.0, w * 0.30)
+	_draw_field_panel(Rect2(22, 20, left_w, 218))
+	_draw_field_panel(Rect2(w - right_w - 22, 20, right_w, 144))
 	_draw_field_panel(Rect2(w * 0.5 - 112, 237 if w < 1100.0 else 24, 224, 46))
-	_draw_field_panel(Rect2(22, h - 146, 285, 112))
-	_draw_field_panel(Rect2(w - right_w - 22, h - 132, right_w, 98))
+	_draw_field_panel(Rect2(22, h - 171, 294, 135))
+	_draw_field_panel(Rect2(w - right_w - 22, h - 153, right_w, 117))
 	if not message.text.is_empty():
-		_draw_field_panel(Rect2(w * 0.5 - minf(362.0, w * 0.40), h - 221, minf(724.0, w * 0.80), 62))
+		var message_width := minf(710.0, w * 0.78)
+		_draw_field_panel(Rect2((w - message_width) * 0.5, h - 221, message_width, 62))
 	if not interaction.text.is_empty():
 		var prompt_width := minf(632.0, maxf(296.0, w - 644.0))
 		_draw_field_panel(Rect2((w - prompt_width) * 0.5, h - 161, prompt_width, 48))
-	draw_line(Vector2(20, h - 38), Vector2(w - 20, h - 38), hud_border)
+	draw_line(Vector2(20, h - 36), Vector2(w - 20, h - 36), hud_border)
+	# Personalized recorder's paperclip / corner scratch motifs are static.
+	draw_line(Vector2(23, 247), Vector2(23, 260), hud_border, 2.0)
+	draw_line(Vector2(23, 260), Vector2(37, 260), hud_border, 2.0)
 	var center := size * 0.5
-	var ink := Color(hud_pale.r, hud_pale.g, hud_pale.b, 0.60)
-	draw_line(center + Vector2(-7, 0), center + Vector2(-3, 0), ink)
-	draw_line(center + Vector2(3, 0), center + Vector2(7, 0), ink)
-	draw_line(center + Vector2(0, -7), center + Vector2(0, -3), ink)
-	draw_line(center + Vector2(0, 3), center + Vector2(0, 7), ink)
+	var crosshair_ink := Color(hud_pale.r, hud_pale.g, hud_pale.b, 0.68)
+	draw_line(center + Vector2(-7, 0), center + Vector2(-3, 0), crosshair_ink)
+	draw_line(center + Vector2(3, 0), center + Vector2(7, 0), crosshair_ink)
+	draw_line(center + Vector2(0, -7), center + Vector2(0, -3), crosshair_ink)
+	draw_line(center + Vector2(0, 3), center + Vector2(0, 7), crosshair_ink)
 	if game.hazard_strength > 0:
-		draw_rect(Rect2(Vector2.ZERO, size), Color(0.55, 0.11, 0.04, game.hazard_strength * 0.18))
+		draw_rect(Rect2(Vector2.ZERO, size), Color(0.52, 0.10, 0.04, game.hazard_strength * 0.15))
 
 func show_minimal_intro() -> void:
 	menu_title.hide()

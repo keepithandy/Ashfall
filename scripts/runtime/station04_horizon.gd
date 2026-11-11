@@ -73,10 +73,15 @@ func _build() -> void:
             _triangle(tool, near0, near1, far0)
             _triangle(tool, near1, far1, far0)
 
-    tool.index()
+    # Normals must be generated before indexing; shared vertices across
+    # triangle seams would otherwise be indexed without smoothing control.
     tool.generate_normals()
     tool.generate_tangents()
+    tool.index()
     var mesh := tool.commit()
+    if mesh == null:
+        push_error("Station 04 distant relief mesh generation failed")
+        return
     var vista := MeshInstance3D.new()
     vista.name = "DistantTerrain"
     vista.mesh = mesh

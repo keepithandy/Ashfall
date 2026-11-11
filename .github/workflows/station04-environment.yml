@@ -1,0 +1,40 @@
+name: Station 04 Environment Regression
+
+on:
+  pull_request:
+    paths:
+      - 'scenes/ashfall_station_main.tscn'
+      - 'scripts/runtime/station04_*.gd'
+      - 'assets/shaders/station04_ground.gdshader'
+      - 'tests/check_station_grounding.gd'
+      - '.github/workflows/station04-environment.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  godot-station04:
+    runs-on: ubuntu-latest
+    timeout-minutes: 18
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install Godot 4.7.2
+        shell: bash
+        run: |
+          set -euo pipefail
+          curl -fL --retry 3 "https://github.com/godotengine/godot/releases/download/4.7.2-stable/Godot_v4.7.2-stable_linux.x86_64.zip" -o /tmp/godot.zip
+          unzip -q /tmp/godot.zip -d /tmp
+          chmod +x /tmp/Godot_v4.7.2-stable_linux.x86_64
+      - name: Import project assets
+        shell: bash
+        run: |
+          /tmp/Godot_v4.7.2-stable_linux.x86_64 --headless --path . --editor --import
+      - name: Verify Station 04 terrain, procedural relief and dressing
+        shell: bash
+        run: |
+          /tmp/Godot_v4.7.2-stable_linux.x86_64 --headless --path . --script res://tests/check_station_grounding.gd
+      - name: Verify main scene parses and runs without startup failures
+        shell: bash
+        run: |
+          timeout 35s /tmp/Godot_v4.7.2-stable_linux.x86_64 --headless --path . --quit-after 30

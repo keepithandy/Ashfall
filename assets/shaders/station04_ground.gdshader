@@ -22,6 +22,9 @@ uniform float worn_edges : hint_range(0.15, 2.5) = 1.05;
 uniform float normal_strength : hint_range(0.0, 1.5) = 0.62;
 uniform float weather_wetness : hint_range(0.0, 1.0) = 0.20;
 uniform float dirt_variation : hint_range(0.0, 0.5) = 0.16;
+// Two-scale breakup avoids large uniform patches across the open yard.
+uniform float patch_strength : hint_range(0.0, 0.5) = 0.12;
+uniform float verge_grit : hint_range(0.0, 1.0) = 0.32;
 
 varying vec3 terrain_world;
 
@@ -81,12 +84,17 @@ void fragment() {
 
     // Mud and fine grit collect around traffic, blending into undisturbed soil.
     vec3 verge = soil * shoulder_tint * 1.7;
+    float verge_scatter = smoothstep(0.40, 0.75, fine) * shoulder_mask;
     soil = mix(soil, verge, shoulder_mask * 0.65);
+    soil = mix(soil, soil * 0.72, verge_scatter * verge_grit);
     vec3 compacted = texture(concrete_albedo, road_uv).rgb * road_tint;
     compacted *= mix(0.85, 1.13, broken);
+    float patches = value_noise(ground * 0.105 + vec2(71.2, 9.7));
+    compacted *= 1.0 - patch_strength * smoothstep(0.52, 0.78, patches);
 
     // Two subtle compacted wheel tracks; not a sharp painted pair of stripes.
-    float tire_pair = 1.0 - smoothstep(0.16, 0.45, abs(abs(ground.x) - 1.06));
+    float tire_wander = (value_noise(vec2(ground.z * 0.12, 8.0)) - 0.5) * 0.26;
+    float tire_pair = 1.0 - smoothstep(0.16, 0.45, abs(abs(ground.x + tire_wander) - 1.06));
     tire_pair *= road * (1.0 - yard);
     compacted *= 1.0 - tire_pair * 0.12;
 

@@ -77,6 +77,24 @@ func _initialize() -> void:
     elif litter is CollisionObject3D:
         failures.append("Ground dressing must not create physics bodies")
 
+    # Run the same mesh/dressing builders as the playable scene and verify
+    # their outputs. This catches parser and missing-resource errors that a
+    # node-reference-only test would miss.
+    if horizon != null and horizon.get_script() != null:
+        horizon.call("_build")
+        var relief_mesh := horizon.get_node_or_null("DistantTerrain") as MeshInstance3D
+        if relief_mesh == null or relief_mesh.mesh == null:
+            failures.append("Distant relief failed to build a mesh")
+        elif relief_mesh.mesh.get_surface_count() == 0:
+            failures.append("Distant relief generated no visible surfaces")
+    if litter != null and litter.get_script() != null:
+        litter.call("_make_layer", true)
+        litter.call("_make_layer", false)
+        for layer_name in ["LeafFragments", "ScatteredGravel"]:
+            var layer := litter.get_node_or_null(layer_name) as MultiMeshInstance3D
+            if layer == null or layer.multimesh == null or layer.multimesh.instance_count < 100:
+                failures.append("Ground microdressing layer missing or empty: " + layer_name)
+
     level.free()
     if failures.is_empty():
         print("STATION 04 GROUNDING CHECK PASSED")

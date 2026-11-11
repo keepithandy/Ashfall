@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3]
+[gd_scene format=3]
 
 [ext_resource type="Script" path="res://scripts/roads/region_road_layout.gd" id="region"]
 [ext_resource type="Texture2D" path="res://assets/materials/forest_ground_05/albedo.jpg" id="forest"]
@@ -20,11 +20,6 @@ size = Vector2(275, 275)
 [sub_resource type="BoxShape3D" id="ground_collision"]
 size = Vector3(2400, 0.8, 2000)
 
-[node name="AshfallExpandedRegionRoads" type="Node3D"]
-script = ExtResource("region")
-metadata/layout_status = "Concept-scale road and destination blockout; not the playable Station 04 game scene"
-metadata/world_dimensions_metres = Vector2(2400, 2000)
-
 [sub_resource type="Environment" id="region_environment"]
 background_mode = 1
 background_color = Color(0.11, 0.13, 0.14, 1)
@@ -32,6 +27,11 @@ ambient_light_source = 1
 ambient_light_color = Color(0.63, 0.67, 0.64, 1)
 ambient_light_energy = 0.95
 tonemap_mode = 2
+
+[node name="AshfallExpandedRegionRoads" type="Node3D"]
+script = ExtResource("region")
+metadata/layout_status = "Concept-scale road and destination blockout; not the playable Station 04 game scene"
+metadata/world_dimensions_metres = Vector2(2400, 2000)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("region_environment")

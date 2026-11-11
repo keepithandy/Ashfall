@@ -112,6 +112,8 @@ emission_energy_multiplier = 1.7
 
 [sub_resource type="ShaderMaterial" id="ground_mat"]
 shader = ExtResource("terrain_shader")
+shader_parameter/soil_tint = Color(0.78, 0.77, 0.71, 1)
+shader_parameter/road_tint = Color(0.66, 0.66, 0.60, 1)
 shader_parameter/forest_albedo = ExtResource("forest_ground_texture")
 shader_parameter/concrete_albedo = ExtResource("road_surface_texture")
 shader_parameter/forest_normal = ExtResource("forest_normal_texture")

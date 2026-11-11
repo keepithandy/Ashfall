@@ -18,6 +18,8 @@ func _initialize() -> void:
     var road := level.get_node_or_null("EditableWorld/Terrain/ApproachRoad") as MeshInstance3D
     var yard := level.get_node_or_null("EditableWorld/Terrain/ServiceYardSurface") as MeshInstance3D
     var mushrooms := level.get_node_or_null("MushroomCluster") as Node3D
+    var horizon := level.get_node_or_null("EditableWorld/Terrain/HorizonRelief") as Node3D
+    var litter := level.get_node_or_null("EditableWorld/GroundLitter") as Node3D
 
     if ground_body == null or ground_visual == null or ground_collision == null:
         failures.append("Ground visual, physics body or collision is missing")
@@ -42,6 +44,9 @@ func _initialize() -> void:
             failures.append("Forest albedo was not assigned")
         elif ground_material.get_shader_parameter("concrete_albedo") == null:
             failures.append("Road albedo was not assigned")
+        for pbr_key in ["forest_normal", "forest_roughness", "forest_ao", "concrete_normal", "concrete_roughness", "concrete_ao"]:
+            if ground_material != null and ground_material.get_shader_parameter(pbr_key) == null:
+                failures.append("Missing terrain PBR texture: " + pbr_key)
 
     if road == null or yard == null:
         failures.append("Legacy road/yard reference nodes have been removed")
@@ -53,10 +58,19 @@ func _initialize() -> void:
     elif mushrooms.scale.distance_to(Vector3.ONE) > 0.05:
         failures.append("Mushroom instance remains at an abnormal scale")
 
+    if horizon == null or horizon.get_script() == null:
+        failures.append("Distant terrain relief script is not attached")
+    elif horizon is CollisionObject3D:
+        failures.append("Distant terrain must be visual only")
+    if litter == null or litter.get_script() == null:
+        failures.append("Collision-free ground dressing script is not attached")
+    elif litter is CollisionObject3D:
+        failures.append("Ground dressing must not create physics bodies")
+
     level.free()
     if failures.is_empty():
         print("STATION 04 GROUNDING CHECK PASSED")
-        print("Ground extends beyond horizon, legacy raised surfaces hidden, mushrooms scaled correctly")
+        print("Ground PBR textures, scripted visual-only relief, microdressing and legacy mesh safety checked")
         print("Visual appearance and walking/collision must still be confirmed in Godot")
         quit(0)
     else:

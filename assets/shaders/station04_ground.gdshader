@@ -1,20 +1,27 @@
 shader_type spatial;
 render_mode cull_back, diffuse_burley, specular_schlick_ggx;
 
-// Station 04 ground surface: the road and service yard are MATERIAL REGIONS,
-// not raised platforms. All positions are in metres in the existing world.
-// Geometry/collision stays flat at y=0 so the existing interiors and scripted
-// spawn/interaction locations remain physically grounded.
-
+// Station 04: physically grounded world-space soil / gravel / yard.
+// Geometry and ground collision stay flat at y=0; DO NOT move authored objectives.
+// Visual-only horizon relief is handled by station04_horizon.gd, outside the walls.
 uniform sampler2D forest_albedo : source_color, filter_linear_mipmap, repeat_enable;
+uniform sampler2D forest_normal : hint_normal, filter_linear_mipmap, repeat_enable;
+uniform sampler2D forest_roughness : filter_linear_mipmap, repeat_enable;
+uniform sampler2D forest_ao : filter_linear_mipmap, repeat_enable;
 uniform sampler2D concrete_albedo : source_color, filter_linear_mipmap, repeat_enable;
+uniform sampler2D concrete_normal : hint_normal, filter_linear_mipmap, repeat_enable;
+uniform sampler2D concrete_roughness : filter_linear_mipmap, repeat_enable;
+uniform sampler2D concrete_ao : filter_linear_mipmap, repeat_enable;
 
-uniform vec3 soil_tint : source_color = vec3(0.58, 0.59, 0.53);
-uniform vec3 road_tint : source_color = vec3(0.47, 0.48, 0.45);
-uniform vec3 shoulder_tint : source_color = vec3(0.34, 0.33, 0.29);
-uniform float forest_tex_scale : hint_range(0.02, 1.0) = 0.23;
-uniform float pavement_tex_scale : hint_range(0.02, 1.0) = 0.32;
-uniform float worn_edges : hint_range(0.05, 2.5) = 0.90;
+uniform vec3 soil_tint : source_color = vec3(0.65, 0.66, 0.59);
+uniform vec3 road_tint : source_color = vec3(0.58, 0.58, 0.53);
+uniform vec3 shoulder_tint : source_color = vec3(0.38, 0.36, 0.30);
+uniform float forest_tex_scale : hint_range(0.02, 1.0) = 0.25;
+uniform float pavement_tex_scale : hint_range(0.02, 1.0) = 0.34;
+uniform float worn_edges : hint_range(0.15, 2.5) = 1.05;
+uniform float normal_strength : hint_range(0.0, 1.5) = 0.62;
+uniform float weather_wetness : hint_range(0.0, 1.0) = 0.20;
+uniform float dirt_variation : hint_range(0.0, 0.5) = 0.16;
 
 varying vec3 terrain_world;
 
@@ -39,42 +46,67 @@ float value_noise(vec2 p) {
     );
 }
 
-// Smooth, finite rectangles; these match the old visual mesh footprints.
+// Smooth signed-distance rectangle, exactly aligned to the legacy walkable road.
 float region_mask(vec2 p, vec2 centre, vec2 half_size, float feather) {
     vec2 d = abs(p - centre) - half_size;
-    float signed_distance = length(max(d, vec2(0.0))) + min(max(d.x, d.y), 0.0);
-    return 1.0 - smoothstep(-feather, feather, signed_distance);
+    float sd = length(max(d, vec2(0.0))) + min(max(d.x, d.y), 0.0);
+    return 1.0 - smoothstep(-feather, feather, sd);
 }
 
 void fragment() {
     vec2 ground = terrain_world.xz;
-    float broad = value_noise(ground * 0.071);
-    float small = value_noise(ground * 0.74);
-    float breakup = value_noise(ground * 0.23);
+    vec2 soil_uv = ground * forest_tex_scale;
+    vec2 road_uv = ground * pavement_tex_scale;
+    float broad = value_noise(ground * 0.065);
+    float fine = value_noise(ground * 0.68);
+    float broken = value_noise(ground * 0.24);
+    // Both edges of each track wander slightly; avoid straight, stamped rectangles.
+    float edge_jitter = (fine - 0.5) * 0.42 + (broken - 0.5) * 0.55;
+    vec2 irregular_ground = ground + vec2(edge_jitter, edge_jitter * 0.38);
 
-    vec3 forest = texture(forest_albedo, ground * forest_tex_scale).rgb * soil_tint;
-    forest *= mix(0.82, 1.06, broad);
-    forest *= mix(0.91, 1.04, small);
+    float shoulder = region_mask(irregular_ground, vec2(0.0, -7.0),
+                                 vec2(4.55, 42.7), worn_edges * 1.45);
+    float yard_shoulder = region_mask(irregular_ground, vec2(25.0, -8.0),
+                                      vec2(17.3, 15.7), 2.0);
+    float road = region_mask(irregular_ground, vec2(0.0, -7.0),
+                             vec2(2.60, 40.65), worn_edges * 0.76);
+    float yard = region_mask(irregular_ground, vec2(25.0, -8.0),
+                             vec2(15.35, 13.75), 1.45);
+    float compact_mask = clamp(max(road, yard), 0.0, 1.0);
+    float shoulder_mask = max(shoulder, yard_shoulder);
 
-    // Dried, irregular gravel verges make the road look embedded in the soil.
-    float verge = region_mask(ground, vec2(0.0, -7.0), vec2(4.5, 42.6), worn_edges);
-    float yard_verge = region_mask(ground, vec2(25.0, -8.0), vec2(17.2, 15.8), 1.55);
-    float verge_mask = max(verge, yard_verge);
-    vec3 roadside = mix(forest, forest * shoulder_tint * 1.68, verge_mask * 0.68);
+    vec3 soil = texture(forest_albedo, soil_uv).rgb * soil_tint;
+    soil *= 1.0 + dirt_variation * (broad * 2.0 - 1.0);
+    soil *= mix(0.92, 1.06, fine);
 
-    float road = region_mask(ground, vec2(0.0, -7.0), vec2(2.60, 40.65), worn_edges * 0.7);
-    float yard = region_mask(ground, vec2(25.0, -8.0), vec2(15.35, 13.75), 1.15);
-    float road_mask = max(road, yard);
+    // Mud and fine grit collect around traffic, blending into undisturbed soil.
+    vec3 verge = soil * shoulder_tint * 1.7;
+    soil = mix(soil, verge, shoulder_mask * 0.65);
+    vec3 compacted = texture(concrete_albedo, road_uv).rgb * road_tint;
+    compacted *= mix(0.85, 1.13, broken);
 
-    vec3 compacted = texture(concrete_albedo, ground * pavement_tex_scale).rgb * road_tint;
-    compacted *= mix(0.84, 1.13, breakup);
-    // A faint wear track only inside the access road, never on the yard.
-    float rut = 1.0 - smoothstep(0.20, 0.53, abs(abs(ground.x) - 1.08));
-    compacted *= 1.0 - 0.12 * rut * road * (1.0 - yard);
-    float irregular_edge = clamp(road_mask + (small - 0.5) * 0.12 * road_mask * (1.0 - road_mask), 0.0, 1.0);
+    // Two subtle compacted wheel tracks; not a sharp painted pair of stripes.
+    float tire_pair = 1.0 - smoothstep(0.16, 0.45, abs(abs(ground.x) - 1.06));
+    tire_pair *= road * (1.0 - yard);
+    compacted *= 1.0 - tire_pair * 0.12;
 
-    ALBEDO = clamp(mix(roadside, compacted, irregular_edge), vec3(0.0), vec3(1.0));
-    ROUGHNESS = mix(0.98, 0.91, irregular_edge);
-    SPECULAR = 0.21;
+    // Localized damp patches, with no fake raised water plane or collision.
+    float damp_noise = value_noise(ground * 0.15 + vec2(13.3, -9.2));
+    float damp = smoothstep(0.53, 0.79, damp_noise);
+    damp *= weather_wetness * (0.7 + shoulder_mask * 0.3);
+    vec3 color = mix(soil, compacted, compact_mask);
+    color *= 1.0 - damp * 0.28;
+    ALBEDO = clamp(color, vec3(0.0), vec3(1.0));
+
+    // PBR normal, AO and roughness maps are existing, licensed project textures.
+    vec3 soil_n = texture(forest_normal, soil_uv).rgb;
+    vec3 compact_n = texture(concrete_normal, road_uv).rgb;
+    NORMAL_MAP = mix(soil_n, compact_n, compact_mask);
+    NORMAL_MAP_DEPTH = normal_strength;
+    float soil_r = texture(forest_roughness, soil_uv).r;
+    float road_r = texture(concrete_roughness, road_uv).r;
+    ROUGHNESS = clamp(mix(soil_r, road_r, compact_mask) * (1.0 - damp * 0.40), 0.42, 1.0);
+    AO = mix(texture(forest_ao, soil_uv).r, texture(concrete_ao, road_uv).r, compact_mask);
+    SPECULAR = 0.22;
     METALLIC = 0.0;
 }

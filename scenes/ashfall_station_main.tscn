@@ -2,6 +2,14 @@
 
 [ext_resource type="Shader" path="res://assets/shaders/ashfall_overcast_clouds.gdshader" id="clouds"]
 [ext_resource type="Shader" path="res://assets/shaders/station04_ground.gdshader" id="terrain_shader"]
+[ext_resource type="Script" path="res://scripts/runtime/station04_horizon.gd" id="horizon_script"]
+[ext_resource type="Script" path="res://scripts/runtime/station04_surface_dressing.gd" id="surface_dressing_script"]
+[ext_resource type="Texture2D" path="res://assets/materials/forest_ground_05/normal.jpg" id="forest_normal_texture"]
+[ext_resource type="Texture2D" path="res://assets/materials/forest_ground_05/roughness.jpg" id="forest_roughness_texture"]
+[ext_resource type="Texture2D" path="res://assets/materials/forest_ground_05/ao.jpg" id="forest_ao_texture"]
+[ext_resource type="Texture2D" path="res://assets/materials/concrete_floor_worn_001/normal.jpg" id="road_normal_texture"]
+[ext_resource type="Texture2D" path="res://assets/materials/concrete_floor_worn_001/roughness.jpg" id="road_roughness_texture"]
+[ext_resource type="Texture2D" path="res://assets/materials/concrete_floor_worn_001/ao.jpg" id="road_ao_texture"]
 [ext_resource type="Texture2D" path="res://assets/materials/forest_ground_05/albedo.jpg" id="forest_ground_texture"]
 [ext_resource type="Texture2D" path="res://assets/materials/concrete_floor_worn_001/albedo.jpg" id="road_surface_texture"]
 [ext_resource type="PackedScene" path="res://scenes/extra_dressing/mushroom_cluster.tscn" id="35_hd5ph"]
@@ -72,6 +80,12 @@ volumetric_fog_length = 65.0
 shader = ExtResource("terrain_shader")
 shader_parameter/forest_albedo = ExtResource("forest_ground_texture")
 shader_parameter/concrete_albedo = ExtResource("road_surface_texture")
+shader_parameter/forest_normal = ExtResource("forest_normal_texture")
+shader_parameter/forest_roughness = ExtResource("forest_roughness_texture")
+shader_parameter/forest_ao = ExtResource("forest_ao_texture")
+shader_parameter/concrete_normal = ExtResource("road_normal_texture")
+shader_parameter/concrete_roughness = ExtResource("road_roughness_texture")
+shader_parameter/concrete_ao = ExtResource("road_ao_texture")
 
 [sub_resource type="BoxMesh" id="ground_mesh"]
 size = Vector3(460, 1, 460)
@@ -176,6 +190,10 @@ metadata/grounded_terrain = "Yard is painted into the ground material; legacy el
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25, 0.02, -8)
 material_override = SubResource("yard_mat")
 mesh = SubResource("yard_mesh")
+
+[node name="HorizonRelief" type="Node3D" parent="EditableWorld/Terrain"]
+script = ExtResource("horizon_script")
+metadata/environment_only = "Distant relief is visual-only, outside perimeter collisions."
 
 [node name="Buildings" type="Node3D" parent="EditableWorld" unique_id=437740403]
 
@@ -671,6 +689,10 @@ transform = Transform3D(0.3623577, 0, 0.9320391, 0, 1, 0, -0.9320391, 0, 0.36235
 
 [node name="FallenLogNorth" parent="EditableWorld/Vegetation" unique_id=1105320040 instance=ExtResource("log")]
 transform = Transform3D(-0.32328954, 0, 0.9463001, 0, 1, 0, -0.9463001, 0, -0.32328954, 40, 0, -45)
+
+[node name="GroundLitter" type="Node3D" parent="EditableWorld"]
+script = ExtResource("surface_dressing_script")
+metadata/environment_only = "Deterministic ground fragments; no collision or player interactions."
 
 [node name="Perimeter" type="Node3D" parent="EditableWorld" unique_id=1487178111]
 

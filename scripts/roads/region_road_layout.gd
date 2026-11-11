@@ -12,6 +12,7 @@ const ROAD_MATERIAL = preload("res://assets/roads/worn_road.tres")
 # All route nodes are in map metres. The same node used by multiple paths is
 # a future junction; roads intentionally avoid occupied Station 04 interiors.
 const ROUTES = [
+    {"name": "Station_Hub_Spine", "points": [Vector3(0, 0, -130), Vector3(0, 0, -55), Vector3(0, 0, 55), Vector3(0, 0, 130)], "width": 6.8},
     {"name": "Station_North_Exit", "points": [Vector3(0, 0, -130), Vector3(0, 0, -220), Vector3(-30, 0, -320)], "width": 6.8},
     {"name": "Station_South_Exit", "points": [Vector3(0, 0, 130), Vector3(0, 0, 210), Vector3(0, 0, 320)], "width": 6.8},
     {"name": "Northern_Industrial_Route", "points": [Vector3(-30, 0, -320), Vector3(-230, 0, -455), Vector3(-500, 0, -610), Vector3(-720, 0, -700)], "width": 6.0},

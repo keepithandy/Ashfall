@@ -8,6 +8,9 @@ const ROAD = preload("res://scenes/roads/road_straight.tscn")
 const BRIDGE = preload("res://scenes/roads/road_service_bridge.tscn")
 const RIVER_MATERIAL = preload("res://assets/roads/dark_river.tres")
 const ROAD_MATERIAL = preload("res://assets/roads/worn_road.tres")
+const PROFILE = preload("res://scripts/roads/region_height_profile.gd")
+
+var terrain_profile = PROFILE.new()
 
 # All route nodes are in map metres. The same node used by multiple paths is
 # a future junction; roads intentionally avoid occupied Station 04 interiors.
@@ -71,6 +74,7 @@ func _add_route(parent: Node3D, route: Dictionary) -> void:
     road.name = String(route["name"])
     road.set("path_points", PackedVector3Array(route["points"]))
     road.set("road_width", float(route["width"]))
+    road.set("follow_region_terrain", true)
     parent.add_child(road)
 
 func _new_site(parent: Node3D, info: Dictionary) -> void:
@@ -82,7 +86,10 @@ func _new_site(parent: Node3D, info: Dictionary) -> void:
     cylinder.bottom_radius = float(info["radius"])
     cylinder.height = 0.08
     pad.mesh = cylinder
-    pad.position = position_3d + Vector3(0, 0.075, 0)
+    var pad_height: float = terrain_profile.surface_height_at(position_3d.x, position_3d.z)
+    if String(info["name"]) == "BRIDGE CROSSING":
+        pad_height = PROFILE.BRIDGE_DECK_HEIGHT
+    pad.position = Vector3(position_3d.x, pad_height + 0.075, position_3d.z)
     var mat := StandardMaterial3D.new()
     mat.albedo_color = info["tint"]
     mat.roughness = 1.0
@@ -100,19 +107,37 @@ func _new_site(parent: Node3D, info: Dictionary) -> void:
         label.modulate = Color(0.93, 0.93, 0.84)
         label.outline_modulate = Color(0.07, 0.09, 0.09)
         label.outline_size = 8
-        label.position = position_3d + Vector3(0, 9, 0)
+        label.position = Vector3(position_3d.x, pad_height + 9.0, position_3d.z)
         parent.add_child(label)
 
 func _junction_cap(parent: Node3D, at: Vector3, width: float) -> void:
+    # Rounded junction surface samples the actual terrain across its radius,
+    # rather than placing a flat raised cylinder into a sloping hillside.
+    var radius := width * 0.6
+    var mesh := SurfaceTool.new()
+    mesh.begin(Mesh.PRIMITIVE_TRIANGLES)
+    mesh.set_material(ROAD_MATERIAL)
+    var sectors := 16
+    var centre_height := terrain_profile.surface_height_at(at.x, at.z) + 0.045
+    var centre := Vector3(at.x, centre_height, at.z)
+    for index in range(sectors):
+        var a := TAU * float(index) / float(sectors)
+        var b := TAU * float(index + 1) / float(sectors)
+        var p1 := Vector2(cos(a), sin(a)) * radius
+        var p2 := Vector2(cos(b), sin(b)) * radius
+        var v1 := Vector3(at.x + p1.x,
+            terrain_profile.surface_height_at(at.x + p1.x, at.z + p1.y) + 0.045,
+            at.z + p1.y)
+        var v2 := Vector3(at.x + p2.x,
+            terrain_profile.surface_height_at(at.x + p2.x, at.z + p2.y) + 0.045,
+            at.z + p2.y)
+        for vertex in [centre, v2, v1]:
+            mesh.set_normal(Vector3.UP)
+            mesh.set_uv(Vector2(vertex.x / 5.0, vertex.z / 5.0))
+            mesh.add_vertex(vertex)
     var disk := MeshInstance3D.new()
     disk.name = "RouteJoin"
-    var cylinder := CylinderMesh.new()
-    cylinder.top_radius = width * 0.6
-    cylinder.bottom_radius = width * 0.6
-    cylinder.height = 0.028
-    disk.mesh = cylinder
-    disk.position = at + Vector3(0, 0.034, 0)
-    disk.material_override = ROAD_MATERIAL
+    disk.mesh = mesh.commit()
     disk.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
     parent.add_child(disk)
 
@@ -131,7 +156,10 @@ func _rebuild() -> void:
     if show_river:
         var river: Node3D = ROAD.instantiate()
         river.name = "EasternRiver_VisualOnly"
-        river.set("path_points", PackedVector3Array(RIVER_POINTS))
+        var river_points := PackedVector3Array()
+        for point in RIVER_POINTS:
+            river_points.append(Vector3(point.x, PROFILE.WATER_LEVEL, point.z))
+        river.set("path_points", river_points)
         river.set("road_width", 100.0)
         river.set("shoulder_width", 0.0)
         river.set("surface_height", 0.012)
@@ -153,7 +181,7 @@ func _rebuild() -> void:
     var bridge: Node3D = BRIDGE.instantiate()
     bridge.name = "EasternServiceBridge"
     bridge.set("span_length", 170.0)
-    bridge.position = Vector3(845, 0, 70)
+    bridge.position = Vector3(845, PROFILE.BRIDGE_DECK_HEIGHT, 70)
     container.add_child(bridge)
 
     for info in SITES:

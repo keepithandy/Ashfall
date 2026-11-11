@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/roads/road_bridge.gd" id="1"]
+
+[node name="ServiceBridge" type="Node3D"]
+script = ExtResource("1")
+span_length = 148.0
+deck_width = 8.0

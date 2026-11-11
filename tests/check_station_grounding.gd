@@ -81,7 +81,7 @@ func _initialize() -> void:
             var layer := treeline.get_node_or_null(layer_name) as MultiMeshInstance3D
             if layer == null or layer.multimesh == null:
                 failures.append("Distant tree batch failed: " + layer_name)
-            elif layer.multimesh.instance_count != treeline.tree_count:
+            elif layer.multimesh.instance_count != int(treeline.get("tree_count")):
                 failures.append("Distant tree batch count differs from configured count: " + layer_name)
 
     if litter == null or litter.get_script() == null:

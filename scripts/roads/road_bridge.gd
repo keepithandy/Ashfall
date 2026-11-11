@@ -27,6 +27,8 @@ func _mesh(parent: Node3D, name: String, size: Vector3, at: Vector3, mat: Materi
     visual.material_override = mat
     visual.position = at
     visual.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_ON
+    if parent == self:
+        visual.set_meta("ashfall_generated_bridge", true)
     parent.add_child(visual)
 
 func _rebuild() -> void:

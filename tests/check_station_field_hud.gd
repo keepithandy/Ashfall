@@ -54,6 +54,15 @@ func _verify() -> void:
 		var prompt: Label = hud.get("interaction")
 		if prompt != null and prompt.position.y < 440:
 			failures.append("Interaction prompt is no longer near the bottom of the field screen")
+		# Laptop-sized windows need a dedicated compass row and a narrow,
+		# centered interaction strip that does not cover the vital panels.
+		hud.size = Vector2(960, 540)
+		hud.call("_layout_hud")
+		var compass: Label = hud.get("bearing")
+		if compass != null and compass.position.y < 230.0:
+			failures.append("Compact HUD compass overlaps the top data panels")
+		if prompt != null and (prompt.position.x < 310.0 or prompt.position.x + prompt.size.x > 650.0):
+			failures.append("Compact HUD interaction strip overlaps side telemetry")
 
 	for caption in level.find_children("*", "Label3D", true, false):
 		if caption.visible:

@@ -27,13 +27,19 @@ they are intentionally not saved into the PackedScene when editing.
 
 ## Sky architecture
 
-The shader draws **two drifting cloud formations** with layered, smooth procedural
-noise. Coverage, cloud-edge softness, frequency, wind direction, motion speed,
-cloud detail and palette are adjustable from the sky `ShaderMaterial`.
+The revised shader draws **two independently moving cloud formations** with layered
+procedural noise and stronger bank-to-sky contrast. Coverage, cloud-edge softness,
+scale, contrast, wind direction, motion speed and palette are adjustable from the
+sky `ShaderMaterial`.
 
-- Cloud computations run in Godot's **half-resolution sky subpass** to reduce GPU cost.
-- The full-resolution pass composites the clouds over a low-contrast
-  horizon-to-zenith gradient; sun-facing edges get restrained highlighting.
+- **Visibility fix (new review branch):** cloud banks now render directly in the
+  full-resolution sky pass instead of sampling the half-resolution intermediate.
+  This eliminates a possible intermediate-pass blending failure and makes cloud
+  shapes easier to diagnose. It costs more GPU time and needs benchmarking.
+- The clouds composite over an intentionally dark horizon-to-zenith gradient;
+  the visible banks are brighter and have clearly defined shadows and boundaries.
+- The sky shader uses `disable_fog`, which keeps the ground fog and fog volumes
+  active but prevents sky fog from wiping out the cloud-bank contrast.
 - The environment's radiance/reflection cubemap uses a simplified overcast tint,
   not an expensive per-pixel cloud calculation on all six cube faces.
 - The `Sky` is set to **Realtime** process mode and **256 px radiance**, because
@@ -55,20 +61,21 @@ expand `Environment > Sky > Sky Material > Shader Parameters`. Notable parameter
 
 | Parameter | Default | Meaning |
 | --- | --- | --- |
-| `cloud_coverage` | 0.63 | More coverage means more continuous overcast |
-| `cloud_softness` | 0.095 | How diffuse the cloud boundaries are |
-| `cloud_scale` | 2.15 | Apparent frequency of cloud formations |
-| `cloud_detail` | 0.76 | High-frequency variation |
-| `cloud_speed` | 0.065 | Animation speed in shader time |
-| `wind_direction` | (0.93, 0.36) | Horizontal sky-plane wind direction |
-| `sun_glow_strength` | 0.16 | Brightness around the directional sun |
+| `coverage` | 0.59 | More continuous cloud cover as the value increases |
+| `edge_softness` | 0.077 | Higher values soften edges |
+| `cloud_scale` | 2.25 | Higher values make cloud formations smaller and more numerous |
+| `cloud_contrast` | 1.65 | How well-defined the banks are |
+| `wind_speed` | 0.118 | Procedural translation units per second; increased with scale to preserve visible drift |
+| `wind_direction` | (0.84, 0.54) | Wind direction on the sky dome |
+| `high_layer_strength` | 0.30 | Higher, drifting veil intensity |
+| `diagnostic_mode` | 0 | 1 = high-contrast clouds, 2 = moving calibration stripes |
 
 To assess performance, compare the main scene against `main` under equal
 resolution, camera position and GPU conditions. Keep the most fog-heavy viewpoints
 in the comparison to ensure clouds are actually visible.
 
 
-### Visibility and motion correction
+### Previous visibility and motion correction
 
 Following the first on-device test, the initial clouds were reported **too faint
 and apparently stationary**. This branch now:
@@ -87,6 +94,51 @@ and apparently stationary**. This branch now:
 around the horizon. If the sky still appears completely uniform or still, check
 Godot's shader compiler/output log and confirm `cloud_speed` in the active sky
 material is not overridden to `0.005` or `0.0`. Restart the scene after pulling.
+
+## Screenshot follow-up: still too dark/flat after merge
+
+The first post-merge screenshot showed little or no visible cloud structure and
+an unusually large white glow. The glow may be flashlight scattering in fog;
+press **F** to disable the flashlight while checking the sky.
+
+The new review branch uses **full-resolution sky cloud computation** and
+**disables fog on the sky only**. This is intentionally a separate, unmerged
+validation fix. The visual result has *not* been verified in the editor.
+
+With a fixed camera pointed 30–60 degrees above the horizon, watch for clearly
+separated light and dark banks drifting for at least ten seconds. If the sky
+remains uniform, select `WorldEnvironment`, open `Environment > Sky > Sky Material
+> Shader Parameters` and set `diagnostic_mode` to **1**. This should show
+**white cloud shapes against blue**. Set it to **2** to get unmistakable animated
+magenta calibration stripes. Revert `diagnostic_mode` to **0** after checking.
+If neither diagnostic renders, the likely issue is shader selection or
+compilation rather than cloud artistic tuning: inspect Godot's Output and
+Debugger panels.
+
+## Brightness correction from in-game screenshot
+
+A follow-up gameplay screenshot showed nearly white cloud faces and very dark
+negative spaces. The revision keeps the working moving-cloud silhouette, but
+reduces its luminance using a lower cloud-light palette, darker horizon haze,
+and an adjustable `sky_brightness` parameter (default `0.78`). Cloud shapes,
+coverage, and animation speeds are unchanged.
+
+The revised dark gray/blue palette targets **heavy overcast rather than an
+overexposed pale sky**. The dark clear-sky color is raised slightly so open
+gaps do not read as black voids. The `sky_brightness` multiplier is applied
+only to the visible normal sky, **not** the cloud diagnostic colors or the sky
+radiance cubemap, which preserves existing scene illumination. Ground-level
+fog density and the directional light remain unchanged.
+
+To tune further, select `WorldEnvironment > Environment > Sky > Sky Material
+> Shader Parameters` and set `sky_brightness` between `0.65` and `0.9`.
+The parameter `cloud_darkening` (default `0.18`) adjusts the cloud banks
+independently. Verify daylight readability and cloud edge movement before
+considering environmental exposure or ground lighting changes.
+
+## Cloud scale refinement before merge
+
+After the user confirmed the darker clouds were visible but **too large**, the cloud frequency was raised from `1.42` to `2.25`. This makes individual formations smaller and more numerous without changing cloud coverage, opacity, or the dark storm palette. Wind speed was adjusted proportionately from `0.075` to `0.118` to keep apparent on-screen drift similar. These changes still require visual confirmation on the user's PC.
 
 ## Required validation (in Godot)
 

@@ -30,7 +30,7 @@ func _verify() -> void:
 	else:
 		hud.size = Vector2(1280, 720)
 		hud.call("_layout_hud")
-		for field_name in ["title", "area_label", "objective", "bearing", "stats", "pack_status", "detector_status", "message", "interaction", "footer_hint"]:
+		for field_name in ["title", "area_label", "journal_stamp", "objective_heading", "objective", "kit_heading", "bearing", "stats", "vitals_heading", "vital_status", "pack_status", "signal_heading", "detector_status", "field_activity", "message", "interaction", "footer_hint"]:
 			var field: Label = hud.get(field_name)
 			if field == null:
 				failures.append("Missing field HUD label: " + field_name)
@@ -44,12 +44,31 @@ func _verify() -> void:
 			hud.call("_process", 0.0)
 			if absf(health.value - float(player.health)) > 0.1 or absf(stamina.value - float(player.stamina)) > 0.1:
 				failures.append("HUD does not show the real player health and stamina")
+		var stamp: Label = hud.get("journal_stamp")
+		if stamp == null or not stamp.text.contains("ENTRY RECORD"):
+			failures.append("Personal expedition record is not updating")
+		var activity: Label = hud.get("field_activity")
+		player.noise_radius = 10.0
+		hud.call("_process", 0.0)
+		if activity == null or not activity.text.contains("RUNNING"):
+			failures.append("HUD activity indicator ignores real player movement noise")
+		player.noise_radius = 0.0
+		hud.call("_process", 0.0)
+		var starting_theme := int(hud.get("field_theme_mode"))
 		var event := InputEventKey.new()
 		event.physical_keycode = KEY_F10
 		event.pressed = true
 		hud.call("_input", event)
-		if int(hud.get("field_theme_mode")) != 1:
-			failures.append("F10 failed to switch the HUD palette")
+		var next_theme := (starting_theme + 1) % 3
+		if int(hud.get("field_theme_mode")) != next_theme:
+			failures.append("F10 failed to cycle among the three instrument finishes")
+		else:
+			var settings := ConfigFile.new()
+			if settings.load("user://ashfall_field_hud.cfg") != OK or int(settings.get_value("field_hud", "theme", -1)) != next_theme:
+				failures.append("Personal HUD theme did not persist")
+		hud.call("set_field_theme", starting_theme)
+		if hud.get("inventory_screen") == null:
+			failures.append("Field pack inventory was disconnected from the HUD")
 		hud.call("_layout_hud")
 		var prompt: Label = hud.get("interaction")
 		if prompt != null and prompt.position.y < 440:

@@ -113,24 +113,30 @@ func _initialize() -> void:
                     living_profiles[type_id] = true
                     if batch.mesh.get_surface_count() != 2:
                         failures.append("Living trees need separate bark and foliage geometry")
-                for tree_index in range(batch.instance_count):
-                    var position: Vector3 = batch.get_instance_transform(tree_index).origin
-                    if absf(position.x) <= 86.0 and absf(position.z) <= 81.0:
-                        failures.append("A forest tree entered the playable district")
-                        break
-                    if not is_finite(position.x) or not is_finite(position.y) or not is_finite(position.z):
-                        failures.append("Distant forest generated invalid coordinates")
-                        break
-                    if terrain_noise != null:
-                        var angle := wrapf(atan2(position.z, position.x), 0.0, TAU)
-                        var radius := Vector2(position.x, position.z).length()
-                        var offset: float = radius - float(treeline.call("_edge_radius", angle))
-                        var ground_point: Vector3 = horizon.call("_point", angle, offset, terrain_noise)
-                        if absf(position.y - (ground_point.y - 0.12)) > 0.03:
-                            failures.append("Distant tree roots do not follow terrain")
-                            break
             if total_trees != int(treeline.get("tree_count")):
                 failures.append("Forest total differs from configured tree count")
+            # Godot's headless dummy rendering server cannot reliably read
+            # MultiMesh transforms back. Validate the generator's actual
+            # logical placements, then separately assert MultiMesh counts.
+            var placed_bases: Array = treeline.get("generated_tree_bases")
+            if placed_bases.size() != int(treeline.get("tree_count")):
+                failures.append("Forest generated an unexpected number of tree bases")
+            for entry in placed_bases:
+                var position: Vector3 = entry
+                if absf(position.x) <= 86.0 and absf(position.z) <= 81.0:
+                    failures.append("A forest tree entered the playable district")
+                    break
+                if not is_finite(position.x) or not is_finite(position.y) or not is_finite(position.z):
+                    failures.append("Distant forest generated invalid coordinates")
+                    break
+                if terrain_noise != null:
+                    var angle := wrapf(atan2(position.z, position.x), 0.0, TAU)
+                    var radius := Vector2(position.x, position.z).length()
+                    var offset: float = radius - float(treeline.call("_edge_radius", angle))
+                    var ground_point: Vector3 = horizon.call("_point", angle, offset, terrain_noise)
+                    if absf(position.y - (ground_point.y - 0.12)) > 0.03:
+                        failures.append("Distant tree roots do not follow terrain")
+                        break
             if living_profiles.size() < 2:
                 failures.append("Forest has insufficient conifer silhouette variety")
             if float(treeline.get("dead_tree_share")) > 0.0 and dead_trees == 0:

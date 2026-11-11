@@ -47,8 +47,8 @@ func _tube(tool: SurfaceTool, bottom: Vector3, top: Vector3, base_radius: float,
         var b1 := bottom + p1 * base_radius
         var t0 := top + p0 * tip_radius
         var t1 := top + p1 * tip_radius
-        _triangle(tool, b0, t0, b1)
-        _triangle(tool, b1, t0, t1)
+        _triangle(tool, b0, b1, t0)
+        _triangle(tool, b1, t1, t0)
 
 func _wood_material() -> StandardMaterial3D:
     var material := StandardMaterial3D.new()

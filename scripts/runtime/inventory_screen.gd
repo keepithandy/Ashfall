@@ -4,8 +4,8 @@ const Items = preload("res://scripts/runtime/item_catalog.gd")
 const SLOT_COUNT := 27
 const COLUMNS := 9
 const SLOT_SIZE := 64
-const TEXT := Color("272c29")
-const MUTED := Color("525a52")
+const TEXT := Color("29291f")
+const MUTED := Color("6b614e")
 
 var game: Node3D
 var selected_id := "flashlight"
@@ -42,9 +42,9 @@ func make_action(caption: String, action: Callable) -> Button:
 	button.add_theme_font_size_override("font_size", 14)
 	button.add_theme_color_override("font_color", TEXT)
 	button.add_theme_color_override("font_disabled_color", Color("777e76"))
-	button.add_theme_stylebox_override("normal", make_style(Color("d2d4c9"), Color("777e73")))
-	button.add_theme_stylebox_override("hover", make_style(Color("e7e8dc"), Color("424c42")))
-	button.add_theme_stylebox_override("pressed", make_style(Color("aeb5a8"), Color("424c42")))
+	button.add_theme_stylebox_override("normal", make_style(Color("ded2b5"), Color("84755d")))
+	button.add_theme_stylebox_override("hover", make_style(Color("eee1c4"), Color("72634a")))
+	button.add_theme_stylebox_override("pressed", make_style(Color("c7b995"), Color("72634a")))
 	button.add_theme_stylebox_override("focus", make_style(Color(0, 0, 0, 0), Color("344a36")))
 	button.add_theme_stylebox_override("disabled", make_style(Color("b3b9ad"), Color("989e94")))
 	button.pressed.connect(action)
@@ -63,7 +63,7 @@ func _ready() -> void:
 	add_child(center)
 	var panel := PanelContainer.new()
 	panel.name = "InventoryPanel"
-	panel.add_theme_stylebox_override("panel", make_style(Color("c7ccc0"), Color("515b50"), 4))
+	panel.add_theme_stylebox_override("panel", make_style(Color("d3c7a9"), Color("675e48"), 4))
 	center.add_child(panel)
 	var margin := MarginContainer.new()
 	for side in ["left", "right", "top", "bottom"]:
@@ -75,7 +75,7 @@ func _ready() -> void:
 	margin.add_child(layout)
 	var header := HBoxContainer.new()
 	layout.add_child(header)
-	var title := make_label("INVENTORY", 24, TEXT)
+	var title := make_label("FIELD PACK  /  PERSONAL INVENTORY", 24, TEXT)
 	title.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	header.add_child(title)
 	var close := make_action("CLOSE  /  TAB", func(): game.close_inventory())
@@ -97,10 +97,10 @@ func _ready() -> void:
 		slot.expand_icon = true
 		slot.icon_alignment = HORIZONTAL_ALIGNMENT_CENTER
 		slot.add_theme_constant_override("icon_max_width", 51)
-		slot.add_theme_stylebox_override("normal", make_style(Color("8f998a"), Color("667263")))
-		slot.add_theme_stylebox_override("hover", make_style(Color("b1bbab"), Color("edf0df")))
-		slot.add_theme_stylebox_override("pressed", make_style(Color("a3ae9e"), Color("f1f3e8")))
-		slot.add_theme_stylebox_override("focus", make_style(Color(0, 0, 0, 0), Color("f1f3e8")))
+		slot.add_theme_stylebox_override("normal", make_style(Color("908a73"), Color("605e4b")))
+		slot.add_theme_stylebox_override("hover", make_style(Color("b9af95"), Color("edf0df")))
+		slot.add_theme_stylebox_override("pressed", make_style(Color("aa9f80"), Color("f1dfba")))
+		slot.add_theme_stylebox_override("focus", make_style(Color(0, 0, 0, 0), Color("f1dfba")))
 		slot.add_theme_stylebox_override("disabled", make_style(Color("a0a99a"), Color("7e897b")))
 		grid.add_child(slot)
 		var quantity := make_label("", 15, Color("f9f8eb"))
@@ -134,7 +134,7 @@ func _ready() -> void:
 	actions.add_child(equip_button)
 	actions.add_child(use_button)
 	actions.add_child(stow_button)
-	feedback = make_label("Click an item to select it.", 13, MUTED)
+	feedback = make_label("Each item in this pack is yours to carry or use.", 13, MUTED)
 	feedback.custom_minimum_size.y = 20
 	layout.add_child(feedback)
 	hide()
@@ -156,19 +156,19 @@ func refresh() -> void:
 		slot.tooltip_text = Items.entry(id).name if available else ""
 		count_labels[id].text = str(quantity) if available else ""
 		var selected: bool = available and id == selected_id
-		slot.add_theme_stylebox_override("normal", make_style(Color("9da994") if selected else Color("8f998a"), Color("f1f3e8") if selected else Color("667263"), 3 if selected else 2))
+		slot.add_theme_stylebox_override("normal", make_style(Color("ada083") if selected else Color("908a73"), Color("f1dfba") if selected else Color("605e4b"), 3 if selected else 2))
 	if game.inventory.get(selected_id, 0) <= 0:
 		selected_id = ""
 	var data: Dictionary = Items.entry(selected_id)
 	var available := not data.is_empty()
 	selected_title.text = (data.get("name", "") + "   ×" + str(game.inventory.get(selected_id, 0))) if available else "Select an item"
-	carry_status.text = "IN HAND: " + str(Items.entry(game.equipped_item_id).get("name", "Empty hand"))
+	carry_status.text = "FIELD RECORD  /  %02d:%02d    ON HAND  /  %s" % [int(game.elapsed / 60.0), int(game.elapsed) % 60, str(Items.entry(game.equipped_item_id).get("name", "Empty hand"))]
 	equip_button.disabled = not available or game.equipped_item_id == selected_id
 	equip_button.text = "CARRYING" if available and game.equipped_item_id == selected_id else "CARRY"
 	use_button.disabled = not available
 	use_button.tooltip_text = str(data.get("effect", ""))
 	stow_button.disabled = game.equipped_item_id.is_empty()
-	feedback.text = game.inventory_feedback if not game.inventory_feedback.is_empty() else "Click an item to select it."
+	feedback.text = game.inventory_feedback if not game.inventory_feedback.is_empty() else "Select a recovered item from your field pack."
 
 func open_pack() -> void:
 	show()

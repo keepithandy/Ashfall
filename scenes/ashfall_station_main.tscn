@@ -5,6 +5,7 @@
 [ext_resource type="Script" path="res://scripts/runtime/station04_horizon.gd" id="horizon_script"]
 [ext_resource type="Script" path="res://scripts/runtime/station04_treeline.gd" id="treeline_script"]
 [ext_resource type="Script" path="res://scripts/runtime/station04_surface_dressing.gd" id="surface_dressing_script"]
+[ext_resource type="Script" path="res://scripts/runtime/station04_wet_ground.gd" id="wet_ground_script"]
 [ext_resource type="Texture2D" path="res://assets/materials/forest_ground_05/normal.jpg" id="forest_normal_texture"]
 [ext_resource type="Texture2D" path="res://assets/materials/forest_ground_05/roughness.jpg" id="forest_roughness_texture"]
 [ext_resource type="Texture2D" path="res://assets/materials/forest_ground_05/ao.jpg" id="forest_ao_texture"]
@@ -741,6 +742,10 @@ transform = Transform3D(0.3623577, 0, 0.9320391, 0, 1, 0, -0.9320391, 0, 0.36235
 
 [node name="FallenLogNorth" parent="EditableWorld/Vegetation" unique_id=1105320040 instance=ExtResource("log")]
 transform = Transform3D(-0.32328954, 0, 0.9463001, 0, 1, 0, -0.9463001, 0, -0.32328954, 40, 0, -45)
+
+[node name="WetGround" type="Node3D" parent="EditableWorld"]
+script = ExtResource("wet_ground_script")
+metadata/environment_only = "Nine shallow transparent wet patches; no collision or interactions."
 
 [node name="GroundLitter" type="Node3D" parent="EditableWorld"]
 script = ExtResource("surface_dressing_script")

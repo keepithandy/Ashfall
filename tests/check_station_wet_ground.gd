@@ -22,7 +22,7 @@ func _initialize() -> void:
             var mesh_node := node as MeshInstance3D
             if mesh_node.mesh == null:
                 errors.append("Wet-ground mesh missing")
-            elif not (mesh_node.mesh.material is ShaderMaterial):
+            elif not (mesh_node.mesh.surface_get_material(0) is ShaderMaterial):
                 errors.append("Wet-ground material missing")
             if mesh_node.position.y < 0.005 or mesh_node.position.y > 0.05:
                 errors.append("Wet-ground patch is not just above the walkable ground")

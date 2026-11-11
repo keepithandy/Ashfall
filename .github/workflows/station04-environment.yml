@@ -9,6 +9,7 @@ on:
       - 'tests/check_station_grounding.gd'
       - 'tests/check_station_field_hud.gd'
       - 'scripts/runtime/hud.gd'
+      - 'scripts/runtime/inventory_screen.gd'
       - 'scripts/runtime/ashfall_station_main.gd'
       - 'scripts/runtime/expedition_areas.gd'
       - 'tests/check_station_lighting.gd'
@@ -49,6 +50,7 @@ jobs:
         shell: bash
         run: |
           /tmp/Godot_v4.7.2-stable_linux.x86_64 --headless --path . --check-only --script res://scripts/runtime/hud.gd
+          /tmp/Godot_v4.7.2-stable_linux.x86_64 --headless --path . --check-only --script res://scripts/runtime/inventory_screen.gd
           /tmp/Godot_v4.7.2-stable_linux.x86_64 --headless --path . --check-only --script res://scripts/runtime/ashfall_station_main.gd
           /tmp/Godot_v4.7.2-stable_linux.x86_64 --headless --path . --check-only --script res://scripts/runtime/expedition_areas.gd
       - name: Verify Station 04 terrain, procedural relief and dressing

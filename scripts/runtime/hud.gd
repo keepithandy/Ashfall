@@ -97,7 +97,7 @@ func _ready() -> void:
 	overlay.add_child(stripe)
 	menu_title = Label.new()
 	menu_title.position = Vector2(132, 150)
-	menu_title.text = "ASHFALL"
+	menu_title.text = "ASHFALL  /  FIELD JOURNAL"
 	menu_title.add_theme_font_size_override("font_size", 72)
 	menu_title.add_theme_color_override("font_color", pale)
 	overlay.add_child(menu_title)
@@ -202,6 +202,19 @@ func _apply_field_palette() -> void:
 		menu_title.add_theme_color_override("font_color", hud_pale)
 	if is_instance_valid(menu_body):
 		menu_body.add_theme_color_override("font_color", hud_pale)
+	if is_instance_valid(loot_panel):
+		var cache_style := loot_panel.get_theme_stylebox("panel") as StyleBoxFlat
+		if cache_style != null:
+			cache_style.bg_color = Color(hud_panel.r, hud_panel.g, hud_panel.b, 0.98)
+			cache_style.border_color = hud_accent
+	if is_instance_valid(start_button):
+		style_button(start_button)
+	if is_instance_valid(quit_button):
+		style_button(quit_button)
+	if is_instance_valid(overlay):
+		for item in overlay.get_children():
+			if item is Button:
+				style_button(item)
 	footer_hint.text = "[TAB] PACK  /  [E] USE  /  [F] LIGHT  /  [ESC] MENU  /  [F10] " + THEME_NAMES[field_theme_mode]
 	queue_redraw()
 
@@ -335,17 +348,18 @@ func _audio_level_changed(value: float, bus_name: String, value_label: Label) ->
 	game.audio_settings.set_level(bus_name, value / 100.0)
 
 func style_button(button: Button) -> void:
-	var normal:=StyleBoxFlat.new()
-	normal.bg_color=Color("1c201d")
-	normal.border_color=Color("67483f")
+	var normal := StyleBoxFlat.new()
+	normal.bg_color = Color(hud_panel.r * 1.7, hud_panel.g * 1.7, hud_panel.b * 1.7, 1.0)
+	normal.border_color = hud_border
 	normal.set_border_width_all(1)
-	var hover:=normal.duplicate() as StyleBoxFlat
-	hover.bg_color=Color("3c302a")
-	hover.border_color=Color("b17a64")
-	button.add_theme_stylebox_override("normal",normal)
-	button.add_theme_stylebox_override("hover",hover)
-	button.add_theme_stylebox_override("pressed",hover)
-	button.add_theme_color_override("font_color",Color("d3d0bf"))
+	var hover := normal.duplicate() as StyleBoxFlat
+	hover.bg_color = Color(hud_panel.r * 2.7, hud_panel.g * 2.7, hud_panel.b * 2.7, 1.0)
+	hover.border_color = hud_accent
+	button.add_theme_stylebox_override("normal", normal)
+	button.add_theme_stylebox_override("hover", hover)
+	button.add_theme_stylebox_override("pressed", hover)
+	button.add_theme_color_override("font_color", hud_pale)
+	button.add_theme_color_override("font_hover_color", hud_pale)
 
 func build_loot_panel(pale: Color, muted: Color) -> void:
 	loot_panel=Panel.new()

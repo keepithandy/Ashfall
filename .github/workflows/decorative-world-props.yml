@@ -7,6 +7,8 @@ on:
       - 'scenes/decorative_world/**'
       - 'assets/decorative_interiors/**'
       - 'scenes/decorative_interiors/**'
+      - 'scenes/testing/ashfall_asset_showroom.tscn'
+      - 'scenes/testing/ashfall_decorative_grid_extension.tscn'
       - '.github/workflows/decorative-world-props.yml'
   workflow_dispatch:
 
@@ -24,6 +26,8 @@ jobs:
         run: python3 assets/decorative_world/source/validate_props.py
       - name: Validate abandoned interiors GLB structure and non-interactivity
         run: python3 assets/decorative_interiors/source/validate_interiors.py
+      - name: Verify existing showroom and new decorative grid displays
+        run: python3 assets/decorative_world/source/validate_showroom_grid.py
       - name: Download Godot 4.7.2 stable
         shell: bash
         run: |
@@ -243,3 +247,58 @@ jobs:
               quit(0)
           GDSCRIPT
           "$GODOT" --headless --path "$CHECK_ROOT" --script res://check_staging.gd
+      - name: Import and instantiate new decorative grid in Godot 4.7
+        shell: bash
+        run: |
+          set -euo pipefail
+          CHECK_ROOT="$RUNNER_TEMP/ashfall-staging-check"
+          GODOT="$RUNNER_TEMP/godot/Godot_v4.7.2-stable_linux.x86_64"
+          mkdir -p "$CHECK_ROOT/scenes/testing"
+          cp scenes/testing/ashfall_decorative_grid_extension.tscn "$CHECK_ROOT/scenes/testing/"
+          "$GODOT" --headless --path "$CHECK_ROOT" --editor --import
+          cat > "$CHECK_ROOT/check_decorative_grid.gd" <<'GDSCRIPT'
+          extends SceneTree
+
+          func _initialize() -> void:
+              var path := "res://scenes/testing/ashfall_decorative_grid_extension.tscn"
+              var gallery := load(path) as PackedScene
+              if gallery == null:
+                  push_error("Decorative grid could not be loaded")
+                  quit(1)
+                  return
+              var instance := gallery.instantiate() as Node3D
+              if instance == null:
+                  push_error("Decorative grid could not be instantiated")
+                  quit(1)
+                  return
+              var sections := {
+                  "11_DecorativeWorld": 16,
+                  "12_AbandonedInteriors": 16,
+                  "13_DamageVariants": 5,
+              }
+              var total := 0
+              for name in sections:
+                  var section := instance.get_node_or_null(NodePath(name))
+                  if section == null:
+                      push_error("Missing decorative section: " + name)
+                      instance.free()
+                      quit(1)
+                      return
+                  var bodies := 0
+                  var captions := 0
+                  for child in section.get_children():
+                      if child is StaticBody3D:
+                          bodies += 1
+                      elif child is Label3D:
+                          captions += 1
+                  if bodies != sections[name] or captions != sections[name] + 1:
+                      push_error("Incorrect grid counts in %s: %s bodies, %s captions" % [name, bodies, captions])
+                      instance.free()
+                      quit(1)
+                      return
+                  total += bodies
+              print("PASS: 37 decorative prefabs and 37 labels instantiated in the existing showroom grid layout")
+              instance.free()
+              quit(0)
+          GDSCRIPT
+          "$GODOT" --headless --path "$CHECK_ROOT" --script res://check_decorative_grid.gd

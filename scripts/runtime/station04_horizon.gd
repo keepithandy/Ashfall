@@ -108,10 +108,10 @@ func _build() -> void:
         _triangle(tool, outer0, outer_bottom0, outer1)
         _triangle(tool, outer1, outer_bottom0, outer_bottom1)
 
-    # SurfaceTool derives normals from the mathematical cross product, which
-    # points down for Godot's clockwise top-face convention. Flip for proper
-    # upward PBR lighting; keep tangent generation after normal generation.
-    tool.generate_normals(true)
+    # Generate outward/upward normals from Godot's front-face winding.
+    # Do not flip: that inverts the hill normals and breaks PBR lighting.
+    # Tangents must follow normal generation for the reused ground shader.
+    tool.generate_normals()
     tool.generate_tangents()
     tool.index()
     var mesh := tool.commit()

@@ -6,6 +6,7 @@ extends Node3D
 
 @export var show_tree_line: bool = true
 @export_range(24, 480, 8) var tree_count: int = 312
+@export_range(0, 400, 8) var sapling_count: int = 192
 @export_range(3.0, 12.0, 0.5) var average_height: float = 6.5
 @export_range(0.08, 0.50, 0.02) var cluster_spread: float = 0.31
 @export_range(0.0, 0.25, 0.01) var dead_tree_share: float = 0.055
@@ -242,3 +243,53 @@ func _build() -> void:
             node.multimesh = batch
             node.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
             forest.add_child(node)
+
+    # A second, lower growth tier prevents a bare line of trunks at the
+    # horizon. These saplings grow OUTSIDE the protected gameplay rectangle;
+    # they add zero physics or navigation objects.
+    var understory := Node3D.new()
+    understory.name = "YoungGrowth"
+    add_child(understory)
+    var sapling_groups: Array = [[], [], []]
+    var young_rng := RandomNumberGenerator.new()
+    young_rng.seed = 44017
+    for i in range(sapling_count):
+        var center: float = CLUSTER_ANGLES[i % CLUSTER_ANGLES.size()]
+        var angle := wrapf(center + young_rng.randf_range(-cluster_spread * 1.35, cluster_spread * 1.35), 0.0, TAU)
+        var offset := young_rng.randf_range(26.0, 105.0)
+        var distance := _edge_radius(angle) + offset
+        var root: Vector3 = horizon.call("_point", angle, offset, terrain_noise)
+        var height := young_rng.randf_range(1.8, 4.8)
+        var spread := height * young_rng.randf_range(0.83, 1.21)
+        var base := Vector3(cos(angle) * distance, root.y - 0.10, sin(angle) * distance)
+        var turn := Basis(Vector3.UP, young_rng.randf_range(-PI, PI))
+        var transform := Transform3D(turn.scaled(Vector3(spread, height, spread)), base)
+        var tint := Color(young_rng.randf_range(0.84, 1.06), young_rng.randf_range(0.84, 1.06), young_rng.randf_range(0.85, 1.04))
+        sapling_groups[i % 3].append({"transform": transform, "tint": tint, "base": base, "height": height})
+
+    for profile in range(3):
+        var instances: Array = sapling_groups[profile]
+        if instances.is_empty():
+            continue
+        var batch := MultiMesh.new()
+        batch.transform_format = MultiMesh.TRANSFORM_3D
+        batch.use_colors = true
+        batch.mesh = meshes[profile]
+        batch.instance_count = instances.size()
+        var lower := Vector3(100000.0, 100000.0, 100000.0)
+        var upper := Vector3(-100000.0, -100000.0, -100000.0)
+        for j in range(instances.size()):
+            var item: Dictionary = instances[j]
+            batch.set_instance_transform(j, item["transform"])
+            batch.set_instance_color(j, item["tint"])
+            var base: Vector3 = item["base"]
+            var height: float = item["height"]
+            var reach := Vector3(height * 0.45, 1.0, height * 0.45)
+            lower = lower.min(base - reach)
+            upper = upper.max(base + Vector3(reach.x, height + 1.0, reach.z))
+        batch.custom_aabb = AABB(lower, upper - lower)
+        var instance := MultiMeshInstance3D.new()
+        instance.name = "SaplingProfile%d" % profile
+        instance.multimesh = batch
+        instance.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
+        understory.add_child(instance)

@@ -23,13 +23,22 @@ var inventory_screen: Control
 var detector_status: Label
 var audio_panel: ColorRect
 var intro_layout: Array[Dictionary] = []
+const FIELD_THEME_PATH := "user://ashfall_field_hud.cfg"
+const THEME_NAMES := ["FIELD JOURNAL", "SIGNAL RECEIVER", "WORN AMBER"]
 var footer_hint: Label
-var field_theme_mode: int = 0 # 0: cold field monitor; 1: worn amber monitor.
-var hud_pale := Color("deddd0")
-var hud_muted := Color("a2b3a6")
-var hud_accent := Color("88a998")
-var hud_panel := Color(0.021, 0.033, 0.032, 0.89)
-var hud_border := Color(0.23, 0.36, 0.33, 0.83)
+var journal_stamp: Label
+var objective_heading: Label
+var kit_heading: Label
+var vitals_heading: Label
+var signal_heading: Label
+var vital_status: Label
+var field_activity: Label
+var field_theme_mode: int = 0 # Personal field journal by default.
+var hud_pale := Color("e7dfcd")
+var hud_muted := Color("b2aa95")
+var hud_accent := Color("b79a6b")
+var hud_panel := Color(0.043, 0.044, 0.038, 0.86)
+var hud_border := Color(0.39, 0.37, 0.30, 0.86)
 
 
 func label_at(text_value: String, at: Vector2, size: int, tint: Color) -> Label:
@@ -67,7 +76,14 @@ func _ready() -> void:
 	pack_status.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	detector_status = label_at("", Vector2.ZERO, 13, Color("d1b287"))
 	detector_status.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
-	footer_hint = label_at("[TAB] PACK   [E] INTERACT   [F] LIGHT   [H] HEAL   [ESC] MENU   [F10] HUD THEME", Vector2.ZERO, 11, muted)
+	footer_hint = label_at("[TAB] PACK  /  [E] INTERACT  /  [F] LIGHT  /  [ESC] PAUSE  /  [F10] THEME", Vector2.ZERO, 11, muted)
+	journal_stamp = label_at("ENTRY RECORD  /  00:00", Vector2.ZERO, 11, muted)
+	objective_heading = label_at("CURRENT FIELD NOTES", Vector2.ZERO, 11, Color("b79a6b"))
+	kit_heading = label_at("PACK INVENTORY  /  ON PERSON", Vector2.ZERO, 11, Color("b79a6b"))
+	vitals_heading = label_at("SURVIVOR CONDITION", Vector2.ZERO, 11, Color("b79a6b"))
+	signal_heading = label_at("SIGNAL AND SURROUNDINGS", Vector2.ZERO, 11, Color("b79a6b"))
+	vital_status = label_at("STATUS  /  STABLE", Vector2.ZERO, 11, muted)
+	field_activity = label_at("MOVEMENT  /  QUIET", Vector2.ZERO, 11, muted)
 	health_bar = make_bar(Vector2.ZERO, Color("aa6052"))
 	stamina_bar = make_bar(Vector2.ZERO, Color("8a9274"))
 	overlay = ColorRect.new()
@@ -118,36 +134,77 @@ func _ready() -> void:
 	inventory_screen.game=game
 	add_child(inventory_screen)
 	resized.connect(_layout_hud)
+	_load_field_theme()
 	_apply_field_palette()
 	_layout_hud()
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventKey and event.pressed and not event.echo and event.physical_keycode == KEY_F10:
-		field_theme_mode = (field_theme_mode + 1) % 2
-		_apply_field_palette()
+		set_field_theme((field_theme_mode + 1) % THEME_NAMES.size())
 		get_viewport().set_input_as_handled()
 
 
+func _load_field_theme() -> void:
+	var settings := ConfigFile.new()
+	if settings.load(FIELD_THEME_PATH) == OK:
+		field_theme_mode = clampi(int(settings.get_value("field_hud", "theme", 0)), 0, THEME_NAMES.size() - 1)
+
+
+func set_field_theme(next_mode: int) -> void:
+	field_theme_mode = clampi(next_mode, 0, THEME_NAMES.size() - 1)
+	_apply_field_palette()
+	var settings := ConfigFile.new()
+	settings.set_value("field_hud", "theme", field_theme_mode)
+	var result := settings.save(FIELD_THEME_PATH)
+	if result != OK:
+		push_warning("Ashfall field HUD preference could not be saved")
+
+
 func _apply_field_palette() -> void:
-	# Both palettes retain identical gameplay information and a low-light theme.
-	if field_theme_mode == 0:
-		hud_pale = Color("deddd0")
-		hud_muted = Color("a2b3a6")
-		hud_accent = Color("88a998")
-		hud_panel = Color(0.021, 0.033, 0.032, 0.89)
-		hud_border = Color(0.23, 0.36, 0.33, 0.83)
-	else:
-		hud_pale = Color("e5d9c4")
-		hud_muted = Color("bba68d")
-		hud_accent = Color("cd9670")
-		hud_panel = Color(0.048, 0.035, 0.027, 0.90)
-		hud_border = Color(0.43, 0.29, 0.22, 0.83)
+	# Player-selected instrument finish is persistent across sessions.
+	# All three palettes keep the same functional data and contrast hierarchy.
+	match field_theme_mode:
+		0: # Field journal: stained paper, weathered brass, blackened leather.
+			hud_pale = Color("e7dfcd")
+			hud_muted = Color("b2aa95")
+			hud_accent = Color("b79a6b")
+			hud_panel = Color(0.043, 0.044, 0.038, 0.86)
+			hud_border = Color(0.39, 0.37, 0.30, 0.86)
+		1: # Cold receiver: aged green phosphor and slate hardware.
+			hud_pale = Color("dce8db")
+			hud_muted = Color("9cbaa9")
+			hud_accent = Color("77bd9b")
+			hud_panel = Color(0.018, 0.041, 0.036, 0.85)
+			hud_border = Color(0.18, 0.37, 0.32, 0.86)
+		2: # Worn amber: distressed oxide, dust and low-output instrument light.
+			hud_pale = Color("efdec9")
+			hud_muted = Color("c6aa91")
+			hud_accent = Color("d28a62")
+			hud_panel = Color(0.056, 0.033, 0.026, 0.86)
+			hud_border = Color(0.47, 0.28, 0.20, 0.88)
 	for field in [title, objective, bearing, interaction, message, pack_status]:
 		field.add_theme_color_override("font_color", hud_pale)
-	for field in [area_label, stats, footer_hint]:
+	for field in [area_label, journal_stamp, stats, footer_hint, vital_status, field_activity]:
 		field.add_theme_color_override("font_color", hud_muted)
-	detector_status.add_theme_color_override("font_color", hud_accent)
+	for field in [detector_status, objective_heading, kit_heading, vitals_heading, signal_heading]:
+		field.add_theme_color_override("font_color", hud_accent)
+	if is_instance_valid(health_bar):
+		var health_fill := health_bar.get_theme_stylebox("fill") as StyleBoxFlat
+		if health_fill != null:
+			health_fill.bg_color = Color("b96757") if field_theme_mode != 1 else Color("9e665d")
+	if is_instance_valid(stamina_bar):
+		var stamina_fill := stamina_bar.get_theme_stylebox("fill") as StyleBoxFlat
+		if stamina_fill != null:
+			stamina_fill.bg_color = hud_accent
+	if is_instance_valid(overlay):
+		overlay.color = Color(hud_panel.r * 0.45, hud_panel.g * 0.45, hud_panel.b * 0.45, 0.96)
+	if is_instance_valid(menu_title):
+		menu_title.add_theme_color_override("font_color", hud_pale)
+	if is_instance_valid(menu_body):
+		menu_body.add_theme_color_override("font_color", hud_pale)
+	footer_hint.text = "[TAB] PACK  /  [E] USE  /  [F] LIGHT  /  [ESC] MENU  /  [F10] " + THEME_NAMES[field_theme_mode]
 	queue_redraw()
+
 
 
 func _layout_hud() -> void:
@@ -155,39 +212,64 @@ func _layout_hud() -> void:
 		return
 	var w := maxf(size.x, 720.0)
 	var h := maxf(size.y, 480.0)
-	var left_w := minf(430.0, w * 0.42)
-	var right_w := minf(300.0, w * 0.31)
-	title.position = Vector2(34, 30)
-	title.size = Vector2(left_w - 24, 28)
-	area_label.position = Vector2(34, 57)
-	area_label.size = Vector2(left_w - 24, 22)
-	objective.position = Vector2(34, 96)
-	objective.size = Vector2(left_w - 28, 122)
-	bearing.position = Vector2(w * 0.5 - 107, 250 if w < 1100.0 else 37)
+	var left_w := minf(420.0, w * 0.40)
+	var right_w := minf(292.0, w * 0.30)
+	title.position = Vector2(36, 29)
+	title.size = Vector2(left_w - 28, 28)
+	area_label.position = Vector2(36, 57)
+	area_label.size = Vector2(left_w - 30, 22)
+	journal_stamp.position = Vector2(36, 81)
+	journal_stamp.size = Vector2(left_w - 30, 19)
+	objective_heading.position = Vector2(36, 112)
+	objective_heading.size = Vector2(left_w - 30, 18)
+	objective.position = Vector2(36, 139)
+	objective.size = Vector2(left_w - 33, 91)
+	bearing.position = Vector2(w * 0.5 - 107, 251 if w < 1100.0 else 39)
 	bearing.size = Vector2(214, 26)
-	pack_status.position = Vector2(w - right_w - 12, 37)
-	pack_status.size = Vector2(right_w - 28, 84)
-	stats.position = Vector2(34, h - 131)
-	stats.size = Vector2(266, 26)
-	health_bar.position = Vector2(34, h - 100)
-	stamina_bar.position = Vector2(34, h - 77)
-	detector_status.position = Vector2(w - right_w - 12, h - 115)
-	detector_status.size = Vector2(right_w - 26, 66)
-	message.position = Vector2(w * 0.5 - minf(350.0, w * 0.39), h - 214)
-	message.size = Vector2(minf(700.0, w * 0.78), 52)
+	kit_heading.position = Vector2(w - right_w - 9, 36)
+	kit_heading.size = Vector2(right_w - 33, 20)
+	pack_status.position = Vector2(w - right_w - 9, 64)
+	pack_status.size = Vector2(right_w - 29, 86)
+	vitals_heading.position = Vector2(36, h - 156)
+	vitals_heading.size = Vector2(267, 20)
+	stats.position = Vector2(36, h - 128)
+	stats.size = Vector2(267, 26)
+	health_bar.position = Vector2(36, h - 101)
+	stamina_bar.position = Vector2(36, h - 80)
+	vital_status.position = Vector2(36, h - 59)
+	vital_status.size = Vector2(267, 18)
+	signal_heading.position = Vector2(w - right_w - 9, h - 136)
+	signal_heading.size = Vector2(right_w - 28, 18)
+	detector_status.position = Vector2(w - right_w - 9, h - 111)
+	detector_status.size = Vector2(right_w - 32, 49)
+	field_activity.position = Vector2(w - right_w - 9, h - 59)
+	field_activity.size = Vector2(right_w - 30, 18)
+	var message_width := minf(686.0, w * 0.75)
+	message.position = Vector2((w - message_width) * 0.5, h - 214)
+	message.size = Vector2(message_width, 52)
 	var prompt_width := minf(610.0, maxf(280.0, w - 660.0))
-	interaction.position = Vector2((w - prompt_width) * 0.5, h - 152)
+	interaction.position = Vector2((w - prompt_width) * 0.5, h - 151)
 	interaction.size = Vector2(prompt_width, 34)
 	footer_hint.position = Vector2(26, h - 28)
 	footer_hint.size = Vector2(w - 52, 20)
+	if w < 1100:
+		footer_hint.text = "[TAB] PACK  /  [E] USE  /  [ESC] MENU  /  [F10] THEME"
 	loot_panel.position = Vector2((w - loot_panel.size.x) * 0.5, (h - loot_panel.size.y) * 0.5)
 	queue_redraw()
+
 
 
 func _draw_field_panel(rect: Rect2) -> void:
 	draw_rect(rect, hud_panel, true)
 	draw_rect(rect, hud_border, false, 1.0)
-	draw_rect(Rect2(rect.position, Vector2(rect.size.x, 2)), hud_accent * Color(1, 1, 1, 0.80), true)
+	draw_rect(Rect2(rect.position + Vector2(0, 0), Vector2(68, 3)), hud_accent, true)
+	draw_line(rect.position + Vector2(rect.size.x - 16, 0), rect.position + Vector2(rect.size.x, 16), hud_accent, 1.0)
+	draw_line(rect.position + Vector2(8, rect.size.y - 9), rect.position + Vector2(8, rect.size.y - 20), hud_border, 1.0)
+	draw_line(rect.position + Vector2(8, rect.size.y - 9), rect.position + Vector2(26, rect.size.y - 9), hud_border, 1.0)
+	# Three static abrasion marks imply worn equipment without distracting animation.
+	for mark in range(3):
+		var px := rect.position.x + rect.size.x - 52 + mark * 9
+		draw_line(Vector2(px, rect.position.y + rect.size.y - 11), Vector2(px + 4, rect.position.y + rect.size.y - 7), Color(hud_muted.r, hud_muted.g, hud_muted.b, 0.25), 1.0)
 
 
 func build_audio_panel(pale: Color, muted: Color) -> void:

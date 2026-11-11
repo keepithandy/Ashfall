@@ -75,7 +75,7 @@ func _add_route(parent: Node3D, route: Dictionary) -> void:
 func _new_site(parent: Node3D, info: Dictionary) -> void:
     var position_3d: Vector3 = info["point"]
     var pad := MeshInstance3D.new()
-    pad.name = String(info["name"]).replace(" ", "_") + "_Marker"
+    pad.name = String(info["name"]).replace(" ", "_").replace("/", "_") + "_Marker"
     var cylinder := CylinderMesh.new()
     cylinder.top_radius = float(info["radius"])
     cylinder.bottom_radius = float(info["radius"])

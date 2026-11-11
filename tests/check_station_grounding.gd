@@ -106,7 +106,7 @@ func _initialize() -> void:
                 total_trees += batch.instance_count
                 if batch.custom_aabb.size.length_squared() < 1.0:
                     failures.append("Forest sector has an invalid culling extent")
-                var type_id := int(layer.name.get_slice("Profile", 1))
+                var type_id := int(str(layer.name).get_slice("Profile", 1))
                 if type_id == 3:
                     dead_trees += batch.instance_count
                     if batch.mesh.get_surface_count() != 1:

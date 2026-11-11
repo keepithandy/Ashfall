@@ -13,6 +13,7 @@ extends Node3D
 
 const PLAY_X := 86.0
 const PLAY_Z := 81.0
+const SKIRT_FLOOR_Y := -25.0
 const OFFSETS := [9.0, 15.0, 23.0, 35.0, 52.0, 75.0, 100.0, 130.0, 165.0, 200.0, 245.0, 290.0, 340.0, 400.0, 470.0, 550.0, 640.0]
 
 func _ready() -> void:
@@ -80,12 +81,36 @@ func _build() -> void:
             var near1 := _point(a1, OFFSETS[ring], noise)
             var far0 := _point(a0, OFFSETS[ring + 1], noise)
             var far1 := _point(a1, OFFSETS[ring + 1], noise)
-            # Counterclockwise when seen from above: visible top faces.
-            _triangle(tool, near0, near1, far0)
-            _triangle(tool, near1, far1, far0)
+            # Godot's front faces use CLOCKWISE winding (viewed from above).
+            # The old counterclockwise winding was culled by the reused
+            # cull_back terrain shader, leaving sky visible through ridges.
+            _triangle(tool, near0, far0, near1)
+            _triangle(tool, near1, far0, far1)
 
-    # Normals must be generated before indexing; shared vertices across
-    # triangle seams would otherwise be indexed without smoothing control.
+    # Close the inner and outer edges below the existing ground plane.
+    # The front skirt hides open underfaces from low, near-ground cameras.
+    # The far skirt seals the world-edge silhouette. Both are visual-only.
+    # No new collision, nav meshes, terrain under objectives, or gameplay.
+    for segment in range(segments):
+        var a0 := TAU * float(segment) / float(segments)
+        var a1 := TAU * float(segment + 1) / float(segments)
+        var inner0 := _point(a0, OFFSETS[0], noise)
+        var inner1 := _point(a1, OFFSETS[0], noise)
+        var inner_bottom0 := Vector3(inner0.x, SKIRT_FLOOR_Y, inner0.z)
+        var inner_bottom1 := Vector3(inner1.x, SKIRT_FLOOR_Y, inner1.z)
+        _triangle(tool, inner0, inner1, inner_bottom0)
+        _triangle(tool, inner1, inner_bottom1, inner_bottom0)
+
+        var outer0 := _point(a0, OFFSETS[OFFSETS.size() - 1], noise)
+        var outer1 := _point(a1, OFFSETS[OFFSETS.size() - 1], noise)
+        var outer_bottom0 := Vector3(outer0.x, SKIRT_FLOOR_Y, outer0.z)
+        var outer_bottom1 := Vector3(outer1.x, SKIRT_FLOOR_Y, outer1.z)
+        _triangle(tool, outer0, outer_bottom0, outer1)
+        _triangle(tool, outer1, outer_bottom0, outer_bottom1)
+
+    # Generate outward/upward normals from Godot's front-face winding.
+    # Do not flip: that inverts the hill normals and breaks PBR lighting.
+    # Tangents must follow normal generation for the reused ground shader.
     tool.generate_normals()
     tool.generate_tangents()
     tool.index()

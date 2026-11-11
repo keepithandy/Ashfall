@@ -215,6 +215,31 @@ func _initialize() -> void:
             failures.append("Distant relief failed to build a mesh")
         elif relief_mesh.mesh.get_surface_count() == 0:
             failures.append("Distant relief generated no visible surfaces")
+        else:
+            # Godot treats clockwise winding as the visible front face.
+            # Previously the hill had valid triangles but back-face culling
+            # hid the top from the player, so a surface-count test passed.
+            var surface: Array = relief_mesh.mesh.surface_get_arrays(0)
+            var vertices: PackedVector3Array = surface[Mesh.ARRAY_VERTEX]
+            var normals: PackedVector3Array = surface[Mesh.ARRAY_NORMAL]
+            var indices: PackedInt32Array = surface[Mesh.ARRAY_INDEX]
+            if vertices.is_empty() or indices.size() < 3 or normals.size() != vertices.size():
+                failures.append("Distant terrain mesh is missing vertices, faces or normals")
+            else:
+                var p0: Vector3 = vertices[indices[0]]
+                var p1: Vector3 = vertices[indices[1]]
+                var p2: Vector3 = vertices[indices[2]]
+                if (p1 - p0).cross(p2 - p0).y >= -0.05:
+                    failures.append("Hills have backward-facing top triangles for Godot's clockwise convention")
+                if normals[indices[0]].y <= 0.0:
+                    failures.append("Hilltop normals point below the surface")
+                var sealed := false
+                for point in vertices:
+                    if point.y <= -24.9:
+                        sealed = true
+                        break
+                if not sealed:
+                    failures.append("Hills are missing the lower edge skirts sealing the backdrop")
     if litter != null and litter.get_script() != null:
         litter.call("_make_layer", true)
         litter.call("_make_layer", false)

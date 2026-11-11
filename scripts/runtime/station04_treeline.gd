@@ -5,10 +5,10 @@ extends Node3D
 ## Four angular sectors cull independently instead of one world-sized batch.
 
 @export var show_tree_line: bool = true
-@export_range(24, 240, 8) var tree_count: int = 128
+@export_range(24, 480, 8) var tree_count: int = 312
 @export_range(3.0, 12.0, 0.5) var average_height: float = 6.5
-@export_range(0.08, 0.40, 0.02) var cluster_spread: float = 0.22
-@export_range(0.0, 0.25, 0.01) var dead_tree_share: float = 0.08
+@export_range(0.08, 0.50, 0.02) var cluster_spread: float = 0.31
+@export_range(0.0, 0.25, 0.01) var dead_tree_share: float = 0.055
 
 const LIMIT_X := 86.0
 const LIMIT_Z := 81.0
@@ -64,15 +64,30 @@ func _wood_material() -> StandardMaterial3D:
 func _needle_material(profile: int) -> StandardMaterial3D:
     var material := StandardMaterial3D.new()
     var colors := [
-        Color(0.12, 0.19, 0.145),
-        Color(0.145, 0.19, 0.14),
-        Color(0.115, 0.17, 0.145)
+        Color(0.225, 0.295, 0.22),
+        Color(0.24, 0.275, 0.19),
+        Color(0.18, 0.255, 0.215)
     ]
     material.albedo_color = colors[profile]
     material.roughness = 1.0
     material.cull_mode = BaseMaterial3D.CULL_DISABLED
     material.vertex_color_use_as_albedo = true
     return material
+
+# Cross-angled, vertically oriented needle sprays. The former nearly
+# horizontal fans collapsed to hairline strokes at a walking camera height.
+func _needle_spray(tool: SurfaceTool, center: Vector3, direction: Vector3, tangent: Vector3, width: float, height: float) -> void:
+    var top := center + Vector3.UP * height
+    var bottom := center - Vector3.UP * height * 0.82 + direction * width * 0.19
+    var side_a := center + tangent * width - direction * width * 0.12
+    var side_b := center - tangent * width + direction * width * 0.20
+    _triangle(tool, top, side_a, bottom)
+    _triangle(tool, top, bottom, side_b)
+    # A crossed plane gives each bough visible volume when viewed end-on.
+    var tip := center + direction * width * 1.04 - Vector3.UP * height * 0.55
+    var inward := center - direction * width * 0.83 + Vector3.UP * height * 0.13
+    _triangle(tool, top, tip, inward)
+    _triangle(tool, bottom, inward, tip)
 
 func _tree_mesh(profile: int) -> ArrayMesh:
     var result := ArrayMesh.new()
@@ -106,38 +121,34 @@ func _tree_mesh(profile: int) -> ArrayMesh:
     if profile == DEAD_PROFILE:
         return result
 
-    # Separate, drooping branch fans with open spaces; no solid cone primitive.
+    # Interlocked downward branches, not a hollow horizontal starburst.
+    # Vertical sprays create a real crown silhouette at eye level while
+    # deliberately leaving irregular windows through the branches.
     var foliage := SurfaceTool.new()
     foliage.begin(Mesh.PRIMITIVE_TRIANGLES)
-    var first_y := 0.24 if profile != 1 else 0.35
-    var tiers := 10 if profile == 0 else 9
+    var first_y := 0.19 if profile != 1 else 0.29
+    var tiers := 15 if profile == 0 else 13
     for tier in range(tiers):
         var t := float(tier) / float(tiers - 1)
-        var y := lerpf(first_y, 0.95, t)
-        var radius := 0.23 * pow(1.0 - t, 0.83)
+        var y := lerpf(first_y, 0.965, t)
+        var radius := 0.32 * pow(1.0 - t, 0.88)
         if profile == 1:
-            radius *= 1.12
+            radius *= 1.15
         elif profile == 2:
-            radius *= 0.85
-        var spokes := 7 + (tier % 3)
+            radius *= 0.89
+        var spokes := 9 + (tier % 4)
         for spoke in range(spokes):
-            var a := TAU * (float(spoke) + 0.37 * float(tier % 3)) / float(spokes)
-            a += seed_rng.randf_range(-0.12, 0.12)
+            var a := TAU * (float(spoke) + 0.34 * float(tier % 3)) / float(spokes)
+            a += seed_rng.randf_range(-0.16, 0.16)
             var direction := Vector3(cos(a), 0.0, sin(a))
             var tangent := Vector3(-sin(a), 0.0, cos(a))
-            var extent := radius * seed_rng.randf_range(0.76, 1.24)
-            var root := Vector3(0.0, y + 0.034, 0.0)
-            var shoulder := direction * (extent * 0.57) + Vector3(0.0, y + 0.014, 0.0)
-            var tip := direction * extent + Vector3(0.0, y - 0.038, 0.0)
-            var left := shoulder + tangent * (extent * 0.18) + Vector3.UP * 0.024
-            var right := shoulder - tangent * (extent * 0.16) + Vector3.UP * 0.01
-            _triangle(foliage, root, left, tip)
-            _triangle(foliage, root, tip, right)
-            # Split branchlets make the outline irregular rather than triangular.
-            var left_tip := direction * (extent * 0.76) + tangent * (extent * 0.27) + Vector3.UP * (y - 0.015)
-            var right_tip := direction * (extent * 0.70) - tangent * (extent * 0.24) + Vector3.UP * (y - 0.019)
-            _triangle(foliage, shoulder, left, left_tip)
-            _triangle(foliage, shoulder, right_tip, right)
+            var extent := radius * seed_rng.randf_range(0.72, 1.19)
+            var branch_drop := extent * seed_rng.randf_range(0.05, 0.17)
+            var outer := direction * (extent * 0.70) + Vector3.UP * (y - branch_drop)
+            var inner := direction * (extent * 0.32) + Vector3.UP * (y + 0.014)
+            var spray_height := 0.035 + extent * 0.27
+            _needle_spray(foliage, outer, direction, tangent, extent * 0.31, spray_height)
+            _needle_spray(foliage, inner, direction, tangent, extent * 0.24, spray_height * 0.82)
     foliage.generate_normals()
     foliage.set_material(_needle_material(profile))
     foliage.commit(result)
@@ -172,13 +183,13 @@ func _build() -> void:
     for i in range(tree_count):
         var center: float = CLUSTER_ANGLES[i % CLUSTER_ANGLES.size()]
         var angle := wrapf(center + rng.randf_range(-cluster_spread, cluster_spread), 0.0, TAU)
-        var distance_from_wall := rng.randf_range(29.0, 104.0)
+        var distance_from_wall := rng.randf_range(40.0, 330.0)
         var distance := _edge_radius(angle) + distance_from_wall
         var ground_point: Vector3 = horizon.call("_point", angle, distance_from_wall, terrain_noise)
         var base := Vector3(cos(angle) * distance, ground_point.y - 0.12, sin(angle) * distance)
         generated_tree_bases.append(base)
-        var height := average_height * rng.randf_range(0.67, 1.48)
-        var width := height * rng.randf_range(0.76, 1.18)
+        var height := average_height * rng.randf_range(0.83, 1.92)
+        var width := height * rng.randf_range(0.85, 1.20)
         var profile := rng.randi_range(0, LIVING_PROFILES - 1)
         if rng.randf() < dead_tree_share:
             profile = DEAD_PROFILE

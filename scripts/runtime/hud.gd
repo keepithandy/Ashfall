@@ -23,6 +23,14 @@ var inventory_screen: Control
 var detector_status: Label
 var audio_panel: ColorRect
 var intro_layout: Array[Dictionary] = []
+var footer_hint: Label
+var field_theme_mode: int = 0 # 0: cold field monitor; 1: worn amber monitor.
+var hud_pale := Color("deddd0")
+var hud_muted := Color("a2b3a6")
+var hud_accent := Color("88a998")
+var hud_panel := Color(0.021, 0.033, 0.032, 0.89)
+var hud_border := Color(0.23, 0.36, 0.33, 0.83)
+
 
 func label_at(text_value: String, at: Vector2, size: int, tint: Color) -> Label:
 	var item := Label.new()
@@ -39,26 +47,29 @@ func label_at(text_value: String, at: Vector2, size: int, tint: Color) -> Label:
 func _ready() -> void:
 	set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	mouse_filter = Control.MOUSE_FILTER_IGNORE
-	var pale := Color("d3d0bf")
-	var muted := Color("92988a")
-	title = label_at("A S H F A L L   /   FIELD EXPEDITION 01", Vector2(34, 24), 16, pale)
-	area_label = label_at("THE OUTER PERIMETER", Vector2(34, 49), 12, muted)
-	objective = label_at("", Vector2(34, 100), 18, pale)
-	bearing = label_at("", Vector2(520, 28), 16, pale)
-	bearing.size.x = 250
+	# Field-device HUD: durable screen-space telemetry, not 3D labels.
+	# Anchored dynamically for 16:9 and other window sizes.
+	var pale := Color("deddd0")
+	var muted := Color("a2b3a6")
+	title = label_at("ASHFALL  /  FIELD UNIT 04", Vector2.ZERO, 17, pale)
+	area_label = label_at("STATION 04  /  PERIMETER", Vector2.ZERO, 12, muted)
+	objective = label_at("", Vector2.ZERO, 15, pale)
+	objective.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	bearing = label_at("", Vector2.ZERO, 16, pale)
 	bearing.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	interaction = label_at("", Vector2(340, 418), 20, pale)
-	interaction.size.x = 600
+	interaction = label_at("", Vector2.ZERO, 17, pale)
 	interaction.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	message = label_at("", Vector2(290, 584), 18, pale)
-	message.size.x = 700
+	message = label_at("", Vector2.ZERO, 15, pale)
 	message.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-	stats = label_at("", Vector2(34, 618), 13, muted)
-	pack_status = label_at("", Vector2(900, 30), 13, pale)
-	health_bar = make_bar(Vector2(34, 650), Color("aa6052"))
-	stamina_bar = make_bar(Vector2(34, 668), Color("8a9274"))
-	label_at("WASD Move  SHIFT Sprint  CTRL Crouch  F Torch  E Search  TAB Pack  Q Use held  ESC Pause", Vector2(275, 675), 12, muted)
-	detector_status=label_at("",Vector2(34,574),14,Color("c29d68"))
+	message.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	stats = label_at("", Vector2.ZERO, 13, muted)
+	pack_status = label_at("", Vector2.ZERO, 13, pale)
+	pack_status.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	detector_status = label_at("", Vector2.ZERO, 13, Color("d1b287"))
+	detector_status.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	footer_hint = label_at("[TAB] PACK   [E] INTERACT   [F] LIGHT   [H] HEAL   [ESC] MENU   [F10] HUD THEME", Vector2.ZERO, 11, muted)
+	health_bar = make_bar(Vector2.ZERO, Color("aa6052"))
+	stamina_bar = make_bar(Vector2.ZERO, Color("8a9274"))
 	overlay = ColorRect.new()
 	overlay.color = Color(0.018, 0.023, 0.021, 0.93)
 	overlay.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
@@ -106,6 +117,77 @@ func _ready() -> void:
 	inventory_screen=load("res://scripts/runtime/inventory_screen.gd").new()
 	inventory_screen.game=game
 	add_child(inventory_screen)
+	resized.connect(_layout_hud)
+	_apply_field_palette()
+	_layout_hud()
+
+func _input(event: InputEvent) -> void:
+	if event is InputEventKey and event.pressed and not event.echo and event.physical_keycode == KEY_F10:
+		field_theme_mode = (field_theme_mode + 1) % 2
+		_apply_field_palette()
+		get_viewport().set_input_as_handled()
+
+
+func _apply_field_palette() -> void:
+	# Both palettes retain identical gameplay information and a low-light theme.
+	if field_theme_mode == 0:
+		hud_pale = Color("deddd0")
+		hud_muted = Color("a2b3a6")
+		hud_accent = Color("88a998")
+		hud_panel = Color(0.021, 0.033, 0.032, 0.89)
+		hud_border = Color(0.23, 0.36, 0.33, 0.83)
+	else:
+		hud_pale = Color("e5d9c4")
+		hud_muted = Color("bba68d")
+		hud_accent = Color("cd9670")
+		hud_panel = Color(0.048, 0.035, 0.027, 0.90)
+		hud_border = Color(0.43, 0.29, 0.22, 0.83)
+	for field in [title, objective, bearing, interaction, message, pack_status]:
+		field.add_theme_color_override("font_color", hud_pale)
+	for field in [area_label, stats, footer_hint]:
+		field.add_theme_color_override("font_color", hud_muted)
+	detector_status.add_theme_color_override("font_color", hud_accent)
+	queue_redraw()
+
+
+func _layout_hud() -> void:
+	if title == null or not is_instance_valid(title) or overlay == null:
+		return
+	var w := maxf(size.x, 720.0)
+	var h := maxf(size.y, 480.0)
+	var left_w := minf(430.0, w * 0.42)
+	var right_w := minf(300.0, w * 0.31)
+	title.position = Vector2(34, 30)
+	title.size = Vector2(left_w - 24, 28)
+	area_label.position = Vector2(34, 57)
+	area_label.size = Vector2(left_w - 24, 22)
+	objective.position = Vector2(34, 96)
+	objective.size = Vector2(left_w - 28, 122)
+	bearing.position = Vector2(w * 0.5 - 107, 37)
+	bearing.size = Vector2(214, 26)
+	pack_status.position = Vector2(w - right_w - 12, 37)
+	pack_status.size = Vector2(right_w - 28, 84)
+	stats.position = Vector2(34, h - 131)
+	stats.size = Vector2(266, 26)
+	health_bar.position = Vector2(34, h - 100)
+	stamina_bar.position = Vector2(34, h - 77)
+	detector_status.position = Vector2(w - right_w - 12, h - 115)
+	detector_status.size = Vector2(right_w - 26, 66)
+	message.position = Vector2(w * 0.5 - minf(350.0, w * 0.39), h - 214)
+	message.size = Vector2(minf(700.0, w * 0.78), 52)
+	interaction.position = Vector2(w * 0.5 - minf(305.0, w * 0.42), h - 152)
+	interaction.size = Vector2(minf(610.0, w * 0.84), 34)
+	footer_hint.position = Vector2(26, h - 28)
+	footer_hint.size = Vector2(w - 52, 20)
+	loot_panel.position = Vector2((w - loot_panel.size.x) * 0.5, (h - loot_panel.size.y) * 0.5)
+	queue_redraw()
+
+
+func _draw_field_panel(rect: Rect2) -> void:
+	draw_rect(rect, hud_panel, true)
+	draw_rect(rect, hud_border, false, 1.0)
+	draw_rect(Rect2(rect.position, Vector2(rect.size.x, 2)), hud_accent * Color(1, 1, 1, 0.80), true)
+
 
 func build_audio_panel(pale: Color, muted: Color) -> void:
 	audio_panel = ColorRect.new()
@@ -238,13 +320,14 @@ func show_loot(contents: Dictionary) -> void:
 func make_bar(at: Vector2, tint: Color) -> ProgressBar:
 	var bar := ProgressBar.new()
 	bar.position = at
-	bar.size = Vector2(220, 28)
-	bar.scale.y = 0.25
+	bar.size = Vector2(256, 10)
+	bar.max_value = 100.0
 	bar.show_percentage = false
+	bar.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	var fill := StyleBoxFlat.new()
 	fill.bg_color = tint
 	var background := StyleBoxFlat.new()
-	background.bg_color = Color(0.12, 0.16, 0.14, 0.8)
+	background.bg_color = Color(0.10, 0.15, 0.14, 0.90)
 	bar.add_theme_stylebox_override("fill", fill)
 	bar.add_theme_stylebox_override("background", background)
 	add_child(bar)
@@ -253,14 +336,15 @@ func make_bar(at: Vector2, tint: Color) -> ProgressBar:
 func _process(_delta: float) -> void:
 	if not is_instance_valid(game) or not is_instance_valid(game.player):
 		return
-	area_label.text = "NORTH RELAY / SERVICE YARD" if game.areas != null and game.areas.current == "relay" else "THE OUTER PERIMETER"
+	area_label.text = "NORTH RELAY  /  SERVICE YARD" if game.areas != null and game.areas.current == "relay" else "STATION 04  /  OUTER PERIMETER"
 	health_bar.value = game.player.health
 	stamina_bar.value = game.player.stamina
-	stats.text = "CONDITION %03d    /    STAMINA %03d" % [game.player.health, game.player.stamina]
-	pack_status.text = "BANDAGE %d  FOOD %d  BAT %d   LIGHT %d%%" % [game.inventory.bandage,game.inventory.food_tin,game.inventory.batteries,game.player.battery_charge]
-	var carried: Dictionary=ItemCatalog.entry(game.equipped_item_id)
-	pack_status.text+="\nHAND / "+str(carried.get("name","Empty")).to_upper()
-	if not carried.is_empty():pack_status.text+="  ×"+str(game.inventory.get(game.equipped_item_id,0))
+	stats.text = "CONDITION %03d    /    STAMINA %03d" % [int(game.player.health), int(game.player.stamina)]
+	pack_status.text = "BANDAGE %d  /  FOOD %d\nBATTERIES %d  /  LIGHT %d%%" % [game.inventory.bandage, game.inventory.food_tin, game.inventory.batteries, int(game.player.battery_charge)]
+	var carried: Dictionary = ItemCatalog.entry(game.equipped_item_id)
+	pack_status.text += "\nHAND  /  " + str(carried.get("name", "Empty")).to_upper()
+	if not carried.is_empty():
+		pack_status.text += "  ×" + str(game.inventory.get(game.equipped_item_id, 0))
 	objective.text = "01 / RETURN TO THE ENTRY GATE" if game.has_sample else "01 / RECOVER THE RESEARCH SAMPLE"
 	if game.crossroads != null: objective.text += "\n" + game.crossroads.objective_text()
 	if game.areas != null: objective.text += "\n" + game.areas.objective_text()
@@ -273,8 +357,24 @@ func _process(_delta: float) -> void:
 func _draw() -> void:
 	if not is_instance_valid(game) or not game.started or overlay.visible or loot_panel.visible or inventory_screen.visible:
 		return
+	var w := size.x
+	var h := size.y
+	if w < 700 or h < 460:
+		return
+	var left_w := minf(430.0, w * 0.42)
+	var right_w := minf(300.0, w * 0.31)
+	_draw_field_panel(Rect2(22, 20, left_w, 214))
+	_draw_field_panel(Rect2(w - right_w - 22, 20, right_w, 116))
+	_draw_field_panel(Rect2(w * 0.5 - 112, 24, 224, 46))
+	_draw_field_panel(Rect2(22, h - 146, 285, 112))
+	_draw_field_panel(Rect2(w - right_w - 22, h - 132, right_w, 98))
+	if not message.text.is_empty():
+		_draw_field_panel(Rect2(w * 0.5 - minf(362.0, w * 0.40), h - 221, minf(724.0, w * 0.80), 62))
+	if not interaction.text.is_empty():
+		_draw_field_panel(Rect2(w * 0.5 - minf(316.0, w * 0.44), h - 161, minf(632.0, w * 0.88), 48))
+	draw_line(Vector2(20, h - 38), Vector2(w - 20, h - 38), hud_border)
 	var center := size * 0.5
-	var ink := Color(0.82, 0.88, 0.79, 0.6)
+	var ink := Color(hud_pale.r, hud_pale.g, hud_pale.b, 0.60)
 	draw_line(center + Vector2(-7, 0), center + Vector2(-3, 0), ink)
 	draw_line(center + Vector2(3, 0), center + Vector2(7, 0), ink)
 	draw_line(center + Vector2(0, -7), center + Vector2(0, -3), ink)

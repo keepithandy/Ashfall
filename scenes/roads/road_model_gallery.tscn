@@ -1,0 +1,61 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://scenes/roads/road_straight.tscn" id="straight"]
+[ext_resource type="PackedScene" path="res://scenes/roads/road_bend.tscn" id="bend"]
+[ext_resource type="PackedScene" path="res://scenes/roads/road_t_junction.tscn" id="t"]
+[ext_resource type="PackedScene" path="res://scenes/roads/road_crossroads.tscn" id="cross"]
+[ext_resource type="PackedScene" path="res://scenes/roads/road_service_bridge.tscn" id="bridge"]
+
+[sub_resource type="PlaneMesh" id="preview_ground"]
+size = Vector2(150, 100)
+
+[sub_resource type="StandardMaterial3D" id="ground_mat"]
+albedo_color = Color(0.23, 0.28, 0.24, 1)
+roughness = 1.0
+
+[sub_resource type="Environment" id="gallery_env"]
+background_mode = 1
+background_color = Color(0.09, 0.12, 0.13, 1)
+ambient_light_source = 1
+ambient_light_color = Color(0.65, 0.69, 0.66, 1)
+ambient_light_energy = 0.8
+
+[node name="AshfallRoadModelGallery" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("gallery_env")
+
+[node name="Lighting" type="DirectionalLight3D" parent="."]
+rotation = Vector3(-1.0, 0.3, 0.0)
+light_energy = 0.8
+shadow_enabled = false
+
+[node name="PreviewGround" type="MeshInstance3D" parent="."]
+mesh = SubResource("preview_ground")
+material_override = SubResource("ground_mat")
+cast_shadow = 0
+
+[node name="StraightRoad" parent="." instance=ExtResource("straight")]
+position = Vector3(-49, 0, -24)
+
+[node name="CurvedRoad" parent="." instance=ExtResource("bend")]
+position = Vector3(0, 0, -23)
+
+[node name="TJunction" parent="." instance=ExtResource("t")]
+position = Vector3(47, 0, -24)
+
+[node name="Crossroads" parent="." instance=ExtResource("cross")]
+position = Vector3(-36, 0, 24)
+
+[node name="ServiceBridge" parent="." instance=ExtResource("bridge")]
+position = Vector3(38, 0, 24)
+span_length = 31.0
+
+[node name="OverviewCamera" type="Camera3D" parent="."]
+position = Vector3(0, 115, 0)
+rotation = Vector3(-1.5707964, 0, 0)
+projection = 1
+size = 115.0
+near = 0.1
+far = 1000.0
+current = true

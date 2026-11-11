@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/roads/road_strip.gd" id="1"]
+
+[node name="RoadBend" type="Node3D"]
+script = ExtResource("1")
+path_points = PackedVector3Array(-16, 0, -12, -13, 0, -5, -6, 0, 0, 2, 0, 2, 11, 0, 5, 16, 0, 12)

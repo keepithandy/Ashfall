@@ -29,6 +29,11 @@ jobs:
           curl -fL --retry 3 "https://github.com/godotengine/godot/releases/download/4.7.2-stable/Godot_v4.7.2-stable_linux.x86_64.zip" -o /tmp/godot.zip
           unzip -q /tmp/godot.zip -d /tmp
           chmod +x /tmp/Godot_v4.7.2-stable_linux.x86_64
+      - name: Parse Station 04 tree and grounding scripts before importing assets
+        shell: bash
+        run: |
+          /tmp/Godot_v4.7.2-stable_linux.x86_64 --headless --path . --check-only --script res://scripts/runtime/station04_treeline.gd
+          /tmp/Godot_v4.7.2-stable_linux.x86_64 --headless --path . --check-only --script res://tests/check_station_grounding.gd
       - name: Import project assets
         shell: bash
         run: |

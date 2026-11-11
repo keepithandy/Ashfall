@@ -1,6 +1,9 @@
 [gd_scene format=3 uid="uid://b02v2hymfsfc8"]
 
 [ext_resource type="Shader" path="res://assets/shaders/ashfall_overcast_clouds.gdshader" id="clouds"]
+[ext_resource type="Shader" path="res://assets/shaders/station04_ground.gdshader" id="terrain_shader"]
+[ext_resource type="Texture2D" path="res://assets/materials/forest_ground_05/albedo.jpg" id="forest_ground_texture"]
+[ext_resource type="Texture2D" path="res://assets/materials/concrete_floor_worn_001/albedo.jpg" id="road_surface_texture"]
 [ext_resource type="PackedScene" path="res://scenes/extra_dressing/mushroom_cluster.tscn" id="35_hd5ph"]
 [ext_resource type="PackedScene" path="res://scenes/nature/bare_tree.tscn" id="bare"]
 [ext_resource type="PackedScene" path="res://scenes/props/concrete_barrier.tscn" id="barrier"]
@@ -65,14 +68,16 @@ volumetric_fog_density = 0.005
 volumetric_fog_albedo = Color(0.47, 0.55, 0.52, 1)
 volumetric_fog_length = 65.0
 
-[sub_resource type="StandardMaterial3D" id="ground_mat"]
-albedo_color = Color(0.2, 0.23, 0.19, 1)
+[sub_resource type="ShaderMaterial" id="ground_mat"]
+shader = ExtResource("terrain_shader")
+shader_parameter/forest_albedo = ExtResource("forest_ground_texture")
+shader_parameter/concrete_albedo = ExtResource("road_surface_texture")
 
 [sub_resource type="BoxMesh" id="ground_mesh"]
-size = Vector3(180, 1, 170)
+size = Vector3(460, 1, 460)
 
 [sub_resource type="BoxShape3D" id="ground_shape"]
-size = Vector3(180, 1, 170)
+size = Vector3(460, 1, 460)
 
 [sub_resource type="StandardMaterial3D" id="road_mat"]
 albedo_color = Color(0.24, 0.25, 0.22, 1)
@@ -159,11 +164,15 @@ mesh = SubResource("ground_mesh")
 shape = SubResource("ground_shape")
 
 [node name="ApproachRoad" type="MeshInstance3D" parent="EditableWorld/Terrain" unique_id=1228482375]
+visible = false
+metadata/grounded_terrain = "Road is painted into the ground material; legacy elevated mesh is hidden."
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.025, -7)
 material_override = SubResource("road_mat")
 mesh = SubResource("road_mesh")
 
 [node name="ServiceYardSurface" type="MeshInstance3D" parent="EditableWorld/Terrain" unique_id=505900105]
+visible = false
+metadata/grounded_terrain = "Yard is painted into the ground material; legacy elevated mesh is hidden."
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25, 0.02, -8)
 material_override = SubResource("yard_mat")
 mesh = SubResource("yard_mesh")
@@ -690,4 +699,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25, 0, -8)
 script = ExtResource("horror")
 
 [node name="MushroomCluster" parent="." unique_id=1444727368 instance=ExtResource("35_hd5ph")]
-transform = Transform3D(50, 0, 0, 0, 50, 0, 0, 0, 50, -30.94629, 0.0014595669, 16.770142)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30.94629, 0.0014595669, 16.770142)
+metadata/grounded_terrain = "Original 50x display scale corrected to 1x natural prop dimensions."

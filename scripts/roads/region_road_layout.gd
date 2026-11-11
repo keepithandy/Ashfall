@@ -94,7 +94,7 @@ func _new_site(parent: Node3D, info: Dictionary) -> void:
         label.name = pad.name + "_Label"
         label.text = String(info["name"])
         label.font_size = 42
-        label.pixel_size = 0.19
+        label.pixel_size = 0.80
         label.billboard = BaseMaterial3D.BILLBOARD_ENABLED
         label.modulate = Color(0.93, 0.93, 0.84)
         label.outline_modulate = Color(0.07, 0.09, 0.09)

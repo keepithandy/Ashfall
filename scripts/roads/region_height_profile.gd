@@ -8,6 +8,17 @@ const DEPTH := 2000.0
 const WATER_LEVEL := -9.0
 const BRIDGE_DECK_HEIGHT := 7.5
 const RIVER_HALF_WIDTH := 45.0
+const GRID_COLUMNS := 200
+const GRID_ROWS := 168
+const GRID_STEP_X := WIDTH / float(GRID_COLUMNS)
+const GRID_STEP_Z := DEPTH / float(GRID_ROWS)
+
+const SITE_COORDS := [
+    Vector2(-720.0, -700.0), Vector2(-170.0, -820.0),
+    Vector2(320.0, -490.0), Vector2(800.0, -780.0),
+    Vector2(-920.0, -150.0), Vector2(-760.0, 650.0),
+    Vector2(350.0, 700.0), Vector2(1080.0, 290.0)
+]
 
 # Match the river points used by the regional layout.
 const RIVER_PATH := [
@@ -86,12 +97,7 @@ func height_at(x: float, z: float) -> float:
 
     # Local pads, not sweeping levelled terrain: preserve the distinct hills
     # around future buildings and set reasonable heights for future props.
-    var sites := [
-        Vector2(-720, -700), Vector2(-170, -820), Vector2(320, -490),
-        Vector2(800, -780), Vector2(-920, -150), Vector2(-760, 650),
-        Vector2(350, 700), Vector2(1080, 290)
-    ]
-    for site in sites:
+    for site in SITE_COORDS:
         var radial := Vector2(x, z).distance_to(site)
         if radial < 82.0:
             # Use a large-radius smooth elevation at the location as a
@@ -118,3 +124,24 @@ func height_near(x: float, z: float, spacing: float = 4.0) -> Vector3:
     var east := height_at(x + step, z) - height_at(x - step, z)
     var south := height_at(x, z + step) - height_at(x, z - step)
     return Vector3(-east / (2.0 * step), 1.0, -south / (2.0 * step)).normalized()
+
+# Return the exact height of the rendered triangulated terrain cell. Roads,
+# markers and bridge landings use this instead of the smooth analytic profile
+# so there can be no hovering caused by coarse terrain mesh interpolation.
+func surface_height_at(x: float, z: float) -> float:
+    var gx := clampf((x + WIDTH * 0.5) / GRID_STEP_X, 0.0, float(GRID_COLUMNS))
+    var gz := clampf((z + DEPTH * 0.5) / GRID_STEP_Z, 0.0, float(GRID_ROWS))
+    var ix := mini(int(floor(gx)), GRID_COLUMNS - 1)
+    var iz := mini(int(floor(gz)), GRID_ROWS - 1)
+    var tx := gx - float(ix)
+    var tz := gz - float(iz)
+    var x0 := -WIDTH * 0.5 + float(ix) * GRID_STEP_X
+    var z0 := -DEPTH * 0.5 + float(iz) * GRID_STEP_Z
+
+    var h00 := height_at(x0, z0)
+    var h10 := height_at(x0 + GRID_STEP_X, z0)
+    var h01 := height_at(x0, z0 + GRID_STEP_Z)
+    var h11 := height_at(x0 + GRID_STEP_X, z0 + GRID_STEP_Z)
+    if tx + tz <= 1.0:
+        return h00 + (h10 - h00) * tx + (h01 - h00) * tz
+    return h11 + (h01 - h11) * (1.0 - tx) + (h10 - h11) * (1.0 - tz)

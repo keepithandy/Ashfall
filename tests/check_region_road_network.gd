@@ -82,18 +82,45 @@ func _run_checks() -> void:
         var cam := world.get_node_or_null("OverviewCamera") as Camera3D
         if cam == null or cam.projection != Camera3D.PROJECTION_ORTHOGONAL:
             errors.append("Overview camera missing or not orthogonal")
-        var collider := world.get_node_or_null("RegionGround/GroundCollider") as CollisionShape3D
-        if collider == null:
-            errors.append("Regional ground collision missing")
-        elif collider.shape is BoxShape3D:
-            var box := collider.shape as BoxShape3D
-            if box.size.x < 2400.0 or box.size.z < 2000.0:
-                errors.append("Region footprint smaller than 2.4 km x 2.0 km")
+        var ground := world.get_node_or_null("RegionGround") as StaticBody3D
+        var visual := world.get_node_or_null("RegionGround/HeightfieldVisual") as MeshInstance3D
+        var collider := world.get_node_or_null("RegionGround/HeightfieldCollision") as CollisionShape3D
+        if ground == null or visual == null or collider == null:
+            errors.append("Regional heightfield mesh or collision is missing")
+        else:
+            if visual.mesh == null or visual.mesh.get_surface_count() == 0:
+                errors.append("Heightfield visual has no generated triangles")
+            if not (collider.shape is ConcavePolygonShape3D):
+                errors.append("Heightfield collision is not generated from the terrain triangle mesh")
+            var station_y: float = ground.call("get_height", 0.0, 0.0)
+            var ridge_y: float = ground.call("get_height", 800.0, -780.0)
+            var marsh_y: float = ground.call("get_height", -920.0, -150.0)
+            var riverbed_y: float = ground.call("get_height", 850.0, 70.0)
+            if absf(station_y) > 0.1:
+                errors.append("Station 04 central reserve is no longer at world height zero")
+            if ridge_y < station_y + 30.0:
+                errors.append("Signal ridge elevation is too flat for an elevated terrain area")
+            if marsh_y > 8.0:
+                errors.append("Western marsh region is no longer lowland")
+            if riverbed_y > -6.0:
+                errors.append("The river corridor is not carved into the heightfield")
+            if layout != null:
+                var approach := layout.get_node_or_null("Station_North_Exit/CompactedRoadSurface") as MeshInstance3D
+                if approach != null and approach.mesh != null:
+                    var road_vertices: PackedVector3Array = approach.mesh.surface_get_arrays(0)[Mesh.ARRAY_VERTEX]
+                    if not road_vertices.is_empty():
+                        var first: Vector3 = road_vertices[0]
+                        var expected: float = ground.call("get_height", first.x, first.z)
+                        if absf(first.y - expected - 0.036) > 0.08:
+                            errors.append("North road strip is not seated against the rendered terrain")
+                var bridge := layout.get_node_or_null("EasternServiceBridge") as Node3D
+                if bridge != null and absf(bridge.position.y - 7.5) > 0.1:
+                    errors.append("Bridge deck is not raised over the carved river valley")
         world.queue_free()
 
     if errors.is_empty():
         print("ASHFALL ROAD NETWORK CHECK PASSED")
-        print("Five editable road models + gallery, sixteen routes and ten area anchors")
+        print("Five road models, sixteen terrain-aligned routes, ten elevated area anchors and heightfield collision")
         print("Manual Godot 3D / F6 performance and visual verification still required")
         quit(0)
     else:

@@ -7,6 +7,7 @@ on:
       - 'scripts/runtime/station04_*.gd'
       - 'assets/shaders/station04_ground.gdshader'
       - 'tests/check_station_grounding.gd'
+      - 'tests/check_station_lighting.gd'
       - '.github/workflows/station04-environment.yml'
   workflow_dispatch:
 
@@ -34,6 +35,10 @@ jobs:
         shell: bash
         run: |
           /tmp/Godot_v4.7.2-stable_linux.x86_64 --headless --path . --script res://tests/check_station_grounding.gd
+      - name: Verify Station 04 exterior lighting and fog setup
+        shell: bash
+        run: |
+          /tmp/Godot_v4.7.2-stable_linux.x86_64 --headless --path . --script res://tests/check_station_lighting.gd
       - name: Verify main scene parses and runs without startup failures
         shell: bash
         run: |

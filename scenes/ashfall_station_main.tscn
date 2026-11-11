@@ -61,21 +61,39 @@ sky_material = SubResource("sky_m")
 background_mode = 2
 sky = SubResource("sky")
 ambient_light_source = 2
-ambient_light_color = Color(0.49, 0.57, 0.61, 1)
-ambient_light_energy = 0.25
+ambient_light_color = Color(0.46, 0.52, 0.55, 1)
+ambient_light_energy = 0.30
 tonemap_mode = 2
 ssao_enabled = true
-ssao_intensity = 1.1
+ssao_intensity = 0.90
 fog_enabled = true
 fog_light_color = Color(0.22, 0.26, 0.25, 1)
 fog_light_energy = 0.45
-fog_density = 0.0075
+fog_density = 0.0068
 fog_sky_affect = 0.10
 volumetric_fog_enabled = true
 volumetric_fog_sky_affect = 0.12
-volumetric_fog_density = 0.005
-volumetric_fog_albedo = Color(0.47, 0.55, 0.52, 1)
-volumetric_fog_length = 65.0
+volumetric_fog_density = 0.0046
+volumetric_fog_albedo = Color(0.44, 0.51, 0.49, 1)
+volumetric_fog_length = 70.0
+
+[sub_resource type="FogMaterial" id="fog_research"]
+density = 0.010
+albedo = Color(0.40, 0.46, 0.45, 1)
+edge_fade = 0.4
+height_falloff = 0.80
+
+[sub_resource type="FogMaterial" id="fog_service"]
+density = 0.008
+albedo = Color(0.37, 0.43, 0.40, 1)
+edge_fade = 0.42
+height_falloff = 0.75
+
+[sub_resource type="FogMaterial" id="fog_cottages"]
+density = 0.007
+albedo = Color(0.40, 0.45, 0.43, 1)
+edge_fade = 0.45
+height_falloff = 0.85
 
 [sub_resource type="ShaderMaterial" id="ground_mat"]
 shader = ExtResource("terrain_shader")
@@ -158,13 +176,31 @@ environment = SubResource("environment")
 
 [node name="OvercastSun" type="DirectionalLight3D" parent="." unique_id=986619216]
 transform = Transform3D(0.8571673, 0.30273178, -0.41667455, 0, 0.809017, 0.58778524, 0.5150381, -0.5038303, 0.6934629, 0, 0, 0)
-light_color = Color(0.75, 0.8, 0.78, 1)
-light_energy = 0.42
+light_color = Color(0.72, 0.78, 0.78, 1)
+light_energy = 0.49
 shadow_enabled = true
-directional_shadow_max_distance = 80.0
+directional_shadow_max_distance = 90.0
 
 [node name="EditableWorld" type="Node3D" parent="." unique_id=1475062397]
 metadata/scene_role = "Station 04: compact playable main scene. Existing game systems are inherited from game.gd."
+
+[node name="AtmosphericVolumes" type="Node3D" parent="EditableWorld"]
+metadata/environment_only = "Local depth haze; noninteractive; complements existing runtime road and village mist."
+
+[node name="ResearchApproachMist" type="FogVolume" parent="EditableWorld/AtmosphericVolumes"]
+position = Vector3(-18, 0.72, -44)
+size = Vector3(20, 1.7, 17)
+material = SubResource("fog_research")
+
+[node name="ServiceYardMist" type="FogVolume" parent="EditableWorld/AtmosphericVolumes"]
+position = Vector3(32, 0.7, -11)
+size = Vector3(23, 1.8, 23)
+material = SubResource("fog_service")
+
+[node name="SouthernCottagesMist" type="FogVolume" parent="EditableWorld/AtmosphericVolumes"]
+position = Vector3(0, 0.8, 62)
+size = Vector3(66, 1.5, 11)
+material = SubResource("fog_cottages")
 
 [node name="Terrain" type="Node3D" parent="EditableWorld" unique_id=851092585]
 
@@ -271,6 +307,17 @@ transform = Transform3D(-3.6199901e-06, 0, 1, 0, 1, 0, -1, 0, -3.6199901e-06, 36
 
 [node name="PortableWorkLamp" parent="EditableWorld/Props" unique_id=2068849020 instance=ExtResource("lights")]
 transform = Transform3D(0.87758255, 0, -0.47942555, 0, 1, 0, 0.47942555, 0, 0.87758255, 31, 0, 7)
+
+[node name="WorkLampThrow" type="SpotLight3D" parent="EditableWorld/Props"]
+position = Vector3(31, 1.62, 7.1)
+rotation = Vector3(-0.8, -2.64, 0)
+light_color = Color(0.96, 0.82, 0.62, 1)
+light_energy = 0.85
+spot_range = 9.0
+spot_angle = 40.0
+shadow_enabled = false
+metadata/environment_only = "Subtle warm illumination sourced at the existing tripod work-light lens."
+
 
 [node name="CoiledHose" parent="EditableWorld/Props" unique_id=130008283 instance=ExtResource("hose")]
 transform = Transform3D(0.4535961, 0, 0.8912074, 0, 1, 0, -0.8912074, 0, 0.4535961, 32, 0, -16)

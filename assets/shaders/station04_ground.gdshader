@@ -25,6 +25,7 @@ uniform float dirt_variation : hint_range(0.0, 0.5) = 0.16;
 // Two-scale breakup avoids large uniform patches across the open yard.
 uniform float patch_strength : hint_range(0.0, 0.5) = 0.12;
 uniform float verge_grit : hint_range(0.0, 1.0) = 0.32;
+uniform float foundation_weathering : hint_range(0.0, 0.5) = 0.18;
 
 varying vec3 terrain_world;
 
@@ -87,6 +88,17 @@ void fragment() {
     float verge_scatter = smoothstep(0.40, 0.75, fine) * shoulder_mask;
     soil = mix(soil, verge, shoulder_mask * 0.65);
     soil = mix(soil, soil * 0.72, verge_scatter * verge_grit);
+
+    // Damp soil and tracked debris where existing house foundations meet
+    // the flat ground; all coordinates match authored Station 04 house centres.
+    // The ring is material-only: no moving foundations, doors, or collisions.
+    float foundation = 0.0;
+    foundation = max(foundation, region_mask(ground, vec2(-24.0, -2.0), vec2(4.6, 4.9), 1.8));
+    foundation = max(foundation, region_mask(ground, vec2(-25.0, -29.0), vec2(4.6, 4.9), 1.8));
+    foundation = max(foundation, region_mask(ground, vec2(-24.0, 44.0), vec2(4.15, 4.15), 1.8));
+    foundation = max(foundation, region_mask(ground, vec2(0.0, 46.0), vec2(6.15, 3.65), 1.8));
+    foundation = max(foundation, region_mask(ground, vec2(24.0, 44.0), vec2(4.65, 5.15), 1.8));
+    soil *= 1.0 - foundation * foundation_weathering;
     vec3 compacted = texture(concrete_albedo, road_uv).rgb * road_tint;
     compacted *= mix(0.85, 1.13, broken);
     float patches = value_noise(ground * 0.105 + vec2(71.2, 9.7));

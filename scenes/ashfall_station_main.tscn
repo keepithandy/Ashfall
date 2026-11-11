@@ -71,13 +71,13 @@ ssao_intensity = 0.90
 fog_enabled = true
 fog_light_color = Color(0.32, 0.37, 0.35, 1)
 fog_light_energy = 0.58
-fog_density = 0.0046
-fog_sky_affect = 0.10
+fog_density = 0.0021
+fog_sky_affect = 0.065
 volumetric_fog_enabled = true
 volumetric_fog_sky_affect = 0.12
-volumetric_fog_density = 0.0036
+volumetric_fog_density = 0.0026
 volumetric_fog_albedo = Color(0.44, 0.51, 0.49, 1)
-volumetric_fog_length = 110.0
+volumetric_fog_length = 140.0
 
 [sub_resource type="FogMaterial" id="fog_research"]
 density = 0.010
@@ -421,18 +421,6 @@ shape = SubResource("terminal_shape")
 transform = Transform3D(0.52, 0, 0, 0, 0.4, 0, 0, 0, 0.04, 0, 0.22, 0.36)
 material_override = SubResource("screen_mat")
 mesh = SubResource("base_mesh")
-
-[node name="ResearchLabel" type="Label3D" parent="EditableWorld/Objectives" unique_id=381245284]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 2.45, -33)
-modulate = Color(0.73, 0.85, 0.75, 1)
-text = "STATION 04 / SAMPLE"
-font_size = 24
-
-[node name="GateLabel" type="Label3D" parent="EditableWorld/Objectives" unique_id=2074893296]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.9, 2.4, 28)
-modulate = Color(0.65, 0.81, 0.73, 1)
-text = "ENTRY TERMINAL"
-font_size = 22
 
 [node name="Vegetation" type="Node3D" parent="EditableWorld" unique_id=1863261040]
 

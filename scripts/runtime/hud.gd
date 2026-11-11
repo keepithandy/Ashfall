@@ -258,7 +258,7 @@ func _layout_hud() -> void:
 	field_activity.position = Vector2(w - right_w - 9, h - 59)
 	field_activity.size = Vector2(right_w - 30, 18)
 	var message_width := minf(686.0, w * 0.75)
-	message.position = Vector2((w - message_width) * 0.5, h - 214)
+	message.position = Vector2((w - message_width) * 0.5, h - 241)
 	message.size = Vector2(message_width, 52)
 	var prompt_width := minf(610.0, maxf(280.0, w - 660.0))
 	interaction.position = Vector2((w - prompt_width) * 0.5, h - 151)
@@ -479,7 +479,7 @@ func _draw() -> void:
 	_draw_field_panel(Rect2(w - right_w - 22, h - 153, right_w, 117))
 	if not message.text.is_empty():
 		var message_width := minf(710.0, w * 0.78)
-		_draw_field_panel(Rect2((w - message_width) * 0.5, h - 221, message_width, 62))
+		_draw_field_panel(Rect2((w - message_width) * 0.5, h - 248, message_width, 62))
 	if not interaction.text.is_empty():
 		var prompt_width := minf(632.0, maxf(296.0, w - 644.0))
 		_draw_field_panel(Rect2((w - prompt_width) * 0.5, h - 161, prompt_width, 48))

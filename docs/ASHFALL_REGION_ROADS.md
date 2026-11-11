@@ -32,7 +32,7 @@ models are reusable and can be integrated into playable areas later.
 
 ### Complete concept road connectivity
 
-The draft network presently has **15 road routes**, **10 area anchors**, and
+The draft network presently has **16 road routes**, **10 area anchors**, and
 one river/bridge connection. Route names are stable in
 `scripts/roads/region_road_layout.gd`. Destinations and positions:
 
@@ -54,8 +54,8 @@ or a gameplay hazard. The bridge spans approximately x=760 to x=930, crossing
 the river at z=70. Areas beyond the roads are identified by ground markers
 and readable labels, **not by constructed buildings or functioning gameplay**.
 
-Station 04's exits are visual road anchors at z=±130. They deliberately stop
-outside the existing playable compound; **the game still needs proper gate,
+Station 04 has a conceptual internal north-south road spine at x=0, and its
+exits are visual anchors at z=±130. **The game still needs proper gate,
 area loading, save/inventory continuity and collision-boundary adjustments**
 before the entire region can be traversed as one world.
 

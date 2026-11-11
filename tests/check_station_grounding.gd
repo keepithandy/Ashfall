@@ -19,6 +19,7 @@ func _initialize() -> void:
     var yard := level.get_node_or_null("EditableWorld/Terrain/ServiceYardSurface") as MeshInstance3D
     var mushrooms := level.get_node_or_null("MushroomCluster") as Node3D
     var horizon := level.get_node_or_null("EditableWorld/Terrain/HorizonRelief") as Node3D
+    var treeline := level.get_node_or_null("EditableWorld/Terrain/DistantTreeLine") as Node3D
     var litter := level.get_node_or_null("EditableWorld/GroundLitter") as Node3D
 
     if ground_body == null or ground_visual == null or ground_collision == null:
@@ -71,6 +72,17 @@ func _initialize() -> void:
             if absf(relief_point.x) <= 86.0 and absf(relief_point.z) <= 81.0:
                 failures.append("Horizon terrain entered playable district at angle " + str(angle_idx))
                 break
+
+    if treeline == null or treeline.get_script() == null:
+        failures.append("Distant tree line is missing")
+    else:
+        treeline.call("_build")
+        for layer_name in ["Trunks", "Crowns"]:
+            var layer := treeline.get_node_or_null(layer_name) as MultiMeshInstance3D
+            if layer == null or layer.multimesh == null:
+                failures.append("Distant tree batch failed: " + layer_name)
+            elif layer.multimesh.instance_count != treeline.tree_count:
+                failures.append("Distant tree batch count differs from configured count: " + layer_name)
 
     if litter == null or litter.get_script() == null:
         failures.append("Collision-free ground dressing script is not attached")

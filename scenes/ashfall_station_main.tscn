@@ -3,6 +3,7 @@
 [ext_resource type="Shader" path="res://assets/shaders/ashfall_overcast_clouds.gdshader" id="clouds"]
 [ext_resource type="Shader" path="res://assets/shaders/station04_ground.gdshader" id="terrain_shader"]
 [ext_resource type="Script" path="res://scripts/runtime/station04_horizon.gd" id="horizon_script"]
+[ext_resource type="Script" path="res://scripts/runtime/station04_treeline.gd" id="treeline_script"]
 [ext_resource type="Script" path="res://scripts/runtime/station04_surface_dressing.gd" id="surface_dressing_script"]
 [ext_resource type="Texture2D" path="res://assets/materials/forest_ground_05/normal.jpg" id="forest_normal_texture"]
 [ext_resource type="Texture2D" path="res://assets/materials/forest_ground_05/roughness.jpg" id="forest_roughness_texture"]
@@ -190,6 +191,10 @@ metadata/grounded_terrain = "Yard is painted into the ground material; legacy el
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25, 0.02, -8)
 material_override = SubResource("yard_mat")
 mesh = SubResource("yard_mesh")
+
+[node name="DistantTreeLine" type="Node3D" parent="EditableWorld/Terrain"]
+script = ExtResource("treeline_script")
+metadata/environment_only = "Visual-only distant conifer silhouettes beyond playable walls."
 
 [node name="HorizonRelief" type="Node3D" parent="EditableWorld/Terrain"]
 script = ExtResource("horizon_script")

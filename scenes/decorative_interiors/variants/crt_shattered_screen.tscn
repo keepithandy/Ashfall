@@ -1,0 +1,56 @@
+[gd_scene load_steps=7 format=3]
+
+[ext_resource type="PackedScene" path="res://assets/decorative_interiors/models/cracked_crt_television.glb" id="base"]
+
+[sub_resource type="BoxMesh" id="visual_mesh_0"]
+size = Vector3(0.21, 0.14, 0.015)
+
+[sub_resource type="StandardMaterial3D" id="visual_mat_0"]
+albedo_color = Color(0.17, 0.23, 0.24, 0.78)
+roughness = 0.95
+metallic = 0
+
+[sub_resource type="BoxMesh" id="visual_mesh_1"]
+size = Vector3(0.26, 0.06, 0.015)
+
+[sub_resource type="StandardMaterial3D" id="visual_mat_1"]
+albedo_color = Color(0.11, 0.13, 0.14, 1)
+roughness = 0.95
+metallic = 0
+
+[sub_resource type="BoxMesh" id="visual_mesh_2"]
+size = Vector3(0.13, 0.14, 0.02)
+
+[sub_resource type="StandardMaterial3D" id="visual_mat_2"]
+albedo_color = Color(0.16, 0.18, 0.18, 1)
+roughness = 0.95
+metallic = 0
+
+[sub_resource type="BoxShape3D" id="shape_0"]
+size = Vector3(1.04, 0.92, 0.8)
+
+[node name="CrtShatteredScreen" type="StaticBody3D"]
+
+[node name="Visual" parent="." instance=ExtResource("base")]
+[node name="DetachedDetail0" type="MeshInstance3D" parent="."]
+position = Vector3(-0.31, 0.26, -0.5)
+rotation = Vector3(-0.2, 0.25, -0.45)
+mesh = SubResource("visual_mesh_0")
+material_override = SubResource("visual_mat_0")
+
+[node name="DetachedDetail1" type="MeshInstance3D" parent="."]
+position = Vector3(0.44, 0.05, -0.63)
+rotation = Vector3(0, -0.18, 0.6)
+mesh = SubResource("visual_mesh_1")
+material_override = SubResource("visual_mat_1")
+
+[node name="DetachedDetail2" type="MeshInstance3D" parent="."]
+position = Vector3(-0.14, 0.08, -0.57)
+rotation = Vector3(-0.22, 0, 0.4)
+mesh = SubResource("visual_mesh_2")
+material_override = SubResource("visual_mat_2")
+
+[node name="Collision0" type="CollisionShape3D" parent="."]
+position = Vector3(0, 0.47, 0)
+shape = SubResource("shape_0")
+

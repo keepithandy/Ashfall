@@ -1,0 +1,304 @@
+name: Decorative World Props Validation
+
+on:
+  pull_request:
+    paths:
+      - 'assets/decorative_world/**'
+      - 'scenes/decorative_world/**'
+      - 'assets/decorative_interiors/**'
+      - 'scenes/decorative_interiors/**'
+      - 'scenes/testing/ashfall_asset_showroom.tscn'
+      - 'scenes/testing/ashfall_decorative_grid_extension.tscn'
+      - '.github/workflows/decorative-world-props.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate-decorative-props:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - name: Check out the PR
+        uses: actions/checkout@v4
+      - name: Check glTF structure, Godot references, collision and non-interactivity
+        run: python3 assets/decorative_world/source/validate_props.py
+      - name: Validate abandoned interiors GLB structure and non-interactivity
+        run: python3 assets/decorative_interiors/source/validate_interiors.py
+      - name: Verify existing showroom and new decorative grid displays
+        run: python3 assets/decorative_world/source/validate_showroom_grid.py
+      - name: Download Godot 4.7.2 stable
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p "$RUNNER_TEMP/godot"
+          curl -fL --retry 3 \
+            "https://github.com/godotengine/godot/releases/download/4.7.2-stable/Godot_v4.7.2-stable_linux.x86_64.zip" \
+            -o "$RUNNER_TEMP/godot/linux-godot.zip"
+          unzip -q "$RUNNER_TEMP/godot/linux-godot.zip" -d "$RUNNER_TEMP/godot"
+          chmod +x "$RUNNER_TEMP/godot/Godot_v4.7.2-stable_linux.x86_64"
+      - name: Import all props and instantiate gallery in isolated Godot project
+        shell: bash
+        run: |
+          set -euo pipefail
+          CHECK_ROOT="$RUNNER_TEMP/ashfall-decorative-check"
+          GODOT="$RUNNER_TEMP/godot/Godot_v4.7.2-stable_linux.x86_64"
+          mkdir -p "$CHECK_ROOT/assets/decorative_world/models" "$CHECK_ROOT/scenes/decorative_world"
+          cp assets/decorative_world/models/*.glb "$CHECK_ROOT/assets/decorative_world/models/"
+          cp scenes/decorative_world/*.tscn "$CHECK_ROOT/scenes/decorative_world/"
+          printf 'config_version=5\n[application]\nconfig/name="Ashfall Prop Import Check"\n' > "$CHECK_ROOT/project.godot"
+          "$GODOT" --headless --path "$CHECK_ROOT" --editor --import
+          cat > "$CHECK_ROOT/validate_gallery.gd" <<'GDSCRIPT'
+          extends SceneTree
+
+          func _initialize() -> void:
+              var gallery: PackedScene = load("res://scenes/decorative_world/gallery_all_16.tscn")
+              if gallery == null:
+                  push_error("Decorative gallery did not load")
+                  quit(1)
+                  return
+              var instance: Node = gallery.instantiate()
+              if instance == null:
+                  push_error("Decorative gallery did not instantiate")
+                  quit(1)
+                  return
+              var expected: PackedStringArray = [
+                  "bent_guardrail", "collapsed_bus_shelter", "discarded_tire_pile",
+                  "fallen_utility_pole", "rusted_mailbox", "sagging_porch_chair",
+                  "cracked_plant_pots", "torn_clothesline", "crushed_ventilation_duct",
+                  "collapsed_cable_tray", "corroded_sheet_metal_stack", "broken_factory_window",
+                  "rotting_picnic_table", "damaged_footbridge_fragment", "roadside_memorial",
+                  "broken_drainage_culvert",
+              ]
+              for name in expected:
+                  var prop: Node = instance.get_node_or_null(NodePath(name))
+                  if prop == null or not (prop is StaticBody3D):
+                      push_error("Missing non-interactive prop: " + name)
+                      instance.free()
+                      quit(1)
+                      return
+                  if prop.get_child_count() == 0:
+                      push_error("Prop has no model: " + name)
+                      instance.free()
+                      quit(1)
+                      return
+              print("PASS: Godot loaded and instantiated all 16 static decorative props")
+              instance.free()
+              quit(0)
+          GDSCRIPT
+          "$GODOT" --headless --path "$CHECK_ROOT" --script res://validate_gallery.gd
+      - name: Import abandoned interiors and instantiate the gallery in Godot
+        shell: bash
+        run: |
+          set -euo pipefail
+          CHECK_ROOT="$RUNNER_TEMP/ashfall-interiors-check"
+          GODOT="$RUNNER_TEMP/godot/Godot_v4.7.2-stable_linux.x86_64"
+          mkdir -p "$CHECK_ROOT/assets/decorative_interiors/models" "$CHECK_ROOT/scenes/decorative_interiors"
+          cp assets/decorative_interiors/models/*.glb "$CHECK_ROOT/assets/decorative_interiors/models/"
+          cp scenes/decorative_interiors/*.tscn "$CHECK_ROOT/scenes/decorative_interiors/"
+          printf 'config_version=5\n[application]\nconfig/name="Ashfall Interior Prop Check"\n' > "$CHECK_ROOT/project.godot"
+          "$GODOT" --headless --path "$CHECK_ROOT" --editor --import
+          cat > "$CHECK_ROOT/validate_interiors.gd" <<'GDSCRIPT'
+          extends SceneTree
+
+          func _initialize() -> void:
+              var gallery: PackedScene = load("res://scenes/decorative_interiors/gallery_all_16.tscn")
+              if gallery == null:
+                  push_error("Interior gallery did not load")
+                  quit(1)
+                  return
+              var instance: Node = gallery.instantiate()
+              if instance == null:
+                  push_error("Interior gallery did not instantiate")
+                  quit(1)
+                  return
+              var expected: PackedStringArray = [
+                  "sagging_sofa", "battered_armchair", "cracked_crt_television",
+                  "crooked_wall_mirror", "splintered_dining_table", "damaged_kitchen_cupboard",
+                  "broken_crockery_scatter", "rusted_enamel_kettle", "tilted_wooden_dresser",
+                  "torn_interior_curtains", "threadbare_area_rug", "faded_photo_frames",
+                  "fallen_ceiling_tile_pile", "broken_ceiling_fan", "peeling_wallpaper_panels",
+                  "dusty_cardboard_box_stack", "sagging_sofa_torn",
+              ]
+              for name in expected:
+                  var prop: Node = instance.get_node_or_null(NodePath(name))
+                  if prop == null or not (prop is StaticBody3D):
+                      push_error("Missing static interior prop: " + name)
+                      instance.free()
+                      quit(1)
+                      return
+                  if prop.get_child_count() == 0:
+                      push_error("Missing visual for interior prop: " + name)
+                      instance.free()
+                      quit(1)
+                      return
+              print("PASS: Godot loaded 16 distinct decorative interior models and sofa variant")
+              instance.free()
+              quit(0)
+          GDSCRIPT
+          "$GODOT" --headless --path "$CHECK_ROOT" --script res://validate_interiors.gd
+      - name: Render isolated model previews for visual art QA
+        shell: bash
+        run: |
+          set -euo pipefail
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq xvfb libgl1-mesa-dri libgl1
+          CHECK_ROOT="$RUNNER_TEMP/ashfall-review-project"
+          GODOT="$RUNNER_TEMP/godot/Godot_v4.7.2-stable_linux.x86_64"
+          mkdir -p "$CHECK_ROOT/assets/decorative_world/models" \
+            "$CHECK_ROOT/assets/decorative_interiors/models" \
+            "$CHECK_ROOT/scenes/decorative_world" \
+            "$CHECK_ROOT/scenes/decorative_interiors" \
+            "$CHECK_ROOT/source" "$RUNNER_TEMP/ashfall-review"
+          cp assets/decorative_world/models/*.glb "$CHECK_ROOT/assets/decorative_world/models/"
+          cp assets/decorative_interiors/models/*.glb "$CHECK_ROOT/assets/decorative_interiors/models/"
+          cp scenes/decorative_world/*.tscn "$CHECK_ROOT/scenes/decorative_world/"
+          cp scenes/decorative_interiors/*.tscn "$CHECK_ROOT/scenes/decorative_interiors/"
+          cp assets/decorative_world/source/capture_review.gd "$CHECK_ROOT/source/capture_review.gd"
+          printf 'config_version=5\n[application]\nconfig/name="Ashfall Prop Render Review"\n[rendering]\nrenderer/rendering_method="gl_compatibility"\n' > "$CHECK_ROOT/project.godot"
+          "$GODOT" --headless --path "$CHECK_ROOT" --editor --import
+          export LIBGL_ALWAYS_SOFTWARE=1
+          export MESA_GL_VERSION_OVERRIDE=3.3
+          export ASHFALL_REVIEW_DIR="$RUNNER_TEMP/ashfall-review"
+          xvfb-run -a -s "-screen 0 800x600x24" \
+            "$GODOT" --path "$CHECK_ROOT" --rendering-method gl_compatibility \
+            --rendering-driver opengl3 --resolution 800x600 \
+            --script res://source/capture_review.gd
+          python3 -m pip install --quiet Pillow
+          python3 - <<'PYTHON'
+          from pathlib import Path
+          from PIL import Image, ImageDraw
+          import os
+          root=Path(os.environ["ASHFALL_REVIEW_DIR"])
+          pngs=sorted(root.glob("*.png"))
+          if len(pngs)!=32:
+              raise RuntimeError(f"Expected 32 renders, got {len(pngs)}")
+          for prefix in ("decorative_world", "decorative_interiors"):
+              names=sorted(root.glob(prefix+"__*.png"))
+              board=Image.new("RGB",(4*300,4*245),(28,31,31))
+              draw=ImageDraw.Draw(board)
+              for i,src in enumerate(names):
+                  tile=Image.open(src).convert("RGB")
+                  tile.thumbnail((292,212))
+                  x=(i%4)*300+int((300-tile.width)/2)
+                  y=(i//4)*245
+                  board.paste(tile,(x,y))
+                  draw.text(((i%4)*300+8,y+215),src.stem.split("__",1)[1][:33],fill=(230,228,218))
+              board.save(root/(prefix+"_contact_sheet.jpg"),quality=80,optimize=True)
+          print("PASS: Rendered and created 2 visual contact sheets")
+          PYTHON
+          mkdir -p "$GITHUB_WORKSPACE/ashfall-review"
+          cp "$RUNNER_TEMP/ashfall-review/"* "$GITHUB_WORKSPACE/ashfall-review/"
+      - name: Attach real-time Godot rendering evidence for manual art review
+        uses: actions/upload-artifact@v4
+        with:
+          name: ashfall-prop-render-review
+          path: ashfall-review/
+          retention-days: 30
+      - name: Validate staged decorative layouts and damage variants in isolated Godot
+        shell: bash
+        run: |
+          set -euo pipefail
+          CHECK_ROOT="$RUNNER_TEMP/ashfall-staging-check"
+          GODOT="$RUNNER_TEMP/godot/Godot_v4.7.2-stable_linux.x86_64"
+          mkdir -p "$CHECK_ROOT/assets/decorative_world/models" \
+            "$CHECK_ROOT/assets/decorative_interiors/models" \
+            "$CHECK_ROOT/scenes/decorative_world/variants" \
+            "$CHECK_ROOT/scenes/decorative_world/dressing_sets" \
+            "$CHECK_ROOT/scenes/decorative_interiors/variants" \
+            "$CHECK_ROOT/scenes/decorative_interiors/dressing_sets"
+          cp assets/decorative_world/models/*.glb "$CHECK_ROOT/assets/decorative_world/models/"
+          cp assets/decorative_interiors/models/*.glb "$CHECK_ROOT/assets/decorative_interiors/models/"
+          cp scenes/decorative_world/*.tscn "$CHECK_ROOT/scenes/decorative_world/"
+          cp scenes/decorative_interiors/*.tscn "$CHECK_ROOT/scenes/decorative_interiors/"
+          cp scenes/decorative_world/variants/*.tscn "$CHECK_ROOT/scenes/decorative_world/variants/"
+          cp scenes/decorative_world/dressing_sets/*.tscn "$CHECK_ROOT/scenes/decorative_world/dressing_sets/"
+          cp scenes/decorative_interiors/variants/*.tscn "$CHECK_ROOT/scenes/decorative_interiors/variants/"
+          cp scenes/decorative_interiors/dressing_sets/*.tscn "$CHECK_ROOT/scenes/decorative_interiors/dressing_sets/"
+          printf 'config_version=5\n[application]\nconfig/name="Ashfall Staging Review"\n' > "$CHECK_ROOT/project.godot"
+          "$GODOT" --headless --path "$CHECK_ROOT" --editor --import
+          cat > "$CHECK_ROOT/check_staging.gd" <<'GDSCRIPT'
+          extends SceneTree
+
+          func _initialize() -> void:
+              var review_scenes: PackedStringArray = [
+                  "res://scenes/decorative_world/variants/mailbox_torn_door.tscn",
+                  "res://scenes/decorative_world/variants/guardrail_crash_damaged.tscn",
+                  "res://scenes/decorative_interiors/variants/crt_shattered_screen.tscn",
+                  "res://scenes/decorative_interiors/variants/collapsed_cardboard_stack.tscn",
+                  "res://scenes/decorative_world/dressing_sets/roadside_decay_cluster.tscn",
+                  "res://scenes/decorative_interiors/dressing_sets/abandoned_living_room.tscn",
+                  "res://scenes/decorative_interiors/dressing_sets/abandoned_kitchen.tscn",
+              ]
+              for scene_path in review_scenes:
+                  var p: PackedScene = load(scene_path)
+                  if p == null:
+                      push_error("Cannot load staged scene: " + scene_path)
+                      quit(1)
+                      return
+                  var scene: Node = p.instantiate()
+                  if scene == null:
+                      push_error("Cannot instantiate staged scene: " + scene_path)
+                      quit(1)
+                      return
+                  scene.free()
+              print("PASS: All four decorative variants and three safe staging layouts loaded")
+              quit(0)
+          GDSCRIPT
+          "$GODOT" --headless --path "$CHECK_ROOT" --script res://check_staging.gd
+      - name: Import and instantiate new decorative grid in Godot 4.7
+        shell: bash
+        run: |
+          set -euo pipefail
+          CHECK_ROOT="$RUNNER_TEMP/ashfall-staging-check"
+          GODOT="$RUNNER_TEMP/godot/Godot_v4.7.2-stable_linux.x86_64"
+          mkdir -p "$CHECK_ROOT/scenes/testing"
+          cp scenes/testing/ashfall_decorative_grid_extension.tscn "$CHECK_ROOT/scenes/testing/"
+          "$GODOT" --headless --path "$CHECK_ROOT" --editor --import
+          cat > "$CHECK_ROOT/check_decorative_grid.gd" <<'GDSCRIPT'
+          extends SceneTree
+
+          func _initialize() -> void:
+              var path := "res://scenes/testing/ashfall_decorative_grid_extension.tscn"
+              var gallery := load(path) as PackedScene
+              if gallery == null:
+                  push_error("Decorative grid could not be loaded")
+                  quit(1)
+                  return
+              var instance := gallery.instantiate() as Node3D
+              if instance == null:
+                  push_error("Decorative grid could not be instantiated")
+                  quit(1)
+                  return
+              var sections := {
+                  "11_DecorativeWorld": 16,
+                  "12_AbandonedInteriors": 16,
+                  "13_DamageVariants": 5,
+              }
+              var total := 0
+              for name in sections:
+                  var section := instance.get_node_or_null(NodePath(name))
+                  if section == null:
+                      push_error("Missing decorative section: " + name)
+                      instance.free()
+                      quit(1)
+                      return
+                  var bodies := 0
+                  var captions := 0
+                  for child in section.get_children():
+                      if child is StaticBody3D:
+                          bodies += 1
+                      elif child is Label3D:
+                          captions += 1
+                  if bodies != sections[name] or captions != sections[name] + 1:
+                      push_error("Incorrect grid counts in %s: %s bodies, %s captions" % [name, bodies, captions])
+                      instance.free()
+                      quit(1)
+                      return
+                  total += bodies
+              print("PASS: 37 decorative prefabs and 37 labels instantiated in the existing showroom grid layout")
+              instance.free()
+              quit(0)
+          GDSCRIPT
+          "$GODOT" --headless --path "$CHECK_ROOT" --script res://check_decorative_grid.gd

@@ -1,0 +1,231 @@
+[gd_scene load_steps=23 format=3]
+
+[ext_resource type="PackedScene" path="res://scenes/decorative_interiors/sagging_sofa.tscn" id="asset_1"]
+[ext_resource type="PackedScene" path="res://scenes/decorative_interiors/battered_armchair.tscn" id="asset_2"]
+[ext_resource type="PackedScene" path="res://scenes/decorative_interiors/cracked_crt_television.tscn" id="asset_3"]
+[ext_resource type="PackedScene" path="res://scenes/decorative_interiors/crooked_wall_mirror.tscn" id="asset_4"]
+[ext_resource type="PackedScene" path="res://scenes/decorative_interiors/splintered_dining_table.tscn" id="asset_5"]
+[ext_resource type="PackedScene" path="res://scenes/decorative_interiors/damaged_kitchen_cupboard.tscn" id="asset_6"]
+[ext_resource type="PackedScene" path="res://scenes/decorative_interiors/broken_crockery_scatter.tscn" id="asset_7"]
+[ext_resource type="PackedScene" path="res://scenes/decorative_interiors/rusted_enamel_kettle.tscn" id="asset_8"]
+[ext_resource type="PackedScene" path="res://scenes/decorative_interiors/tilted_wooden_dresser.tscn" id="asset_9"]
+[ext_resource type="PackedScene" path="res://scenes/decorative_interiors/torn_interior_curtains.tscn" id="asset_10"]
+[ext_resource type="PackedScene" path="res://scenes/decorative_interiors/threadbare_area_rug.tscn" id="asset_11"]
+[ext_resource type="PackedScene" path="res://scenes/decorative_interiors/faded_photo_frames.tscn" id="asset_12"]
+[ext_resource type="PackedScene" path="res://scenes/decorative_interiors/fallen_ceiling_tile_pile.tscn" id="asset_13"]
+[ext_resource type="PackedScene" path="res://scenes/decorative_interiors/broken_ceiling_fan.tscn" id="asset_14"]
+[ext_resource type="PackedScene" path="res://scenes/decorative_interiors/peeling_wallpaper_panels.tscn" id="asset_15"]
+[ext_resource type="PackedScene" path="res://scenes/decorative_interiors/dusty_cardboard_box_stack.tscn" id="asset_16"]
+[ext_resource type="PackedScene" path="res://scenes/decorative_interiors/sagging_sofa_torn.tscn" id="asset_17"]
+
+[sub_resource type="BoxMesh" id="floor_mesh"]
+size = Vector3(42, 0.10, 48)
+
+[sub_resource type="BoxShape3D" id="floor_shape"]
+size = Vector3(42, 0.10, 48)
+
+[sub_resource type="StandardMaterial3D" id="floor_material"]
+albedo_color = Color(0.20, 0.20, 0.19, 1.0)
+roughness = 0.97
+
+[sub_resource type="Environment" id="neutral_environment"]
+background_mode = 1
+background_color = Color(0.12, 0.14, 0.14, 1.0)
+ambient_light_source = 1
+ambient_light_color = Color(0.60, 0.62, 0.61, 1.0)
+ambient_light_energy = 0.85
+
+[node name="AshfallInteriorPropsGallery" type="Node3D"]
+
+[node name="GalleryEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("neutral_environment")
+
+[node name="Floor" type="StaticBody3D" parent="."]
+
+[node name="Visual" type="MeshInstance3D" parent="Floor"]
+mesh = SubResource("floor_mesh")
+surface_material_override/0 = SubResource("floor_material")
+
+[node name="StaticCollision" type="CollisionShape3D" parent="Floor"]
+shape = SubResource("floor_shape")
+
+[node name="SoftInspectionSun" type="DirectionalLight3D" parent="."]
+rotation = Vector3(-0.73, -0.55, -0.17)
+light_energy = 1.05
+shadow_enabled = true
+
+[node name="Camera" type="Camera3D" parent="."]
+position = Vector3(0, 22, 37)
+rotation = Vector3(-0.52, 0, 0)
+fov = 76.0
+current = true
+
+[node name="sagging_sofa" parent="." instance=ExtResource("asset_1")]
+position = Vector3(-13.5, 0, -15)
+
+[node name="Label1" type="Label3D" parent="."]
+position = Vector3(-13.5, 0.4, -12.3)
+text = "Sagging sofa"
+font_size = 48
+pixel_size = 0.008
+billboard = 1
+
+[node name="battered_armchair" parent="." instance=ExtResource("asset_2")]
+position = Vector3(-4.5, 0, -15)
+
+[node name="Label2" type="Label3D" parent="."]
+position = Vector3(-4.5, 0.4, -12.3)
+text = "Battered armchair"
+font_size = 48
+pixel_size = 0.008
+billboard = 1
+
+[node name="cracked_crt_television" parent="." instance=ExtResource("asset_3")]
+position = Vector3(4.5, 0, -15)
+
+[node name="Label3" type="Label3D" parent="."]
+position = Vector3(4.5, 0.4, -12.3)
+text = "Cracked CRT television"
+font_size = 48
+pixel_size = 0.008
+billboard = 1
+
+[node name="crooked_wall_mirror" parent="." instance=ExtResource("asset_4")]
+position = Vector3(13.5, 0, -15)
+
+[node name="Label4" type="Label3D" parent="."]
+position = Vector3(13.5, 0.4, -12.3)
+text = "Crooked wall mirror"
+font_size = 48
+pixel_size = 0.008
+billboard = 1
+
+[node name="splintered_dining_table" parent="." instance=ExtResource("asset_5")]
+position = Vector3(-13.5, 0, -6)
+
+[node name="Label5" type="Label3D" parent="."]
+position = Vector3(-13.5, 0.4, -3.3)
+text = "Broken dining table"
+font_size = 48
+pixel_size = 0.008
+billboard = 1
+
+[node name="damaged_kitchen_cupboard" parent="." instance=ExtResource("asset_6")]
+position = Vector3(-4.5, 0, -6)
+
+[node name="Label6" type="Label3D" parent="."]
+position = Vector3(-4.5, 0.4, -3.3)
+text = "Damaged kitchen cupboard"
+font_size = 48
+pixel_size = 0.008
+billboard = 1
+
+[node name="broken_crockery_scatter" parent="." instance=ExtResource("asset_7")]
+position = Vector3(4.5, 0, -6)
+
+[node name="Label7" type="Label3D" parent="."]
+position = Vector3(4.5, 0.4, -3.3)
+text = "Broken dishes"
+font_size = 48
+pixel_size = 0.008
+billboard = 1
+
+[node name="rusted_enamel_kettle" parent="." instance=ExtResource("asset_8")]
+position = Vector3(13.5, 0, -6)
+
+[node name="Label8" type="Label3D" parent="."]
+position = Vector3(13.5, 0.4, -3.3)
+text = "Rusted enamel kettle"
+font_size = 48
+pixel_size = 0.008
+billboard = 1
+
+[node name="tilted_wooden_dresser" parent="." instance=ExtResource("asset_9")]
+position = Vector3(-13.5, 0, 3)
+
+[node name="Label9" type="Label3D" parent="."]
+position = Vector3(-13.5, 0.4, 5.7)
+text = "Tilted dresser"
+font_size = 48
+pixel_size = 0.008
+billboard = 1
+
+[node name="torn_interior_curtains" parent="." instance=ExtResource("asset_10")]
+position = Vector3(-4.5, 0, 3)
+
+[node name="Label10" type="Label3D" parent="."]
+position = Vector3(-4.5, 0.4, 5.7)
+text = "Torn curtains"
+font_size = 48
+pixel_size = 0.008
+billboard = 1
+
+[node name="threadbare_area_rug" parent="." instance=ExtResource("asset_11")]
+position = Vector3(4.5, 0, 3)
+
+[node name="Label11" type="Label3D" parent="."]
+position = Vector3(4.5, 0.4, 5.7)
+text = "Threadbare rug"
+font_size = 48
+pixel_size = 0.008
+billboard = 1
+
+[node name="faded_photo_frames" parent="." instance=ExtResource("asset_12")]
+position = Vector3(13.5, 0, 3)
+
+[node name="Label12" type="Label3D" parent="."]
+position = Vector3(13.5, 0.4, 5.7)
+text = "Faded photo frames"
+font_size = 48
+pixel_size = 0.008
+billboard = 1
+
+[node name="fallen_ceiling_tile_pile" parent="." instance=ExtResource("asset_13")]
+position = Vector3(-13.5, 0, 12)
+
+[node name="Label13" type="Label3D" parent="."]
+position = Vector3(-13.5, 0.4, 14.7)
+text = "Fallen ceiling tiles"
+font_size = 48
+pixel_size = 0.008
+billboard = 1
+
+[node name="broken_ceiling_fan" parent="." instance=ExtResource("asset_14")]
+position = Vector3(-4.5, 0, 12)
+
+[node name="Label14" type="Label3D" parent="."]
+position = Vector3(-4.5, 0.4, 14.7)
+text = "Broken ceiling fan"
+font_size = 48
+pixel_size = 0.008
+billboard = 1
+
+[node name="peeling_wallpaper_panels" parent="." instance=ExtResource("asset_15")]
+position = Vector3(4.5, 0, 12)
+
+[node name="Label15" type="Label3D" parent="."]
+position = Vector3(4.5, 0.4, 14.7)
+text = "Peeling wallpaper"
+font_size = 48
+pixel_size = 0.008
+billboard = 1
+
+[node name="dusty_cardboard_box_stack" parent="." instance=ExtResource("asset_16")]
+position = Vector3(13.5, 0, 12)
+
+[node name="Label16" type="Label3D" parent="."]
+position = Vector3(13.5, 0.4, 14.7)
+text = "Dusty boxes"
+font_size = 48
+pixel_size = 0.008
+billboard = 1
+
+[node name="sagging_sofa_torn" parent="." instance=ExtResource("asset_17")]
+position = Vector3(-13.5, 0, 20)
+
+[node name="VariantLabel" type="Label3D" parent="."]
+position = Vector3(-13.5, 0.4, 22.7)
+text = "Sofa variant: exposed foam"
+font_size = 48
+pixel_size = 0.008
+billboard = 1

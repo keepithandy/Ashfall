@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="PackedScene" path="res://assets/decorative_world/models/crushed_ventilation_duct.glb" id="1_model"]
+
+[sub_resource type="BoxShape3D" id="shape_0"]
+size = Vector3(3.25, 0.85, 0.86)
+
+[node name="CrushedVentilationDuct" type="StaticBody3D"]
+
+[node name="Visual" parent="." instance=ExtResource("1_model")]
+
+[node name="Duct" type="CollisionShape3D" parent="."]
+position = Vector3(0, 0.82, 0)
+shape = SubResource("shape_0")
+

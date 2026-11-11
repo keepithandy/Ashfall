@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="PackedScene" path="res://assets/decorative_world/models/rotting_picnic_table.glb" id="1_model"]
+
+[sub_resource type="BoxShape3D" id="shape_0"]
+size = Vector3(2.55, 0.96, 2.1)
+
+[node name="RottingPicnicTable" type="StaticBody3D"]
+
+[node name="Visual" parent="." instance=ExtResource("1_model")]
+
+[node name="PicnicTable" type="CollisionShape3D" parent="."]
+position = Vector3(0, 0.49, 0)
+shape = SubResource("shape_0")
+

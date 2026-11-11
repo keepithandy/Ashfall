@@ -1,0 +1,221 @@
+[gd_scene load_steps=22 format=3]
+
+[ext_resource type="PackedScene" path="res://scenes/decorative_world/bent_guardrail.tscn" id="prop_1"]
+[ext_resource type="PackedScene" path="res://scenes/decorative_world/collapsed_bus_shelter.tscn" id="prop_2"]
+[ext_resource type="PackedScene" path="res://scenes/decorative_world/discarded_tire_pile.tscn" id="prop_3"]
+[ext_resource type="PackedScene" path="res://scenes/decorative_world/fallen_utility_pole.tscn" id="prop_4"]
+[ext_resource type="PackedScene" path="res://scenes/decorative_world/rusted_mailbox.tscn" id="prop_5"]
+[ext_resource type="PackedScene" path="res://scenes/decorative_world/sagging_porch_chair.tscn" id="prop_6"]
+[ext_resource type="PackedScene" path="res://scenes/decorative_world/cracked_plant_pots.tscn" id="prop_7"]
+[ext_resource type="PackedScene" path="res://scenes/decorative_world/torn_clothesline.tscn" id="prop_8"]
+[ext_resource type="PackedScene" path="res://scenes/decorative_world/crushed_ventilation_duct.tscn" id="prop_9"]
+[ext_resource type="PackedScene" path="res://scenes/decorative_world/collapsed_cable_tray.tscn" id="prop_10"]
+[ext_resource type="PackedScene" path="res://scenes/decorative_world/corroded_sheet_metal_stack.tscn" id="prop_11"]
+[ext_resource type="PackedScene" path="res://scenes/decorative_world/broken_factory_window.tscn" id="prop_12"]
+[ext_resource type="PackedScene" path="res://scenes/decorative_world/rotting_picnic_table.tscn" id="prop_13"]
+[ext_resource type="PackedScene" path="res://scenes/decorative_world/damaged_footbridge_fragment.tscn" id="prop_14"]
+[ext_resource type="PackedScene" path="res://scenes/decorative_world/roadside_memorial.tscn" id="prop_15"]
+[ext_resource type="PackedScene" path="res://scenes/decorative_world/broken_drainage_culvert.tscn" id="prop_16"]
+
+[sub_resource type="BoxMesh" id="floor_mesh"]
+size = Vector3(43, 0.1, 37)
+
+[sub_resource type="BoxShape3D" id="floor_collision"]
+size = Vector3(43, 0.1, 37)
+
+[sub_resource type="StandardMaterial3D" id="floor_mat"]
+albedo_color = Color(0.18, 0.19, 0.17, 1)
+roughness = 0.97
+
+[sub_resource type="Environment" id="gallery_environment"]
+background_mode = 1
+background_color = Color(0.13, 0.16, 0.16, 1)
+ambient_light_source = 1
+ambient_light_color = Color(0.55, 0.59, 0.60, 1)
+ambient_light_energy = 0.65
+
+[node name="DecorativeWorldGalleryAll16" type="Node3D"]
+
+[node name="Environment" type="WorldEnvironment" parent="."]
+environment = SubResource("gallery_environment")
+
+[node name="GalleryGround" type="StaticBody3D" parent="."]
+
+[node name="Visual" type="MeshInstance3D" parent="GalleryGround"]
+mesh = SubResource("floor_mesh")
+surface_material_override/0 = SubResource("floor_mat")
+
+[node name="Collision" type="CollisionShape3D" parent="GalleryGround"]
+shape = SubResource("floor_collision")
+
+[node name="GallerySun" type="DirectionalLight3D" parent="."]
+rotation = Vector3(-0.78, -0.53, -0.13)
+light_energy = 1.0
+shadow_enabled = true
+
+[node name="GalleryCamera" type="Camera3D" parent="."]
+position = Vector3(0, 22, 36)
+rotation = Vector3(-0.55, 0, 0)
+fov = 76.0
+current = true
+
+[node name="bent_guardrail" parent="." instance=ExtResource("prop_1")]
+position = Vector3(-14, 0, -12)
+
+[node name="Title1" type="Label3D" parent="."]
+position = Vector3(-14, 0.3, -9.5)
+text = "Bent guardrail"
+font_size = 45
+pixel_size = 0.009
+billboard = 1
+
+[node name="collapsed_bus_shelter" parent="." instance=ExtResource("prop_2")]
+position = Vector3(-4.65, 0, -12)
+
+[node name="Title2" type="Label3D" parent="."]
+position = Vector3(-4.65, 0.3, -9.5)
+text = "Abandoned bus shelter"
+font_size = 45
+pixel_size = 0.009
+billboard = 1
+
+[node name="discarded_tire_pile" parent="." instance=ExtResource("prop_3")]
+position = Vector3(4.65, 0, -12)
+
+[node name="Title3" type="Label3D" parent="."]
+position = Vector3(4.65, 0.3, -9.5)
+text = "Discarded tire pile"
+font_size = 45
+pixel_size = 0.009
+billboard = 1
+
+[node name="fallen_utility_pole" parent="." instance=ExtResource("prop_4")]
+position = Vector3(14, 0, -12)
+
+[node name="Title4" type="Label3D" parent="."]
+position = Vector3(14, 0.3, -9.5)
+text = "Fallen utility pole"
+font_size = 45
+pixel_size = 0.009
+billboard = 1
+
+[node name="rusted_mailbox" parent="." instance=ExtResource("prop_5")]
+position = Vector3(-14, 0, -4)
+
+[node name="Title5" type="Label3D" parent="."]
+position = Vector3(-14, 0.3, -1.5)
+text = "Rusted mailbox"
+font_size = 45
+pixel_size = 0.009
+billboard = 1
+
+[node name="sagging_porch_chair" parent="." instance=ExtResource("prop_6")]
+position = Vector3(-4.65, 0, -4)
+
+[node name="Title6" type="Label3D" parent="."]
+position = Vector3(-4.65, 0.3, -1.5)
+text = "Sagging porch chair"
+font_size = 45
+pixel_size = 0.009
+billboard = 1
+
+[node name="cracked_plant_pots" parent="." instance=ExtResource("prop_7")]
+position = Vector3(4.65, 0, -4)
+
+[node name="Title7" type="Label3D" parent="."]
+position = Vector3(4.65, 0.3, -1.5)
+text = "Cracked planters"
+font_size = 45
+pixel_size = 0.009
+billboard = 1
+
+[node name="torn_clothesline" parent="." instance=ExtResource("prop_8")]
+position = Vector3(14, 0, -4)
+
+[node name="Title8" type="Label3D" parent="."]
+position = Vector3(14, 0.3, -1.5)
+text = "Torn clothesline"
+font_size = 45
+pixel_size = 0.009
+billboard = 1
+
+[node name="crushed_ventilation_duct" parent="." instance=ExtResource("prop_9")]
+position = Vector3(-14, 0, 4)
+
+[node name="Title9" type="Label3D" parent="."]
+position = Vector3(-14, 0.3, 6.5)
+text = "Crushed ventilation duct"
+font_size = 45
+pixel_size = 0.009
+billboard = 1
+
+[node name="collapsed_cable_tray" parent="." instance=ExtResource("prop_10")]
+position = Vector3(-4.65, 0, 4)
+
+[node name="Title10" type="Label3D" parent="."]
+position = Vector3(-4.65, 0.3, 6.5)
+text = "Collapsed cable tray"
+font_size = 45
+pixel_size = 0.009
+billboard = 1
+
+[node name="corroded_sheet_metal_stack" parent="." instance=ExtResource("prop_11")]
+position = Vector3(4.65, 0, 4)
+
+[node name="Title11" type="Label3D" parent="."]
+position = Vector3(4.65, 0.3, 6.5)
+text = "Corroded sheet-metal"
+font_size = 45
+pixel_size = 0.009
+billboard = 1
+
+[node name="broken_factory_window" parent="." instance=ExtResource("prop_12")]
+position = Vector3(14, 0, 4)
+
+[node name="Title12" type="Label3D" parent="."]
+position = Vector3(14, 0.3, 6.5)
+text = "Broken factory window"
+font_size = 45
+pixel_size = 0.009
+billboard = 1
+
+[node name="rotting_picnic_table" parent="." instance=ExtResource("prop_13")]
+position = Vector3(-14, 0, 12)
+
+[node name="Title13" type="Label3D" parent="."]
+position = Vector3(-14, 0.3, 14.5)
+text = "Rotting picnic table"
+font_size = 45
+pixel_size = 0.009
+billboard = 1
+
+[node name="damaged_footbridge_fragment" parent="." instance=ExtResource("prop_14")]
+position = Vector3(-4.65, 0, 12)
+
+[node name="Title14" type="Label3D" parent="."]
+position = Vector3(-4.65, 0.3, 14.5)
+text = "Damaged footbridge"
+font_size = 45
+pixel_size = 0.009
+billboard = 1
+
+[node name="roadside_memorial" parent="." instance=ExtResource("prop_15")]
+position = Vector3(4.65, 0, 12)
+
+[node name="Title15" type="Label3D" parent="."]
+position = Vector3(4.65, 0.3, 14.5)
+text = "Roadside memorial"
+font_size = 45
+pixel_size = 0.009
+billboard = 1
+
+[node name="broken_drainage_culvert" parent="." instance=ExtResource("prop_16")]
+position = Vector3(14, 0, 12)
+
+[node name="Title16" type="Label3D" parent="."]
+position = Vector3(14, 0.3, 14.5)
+text = "Broken drainage culvert"
+font_size = 45
+pixel_size = 0.009
+billboard = 1
+

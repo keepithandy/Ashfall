@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3]
+
+[ext_resource type="PackedScene" path="res://assets/decorative_world/models/rusted_mailbox.glb" id="1_model"]
+
+[sub_resource type="BoxShape3D" id="shape_0"]
+size = Vector3(0.26, 1.2, 0.24)
+
+[sub_resource type="BoxShape3D" id="shape_1"]
+size = Vector3(0.5, 0.47, 0.74)
+
+[node name="RustedMailbox" type="StaticBody3D"]
+
+[node name="Visual" parent="." instance=ExtResource("1_model")]
+
+[node name="Post" type="CollisionShape3D" parent="."]
+position = Vector3(0, 0.6, 0)
+shape = SubResource("shape_0")
+
+[node name="Mailbox" type="CollisionShape3D" parent="."]
+position = Vector3(0.12, 1.37, 0)
+shape = SubResource("shape_1")
+

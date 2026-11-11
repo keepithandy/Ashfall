@@ -1,0 +1,36 @@
+[gd_scene load_steps=6 format=3]
+
+[ext_resource type="PackedScene" path="res://assets/decorative_interiors/models/sagging_sofa_torn.glb" id="1_visual"]
+
+[sub_resource type="BoxShape3D" id="collision_0"]
+size = Vector3(2.65, 0.78, 1.03)
+
+[sub_resource type="BoxShape3D" id="collision_1"]
+size = Vector3(2.42, 0.92, 0.31)
+
+[sub_resource type="BoxShape3D" id="collision_2"]
+size = Vector3(0.23, 0.58, 1.08)
+
+[sub_resource type="BoxShape3D" id="collision_3"]
+size = Vector3(0.23, 0.58, 1.08)
+
+[node name="SaggingSofaTorn" type="StaticBody3D"]
+
+[node name="Visual" parent="." instance=ExtResource("1_visual")]
+
+[node name="SeatFrame" type="CollisionShape3D" parent="."]
+position = Vector3(0, 0.43, -0.03)
+shape = SubResource("collision_0")
+
+[node name="Backrest" type="CollisionShape3D" parent="."]
+position = Vector3(0, 1.01, 0.4)
+shape = SubResource("collision_1")
+
+[node name="LeftArm" type="CollisionShape3D" parent="."]
+position = Vector3(-1.2, 0.73, 0)
+shape = SubResource("collision_2")
+
+[node name="RightArm" type="CollisionShape3D" parent="."]
+position = Vector3(1.2, 0.73, 0)
+shape = SubResource("collision_3")
+

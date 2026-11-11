@@ -1,0 +1,50 @@
+[gd_scene load_steps=8 format=3]
+
+[ext_resource type="PackedScene" path="res://assets/decorative_world/models/broken_factory_window.glb" id="1_model"]
+
+[sub_resource type="BoxShape3D" id="collision_0"]
+size = Vector3(0.2, 2.4, 0.19)
+
+[sub_resource type="BoxShape3D" id="collision_1"]
+size = Vector3(0.2, 2.4, 0.19)
+
+[sub_resource type="BoxShape3D" id="collision_2"]
+size = Vector3(2.36, 0.16, 0.19)
+
+[sub_resource type="BoxShape3D" id="collision_3"]
+size = Vector3(2.36, 0.16, 0.19)
+
+[sub_resource type="BoxShape3D" id="collision_4"]
+size = Vector3(0.1, 2.15, 0.13)
+
+[sub_resource type="BoxShape3D" id="collision_5"]
+size = Vector3(2.35, 0.14, 0.13)
+
+[node name="BrokenFactoryWindow" type="StaticBody3D"]
+
+[node name="Visual" parent="." instance=ExtResource("1_model")]
+
+[node name="LeftFrame" type="CollisionShape3D" parent="."]
+position = Vector3(-1.21, 1.18, 0)
+shape = SubResource("collision_0")
+
+[node name="RightFrame" type="CollisionShape3D" parent="."]
+position = Vector3(1.21, 1.18, 0)
+shape = SubResource("collision_1")
+
+[node name="UpperFrame" type="CollisionShape3D" parent="."]
+position = Vector3(0, 2.3, 0)
+shape = SubResource("collision_2")
+
+[node name="LowerFrame" type="CollisionShape3D" parent="."]
+position = Vector3(0, 0.07, 0)
+shape = SubResource("collision_3")
+
+[node name="CentralVertical" type="CollisionShape3D" parent="."]
+position = Vector3(0, 1.18, 0)
+shape = SubResource("collision_4")
+
+[node name="CentralHorizontal" type="CollisionShape3D" parent="."]
+position = Vector3(0, 1.11, 0)
+shape = SubResource("collision_5")
+

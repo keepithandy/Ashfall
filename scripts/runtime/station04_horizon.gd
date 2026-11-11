@@ -48,16 +48,19 @@ func _triangle(tool: SurfaceTool, a: Vector3, b: Vector3, c: Vector3) -> void:
     _vertex(tool, b)
     _vertex(tool, c)
 
-func _build() -> void:
-    if has_node("DistantTerrain"):
-        return
+func _make_noise() -> FastNoiseLite:
     var noise := FastNoiseLite.new()
     noise.seed = 4404
     noise.noise_type = FastNoiseLite.TYPE_SIMPLEX_SMOOTH
     noise.frequency = 0.016
     noise.fractal_type = FastNoiseLite.FRACTAL_FBM
     noise.fractal_octaves = 3
+    return noise
 
+func _build() -> void:
+    if has_node("DistantTerrain"):
+        return
+    var noise := _make_noise()
     var tool := SurfaceTool.new()
     tool.begin(Mesh.PRIMITIVE_TRIANGLES)
     var segments := maxi(64, angular_segments)

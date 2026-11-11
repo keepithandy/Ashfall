@@ -76,6 +76,16 @@ func _initialize() -> void:
     if treeline == null or treeline.get_script() == null:
         failures.append("Distant tree line is missing")
     else:
+        var terrain_noise: FastNoiseLite = horizon.call("_make_noise") as FastNoiseLite if horizon != null else null
+        if terrain_noise == null:
+            failures.append("Horizon must expose shared terrain noise for trees")
+        else:
+            for angle_idx in range(24):
+                var angle := TAU * float(angle_idx) / 24.0
+                var outside_point: Vector3 = horizon.call("_point", angle, 52.0, terrain_noise)
+                if not is_finite(outside_point.y):
+                    failures.append("Distant tree ground sampling yielded invalid height")
+                    break
         treeline.call("_build")
         for layer_name in ["Trunks", "Crowns"]:
             var layer := treeline.get_node_or_null(layer_name) as MultiMeshInstance3D

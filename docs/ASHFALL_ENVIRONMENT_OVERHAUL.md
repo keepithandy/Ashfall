@@ -63,9 +63,9 @@ expand `Environment > Sky > Sky Material > Shader Parameters`. Notable parameter
 | --- | --- | --- |
 | `coverage` | 0.59 | More continuous cloud cover as the value increases |
 | `edge_softness` | 0.077 | Higher values soften edges |
-| `cloud_scale` | 1.42 | Overall cloud scale |
+| `cloud_scale` | 2.25 | Higher values make cloud formations smaller and more numerous |
 | `cloud_contrast` | 1.65 | How well-defined the banks are |
-| `wind_speed` | 0.075 | Procedural translation units per second |
+| `wind_speed` | 0.118 | Procedural translation units per second; increased with scale to preserve visible drift |
 | `wind_direction` | (0.84, 0.54) | Wind direction on the sky dome |
 | `high_layer_strength` | 0.30 | Higher, drifting veil intensity |
 | `diagnostic_mode` | 0 | 1 = high-contrast clouds, 2 = moving calibration stripes |
@@ -135,6 +135,10 @@ To tune further, select `WorldEnvironment > Environment > Sky > Sky Material
 The parameter `cloud_darkening` (default `0.18`) adjusts the cloud banks
 independently. Verify daylight readability and cloud edge movement before
 considering environmental exposure or ground lighting changes.
+
+## Cloud scale refinement before merge
+
+After the user confirmed the darker clouds were visible but **too large**, the cloud frequency was raised from `1.42` to `2.25`. This makes individual formations smaller and more numerous without changing cloud coverage, opacity, or the dark storm palette. Wind speed was adjusted proportionately from `0.075` to `0.118` to keep apparent on-screen drift similar. These changes still require visual confirmation on the user's PC.
 
 ## Required validation (in Godot)
 

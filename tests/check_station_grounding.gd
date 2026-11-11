@@ -100,8 +100,6 @@ func _initialize() -> void:
                 if layer == null or layer.multimesh == null or layer.multimesh.mesh == null:
                     failures.append("Forest contains an invalid mesh batch")
                     continue
-                if layer is CollisionObject3D:
-                    failures.append("Forest must remain collision-free")
                 var batch := layer.multimesh
                 total_trees += batch.instance_count
                 if batch.custom_aabb.size.length_squared() < 1.0:

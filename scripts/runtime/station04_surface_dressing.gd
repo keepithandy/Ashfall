@@ -62,6 +62,8 @@ func _make_layer(leaves: bool) -> void:
     multi.transform_format = MultiMesh.TRANSFORM_3D
     multi.use_colors = true
     multi.mesh = mesh
+    # Explicit combined draw bounds prevent disappearing fragments on camera pans.
+    multi.custom_aabb = AABB(Vector3(-56.0, -0.2, -57.0), Vector3(114.0, 0.6, 110.0))
     multi.instance_count = points.size()
     for i in range(points.size()):
         var turn := rng.randf_range(-PI, PI)

@@ -62,6 +62,16 @@ func _initialize() -> void:
         failures.append("Distant terrain relief script is not attached")
     elif horizon is CollisionObject3D:
         failures.append("Distant terrain must be visual only")
+    if horizon != null and horizon.get_script() != null:
+        # Test the rectangle-aware relief boundary, not only the node's presence.
+        var probe_noise := FastNoiseLite.new()
+        for angle_idx in range(32):
+            var angle := TAU * float(angle_idx) / 32.0
+            var relief_point: Vector3 = horizon.call("_point", angle, 9.0, probe_noise)
+            if absf(relief_point.x) <= 86.0 and absf(relief_point.z) <= 81.0:
+                failures.append("Horizon terrain entered playable district at angle " + str(angle_idx))
+                break
+
     if litter == null or litter.get_script() == null:
         failures.append("Collision-free ground dressing script is not attached")
     elif litter is CollisionObject3D:

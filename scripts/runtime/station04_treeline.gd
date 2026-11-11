@@ -18,6 +18,10 @@ const DEAD_PROFILE := 3
 const PROFILE_COUNT := 4
 const CLUSTER_ANGLES := [0.16, 0.82, 1.52, 2.26, 3.04, 3.79, 4.65, 5.52]
 
+# Logical placement samples for deterministic headless regression checks.
+# Headless's dummy renderer cannot reliably read back MultiMesh transforms.
+var generated_tree_bases: Array[Vector3] = []
+
 func _ready() -> void:
     if show_tree_line:
         _build()
@@ -162,6 +166,7 @@ func _build() -> void:
             types.append([])
         cells.append(types)
 
+    generated_tree_bases.clear()
     var rng := RandomNumberGenerator.new()
     rng.seed = 410404
     for i in range(tree_count):
@@ -171,6 +176,7 @@ func _build() -> void:
         var distance := _edge_radius(angle) + distance_from_wall
         var ground_point: Vector3 = horizon.call("_point", angle, distance_from_wall, terrain_noise)
         var base := Vector3(cos(angle) * distance, ground_point.y - 0.12, sin(angle) * distance)
+        generated_tree_bases.append(base)
         var height := average_height * rng.randf_range(0.67, 1.48)
         var width := height * rng.randf_range(0.76, 1.18)
         var profile := rng.randi_range(0, LIVING_PROFILES - 1)

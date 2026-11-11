@@ -10,8 +10,8 @@ const BRIDGE_DECK_HEIGHT := 7.5
 const RIVER_HALF_WIDTH := 45.0
 const GRID_COLUMNS := 200
 const GRID_ROWS := 168
-const GRID_STEP_X := WIDTH / float(GRID_COLUMNS)
-const GRID_STEP_Z := DEPTH / float(GRID_ROWS)
+const GRID_STEP_X := WIDTH / GRID_COLUMNS
+const GRID_STEP_Z := DEPTH / GRID_ROWS
 
 const SITE_COORDS := [
     Vector2(-720.0, -700.0), Vector2(-170.0, -820.0),

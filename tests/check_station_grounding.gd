@@ -146,6 +146,23 @@ func _initialize() -> void:
             if forest.get_child_count() != original_batches:
                 failures.append("Forest builder is not idempotent")
 
+    if treeline != null and treeline.get_script() != null:
+        var young := treeline.get_node_or_null("YoungGrowth") as Node3D
+        if young == null:
+            failures.append("Forest edge is missing its low sapling tier")
+        else:
+            var young_total := 0
+            for child in young.get_children():
+                var young_batch := child as MultiMeshInstance3D
+                if young_batch == null or young_batch.multimesh == null:
+                    failures.append("Forest sapling batch was invalid")
+                    continue
+                young_total += young_batch.multimesh.instance_count
+                if young_batch.multimesh.custom_aabb.size.length_squared() < 1.0:
+                    failures.append("Forest sapling culling bounds were not generated")
+            if young_total != int(treeline.get("sapling_count")):
+                failures.append("Forest sapling count differs from configured value")
+
     # Existing 46 manually placed pines should receive visual crowns only.
     # Never rewrite their scenes, positions, collisions or game scripts.
     if near_canopies == null or near_canopies.get_script() == null:

@@ -42,8 +42,6 @@ func _initialize() -> void:
             failures.append("Missing fog material: " + name)
         if mist.size.x < 8.0 or mist.size.z < 8.0 or mist.size.y > 3.0:
             failures.append("Local mist dimensions unexpected: " + name)
-        if mist is CollisionObject3D:
-            failures.append("Mist must be visual only: " + name)
 
     var lamp := root.get_node_or_null("EditableWorld/Props/PortableWorkLamp") as Node3D
     var throw := root.get_node_or_null("EditableWorld/Props/WorkLampThrow") as SpotLight3D

@@ -35,7 +35,6 @@ void fragment() {
     forest = mix(forest, forest * marsh_tint * 1.8, wetland * 0.6);
 
     ALBEDO = mix(forest, rock, rocky);
-    NORMAL_MAP_DEPTH = 0.0;
     ROUGHNESS = mix(0.98, 0.88, rocky);
     SPECULAR = 0.21;
 }

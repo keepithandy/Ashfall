@@ -22,6 +22,7 @@ const SITES := [
     "EAST_TUNNEL_Marker"
 ]
 const ROUTES := [
+    "Station_Hub_Spine",
     "Station_North_Exit",
     "Station_South_Exit",
     "Northern_Industrial_Route",
@@ -92,7 +93,7 @@ func _run_checks() -> void:
 
     if errors.is_empty():
         print("ASHFALL ROAD NETWORK CHECK PASSED")
-        print("Five editable road models + gallery, fifteen routes and ten area anchors")
+        print("Five editable road models + gallery, sixteen routes and ten area anchors")
         print("Manual Godot 3D / F6 performance and visual verification still required")
         quit(0)
     else:

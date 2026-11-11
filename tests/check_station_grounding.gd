@@ -87,12 +87,59 @@ func _initialize() -> void:
                     failures.append("Distant tree ground sampling yielded invalid height")
                     break
         treeline.call("_build")
-        for layer_name in ["Trunks", "Crowns"]:
-            var layer := treeline.get_node_or_null(layer_name) as MultiMeshInstance3D
-            if layer == null or layer.multimesh == null:
-                failures.append("Distant tree batch failed: " + layer_name)
-            elif layer.multimesh.instance_count != int(treeline.get("tree_count")):
-                failures.append("Distant tree batch count differs from configured count: " + layer_name)
+        var forest := treeline.get_node_or_null("ForestBatches") as Node3D
+        if forest == null:
+            failures.append("Distant forest did not create its spatial batches")
+        else:
+            var total_trees := 0
+            var living_profiles: Dictionary = {}
+            var dead_trees := 0
+            var original_batches := forest.get_child_count()
+            for child in forest.get_children():
+                var layer := child as MultiMeshInstance3D
+                if layer == null or layer.multimesh == null or layer.multimesh.mesh == null:
+                    failures.append("Forest contains an invalid mesh batch")
+                    continue
+                if layer is CollisionObject3D:
+                    failures.append("Forest must remain collision-free")
+                var batch := layer.multimesh
+                total_trees += batch.instance_count
+                if batch.custom_aabb.size.length_squared() < 1.0:
+                    failures.append("Forest sector has an invalid culling extent")
+                var type_id := int(layer.name.get_slice("Profile", 1))
+                if type_id == 3:
+                    dead_trees += batch.instance_count
+                    if batch.mesh.get_surface_count() != 1:
+                        failures.append("Dead trees should have bare wooden branches")
+                else:
+                    living_profiles[type_id] = true
+                    if batch.mesh.get_surface_count() != 2:
+                        failures.append("Living trees need separate bark and foliage geometry")
+                for tree_index in range(batch.instance_count):
+                    var position: Vector3 = batch.get_instance_transform(tree_index).origin
+                    if absf(position.x) <= 86.0 and absf(position.z) <= 81.0:
+                        failures.append("A forest tree entered the playable district")
+                        break
+                    if not is_finite(position.x) or not is_finite(position.y) or not is_finite(position.z):
+                        failures.append("Distant forest generated invalid coordinates")
+                        break
+                    if terrain_noise != null:
+                        var angle := wrapf(atan2(position.z, position.x), 0.0, TAU)
+                        var radius := Vector2(position.x, position.z).length()
+                        var offset: float = radius - float(treeline.call("_edge_radius", angle))
+                        var ground_point: Vector3 = horizon.call("_point", angle, offset, terrain_noise)
+                        if absf(position.y - (ground_point.y - 0.12)) > 0.03:
+                            failures.append("Distant tree roots do not follow terrain")
+                            break
+            if total_trees != int(treeline.get("tree_count")):
+                failures.append("Forest total differs from configured tree count")
+            if living_profiles.size() < 2:
+                failures.append("Forest has insufficient conifer silhouette variety")
+            if float(treeline.get("dead_tree_share")) > 0.0 and dead_trees == 0:
+                failures.append("Expected occasional dead trees in the deterministic forest")
+            treeline.call("_build")
+            if forest.get_child_count() != original_batches:
+                failures.append("Forest builder is not idempotent")
 
     if litter == null or litter.get_script() == null:
         failures.append("Collision-free ground dressing script is not attached")

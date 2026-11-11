@@ -75,8 +75,12 @@ func _initialize() -> void:
             failures.append("Ground material has no contact weathering")
         elif not surface.shader.code.contains("industrial_staining"):
             failures.append("Ground material has no contact staining")
-        elif surface.get_shader_parameter("foundation_weathering") < 0.0:
-            failures.append("Foundation weathering invalid")
+        else:
+            # An unset ShaderMaterial uniform returns null even when its
+            # shader declares a valid default. Never compare Nil to float.
+            var weathering = surface.get_shader_parameter("foundation_weathering")
+            if weathering != null and float(weathering) < 0.0:
+                failures.append("Foundation weathering invalid")
     root.free()
 
     if failures.is_empty():

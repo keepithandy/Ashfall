@@ -107,14 +107,14 @@ void fragment() {
     compacted *= 1.0 - patch_strength * smoothstep(0.52, 0.78, patches);
 
     // Two subtle compacted wheel tracks; not a sharp painted pair of stripes.
-    float tire_wander = (value_noise(vec2(ground.z * 0.12, 8.0)) - 0.5) * 0.26;
+    float tire_wander = (value_noise(vec2(ground.y * 0.12, 8.0)) - 0.5) * 0.26;
     float tire_pair = 1.0 - smoothstep(0.16, 0.45, abs(abs(ground.x + tire_wander) - 1.06));
     tire_pair *= road * (1.0 - yard);
     compacted *= 1.0 - tire_pair * 0.12;
 
     // Broken roadside drainage discoloration follows the existing approach,
     // with low-frequency interruptions rather than a painted continuous line.
-    float drainage_noise = value_noise(vec2(ground.z * 0.23, 19.0));
+    float drainage_noise = value_noise(vec2(ground.y * 0.23, 19.0));
     float drainage_edges = 1.0 - smoothstep(0.18, 0.75, abs(abs(ground.x) - 3.1));
     float drainage_mask = drainage_edges * shoulder_mask * (1.0 - yard);
     drainage_mask *= smoothstep(0.33, 0.64, drainage_noise);

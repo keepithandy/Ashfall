@@ -53,6 +53,16 @@ func _initialize() -> void:
         if throw.shadow_enabled or throw.spot_range > 12.0:
             failures.append("Work lamp fill exceeds the local illumination budget")
 
+    var lens := root.get_node_or_null("EditableWorld/Props/LampEmissiveLens") as MeshInstance3D
+    if lens == null or lens.mesh == null:
+        failures.append("Tripod work-light has no emissive lens visual")
+    else:
+        var lens_mat := lens.material_override as StandardMaterial3D
+        if lens_mat == null or not lens_mat.emission_enabled:
+            failures.append("Tripod work-light lens is not emissive")
+        if lens.position.distance_to(Vector3(30.952, 1.62, 7.088)) > 0.12:
+            failures.append("Tripod work-light lens is not aligned with the fixture")
+
     var ground := root.get_node_or_null("EditableWorld/Terrain/WalkableGround/VisibleGround") as MeshInstance3D
     var ground_shape := root.get_node_or_null("EditableWorld/Terrain/WalkableGround/GroundCollision") as CollisionShape3D
     if ground == null or ground_shape == null:
@@ -63,6 +73,8 @@ func _initialize() -> void:
             failures.append("Ground blending shader missing")
         elif not surface.shader.code.contains("foundation_weathering"):
             failures.append("Ground material has no contact weathering")
+        elif not surface.shader.code.contains("industrial_staining"):
+            failures.append("Ground material has no contact staining")
         elif surface.get_shader_parameter("foundation_weathering") < 0.0:
             failures.append("Foundation weathering invalid")
     root.free()

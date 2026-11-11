@@ -26,6 +26,7 @@ uniform float dirt_variation : hint_range(0.0, 0.5) = 0.16;
 uniform float patch_strength : hint_range(0.0, 0.5) = 0.12;
 uniform float verge_grit : hint_range(0.0, 1.0) = 0.32;
 uniform float foundation_weathering : hint_range(0.0, 0.5) = 0.18;
+uniform float industrial_staining : hint_range(0.0, 0.60) = 0.18;
 
 varying vec3 terrain_world;
 
@@ -116,6 +117,15 @@ void fragment() {
     damp *= weather_wetness * (0.7 + shoulder_mask * 0.3);
     vec3 color = mix(soil, compacted, compact_mask);
     color *= 1.0 - damp * 0.28;
+
+    // Small dark contact stains near the authored generator and rusted yard
+    // equipment, with irregular edges. Visual material only; no gameplay.
+    float industrial_contact = 0.0;
+    industrial_contact = max(industrial_contact, 1.0 - smoothstep(1.1, 3.6, distance(ground, vec2(36.0, -15.0))));
+    industrial_contact = max(industrial_contact, 1.0 - smoothstep(0.8, 2.8, distance(ground, vec2(35.0, -18.5))));
+    industrial_contact = max(industrial_contact, 1.0 - smoothstep(0.8, 2.7, distance(ground, vec2(34.0, -4.0))));
+    float stain_breakup = value_noise(ground * 0.43 + vec2(21.0, 7.0));
+    color *= 1.0 - industrial_staining * industrial_contact * mix(0.48, 1.0, stain_breakup);
     ALBEDO = clamp(color, vec3(0.0), vec3(1.0));
 
     // PBR normal, AO and roughness maps are existing, licensed project textures.

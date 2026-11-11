@@ -96,6 +96,19 @@ albedo = Color(0.40, 0.45, 0.43, 1)
 edge_fade = 0.45
 height_falloff = 0.85
 
+[sub_resource type="SphereMesh" id="station_work_lens_mesh"]
+radius = 0.065
+height = 0.13
+radial_segments = 12
+rings = 6
+
+[sub_resource type="StandardMaterial3D" id="station_work_lens_material"]
+albedo_color = Color(0.94, 0.81, 0.60, 1)
+roughness = 0.32
+emission_enabled = true
+emission = Color(0.95, 0.75, 0.46, 1)
+emission_energy_multiplier = 1.7
+
 [sub_resource type="ShaderMaterial" id="ground_mat"]
 shader = ExtResource("terrain_shader")
 shader_parameter/forest_albedo = ExtResource("forest_ground_texture")
@@ -308,6 +321,13 @@ transform = Transform3D(-3.6199901e-06, 0, 1, 0, 1, 0, -1, 0, -3.6199901e-06, 36
 
 [node name="PortableWorkLamp" parent="EditableWorld/Props" unique_id=2068849020 instance=ExtResource("lights")]
 transform = Transform3D(0.87758255, 0, -0.47942555, 0, 1, 0, 0.47942555, 0, 0.87758255, 31, 0, 7)
+
+[node name="LampEmissiveLens" type="MeshInstance3D" parent="EditableWorld/Props"]
+position = Vector3(30.952, 1.62, 7.088)
+mesh = SubResource("station_work_lens_mesh")
+material_override = SubResource("station_work_lens_material")
+cast_shadow = 0
+metadata/environment_only = "Warm emissive lens at existing tripod fixture; no collision."
 
 [node name="WorkLampThrow" type="SpotLight3D" parent="EditableWorld/Props"]
 position = Vector3(31, 1.62, 7.1)

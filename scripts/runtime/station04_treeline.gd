@@ -54,6 +54,7 @@ func _wood_material() -> StandardMaterial3D:
     var material := StandardMaterial3D.new()
     material.albedo_color = Color(0.19, 0.16, 0.14)
     material.roughness = 1.0
+    material.vertex_color_use_as_albedo = true
     return material
 
 func _needle_material(profile: int) -> StandardMaterial3D:
@@ -66,7 +67,7 @@ func _needle_material(profile: int) -> StandardMaterial3D:
     material.albedo_color = colors[profile]
     material.roughness = 1.0
     material.cull_mode = BaseMaterial3D.CULL_DISABLED
-    material.vertex_color_use_as_albedo = false
+    material.vertex_color_use_as_albedo = true
     return material
 
 func _tree_mesh(profile: int) -> ArrayMesh:
@@ -164,7 +165,7 @@ func _build() -> void:
     var rng := RandomNumberGenerator.new()
     rng.seed = 410404
     for i in range(tree_count):
-        var center := CLUSTER_ANGLES[i % CLUSTER_ANGLES.size()]
+        var center: float = CLUSTER_ANGLES[i % CLUSTER_ANGLES.size()]
         var angle := wrapf(center + rng.randf_range(-cluster_spread, cluster_spread), 0.0, TAU)
         var distance_from_wall := rng.randf_range(29.0, 104.0)
         var distance := _edge_radius(angle) + distance_from_wall

@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://c66wn265csv8p"]
 
 [ext_resource type="Script" uid="uid://s6yk4xee5w17" path="res://scripts/testing/ashfall_gallery_fly_camera.gd" id="1_flycam"]
+[ext_resource type="PackedScene" path="res://scenes/testing/ashfall_decorative_grid_extension.tscn" id="decorative_grid_37"]
 [ext_resource type="PackedScene" path="res://scenes/checkpoint_house.tscn" id="asset_001"]
 [ext_resource type="PackedScene" path="res://scenes/houses/blue_porch_cottage.tscn" id="asset_002"]
 [ext_resource type="PackedScene" path="res://assets/crossroads_v03/scenes/maintenance_station_v03.tscn" id="asset_003"]
@@ -110,10 +111,10 @@ albedo_color = Color(0.11, 0.14, 0.17, 1)
 
 [sub_resource type="BoxMesh" id="GroundMesh"]
 material = SubResource("GroundMaterial")
-size = Vector3(122, 0.3, 266)
+size = Vector3(122, 0.3, 388)
 
 [sub_resource type="BoxShape3D" id="GroundShape"]
-size = Vector3(122, 0.3, 266)
+size = Vector3(122, 0.3, 388)
 
 [sub_resource type="StandardMaterial3D" id="BuildingMaterial"]
 albedo_color = Color(0.25, 0.29, 0.32, 1)
@@ -138,6 +139,8 @@ size = Vector3(8.6, 0.08, 8.6)
 
 [node name="AshfallAssetShowroom" type="Node3D" unique_id=659040449]
 
+[node name="11_13_DecorativeGrid" parent="." instance=ExtResource("decorative_grid_37")]
+
 [node name="Environment" type="WorldEnvironment" parent="." unique_id=1202322750]
 environment = SubResource("ShowroomEnvironment")
 
@@ -147,7 +150,7 @@ light_energy = 1.2
 shadow_enabled = true
 
 [node name="Floor" type="StaticBody3D" parent="." unique_id=1121438218]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.17, 103)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.17, 160)
 
 [node name="Mesh" type="MeshInstance3D" parent="Floor" unique_id=511335407]
 mesh = SubResource("GroundMesh")
@@ -158,7 +161,7 @@ shape = SubResource("GroundShape")
 [node name="GalleryFlyCamera" type="Camera3D" parent="." unique_id=1292648496]
 transform = Transform3D(-1, 7.110824e-08, -3.1798777e-07, 0, 0.97589743, 0.21822962, 3.2584137e-07, 0.21822962, -0.97589743, -22, 10, -27)
 current = true
-far = 350.0
+far = 600.0
 script = ExtResource("1_flycam")
 
 [node name="Help" type="Label3D" parent="." unique_id=1236806642]

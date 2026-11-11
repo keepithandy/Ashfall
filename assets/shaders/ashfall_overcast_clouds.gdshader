@@ -18,13 +18,15 @@ uniform vec3 cloud_silver_color : source_color = vec3(0.52, 0.53, 0.50);
 // These are authoring controls, also inspectable on Station 04's sky material.
 uniform float coverage : hint_range(0.0, 1.0) = 0.59;
 uniform float edge_softness : hint_range(0.02, 0.25) = 0.077;
-uniform float cloud_scale : hint_range(0.3, 5.0) = 1.42;
+// Higher frequency means smaller, more numerous banks across the sky.
+uniform float cloud_scale : hint_range(0.3, 5.0) = 2.25;
 uniform float cloud_contrast : hint_range(0.5, 3.0) = 1.65;
 // Darken cloud banks without crushing the blue-black gaps between them.
 uniform float cloud_darkening : hint_range(0.0, 0.5) = 0.18;
 // Scene sky only: leave existing ground light/fog energy untouched.
 uniform float sky_brightness : hint_range(0.45, 1.0) = 0.78;
-uniform float wind_speed : hint_range(0.0, 0.25) = 0.075;
+// Compensate for the tighter cloud scale so drift stays perceptible.
+uniform float wind_speed : hint_range(0.0, 0.25) = 0.118;
 uniform vec2 wind_direction = vec2(0.84, 0.54);
 uniform float high_layer_strength : hint_range(0.0, 0.8) = 0.30;
 // Set 1 for high-contrast white-cloud diagnostics; 2 for motion stripes.

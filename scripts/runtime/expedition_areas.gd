@@ -116,12 +116,7 @@ func make_link(at: Vector3, destination: String, arrival: Vector3, locked: bool)
 	link.add_child(collision)
 	for body in model.find_children("*", "StaticBody3D", true, false):
 		body.collision_layer = 0
-	var label := Label3D.new()
-	label.text = "SERVICE PASSAGE\n" + ("NORTH RELAY" if locked else "CROSSROADS")
-	label.font_size = 28
-	label.pixel_size = 0.004
-	label.position = Vector3(0,2.1,0)
-	link.add_child(label)
+	# Passage direction and lock state are shown by the field HUD on interaction.
 	var barrier = load("res://scenes/props/damaged_fence.tscn").instantiate()
 	barrier.position = Vector3(0,0,-0.8)
 	link.add_child(barrier)

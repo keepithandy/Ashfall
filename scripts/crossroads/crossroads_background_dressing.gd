@@ -32,7 +32,13 @@ const BELTS := [
     [Vector2(-545.0, 345.0), Vector2(570.0, 365.0), 2, 14.2],
     # Fainter deeper belts give the long horizon more than one silhouette.
     [Vector2(-511.0, -580.0), Vector2(-504.0, 540.0), 2, 17.0],
-    [Vector2(518.0, -585.0), Vector2(512.0, 540.0), 2, 17.0]
+    [Vector2(518.0, -585.0), Vector2(512.0, 540.0), 2, 17.0],
+    # Outer belts make the furthest playable country read as sheltered,
+    # rather than ending on an empty straight horizon.
+    [Vector2(-624.0, -590.0), Vector2(-634.0, 593.0), 2, 19.0],
+    [Vector2(626.0, -590.0), Vector2(638.0, 590.0), 2, 19.0],
+    [Vector2(-555.0, -628.0), Vector2(554.0, -638.0), 2, 19.0],
+    [Vector2(-555.0, 628.0), Vector2(554.0, 639.0), 2, 19.0]
 ]
 
 # Twelve recognisable agricultural parcels. Adjacent parcels have different

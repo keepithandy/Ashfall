@@ -12,18 +12,18 @@ const MAIN_WIDTH := 5.8
 const TRACK_WIDTH := 3.25
 
 const HOMES := [
-    {"name": "SouthWhiteYard", "x": -44.0, "z": 143.0, "kind": "white", "side": -1, "yaw": 1.57, "garden": "chicken-yard"},
-    {"name": "BlueSillSouth", "x": 46.0, "z": 122.0, "kind": "blue_sill", "side": 1, "yaw": -1.57, "garden": "small-vegetable"},
-    {"name": "LonghouseNorthGarden", "x": -44.0, "z": 92.0, "kind": "green", "side": -1, "yaw": 1.53, "garden": "firewood"},
-    {"name": "OchreOrchard", "x": 44.0, "z": 66.0, "kind": "ochre", "side": 1, "yaw": -1.61, "garden": "orchard"},
-    {"name": "BrickAndLeanTo", "x": -43.0, "z": 40.0, "kind": "lane_brick", "side": -1, "yaw": 1.62, "garden": "workyard"},
-    {"name": "GreenWellsYard", "x": 46.0, "z": 9.0, "kind": "green", "side": 1, "yaw": -1.52, "garden": "well"},
-    {"name": "WornWhiteHouse", "x": -46.0, "z": -16.0, "kind": "white", "side": -1, "yaw": 1.48, "garden": "laundry"},
-    {"name": "BluePorchNorth", "x": 45.0, "z": -47.0, "kind": "blue_sill", "side": 1, "yaw": -1.64, "garden": "vegetable"},
-    {"name": "OchreCollapsedFence", "x": -43.0, "z": -73.0, "kind": "ochre", "side": -1, "yaw": 1.55, "garden": "bramble"},
-    {"name": "TheOldBrick", "x": 47.0, "z": -105.0, "kind": "lane_brick", "side": 1, "yaw": -1.50, "garden": "equipment"},
-    {"name": "LastGreenCottage", "x": -45.0, "z": -130.0, "kind": "green", "side": -1, "yaw": 1.63, "garden": "garden"},
-    {"name": "NorthernWhiteResidence", "x": 46.0, "z": -160.0, "kind": "white", "side": 1, "yaw": -1.53, "garden": "stacked-wood"}
+    {"name": "SouthWhiteYard", "x": -31.0, "z": 143.0, "kind": "white", "side": -1, "yaw": 1.57, "garden": "chicken-yard"},
+    {"name": "BlueSillSouth", "x": 30.0, "z": 122.0, "kind": "blue_sill", "side": 1, "yaw": -1.57, "garden": "small-vegetable"},
+    {"name": "LonghouseNorthGarden", "x": -33.0, "z": 92.0, "kind": "green", "side": -1, "yaw": 1.53, "garden": "firewood"},
+    {"name": "OchreOrchard", "x": 31.0, "z": 66.0, "kind": "ochre", "side": 1, "yaw": -1.61, "garden": "orchard"},
+    {"name": "BrickAndLeanTo", "x": -32.0, "z": 40.0, "kind": "lane_brick", "side": -1, "yaw": 1.62, "garden": "workyard"},
+    {"name": "GreenWellsYard", "x": 32.0, "z": 9.0, "kind": "green", "side": 1, "yaw": -1.52, "garden": "well"},
+    {"name": "WornWhiteHouse", "x": -30.0, "z": -16.0, "kind": "white", "side": -1, "yaw": 1.48, "garden": "laundry"},
+    {"name": "BluePorchNorth", "x": 31.0, "z": -47.0, "kind": "blue_sill", "side": 1, "yaw": -1.64, "garden": "vegetable"},
+    {"name": "OchreCollapsedFence", "x": -32.0, "z": -73.0, "kind": "ochre", "side": -1, "yaw": 1.55, "garden": "bramble"},
+    {"name": "TheOldBrick", "x": 30.0, "z": -105.0, "kind": "lane_brick", "side": 1, "yaw": -1.50, "garden": "equipment"},
+    {"name": "LastGreenCottage", "x": -33.0, "z": -130.0, "kind": "green", "side": -1, "yaw": 1.63, "garden": "garden"},
+    {"name": "NorthernWhiteResidence", "x": 32.0, "z": -160.0, "kind": "white", "side": 1, "yaw": -1.53, "garden": "stacked-wood"}
 ]
 
 const MAIN_ROAD = [

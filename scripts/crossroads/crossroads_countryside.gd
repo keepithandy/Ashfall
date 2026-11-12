@@ -90,7 +90,9 @@ func _field(parent: Node3D, label: String, west: float, east: float, north: floa
     ground.add_child(visual)
     var shape := CollisionShape3D.new()
     shape.name = "CountryGroundCollision"
-    shape.shape = mesh.create_trimesh_shape()
+    var hit_shape := mesh.create_trimesh_shape() as ConcavePolygonShape3D
+    hit_shape.backface_collision = true
+    shape.shape = hit_shape
     ground.add_child(shape)
     fields += 1
 

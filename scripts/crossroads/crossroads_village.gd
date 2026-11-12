@@ -189,18 +189,21 @@ func _homestead(parent: Node3D, site: Dictionary, index: int) -> void:
     houses_placed += 1
     # Walkable front opening in a private, irregularly planted plot. The
     # fence stops at the gate; no invisible collision box spans the gap.
-    var near_x := float(side) * 20.0
-    var far_x := float(side) * 71.0
-    var front_z := z - 17.0
-    var back_z := z + 17.0
+    # Real homesteads are not a repeated identical rectangle.
+    var near_x := float(side) * (18.8 + float(index % 3) * 1.1)
+    var far_x := float(side) * (67.5 + float(index % 4) * 1.35)
+    var lot_half := 15.9 + float(index % 4) * 0.83
+    var gate_half := 2.2 + float(index % 3) * 0.20
+    var front_z := z - lot_half
+    var back_z := z + lot_half
     var palette: StandardMaterial3D = material_fence[index % material_fence.size()]
-    _fence(plot, Vector2(near_x, front_z), Vector2(near_x, z - 2.3), palette, index)
-    _fence(plot, Vector2(near_x, z + 2.3), Vector2(near_x, back_z), palette, index)
+    _fence(plot, Vector2(near_x, front_z), Vector2(near_x, z - gate_half), palette, index)
+    _fence(plot, Vector2(near_x, z + gate_half), Vector2(near_x, back_z), palette, index)
     _fence(plot, Vector2(far_x, front_z), Vector2(far_x, back_z), palette, index)
     _fence(plot, Vector2(near_x, front_z), Vector2(far_x, front_z), palette, index)
     _fence(plot, Vector2(near_x, back_z), Vector2(far_x, back_z), palette, index)
-    _gate_post(plot, near_x, z - 2.35, palette)
-    _gate_post(plot, near_x, z + 2.35, palette)
+    _gate_post(plot, near_x, z - gate_half - 0.05, palette)
+    _gate_post(plot, near_x, z + gate_half + 0.05, palette)
     walkable_gate_count += 1
     # The worn path continues from the road, through the actual gate,
     # onto the floor-height entrance for the respective house.
@@ -238,8 +241,15 @@ func _fence(parent: Node3D, a: Vector2, b: Vector2, mat: Material, plot_id: int)
         var pos_x := lerpf(a.x, b.x, (float(i) + 0.5) / float(total))
         var pos_z := lerpf(a.y, b.y, (float(i) + 0.5) / float(total))
         var base := land.surface_height_at(pos_x, pos_z)
-        var height := 0.76 + (0.08 if (i + plot_id * 7) % 19 == 0 else 0.0)
-        posts.set_instance_transform(i, Transform3D(Basis.IDENTITY, Vector3(along, base - origin_y + height, 0)))
+        # Uneven and slightly leaning planks imply years of repairs. Missing
+        # pickets are uncommon: the horizontal rail remains as a physical
+        # barrier, so the player never encounters phantom solid walls.
+        var repaired := (i + plot_id * 7) % 19 == 0
+        var slant := float((i * 5 + plot_id) % 7 - 3) * 0.006
+        var basis := Basis(Vector3.FORWARD, slant)
+        if repaired:
+            basis = basis.scaled(Vector3(1.0, 0.82, 1.0))
+        posts.set_instance_transform(i, Transform3D(basis, Vector3(along, base - origin_y + 0.76, 0)))
     var boards := MultiMeshInstance3D.new()
     boards.name = "FadedPickets"
     boards.multimesh = posts

@@ -9,16 +9,26 @@
 ![Godot](https://img.shields.io/badge/Godot-4.7.2-478CBF?logo=godot-engine&logoColor=white)
 ![Language](https://img.shields.io/badge/Language-GDScript-2D3748)
 ![Platform](https://img.shields.io/badge/Platform-Windows-363636)
-![Status](https://img.shields.io/badge/Status-2.3%20Playtest-796044)
+![Status](https://img.shields.io/badge/Status-Crossroads%202.3-796044)
 
-**[Play the current build](#getting-started) · [Explore Station 04](#your-first-expedition) · [Project structure](#project-structure)**
+**[Play Crossroads](#getting-started) · [Walk the village](#your-first-walk-through-crossroads) · [Project structure](#project-structure)**
 
 </div>
 
 ---
 
-> **The road is quiet. The perimeter is not.**  
-> Head north. Recover what remains. Find your way back.
+> **An old rural road. Empty houses. Nobody to tell you where to go.**  
+> Crossroads is an environment-first walkabout, not an objective-driven game yet.
+
+## Crossroads 2.3 — The First Walkable Village
+
+**Crossroads is now the actual F5 main scene**: `scenes/crossroads_main.tscn`. This is a **360 × 420 m** fictional rural Ukrainian-inspired settlement on physically graded, collision-matched ground. There are three connected walking routes, twelve differently furnished and fenced homes, open gates and footpaths, two new house designs assembled only from existing Crossroads kits, real floor/wall geometry, weathered roofs, older utility lines, gardens, wet verges and surrounding forest.
+
+**No generator, anomaly, extraction, sample, quests, enemy AI, survival tier system, pickup economy or floating objective text** is active. The old Station 04 systems and scene remain in the repository, not in the new playtest. You are here to walk and judge whether the village seems believable.
+
+Read the [Crossroads environment playtest guide](docs/CROSSROADS_23_WALKABLE_VILLAGE.md) and [two-house design freeze](docs/CROSSROADS_HOMESTEAD_DESIGN.md). We still require actual visual inspection of house entrances, yard surfaces, road blending, collision edges and target-machine FPS before calling this art-final.
+
+## Archived Station 04 milestones
 
 ## Ashfall 2.0 playtest
 
@@ -28,9 +38,9 @@ The **expanded region road/terrain scene remains a separate preview**, not a rep
 
 ## Ashfall 2.3 — Lost & Weathered Playtest
 
-The newest build gives Ashfall a **grounded old-survivor identity**: worn field canvas, stained handwritten-style notebook pages, muted rust and paper, repaired-looking controls, physical paper/cloth handling sounds, consistent supply and inventory screens, and no futuristic HUD language. Existing information still comes from real gameplay state and 27 field-pack slots work as before.
+The earlier Station 04 build gave Ashfall a **grounded old-survivor identity**: worn field canvas, stained handwritten-style notebook pages, muted rust and paper, repaired-looking controls, physical paper/cloth handling sounds, consistent supply and inventory screens, and no futuristic HUD language. Existing information still comes from real gameplay state and 27 field-pack slots work as before.
 
-Station 04 now has **16 additional traces of abandonment** and **12 location-triggered notes**. The perimeter and North Relay each support optional **Light / Grounded / Brutal** survival profiles (**F6**) and independent **Hardcore** modifiers (**F9**). **Grounded with Hardcore off keeps the original balance.** The settings do not rewrite player saves.
+That legacy Station 04 scene has **16 additional traces of abandonment** and **12 location-triggered notes**. The perimeter and North Relay each support optional **Light / Grounded / Brutal** survival profiles (**F6**) and independent **Hardcore** modifiers (**F9**). **Grounded with Hardcore off keeps the original balance.** The settings do not rewrite player saves.
 
 This is a playtest foundation, **not completion of all major world, 3D art, animation and performance improvements**. Read the [2.3 technical scope and playtest guide](docs/ASHFALL_2_3_LOST_WEATHERED.md).
 
@@ -42,64 +52,57 @@ This is **a tested incremental build, not a finished twenty-system overhaul**: r
 
 ## Welcome to Ashfall
 
-**Ashfall** is an independent Godot survival-horror project focused on vulnerable exploration, scavenging, environmental storytelling, and unease. Inspired by the *atmosphere* of survival-exploration games, it uses an original world, environments, and assets rather than assets taken from those games.
+**Ashfall** is an independent Godot survival-horror project. The active main scene is now **Crossroads**, a quiet playable environment test of rural settlement density, everyday abandonment, physical walking, credible architecture and the visual composition of neglected homes.
 
-The current playable expedition is **Station 04**: a foggy industrial perimeter with an evacuation area, checkpoint, isolation ward, hazardous anomalies, and a research station. The project is a foundation in active development, **not a finished game**.
+The world uses an original fictional settlement informed by rural Ukrainian architecture, not a reconstruction of any real address or a claim of photorealism. Prior scavenging, anomaly, generator and extraction systems remain isolated in the older Station 04 scene for later reconsideration.
 
-### What you can experience
+### What you can experience now
 
-- **Explore:** Traverse the station perimeter, checkpoint buildings, and surrounding environment.
-- **Scavenge:** Find medical supplies, collect an objective sample, and interact with containers and items.
-- **Survive:** Manage stamina, flashlight use, and dangerous anomaly zones.
-- **Extract:** Return to the entry gate after completing the expedition objective.
-- **Investigate:** Explore a connected survival slice linking Crossroads and North Relay, with area-to-area inventory and objective continuity during an expedition.
-- **Listen:** Adjust master, wind, footsteps, and creature/world audio levels, with settings saved between sessions.
+- **Walk:** First-person, collision-tested 360 × 420 m sloping ground and connected roads; sprint, crouch and jump.
+- **Explore:** Twelve differently laid-out homesteads with actual open gate gaps and varied personal yards.
+- **Enter:** Two new modular, furnished and openly accessible homes and the existing house variants.
+- **Observe:** Garden rows, washed-out fences, utility poles and wires, rural roadside clutter, woodland and fog.
+- **Inspect performance:** Optional F7 FPS diagnostic and F8 view-range cycle; no permanent HUD.
+
 
 ## Getting started
 
 The project targets **Godot 4.7.2** with **Forward+** rendering and GDScript. It has been tested on Windows with an NVIDIA RTX 4080 SUPER; other hardware has not been verified here.
 
-**Using the provided Windows launchers:** Keep the project's adjacent portable `Godot` folder in place, then launch **`Play Ashfall.cmd`** and choose **TAKE THE ROAD**. Use **`Open Godot Editor.cmd`** to edit the project.
+**Using the provided Windows launchers:** Keep the project's adjacent portable `Godot` folder in place, then launch **`Play Ashfall.cmd`** and choose **WALK THE ROAD**. Use **`Open Godot Editor.cmd`** to edit the project.
 
-**Using your own Godot installation:** Open `project.godot` in a compatible Godot 4.7 editor and press **F5**. The configured main scene is `res://scenes/ashfall_station_main.tscn`. The adjacent portable editor is not part of this GitHub repository, so a fresh clone needs a compatible Godot installation.
+**Using your own Godot installation:** Open `project.godot` in a compatible Godot 4.7 editor and press **F5**. The configured main scene is `res://scenes/crossroads_main.tscn`. The adjacent portable editor is not part of this GitHub repository, so a fresh clone needs a compatible Godot installation.
 
-## Your first expedition
+## Your first walk through Crossroads
 
-The starting area is **Station 04**.
+Start on the village's southern road and walk north. The road curves through twelve inhabited-looking but deserted homesteads. Explore the gates, gardens, front steps, existing homes and the two new accessible house designs. At the north and south ends, narrower farm tracks loop around both sides of the village so you can see the buildings from the rear.
 
-Follow the road north through the checkpoint. The research station sits on the left near the far end. Enter through the front doorway and recover the **glowing sample** from the table. Then head back south and interact with the entry-gate terminal near the green lamp.
+The goal is **observation**: believable scale, seamless ground, usable gates, lighting, prop density, FPS, and whether the environment feels like a real place. There is **no objective, creature, sample, generator or anomaly** to complete or evade.
 
-Keep your distance from the **blue-green anomaly rings**. The left checkpoint hut has medical supplies. There is **no time limit**.
-
-### Controls
+### Current Crossroads controls
 
 | Input | Action |
 | :--- | :--- |
-| **WASD / Mouse** | Move / look |
-| **Shift** | Sprint (uses stamina) |
-| **Space** | Jump |
+| **WASD / Mouse** | Walk / look |
+| **Shift** | Sprint |
 | **Ctrl** | Crouch |
-| **F** | Toggle flashlight |
-| **E** | Interact within reach, under the crosshair |
-| **Tab** | Open inventory; select, carry, or use items |
-| **Q** | Use carried item |
+| **Space** | Jump |
+| **F** | Torch |
 | **Escape** | Pause / release mouse |
-| **F10** | Cycle Worn Canvas / Damp Paper / Rusted Iron interface finishes |
-| **J** | Open/close personal discovery Field Record |
-| **F8** | Switch Station 04 viewing distance (900 m / 650 m / 400 m) |
-| **F7** | Toggle live FPS/view diagnostic overlay |
-| **F6** | Choose Light / Grounded / Brutal for the current area |
-| **F9** | Toggle Hardcore modifier for the current area |
+| **F7** | Toggle FPS and view-distance diagnostic |
+| **F8** | Cycle 650 m / 350 m / 500 m draw-distance budget |
+
+The **Tab pack, J journal, F6 difficulty, F9 Hardcore, F10 finishes and E interactions** belong to the *archived Station 04 gameplay scene*, and are intentionally not present in the new Crossroads environment-only main scene.
 
 ## Under the hood
 
-Ashfall includes first-person movement and collision, stamina, a flashlight, atmospheric fog, wind and footsteps, hazardous anomaly areas, item interaction, inventory, an expedition objective, extraction, pause, failure, and restart states.
+The Crossroads launch includes first-person physical traversal, slope/collision-tested terrain, a torch, footsteps, overcast weather and static environmental storytelling. The repository still contains the previous Station 04 systems—including stamina, anomaly damage, loot, extraction and enemy logic—but does not instantiate those systems here.
 
-The repository also contains **modular building kits, props, textures, editable source assets, development review scenes, tests, and documentation**. The current launch scene is distinct from earlier experiments retained under `scenes/legacy/`.
+The repository also contains **modular building kits, props, textures, editable source assets, development review scenes, tests, and documentation**. The new launch scene is distinct from the older `scenes/ashfall_station_main.tscn`, which remains directly loadable in the Godot editor.
 
 ### Current development boundaries
 
-This is an early build. **Weapons, persistent saved progress between launches, and an open-world simulation are not yet complete features.** The connected survival slice can preserve inventory, caches, and objectives across area visits *within an expedition*, but that should not be confused with a full save system.
+This is an environment-first **playtest**: it is not a completed survival game, photorealistic AAA world, or cross-session save system. The new village has no quests, pickups, save state, dynamic enemies, or generator/anomaly encounters.
 
 Ashfall's intended direction is a level-based world with an open-world feel, grounded survival tension, original encounters, and multiple routes worth investigating. Those are **development goals**, not a claim that every system is already implemented.
 
@@ -107,7 +110,9 @@ Ashfall's intended direction is a level-based world with an open-world feel, gro
 
 | Location | Purpose |
 | :--- | :--- |
-| [`scenes/ashfall_station_main.tscn`](scenes/ashfall_station_main.tscn) | Current playable entry scene |
+| [`scenes/crossroads_main.tscn`](scenes/crossroads_main.tscn) | Current world-only main scene and first walkable village |
+| [`scenes/ashfall_station_main.tscn`](scenes/ashfall_station_main.tscn) | Previous Station 04 gameplay scene, preserved for reference |
+| [`scripts/crossroads/`](scripts/crossroads/) | Twelve-lot settlement, pitched prefab houses, roads, physical terrain and walkabout controller |
 | [`scripts/runtime/`](scripts/runtime/) | Gameplay and expedition systems |
 | [`scripts/authoring/`](scripts/authoring/) | Asset-building and baking scripts |
 | [`scripts/review/`](scripts/review/) | Review and inspection helpers |

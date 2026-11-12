@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/crossroads/village_house_assembly.gd" id="1_house"]
+
+[node name="LaneBrickCrossroadsHouse" type="Node3D"]
+script = ExtResource("1_house")
+house_type = 1
+metadata/architectural_reference = "8x12 patched brick rural house; longitudinal corrugated roof; off-center entrance; open lean-to; existing modular assets only"
+metadata/playtest_role = "Walkable multi-room second-home design; no gameplay systems"

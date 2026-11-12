@@ -1,0 +1,62 @@
+name: Crossroads 2.3 Village Acceptance
+
+on:
+  pull_request:
+    paths:
+      - 'scenes/crossroads_main.tscn'
+      - 'scenes/houses/blue_sill_crossroads.tscn'
+      - 'scenes/houses/lane_brick_crossroads.tscn'
+      - 'scripts/crossroads/**'
+      - 'tests/check_crossroads_village.gd'
+      - 'project.godot'
+      - '.github/workflows/crossroads-environment.yml'
+  workflow_dispatch:
+
+# A large existing Godot asset library must be imported for each commit.
+# Cancel obsolete PR runs rather than competing on 4 heavy imports.
+concurrency:
+  group: crossroads-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  godot-crossroads:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install Godot 4.7.2
+        shell: bash
+        run: |
+          set -euo pipefail
+          curl -fL --retry 3 "https://github.com/godotengine/godot/releases/download/4.7.2-stable/Godot_v4.7.2-stable_linux.x86_64.zip" -o /tmp/godot.zip
+          unzip -q /tmp/godot.zip -d /tmp
+          chmod +x /tmp/Godot_v4.7.2-stable_linux.x86_64
+      - name: Import every existing house and prop dependency
+        shell: bash
+        run: |
+          /tmp/Godot_v4.7.2-stable_linux.x86_64 --headless --path . --editor --import
+      - name: Parse and validate the independent house designs first
+        shell: bash
+        run: |
+          /tmp/Godot_v4.7.2-stable_linux.x86_64 --headless --path . --check-only --script res://scripts/crossroads/village_house_assembly.gd
+          /tmp/Godot_v4.7.2-stable_linux.x86_64 --headless --path . --check-only --script res://scripts/crossroads/crossroads_profile.gd
+      - name: Parse the physically connected map and player startup
+        shell: bash
+        run: |
+          /tmp/Godot_v4.7.2-stable_linux.x86_64 --headless --path . --check-only --script res://scripts/crossroads/crossroads_terrain.gd
+          /tmp/Godot_v4.7.2-stable_linux.x86_64 --headless --path . --check-only --script res://scripts/crossroads/crossroads_roads.gd
+          /tmp/Godot_v4.7.2-stable_linux.x86_64 --headless --path . --check-only --script res://scripts/crossroads/crossroads_village.gd
+          /tmp/Godot_v4.7.2-stable_linux.x86_64 --headless --path . --check-only --script res://scripts/crossroads/crossroads_countryside.gd
+          /tmp/Godot_v4.7.2-stable_linux.x86_64 --headless --path . --check-only --script res://scripts/crossroads/crossroads_playtest.gd
+          /tmp/Godot_v4.7.2-stable_linux.x86_64 --headless --path . --check-only --script res://tests/check_crossroads_village.gd
+      - name: Physically verify Crossroads scene, old system exclusion and homestead paths
+        shell: bash
+        run: |
+          timeout 200s /tmp/Godot_v4.7.2-stable_linux.x86_64 --headless --path . --script res://tests/check_crossroads_village.gd
+      - name: Verify the configured new main scene can start
+        shell: bash
+        run: |
+          timeout 110s /tmp/Godot_v4.7.2-stable_linux.x86_64 --headless --path . --quit-after 55

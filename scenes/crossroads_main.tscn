@@ -1,0 +1,86 @@
+[gd_scene load_steps=13 format=3]
+
+[ext_resource type="Script" path="res://scripts/crossroads/crossroads_playtest.gd" id="controller"]
+[ext_resource type="Script" path="res://scripts/crossroads/crossroads_terrain.gd" id="terrain"]
+[ext_resource type="Script" path="res://scripts/crossroads/crossroads_roads.gd" id="roads"]
+[ext_resource type="Script" path="res://scripts/crossroads/crossroads_village.gd" id="village"]
+[ext_resource type="Script" path="res://scripts/crossroads/crossroads_countryside.gd" id="countryside"]
+[ext_resource type="Shader" path="res://assets/shaders/ashfall_overcast_clouds.gdshader" id="skyshader"]
+
+[sub_resource type="ShaderMaterial" id="cloudy"]
+shader = ExtResource("skyshader")
+
+[sub_resource type="Sky" id="clouds"]
+process_mode = 3
+radiance_size = 3
+sky_material = SubResource("cloudy")
+
+[sub_resource type="Environment" id="clouded_village"]
+background_mode = 2
+sky = SubResource("clouds")
+ambient_light_source = 2
+ambient_light_color = Color(0.49, 0.52, 0.49, 1)
+ambient_light_energy = 0.56
+reflected_light_source = 2
+tonemap_mode = 2
+ssao_enabled = true
+ssao_intensity = 0.84
+ssao_radius = 1.4
+fog_enabled = true
+fog_light_color = Color(0.38, 0.42, 0.40, 1)
+fog_light_energy = 0.7
+fog_density = 0.0028
+fog_sky_affect = 0.095
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.0018
+volumetric_fog_albedo = Color(0.49, 0.52, 0.49, 1)
+volumetric_fog_length = 160.0
+volumetric_fog_sky_affect = 0.11
+
+[sub_resource type="FogMaterial" id="low_mist"]
+density = 0.004
+albedo = Color(0.49, 0.51, 0.45, 1)
+edge_fade = 0.48
+height_falloff = 0.84
+
+[node name="Crossroads" type="Node3D"]
+script = ExtResource("controller")
+metadata/map_role = "2.3 first full explorable village environment; no generators, anomalies, enemies, quests or loot"
+metadata/setting = "fictional rural Ukraine, late autumn, intentionally informed composite"
+metadata/map_footprint_metres = Vector2(360, 420)
+metadata/version = "Crossroads 2.3 environment-first playtest"
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("clouded_village")
+
+[node name="AutumnCloudCover" type="DirectionalLight3D" parent="."]
+rotation = Vector3(-0.95, 0.63, 0.0)
+light_color = Color(0.80, 0.82, 0.76, 1)
+light_energy = 0.71
+shadow_enabled = true
+directional_shadow_max_distance = 170.0
+directional_shadow_mode = 1
+
+[node name="Landscape" type="Node3D" parent="."]
+
+[node name="WalkableGround" type="StaticBody3D" parent="Landscape"]
+script = ExtResource("terrain")
+
+[node name="OldRoadNetwork" type="Node3D" parent="Landscape"]
+script = ExtResource("roads")
+
+[node name="FarmlandAndHorizon" type="Node3D" parent="Landscape"]
+script = ExtResource("countryside")
+
+[node name="SettledCountry" type="Node3D" parent="Landscape"]
+script = ExtResource("village")
+
+[node name="MistInLowGardens" type="FogVolume" parent="Landscape"]
+position = Vector3(-88, 0.9, 75)
+size = Vector3(22, 3.5, 80)
+material = SubResource("low_mist")
+
+[node name="MistByOldRoad" type="FogVolume" parent="Landscape"]
+position = Vector3(87, 0.85, -80)
+size = Vector3(20, 3.0, 96)
+material = SubResource("low_mist")

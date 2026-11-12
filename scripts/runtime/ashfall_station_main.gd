@@ -23,6 +23,10 @@ func _ready() -> void:
     visual_budget.set("game", self)
     visual_budget.set("scene_detail", world_detail)
     add_child(visual_budget)
+    var spatial_audio := Node3D.new()
+    spatial_audio.set_script(load("res://scripts/runtime/station04_ambient_cues.gd"))
+    spatial_audio.set("game", self)
+    add_child(spatial_audio)
     # Explain the new space without changing any of the player or HUD systems.
     if is_instance_valid(hud):
         hud.title.text = "ASHFALL 2.1  /  FIELD UNIT 04"

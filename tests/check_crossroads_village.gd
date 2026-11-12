@@ -80,6 +80,20 @@ func _check() -> void:
             issues.append("Twelve varied harvested field parcels did not build")
         if int(composition.get("prototypes_used")) != 5:
             issues.append("Background failed to reuse all five vegetation source scenes")
+        if int(composition.get("roadside_poles")) != 18 or int(composition.get("wires_drawn")) != 288:
+            issues.append("Outlying road's utility line no longer connects to village power poles")
+        var utility_root := composition.get_node_or_null("LandscapeComposition/RoadsideUtilityLine") as Node3D
+        if utility_root == null or utility_root.get_child_count() != 19:
+            issues.append("Broken outer-country roadside power line geometry")
+        else:
+            for node in utility_root.get_children():
+                if node is StaticBody3D:
+                    var post := node as StaticBody3D
+                    var ground_y := float(composition.call("_ground", post.position.x, post.position.z))
+                    if absf(post.position.y - ground_y) > 0.05:
+                        issues.append("A roadside pole floats above the actual country terrain")
+                        break
+
         var count_batches := int(composition.get("draw_batches"))
         if count_batches < 40 or count_batches > 900:
             issues.append("Countryside instancing is not batched efficiently")

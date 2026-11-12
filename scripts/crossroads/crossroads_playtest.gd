@@ -76,6 +76,10 @@ func _menu_ui() -> void:
     menu = Control.new()
     menu.name = "PauseCard"
     menu.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+    # This fullscreen Control stays alive when the pause cover is hidden.
+    # STOP swallowed all mouse motion before Walker._unhandled_input().
+    # Let real UI children receive clicks, but allow 3D mouse-look to pass.
+    menu.mouse_filter = Control.MOUSE_FILTER_IGNORE
     layer.add_child(menu)
     cover = ColorRect.new()
     cover.color = Color(0.04, 0.045, 0.037, 0.94)

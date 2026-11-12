@@ -67,12 +67,12 @@ func _vertex(point: Vector2, side: Vector2, offset: float, raise: float) -> Vect
     return Vector3(x, land.surface_height_at(x, z) + raise, z)
 
 
-func _add_triangle(st: SurfaceTool, a: Vector3, b: Vector3, c: Vector3, u0: float, u1: float, v0: float, v1: float) -> void:
-    st.set_uv(Vector2(u0, v0))
+func _add_triangle(st: SurfaceTool, a: Vector3, b: Vector3, c: Vector3, uv_a: Vector2, uv_b: Vector2, uv_c: Vector2) -> void:
+    st.set_uv(uv_a)
     st.add_vertex(a)
-    st.set_uv(Vector2(u1, v0))
+    st.set_uv(uv_b)
     st.add_vertex(b)
-    st.set_uv(Vector2(u0, v1))
+    st.set_uv(uv_c)
     st.add_vertex(c)
 
 
@@ -89,9 +89,15 @@ func _make_strip(points: Array[Vector2], near: float, far: float, raise: float, 
         var c := _vertex(points[i + 1], left_b, near, raise)
         var d := _vertex(points[i + 1], left_b, far, raise)
         var next_distance := traveled + points[i].distance_to(points[i + 1])
-        # The material has both faces, so winding won't erase winding lanes.
-        _add_triangle(st, a, c, b, near / 4.0, near / 4.0, traveled / 5.0, next_distance / 5.0)
-        _add_triangle(st, b, c, d, far / 4.0, near / 4.0, traveled / 5.0, next_distance / 5.0)
+        # Correct two-axis road UVs: measured width across each lane, true
+        # accumulated distance along it. Old asphalt and gravel no longer
+        # collapse into single-pixel-length bands at every triangle.
+        var uv_a := Vector2(near / 4.0, traveled / 5.0)
+        var uv_b := Vector2(far / 4.0, traveled / 5.0)
+        var uv_c := Vector2(near / 4.0, next_distance / 5.0)
+        var uv_d := Vector2(far / 4.0, next_distance / 5.0)
+        _add_triangle(st, a, c, b, uv_a, uv_c, uv_b)
+        _add_triangle(st, b, c, d, uv_b, uv_c, uv_d)
         traveled = next_distance
     st.generate_normals()
     return st.commit()

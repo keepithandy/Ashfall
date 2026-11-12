@@ -73,9 +73,9 @@ func set_view_mode(value: int) -> void:
     if is_instance_valid(game.player) and is_instance_valid(game.player.camera):
         game.player.camera.far = VIEW_RANGES[mode]
     if is_instance_valid(scene_detail):
-        scene_detail.foliage_view_range = FOLIAGE_RANGES[mode]
+        scene_detail.set("foliage_view_range", FOLIAGE_RANGES[mode])
         for visual in scene_detail.find_children("*", "GeometryInstance3D", true, false):
-            if visual.get_parent() != null and visual.get_parent().get_meta("ashfall_visual_only", false):
+            if visual.get_meta("ashfall_visual_only", false):
                 visual.visibility_range_end = FOLIAGE_RANGES[mode]
     if is_instance_valid(world_environment) and world_environment.environment != null:
         world_environment.environment.volumetric_fog_enabled = mode != 2

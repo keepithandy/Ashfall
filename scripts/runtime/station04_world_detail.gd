@@ -120,5 +120,6 @@ func _make_visual_only(model: Node3D) -> void:
         object.collision_mask = 0
     for child in model.find_children("*", "GeometryInstance3D", true, false):
         var visual := child as GeometryInstance3D
+        visual.set_meta("ashfall_visual_only", true)
         visual.visibility_range_end = foliage_view_range
         visual.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF

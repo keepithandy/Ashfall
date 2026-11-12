@@ -194,6 +194,8 @@ func _input(event: InputEvent) -> void:
 
 
 func open_record() -> void:
+    if is_instance_valid(game.hud.interface_foley):
+        game.hud.interface_foley.call("paper")
     _refresh()
     show()
     game.player.active = false
@@ -204,6 +206,8 @@ func open_record() -> void:
 func close_record() -> void:
     if not visible:
         return
+    if is_instance_valid(game.hud.interface_foley):
+        game.hud.interface_foley.call("paper")
     hide()
     if is_instance_valid(game) and game.started and not game.hud.overlay.visible:
         game.player.active = true

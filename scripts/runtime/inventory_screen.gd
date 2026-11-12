@@ -1,12 +1,12 @@
 extends Control
 ## A simple slot inventory; the gameplay item and hand systems remain unchanged.
 const Items = preload("res://scripts/runtime/item_catalog.gd")
-const Skin = preload("res://scripts/runtime/weathered_ui_style.gd")
+const FieldSkin = preload("res://scripts/runtime/weathered_ui_style.gd")
 const SLOT_COUNT := 27
 const COLUMNS := 9
 const SLOT_SIZE := 58
-const TEXT := Skin.INK
-const MUTED := Skin.FADED_INK
+const TEXT := FieldSkin.INK
+const MUTED := FieldSkin.FADED_INK
 
 var game: Node3D
 var selected_id := "flashlight"
@@ -41,7 +41,7 @@ func make_action(caption: String, action: Callable) -> Button:
 	var button := Button.new()
 	button.text = caption
 	button.custom_minimum_size = Vector2(120, 42)
-	Skin.control_button(button, true)
+	FieldSkin.control_button(button, true)
 	button.pressed.connect(action)
 	return button
 
@@ -58,9 +58,9 @@ func _ready() -> void:
 	add_child(center)
 	var panel := PanelContainer.new()
 	panel.name = "InventoryPanel"
-	panel.add_theme_stylebox_override("panel", Skin.panel(Skin.PAPER, Skin.LEATHER, 4, 12))
+	panel.add_theme_stylebox_override("panel", FieldSkin.panel(FieldSkin.PAPER, FieldSkin.LEATHER, 4, 12))
 	center.add_child(panel)
-	Skin.paper_texture(panel, true)
+	FieldSkin.paper_texture(panel, true)
 	var margin := MarginContainer.new()
 	for side in ["left", "right", "top", "bottom"]:
 		margin.add_theme_constant_override("margin_" + side, 13)
@@ -94,14 +94,14 @@ func _ready() -> void:
 		slot.icon_alignment = HORIZONTAL_ALIGNMENT_CENTER
 		slot.add_theme_constant_override("icon_max_width", 48)
 		slot.add_theme_stylebox_override("normal", make_style(Color("88806b"), Color("534d3e")))
-		slot.add_theme_color_override("font_color", Skin.INK)
-		slot.add_theme_stylebox_override("hover", make_style(Color("bcb092"), Skin.OXIDE))
-		slot.add_theme_stylebox_override("pressed", make_style(Color("a59a7d"), Skin.LEATHER))
-		slot.add_theme_stylebox_override("focus", make_style(Color(0, 0, 0, 0), Skin.INK))
+		slot.add_theme_color_override("font_color", FieldSkin.INK)
+		slot.add_theme_stylebox_override("hover", make_style(Color("bcb092"), FieldSkin.OXIDE))
+		slot.add_theme_stylebox_override("pressed", make_style(Color("a59a7d"), FieldSkin.LEATHER))
+		slot.add_theme_stylebox_override("focus", make_style(Color(0, 0, 0, 0), FieldSkin.INK))
 		slot.add_theme_stylebox_override("disabled", make_style(Color("968c74"), Color("756c5b")))
 		slot.tooltip_text = "Empty pocket"
 		grid.add_child(slot)
-		var quantity := make_label("", 15, Skin.PAPER_LIGHT)
+		var quantity := make_label("", 15, FieldSkin.PAPER_LIGHT)
 		quantity.name = "Quantity"
 		quantity.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 		quantity.offset_right = -5
@@ -158,7 +158,7 @@ func refresh() -> void:
 		slot.tooltip_text = str(Items.entry(id).get("description", "")) if available else "Empty pocket"
 		count_labels[id].text = str(quantity) if available else ""
 		var selected: bool = available and id == selected_id
-		slot.add_theme_stylebox_override("normal", make_style(Color("a99c7a") if selected else Color("88806b"), Skin.RUST if selected else Color("534d3e"), 3 if selected else 2))
+		slot.add_theme_stylebox_override("normal", make_style(Color("a99c7a") if selected else Color("88806b"), FieldSkin.RUST if selected else Color("534d3e"), 3 if selected else 2))
 	if game.inventory.get(selected_id, 0) <= 0:
 		selected_id = ""
 	var data: Dictionary = Items.entry(selected_id)

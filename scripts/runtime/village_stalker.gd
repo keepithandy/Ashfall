@@ -244,6 +244,8 @@ func _physics_process(delta: float) -> void:
 		limbs[i].rotation.x=sin(step_phase)*0.38*(1 if i in [0,3] else -1)
 	body.rotation.z=sin(step_phase*0.5)*0.025
 	if state=="chase" and attack_cooldown<=0 and global_position.distance_to(game.player.global_position)<1.25 and has_line_to_player():
-		game.player.health=maxf(0,game.player.health-18)
+		var rules := game.get("survival_rules") as Node
+		var force := float(rules.call("incoming_damage_factor")) if is_instance_valid(rules) else 1.0
+		game.player.health=maxf(0,game.player.health-18.0*force)
 		game.show_message("Something struck you. Break sight and run!",3)
 		attack_cooldown=2.0

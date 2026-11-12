@@ -33,7 +33,7 @@ func _ready() -> void:
         audio.max_distance = float(place["radius"])
         audio.unit_size = 5.0
         audio.attenuation_filter_cutoff_hz = 2200
-        audio.stream = atmosphere.creak_clip(i % 4) if i >= 2 and atmosphere != null else rustle
+        audio.stream = (atmosphere.call("creak_clip", i % 4) as AudioStreamWAV) if i >= 2 and atmosphere != null else rustle
         add_child(audio)
         cues.append(audio)
         next_due.append(rng.randf_range(11.0, 27.0))

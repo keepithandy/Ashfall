@@ -130,6 +130,11 @@ func height_at(x: float, z: float) -> float:
     var road_grade := _base(road_x, z) + 0.040
     base = lerpf(road_grade, base, _smooth(3.6, 11.0, absf(x - road_x)))
     for site in HOMES:
+        # Most terrain samples are far from every building. A 24 m world
+        # broad-phase covers the largest rotated footprint + 10 m feather;
+        # skip expensive per-site rotation math outside that safe boundary.
+        if absf(x - float(site["x"])) > 24.0 or absf(z - float(site["z"])) > 24.0:
+            continue
         var influence := house_pad_weight(site, x, z)
         if influence > 0.0:
             base = lerpf(base, site_floor_height(site), influence)

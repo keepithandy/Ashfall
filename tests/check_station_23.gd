@@ -83,12 +83,10 @@ func _run() -> void:
                 errors.append("Notebook already marked discoveries before starting")
             if album.get("content") == null:
                 errors.append("Notebook pages missing")
-            var places: Array = album.get("PLACES") if album.get("PLACES") != null else []
-            if places.size() != 12:
-                # Static constants are not always available through Object.get().
-                var known = load("res://scripts/runtime/expedition_field_record.gd").get_script_constant_map()
-                if not known.has("PLACES") or known["PLACES"].size() != 12:
-                    errors.append("Expanded twelve-location survey entries missing")
+            var known: Dictionary = (album.get_script() as GDScript).get_script_constant_map()
+            if not known.has("PLACES") or known["PLACES"].size() != 12:
+                errors.append("Expanded twelve-location survey entries missing")
+
 
         var pack := hud.get("inventory_screen") as Control
         if pack == null or pack.find_child("Weathering", true, false) == null:

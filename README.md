@@ -9,7 +9,7 @@
 ![Godot](https://img.shields.io/badge/Godot-4.7.2-478CBF?logo=godot-engine&logoColor=white)
 ![Language](https://img.shields.io/badge/Language-GDScript-2D3748)
 ![Platform](https://img.shields.io/badge/Platform-Windows-363636)
-![Status](https://img.shields.io/badge/Status-2.1%20Playtest-796044)
+![Status](https://img.shields.io/badge/Status-2.3%20Playtest-796044)
 
 **[Play the current build](#getting-started) · [Explore Station 04](#your-first-expedition) · [Project structure](#project-structure)**
 
@@ -26,9 +26,17 @@ This milestone combines the playable Station 04 expedition with the recent envir
 
 The **expanded region road/terrain scene remains a separate preview**, not a replacement for the Station 04 gameplay start. Decorative props and galleries are included for inspection. This is an integrated **playtest**, not a completed release; terrain visuals, performance and end-to-end expedition behavior still need an in-game approval pass. See [Ashfall 2.0 playtest scope and QA](docs/ASHFALL_2_0_PLAYTEST.md).
 
+## Ashfall 2.3 — Lost & Weathered Playtest
+
+The newest build gives Ashfall a **grounded old-survivor identity**: worn field canvas, stained handwritten-style notebook pages, muted rust and paper, repaired-looking controls, physical paper/cloth handling sounds, consistent supply and inventory screens, and no futuristic HUD language. Existing information still comes from real gameplay state and 27 field-pack slots work as before.
+
+Station 04 now has **16 additional traces of abandonment** and **12 location-triggered notes**. The perimeter and North Relay each support optional **Light / Grounded / Brutal** survival profiles (**F6**) and independent **Hardcore** modifiers (**F9**). **Grounded with Hardcore off keeps the original balance.** The settings do not rewrite player saves.
+
+This is a playtest foundation, **not completion of all major world, 3D art, animation and performance improvements**. Read the [2.3 technical scope and playtest guide](docs/ASHFALL_2_3_LOST_WEATHERED.md).
+
 ## Ashfall 2.1 — World Immersion Playtest
 
-The latest branch extends the 2.0 Station 04 build with near-ground foliage clusters, four narrative landmarks, nine discoverable field notes, localized ambient sounds, creature investigation around last-known positions, and more useful item inspection. **J** opens the Field Record, **F8** cycles draw-distance budgets, and **F7** toggles a live FPS display.
+The 2.1 branch extended the 2.0 Station 04 build with near-ground foliage clusters, four narrative landmarks, nine discoverable field notes, localized ambient sounds, creature investigation around last-known positions, and more useful item inspection. **J** opens the Field Record, **F8** cycles draw-distance budgets, and **F7** toggles a live FPS display.
 
 This is **a tested incremental build, not a finished twenty-system overhaul**: realistic building models, walkable terrain reconstruction, survival difficulty/Hardcore tiers and production animation are still future work. Read the [2.1 release scope and full 20-area progress accounting](docs/ASHFALL_2_1_WORLD_IMMERSION.md).
 
@@ -76,10 +84,12 @@ Keep your distance from the **blue-green anomaly rings**. The left checkpoint hu
 | **Tab** | Open inventory; select, carry, or use items |
 | **Q** | Use carried item |
 | **Escape** | Pause / release mouse |
-| **F10** | Cycle the three saved field-journal HUD finishes |
+| **F10** | Cycle Worn Canvas / Damp Paper / Rusted Iron interface finishes |
 | **J** | Open/close personal discovery Field Record |
 | **F8** | Switch Station 04 viewing distance (900 m / 650 m / 400 m) |
 | **F7** | Toggle live FPS/view diagnostic overlay |
+| **F6** | Choose Light / Grounded / Brutal for the current area |
+| **F9** | Toggle Hardcore modifier for the current area |
 
 ## Under the hood
 

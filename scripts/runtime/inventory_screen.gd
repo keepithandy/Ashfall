@@ -175,6 +175,8 @@ func refresh() -> void:
 
 func open_pack() -> void:
 	show()
+	if is_instance_valid(game.hud.interface_foley):
+		game.hud.interface_foley.call("cloth")
 	var preferred: String = game.equipped_item_id if not game.equipped_item_id.is_empty() else selected_id
 	if game.inventory.get(preferred, 0) <= 0:
 		preferred = ""
@@ -187,4 +189,6 @@ func open_pack() -> void:
 	refresh()
 
 func close_pack() -> void:
+	if visible and is_instance_valid(game.hud.interface_foley):
+		game.hud.interface_foley.call("latch")
 	hide()

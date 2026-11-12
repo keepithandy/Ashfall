@@ -80,7 +80,7 @@ var wire_mat: StandardMaterial3D
 
 
 func _ready() -> void:
-    name = "CrossroadsVillage"
+    # Preserve the authored scene node path for the playtest and editor.
     rng.seed = 239187
     rebuild()
 

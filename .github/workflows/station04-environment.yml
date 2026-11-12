@@ -8,6 +8,12 @@ on:
       - 'assets/shaders/station04_ground.gdshader'
       - 'tests/check_station_grounding.gd'
       - 'tests/check_station_field_hud.gd'
+      - 'tests/check_station_immersion.gd'
+      - 'scripts/runtime/expedition_field_record.gd'
+      - 'scripts/runtime/station04_world_detail.gd'
+      - 'scripts/runtime/station04_visual_budget.gd'
+      - 'scripts/runtime/station04_ambient_cues.gd'
+      - 'scripts/runtime/village_stalker.gd'
       - 'scripts/runtime/hud.gd'
       - 'scripts/runtime/inventory_screen.gd'
       - 'scripts/runtime/ashfall_station_main.gd'
@@ -42,6 +48,11 @@ jobs:
           /tmp/Godot_v4.7.2-stable_linux.x86_64 --headless --path . --check-only --script res://scripts/runtime/station04_near_canopies.gd
           /tmp/Godot_v4.7.2-stable_linux.x86_64 --headless --path . --check-only --script res://tests/check_station_grounding.gd
           /tmp/Godot_v4.7.2-stable_linux.x86_64 --headless --path . --check-only --script res://tests/check_station_field_hud.gd
+          /tmp/Godot_v4.7.2-stable_linux.x86_64 --headless --path . --check-only --script res://scripts/runtime/station04_world_detail.gd
+          /tmp/Godot_v4.7.2-stable_linux.x86_64 --headless --path . --check-only --script res://scripts/runtime/station04_visual_budget.gd
+          /tmp/Godot_v4.7.2-stable_linux.x86_64 --headless --path . --check-only --script res://scripts/runtime/expedition_field_record.gd
+          /tmp/Godot_v4.7.2-stable_linux.x86_64 --headless --path . --check-only --script res://scripts/runtime/station04_ambient_cues.gd
+          /tmp/Godot_v4.7.2-stable_linux.x86_64 --headless --path . --check-only --script res://tests/check_station_immersion.gd
       - name: Import project assets
         shell: bash
         run: |
@@ -69,6 +80,10 @@ jobs:
         shell: bash
         run: |
           /tmp/Godot_v4.7.2-stable_linux.x86_64 --headless --path . --script res://tests/check_station_field_hud.gd
+      - name: Verify Ashfall 2.1 immersion, discovery and view-budget regression
+        shell: bash
+        run: |
+          /tmp/Godot_v4.7.2-stable_linux.x86_64 --headless --path . --script res://tests/check_station_immersion.gd
       - name: Verify main scene parses and runs without startup failures
         shell: bash
         run: |

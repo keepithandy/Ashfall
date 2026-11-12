@@ -7,6 +7,14 @@ var encounter_present := true
 var routing = preload("res://scripts/runtime/pursuit_path.gd").new()
 var station_mode := false
 var search_time := 0.0
+var search_index := 0
+const SEARCH_OFFSETS = [
+	Vector3.ZERO,
+	Vector3(3.0, 0.0, 1.4),
+	Vector3(-2.5, 0.0, 2.5),
+	Vector3(-3.5, 0.0, -1.8),
+	Vector3(2.1, 0.0, -3.2)
+]
 var footstep: AudioStreamPlayer3D
 var footstep_timer := 0.0
 var state := "patrol"
@@ -157,6 +165,16 @@ func sense_player() -> void:
 		if state!="chase":
 			state="investigate"
 
+func search_destination() -> Vector3:
+	# Search the actual last seen/heard position, then sweep nearby sectors.
+	# This replaces returning to an unrelated authored patrol point.
+	return last_known + SEARCH_OFFSETS[search_index % SEARCH_OFFSETS.size()]
+
+func _start_search() -> void:
+	state = "search"
+	search_time = 16.0
+	search_index = 0
+
 func _physics_process(delta: float) -> void:
 	if not is_instance_valid(game) or not is_instance_valid(game.player) or not game.player.active or not encounter_present or (game.areas != null and game.areas.current != area_id):
 		if is_instance_valid(breath):
@@ -173,12 +191,11 @@ func _physics_process(delta: float) -> void:
 	attention=maxf(0,attention-delta)
 	if state!="patrol" and attention<=0:
 		if state not in ["search", "retreat"]:
-			state="search"
-			search_time=16.0
+			_start_search()
 	if state=="search":
 		search_time-=delta
 		if search_time<=0: state="retreat" if station_mode else "patrol"
-	var destination: Vector3=points[0] if state=="retreat" else (points[point_index] if state in ["patrol", "search"] else last_known)
+	var destination: Vector3=points[0] if state=="retreat" else (search_destination() if state=="search" else (points[point_index] if state=="patrol" else last_known))
 	# The creature returns to the village if the player escapes the area.
 	if not station_mode and area_id == "perimeter" and game.player.global_position.x> -32 and state!="patrol":
 		state="patrol"
@@ -186,15 +203,16 @@ func _physics_process(delta: float) -> void:
 	var offset:=destination-global_position
 	offset.y=0
 	if offset.length()<0.8:
-		if state in ["patrol", "search"]:
+		if state=="patrol":
 			point_index=(point_index+1)%points.size()
+		elif state=="search":
+			search_index=(search_index+1)%SEARCH_OFFSETS.size()
 		else:
 			if state=="retreat":
 				breath.stop()
 				set_physics_process(false)
 			else:
-				state="search"
-				search_time=16.0
+				_start_search()
 		velocity.x=0
 		velocity.z=0
 	else:

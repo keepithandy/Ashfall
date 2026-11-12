@@ -9,7 +9,7 @@
 ![Godot](https://img.shields.io/badge/Godot-4.7.2-478CBF?logo=godot-engine&logoColor=white)
 ![Language](https://img.shields.io/badge/Language-GDScript-2D3748)
 ![Platform](https://img.shields.io/badge/Platform-Windows-363636)
-![Status](https://img.shields.io/badge/Status-2.0%20Playtest-796044)
+![Status](https://img.shields.io/badge/Status-2.1%20Playtest-796044)
 
 **[Play the current build](#getting-started) · [Explore Station 04](#your-first-expedition) · [Project structure](#project-structure)**
 
@@ -25,6 +25,12 @@
 This milestone combines the playable Station 04 expedition with the recent environmental passes, repaired distant hills, layered forest, **900 m Station 04 view distance**, and a personal screen-space **Field Journal HUD**. Press **F10** to switch among Field Journal, Signal Receiver and Worn Amber. The start screen now has a 2.0 field briefing with accessible actions on laptop-sized windows.
 
 The **expanded region road/terrain scene remains a separate preview**, not a replacement for the Station 04 gameplay start. Decorative props and galleries are included for inspection. This is an integrated **playtest**, not a completed release; terrain visuals, performance and end-to-end expedition behavior still need an in-game approval pass. See [Ashfall 2.0 playtest scope and QA](docs/ASHFALL_2_0_PLAYTEST.md).
+
+## Ashfall 2.1 — World Immersion Playtest
+
+The latest branch extends the 2.0 Station 04 build with near-ground foliage clusters, four narrative landmarks, nine discoverable field notes, localized ambient sounds, creature investigation around last-known positions, and more useful item inspection. **J** opens the Field Record, **F8** cycles draw-distance budgets, and **F7** toggles a live FPS display.
+
+This is **a tested incremental build, not a finished twenty-system overhaul**: realistic building models, walkable terrain reconstruction, survival difficulty/Hardcore tiers and production animation are still future work. Read the [2.1 release scope and full 20-area progress accounting](docs/ASHFALL_2_1_WORLD_IMMERSION.md).
 
 ## Welcome to Ashfall
 
@@ -71,6 +77,9 @@ Keep your distance from the **blue-green anomaly rings**. The left checkpoint hu
 | **Q** | Use carried item |
 | **Escape** | Pause / release mouse |
 | **F10** | Cycle the three saved field-journal HUD finishes |
+| **J** | Open/close personal discovery Field Record |
+| **F8** | Switch Station 04 viewing distance (900 m / 650 m / 400 m) |
+| **F7** | Toggle live FPS/view diagnostic overlay |
 
 ## Under the hood
 

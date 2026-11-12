@@ -497,6 +497,9 @@ func _process(_delta: float) -> void:
 	journal_stamp.text = "ENTRY RECORD  /  %02d:%02d   /   %s" % [minutes, int(game.elapsed) % 60, "SAMPLE SECURED" if game.has_sample else "IN PROGRESS"]
 	var condition := "CRITICAL" if game.player.health < 25.0 else ("WOUNDED" if game.player.health < 60.0 else "STABLE")
 	vital_status.text = "FIELD ASSESSMENT  /  " + condition
+	var rules := game.get("survival_rules") as Node
+	if is_instance_valid(rules):
+		vital_status.text += "   /   " + str(rules.call("label"))
 	var motion := "CROUCHING" if game.player.crouching else ("RUNNING" if game.player.noise_radius >= 9.0 else ("MOVING" if game.player.noise_radius >= 4.0 else "STILL"))
 	field_activity.text = "MOVEMENT  /  " + motion
 	if game.hazard_strength > 0.08:

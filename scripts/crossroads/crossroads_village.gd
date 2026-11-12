@@ -331,8 +331,8 @@ func _yard_life(parent: Node3D, site: Dictionary, index: int) -> void:
     var group: Array = YARD_GROUPS[index]
     for i in range(group.size()):
         var item: String = group[i]
-        var back := [10.0, 17.0, 12.5, 20.0, -9.0, -12.0][i]
-        var across := [-10.0, 8.5, 11.5, -7.0, -11.0, 11.0][i]
+        var back: float = [10.0, 17.0, 12.5, 20.0, -9.0, -12.0][i]
+        var across: float = [-10.0, 8.5, 11.5, -7.0, -11.0, 11.0][i]
         var target_x := x + side * back
         var target_z := z + across
         var asset := _place(parent, item, target_x, target_z,
@@ -412,7 +412,7 @@ func _country_vegetation(parent: Node3D) -> void:
                 break
         if near_house:
             continue
-        var id := ["grass", "grass", "bramble", "shrub", "fern", "branch", "grass", "stump"][i % 8]
+        var id: String = ["grass", "grass", "bramble", "shrub", "fern", "branch", "grass", "stump"][i % 8]
         if _place(parent, id, x, z, rng.randf_range(-3.14, 3.14),
             rng.randf_range(0.65, 1.35), id == "stump") != null:
             undergrowth_placed += 1

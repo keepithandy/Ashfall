@@ -12,7 +12,7 @@ var cell_count: int = 0
 
 
 func _ready() -> void:
-    name = "CrossroadsGround"
+    # Keep authored node name stable for scene editing and path-based acceptance checks.
     collision_layer = 1
     collision_mask = 0
     rebuild()

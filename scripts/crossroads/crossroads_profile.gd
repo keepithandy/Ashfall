@@ -85,24 +85,55 @@ func main_road_x(z: float) -> float:
     return MAIN_ROAD[0].x if z < MAIN_ROAD[0].y else MAIN_ROAD[MAIN_ROAD.size() - 1].x
 
 
+func _site_footprint(site: Dictionary) -> Vector2:
+    # Half extents of the actual existing house foundations (or the two
+    # Crossroads modular floor plans), including a small earth apron.
+    match str(site["kind"]):
+        "white":
+            return Vector2(4.65, 5.15)
+        "green":
+            return Vector2(6.15, 3.65)
+        "ochre":
+            return Vector2(4.15, 4.15)
+        "blue_sill":
+            return Vector2(6.0, 4.0)
+        "lane_brick":
+            return Vector2(4.0, 6.0)
+    return Vector2(6.0, 6.0)
+
+
+func site_floor_height(site: Dictionary) -> float:
+    # Terrain sits slightly below the prefab's floor/foundation datum.
+    # The house itself is placed 4 cm above this pad in crossroads_village.
+    return _base(float(site["x"]), float(site["z"])) - 0.045
+
+
+func house_pad_weight(site: Dictionary, x: float, z: float) -> float:
+    var dx := x - float(site["x"])
+    var dz := z - float(site["z"])
+    var yaw := float(site["yaw"])
+    # Inverse of Node3D's yaw: local X / local Z aligned with the real walls.
+    var local_x := cos(yaw) * dx - sin(yaw) * dz
+    var local_z := sin(yaw) * dx + cos(yaw) * dz
+    var extents := _site_footprint(site)
+    var outside := maxf(absf(local_x) - extents.x, absf(local_z) - extents.y)
+    # Keep the footprint + 1.2 m of surrounding soil level, then feather
+    # naturally out over 9 m; no radial mounds beneath wall corners.
+    return 1.0 - _smooth(1.2, 10.0, maxf(0.0, outside))
+
+
 func height_at(x: float, z: float) -> float:
     var base := _base(x, z)
-    # A gently graded road crown with broad shoulders, carved from the
-    # same underlying soil (not a road plane hovering on top of rough ground).
+    # Preserve a graded crown and shoulders on the main road. The asphalt
+    # uses this same physical height profile, not a raised fake collision.
     var road_x := main_road_x(z)
-    var road_distance := absf(x - road_x)
     var road_grade := _base(road_x, z) + 0.040
-    base = lerpf(road_grade, base, _smooth(3.6, 11.0, road_distance))
-    # Each house pad grades imperceptibly into the surrounding homestead;
-    # no floating prefabs and no global flat terrain.
+    base = lerpf(road_grade, base, _smooth(3.6, 11.0, absf(x - road_x)))
     for site in HOMES:
-        var center := Vector2(float(site["x"]), float(site["z"]))
-        var distance := Vector2(x, z).distance_to(center)
-        if distance < 23.0:
-            var baseline := _base(center.x, center.y)
-            base = lerpf(baseline, base, _smooth(10.0, 23.0, distance))
+        var influence := house_pad_weight(site, x, z)
+        if influence > 0.0:
+            base = lerpf(base, site_floor_height(site), influence)
     return base
-
 
 func outer_height_at(x: float, z: float) -> float:
     # Distant open farmland connects exactly to the walkable village rim,

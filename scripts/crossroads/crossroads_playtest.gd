@@ -151,7 +151,9 @@ func pause_walking() -> void:
 
 
 func _on_focus_lost() -> void:
-    if not smoke_test:
+    # The dummy/headless display has no actual window focus. Treating its
+    # synthetic focus events as user alt-tabs silently disables the walker.
+    if not smoke_test and DisplayServer.get_name() != "headless":
         pause_walking()
 
 

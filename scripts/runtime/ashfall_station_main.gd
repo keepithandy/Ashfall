@@ -39,7 +39,7 @@ func _ready() -> void:
     add_child(story_sets)
     # Explain the new space without changing any of the player or HUD systems.
     if is_instance_valid(hud):
-        hud.title.text = "ASHFALL 2.3  /  THE OUTER ROAD"
+        hud.title.text = "STATION 04  /  THE OUTER ROAD"
         hud.menu_title.text = "ASHFALL 2.3"
         hud.menu_title.add_theme_font_size_override("font_size", 50)
         hud.menu_body.text = "STATION 04  /  FIELD EXPEDITION\n\nThe road goes quiet after the last house.\nFind the sample. Save what you can. Get home before dark.\n[J] NOTEBOOK    /    [TAB] PACK    /    [F10] CLOTH FINISH"

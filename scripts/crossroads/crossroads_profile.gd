@@ -153,7 +153,13 @@ func outer_height_at(x: float, z: float) -> float:
     var fade := _smooth(0.0, 140.0, outside)
     var country_roll := 3.1 * sin(x * 0.009 + 0.6) * sin(z * 0.011 - 0.3)
     var farmland_rise := 4.5 * noise.get_noise_2d(x * 0.7, z * 0.7)
-    return height_at(rim_x, rim_z) + fade * (country_roll + farmland_rise)
+    # Very distant low ridges, not dramatic mountains. They lift the sky
+    # silhouette behind the agricultural windbreaks. All additions fade in
+    # outside the original village and preserve the four mesh joins.
+    var west_rise := 4.8 * exp(-0.000015 * ((x + 525.0) * (x + 525.0) + (z + 130.0) * (z + 130.0)))
+    var east_rise := 5.3 * exp(-0.000014 * ((x - 545.0) * (x - 545.0) + (z - 180.0) * (z - 180.0)))
+    var northern_rise := 3.3 * exp(-0.000014 * ((x + 220.0) * (x + 220.0) + (z + 640.0) * (z + 640.0)))
+    return height_at(rim_x, rim_z) + fade * (country_roll + farmland_rise + west_rise + east_rise + northern_rise)
 
 
 func surface_height_at(x: float, z: float) -> float:

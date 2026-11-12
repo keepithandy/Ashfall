@@ -18,7 +18,19 @@ const PLACES := [
      "detail": "Maintenance equipment was left under the tower. The yard is exposed on both sides, but the scattered cover gives another route around the road."},
     {"id": "sample", "at": Vector2(-10.0, -34.0), "radius": 6.5,
      "title": "RESEARCH APPROACH",
-     "detail": "The northern lab was abandoned with instruments still running. The sample should be recovered only if the entry gate remains accessible."}
+     "detail": "The northern lab was abandoned with instruments still running. The sample should be recovered only if the entry gate remains accessible."},
+    {"id": "memorial", "at": Vector2(-12.0, 65.0), "radius": 7.5,
+     "title": "ROADSIDE MEMORIAL",
+     "detail": "Someone kept returning here long after the evacuation. The marker has no name; someone else stripped the metal tag."},
+    {"id": "shelter", "at": Vector2(53.0, 47.0), "radius": 9.0,
+     "title": "THE LAST BUS",
+     "detail": "A shelter without its roof and a road with no buses. Timetables are still pinned beneath the broken frame."},
+    {"id": "utility", "at": Vector2(53.0, -47.0), "radius": 9.0,
+     "title": "SNAPPED TRANSMISSION",
+     "detail": "The utility pole fell toward the perimeter, not away from it. The line was cut before the station lights failed."},
+    {"id": "mailbox", "at": Vector2(-62.0, -49.0), "radius": 7.0,
+     "title": "UNCLAIMED MAIL",
+     "detail": "A mailbox sits at the forest edge. The house it served is no longer standing."}
 ]
 
 var game: Node3D

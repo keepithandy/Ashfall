@@ -279,11 +279,51 @@ func _layout_hud() -> void:
 	else:
 		footer_hint.text = "[TAB] PACK  /  [J] NOTES  /  [F] LIGHT  /  [ESC] MENU  /  [F10] " + THEME_NAMES[field_theme_mode]
 	loot_panel.position = Vector2((w - loot_panel.size.x) * 0.5, (h - loot_panel.size.y) * 0.5)
+	_layout_audio_panel(w, h)
 	if not intro_layout.is_empty():
 		_layout_intro()
 	queue_redraw()
 
 
+
+
+func _layout_audio_panel(w: float, h: float) -> void:
+	if not is_instance_valid(audio_panel):
+		return
+	var panel_width := minf(690.0, w - 60.0)
+	var x := (w - panel_width) * 0.5
+	var top := maxf(32.0, h * 0.10)
+	var headline := audio_panel.get_node_or_null("SoundTitle") as Label
+	var subheading := audio_panel.get_node_or_null("SoundCaption") as Label
+	if headline != null:
+		headline.position = Vector2(x, top)
+		headline.size = Vector2(panel_width, 56)
+	if subheading != null:
+		subheading.position = Vector2(x + 2, top + 60)
+		subheading.size = Vector2(panel_width, 45)
+		subheading.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	var row_start := top + 126.0
+	var row_gap := minf(63.0, maxf(46.0, (h - row_start - 108.0) / 4.0))
+	for i in range(4):
+		var bus_name: String = ["Master", "Wind", "Footsteps", "Effects"][i]
+		var row_y := row_start + float(i) * row_gap
+		var field := audio_panel.get_node_or_null(bus_name + "Label") as Label
+		var value := audio_panel.get_node_or_null(bus_name + "Value") as Label
+		var slider := audio_panel.get_node_or_null(bus_name + "Slider") as HSlider
+		if field != null:
+			field.position = Vector2(x + 4, row_y)
+			field.size = Vector2(195, 28)
+			field.add_theme_font_size_override("font_size", 14)
+		if value != null:
+			value.position = Vector2(x + panel_width - 66, row_y)
+			value.size = Vector2(64, 27)
+		if slider != null:
+			slider.position = Vector2(x + 205, row_y + 1)
+			slider.size = Vector2(maxf(85.0, panel_width - 275.0), 26)
+	var back := audio_panel.get_node_or_null("SoundBack") as Button
+	if back != null:
+		back.position = Vector2(x + 4, minf(h - 62.0, row_start + row_gap * 4.0 + 10.0))
+		back.size = Vector2(minf(240.0, panel_width), 46)
 
 func _draw_field_panel(rect: Rect2) -> void:
 	draw_rect(rect, hud_panel, true)
@@ -301,19 +341,22 @@ func _draw_field_panel(rect: Rect2) -> void:
 func build_audio_panel(pale: Color, muted: Color) -> void:
 	audio_panel = ColorRect.new()
 	audio_panel.name = "AudioSettings"
-	audio_panel.color = Color(0.018, 0.023, 0.021, 1.0)
+	audio_panel.color = Skin.CANVAS
 	audio_panel.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	audio_panel.mouse_filter = Control.MOUSE_FILTER_STOP
 	overlay.add_child(audio_panel)
+	Skin.paper_texture(audio_panel, false)
 	var heading := Label.new()
+	heading.name = "SoundTitle"
 	heading.position = Vector2(138, 115)
-	heading.text = "AUDIO SETTINGS"
+	heading.text = "THE SOUNDS OUTSIDE"
 	heading.add_theme_font_size_override("font_size", 42)
 	heading.add_theme_color_override("font_color", pale)
 	audio_panel.add_child(heading)
 	var caption := Label.new()
+	caption.name = "SoundCaption"
 	caption.position = Vector2(140, 179)
-	caption.text = "Adjust the mix. Changes are saved automatically."
+	caption.text = "Wind, footsteps, movement in the dark. Keep what you need to hear."
 	caption.add_theme_font_size_override("font_size", 16)
 	caption.add_theme_color_override("font_color", muted)
 	audio_panel.add_child(caption)
@@ -322,6 +365,7 @@ func build_audio_panel(pale: Color, muted: Color) -> void:
 		var bus_name: String = rows[index][0]
 		var y := 235.0 + index * 64.0
 		var title_label := Label.new()
+		title_label.name = bus_name + "Label"
 		title_label.position = Vector2(140, y)
 		title_label.size = Vector2(285, 30)
 		title_label.text = rows[index][1]
@@ -329,6 +373,7 @@ func build_audio_panel(pale: Color, muted: Color) -> void:
 		title_label.add_theme_color_override("font_color", pale)
 		audio_panel.add_child(title_label)
 		var value_label := Label.new()
+		value_label.name = bus_name + "Value"
 		value_label.position = Vector2(850, y)
 		value_label.size = Vector2(70, 30)
 		value_label.add_theme_font_size_override("font_size", 16)
@@ -336,6 +381,7 @@ func build_audio_panel(pale: Color, muted: Color) -> void:
 		audio_panel.add_child(value_label)
 		var slider := HSlider.new()
 		slider.name = bus_name + "Slider"
+		slider.modulate = Skin.PAPER_DARK
 		slider.position = Vector2(440, y + 2)
 		slider.size = Vector2(380, 26)
 		slider.min_value = 0
@@ -346,12 +392,13 @@ func build_audio_panel(pale: Color, muted: Color) -> void:
 		slider.value_changed.connect(_audio_level_changed.bind(bus_name, value_label))
 		audio_panel.add_child(slider)
 	var back := Button.new()
+	back.name = "SoundBack"
 	back.position = Vector2(140, 540)
 	back.size = Vector2(180, 48)
-	back.text = "BACK"
+	back.text = "PUT THE RADIO AWAY"
 	back.pressed.connect(func(): audio_panel.hide())
-	style_button(back)
 	audio_panel.add_child(back)
+	style_button(back)
 	audio_panel.hide()
 
 func _audio_level_changed(value: float, bus_name: String, value_label: Label) -> void:
@@ -366,21 +413,22 @@ func build_loot_panel(pale: Color, muted: Color) -> void:
 	loot_panel.position=Vector2(390,135)
 	loot_panel.size=Vector2(500,450)
 	var style:=StyleBoxFlat.new()
-	style.bg_color=Color(0.035,0.041,0.036,0.97)
-	style.border_color=Color("78463d")
+	style.bg_color=Skin.CANVAS
+	style.border_color=Skin.RUST
 	style.set_border_width_all(2)
 	style.set_corner_radius_all(2)
 	loot_panel.add_theme_stylebox_override("panel",style)
 	add_child(loot_panel)
+	Skin.paper_texture(loot_panel, false)
 	var title_label:=Label.new()
 	title_label.position=Vector2(30,26)
-	title_label.text="SUPPLY CACHE"
+	title_label.text="WHAT WAS LEFT BEHIND"
 	title_label.add_theme_font_size_override("font_size",26)
 	title_label.add_theme_color_override("font_color",pale)
 	loot_panel.add_child(title_label)
 	var sub:=Label.new()
 	sub.position=Vector2(31,65)
-	sub.text="FOUND AT THE OUTER PERIMETER"
+	sub.text="TAKE WHAT YOU NEED. KEEP MOVING."
 	sub.add_theme_font_size_override("font_size",12)
 	sub.add_theme_color_override("font_color",muted)
 	loot_panel.add_child(sub)
@@ -398,13 +446,13 @@ func build_loot_panel(pale: Color, muted: Color) -> void:
 	take_button=Button.new()
 	take_button.position=Vector2(30,354)
 	take_button.size=Vector2(205,52)
-	take_button.text="TAKE ALL"
+	take_button.text="TAKE SUPPLIES"
 	take_button.pressed.connect(func(): game.take_loot())
 	loot_panel.add_child(take_button)
 	var close:=Button.new()
 	close.position=Vector2(250,354)
 	close.size=Vector2(205,52)
-	close.text="CLOSE"
+	close.text="LEAVE IT"
 	close.pressed.connect(func(): game.close_loot())
 	loot_panel.add_child(close)
 	style_button(take_button)
@@ -412,8 +460,14 @@ func build_loot_panel(pale: Color, muted: Color) -> void:
 	loot_panel.hide()
 
 func show_loot(contents: Dictionary) -> void:
-	loot_contents.text="CACHE EMPTY" if contents.is_empty() else "BANDAGE ROLL    × %d\n\nCANNED FOOD      × %d\n\nBATTERIES              × %d" % [contents.get("bandage",0),contents.get("food_tin",0),contents.get("batteries",0)]
-	take_button.disabled=contents.is_empty()
+	# Display only supplies actually present, including newly authored types.
+	var rows: Array[String] = []
+	for id in ItemCatalog.ORDER:
+		var count := int(contents.get(id, 0))
+		if count > 0:
+			rows.append(str(ItemCatalog.entry(id).get("name", id)).to_upper() + "    x " + str(count))
+	loot_contents.text = "NOTHING LEFT" if rows.is_empty() else "\n\n".join(rows)
+	take_button.disabled = rows.is_empty()
 	loot_panel.show()
 
 func make_bar(at: Vector2, tint: Color) -> ProgressBar:

@@ -4,6 +4,7 @@ on:
   push:
     branches: [main]
     paths:
+      - 'assets/shaders/crossroads_field_rows.gdshader'
       - 'assets/shaders/crossroads_earth.gdshader'
       - 'assets/materials/crossroads_earth.tres'
       - 'scripts/crossroads/**'
@@ -17,6 +18,7 @@ on:
       - 'scenes/houses/lane_brick_crossroads.tscn'
       - 'scripts/crossroads/**'
       - 'tests/check_crossroads_village.gd'
+      - 'assets/shaders/crossroads_field_rows.gdshader'
       - 'assets/shaders/crossroads_earth.gdshader'
       - 'assets/materials/crossroads_earth.tres'
       - 'project.godot'
@@ -61,6 +63,7 @@ jobs:
           /tmp/Godot_v4.7.2-stable_linux.x86_64 --headless --path . --check-only --script res://scripts/crossroads/crossroads_roads.gd
           /tmp/Godot_v4.7.2-stable_linux.x86_64 --headless --path . --check-only --script res://scripts/crossroads/crossroads_village.gd
           /tmp/Godot_v4.7.2-stable_linux.x86_64 --headless --path . --check-only --script res://scripts/crossroads/crossroads_countryside.gd
+          /tmp/Godot_v4.7.2-stable_linux.x86_64 --headless --path . --check-only --script res://scripts/crossroads/crossroads_background_dressing.gd
           /tmp/Godot_v4.7.2-stable_linux.x86_64 --headless --path . --check-only --script res://scripts/crossroads/crossroads_playtest.gd
           /tmp/Godot_v4.7.2-stable_linux.x86_64 --headless --path . --check-only --script res://tests/check_crossroads_village.gd
       - name: Physically verify Crossroads scene, old system exclusion and homestead paths

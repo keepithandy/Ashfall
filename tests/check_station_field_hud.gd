@@ -86,8 +86,8 @@ func _verify() -> void:
 		# accessible at laptop resolutions; no blank unbranded splash.
 		var opening_title: Label = hud.get("menu_title")
 		var opening_body: Label = hud.get("menu_body")
-		if opening_title == null or not opening_title.visible or opening_title.text != "ASHFALL 2.1":
-			failures.append("Ashfall 2.1 opening title is absent")
+		if opening_title == null or not opening_title.visible or opening_title.text != "ASHFALL 2.3":
+			failures.append("Ashfall 2.3 opening title is absent")
 		if opening_body == null or not opening_body.visible or not opening_body.text.contains("FIELD EXPEDITION"):
 			failures.append("Station 04 opening briefing is absent")
 		if opening_title != null and opening_body != null and opening_title.position.y + opening_title.size.y > opening_body.position.y:

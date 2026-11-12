@@ -172,7 +172,7 @@ func _check() -> void:
                                     break
                         if segments < 1:
                             issues.append("Fence missing terrain-following collision at " + str(plot.name))
-                    elif child.name == "TendedThenAbandonedBed":
+                    elif str(child.name).begins_with("TendedThenAbandonedBed"):
                         contoured_beds += 1
                         var bed := child as MeshInstance3D
                         if bed.mesh == null:
@@ -187,7 +187,7 @@ func _check() -> void:
                                 issues.append("Garden bed intersects ground at " + str(plot.name))
                                 break
             if contoured_fences != 60 or contoured_beds != 36:
-                issues.append("Incomplete terrain-following fence or garden surfaces")
+                issues.append("Incomplete terrain-following surfaces: %d fences / %d garden beds" % [contoured_fences, contoured_beds])
             for plot in homesteads.get_children():
                 var gate_count := 0
                 for post in plot.get_children():

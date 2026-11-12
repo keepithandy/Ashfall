@@ -3,9 +3,7 @@ extends StaticBody3D
 ## Walkable Crossroads terrain. Actual 2m triangles AND matching collision:
 ## house foundations, road vertices and decoration sample the same profile.
 const PROFILE = preload("res://scripts/crossroads/crossroads_profile.gd")
-const SOIL = preload("res://assets/materials/forest_ground_05/albedo.jpg")
-const SOIL_NORMAL = preload("res://assets/materials/forest_ground_05/normal.jpg")
-const SOIL_ROUGH = preload("res://assets/materials/forest_ground_05/roughness.jpg")
+const EARTH_SURFACE = preload("res://assets/materials/crossroads_earth.tres")
 var terrain = PROFILE.new()
 var vertex_count: int = 0
 var cell_count: int = 0
@@ -79,19 +77,9 @@ func rebuild() -> void:
     arrays[Mesh.ARRAY_INDEX] = tris
     var mesh := ArrayMesh.new()
     mesh.add_surface_from_arrays(Mesh.PRIMITIVE_TRIANGLES, arrays)
-    var material := StandardMaterial3D.new()
-    material.albedo_texture = SOIL
-    material.normal_texture = SOIL_NORMAL
-    material.normal_enabled = true
-    material.normal_scale = 0.44
-    material.roughness_texture = SOIL_ROUGH
-    material.roughness = 1.0
-    material.vertex_color_use_as_albedo = true
-    material.texture_filter = BaseMaterial3D.TEXTURE_FILTER_LINEAR_WITH_MIPMAPS_ANISOTROPIC
-    material.uv1_triplanar = true
-    material.uv1_world_triplanar = true
-    material.uv1_scale = Vector3(0.45, 0.45, 0.45)
-    mesh.surface_set_material(0, material)
+    # Earthy CC0 PBR textures and continuous world-space soil/grit patches.
+    # No geometry or collision edits; this fixes pale empty ground.
+    mesh.surface_set_material(0, EARTH_SURFACE)
     var visual := MeshInstance3D.new()
     visual.name = "WalkableTerrainVisual"
     visual.mesh = mesh

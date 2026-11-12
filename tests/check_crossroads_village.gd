@@ -143,9 +143,12 @@ func _check() -> void:
         if actor.active or not level.get("cover").visible:
             issues.append("Pause does not release player control")
         # Entrance clearance through the new East Blue Sill homestead gate.
+        var test_z := 122.0
+        var test_start_x := land.main_road_x(test_z) + 4.7
+        var test_end_x := float(PROFILE.HOMES[1]["x"]) - 6.0
         var direct := PhysicsRayQueryParameters3D.create(
-            Vector3(21.0, land.surface_height_at(21.0, 122.0) + 1.10, 122.0),
-            Vector3(39.5, land.surface_height_at(39.5, 122.0) + 1.10, 122.0))
+            Vector3(test_start_x, land.surface_height_at(test_start_x, test_z) + 1.10, test_z),
+            Vector3(test_end_x, land.surface_height_at(test_end_x, test_z) + 1.10, test_z))
         direct.exclude = [actor.get_rid()]
         var barrier := level.get_world_3d().direct_space_state.intersect_ray(direct)
         if not barrier.is_empty():

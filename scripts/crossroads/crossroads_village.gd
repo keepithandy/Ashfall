@@ -6,6 +6,7 @@ extends Node3D
 const PROFILE = preload("res://scripts/crossroads/crossroads_profile.gd")
 const GROUND_MATERIAL = preload("res://assets/roads/gravel_shoulder.tres")
 const WOOD_TEXTURE = preload("res://assets/materials/wood_peeling_paint_weathered/albedo.jpg")
+const SOIL_TEXTURE = preload("res://assets/materials/forest_ground_05/albedo.jpg")
 const HOUSES := {
     "white": "res://scenes/houses/white_garden_house.tscn",
     "green": "res://scenes/houses/green_longhouse.tscn",
@@ -118,7 +119,7 @@ func rebuild() -> void:
         _material(Color(0.41, 0.48, 0.43), WOOD_TEXTURE),
         _material(Color(0.47, 0.37, 0.30), WOOD_TEXTURE)
     ]
-    garden_soil = _material(Color(0.25, 0.24, 0.20), WOOD_TEXTURE)
+    garden_soil = _material(Color(0.34, 0.32, 0.27), SOIL_TEXTURE)
     pole_wood = _material(Color(0.28, 0.26, 0.23), WOOD_TEXTURE)
     wire_mat = _material(Color(0.16, 0.17, 0.15))
     houses_placed = 0

@@ -1,6 +1,6 @@
 extends Control
 ## Weather-beaten paper field notes. Current-expedition discoveries only.
-const Skin = preload("res://scripts/runtime/weathered_ui_style.gd")
+const FieldSkin = preload("res://scripts/runtime/weathered_ui_style.gd")
 const PLACES := [
     {"id": "village", "at": Vector2(-47.0, 16.0), "radius": 8.0,
      "title": "THE SHUTTERED LANE",
@@ -49,9 +49,9 @@ var heading: Label
 var content: RichTextLabel
 var footer: Label
 var close_button: Button
-var paper := Skin.PAPER_LIGHT
-var muted := Skin.FADED_INK
-var accent := Skin.RUST
+var paper := FieldSkin.PAPER_LIGHT
+var muted := FieldSkin.FADED_INK
+var accent := FieldSkin.RUST
 
 
 func _ready() -> void:
@@ -69,13 +69,13 @@ func _ready() -> void:
     shade.add_child(center)
     frame = PanelContainer.new()
     frame.name = "WornNotebookCover"
-    frame.add_theme_stylebox_override("panel", Skin.panel(Skin.LEATHER, Skin.THREAD, 3, 10))
+    frame.add_theme_stylebox_override("panel", FieldSkin.panel(FieldSkin.LEATHER, FieldSkin.THREAD, 3, 10))
     center.add_child(frame)
     var page := PanelContainer.new()
     page.name = "StainedPaper"
-    page.add_theme_stylebox_override("panel", Skin.panel(Skin.PAPER, Skin.PAPER_DARK, 2, 16))
+    page.add_theme_stylebox_override("panel", FieldSkin.panel(FieldSkin.PAPER, FieldSkin.PAPER_DARK, 2, 16))
     frame.add_child(page)
-    Skin.paper_texture(page, true)
+    FieldSkin.paper_texture(page, true)
     var margin := MarginContainer.new()
     margin.add_theme_constant_override("margin_left", 30)
     margin.add_theme_constant_override("margin_right", 15)
@@ -87,7 +87,7 @@ func _ready() -> void:
     margin.add_child(stack)
     var preface := Label.new()
     preface.text = "PRIVATE PROPERTY     /     IF FOUND, LEAVE AT THE SOUTH GATE"
-    Skin.ink_label(preface, false, true)
+    FieldSkin.ink_label(preface, false, true)
     preface.add_theme_font_size_override("font_size", 11)
     stack.add_child(preface)
     var top := HBoxContainer.new()
@@ -95,20 +95,20 @@ func _ready() -> void:
     heading = Label.new()
     heading.text = "THE FIELD NOTEBOOK"
     heading.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-    Skin.ink_label(heading, true)
+    FieldSkin.ink_label(heading, true)
     top.add_child(heading)
     close_button = Button.new()
     close_button.name = "CloseFieldRecord"
     close_button.text = "PUT AWAY  /  J"
     close_button.custom_minimum_size = Vector2(132, 40)
-    Skin.control_button(close_button, true)
+    FieldSkin.control_button(close_button, true)
     close_button.pressed.connect(close_record)
     top.add_child(close_button)
     var separator := HSeparator.new()
     stack.add_child(separator)
     var section := Label.new()
     section.text = "ROUTE NOTES   /   STATION 04"
-    Skin.ink_label(section, false, true)
+    FieldSkin.ink_label(section, false, true)
     stack.add_child(section)
     content = RichTextLabel.new()
     content.name = "Pages"
@@ -117,14 +117,14 @@ func _ready() -> void:
     content.custom_minimum_size = Vector2(390, 225)
     content.size_flags_vertical = Control.SIZE_EXPAND_FILL
     content.add_theme_font_size_override("normal_font_size", 16)
-    content.add_theme_color_override("default_color", Skin.INK)
+    content.add_theme_color_override("default_color", FieldSkin.INK)
     content.add_theme_color_override("font_shadow_color", Color.TRANSPARENT)
     content.add_theme_constant_override("line_separation", 6)
     stack.add_child(content)
     footer = Label.new()
     footer.text = "PENCIL MARKS  /  OBSERVATIONS FROM THIS EXPEDITION ONLY"
     footer.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
-    Skin.ink_label(footer, false, true)
+    FieldSkin.ink_label(footer, false, true)
     footer.add_theme_font_size_override("font_size", 11)
     stack.add_child(footer)
     resized.connect(_resize_record)
@@ -146,13 +146,13 @@ func set_palette(light: Color, subdued: Color, highlight: Color) -> void:
     muted = subdued
     accent = highlight
     if is_instance_valid(heading):
-        heading.add_theme_color_override("font_color", Skin.INK)
+        heading.add_theme_color_override("font_color", FieldSkin.INK)
     if is_instance_valid(footer):
-        footer.add_theme_color_override("font_color", Skin.FADED_INK)
+        footer.add_theme_color_override("font_color", FieldSkin.FADED_INK)
     if is_instance_valid(content):
-        content.add_theme_color_override("default_color", Skin.INK)
+        content.add_theme_color_override("default_color", FieldSkin.INK)
     if is_instance_valid(close_button):
-        Skin.control_button(close_button, true)
+        FieldSkin.control_button(close_button, true)
 
 
 func _refresh() -> void:

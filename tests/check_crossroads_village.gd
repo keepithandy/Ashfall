@@ -362,7 +362,11 @@ func _top_faces_visible(mesh: Mesh) -> bool:
         return false
     var arrays: Array = mesh.surface_get_arrays(0)
     var vertices: PackedVector3Array = arrays[Mesh.ARRAY_VERTEX]
-    var indices: PackedInt32Array = arrays[Mesh.ARRAY_INDEX]
+    var indices := PackedInt32Array()
+    # SurfaceTool emits an unindexed triangle list for harvested parcels;
+    # ARRAY_INDEX is null there (not an empty PackedInt32Array).
+    if arrays[Mesh.ARRAY_INDEX] is PackedInt32Array:
+        indices = arrays[Mesh.ARRAY_INDEX]
     if vertices.size() < 3:
         return false
     # SurfaceTool may commit either indexed or non-indexed triangles.

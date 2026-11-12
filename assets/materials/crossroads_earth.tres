@@ -1,0 +1,25 @@
+[gd_resource type="ShaderMaterial" load_steps=8 format=3]
+
+[ext_resource type="Shader" path="res://assets/shaders/crossroads_earth.gdshader" id="1_shader"]
+[ext_resource type="Texture2D" path="res://assets/materials/forest_ground_05/albedo.jpg" id="2_forest"]
+[ext_resource type="Texture2D" path="res://assets/materials/forest_ground_05/normal.jpg" id="3_forest_n"]
+[ext_resource type="Texture2D" path="res://assets/materials/forest_ground_05/roughness.jpg" id="4_forest_r"]
+[ext_resource type="Texture2D" path="res://assets/materials/concrete_floor_worn_001/albedo.jpg" id="5_grit"]
+[ext_resource type="Texture2D" path="res://assets/materials/concrete_floor_worn_001/normal.jpg" id="6_grit_n"]
+[ext_resource type="Texture2D" path="res://assets/materials/concrete_floor_worn_001/roughness.jpg" id="7_grit_r"]
+
+[resource]
+shader = ExtResource("1_shader")
+shader_parameter/forest_albedo = ExtResource("2_forest")
+shader_parameter/forest_normal = ExtResource("3_forest_n")
+shader_parameter/forest_roughness = ExtResource("4_forest_r")
+shader_parameter/concrete_albedo = ExtResource("5_grit")
+shader_parameter/concrete_normal = ExtResource("6_grit_n")
+shader_parameter/concrete_roughness = ExtResource("7_grit_r")
+shader_parameter/dry_soil_tint = Vector3(0.62, 0.59, 0.51)
+shader_parameter/roadside_mud_tint = Vector3(0.5, 0.46, 0.39)
+shader_parameter/dead_grass_tint = Vector3(0.55, 0.64, 0.51)
+shader_parameter/soil_tile_scale = 0.33
+shader_parameter/grit_tile_scale = 0.27
+shader_parameter/normal_strength = 0.58
+shader_parameter/wetness = 0.2

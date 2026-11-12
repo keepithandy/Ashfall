@@ -82,6 +82,25 @@ func _verify() -> void:
 			failures.append("Compact HUD compass overlaps the top data panels")
 		if prompt != null and (prompt.position.x < 310.0 or prompt.position.x + prompt.size.x > 650.0):
 			failures.append("Compact HUD interaction strip overlaps side telemetry")
+		# Ashfall 2.0 keeps the opening field journal legible and buttons
+		# accessible at laptop resolutions; no blank unbranded splash.
+		var opening_title: Label = hud.get("menu_title")
+		var opening_body: Label = hud.get("menu_body")
+		if opening_title == null or not opening_title.visible or opening_title.text != "ASHFALL 2.0":
+			failures.append("Ashfall 2.0 opening title is absent")
+		if opening_body == null or not opening_body.visible or not opening_body.text.contains("FIELD EXPEDITION"):
+			failures.append("Station 04 opening briefing is absent")
+		if opening_title != null and opening_body != null and opening_title.position.y + opening_title.size.y > opening_body.position.y:
+			failures.append("Opening title overlaps its field briefing")
+		var intro_buttons: Array = hud.get("intro_layout")
+		if intro_buttons.size() != 3:
+			failures.append("Opening menu lost Play, Quit or Audio")
+		else:
+			for entry in intro_buttons:
+				var button: Button = entry["button"]
+				if button == null or button.position.x < 0.0 or button.position.y < opening_body.position.y + opening_body.size.y or button.position.x + button.size.x > 960.0 or button.position.y + button.size.y > 540.0:
+					failures.append("Compact opening menu clips or overlaps action buttons")
+					break
 
 	for caption in level.find_children("*", "Label3D", true, false):
 		if caption.visible:

@@ -104,8 +104,8 @@ func _check() -> void:
                     if batch.multimesh == null or batch.multimesh.instance_count < 1:
                         issues.append("A countryside vegetation batch contains no instances")
                         break
-                    if batch.get_collision_layer() != 0:
-                        issues.append("Scenery vegetation introduced collision")
+                    if segment is CollisionObject3D:
+                        issues.append("Scenery vegetation must be visual-only")
                         break
         # The original old-route roadway and gates remain clear of trees.
         var groups: Dictionary = composition.get("placements")
@@ -363,9 +363,10 @@ func _top_faces_visible(mesh: Mesh) -> bool:
     var arrays: Array = mesh.surface_get_arrays(0)
     var vertices: PackedVector3Array = arrays[Mesh.ARRAY_VERTEX]
     var indices: PackedInt32Array = arrays[Mesh.ARRAY_INDEX]
-    if indices.size() < 3 or vertices.is_empty():
+    if vertices.size() < 3:
         return false
-    var a: Vector3 = vertices[indices[0]]
-    var b: Vector3 = vertices[indices[1]]
-    var c: Vector3 = vertices[indices[2]]
+    # SurfaceTool may commit either indexed or non-indexed triangles.
+    var a: Vector3 = vertices[indices[0]] if indices.size() >= 3 else vertices[0]
+    var b: Vector3 = vertices[indices[1]] if indices.size() >= 3 else vertices[1]
+    var c: Vector3 = vertices[indices[2]] if indices.size() >= 3 else vertices[2]
     return (b - a).cross(c - a).y < -0.0001

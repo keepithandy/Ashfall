@@ -26,7 +26,9 @@
 
 **No generator, anomaly, extraction, sample, quests, enemy AI, survival tier system, pickup economy or floating objective text** is active. The old Station 04 systems and scene remain in the repository, not in the new playtest. You are here to walk and judge whether the village seems believable.
 
-Read the [Crossroads environment playtest guide](docs/CROSSROADS_23_WALKABLE_VILLAGE.md) and [two-house design freeze](docs/CROSSROADS_HOMESTEAD_DESIGN.md). We still require actual visual inspection of house entrances, yard surfaces, road blending, collision edges and target-machine FPS before calling this art-final.
+The outer countryside has a dedicated environment pass: ten mixed agricultural shelterbelts, ten small tree clusters, twelve distinct harvested field parcels, native roadside plants and the continued old utility-pole line. Existing tree, bramble and grass meshes are shared in small GPU-instancing groups instead of thousands of physics prefabs. The cloud palette is calmer and the distant horizon rolls gently without changing the repaired village foundations.
+
+Read the [first village playtest guide](docs/CROSSROADS_23_WALKABLE_VILLAGE.md), [researched countryside composition and visual acceptance guide](docs/CROSSROADS_23_OUTER_COUNTRY.md), and [two-house design freeze](docs/CROSSROADS_HOMESTEAD_DESIGN.md). Local Godot screenshots and target-machine FPS still need inspection before calling the art final.
 
 ## Archived Station 04 milestones
 

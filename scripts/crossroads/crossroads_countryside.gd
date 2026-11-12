@@ -49,7 +49,7 @@ func _field(parent: Node3D, label: String, west: float, east: float, north: floa
             var slope_z := (land.outer_height_at(x, z + 3.0) - land.outer_height_at(x, z - 3.0)) / 6.0
             normals.append(Vector3(-slope_x, 1.0, -slope_z).normalized())
             uv.append(Vector2(x / 13.0, z / 13.0))
-            var tint := 0.83 + land.noise.get_noise_2d(x, z) * 0.11
+            var tint: float = 0.83 + float(land.noise.get_noise_2d(x, z)) * 0.11
             colors.append(Color(tint, tint * 0.93, tint * 0.81, 1.0))
     var triangles := PackedInt32Array()
     for row in range(rows):

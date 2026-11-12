@@ -57,7 +57,9 @@ func _field(parent: Node3D, label: String, west: float, east: float, north: floa
             var b := a + 1
             var c := a + stride
             var d := c + 1
-            triangles.append_array(PackedInt32Array([a, c, b, b, c, d]))
+            # Match the central terrain's front-facing clockwise winding.
+            # The old reversed order made all four outer fields invisible.
+            triangles.append_array(PackedInt32Array([a, b, c, b, d, c]))
     var arrays: Array = []
     arrays.resize(Mesh.ARRAY_MAX)
     arrays[Mesh.ARRAY_VERTEX] = vertices

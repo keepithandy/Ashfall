@@ -114,6 +114,10 @@ func _check() -> void:
         if label.visible:
             issues.append("Floating gameplay label leaked into the environment")
             break
+    # Hidden fullscreen GUI must not swallow camera mouse movement.
+    var pause_card := level.get("menu") as Control
+    if pause_card == null or pause_card.mouse_filter != Control.MOUSE_FILTER_IGNORE:
+        issues.append("Fullscreen menu intercepts first-person mouse look")
     if actor == null:
         issues.append("No actual player controller in the new village")
     else:
@@ -124,6 +128,14 @@ func _check() -> void:
         level.call("start_walking")
         if not actor.active or level.get("cover").visible:
             issues.append("Opening the environment does not restore physical control")
+        var visible_ground := field.get_node("WalkableTerrainVisual") as MeshInstance3D
+        if visible_ground.mesh.surface_get_material(0) == null:
+            issues.append("Walkable terrain has no soil material")
+        elif not visible_ground.mesh.surface_get_material(0) is ShaderMaterial:
+            issues.append("Walkable terrain is missing weathered soil shader")
+        var farmland := level.get_node("Landscape/FarmlandAndHorizon/Farmland/NorthernFields/FieldGround") as MeshInstance3D
+        if farmland.mesh.surface_get_material(0) == null or not farmland.mesh.surface_get_material(0) is ShaderMaterial:
+            issues.append("Distant farmland is missing the shared earth material")
         var old_position: Vector3 = actor.position
         Input.action_press("move_forward")
         for frame in range(70):

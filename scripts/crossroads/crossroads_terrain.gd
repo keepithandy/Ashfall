@@ -98,7 +98,11 @@ func rebuild() -> void:
     add_child(visual)
     var collision := CollisionShape3D.new()
     collision.name = "WalkableTerrainCollision"
-    collision.shape = mesh.create_trimesh_shape()
+    var hit_shape := mesh.create_trimesh_shape() as ConcavePolygonShape3D
+    # A traversable heightfield must respond from both sides at intersecting
+    # slopes and shared borders; the visible mesh stays unchanged.
+    hit_shape.backface_collision = true
+    collision.shape = hit_shape
     add_child(collision)
     vertex_count = count
     cell_count = rows * columns

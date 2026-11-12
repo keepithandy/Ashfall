@@ -573,7 +573,7 @@ func _layout_intro() -> void:
 	menu_title.position = Vector2((w - content_width) * 0.5, maxf(42.0, h * 0.14))
 	menu_title.size = Vector2(content_width, 75.0)
 	menu_body.position = Vector2((w - content_width) * 0.5, menu_title.position.y + 94.0)
-	menu_body.size = Vector2(content_width, 105.0)
+	menu_body.size = Vector2(content_width, 115.0)
 	var button_width := minf(280.0, w - 80.0)
 	var button_top := minf(maxf(h * 0.60, menu_body.position.y + 124.0), h - 196.0)
 	for i in range(intro_layout.size()):
@@ -596,6 +596,7 @@ func show_minimal_intro() -> void:
 	menu_title.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	menu_body.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	menu_body.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	menu_body.add_theme_font_size_override("font_size", 17)
 	overlay.color.a = 1.0
 	var buttons: Array[Button] = []
 	for child in overlay.get_children():
@@ -606,7 +607,7 @@ func show_minimal_intro() -> void:
 	for button in buttons:
 		intro_layout.append({"button": button, "position": button.position, "size": button.size})
 		button.set_anchors_and_offsets_preset(Control.PRESET_TOP_LEFT)
-	start_button.text = "ENTER STATION 04"
+	start_button.text = "TAKE THE ROAD"
 	_layout_intro()
 
 

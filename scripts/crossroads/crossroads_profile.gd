@@ -99,7 +99,25 @@ func height_at(x: float, z: float) -> float:
     return base
 
 
+func outer_height_at(x: float, z: float) -> float:
+    # Distant open farmland connects exactly to the walkable village rim,
+    # without a cliff or black void. Physical outer-country mesh uses this
+    # same function; the main 2m settlement heightfield is unchanged.
+    var rim_x := clampf(x, -WIDTH * 0.5, WIDTH * 0.5)
+    var rim_z := clampf(z, -DEPTH * 0.5, DEPTH * 0.5)
+    var outside := maxf(
+        maxf(absf(x) - WIDTH * 0.5, 0.0),
+        maxf(absf(z) - DEPTH * 0.5, 0.0)
+    )
+    var fade := _smooth(0.0, 140.0, outside)
+    var country_roll := 3.1 * sin(x * 0.009 + 0.6) * sin(z * 0.011 - 0.3)
+    var farmland_rise := 4.5 * noise.get_noise_2d(x * 0.7, z * 0.7)
+    return height_at(rim_x, rim_z) + fade * (country_roll + farmland_rise)
+
+
 func surface_height_at(x: float, z: float) -> float:
+    if absf(x) > WIDTH * 0.5 or absf(z) > DEPTH * 0.5:
+        return outer_height_at(x, z)
     # The same two triangle halves used by CrossroadsGround.
     var dx := WIDTH / float(COLUMNS)
     var dz := DEPTH / float(ROWS)

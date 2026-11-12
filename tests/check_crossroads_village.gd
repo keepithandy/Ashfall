@@ -78,7 +78,7 @@ func _check() -> void:
             for plot in homesteads.get_children():
                 var gate_count := 0
                 for post in plot.get_children():
-                    if post.name == "OpenGatePost":
+                    if str(post.name).begins_with("OpenGatePost"):
                         gate_count += 1
                 if gate_count != 2:
                     issues.append("One property has a closed or incomplete gate: " + str(plot.name))

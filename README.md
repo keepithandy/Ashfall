@@ -69,7 +69,7 @@ The world uses an original fictional settlement informed by rural Ukrainian arch
 
 The project targets **Godot 4.7.2** with **Forward+** rendering and GDScript. It has been tested on Windows with an NVIDIA RTX 4080 SUPER; other hardware has not been verified here.
 
-**Using the provided Windows launchers:** Keep the project's adjacent portable `Godot` folder in place, then launch **`Play Ashfall.cmd`** and choose **TAKE THE ROAD**. Use **`Open Godot Editor.cmd`** to edit the project.
+**Using the provided Windows launchers:** Keep the project's adjacent portable `Godot` folder in place, then launch **`Play Ashfall.cmd`** and choose **WALK THE ROAD**. Use **`Open Godot Editor.cmd`** to edit the project.
 
 **Using your own Godot installation:** Open `project.godot` in a compatible Godot 4.7 editor and press **F5**. The configured main scene is `res://scenes/crossroads_main.tscn`. The adjacent portable editor is not part of this GitHub repository, so a fresh clone needs a compatible Godot installation.
 

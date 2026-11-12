@@ -61,12 +61,15 @@ func rebuild() -> void:
             var b := a + 1
             var c := a + stride
             var d := c + 1
+            # Godot front faces are clockwise when seen from above.
+            # Previous a,c,b / b,c,d ordering presented the UNDERSIDE,
+            # so the material was never visible despite working collision.
             tris[cursor] = a
-            tris[cursor + 1] = c
-            tris[cursor + 2] = b
+            tris[cursor + 1] = b
+            tris[cursor + 2] = c
             tris[cursor + 3] = b
-            tris[cursor + 4] = c
-            tris[cursor + 5] = d
+            tris[cursor + 4] = d
+            tris[cursor + 5] = c
             cursor += 6
     var arrays: Array = []
     arrays.resize(Mesh.ARRAY_MAX)

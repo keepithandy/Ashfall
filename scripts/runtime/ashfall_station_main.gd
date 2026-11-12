@@ -13,12 +13,17 @@ func _ready() -> void:
     # placements in this cleaner map without changing hazard or detector math.
     make_anomaly(Vector3(-3.5, 0.15, -14), 1.9)
     make_anomaly(Vector3(12.0, 0.15, -38), 2.2)
+    # Visual-only biome dressing; no procedural edits to authored terrain or roads.
+    var world_detail := Node3D.new()
+    world_detail.name = "WorldDetail21"
+    world_detail.set_script(load("res://scripts/runtime/station04_world_detail.gd"))
+    add_child(world_detail)
     # Explain the new space without changing any of the player or HUD systems.
     if is_instance_valid(hud):
-        hud.title.text = "ASHFALL 2.0  /  FIELD UNIT 04"
-        hud.menu_title.text = "ASHFALL 2.0"
+        hud.title.text = "ASHFALL 2.1  /  FIELD UNIT 04"
+        hud.menu_title.text = "ASHFALL 2.1"
         hud.menu_title.add_theme_font_size_override("font_size", 50)
-        hud.menu_body.text = "STATION 04  /  FIELD EXPEDITION\n\nRecover the sample. Scavenge what you can. Find your way back.\n[F10] PERSONALIZE YOUR FIELD JOURNAL"
+        hud.menu_body.text = "STATION 04  /  FIELD EXPEDITION\n\nRecover the sample. Scavenge what you can. Find your way back.\n[J] FIELD RECORD    /    [F10] HUD FINISH"
         hud.show_minimal_intro()
     if is_instance_valid(player):
         player.camera.far = station_render_distance

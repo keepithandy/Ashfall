@@ -208,10 +208,24 @@ func _homestead(parent: Node3D, site: Dictionary, index: int) -> void:
     walkable_gate_count += 1
     # The worn path continues from the road, through the actual gate,
     # onto the floor-height entrance for the respective house.
-    var facade_offset := 4.0 if site["kind"] in ["blue_sill", "white", "ochre", "green"] else 6.0
-    var door_x := x - float(side) * facade_offset
+    # Align the path with the ACTUAL doorway, including the off-centre
+    # Lane Brick entry after the house is rotated to face the street.
+    var depth := 8.0
+    var entry_x := 0.0
+    if site["kind"] == "lane_brick":
+        depth = 12.0
+        entry_x = -2.0
+    elif site["kind"] == "blue_sill":
+        depth = 8.0
+    else:
+        depth = 7.0
+    var yaw := float(site["yaw"])
+    var door_world := Vector2(
+        x + sin(yaw) * (depth * 0.5 + 1.2) + cos(yaw) * entry_x,
+        z + cos(yaw) * (depth * 0.5 + 1.2) - sin(yaw) * entry_x
+    )
     var road_x := land.main_road_x(z) + float(side) * 4.7
-    _footpath(plot, "GateToFrontDoor", Vector2(road_x, z), Vector2(door_x, z), 1.65)
+    _footpath(plot, "GateToFrontDoor", Vector2(road_x, z), door_world, 1.65)
     _yard_life(plot, site, index)
     _garden_beds(plot, site)
     _yard_trees(plot, site, index)

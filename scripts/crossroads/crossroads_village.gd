@@ -203,8 +203,8 @@ func _homestead(parent: Node3D, site: Dictionary, index: int) -> void:
     _fence(plot, Vector2(far_x, front_z), Vector2(far_x, back_z), palette, index)
     _fence(plot, Vector2(near_x, front_z), Vector2(far_x, front_z), palette, index)
     _fence(plot, Vector2(near_x, back_z), Vector2(far_x, back_z), palette, index)
-    _gate_post(plot, near_x, z - gate_half - 0.05, palette)
-    _gate_post(plot, near_x, z + gate_half + 0.05, palette)
+    _gate_post(plot, near_x, z - gate_half - 0.05, palette, "South")
+    _gate_post(plot, near_x, z + gate_half + 0.05, palette, "North")
     walkable_gate_count += 1
     # The worn path continues from the road, through the actual gate,
     # onto the floor-height entrance for the respective house.
@@ -274,10 +274,10 @@ func _fence(parent: Node3D, a: Vector2, b: Vector2, mat: Material, plot_id: int)
     fence_sections += 1
 
 
-func _gate_post(parent: Node3D, x: float, z: float, mat: Material) -> void:
+func _gate_post(parent: Node3D, x: float, z: float, mat: Material, side: String) -> void:
     var post := StaticBody3D.new()
     post.position = Vector3(x, land.surface_height_at(x, z), z)
-    post.name = "OpenGatePost"
+    post.name = "OpenGatePost" + side
     var box := BoxMesh.new()
     box.size = Vector3(0.18, 1.85, 0.18)
     box.material = mat

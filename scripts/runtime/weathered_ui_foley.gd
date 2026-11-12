@@ -36,8 +36,8 @@ func _make_sound(kind: int) -> AudioStreamWAV:
         var envelope := pow(maxf(0.0, sin(f * PI)), 1.4) * (1.0 - f * 0.23)
         var flakes := 0.65 + 0.35 * sin(TAU * (17.0 if kind == 0 else 11.0) * t)
         var tone := 0.11 * sin(TAU * 475.0 * t) if kind == 2 else 0.0
-        var signal := (low * 0.77 + scratch * 0.14 * flakes + tone) * envelope
-        data.encode_s16(i * 2, int(clampf(signal * 11000.0, -32000.0, 32000.0)))
+        var sample_value := (low * 0.77 + scratch * 0.14 * flakes + tone) * envelope
+        data.encode_s16(i * 2, int(clampf(sample_value * 11000.0, -32000.0, 32000.0)))
     clip.data = data
     return clip
 

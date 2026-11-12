@@ -33,6 +33,8 @@ func _check() -> void:
         var collision := field.get_node("WalkableTerrainCollision") as CollisionShape3D
         if terrain_mesh.mesh == null or collision.shape == null:
             issues.append("Terrain visual or matching collision is empty")
+        elif not _top_faces_visible(terrain_mesh.mesh):
+            issues.append("Village ground triangles are backwards: top surface is culled")
     var outskirts := level.get_node_or_null("Landscape/FarmlandAndHorizon") as Node3D
     if outskirts == null:
         issues.append("Extended country is absent beyond the village border")
@@ -49,6 +51,10 @@ func _check() -> void:
                 var country := fields_root.get_node_or_null(field_name) as StaticBody3D
                 if country == null or country.get_node_or_null("CountryGroundCollision") == null:
                     issues.append("No walkable country beyond %s" % field_name)
+                else:
+                    var field_visual := country.get_node_or_null("FieldGround") as MeshInstance3D
+                    if field_visual == null or field_visual.mesh == null or not _top_faces_visible(field_visual.mesh):
+                        issues.append("Country field %s faces are backwards or missing" % field_name)
         # Analytic country surface joins the inner shared map height exactly.
         for border in [Vector2(-180.0, -90.0), Vector2(180.0, 91.0), Vector2(35.0, -210.0), Vector2(-55.0, 210.0)]:
             var inside := land.height_at(border.x, border.y)
@@ -190,3 +196,20 @@ func _check() -> void:
             push_error(item)
         print("CROSSROADS 2.3 ENVIRONMENT TEST FAILED: ", issues.size())
         quit(1)
+
+
+# Front-facing terrain triangles on an X/Z grid face toward a player above
+# the landscape. Inspect actual mesh indices: a physics-only test missed the
+# previous defect because the concave collision accepted back faces.
+func _top_faces_visible(mesh: Mesh) -> bool:
+    if mesh == null or mesh.get_surface_count() < 1:
+        return false
+    var arrays: Array = mesh.surface_get_arrays(0)
+    var vertices: PackedVector3Array = arrays[Mesh.ARRAY_VERTEX]
+    var indices: PackedInt32Array = arrays[Mesh.ARRAY_INDEX]
+    if indices.size() < 3 or vertices.is_empty():
+        return false
+    var a: Vector3 = vertices[indices[0]]
+    var b: Vector3 = vertices[indices[1]]
+    var c: Vector3 = vertices[indices[2]]
+    return (b - a).cross(c - a).y < -0.0001

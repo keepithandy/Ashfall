@@ -135,7 +135,10 @@ func _check() -> void:
                 actor.global_position - Vector3.UP * 5.0)
             probe.exclude = [actor.get_rid()]
             var ground_hit := level.get_world_3d().direct_space_state.intersect_ray(probe)
-            var surface_count := (field.get_node("WalkableTerrainCollision") as CollisionShape3D).shape.get_faces().size() if field != null else -1
+            var ground_shape: ConcavePolygonShape3D = null
+            if field != null:
+                ground_shape = (field.get_node("WalkableTerrainCollision") as CollisionShape3D).shape as ConcavePolygonShape3D
+            var surface_count := ground_shape.get_faces().size() if ground_shape != null else -1
             var slide_detail := "no slides"
             if actor.get_slide_collision_count() > 0:
                 var slide := actor.get_slide_collision(0)

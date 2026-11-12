@@ -107,7 +107,13 @@ func _check() -> void:
             await physics_frame
         Input.action_release("move_forward")
         if actor.global_position.distance_to(old_position) < 1.0:
-            issues.append("The first-person walker cannot traverse the road")
+            issues.append("The first-person walker cannot traverse the road: delta=%.3f active=%s floor=%s direction=%s velocity=%s pos=%s start=%s overlay=%s" % [
+                actor.global_position.distance_to(old_position), actor.active,
+                actor.is_on_floor(), Input.get_vector("move_left", "move_right", "move_forward", "move_back"),
+                actor.velocity, actor.position, level.get("started"), level.get("cover").visible
+            ])
+        if not actor.active:
+            issues.append("Walker unexpectedly lost control during the walking test")
         if absf(actor.global_position.y - land.surface_height_at(actor.global_position.x, actor.global_position.z)) > 1.5:
             issues.append("Movement on the actual ground is physically unstable")
         level.call("pause_walking")

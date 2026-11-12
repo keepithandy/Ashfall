@@ -12,6 +12,12 @@ on:
       - '.github/workflows/crossroads-environment.yml'
   workflow_dispatch:
 
+# A large existing Godot asset library must be imported for each commit.
+# Cancel obsolete PR runs rather than competing on 4 heavy imports.
+concurrency:
+  group: crossroads-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
 permissions:
   contents: read
 

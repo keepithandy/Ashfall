@@ -31,6 +31,10 @@ Only existing Ashfall-authored or licensed resources are rendered. No photograph
 
 The existing visual `FarTreeLine` remains, but heavier new groups are GPU-instanced by 170 m cells and reuse the already-bundled Pine, Bare Tree, Low Shrub, Dry Bramble and Dry Grass prefab meshes. MultiMesh batches do not instantiate physics objects and have no new collision layers. Each source prefab is loaded once when making shared mesh batches; there is no new image generation or huge reimported art pack.
 
+### Roadside utility continuity
+
+The village originally had only eight timber utility poles ending abruptly before the road disappeared into the fields. That line now continues on both approaches as **18 additional terrain-grounded poles**, using the existing bark material and the same dimensions as the previously authored posts. The 288 short hanging wire sections share a **single MultiMesh draw batch** rather than hundreds of independent mesh nodes. Poles have ordinary narrow physical trunk collisions; the wires are visual-only. The road lane remains unobstructed, and neither power generation nor interactive electricity is introduced.
+
 ### Field texture and material
 
 Twelve parcels use the existing `forest_ground_05` CC0 albedo with `crossroads_field_rows.gdshader`. Three agricultural treatments represent dark turned soil, patchy cut stubble and green-brown fallow. Row markings and subtle broad noise are drawn in world space so nearby parcels can have different furrow directions without a common obvious tiling direction.

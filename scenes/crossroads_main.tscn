@@ -1,9 +1,10 @@
-[gd_scene load_steps=12 format=3]
+[gd_scene load_steps=13 format=3]
 
 [ext_resource type="Script" path="res://scripts/crossroads/crossroads_playtest.gd" id="controller"]
 [ext_resource type="Script" path="res://scripts/crossroads/crossroads_terrain.gd" id="terrain"]
 [ext_resource type="Script" path="res://scripts/crossroads/crossroads_roads.gd" id="roads"]
 [ext_resource type="Script" path="res://scripts/crossroads/crossroads_village.gd" id="village"]
+[ext_resource type="Script" path="res://scripts/crossroads/crossroads_countryside.gd" id="countryside"]
 [ext_resource type="Shader" path="res://assets/shaders/ashfall_overcast_clouds.gdshader" id="skyshader"]
 
 [sub_resource type="ShaderMaterial" id="cloudy"]
@@ -67,6 +68,9 @@ script = ExtResource("terrain")
 
 [node name="OldRoadNetwork" type="Node3D" parent="Landscape"]
 script = ExtResource("roads")
+
+[node name="FarmlandAndHorizon" type="Node3D" parent="Landscape"]
+script = ExtResource("countryside")
 
 [node name="SettledCountry" type="Node3D" parent="Landscape"]
 script = ExtResource("village")

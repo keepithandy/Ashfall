@@ -174,6 +174,7 @@ func _homestead(parent: Node3D, site: Dictionary, index: int) -> void:
     plot.name = site["name"]
     plot.set_meta("ashfall_house_kind", site["kind"])
     plot.set_meta("ashfall_decor_theme", site["garden"])
+    plot.set_meta("site_pad_height", land.site_floor_height(site))
     parent.add_child(plot)
     var x := float(site["x"])
     var z := float(site["z"])
@@ -184,7 +185,9 @@ func _homestead(parent: Node3D, site: Dictionary, index: int) -> void:
         return
     var home := house_scene.instantiate() as Node3D
     home.name = "Residence"
-    home.position = Vector3(x, land.surface_height_at(x, z), z)
+    # Keep the architectural floor datum just above the graded house pad.
+    # The pad also follows the house's rotated foundation footprint.
+    home.position = Vector3(x, land.site_floor_height(site) + 0.04, z)
     home.rotation.y = float(site["yaw"])
     plot.add_child(home)
     houses_placed += 1
@@ -242,51 +245,80 @@ func _fence(parent: Node3D, a: Vector2, b: Vector2, mat: Material, plot_id: int)
     section.position = Vector3(center.x, land.surface_height_at(center.x, center.y), center.y)
     section.rotation.y = atan2(-delta.y, delta.x)
     parent.add_child(section)
-    var posts := MultiMesh.new()
-    var slat := BoxMesh.new()
-    slat.size = Vector3(0.11, 1.52, 0.095)
-    slat.material = mat
-    var total := maxi(1, int(floor(length / 0.34)))
-    posts.transform_format = MultiMesh.TRANSFORM_3D
-    posts.mesh = slat
-    posts.instance_count = total
     var origin_y := section.position.y
-    for i in range(total):
-        var along := -length * 0.5 + (float(i) + 0.5) * length / float(total)
-        var pos_x := lerpf(a.x, b.x, (float(i) + 0.5) / float(total))
-        var pos_z := lerpf(a.y, b.y, (float(i) + 0.5) / float(total))
-        var base := land.surface_height_at(pos_x, pos_z)
-        # Uneven and slightly leaning planks imply years of repairs. Missing
-        # pickets are uncommon: the horizontal rail remains as a physical
-        # barrier, so the player never encounters phantom solid walls.
-        var repaired := (i + plot_id * 7) % 19 == 0
-        var slant := float((i * 5 + plot_id) % 7 - 3) * 0.006
-        var basis := Basis(Vector3.FORWARD, slant)
-        if repaired:
-            basis = basis.scaled(Vector3(1.0, 0.82, 1.0))
-        posts.set_instance_transform(i, Transform3D(basis, Vector3(along, base - origin_y + 0.76, 0)))
-    var boards := MultiMeshInstance3D.new()
-    boards.name = "FadedPickets"
-    boards.multimesh = posts
-    section.add_child(boards)
-    for y in [0.55, 1.16]:
-        var rail := MeshInstance3D.new()
-        rail.name = "HorizontalRail"
-        var rail_box := BoxMesh.new()
-        rail_box.size = Vector3(length + 0.15, 0.11, 0.11)
-        rail_box.material = mat
-        rail.mesh = rail_box
-        rail.position.y = y
-        section.add_child(rail)
-    var obstacle := CollisionShape3D.new()
-    obstacle.name = "FenceLineCollision"
-    obstacle.position.y = 0.76
-    var solid := BoxShape3D.new()
-    solid.size = Vector3(length, 1.51, 0.17)
-    obstacle.shape = solid
-    section.add_child(obstacle)
-    fence_sections += 1
 
+    # Planks stand on the interpolated collision mesh. One giant straight
+    # horizontal rail previously disappeared into sloping ground at one end.
+    var pickets := MultiMesh.new()
+    var plank := BoxMesh.new()
+    plank.size = Vector3(0.11, 1.52, 0.095)
+    plank.material = mat
+    var picket_count := maxi(1, int(floor(length / 0.34)))
+    pickets.transform_format = MultiMesh.TRANSFORM_3D
+    pickets.mesh = plank
+    pickets.instance_count = picket_count
+    for i in range(picket_count):
+        var t := (float(i) + 0.5) / float(picket_count)
+        var world := a.lerp(b, t)
+        var base := land.surface_height_at(world.x, world.y)
+        var repaired := (i + plot_id * 7) % 19 == 0
+        var stretch := 0.82 if repaired else 1.0
+        var lean := float((i * 5 + plot_id) % 7 - 3) * 0.006
+        var basis := Basis(Vector3.FORWARD, lean).scaled(Vector3(1.0, stretch, 1.0))
+        pickets.set_instance_transform(i, Transform3D(
+            basis, Vector3(-length * 0.5 + t * length, base - origin_y + 0.76 * stretch, 0.0)
+        ))
+    var planks := MultiMeshInstance3D.new()
+    planks.name = "FadedPickets"
+    planks.multimesh = pickets
+    section.add_child(planks)
+
+    # Follow the actual physical terrain in short pieces. Use matching
+    # sloping 3D collision pieces so there are no buried invisible barriers.
+    var count := maxi(1, int(ceil(length / 2.0)))
+    var step := length / float(count)
+    for rail_y in [0.55, 1.16]:
+        var strips := MultiMesh.new()
+        strips.transform_format = MultiMesh.TRANSFORM_3D
+        var bar := BoxMesh.new()
+        bar.size = Vector3(step + 0.10, 0.11, 0.11)
+        bar.material = mat
+        strips.mesh = bar
+        strips.instance_count = count
+        for j in range(count):
+            var t0 := float(j) / float(count)
+            var t1 := float(j + 1) / float(count)
+            var w0 := a.lerp(b, t0)
+            var w1 := a.lerp(b, t1)
+            var y0 := land.surface_height_at(w0.x, w0.y)
+            var y1 := land.surface_height_at(w1.x, w1.y)
+            var slope := atan2(y1 - y0, step)
+            strips.set_instance_transform(j, Transform3D(
+                Basis(Vector3.FORWARD, slope),
+                Vector3(-length * 0.5 + (float(j) + 0.5) * step, (y0 + y1) * 0.5 - origin_y + float(rail_y), 0)
+            ))
+        var boards := MultiMeshInstance3D.new()
+        boards.name = "TerrainFollowingRail"
+        boards.multimesh = strips
+        section.add_child(boards)
+
+    for j in range(count):
+        var w0 := a.lerp(b, float(j) / float(count))
+        var w1 := a.lerp(b, float(j + 1) / float(count))
+        var y0 := land.surface_height_at(w0.x, w0.y)
+        var y1 := land.surface_height_at(w1.x, w1.y)
+        var obstacle := CollisionShape3D.new()
+        obstacle.name = "FenceSegmentCollision_%d" % j
+        obstacle.position = Vector3(
+            -length * 0.5 + (float(j) + 0.5) * step,
+            (y0 + y1) * 0.5 - origin_y + 0.76, 0.0
+        )
+        obstacle.rotation.z = atan2(y1 - y0, step)
+        var solid := BoxShape3D.new()
+        solid.size = Vector3(step + 0.02, 1.52, 0.17)
+        obstacle.shape = solid
+        section.add_child(obstacle)
+    fence_sections += 1
 
 func _gate_post(parent: Node3D, x: float, z: float, mat: Material, side: String) -> void:
     var post := StaticBody3D.new()
@@ -356,7 +388,7 @@ func _yard_life(parent: Node3D, site: Dictionary, index: int) -> void:
             garden_props += 1
     # One personal object by the gate; deliberately offset from the path.
     if _place(parent, "mail" if index % 3 == 0 else "bucket",
-        float(site["side"]) * 23.0, z + 4.3, 0.3, 1.0, true) != null:
+        land.main_road_x(z) + side * 12.6, z + 4.3, 0.3, 1.0, true) != null:
         garden_props += 1
 
 
@@ -365,21 +397,37 @@ func _garden_beds(parent: Node3D, site: Dictionary) -> void:
     var z := float(site["z"])
     for row in range(3):
         var bed_z := z - 6.8 + float(row) * 3.2
-        var mesh := MeshInstance3D.new()
-        mesh.name = "TendedThenAbandonedBed"
-        var shape := BoxMesh.new()
-        shape.size = Vector3(5.6, 0.045, 0.89)
-        shape.material = garden_soil
-        mesh.mesh = shape
-        mesh.position = Vector3(x, land.surface_height_at(x, bed_z) + 0.025, bed_z)
-        mesh.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
-        parent.add_child(mesh)
+        # A flat box used to sink into the surrounding uneven ground. Instead
+        # drape the actual visible garden soil over the SAME triangle-sampled
+        # surface as the player walks on. Garden beds remain visual only.
+        var st := SurfaceTool.new()
+        st.begin(Mesh.PRIMITIVE_TRIANGLES)
+        st.set_material(garden_soil)
+        for j in range(7):
+            var start_x := x - 2.8 + float(j) * 0.8
+            var next_x := start_x + 0.8
+            var a := _bed_vertex(start_x, bed_z - 0.45)
+            var b := _bed_vertex(next_x, bed_z - 0.45)
+            var p := _bed_vertex(start_x, bed_z + 0.45)
+            var d := _bed_vertex(next_x, bed_z + 0.45)
+            for vertex in [a, b, p, b, d, p]:
+                st.set_uv(Vector2(vertex.x / 2.0, vertex.z / 2.0))
+                st.add_vertex(vertex)
+        st.generate_normals()
+        var bed := MeshInstance3D.new()
+        bed.name = "TendedThenAbandonedBed"
+        bed.mesh = st.commit()
+        bed.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
+        parent.add_child(bed)
         for i in range(3):
             var plant_x := x - 1.8 + float(i) * 1.8
             if _place(parent, "grass" if (row + i) % 3 else "shrub",
                 plant_x, bed_z, float(row + i), 0.75, false) != null:
                 garden_props += 1
 
+
+func _bed_vertex(x: float, z: float) -> Vector3:
+    return Vector3(x, land.surface_height_at(x, z) + 0.055, z)
 
 func _yard_trees(parent: Node3D, site: Dictionary, index: int) -> void:
     var x := float(site["x"]) + float(site["side"]) * 19.0

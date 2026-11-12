@@ -163,7 +163,9 @@ func _check() -> void:
                         for part in child.get_children():
                             if str(part.name).begins_with("FenceSegmentCollision_"):
                                 segments += 1
-                                var world_pos := child.to_global(part.position)
+                                var fence_body := child as Node3D
+                                var collision_piece := part as CollisionShape3D
+                                var world_pos := fence_body.to_global(collision_piece.position)
                                 var expected_y := land.surface_height_at(world_pos.x, world_pos.z) + 0.76
                                 if absf(world_pos.y - expected_y) > 0.15:
                                     issues.append("Fence has buried/floating collision at " + str(plot.name))

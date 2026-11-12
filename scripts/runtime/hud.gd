@@ -20,6 +20,7 @@ var loot_panel: Panel
 var loot_contents: Label
 var take_button: Button
 var inventory_screen: Control
+var field_record: Control
 var detector_status: Label
 var audio_panel: ColorRect
 var intro_layout: Array[Dictionary] = []
@@ -134,6 +135,9 @@ func _ready() -> void:
 	inventory_screen=load("res://scripts/runtime/inventory_screen.gd").new()
 	inventory_screen.game=game
 	add_child(inventory_screen)
+	field_record=load("res://scripts/runtime/expedition_field_record.gd").new()
+	field_record.game=game
+	add_child(field_record)
 	resized.connect(_layout_hud)
 	_load_field_theme()
 	_apply_field_palette()
@@ -208,6 +212,8 @@ func _apply_field_palette() -> void:
 		if cache_style != null:
 			cache_style.bg_color = Color(hud_panel.r, hud_panel.g, hud_panel.b, 0.98)
 			cache_style.border_color = hud_accent
+	if is_instance_valid(field_record):
+		field_record.set_palette(hud_pale, hud_muted, hud_accent)
 	if is_instance_valid(start_button):
 		style_button(start_button)
 	if is_instance_valid(quit_button):
@@ -216,7 +222,7 @@ func _apply_field_palette() -> void:
 		for item in overlay.get_children():
 			if item is Button:
 				style_button(item)
-	footer_hint.text = "[TAB] PACK  /  [E] USE  /  [F] LIGHT  /  [ESC] MENU  /  [F10] " + THEME_NAMES[field_theme_mode]
+	footer_hint.text = "[TAB] PACK  /  [J] NOTES  /  [F] LIGHT  /  [ESC] MENU  /  [F10] " + THEME_NAMES[field_theme_mode]
 	queue_redraw()
 
 
@@ -267,9 +273,9 @@ func _layout_hud() -> void:
 	footer_hint.position = Vector2(26, h - 28)
 	footer_hint.size = Vector2(w - 52, 20)
 	if w < 1100:
-		footer_hint.text = "[TAB] PACK  /  [E] USE  /  [ESC] MENU  /  [F10] THEME"
+		footer_hint.text = "[TAB] PACK  /  [J] NOTES  /  [ESC] MENU  /  [F10] THEME"
 	else:
-		footer_hint.text = "[TAB] PACK  /  [E] USE  /  [F] LIGHT  /  [ESC] MENU  /  [F10] " + THEME_NAMES[field_theme_mode]
+		footer_hint.text = "[TAB] PACK  /  [J] NOTES  /  [F] LIGHT  /  [ESC] MENU  /  [F10] " + THEME_NAMES[field_theme_mode]
 	loot_panel.position = Vector2((w - loot_panel.size.x) * 0.5, (h - loot_panel.size.y) * 0.5)
 	if not intro_layout.is_empty():
 		_layout_intro()

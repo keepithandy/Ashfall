@@ -18,6 +18,11 @@ func _ready() -> void:
     world_detail.name = "WorldDetail21"
     world_detail.set_script(load("res://scripts/runtime/station04_world_detail.gd"))
     add_child(world_detail)
+    var visual_budget := Node.new()
+    visual_budget.set_script(load("res://scripts/runtime/station04_visual_budget.gd"))
+    visual_budget.set("game", self)
+    visual_budget.set("scene_detail", world_detail)
+    add_child(visual_budget)
     # Explain the new space without changing any of the player or HUD systems.
     if is_instance_valid(hud):
         hud.title.text = "ASHFALL 2.1  /  FIELD UNIT 04"

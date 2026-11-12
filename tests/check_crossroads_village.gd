@@ -62,6 +62,78 @@ func _check() -> void:
             if absf(inside - outside) > 0.001:
                 issues.append("Distant farm and settlement surface is discontinuous at " + str(border))
                 break
+    # Countryside composition regression: visual density, authentic field
+    # mosaic, GPU batching, physical ground-snapped vegetation and road gaps.
+    var composition := level.get_node_or_null("Landscape/CountryComposition") as Node3D
+    if composition == null:
+        issues.append("Crossroads has no authored outer-country composition")
+    else:
+        if int(composition.get("belts_authored")) != 10:
+            issues.append("Missing field shelterbelt corridors")
+        if int(composition.get("planted_groves")) != 10:
+            issues.append("Distant woodlands do not surround the settlement")
+        if int(composition.get("planted_trees")) < 1450:
+            issues.append("Midground and distant woodland silhouettes are too sparse")
+        if int(composition.get("planted_scrub")) < 1400:
+            issues.append("Field-edge hedge and roadside undergrowth missing")
+        if int(composition.get("field_patches")) != 12 or int(composition.get("field_triangles")) < 5000:
+            issues.append("Twelve varied harvested field parcels did not build")
+        if int(composition.get("prototypes_used")) != 5:
+            issues.append("Background failed to reuse all five vegetation source scenes")
+        var count_batches := int(composition.get("draw_batches"))
+        if count_batches < 40 or count_batches > 900:
+            issues.append("Countryside instancing is not batched efficiently")
+        var field_root := composition.get_node_or_null("LandscapeComposition/PatchworkFields") as Node3D
+        var vegetation_root := composition.get_node_or_null("LandscapeComposition/BatchedVegetation") as Node3D
+        if field_root == null or field_root.get_child_count() != 12:
+            issues.append("The playable outer fields are blank again")
+        else:
+            for field_part in field_root.get_children():
+                var field_visual := field_part as MeshInstance3D
+                if field_visual.mesh == null or not _top_faces_visible(field_visual.mesh):
+                    issues.append("Harvest field has backward-facing or missing triangles")
+                    break
+        if vegetation_root == null or vegetation_root.get_child_count() != 5:
+            issues.append("Countryside vegetation batching nodes are missing")
+        else:
+            for batch_type in vegetation_root.get_children():
+                if batch_type.get_child_count() == 0:
+                    issues.append("One type of countryside vegetation has no visible meshes")
+                for segment in batch_type.get_children():
+                    var batch := segment as MultiMeshInstance3D
+                    if batch.multimesh == null or batch.multimesh.instance_count < 1:
+                        issues.append("A countryside vegetation batch contains no instances")
+                        break
+                    if batch.get_collision_layer() != 0:
+                        issues.append("Scenery vegetation introduced collision")
+                        break
+        # The original old-route roadway and gates remain clear of trees.
+        var groups: Dictionary = composition.get("placements")
+        var checked := 0
+        for key in groups.keys():
+            var values: Array = groups[key]
+            for planted in values:
+                var transform: Transform3D = planted
+                var point := Vector2(transform.origin.x, transform.origin.z)
+                if land.distance_to_line(point, PROFILE.MAIN_ROAD) < 9.5:
+                    issues.append("Country tree or shrub intersects the main road")
+                    break
+                checked += 1
+                if checked >= 350:
+                    break
+            if checked >= 350:
+                break
+        if checked < 350:
+            issues.append("Too few countryside vegetation instances were sampled")
+
+    var climate := level.get_node_or_null("WorldEnvironment") as WorldEnvironment
+    if climate == null or climate.environment == null or climate.environment.sky == null:
+        issues.append("Overcast village lighting or sky missing")
+    else:
+        var sky_material := climate.environment.sky.sky_material as ShaderMaterial
+        if sky_material == null or float(sky_material.get_shader_parameter("cloud_contrast")) > 1.1:
+            issues.append("Crossroads sky lost its subdued overcast palette")
+
     if roads == null:
         issues.append("Three-road network missing")
     else:

@@ -9,6 +9,13 @@ on:
       - 'tests/check_station_grounding.gd'
       - 'tests/check_station_field_hud.gd'
       - 'tests/check_station_immersion.gd'
+      - 'tests/check_station_23.gd'
+      - 'scripts/runtime/area_survival_rules.gd'
+      - 'scripts/runtime/weathered_ui_style.gd'
+      - 'scripts/runtime/weathered_ui_grain.gd'
+      - 'scripts/runtime/weathered_ui_foley.gd'
+      - 'scripts/runtime/game.gd'
+      - 'scripts/runtime/player.gd'
       - 'scripts/runtime/expedition_field_record.gd'
       - 'scripts/runtime/station04_world_detail.gd'
       - 'scripts/runtime/station04_visual_budget.gd'
@@ -53,6 +60,12 @@ jobs:
           /tmp/Godot_v4.7.2-stable_linux.x86_64 --headless --path . --check-only --script res://scripts/runtime/expedition_field_record.gd
           /tmp/Godot_v4.7.2-stable_linux.x86_64 --headless --path . --check-only --script res://scripts/runtime/station04_ambient_cues.gd
           /tmp/Godot_v4.7.2-stable_linux.x86_64 --headless --path . --check-only --script res://tests/check_station_immersion.gd
+          /tmp/Godot_v4.7.2-stable_linux.x86_64 --headless --path . --check-only --script res://tests/check_station_23.gd
+          /tmp/Godot_v4.7.2-stable_linux.x86_64 --headless --path . --check-only --script res://scripts/runtime/station04_story_sets.gd
+          /tmp/Godot_v4.7.2-stable_linux.x86_64 --headless --path . --check-only --script res://scripts/runtime/area_survival_rules.gd
+          /tmp/Godot_v4.7.2-stable_linux.x86_64 --headless --path . --check-only --script res://scripts/runtime/weathered_ui_style.gd
+          /tmp/Godot_v4.7.2-stable_linux.x86_64 --headless --path . --check-only --script res://scripts/runtime/weathered_ui_grain.gd
+          /tmp/Godot_v4.7.2-stable_linux.x86_64 --headless --path . --check-only --script res://scripts/runtime/weathered_ui_foley.gd
       - name: Import project assets
         shell: bash
         run: |
@@ -61,6 +74,8 @@ jobs:
         shell: bash
         run: |
           /tmp/Godot_v4.7.2-stable_linux.x86_64 --headless --path . --check-only --script res://scripts/runtime/hud.gd
+          /tmp/Godot_v4.7.2-stable_linux.x86_64 --headless --path . --check-only --script res://scripts/runtime/player.gd
+          /tmp/Godot_v4.7.2-stable_linux.x86_64 --headless --path . --check-only --script res://scripts/runtime/game.gd
           /tmp/Godot_v4.7.2-stable_linux.x86_64 --headless --path . --check-only --script res://scripts/runtime/inventory_screen.gd
           /tmp/Godot_v4.7.2-stable_linux.x86_64 --headless --path . --check-only --script res://scripts/runtime/ashfall_station_main.gd
           /tmp/Godot_v4.7.2-stable_linux.x86_64 --headless --path . --check-only --script res://scripts/runtime/expedition_areas.gd
@@ -84,6 +99,14 @@ jobs:
         shell: bash
         run: |
           /tmp/Godot_v4.7.2-stable_linux.x86_64 --headless --path . --script res://tests/check_station_immersion.gd
+      - name: Verify Ashfall 2.3 worn UI, survival profiles and story dressing
+        shell: bash
+        run: |
+          /tmp/Godot_v4.7.2-stable_linux.x86_64 --headless --path . --script res://tests/check_station_23.gd
+      - name: Verify original inventory slot and use interactions
+        shell: bash
+        run: |
+          /tmp/Godot_v4.7.2-stable_linux.x86_64 --headless --path . --script res://tests/test_inventory_grid.gd
       - name: Verify main scene parses and runs without startup failures
         shell: bash
         run: |

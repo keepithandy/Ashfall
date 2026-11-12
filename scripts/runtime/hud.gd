@@ -1,4 +1,5 @@
 extends Control
+const FieldSkin = preload("res://scripts/runtime/weathered_ui_style.gd")
 
 var game: Node3D
 var title: Label
@@ -21,12 +22,13 @@ var loot_contents: Label
 var take_button: Button
 var inventory_screen: Control
 var field_record: Control
+var interface_foley: Node
 var detector_status: Label
 var audio_panel: ColorRect
 var intro_layout: Array[Dictionary] = []
 var intro_label_layout: Dictionary = {}
 const FIELD_THEME_PATH := "user://ashfall_field_hud.cfg"
-const THEME_NAMES := ["FIELD JOURNAL", "SIGNAL RECEIVER", "WORN AMBER"]
+const THEME_NAMES := ["WORN CANVAS", "DAMP PAPER", "RUSTED IRON"]
 var footer_hint: Label
 var journal_stamp: Label
 var objective_heading: Label
@@ -36,11 +38,11 @@ var signal_heading: Label
 var vital_status: Label
 var field_activity: Label
 var field_theme_mode: int = 0 # Personal field journal by default.
-var hud_pale := Color("e7dfcd")
-var hud_muted := Color("b2aa95")
-var hud_accent := Color("b79a6b")
-var hud_panel := Color(0.043, 0.044, 0.038, 0.86)
-var hud_border := Color(0.39, 0.37, 0.30, 0.86)
+var hud_pale := FieldSkin.PAPER_LIGHT
+var hud_muted := FieldSkin.PAPER_DARK
+var hud_accent := FieldSkin.RUST
+var hud_panel := Color(0.11, 0.12, 0.095, 0.72)
+var hud_border := Color(0.39, 0.36, 0.29, 0.62)
 
 
 func label_at(text_value: String, at: Vector2, size: int, tint: Color) -> Label:
@@ -62,7 +64,7 @@ func _ready() -> void:
 	# Anchored dynamically for 16:9 and other window sizes.
 	var pale := Color("deddd0")
 	var muted := Color("a2b3a6")
-	title = label_at("ASHFALL  /  FIELD UNIT 04", Vector2.ZERO, 17, pale)
+	title = label_at("ASHFALL  /  THE OUTER ROAD", Vector2.ZERO, 17, pale)
 	area_label = label_at("STATION 04  /  PERIMETER", Vector2.ZERO, 12, muted)
 	objective = label_at("", Vector2.ZERO, 15, pale)
 	objective.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
@@ -80,26 +82,27 @@ func _ready() -> void:
 	detector_status.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	footer_hint = label_at("[TAB] PACK  /  [E] INTERACT  /  [F] LIGHT  /  [ESC] PAUSE  /  [F10] THEME", Vector2.ZERO, 11, muted)
 	journal_stamp = label_at("ENTRY RECORD  /  00:00", Vector2.ZERO, 11, muted)
-	objective_heading = label_at("CURRENT FIELD NOTES", Vector2.ZERO, 11, Color("b79a6b"))
-	kit_heading = label_at("PACK INVENTORY  /  ON PERSON", Vector2.ZERO, 11, Color("b79a6b"))
-	vitals_heading = label_at("SURVIVOR CONDITION", Vector2.ZERO, 11, Color("b79a6b"))
-	signal_heading = label_at("SIGNAL AND SURROUNDINGS", Vector2.ZERO, 11, Color("b79a6b"))
+	objective_heading = label_at("WHAT STILL NEEDS DOING", Vector2.ZERO, 11, FieldSkin.RUST)
+	kit_heading = label_at("IN MY POCKETS", Vector2.ZERO, 11, FieldSkin.RUST)
+	vitals_heading = label_at("HOW I AM HOLDING UP", Vector2.ZERO, 11, FieldSkin.RUST)
+	signal_heading = label_at("THE METER  /  WEATHER", Vector2.ZERO, 11, FieldSkin.RUST)
 	vital_status = label_at("STATUS  /  STABLE", Vector2.ZERO, 11, muted)
 	field_activity = label_at("MOVEMENT  /  QUIET", Vector2.ZERO, 11, muted)
 	health_bar = make_bar(Vector2.ZERO, Color("aa6052"))
 	stamina_bar = make_bar(Vector2.ZERO, Color("8a9274"))
 	overlay = ColorRect.new()
-	overlay.color = Color(0.018, 0.023, 0.021, 0.93)
+	overlay.color = Color(0.038, 0.040, 0.032, 0.96)
 	overlay.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	add_child(overlay)
+	FieldSkin.paper_texture(overlay, false)
 	var stripe := ColorRect.new()
 	stripe.position = Vector2(100, 130)
 	stripe.size = Vector2(4, 420)
-	stripe.color = Color("8a473b")
+	stripe.color = FieldSkin.RUST
 	overlay.add_child(stripe)
 	menu_title = Label.new()
 	menu_title.position = Vector2(132, 150)
-	menu_title.text = "ASHFALL  /  FIELD JOURNAL"
+	menu_title.text = "ASHFALL  /  LEAVE NO TRACE"
 	menu_title.add_theme_font_size_override("font_size", 72)
 	menu_title.add_theme_color_override("font_color", pale)
 	overlay.add_child(menu_title)
@@ -107,24 +110,24 @@ func _ready() -> void:
 	menu_body.position = Vector2(138, 255)
 	menu_body.add_theme_font_size_override("font_size", 20)
 	menu_body.add_theme_color_override("font_color", pale)
-	menu_body.text = "A FIELD EXPEDITION  /  EARLY PLAYABLE PROTOTYPE\n\nRecover the sample at the research station and return.\nPower Crossroads to open the North Relay passage.\nTAB inventory  /  Q use held item  /  F flashlight\n\nListen for footsteps. Crouch behind solid cover."
+	menu_body.text = "STATION 04  /  OUTSIDE THE FENCE\n\nThe road here is empty. Recover the sample, find what you need,\nand get back before you lose the light.\n\nWalk quietly. Check every shelter."
 	overlay.add_child(menu_body)
 	start_button = Button.new()
 	start_button.position = Vector2(138, 498)
 	start_button.size = Vector2(250, 48)
-	start_button.text = "ENTER THE PERIMETER"
+	start_button.text = "TAKE THE ROAD"
 	start_button.pressed.connect(func(): game.resume_game())
 	overlay.add_child(start_button)
 	quit_button = Button.new()
 	quit_button.position = Vector2(405, 498)
 	quit_button.size = Vector2(110, 48)
-	quit_button.text = "QUIT"
+	quit_button.text = "LEAVE"
 	quit_button.pressed.connect(func(): get_tree().quit())
 	overlay.add_child(quit_button)
 	var audio_button := Button.new()
 	audio_button.position = Vector2(535, 498)
 	audio_button.size = Vector2(170, 48)
-	audio_button.text = "AUDIO"
+	audio_button.text = "SOUND"
 	audio_button.pressed.connect(func(): audio_panel.show())
 	overlay.add_child(audio_button)
 	style_button(audio_button)
@@ -135,6 +138,9 @@ func _ready() -> void:
 	inventory_screen=load("res://scripts/runtime/inventory_screen.gd").new()
 	inventory_screen.game=game
 	add_child(inventory_screen)
+	interface_foley = Node.new()
+	interface_foley.set_script(load("res://scripts/runtime/weathered_ui_foley.gd"))
+	add_child(interface_foley)
 	field_record=load("res://scripts/runtime/expedition_field_record.gd").new()
 	field_record.game=game
 	add_child(field_record)
@@ -170,23 +176,23 @@ func _apply_field_palette() -> void:
 	# All three palettes keep the same functional data and contrast hierarchy.
 	match field_theme_mode:
 		0: # Field journal: stained paper, weathered brass, blackened leather.
-			hud_pale = Color("e7dfcd")
-			hud_muted = Color("b2aa95")
-			hud_accent = Color("b79a6b")
-			hud_panel = Color(0.043, 0.044, 0.038, 0.86)
-			hud_border = Color(0.39, 0.37, 0.30, 0.86)
-		1: # Cold receiver: aged green phosphor and slate hardware.
-			hud_pale = Color("dce8db")
-			hud_muted = Color("9cbaa9")
-			hud_accent = Color("77bd9b")
-			hud_panel = Color(0.018, 0.041, 0.036, 0.85)
-			hud_border = Color(0.18, 0.37, 0.32, 0.86)
-		2: # Worn amber: distressed oxide, dust and low-output instrument light.
-			hud_pale = Color("efdec9")
-			hud_muted = Color("c6aa91")
-			hud_accent = Color("d28a62")
-			hud_panel = Color(0.056, 0.033, 0.026, 0.86)
-			hud_border = Color(0.47, 0.28, 0.20, 0.88)
+			hud_pale = FieldSkin.PAPER_LIGHT
+			hud_muted = FieldSkin.PAPER_DARK
+			hud_accent = FieldSkin.RUST
+			hud_panel = Color(0.105, 0.112, 0.088, 0.74)
+			hud_border = Color(0.38, 0.35, 0.28, 0.60)
+		1: # Damp paper: softened ink and faded olive field canvas.
+			hud_pale = Color("e0dbc8")
+			hud_muted = Color("b0ab94")
+			hud_accent = Color("78806a")
+			hud_panel = Color(0.13, 0.14, 0.115, 0.75)
+			hud_border = Color(0.37, 0.40, 0.33, 0.65)
+		2: # Rusted iron: oxidized brown leather and soot-gray cloth.
+			hud_pale = Color("e7d8bf")
+			hud_muted = Color("b8a58d")
+			hud_accent = Color("ac8064")
+			hud_panel = Color(0.16, 0.115, 0.085, 0.76)
+			hud_border = Color(0.45, 0.34, 0.27, 0.66)
 	for field in [title, objective, bearing, interaction, message, pack_status]:
 		field.add_theme_color_override("font_color", hud_pale)
 	for field in [area_label, journal_stamp, stats, footer_hint, vital_status, field_activity]:
@@ -277,41 +283,87 @@ func _layout_hud() -> void:
 	else:
 		footer_hint.text = "[TAB] PACK  /  [J] NOTES  /  [F] LIGHT  /  [ESC] MENU  /  [F10] " + THEME_NAMES[field_theme_mode]
 	loot_panel.position = Vector2((w - loot_panel.size.x) * 0.5, (h - loot_panel.size.y) * 0.5)
+	_layout_audio_panel(w, h)
 	if not intro_layout.is_empty():
 		_layout_intro()
 	queue_redraw()
 
 
 
+
+func _layout_audio_panel(w: float, h: float) -> void:
+	if not is_instance_valid(audio_panel):
+		return
+	var panel_width := minf(690.0, w - 60.0)
+	var x := (w - panel_width) * 0.5
+	var top := maxf(32.0, h * 0.10)
+	var headline := audio_panel.get_node_or_null("SoundTitle") as Label
+	var subheading := audio_panel.get_node_or_null("SoundCaption") as Label
+	if headline != null:
+		headline.position = Vector2(x, top)
+		headline.size = Vector2(panel_width, 56)
+	if subheading != null:
+		subheading.position = Vector2(x + 2, top + 60)
+		subheading.size = Vector2(panel_width, 45)
+		subheading.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	var row_start := top + 126.0
+	var row_gap := minf(63.0, maxf(46.0, (h - row_start - 108.0) / 4.0))
+	for i in range(4):
+		var bus_name: String = ["Master", "Wind", "Footsteps", "Effects"][i]
+		var row_y := row_start + float(i) * row_gap
+		var field := audio_panel.get_node_or_null(bus_name + "Label") as Label
+		var value := audio_panel.get_node_or_null(bus_name + "Value") as Label
+		var slider := audio_panel.get_node_or_null(bus_name + "Slider") as HSlider
+		if field != null:
+			field.position = Vector2(x + 4, row_y)
+			field.size = Vector2(195, 28)
+			field.add_theme_font_size_override("font_size", 14)
+		if value != null:
+			value.position = Vector2(x + panel_width - 66, row_y)
+			value.size = Vector2(64, 27)
+		if slider != null:
+			slider.position = Vector2(x + 205, row_y + 1)
+			slider.size = Vector2(maxf(85.0, panel_width - 275.0), 26)
+	var back := audio_panel.get_node_or_null("SoundBack") as Button
+	if back != null:
+		back.position = Vector2(x + 4, minf(h - 62.0, row_start + row_gap * 4.0 + 10.0))
+		back.size = Vector2(minf(240.0, panel_width), 46)
+
 func _draw_field_panel(rect: Rect2) -> void:
+	# Field canvas sewn around the edges. No neon, gauges or technological
+	# frame ornaments. All marks are static so the GPU has no texture loop.
 	draw_rect(rect, hud_panel, true)
 	draw_rect(rect, hud_border, false, 1.0)
-	draw_rect(Rect2(rect.position + Vector2(0, 0), Vector2(68, 3)), hud_accent, true)
-	draw_line(rect.position + Vector2(rect.size.x - 16, 0), rect.position + Vector2(rect.size.x, 16), hud_accent, 1.0)
-	draw_line(rect.position + Vector2(8, rect.size.y - 9), rect.position + Vector2(8, rect.size.y - 20), hud_border, 1.0)
-	draw_line(rect.position + Vector2(8, rect.size.y - 9), rect.position + Vector2(26, rect.size.y - 9), hud_border, 1.0)
-	# Three static abrasion marks imply worn equipment without distracting animation.
-	for mark in range(3):
-		var px := rect.position.x + rect.size.x - 52 + mark * 9
-		draw_line(Vector2(px, rect.position.y + rect.size.y - 11), Vector2(px + 4, rect.position.y + rect.size.y - 7), Color(hud_muted.r, hud_muted.g, hud_muted.b, 0.25), 1.0)
-
+	var worn := Color(hud_muted.r, hud_muted.g, hud_muted.b, 0.22)
+	draw_line(rect.position + Vector2(10, 8), rect.position + Vector2(rect.size.x - 10, 8), worn, 1.0)
+	draw_line(rect.position + Vector2(10, rect.size.y - 8), rect.position + Vector2(rect.size.x - 10, rect.size.y - 8), worn, 1.0)
+	var seam := Color(hud_accent.r, hud_accent.g, hud_accent.b, 0.45)
+	for stitch in range(6):
+		var px := rect.position.x + rect.size.x - 30.0 - float(stitch) * 8.0
+		draw_line(Vector2(px, rect.position.y + rect.size.y - 7), Vector2(px + 3, rect.position.y + rect.size.y - 5), seam, 1.0)
+	# Scuffed corner stitching, intentionally uneven.
+	draw_line(rect.position + Vector2(8, 11), rect.position + Vector2(8, 21), worn, 1.0)
+	draw_line(rect.position + Vector2(8, 11), rect.position + Vector2(27, 11), worn, 1.0)
 
 func build_audio_panel(pale: Color, muted: Color) -> void:
 	audio_panel = ColorRect.new()
 	audio_panel.name = "AudioSettings"
-	audio_panel.color = Color(0.018, 0.023, 0.021, 1.0)
+	audio_panel.color = FieldSkin.CANVAS
 	audio_panel.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	audio_panel.mouse_filter = Control.MOUSE_FILTER_STOP
 	overlay.add_child(audio_panel)
+	FieldSkin.paper_texture(audio_panel, false)
 	var heading := Label.new()
+	heading.name = "SoundTitle"
 	heading.position = Vector2(138, 115)
-	heading.text = "AUDIO SETTINGS"
+	heading.text = "THE SOUNDS OUTSIDE"
 	heading.add_theme_font_size_override("font_size", 42)
 	heading.add_theme_color_override("font_color", pale)
 	audio_panel.add_child(heading)
 	var caption := Label.new()
+	caption.name = "SoundCaption"
 	caption.position = Vector2(140, 179)
-	caption.text = "Adjust the mix. Changes are saved automatically."
+	caption.text = "Wind, footsteps, movement in the dark. Keep what you need to hear."
 	caption.add_theme_font_size_override("font_size", 16)
 	caption.add_theme_color_override("font_color", muted)
 	audio_panel.add_child(caption)
@@ -320,6 +372,7 @@ func build_audio_panel(pale: Color, muted: Color) -> void:
 		var bus_name: String = rows[index][0]
 		var y := 235.0 + index * 64.0
 		var title_label := Label.new()
+		title_label.name = bus_name + "Label"
 		title_label.position = Vector2(140, y)
 		title_label.size = Vector2(285, 30)
 		title_label.text = rows[index][1]
@@ -327,6 +380,7 @@ func build_audio_panel(pale: Color, muted: Color) -> void:
 		title_label.add_theme_color_override("font_color", pale)
 		audio_panel.add_child(title_label)
 		var value_label := Label.new()
+		value_label.name = bus_name + "Value"
 		value_label.position = Vector2(850, y)
 		value_label.size = Vector2(70, 30)
 		value_label.add_theme_font_size_override("font_size", 16)
@@ -334,6 +388,7 @@ func build_audio_panel(pale: Color, muted: Color) -> void:
 		audio_panel.add_child(value_label)
 		var slider := HSlider.new()
 		slider.name = bus_name + "Slider"
+		slider.modulate = FieldSkin.PAPER_DARK
 		slider.position = Vector2(440, y + 2)
 		slider.size = Vector2(380, 26)
 		slider.min_value = 0
@@ -344,12 +399,13 @@ func build_audio_panel(pale: Color, muted: Color) -> void:
 		slider.value_changed.connect(_audio_level_changed.bind(bus_name, value_label))
 		audio_panel.add_child(slider)
 	var back := Button.new()
+	back.name = "SoundBack"
 	back.position = Vector2(140, 540)
 	back.size = Vector2(180, 48)
-	back.text = "BACK"
+	back.text = "PUT THE RADIO AWAY"
 	back.pressed.connect(func(): audio_panel.hide())
-	style_button(back)
 	audio_panel.add_child(back)
+	style_button(back)
 	audio_panel.hide()
 
 func _audio_level_changed(value: float, bus_name: String, value_label: Label) -> void:
@@ -357,39 +413,29 @@ func _audio_level_changed(value: float, bus_name: String, value_label: Label) ->
 	game.audio_settings.set_level(bus_name, value / 100.0)
 
 func style_button(button: Button) -> void:
-	var normal := StyleBoxFlat.new()
-	normal.bg_color = Color(hud_panel.r * 1.7, hud_panel.g * 1.7, hud_panel.b * 1.7, 1.0)
-	normal.border_color = hud_border
-	normal.set_border_width_all(1)
-	var hover := normal.duplicate() as StyleBoxFlat
-	hover.bg_color = Color(hud_panel.r * 2.7, hud_panel.g * 2.7, hud_panel.b * 2.7, 1.0)
-	hover.border_color = hud_accent
-	button.add_theme_stylebox_override("normal", normal)
-	button.add_theme_stylebox_override("hover", hover)
-	button.add_theme_stylebox_override("pressed", hover)
-	button.add_theme_color_override("font_color", hud_pale)
-	button.add_theme_color_override("font_hover_color", hud_pale)
+	FieldSkin.control_button(button, false)
 
 func build_loot_panel(pale: Color, muted: Color) -> void:
 	loot_panel=Panel.new()
 	loot_panel.position=Vector2(390,135)
 	loot_panel.size=Vector2(500,450)
 	var style:=StyleBoxFlat.new()
-	style.bg_color=Color(0.035,0.041,0.036,0.97)
-	style.border_color=Color("78463d")
+	style.bg_color=FieldSkin.CANVAS
+	style.border_color=FieldSkin.RUST
 	style.set_border_width_all(2)
 	style.set_corner_radius_all(2)
 	loot_panel.add_theme_stylebox_override("panel",style)
 	add_child(loot_panel)
+	FieldSkin.paper_texture(loot_panel, false)
 	var title_label:=Label.new()
 	title_label.position=Vector2(30,26)
-	title_label.text="SUPPLY CACHE"
+	title_label.text="WHAT WAS LEFT BEHIND"
 	title_label.add_theme_font_size_override("font_size",26)
 	title_label.add_theme_color_override("font_color",pale)
 	loot_panel.add_child(title_label)
 	var sub:=Label.new()
 	sub.position=Vector2(31,65)
-	sub.text="FOUND AT THE OUTER PERIMETER"
+	sub.text="TAKE WHAT YOU NEED. KEEP MOVING."
 	sub.add_theme_font_size_override("font_size",12)
 	sub.add_theme_color_override("font_color",muted)
 	loot_panel.add_child(sub)
@@ -407,13 +453,13 @@ func build_loot_panel(pale: Color, muted: Color) -> void:
 	take_button=Button.new()
 	take_button.position=Vector2(30,354)
 	take_button.size=Vector2(205,52)
-	take_button.text="TAKE ALL"
+	take_button.text="TAKE SUPPLIES"
 	take_button.pressed.connect(func(): game.take_loot())
 	loot_panel.add_child(take_button)
 	var close:=Button.new()
 	close.position=Vector2(250,354)
 	close.size=Vector2(205,52)
-	close.text="CLOSE"
+	close.text="LEAVE IT"
 	close.pressed.connect(func(): game.close_loot())
 	loot_panel.add_child(close)
 	style_button(take_button)
@@ -421,8 +467,16 @@ func build_loot_panel(pale: Color, muted: Color) -> void:
 	loot_panel.hide()
 
 func show_loot(contents: Dictionary) -> void:
-	loot_contents.text="CACHE EMPTY" if contents.is_empty() else "BANDAGE ROLL    × %d\n\nCANNED FOOD      × %d\n\nBATTERIES              × %d" % [contents.get("bandage",0),contents.get("food_tin",0),contents.get("batteries",0)]
-	take_button.disabled=contents.is_empty()
+	# Display only supplies actually present, including newly authored types.
+	var rows := PackedStringArray()
+	for id in ItemCatalog.ORDER:
+		var count := int(contents.get(id, 0))
+		if count > 0:
+			rows.append(str(ItemCatalog.entry(id).get("name", id)).to_upper() + "    x " + str(count))
+	loot_contents.text = "NOTHING LEFT" if rows.is_empty() else "\n\n".join(rows)
+	take_button.disabled = rows.is_empty()
+	if not loot_panel.visible and is_instance_valid(interface_foley):
+		interface_foley.call("latch")
 	loot_panel.show()
 
 func make_bar(at: Vector2, tint: Color) -> ProgressBar:
@@ -452,6 +506,9 @@ func _process(_delta: float) -> void:
 	journal_stamp.text = "ENTRY RECORD  /  %02d:%02d   /   %s" % [minutes, int(game.elapsed) % 60, "SAMPLE SECURED" if game.has_sample else "IN PROGRESS"]
 	var condition := "CRITICAL" if game.player.health < 25.0 else ("WOUNDED" if game.player.health < 60.0 else "STABLE")
 	vital_status.text = "FIELD ASSESSMENT  /  " + condition
+	var rules := game.get("survival_rules") as Node
+	if is_instance_valid(rules):
+		vital_status.text += "   /   " + str(rules.call("label"))
 	var motion := "CROUCHING" if game.player.crouching else ("RUNNING" if game.player.noise_radius >= 9.0 else ("MOVING" if game.player.noise_radius >= 4.0 else "STILL"))
 	field_activity.text = "MOVEMENT  /  " + motion
 	if game.hazard_strength > 0.08:
@@ -467,9 +524,9 @@ func _process(_delta: float) -> void:
 	var degrees := fposmod(rad_to_deg(-game.player.rotation.y), 360)
 	var directions := ["N", "NE", "E", "SE", "S", "SW", "W", "NW"]
 	bearing.text = "· · ·    %s   %03d°    · · ·" % [directions[int((degrees + 22.5) / 45) % 8], int(degrees)]
-	detector_status.text = game.anomaly_readout() if game.detector_enabled else "SENSOR STANDBY\nEQUIP METER TO SCAN"
+	detector_status.text = game.anomaly_readout() if game.detector_enabled else "METER NOT IN HAND\nKEEP CLEAR OF THE RINGS"
 	if game.hazard_strength > 0.08:
-		detector_status.text = "SIGNAL DISTORTION\nMOVE OUT OF THE FIELD"
+		detector_status.text = "NEEDLE UNSTEADY\nMOVE AWAY FROM THE FIELD"
 	queue_redraw()
 
 func _draw() -> void:
@@ -516,7 +573,7 @@ func _layout_intro() -> void:
 	menu_title.position = Vector2((w - content_width) * 0.5, maxf(42.0, h * 0.14))
 	menu_title.size = Vector2(content_width, 75.0)
 	menu_body.position = Vector2((w - content_width) * 0.5, menu_title.position.y + 94.0)
-	menu_body.size = Vector2(content_width, 105.0)
+	menu_body.size = Vector2(content_width, 115.0)
 	var button_width := minf(280.0, w - 80.0)
 	var button_top := minf(maxf(h * 0.60, menu_body.position.y + 124.0), h - 196.0)
 	for i in range(intro_layout.size()):
@@ -539,6 +596,7 @@ func show_minimal_intro() -> void:
 	menu_title.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	menu_body.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	menu_body.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	menu_body.add_theme_font_size_override("font_size", 17)
 	overlay.color.a = 1.0
 	var buttons: Array[Button] = []
 	for child in overlay.get_children():
@@ -549,7 +607,7 @@ func show_minimal_intro() -> void:
 	for button in buttons:
 		intro_layout.append({"button": button, "position": button.position, "size": button.size})
 		button.set_anchors_and_offsets_preset(Control.PRESET_TOP_LEFT)
-	start_button.text = "ENTER STATION 04"
+	start_button.text = "TAKE THE ROAD"
 	_layout_intro()
 
 

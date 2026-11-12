@@ -13,6 +13,12 @@ func _ready() -> void:
     # placements in this cleaner map without changing hazard or detector math.
     make_anomaly(Vector3(-3.5, 0.15, -14), 1.9)
     make_anomaly(Vector3(12.0, 0.15, -38), 2.2)
+    # The currently selected area's survival severity is configurable, but
+    # GROUNDED preserves the old combat and stamina values exactly.
+    survival_rules = Node.new()
+    survival_rules.set_script(load("res://scripts/runtime/area_survival_rules.gd"))
+    survival_rules.set("game", self)
+    add_child(survival_rules)
     # Visual-only biome dressing; no procedural edits to authored terrain or roads.
     var world_detail := Node3D.new()
     world_detail.name = "WorldDetail21"
@@ -27,12 +33,16 @@ func _ready() -> void:
     spatial_audio.set_script(load("res://scripts/runtime/station04_ambient_cues.gd"))
     spatial_audio.set("game", self)
     add_child(spatial_audio)
+    var story_sets := Node3D.new()
+    story_sets.name = "AbandonedLife23"
+    story_sets.set_script(load("res://scripts/runtime/station04_story_sets.gd"))
+    add_child(story_sets)
     # Explain the new space without changing any of the player or HUD systems.
     if is_instance_valid(hud):
-        hud.title.text = "ASHFALL 2.1  /  FIELD UNIT 04"
-        hud.menu_title.text = "ASHFALL 2.1"
+        hud.title.text = "STATION 04  /  THE OUTER ROAD"
+        hud.menu_title.text = "ASHFALL 2.3"
         hud.menu_title.add_theme_font_size_override("font_size", 50)
-        hud.menu_body.text = "STATION 04  /  FIELD EXPEDITION\n\nRecover the sample. Scavenge what you can. Find your way back.\n[J] FIELD RECORD    /    [F10] HUD FINISH"
+        hud.menu_body.text = "STATION 04  /  FIELD EXPEDITION\n\nThe road goes quiet after the last house.\nFind the sample. Save what you can. Get home before dark.\n[J] NOTEBOOK    /    [TAB] PACK    /    [F10] CLOTH FINISH"
         hud.show_minimal_intro()
     if is_instance_valid(player):
         player.camera.far = station_render_distance

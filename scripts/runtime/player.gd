@@ -103,6 +103,11 @@ func can_stand() -> bool:
 func _physics_process(delta: float) -> void:
 	if not active:
 		return
+	var root := get_parent() as Node3D
+	var rules := root.get("survival_rules") as Node if root != null else null
+	var drain := float(rules.call("stamina_cost_factor")) if is_instance_valid(rules) else 1.0
+	var recover := float(rules.call("stamina_recovery_factor")) if is_instance_valid(rules) else 1.0
+	var hearing := float(rules.call("hearing_factor")) if is_instance_valid(rules) else 1.0
 	var direction := Input.get_vector("move_left", "move_right", "move_forward", "move_back")
 	var wants_crouch:=Input.is_action_pressed("crouch")
 	if wants_crouch:
@@ -121,11 +126,11 @@ func _physics_process(delta: float) -> void:
 		speed *= 0.8
 	if sprint:
 		stamina_delay=0.8
-		stamina=clampf(stamina-24.0*delta,0,100)
+		stamina=clampf(stamina-24.0*drain*delta,0,100)
 	else:
 		stamina_delay=maxf(stamina_delay-delta,0)
 		if stamina_delay<=0:
-			stamina=clampf(stamina+16.0*delta,0,100)
+			stamina=clampf(stamina+16.0*recover*delta,0,100)
 	if stamina <= 0:
 		sprint_exhausted = true
 	var forward := transform.basis * Vector3(direction.x, 0, direction.y)
@@ -145,7 +150,7 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 	var horizontal_speed:=Vector2(velocity.x,velocity.z).length()
 	var moving := horizontal_speed > 0.3 and is_on_floor()
-	noise_radius = (2.0 if crouching else (10.0 if sprint else 5.0)) if moving else 0.0
+	noise_radius = ((2.0 if crouching else (10.0 if sprint else 5.0)) * hearing) if moving else 0.0
 	if torch.visible:
 		battery_charge=maxf(0,battery_charge-delta*0.28)
 		if battery_charge<=0:

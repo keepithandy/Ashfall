@@ -32,6 +32,7 @@ var open_container: StaticBody3D
 var baking_editable_world := false
 var areas: Node3D
 var crossroads: Node3D
+var survival_rules: Node
 
 func material(color: Color, roughness: float = 0.9, emission: float = 0.0) -> StandardMaterial3D:
 	var mat := StandardMaterial3D.new()
@@ -554,7 +555,7 @@ func pause_game() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	hud.menu_title.text = "EXPEDITION PAUSED"
 	hud.menu_title.add_theme_font_size_override("font_size", 48)
-	hud.menu_body.text = "WASD — Move    /    Mouse — Look\nSHIFT — Sprint    /    SPACE — Jump    /    CTRL — Crouch\nF — Torch    /    R — Battery    /    G — Food    /    H — Bandage\nE — Search    /    TAB — Inventory    /    Q — Use held item\n\nRecover the sample at Station 04, then use the entry terminal.\nThe village creature hears running. Crouching is quieter."
+	hud.menu_body.text = "WASD — Move    /    Mouse — Look\nSHIFT — Sprint    /    SPACE — Jump    /    CTRL — Crouch\nF — Torch    /    R — Battery    /    G — Food    /    H — Bandage\nE — Search    /    TAB — Pack    /    J — Notes    /    Q — Use held item\nF6 — Exposure    /    F9 — Hardcore    /    F10 — Worn finish\n\nKeep quiet around the houses. Follow the road home."
 	hud.start_button.text = "RESUME EXPEDITION"
 	hud.overlay.show()
 
@@ -792,7 +793,8 @@ func _process(delta: float) -> void:
 		if distance < radius + 1.2:
 			hazard_strength = maxf(hazard_strength, 1.0 - distance / (radius + 1.2))
 	if hazard_strength > 0.08:
-		player.health = maxf(0, player.health - hazard_strength * 28 * delta)
+		var exposure := float(survival_rules.call("incoming_damage_factor")) if is_instance_valid(survival_rules) else 1.0
+		player.health = maxf(0, player.health - hazard_strength * 28.0 * exposure * delta)
 		hud.interaction.text = "UNSTABLE FIELD — MOVE AWAY"
 	if player.health <= 0:
 		finish_expedition(false)

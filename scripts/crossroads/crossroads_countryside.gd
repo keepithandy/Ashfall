@@ -4,8 +4,7 @@ extends Node3D
 ## Four touching coarse collision-matched fields extend the authored 2m
 ## settlement: no distant see-through cliffs and no fake road-end void.
 const PROFILE = preload("res://scripts/crossroads/crossroads_profile.gd")
-const FIELD = preload("res://assets/materials/forest_ground_05/albedo.jpg")
-const ROUGH = preload("res://assets/materials/forest_ground_05/roughness.jpg")
+const EARTH_SURFACE = preload("res://assets/materials/crossroads_earth.tres")
 const BARE = preload("res://scenes/nature/bare_tree.tscn")
 const PINE = preload("res://scenes/nature/forest_pine.tscn")
 var land = PROFILE.new()
@@ -68,16 +67,8 @@ func _field(parent: Node3D, label: String, west: float, east: float, north: floa
     arrays[Mesh.ARRAY_INDEX] = triangles
     var mesh := ArrayMesh.new()
     mesh.add_surface_from_arrays(Mesh.PRIMITIVE_TRIANGLES, arrays)
-    var soil := StandardMaterial3D.new()
-    soil.albedo_texture = FIELD
-    soil.roughness_texture = ROUGH
-    soil.roughness = 1.0
-    soil.vertex_color_use_as_albedo = true
-    soil.uv1_triplanar = true
-    soil.uv1_world_triplanar = true
-    soil.uv1_scale = Vector3(0.42, 0.42, 0.42)
-    soil.texture_filter = BaseMaterial3D.TEXTURE_FILTER_LINEAR_WITH_MIPMAPS_ANISOTROPIC
-    mesh.surface_set_material(0, soil)
+    # Identical world-space material eliminates the grey/white outer-field seam.
+    mesh.surface_set_material(0, EARTH_SURFACE)
     var ground := StaticBody3D.new()
     ground.name = label
     ground.collision_layer = 1

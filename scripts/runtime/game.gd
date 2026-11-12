@@ -32,6 +32,7 @@ var open_container: StaticBody3D
 var baking_editable_world := false
 var areas: Node3D
 var crossroads: Node3D
+var survival_rules: Node
 
 func material(color: Color, roughness: float = 0.9, emission: float = 0.0) -> StandardMaterial3D:
 	var mat := StandardMaterial3D.new()
@@ -792,7 +793,8 @@ func _process(delta: float) -> void:
 		if distance < radius + 1.2:
 			hazard_strength = maxf(hazard_strength, 1.0 - distance / (radius + 1.2))
 	if hazard_strength > 0.08:
-		player.health = maxf(0, player.health - hazard_strength * 28 * delta)
+		var exposure := float(survival_rules.call("incoming_damage_factor")) if is_instance_valid(survival_rules) else 1.0
+		player.health = maxf(0, player.health - hazard_strength * 28.0 * exposure * delta)
 		hud.interaction.text = "UNSTABLE FIELD — MOVE AWAY"
 	if player.health <= 0:
 		finish_expedition(false)

@@ -555,7 +555,7 @@ func pause_game() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	hud.menu_title.text = "EXPEDITION PAUSED"
 	hud.menu_title.add_theme_font_size_override("font_size", 48)
-	hud.menu_body.text = "WASD — Move    /    Mouse — Look\\nSHIFT — Sprint    /    SPACE — Jump    /    CTRL — Crouch\\nF — Torch    /    R — Battery    /    G — Food    /    H — Bandage\\nE — Search    /    TAB — Pack    /    J — Notes    /    Q — Use held item\\nF6 — Exposure    /    F9 — Hardcore    /    F10 — Worn finish\\n\\nKeep quiet around the houses. Follow the road home."
+	hud.menu_body.text = "WASD — Move    /    Mouse — Look\nSHIFT — Sprint    /    SPACE — Jump    /    CTRL — Crouch\nF — Torch    /    R — Battery    /    G — Food    /    H — Bandage\nE — Search    /    TAB — Pack    /    J — Notes    /    Q — Use held item\nF6 — Exposure    /    F9 — Hardcore    /    F10 — Worn finish\n\nKeep quiet around the houses. Follow the road home."
 	hud.start_button.text = "RESUME EXPEDITION"
 	hud.overlay.show()
 

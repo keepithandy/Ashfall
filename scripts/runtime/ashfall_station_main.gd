@@ -15,10 +15,10 @@ func _ready() -> void:
     make_anomaly(Vector3(12.0, 0.15, -38), 2.2)
     # Explain the new space without changing any of the player or HUD systems.
     if is_instance_valid(hud):
-        hud.title.text = "ASHFALL  /  STATION 04 FIELD UNIT"
-        hud.menu_title.text = "ASHFALL / STATION 04"
+        hud.title.text = "ASHFALL 2.0  /  FIELD UNIT 04"
+        hud.menu_title.text = "ASHFALL 2.0"
         hud.menu_title.add_theme_font_size_override("font_size", 50)
-        hud.menu_body.text = "STATION 04 / FIELD DEPLOYMENT\n\nThree new houses stand ahead of the starting point.\nExplore the ochre workers house, green longhouse and white garden house.\nWalk through their interiors to test scale, materials and collision.\nRecover the research sample north of the station.\nStart the maintenance generator and retrieve the diagnostic.\nThe east service passage still connects to North Relay.\n\nWASD move  /  F flashlight  /  E interact  /  TAB inventory\nFollow the failing ward lights. Search the beds. Find a way back."
+        hud.menu_body.text = "STATION 04  /  FIELD EXPEDITION\n\nRecover the sample. Scavenge what you can. Find your way back.\n[F10] PERSONALIZE YOUR FIELD JOURNAL"
         hud.show_minimal_intro()
     if is_instance_valid(player):
         player.camera.far = station_render_distance

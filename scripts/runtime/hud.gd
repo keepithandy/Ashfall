@@ -23,6 +23,7 @@ var inventory_screen: Control
 var detector_status: Label
 var audio_panel: ColorRect
 var intro_layout: Array[Dictionary] = []
+var intro_label_layout: Dictionary = {}
 const FIELD_THEME_PATH := "user://ashfall_field_hud.cfg"
 const THEME_NAMES := ["FIELD JOURNAL", "SIGNAL RECEIVER", "WORN AMBER"]
 var footer_hint: Label
@@ -270,6 +271,8 @@ func _layout_hud() -> void:
 	else:
 		footer_hint.text = "[TAB] PACK  /  [E] USE  /  [F] LIGHT  /  [ESC] MENU  /  [F10] " + THEME_NAMES[field_theme_mode]
 	loot_panel.position = Vector2((w - loot_panel.size.x) * 0.5, (h - loot_panel.size.y) * 0.5)
+	if not intro_layout.is_empty():
+		_layout_intro()
 	queue_redraw()
 
 
@@ -496,9 +499,40 @@ func _draw() -> void:
 	if game.hazard_strength > 0:
 		draw_rect(Rect2(Vector2.ZERO, size), Color(0.52, 0.10, 0.04, game.hazard_strength * 0.15))
 
+func _layout_intro() -> void:
+	# Station 04 playtest splash: fit laptop and desktop windows without
+	# obscuring the journal briefing or clipping any menu action.
+	if intro_layout.is_empty():
+		return
+	var w := maxf(size.x, 720.0)
+	var h := maxf(size.y, 480.0)
+	var content_width := minf(720.0, w - 64.0)
+	menu_title.position = Vector2((w - content_width) * 0.5, maxf(42.0, h * 0.14))
+	menu_title.size = Vector2(content_width, 75.0)
+	menu_body.position = Vector2((w - content_width) * 0.5, menu_title.position.y + 94.0)
+	menu_body.size = Vector2(content_width, 105.0)
+	var button_width := minf(280.0, w - 80.0)
+	var button_top := minf(maxf(h * 0.60, menu_body.position.y + 124.0), h - 196.0)
+	for i in range(intro_layout.size()):
+		var button: Button = intro_layout[i]["button"]
+		button.position = Vector2((w - button_width) * 0.5, button_top + i * 58.0)
+		button.size = Vector2(button_width, 48.0)
+
+
 func show_minimal_intro() -> void:
-	menu_title.hide()
-	menu_body.hide()
+	if not intro_layout.is_empty():
+		return
+	intro_label_layout = {
+		"title_position": menu_title.position,
+		"title_size": menu_title.size,
+		"body_position": menu_body.position,
+		"body_size": menu_body.size
+	}
+	menu_title.show()
+	menu_body.show()
+	menu_title.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	menu_body.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	menu_body.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	overlay.color.a = 1.0
 	var buttons: Array[Button] = []
 	for child in overlay.get_children():
@@ -506,22 +540,30 @@ func show_minimal_intro() -> void:
 			buttons.append(child)
 		elif child is ColorRect and child != audio_panel:
 			child.hide()
-	for i in range(buttons.size()):
-		var button := buttons[i]
+	for button in buttons:
 		intro_layout.append({"button": button, "position": button.position, "size": button.size})
-		button.set_anchors_and_offsets_preset(Control.PRESET_CENTER)
-		button.position = overlay.size / 2 + Vector2(-140, -88 + i * 64)
-		button.size = Vector2(280, 48)
-	start_button.text = "PLAY"
+		button.set_anchors_and_offsets_preset(Control.PRESET_TOP_LEFT)
+	start_button.text = "ENTER STATION 04"
+	_layout_intro()
+
 
 func restore_menu_layout() -> void:
 	if intro_layout.is_empty():
 		return
 	menu_title.show()
 	menu_body.show()
+	menu_title.horizontal_alignment = HORIZONTAL_ALIGNMENT_LEFT
+	menu_body.horizontal_alignment = HORIZONTAL_ALIGNMENT_LEFT
+	menu_body.autowrap_mode = TextServer.AUTOWRAP_OFF
+	if not intro_label_layout.is_empty():
+		menu_title.position = intro_label_layout["title_position"]
+		menu_title.size = intro_label_layout["title_size"]
+		menu_body.position = intro_label_layout["body_position"]
+		menu_body.size = intro_label_layout["body_size"]
+		intro_label_layout.clear()
 	for entry in intro_layout:
-		var button: Button = entry.button
+		var button: Button = entry["button"]
 		button.set_anchors_and_offsets_preset(Control.PRESET_TOP_LEFT)
-		button.position = entry.position
-		button.size = entry.size
+		button.position = entry["position"]
+		button.size = entry["size"]
 	intro_layout.clear()

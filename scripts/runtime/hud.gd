@@ -1,5 +1,5 @@
 extends Control
-const Skin = preload("res://scripts/runtime/weathered_ui_style.gd")
+const FieldSkin = preload("res://scripts/runtime/weathered_ui_style.gd")
 
 var game: Node3D
 var title: Label
@@ -38,9 +38,9 @@ var signal_heading: Label
 var vital_status: Label
 var field_activity: Label
 var field_theme_mode: int = 0 # Personal field journal by default.
-var hud_pale := Skin.PAPER_LIGHT
-var hud_muted := Skin.PAPER_DARK
-var hud_accent := Skin.RUST
+var hud_pale := FieldSkin.PAPER_LIGHT
+var hud_muted := FieldSkin.PAPER_DARK
+var hud_accent := FieldSkin.RUST
 var hud_panel := Color(0.11, 0.12, 0.095, 0.72)
 var hud_border := Color(0.39, 0.36, 0.29, 0.62)
 
@@ -82,10 +82,10 @@ func _ready() -> void:
 	detector_status.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	footer_hint = label_at("[TAB] PACK  /  [E] INTERACT  /  [F] LIGHT  /  [ESC] PAUSE  /  [F10] THEME", Vector2.ZERO, 11, muted)
 	journal_stamp = label_at("ENTRY RECORD  /  00:00", Vector2.ZERO, 11, muted)
-	objective_heading = label_at("WHAT STILL NEEDS DOING", Vector2.ZERO, 11, Skin.RUST)
-	kit_heading = label_at("IN MY POCKETS", Vector2.ZERO, 11, Skin.RUST)
-	vitals_heading = label_at("HOW I AM HOLDING UP", Vector2.ZERO, 11, Skin.RUST)
-	signal_heading = label_at("THE METER  /  WEATHER", Vector2.ZERO, 11, Skin.RUST)
+	objective_heading = label_at("WHAT STILL NEEDS DOING", Vector2.ZERO, 11, FieldSkin.RUST)
+	kit_heading = label_at("IN MY POCKETS", Vector2.ZERO, 11, FieldSkin.RUST)
+	vitals_heading = label_at("HOW I AM HOLDING UP", Vector2.ZERO, 11, FieldSkin.RUST)
+	signal_heading = label_at("THE METER  /  WEATHER", Vector2.ZERO, 11, FieldSkin.RUST)
 	vital_status = label_at("STATUS  /  STABLE", Vector2.ZERO, 11, muted)
 	field_activity = label_at("MOVEMENT  /  QUIET", Vector2.ZERO, 11, muted)
 	health_bar = make_bar(Vector2.ZERO, Color("aa6052"))
@@ -94,11 +94,11 @@ func _ready() -> void:
 	overlay.color = Color(0.038, 0.040, 0.032, 0.96)
 	overlay.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	add_child(overlay)
-	Skin.paper_texture(overlay, false)
+	FieldSkin.paper_texture(overlay, false)
 	var stripe := ColorRect.new()
 	stripe.position = Vector2(100, 130)
 	stripe.size = Vector2(4, 420)
-	stripe.color = Skin.RUST
+	stripe.color = FieldSkin.RUST
 	overlay.add_child(stripe)
 	menu_title = Label.new()
 	menu_title.position = Vector2(132, 150)
@@ -176,9 +176,9 @@ func _apply_field_palette() -> void:
 	# All three palettes keep the same functional data and contrast hierarchy.
 	match field_theme_mode:
 		0: # Field journal: stained paper, weathered brass, blackened leather.
-			hud_pale = Skin.PAPER_LIGHT
-			hud_muted = Skin.PAPER_DARK
-			hud_accent = Skin.RUST
+			hud_pale = FieldSkin.PAPER_LIGHT
+			hud_muted = FieldSkin.PAPER_DARK
+			hud_accent = FieldSkin.RUST
 			hud_panel = Color(0.105, 0.112, 0.088, 0.74)
 			hud_border = Color(0.38, 0.35, 0.28, 0.60)
 		1: # Damp paper: softened ink and faded olive field canvas.
@@ -348,11 +348,11 @@ func _draw_field_panel(rect: Rect2) -> void:
 func build_audio_panel(pale: Color, muted: Color) -> void:
 	audio_panel = ColorRect.new()
 	audio_panel.name = "AudioSettings"
-	audio_panel.color = Skin.CANVAS
+	audio_panel.color = FieldSkin.CANVAS
 	audio_panel.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	audio_panel.mouse_filter = Control.MOUSE_FILTER_STOP
 	overlay.add_child(audio_panel)
-	Skin.paper_texture(audio_panel, false)
+	FieldSkin.paper_texture(audio_panel, false)
 	var heading := Label.new()
 	heading.name = "SoundTitle"
 	heading.position = Vector2(138, 115)
@@ -388,7 +388,7 @@ func build_audio_panel(pale: Color, muted: Color) -> void:
 		audio_panel.add_child(value_label)
 		var slider := HSlider.new()
 		slider.name = bus_name + "Slider"
-		slider.modulate = Skin.PAPER_DARK
+		slider.modulate = FieldSkin.PAPER_DARK
 		slider.position = Vector2(440, y + 2)
 		slider.size = Vector2(380, 26)
 		slider.min_value = 0
@@ -413,20 +413,20 @@ func _audio_level_changed(value: float, bus_name: String, value_label: Label) ->
 	game.audio_settings.set_level(bus_name, value / 100.0)
 
 func style_button(button: Button) -> void:
-	Skin.control_button(button, false)
+	FieldSkin.control_button(button, false)
 
 func build_loot_panel(pale: Color, muted: Color) -> void:
 	loot_panel=Panel.new()
 	loot_panel.position=Vector2(390,135)
 	loot_panel.size=Vector2(500,450)
 	var style:=StyleBoxFlat.new()
-	style.bg_color=Skin.CANVAS
-	style.border_color=Skin.RUST
+	style.bg_color=FieldSkin.CANVAS
+	style.border_color=FieldSkin.RUST
 	style.set_border_width_all(2)
 	style.set_corner_radius_all(2)
 	loot_panel.add_theme_stylebox_override("panel",style)
 	add_child(loot_panel)
-	Skin.paper_texture(loot_panel, false)
+	FieldSkin.paper_texture(loot_panel, false)
 	var title_label:=Label.new()
 	title_label.position=Vector2(30,26)
 	title_label.text="WHAT WAS LEFT BEHIND"

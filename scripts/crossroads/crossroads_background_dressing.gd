@@ -16,6 +16,7 @@ const BRAMBLE = preload("res://scenes/nature/dry_bramble.tscn")
 const GRASS = preload("res://scenes/extra_dressing/dry_grass_tuft.tscn")
 const FIELD_SHADER = preload("res://assets/shaders/crossroads_field_rows.gdshader")
 const SOIL = preload("res://assets/materials/forest_ground_05/albedo.jpg")
+const OLD_WOOD = preload("res://assets/nature/bark.tres")
 const CELL := 170.0
 
 const SOURCES := {
@@ -70,6 +71,8 @@ var field_triangles := 0
 var draw_batches := 0
 var road_margin_checks := 0
 var prototypes_used := 0
+var roadside_poles := 0
+var wires_drawn := 0
 
 
 func _ready() -> void:
@@ -88,6 +91,9 @@ func build() -> void:
     var vegetation := Node3D.new()
     vegetation.name = "BatchedVegetation"
     root.add_child(vegetation)
+    var powerline := Node3D.new()
+    powerline.name = "RoadsideUtilityLine"
+    root.add_child(powerline)
 
     rng.seed = 231118
     placements.clear()
@@ -100,12 +106,15 @@ func build() -> void:
     draw_batches = 0
     road_margin_checks = 0
     prototypes_used = 0
+    roadside_poles = 0
+    wires_drawn = 0
     _field_mosaic(patches)
     _shelterbelts()
     _small_woodlands()
     _field_margins()
     _road_edges()
     _build_batches(vegetation)
+    _extend_utility_line(powerline)
 
 
 func _ground(x: float, z: float) -> float:
@@ -367,3 +376,86 @@ func _build_batches(parent: Node3D) -> void:
                 group.add_child(batch)
                 draw_batches += 1
         sample.free()
+
+
+func _extend_utility_line(parent: Node3D) -> void:
+    # Continue the EXACT wood-pole alignment of the existing village,
+    # which stopped abruptly at z = -171 and +179. Two quiet stretches of
+    # aged poles make the distant road read as a real through route.
+    # Single instanced wire mesh avoids hundreds of draw calls.
+    var segments: Array[Transform3D] = []
+    var pole_mesh := CylinderMesh.new()
+    pole_mesh.top_radius = 0.085
+    pole_mesh.bottom_radius = 0.14
+    pole_mesh.height = 6.45
+    pole_mesh.radial_segments = 8
+    pole_mesh.material = OLD_WOOD
+
+    var cross_arm := BoxMesh.new()
+    cross_arm.size = Vector3(0.8, 0.12, 0.13)
+    cross_arm.material = OLD_WOOD
+
+    for travel_dir in [-1.0, 1.0]:
+        var origin_z: float = -171.0 if float(travel_dir) < 0.0 else 179.0
+        var origin_x: float = land.main_road_x(origin_z) + 6.5
+        var previous := Vector3(origin_x, _ground(origin_x, origin_z), origin_z)
+        for step in range(1, 10):
+            var z: float = origin_z + float(travel_dir) * float(step) * 50.0
+            var x: float = land.main_road_x(z) + 6.5
+            var current := Vector3(x, _ground(x, z), z)
+            var post := StaticBody3D.new()
+            post.name = "OldRoadPole_%d_%02d" % [int(travel_dir), step]
+            post.position = current
+            var trunk := MeshInstance3D.new()
+            trunk.name = "WeatheredTimber"
+            trunk.mesh = pole_mesh
+            trunk.position.y = 3.225
+            post.add_child(trunk)
+            var arm := MeshInstance3D.new()
+            arm.name = "Crossarm"
+            arm.mesh = cross_arm
+            arm.position.y = 6.18
+            post.add_child(arm)
+            var collider := CollisionShape3D.new()
+            var hit := CylinderShape3D.new()
+            hit.height = 6.45
+            hit.radius = 0.14
+            collider.shape = hit
+            collider.position.y = 3.225
+            post.add_child(collider)
+            parent.add_child(post)
+            roadside_poles += 1
+            for lateral in [-0.24, 0.24]:
+                for piece in range(8):
+                    var t0 := float(piece) / 8.0
+                    var t1 := float(piece + 1) / 8.0
+                    var start := previous.lerp(current, t0) + Vector3(float(lateral), 6.25 - 0.32 * sin(t0 * PI), 0)
+                    var finish := previous.lerp(current, t1) + Vector3(float(lateral), 6.25 - 0.32 * sin(t1 * PI), 0)
+                    var tangent := finish - start
+                    segments.append(Transform3D(
+                        Basis(Quaternion(Vector3.UP, tangent.normalized())).scaled(Vector3(1.0, tangent.length(), 1.0)),
+                        (start + finish) * 0.5
+                    ))
+                    wires_drawn += 1
+            previous = current
+    var wire_mat := StandardMaterial3D.new()
+    wire_mat.albedo_color = Color(0.16, 0.16, 0.15)
+    wire_mat.metallic = 0.05
+    wire_mat.roughness = 0.84
+    var wire := CylinderMesh.new()
+    wire.top_radius = 0.009
+    wire.bottom_radius = 0.009
+    wire.height = 1.0
+    wire.radial_segments = 5
+    wire.material = wire_mat
+    var mm := MultiMesh.new()
+    mm.transform_format = MultiMesh.TRANSFORM_3D
+    mm.mesh = wire
+    mm.instance_count = segments.size()
+    for i in range(segments.size()):
+        mm.set_instance_transform(i, segments[i])
+    var visual := MultiMeshInstance3D.new()
+    visual.name = "WeatheredWires"
+    visual.multimesh = mm
+    visual.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
+    parent.add_child(visual)

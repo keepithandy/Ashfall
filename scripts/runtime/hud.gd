@@ -22,6 +22,7 @@ var loot_contents: Label
 var take_button: Button
 var inventory_screen: Control
 var field_record: Control
+var interface_foley: Node
 var detector_status: Label
 var audio_panel: ColorRect
 var intro_layout: Array[Dictionary] = []
@@ -137,6 +138,9 @@ func _ready() -> void:
 	inventory_screen=load("res://scripts/runtime/inventory_screen.gd").new()
 	inventory_screen.game=game
 	add_child(inventory_screen)
+	interface_foley = Node.new()
+	interface_foley.set_script(load("res://scripts/runtime/weathered_ui_foley.gd"))
+	add_child(interface_foley)
 	field_record=load("res://scripts/runtime/expedition_field_record.gd").new()
 	field_record.game=game
 	add_child(field_record)
@@ -471,6 +475,8 @@ func show_loot(contents: Dictionary) -> void:
 			rows.append(str(ItemCatalog.entry(id).get("name", id)).to_upper() + "    x " + str(count))
 	loot_contents.text = "NOTHING LEFT" if rows.is_empty() else "\n\n".join(rows)
 	take_button.disabled = rows.is_empty()
+	if not loot_panel.visible and is_instance_valid(interface_foley):
+		interface_foley.call("latch")
 	loot_panel.show()
 
 func make_bar(at: Vector2, tint: Color) -> ProgressBar:

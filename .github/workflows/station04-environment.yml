@@ -12,6 +12,7 @@ on:
       - 'scripts/runtime/expedition_field_record.gd'
       - 'scripts/runtime/station04_world_detail.gd'
       - 'scripts/runtime/station04_visual_budget.gd'
+      - 'scripts/runtime/station04_ambient_cues.gd'
       - 'scripts/runtime/village_stalker.gd'
       - 'scripts/runtime/hud.gd'
       - 'scripts/runtime/inventory_screen.gd'
@@ -50,6 +51,7 @@ jobs:
           /tmp/Godot_v4.7.2-stable_linux.x86_64 --headless --path . --check-only --script res://scripts/runtime/station04_world_detail.gd
           /tmp/Godot_v4.7.2-stable_linux.x86_64 --headless --path . --check-only --script res://scripts/runtime/station04_visual_budget.gd
           /tmp/Godot_v4.7.2-stable_linux.x86_64 --headless --path . --check-only --script res://scripts/runtime/expedition_field_record.gd
+          /tmp/Godot_v4.7.2-stable_linux.x86_64 --headless --path . --check-only --script res://scripts/runtime/station04_ambient_cues.gd
           /tmp/Godot_v4.7.2-stable_linux.x86_64 --headless --path . --check-only --script res://tests/check_station_immersion.gd
       - name: Import project assets
         shell: bash

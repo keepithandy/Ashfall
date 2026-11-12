@@ -269,7 +269,7 @@ func _road_edges() -> void:
     # extending into open empty space. Keep a clear carriageway and verges.
     for sign in [-1.0, 1.0]:
         for j in range(235):
-            var z := sign * (226.0 + float(j) * 1.85)
+            var z: float = float(sign) * (226.0 + float(j) * 1.85)
             var x := land.main_road_x(z)
             var side := -1.0 if j % 2 == 0 else 1.0
             var offset := side * rng.randf_range(11.5, 23.5)

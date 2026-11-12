@@ -27,9 +27,14 @@ const HOMES := [
 ]
 
 const MAIN_ROAD = [
-    Vector2(-2.0, -206.0), Vector2(-4.0, -160.0), Vector2(-1.0, -108.0),
+    # Uninterrupted country road keeps going beyond the village; avoid a
+    # dead-end texture edge in the 650m camera view.
+    Vector2(-3.0, -730.0), Vector2(-5.0, -570.0),
+    Vector2(-4.0, -390.0), Vector2(-2.0, -206.0),
+    Vector2(-4.0, -160.0), Vector2(-1.0, -108.0),
     Vector2(2.0, -55.0), Vector2(4.0, 9.0), Vector2(2.0, 67.0),
-    Vector2(-3.0, 127.0), Vector2(-2.0, 206.0)
+    Vector2(-3.0, 127.0), Vector2(-2.0, 206.0),
+    Vector2(1.0, 380.0), Vector2(-1.0, 570.0), Vector2(3.0, 730.0)
 ]
 const WEST_CART_TRACK = [
     Vector2(-2.0, 198.0), Vector2(-28.0, 195.0), Vector2(-87.0, 192.0),

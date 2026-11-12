@@ -28,7 +28,16 @@ const PLACES := [
      "detail": "The utility pole fell toward the perimeter, not away from it. The line was cut before the station lights failed."},
     {"id": "mailbox", "at": Vector2(-62.0, -49.0), "radius": 7.0,
      "title": "UNCLAIMED MAIL",
-     "detail": "A mailbox sits at the forest edge. The house it served is no longer standing."}
+     "detail": "A mailbox sits at the forest edge. The house it served is no longer standing."},
+    {"id": "washing", "at": Vector2(-49.0, 63.0), "radius": 7.0,
+     "title": "LAUNDRY ON THE LINE",
+     "detail": "The washing was left to dry. Nobody took it down when the road was closed. There is still a chair beside the empty garden."},
+    {"id": "yard_cable", "at": Vector2(56.0, -29.0), "radius": 8.0,
+     "title": "UNFINISHED REPAIR",
+     "detail": "A cable tray sits where the workers dropped it. The drainage ditch and broken steel may hide a way around the service road."},
+    {"id": "table", "at": Vector2(67.0, 54.0), "radius": 7.5,
+     "title": "LAST ROADSIDE STOP",
+     "detail": "A rotten picnic table faces the abandoned shelter. It is too far from the houses to have been anyone's garden."}
 ]
 
 

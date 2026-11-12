@@ -76,6 +76,27 @@ func _check() -> void:
             issues.append("Road, verge or rainwater detail is missing")
         if (roads.get("route_samples") as Array).size() < 300:
             issues.append("Road meshes have not been sampled densely enough")
+        # Verify old asphalt and both rural tracks hug the physical
+        # collision terrain instead of floating or disappearing beneath it.
+        var routes_node := roads.get_node_or_null("Routes") as Node3D
+        if routes_node != null:
+            for label in ["VillageMainRoad", "WestCartTrack", "EastFieldLane"]:
+                var route := routes_node.get_node_or_null(label) as Node3D
+                if route == null:
+                    continue
+                var layer := route.get_node_or_null("CompactedSurface") as MeshInstance3D
+                if layer == null or layer.mesh == null:
+                    issues.append("Missing physical road surface for " + label)
+                    continue
+                var arrays: Array = layer.mesh.surface_get_arrays(0)
+                var vertices: PackedVector3Array = arrays[Mesh.ARRAY_VERTEX]
+                for n in range(0, vertices.size(), 36):
+                    var point: Vector3 = vertices[n]
+                    var above_ground := point.y - land.surface_height_at(point.x, point.z)
+                    if absf(above_ground - 0.034) > 0.02:
+                        issues.append("Road intersects the terrain at " + label)
+                        break
+
     if village == null:
         issues.append("Homestead level dressing is absent")
     else:
@@ -104,6 +125,67 @@ func _check() -> void:
                     issues.append("A new house has no joined pitched roof")
                 elif int(house.get("furnished_count")) < 6:
                     issues.append("A new house is an empty undecorated box")
+            # Grade audit: compare the ACTUAL instanced house floor
+            # positions and the four rotated foundation corners with the
+            # exact same terrain profile used to build the collision mesh.
+            for site in PROFILE.HOMES:
+                var plot := homesteads.get_node_or_null(str(site["name"])) as Node3D
+                if plot == null:
+                    issues.append("Missing authored homestead: " + str(site["name"]))
+                    continue
+                var home := plot.get_node_or_null("Residence") as Node3D
+                if home == null:
+                    issues.append("Missing residence at " + str(site["name"]))
+                    continue
+                var pad_height := land.site_floor_height(site)
+                if absf(home.position.y - (pad_height + 0.04)) > 0.015:
+                    issues.append("Foundation not on graded pad at " + str(site["name"]))
+                var footprint := land._site_footprint(site)
+                var yaw := float(site["yaw"])
+                for x_side in [-0.90, 0.90]:
+                    for z_side in [-0.90, 0.90]:
+                        var lx := footprint.x * float(x_side)
+                        var lz := footprint.y * float(z_side)
+                        var wx := float(site["x"]) + cos(yaw) * lx + sin(yaw) * lz
+                        var wz := float(site["z"]) - sin(yaw) * lx + cos(yaw) * lz
+                        if absf(land.surface_height_at(wx, wz) - pad_height) > 0.08:
+                            issues.append("Terrain intersects rotated house footprint at " + str(site["name"]))
+                            break
+            # Long fence rails/collision must follow the land in short
+            # segments, not form a high invisible dam over a sloping yard.
+            var contoured_fences := 0
+            var contoured_beds := 0
+            for plot in homesteads.get_children():
+                for child in plot.get_children():
+                    if str(child.name).begins_with("PrivacyFence_"):
+                        contoured_fences += 1
+                        var segments := 0
+                        for part in child.get_children():
+                            if str(part.name).begins_with("FenceSegmentCollision_"):
+                                segments += 1
+                                var world_pos := child.to_global(part.position)
+                                var expected_y := land.surface_height_at(world_pos.x, world_pos.z) + 0.76
+                                if absf(world_pos.y - expected_y) > 0.15:
+                                    issues.append("Fence has buried/floating collision at " + str(plot.name))
+                                    break
+                        if segments < 1:
+                            issues.append("Fence missing terrain-following collision at " + str(plot.name))
+                    elif child.name == "TendedThenAbandonedBed":
+                        contoured_beds += 1
+                        var bed := child as MeshInstance3D
+                        if bed.mesh == null:
+                            issues.append("Garden bed lacks surface mesh at " + str(plot.name))
+                            continue
+                        var arrays: Array = bed.mesh.surface_get_arrays(0)
+                        var vertices: PackedVector3Array = arrays[Mesh.ARRAY_VERTEX]
+                        for k in range(0, vertices.size(), 3):
+                            var v: Vector3 = vertices[k]
+                            var delta := v.y - land.surface_height_at(v.x, v.z)
+                            if delta < 0.018 or delta > 0.12:
+                                issues.append("Garden bed intersects ground at " + str(plot.name))
+                                break
+            if contoured_fences != 60 or contoured_beds != 36:
+                issues.append("Incomplete terrain-following fence or garden surfaces")
             for plot in homesteads.get_children():
                 var gate_count := 0
                 for post in plot.get_children():

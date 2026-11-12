@@ -13,6 +13,7 @@ on:
       - 'scripts/runtime/area_survival_rules.gd'
       - 'scripts/runtime/weathered_ui_style.gd'
       - 'scripts/runtime/weathered_ui_grain.gd'
+      - 'scripts/runtime/weathered_ui_foley.gd'
       - 'scripts/runtime/game.gd'
       - 'scripts/runtime/player.gd'
       - 'scripts/runtime/expedition_field_record.gd'
@@ -64,6 +65,7 @@ jobs:
           /tmp/Godot_v4.7.2-stable_linux.x86_64 --headless --path . --check-only --script res://scripts/runtime/area_survival_rules.gd
           /tmp/Godot_v4.7.2-stable_linux.x86_64 --headless --path . --check-only --script res://scripts/runtime/weathered_ui_style.gd
           /tmp/Godot_v4.7.2-stable_linux.x86_64 --headless --path . --check-only --script res://scripts/runtime/weathered_ui_grain.gd
+          /tmp/Godot_v4.7.2-stable_linux.x86_64 --headless --path . --check-only --script res://scripts/runtime/weathered_ui_foley.gd
       - name: Import project assets
         shell: bash
         run: |

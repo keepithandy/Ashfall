@@ -1,0 +1,133 @@
+extends SceneTree
+## Crossroads 2.3 map acceptance: actual first-person walkthrough rather than
+## screenshot-only dressing. No Generator / Anomaly / objective loop.
+## Run: godot --headless --path . --script res://tests/check_crossroads_village.gd
+const PROFILE = preload("res://scripts/crossroads/crossroads_profile.gd")
+
+
+func _initialize() -> void:
+    call_deferred("_check")
+
+
+func _check() -> void:
+    var issues: Array[String] = []
+    var scene := load("res://scenes/crossroads_main.tscn") as PackedScene
+    if scene == null:
+        push_error("Crossroads 2.3 main scene does not load")
+        quit(1)
+        return
+    var level := scene.instantiate() as Node3D
+    root.add_child(level)
+    await physics_frame
+    var field := level.get_node_or_null("Landscape/WalkableGround") as StaticBody3D
+    var roads := level.get_node_or_null("Landscape/OldRoadNetwork") as Node3D
+    var village := level.get_node_or_null("Landscape/SettledCountry") as Node3D
+    var actor := level.get("player") as CharacterBody3D
+    var land = PROFILE.new()
+    if field == null or field.get_node_or_null("WalkableTerrainCollision") == null:
+        issues.append("The terrain is not a physically walkable continuous mesh")
+    elif int(field.get("vertex_count")) < 37000 or int(field.get("cell_count")) != 37800:
+        issues.append("Missing the detailed 2m collision-matched landscape")
+    else:
+        var terrain_mesh := field.get_node("WalkableTerrainVisual") as MeshInstance3D
+        var collision := field.get_node("WalkableTerrainCollision") as CollisionShape3D
+        if terrain_mesh.mesh == null or collision.shape == null:
+            issues.append("Terrain visual or matching collision is empty")
+    if roads == null:
+        issues.append("Three-road network missing")
+    else:
+        var routes := roads.get_node_or_null("Routes")
+        if routes == null:
+            issues.append("There are no connected physical route surfaces")
+        else:
+            for label in ["VillageMainRoad", "WestCartTrack", "EastFieldLane"]:
+                if routes.get_node_or_null(label) == null:
+                    issues.append("A road route is absent: " + label)
+        if int(roads.get("road_surfaces")) != 9 or int(roads.get("puddles")) != 25:
+            issues.append("Road, verge or rainwater detail is missing")
+        if (roads.get("route_samples") as Array).size() < 300:
+            issues.append("Road meshes have not been sampled densely enough")
+    if village == null:
+        issues.append("Homestead level dressing is absent")
+    else:
+        var homesteads := village.get_node_or_null("Authoring/Homesteads") as Node3D
+        if homesteads == null or homesteads.get_child_count() != 12:
+            issues.append("Twelve authored properties were not placed")
+        if int(village.get("houses_placed")) != 12:
+            issues.append("The collection of varied houses is incomplete")
+        if int(village.get("walkable_gate_count")) != 12:
+            issues.append("Each plot needs an open street gate")
+        if int(village.get("fence_sections")) != 60:
+            issues.append("A boundary fence is absent or duplicated")
+        if int(village.get("garden_props")) < 150:
+            issues.append("Real yard detail and planted beds did not populate")
+        if int(village.get("trees_placed")) < 50 or int(village.get("undergrowth_placed")) < 330:
+            issues.append("The dense tree belt, gardens, and neglected hedges are missing")
+        if int(village.get("utility_poles")) != 8:
+            issues.append("Eight ordinary roadside poles or connecting wires missing")
+        if homesteads != null:
+            var first_type := homesteads.get_node_or_null("BlueSillSouth/Residence") as Node3D
+            var second_type := homesteads.get_node_or_null("BrickAndLeanTo/Residence") as Node3D
+            for house in [first_type, second_type]:
+                if house == null:
+                    issues.append("One of the two independently designed houses was not placed")
+                elif house.get_node_or_null("BuiltHouse/Shell/CorrugatedPitchedRoof") == null:
+                    issues.append("A new house has no joined pitched roof")
+                elif int(house.get("furnished_count")) < 6:
+                    issues.append("A new house is an empty undecorated box")
+            for plot in homesteads.get_children():
+                var gate_count := 0
+                for post in plot.get_children():
+                    if post.name == "OpenGatePost":
+                        gate_count += 1
+                if gate_count != 2:
+                    issues.append("One property has a closed or incomplete gate: " + str(plot.name))
+                    break
+    # No old plot-driving systems are even present in this scene.
+    for disallowed in ["Generator", "VillageStalker", "StationThreat", "ResearchSample", "Anomaly", "CrossroadsMaintenanceStation"]:
+        if level.find_child(disallowed, true, false) != null:
+            issues.append("Old gameplay system leaked into Crossroads: " + disallowed)
+    for label in level.find_children("*", "Label3D", true, false):
+        if label.visible:
+            issues.append("Floating gameplay label leaked into the environment")
+            break
+    if actor == null:
+        issues.append("No actual player controller in the new village")
+    else:
+        if not is_equal_approx(actor.camera.far, 650.0):
+            issues.append("Long village view distance was not configured")
+        if actor.position.y < land.surface_height_at(actor.position.x, actor.position.z) - 0.2:
+            issues.append("Walker begins beneath the terrain")
+        level.call("start_walking")
+        if not actor.active or level.get("cover").visible:
+            issues.append("Opening the environment does not restore physical control")
+        var old_position: Vector3 = actor.position
+        Input.action_press("move_forward")
+        for frame in range(70):
+            await physics_frame
+        Input.action_release("move_forward")
+        if actor.global_position.distance_to(old_position) < 1.0:
+            issues.append("The first-person walker cannot traverse the road")
+        if absf(actor.global_position.y - land.surface_height_at(actor.global_position.x, actor.global_position.z)) > 1.5:
+            issues.append("Movement on the actual ground is physically unstable")
+        level.call("pause_walking")
+        if actor.active or not level.get("cover").visible:
+            issues.append("Pause does not release player control")
+        # Entrance clearance through the new East Blue Sill homestead gate.
+        var direct := PhysicsRayQueryParameters3D.create(
+            Vector3(21.0, land.surface_height_at(21.0, 122.0) + 1.10, 122.0),
+            Vector3(39.5, land.surface_height_at(39.5, 122.0) + 1.10, 122.0))
+        direct.exclude = [actor.get_rid()]
+        var barrier := level.get_world_3d().direct_space_state.intersect_ray(direct)
+        if not barrier.is_empty():
+            issues.append("Invisible obstacle blocks the first home's open gate or path: " + str(barrier.get("collider")))
+    level.queue_free()
+    await process_frame
+    if issues.is_empty():
+        print("CROSSROADS 2.3 ENVIRONMENT FIRST-PLAYTEST PASSED: 12 lots / 2 new buildings / walkable terrain and gates")
+        quit(0)
+    else:
+        for item in issues:
+            push_error(item)
+        print("CROSSROADS 2.3 ENVIRONMENT TEST FAILED: ", issues.size())
+        quit(1)

@@ -75,6 +75,8 @@ func _verify() -> void:
                 failures.append("Survey is not reset for a new expedition")
             level.set("started", true)
             level.set("smoke_test", true)
+            # The journal is opened during active play, never atop the intro.
+            hud.get("overlay").hide()
             player.active = true
             player.position = Vector3(-12, 0.1, 65)
             record.call("_process", 0.0)

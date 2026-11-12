@@ -33,6 +33,29 @@ func _check() -> void:
         var collision := field.get_node("WalkableTerrainCollision") as CollisionShape3D
         if terrain_mesh.mesh == null or collision.shape == null:
             issues.append("Terrain visual or matching collision is empty")
+    var outskirts := level.get_node_or_null("Landscape/FarmlandAndHorizon") as Node3D
+    if outskirts == null:
+        issues.append("Extended country is absent beyond the village border")
+    else:
+        if int(outskirts.get("fields")) != 4:
+            issues.append("Extended country does not contain four walkable attached fields")
+        if int(outskirts.get("distant_trees")) < 110:
+            issues.append("Outer tree belts do not frame the distant horizon")
+        var fields_root := outskirts.get_node_or_null("Farmland")
+        if fields_root == null:
+            issues.append("Country fields did not load")
+        else:
+            for field_name in ["NorthernFields", "SouthernFields", "WesternFields", "EasternFields"]:
+                var country := fields_root.get_node_or_null(field_name) as StaticBody3D
+                if country == null or country.get_node_or_null("CountryGroundCollision") == null:
+                    issues.append("No walkable country beyond %s" % field_name)
+        # Analytic country surface joins the inner shared map height exactly.
+        for border in [Vector2(-180.0, -90.0), Vector2(180.0, 91.0), Vector2(35.0, -210.0), Vector2(-55.0, 210.0)]:
+            var inside := land.height_at(border.x, border.y)
+            var outside := land.outer_height_at(border.x, border.y)
+            if absf(inside - outside) > 0.001:
+                issues.append("Distant farm and settlement surface is discontinuous at " + str(border))
+                break
     if roads == null:
         issues.append("Three-road network missing")
     else:

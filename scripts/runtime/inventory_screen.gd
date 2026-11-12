@@ -13,6 +13,7 @@ var item_buttons: Dictionary = {}
 var count_labels: Dictionary = {}
 var item_icons: Dictionary = {}
 var selected_title: Label
+var item_details: Label
 var carry_status: Label
 var feedback: Label
 var equip_button: Button
@@ -125,6 +126,10 @@ func _ready() -> void:
 			count_labels[id] = quantity
 	selected_title = make_label("Select an item", 17, TEXT)
 	layout.add_child(selected_title)
+	item_details = make_label("", 13, MUTED)
+	item_details.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	item_details.custom_minimum_size = Vector2(570, 42)
+	layout.add_child(item_details)
 	var actions := HBoxContainer.new()
 	actions.add_theme_constant_override("separation", 8)
 	layout.add_child(actions)
@@ -153,7 +158,7 @@ func refresh() -> void:
 		var available := quantity > 0
 		slot.disabled = not available
 		slot.icon = item_icons.get(id) if available else null
-		slot.tooltip_text = Items.entry(id).name if available else ""
+		slot.tooltip_text = str(Items.entry(id).get("description", "")) if available else ""
 		count_labels[id].text = str(quantity) if available else ""
 		var selected: bool = available and id == selected_id
 		slot.add_theme_stylebox_override("normal", make_style(Color("ada083") if selected else Color("908a73"), Color("f1dfba") if selected else Color("605e4b"), 3 if selected else 2))
@@ -161,8 +166,9 @@ func refresh() -> void:
 		selected_id = ""
 	var data: Dictionary = Items.entry(selected_id)
 	var available := not data.is_empty()
-	selected_title.text = (data.get("name", "") + "   ×" + str(game.inventory.get(selected_id, 0))) if available else "Select an item"
-	carry_status.text = "FIELD RECORD  /  %02d:%02d    ON HAND  /  %s" % [int(game.elapsed / 60.0), int(game.elapsed) % 60, str(Items.entry(game.equipped_item_id).get("name", "Empty hand"))]
+	selected_title.text = (str(data.get("name", "")) + "   ×" + str(game.inventory.get(selected_id, 0))) if available else "Select an item"
+	item_details.text = (str(data.get("category", "")) + "  /  " + str(data.get("effect", "")) + "  /  %.2f KG\n" % float(data.get("mass", 0.0)) + str(data.get("description", ""))) if available else "Search the world for supplies, instruments and recovered equipment."
+	carry_status.text = "FIELD RECORD  /  %02d:%02d    PACK  /  %.2f KG    ON HAND  /  %s" % [int(game.elapsed / 60.0), int(game.elapsed) % 60, Items.total_mass(game.inventory), str(Items.entry(game.equipped_item_id).get("name", "Empty hand"))]
 	equip_button.disabled = not available or game.equipped_item_id == selected_id
 	equip_button.text = "CARRYING" if available and game.equipped_item_id == selected_id else "CARRY"
 	use_button.disabled = not available

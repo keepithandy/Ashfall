@@ -326,17 +326,20 @@ func _layout_audio_panel(w: float, h: float) -> void:
 		back.size = Vector2(minf(240.0, panel_width), 46)
 
 func _draw_field_panel(rect: Rect2) -> void:
+	# Field canvas sewn around the edges. No neon, gauges or technological
+	# frame ornaments. All marks are static so the GPU has no texture loop.
 	draw_rect(rect, hud_panel, true)
 	draw_rect(rect, hud_border, false, 1.0)
-	draw_rect(Rect2(rect.position + Vector2(0, 0), Vector2(68, 3)), hud_accent, true)
-	draw_line(rect.position + Vector2(rect.size.x - 16, 0), rect.position + Vector2(rect.size.x, 16), hud_accent, 1.0)
-	draw_line(rect.position + Vector2(8, rect.size.y - 9), rect.position + Vector2(8, rect.size.y - 20), hud_border, 1.0)
-	draw_line(rect.position + Vector2(8, rect.size.y - 9), rect.position + Vector2(26, rect.size.y - 9), hud_border, 1.0)
-	# Three static abrasion marks imply worn equipment without distracting animation.
-	for mark in range(3):
-		var px := rect.position.x + rect.size.x - 52 + mark * 9
-		draw_line(Vector2(px, rect.position.y + rect.size.y - 11), Vector2(px + 4, rect.position.y + rect.size.y - 7), Color(hud_muted.r, hud_muted.g, hud_muted.b, 0.25), 1.0)
-
+	var worn := Color(hud_muted.r, hud_muted.g, hud_muted.b, 0.22)
+	draw_line(rect.position + Vector2(10, 8), rect.position + Vector2(rect.size.x - 10, 8), worn, 1.0)
+	draw_line(rect.position + Vector2(10, rect.size.y - 8), rect.position + Vector2(rect.size.x - 10, rect.size.y - 8), worn, 1.0)
+	var seam := Color(hud_accent.r, hud_accent.g, hud_accent.b, 0.45)
+	for stitch in range(6):
+		var px := rect.position.x + rect.size.x - 30.0 - float(stitch) * 8.0
+		draw_line(Vector2(px, rect.position.y + rect.size.y - 7), Vector2(px + 3, rect.position.y + rect.size.y - 5), seam, 1.0)
+	# Scuffed corner stitching, intentionally uneven.
+	draw_line(rect.position + Vector2(8, 11), rect.position + Vector2(8, 21), worn, 1.0)
+	draw_line(rect.position + Vector2(8, 11), rect.position + Vector2(27, 11), worn, 1.0)
 
 func build_audio_panel(pale: Color, muted: Color) -> void:
 	audio_panel = ColorRect.new()
@@ -461,7 +464,7 @@ func build_loot_panel(pale: Color, muted: Color) -> void:
 
 func show_loot(contents: Dictionary) -> void:
 	# Display only supplies actually present, including newly authored types.
-	var rows: Array[String] = []
+	var rows := PackedStringArray()
 	for id in ItemCatalog.ORDER:
 		var count := int(contents.get(id, 0))
 		if count > 0:

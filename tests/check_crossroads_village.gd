@@ -129,6 +129,18 @@ func _check() -> void:
         for frame in range(70):
             await physics_frame
         Input.action_release("move_forward")
+        if not actor.is_on_floor():
+            var probe := PhysicsRayQueryParameters3D.create(
+                actor.global_position + Vector3.UP * 3.0,
+                actor.global_position - Vector3.UP * 5.0)
+            probe.exclude = [actor.get_rid()]
+            var ground_hit := level.get_world_3d().direct_space_state.intersect_ray(probe)
+            var surface_count := (field.get_node("WalkableTerrainCollision") as CollisionShape3D).shape.get_faces().size() if field != null else -1
+            var slide_detail := "no slides"
+            if actor.get_slide_collision_count() > 0:
+                var slide := actor.get_slide_collision(0)
+                slide_detail = "normal=%s collider=%s" % [slide.get_normal(), slide.get_collider()]
+            print("CROSSROADS_WALK_DIAGNOSTIC: floor=false ray=%s faces=%s slide=%s" % [ground_hit, surface_count, slide_detail])
         if actor.global_position.distance_to(old_position) < 1.0:
             issues.append("The first-person walker cannot traverse the road: delta=%.3f active=%s floor=%s direction=%s velocity=%s pos=%s start=%s overlay=%s" % [
                 actor.global_position.distance_to(old_position), actor.active,

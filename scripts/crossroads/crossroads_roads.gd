@@ -14,7 +14,7 @@ var route_samples: Array[Vector3] = []
 
 
 func _ready() -> void:
-    name = "CrossroadsRoadNetwork"
+    # Keep authored node name stable for scene editing and path-based acceptance checks.
     rebuild()
 
 

@@ -1,6 +1,15 @@
 name: Crossroads 2.3 Village Acceptance
 
 on:
+  push:
+    branches: [main]
+    paths:
+      - 'assets/shaders/crossroads_earth.gdshader'
+      - 'assets/materials/crossroads_earth.tres'
+      - 'scripts/crossroads/**'
+      - 'tests/check_crossroads_village.gd'
+      - 'scenes/crossroads_main.tscn'
+      - '.github/workflows/crossroads-environment.yml'
   pull_request:
     paths:
       - 'scenes/crossroads_main.tscn'
@@ -8,6 +17,8 @@ on:
       - 'scenes/houses/lane_brick_crossroads.tscn'
       - 'scripts/crossroads/**'
       - 'tests/check_crossroads_village.gd'
+      - 'assets/shaders/crossroads_earth.gdshader'
+      - 'assets/materials/crossroads_earth.tres'
       - 'project.godot'
       - '.github/workflows/crossroads-environment.yml'
   workflow_dispatch:

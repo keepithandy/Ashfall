@@ -191,8 +191,8 @@ func _homestead(parent: Node3D, site: Dictionary, index: int) -> void:
     # Walkable front opening in a private, irregularly planted plot. The
     # fence stops at the gate; no invisible collision box spans the gap.
     # Real homesteads are not a repeated identical rectangle.
-    var near_x := float(side) * (18.8 + float(index % 3) * 1.1)
-    var far_x := float(side) * (67.5 + float(index % 4) * 1.35)
+    var near_x := land.main_road_x(z) + float(side) * (9.8 + float(index % 3) * 0.4)
+    var far_x := x + float(side) * (27.5 + float(index % 4) * 0.8)
     var lot_half := 15.9 + float(index % 4) * 0.83
     var gate_half := 2.2 + float(index % 3) * 0.20
     var front_z := z - lot_half
@@ -457,8 +457,8 @@ func _power_line(parent: Node3D) -> void:
     # geometry; no new standalone props or exterior asset downloads.
     var poles: Array[Vector3] = []
     for i in range(8):
-        var z := -177.0 + float(i) * 50.0
-        var x := land.main_road_x(z) + 11.3
+        var z := -171.0 + float(i) * 50.0
+        var x := land.main_road_x(z) + 6.5
         var bottom := Vector3(x, land.surface_height_at(x, z), z)
         _pole(parent, bottom)
         poles.append(bottom)

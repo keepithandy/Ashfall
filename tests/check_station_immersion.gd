@@ -21,6 +21,9 @@ func _verify() -> void:
     var hud := level.get("hud") as Control
     var detail := level.get_node_or_null("WorldDetail21") as Node3D
     var budget := level.get_node_or_null("Station04VisualBudget") as Node
+    var audio := level.get_node_or_null("Station04AmbientCues") as Node3D
+    if audio == null or (audio.get("cues") as Array).size() != 5:
+        failures.append("Station 04 positional atmosphere cue layer missing")
     if player == null or hud == null:
         failures.append("No playable player or HUD")
     if detail == null:

@@ -224,6 +224,65 @@ func _check() -> void:
                 var room := plot.get_node_or_null("Residence/RoomTraces") as Node3D
                 if room == null or room.get_child_count() != 3:
                     issues.append("Interior room dressing missing at " + str(site["name"]))
+                else:
+                    # Phase 1 second pass: check the real centered floorplans
+                    # and prevent cups/kettles from sitting on the floor.
+                    var floor_size := land._site_footprint(site)
+                    var half_width := floor_size.x - 0.20
+                    var half_depth := floor_size.y - 0.20
+                    # House pads have small earth aprons; use the precise
+                    # enclosed prefab size for interior placement instead.
+                    match str(site["kind"]):
+                        "white":
+                            half_width = 4.3
+                            half_depth = 5.0
+                        "green":
+                            half_width = 5.9
+                            half_depth = 3.5
+                        "ochre":
+                            half_width = 4.0
+                            half_depth = 4.0
+                        "blue_sill":
+                            half_width = 6.0
+                            half_depth = 4.0
+                        "lane_brick":
+                            half_width = 4.0
+                            half_depth = 6.0
+                    for trace in room.get_children():
+                        var object := trace as Node3D
+                        if absf(object.position.x) >= half_width - 0.15 or absf(object.position.z) >= half_depth - 0.15:
+                            issues.append("Household object outside actual floor at " + str(site["name"]))
+                        var is_small := str(object.name).ends_with("_mug") or str(object.name).ends_with("_kettle")
+                        if is_small and object.position.y < 0.52:
+                            issues.append("Mug or kettle floats near floor rather than on furniture at " + str(site["name"]))
+                        if not is_small and absf(object.position.y - 0.20) > 0.035:
+                            issues.append("Floor dressing floats in " + str(site["name"]))
+                        var prop_bodies: Array = object.find_children("*", "CollisionObject3D", true, false)
+                        if object is CollisionObject3D:
+                            prop_bodies.append(object)
+                        for raw_body in prop_bodies:
+                            if (raw_body as CollisionObject3D).collision_layer != 0:
+                                issues.append("New interior dressing obstructs movement in " + str(site["name"]))
+                                break
+                if int(identity.get("wear_segment_count")) < 6:
+                    issues.append("Missing interrupted service tracks beside " + str(site["name"]))
+                var tracks := identity.get_node_or_null("InterruptedWorkyardTracks") as MeshInstance3D
+                if tracks == null or tracks.mesh == null:
+                    issues.append("Personal soil-worn yard detail missing at " + str(site["name"]))
+                else:
+                    var arrays: Array = tracks.mesh.surface_get_arrays(0)
+                    var track_vertices: PackedVector3Array = arrays[Mesh.ARRAY_VERTEX]
+                    if track_vertices.size() < 36 or not _top_faces_visible(tracks.mesh):
+                        issues.append("Yard track geometry is absent or back-facing at " + str(site["name"]))
+                    else:
+                        for idx in range(0, track_vertices.size(), 9):
+                            var vertex: Vector3 = track_vertices[idx]
+                            if absf(vertex.y - land.surface_height_at(vertex.x, vertex.z) - 0.041) > 0.016:
+                                issues.append("Yard wear is buried or floating at " + str(site["name"]))
+                                break
+                            if absf(vertex.z - float(site["z"])) < 2.1:
+                                issues.append("New yard track overlaps the gate-to-door passage at " + str(site["name"]))
+                                break
                 var courtyard := identity.get_node_or_null("PersonalCourtyard") as Node3D
                 if courtyard == null or courtyard.get_child_count() < 5:
                     issues.append("Hand-curated household traces absent at " + str(site["name"]))

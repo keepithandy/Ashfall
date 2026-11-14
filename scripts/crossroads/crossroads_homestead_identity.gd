@@ -242,13 +242,14 @@ func _interior_details(parent: Node3D, portrait: Dictionary, house_kind: String)
             location = Vector3(-0.55, 0.20, -0.35 if old_house else 0.40)
         elif item == "crockery":
             location = Vector3(
-                half_width - 1.20, 0.20,
-                0.65 if old_house else -half_depth + 1.15
+                half_width - 1.20 if old_house else -half_width + 1.45,
+                0.20,
+                0.65 if old_house else half_depth - 1.45
             )
         elif item == "boxes":
             location = Vector3(
-                half_width - 1.45 if old_house else -half_width + 1.40,
-                0.20, 0.10 if old_house else half_depth - 1.40
+                half_width - 1.45 if old_house else 0.65,
+                0.20, 0.10 if old_house else -half_depth + 1.0
             )
         else:
             # Tools are set beside the wall, not in the front-door aisle.
@@ -311,8 +312,9 @@ func _service_wear() -> void:
             # The west/east house sides face opposite ways in world X.
             var triangles := [a, b, p, b, d, p] if side > 0.0 else [a, p, b, b, p, d]
             for vertex in triangles:
-                st.set_uv(Vector2(vertex.x / 3.5, vertex.z / 3.5))
-                st.add_vertex(vertex)
+                var point: Vector3 = vertex
+                st.set_uv(Vector2(point.x / 3.5, point.z / 3.5))
+                st.add_vertex(point)
             wear_segment_count += 1
     if wear_segment_count == 0:
         return

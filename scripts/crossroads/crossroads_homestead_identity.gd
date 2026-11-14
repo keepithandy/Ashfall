@@ -242,13 +242,13 @@ func _interior_details(parent: Node3D, portrait: Dictionary, house_kind: String)
             location = Vector3(-0.55, 0.20, -0.35 if old_house else 0.40)
         elif item == "crockery":
             location = Vector3(
-                half_width - 1.20 if old_house else -half_width + 1.45,
+                half_width - 1.20 if old_house else half_width - 1.35,
                 0.20,
-                0.65 if old_house else half_depth - 1.45
+                0.65 if old_house else 0.10
             )
         elif item == "boxes":
             location = Vector3(
-                half_width - 1.45 if old_house else 0.65,
+                half_width - 1.45 if old_house else 0.10,
                 0.20, 0.10 if old_house else -half_depth + 1.0
             )
         else:

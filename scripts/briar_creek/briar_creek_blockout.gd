@@ -136,8 +136,9 @@ func _roads(root: Node3D) -> void:
                 var r0 := _road_vertex(p0,side,half_width,-1.0)
                 var l1 := _road_vertex(p1,side,half_width,1.0)
                 var r1 := _road_vertex(p1,side,half_width,-1.0)
-                _tri(st,l0,l1,r0)
-                _tri(st,r0,l1,r1)
+                # Use the same top-visible face winding as terrain triangles.
+                _tri(st,l0,r0,l1)
+                _tri(st,r0,r1,l1)
         var mesh := st.commit()
         var node := MeshInstance3D.new()
         node.name=str(route["id"])

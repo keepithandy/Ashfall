@@ -4,6 +4,7 @@ extends Node3D
 ## Existing houses and existing decorative props only; the two new prefabs
 ## are the separately authored Blue Sill and Lane Brick houses.
 const PROFILE = preload("res://scripts/crossroads/crossroads_profile.gd")
+const IDENTITY = preload("res://scripts/crossroads/crossroads_homestead_identity.gd")
 const GROUND_MATERIAL = preload("res://assets/roads/gravel_shoulder.tres")
 const WOOD_TEXTURE = preload("res://assets/materials/wood_peeling_paint_weathered/albedo.jpg")
 const SOIL_TEXTURE = preload("res://assets/materials/forest_ground_05/albedo.jpg")
@@ -73,6 +74,10 @@ var trees_placed := 0
 var undergrowth_placed := 0
 var utility_poles := 0
 var boundary_obstacles := 0
+var distinct_homesteads := 0
+var named_landmarks := 0
+var indoor_traces := 0
+var personal_courtyard_props := 0
 var material_fence: Array[StandardMaterial3D] = []
 var garden_soil: StandardMaterial3D
 var pole_wood: StandardMaterial3D
@@ -128,6 +133,10 @@ func rebuild() -> void:
     garden_props = 0
     trees_placed = 0
     undergrowth_placed = 0
+    distinct_homesteads = 0
+    named_landmarks = 0
+    indoor_traces = 0
+    personal_courtyard_props = 0
     for i in range(PROFILE.HOMES.size()):
         _homestead(homes, PROFILE.HOMES[i], i)
     _country_vegetation(countryside)
@@ -232,6 +241,18 @@ func _homestead(parent: Node3D, site: Dictionary, index: int) -> void:
     _yard_life(plot, site, index)
     _garden_beds(plot, site)
     _yard_trees(plot, site, index)
+    # A hand-authored everyday history unique to this address. Cosmetic
+    # scenery and room traces are additive to the original walkable floor.
+    var identity := Node3D.new()
+    identity.set_script(IDENTITY)
+    identity.name = "HomesteadIdentity"
+    identity.call("configure", site, index, home, land)
+    plot.add_child(identity)
+    distinct_homesteads += 1
+    personal_courtyard_props += int(identity.get("outdoor_count"))
+    indoor_traces += int(identity.get("interior_count"))
+    if bool(identity.get_meta("recognizable_landmark", false)):
+        named_landmarks += 1
 
 
 func _fence(parent: Node3D, a: Vector2, b: Vector2, mat: Material, plot_id: int) -> void:

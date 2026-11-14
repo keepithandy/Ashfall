@@ -1,0 +1,81 @@
+# Ashfall — Briar Creek (Area 02) foundation
+
+Status: **research-informed, isolated unverified blockout**, 14 November 2026. Area name is approved; geometry, dimensions and asset placements remain tentative. This is **not a finished, playable district**.
+
+## Intent and continuity
+
+Briar Creek is an abandoned logging district with dense woodland, large irregular clearings, a functioning geographical relationship between an upstream ridge and western creek, and a road back to Crossroads. The game remains level-based with open-world-feeling exploration. Survival/scavenging comes first, with intermittent danger instead of permanent combat or pursuit.
+
+Crossroads 2.3 is currently the Godot 4.7 / Forward+ environment-only main scene at `res://scenes/crossroads_main.tscn`. It does not run the older expedition loot/objective/area runtime. The reusable `scripts/runtime/expedition_areas.gd` uses session-resident state, **not proven persistent disk saves**. Therefore there is intentionally **no area travel, save migration, inventory, creature or gameplay integration** in this foundation. Do not change `project.godot` or the Crossroads 2.3 scene to showcase Briar Creek.
+
+## Research applied to the environment
+
+1. U.S. Forest Service, *Low-Volume Roads Engineering, Best Management Practices*, Chapters 3–4. Forest roads need stable placement, moderate grades and runoff control; minimize road-stream crossings and protect drainage. Source: https://www.fs.usda.gov/t-d/programs/forest_mgmt/projects/lowvolroads/ch3.pdf and https://www.fs.usda.gov/t-d/programs/forest_mgmt/projects/lowvolroads/ch4.pdf .
+2. Penn State Extension, *From the Woods: Hardwood Lumber*. The physical production flow involves incoming logs, log yard sorting, sawing, byproducts, grading and stacked drying lumber. This is a process reference, not proof of a specific 1980s local mill design: https://extension.psu.edu/from-the-woods-hardwood-lumber .
+3. Ukraine State Forest Resources Agency, *General characteristic of Ukrainian forests*. Scots pine, spruce, oak, beech, birch, alder and fir are plausible species in different regions: https://forest.gov.ua/en/areas-activity/forests-ukraine/general-characteristic-ukrainian-forests . Briar Creek is fictional and inherits Crossroads' Ukrainian-inspired rural environment; favor local species mixtures rather than American-only conifer forests.
+4. Godot Engine, *Visibility ranges (HLOD)* and *Optimizing 3D performance*. Use LOD/visibility ranges and measured vegetation batching; do not assume every individual tree should have a node and collision at 600m scale: https://docs.godotengine.org/en/stable/tutorials/3d/visibility_ranges.html and https://docs.godotengine.org/en/stable/tutorials/performance/optimizing_3d_performance.html .
+5. Godot Engine, *Large world coordinates*. An independently loaded 600m level does not justify switching Ashfall to double precision: https://docs.godotengine.org/en/stable/tutorials/physics/large_world_coordinates.html .
+
+No sourced imagery or third-party meshes have been imported into the repository.
+
+## Coordinate contract
+
+Design-plan coordinates: southeast/east X **0–600**, north N **0–600**, elevation Y in meters. The southwestern corner is (0,0) in design X/N.
+
+Godot local scene coordinates: `Vector3(X - 300, Y, 300 - N)`. This preserves Godot's existing **north = negative Z** convention while keeping the independent Briar Creek scene centered about the origin. Do not place raw positive-N design coordinates into Godot Z.
+
+A 600 × 600m initial heightfield with 4m grid spacing contains **151 × 151 vertices (22,801)** and **45,000 triangles**. The render mesh and static triangle collision use identical indices. Road skins sample that same triangulated terrain; they are **not raised collidable slabs**.
+
+### Seven reserved zones
+
+| Site ID | Center X/N | Target Y | Landscape envelope | Role |
+|---|---|---:|---|---|
+| checkpoint | 305/65 | +5m | 40 × 35m | Crossroads-facing southern entry |
+| mill | 350/305 | +18m | 125 × 105m | Mill hall, log deck, office, finished timber staging |
+| cabins | 145/390 | +23m | 100 × 75m | Four worker cabins on shared lane |
+| depot | 470/445 | +32m | 75 × 65m | Workshop, fuel store, equipment shelter |
+| lookout | 335/550 | +60m | 30 × 30m | Pedestrian-access lookout |
+| creek | 110/245 | +8m provisional | 55 × 35m | Stream-side path and former crossing |
+| clearing | 220/460 | +30m provisional | 65 × 55m | Logged cut with stumps, brash and regrowth |
+
+Targets at the creek and clearing are **labels** until the drainage and relief surfaces are accepted. The script intentionally places only one simple noncolliding footprint marker per site, not the final 11 building types.
+
+### Road network
+
+| ID | Use | Width | Approximate polyline length | Max straight-segment rise |
+|---|---|---:|---:|---:|
+| R01 | Southern road to mill | 5.5m | 317m | 6.3% |
+| R02 | Mill to depot | 4.5m | 222m | 7.7% |
+| R03 | Cabin access lane | 3.7m | 305m | 4.9% |
+| P01 | Depot–lookout footpath | 1.6m | 348m | 11.1% |
+
+Calculated control-point grades are planning checks, **not** sampled terrain-grade certification. Smooth the vehicle-road turn radii and verify physical slopes and truck clearance before adding detailed roadside assets. P01 is pedestrian-only: an attempt to drive directly to the +60m lookout was too steep for the small site.
+
+### Forest boundaries and clearings
+
+The deliberately irregular perimeter should not present a square visible edge. The low western creek, northern ridge and east-facing hills will shape the enclosing sightlines; a southern road leads toward Crossroads, but **do not currently attach an interactive exit**.
+
+Clear the mill's ~125 × 105m working area with 10–25m of staggered edge regrowth. Cabin housing gets a ~100 × 75m shared footprint with 8–18m transition; depot ~75 × 65m with 10–20m transition; logging clearcut ~65 × 55m with 5–15m edge transition. Avoid rectangular tree deletion masks and uniform tree spacing. Use windfall, stumps, isolated mature trees, brush and partial glimpses of the mill/lookout to help orientation.
+
+Existing assets for later review: `scenes/nature/forest_pine.tscn`, `bare_tree.tscn`, `fallen_log.tscn`, `tree_stump.tscn`, `fern_clump.tscn`, `reed_clump.tscn`, `mossy_boulder.tscn`, `dry_bramble.tscn`. Current `assets/nature/catalog.json` reports an 8.6m-tall pine, so a believable mature woodland will require scaled/variant trees and additional side-profile review before population. Do not import unverified third-party sources.
+
+## Files in this isolated foundation
+
+- `scripts/briar_creek/briar_creek_profile.gd`: map geometry, sites, terrain formula and road/path waypoints.
+- `scripts/briar_creek/briar_creek_blockout.gd`: editor/runtime generation of 4m terrain mesh, shared collision, visible road skins and rough site center markers.
+- `scenes/briar_creek/briar_creek_blockout.tscn`: independently opened plan-camera environment scene (not a first-person playtest).
+- `tests/check_briar_creek_foundation.gd`: a proposed headless geometry regression, pending execution.
+
+The viewport camera is an overhead planning camera. No water mesh, hydrology solution, real forest, buildings, player controller, collision-validated routes, entrance trigger, world streaming, impostors or survival systems are included. The generated markers are **not** finished architecture.
+
+## Verification procedure and exit gates
+
+1. Open only `res://scenes/briar_creek/briar_creek_blockout.tscn` in Godot 4.7.2 Forward+; inspect the Output/Debugger for script/parser errors.
+2. Run `godot --headless --path . --script res://tests/check_briar_creek_foundation.gd`. Record actual exit status; file existence does not equal test pass.
+3. Inspect terrain from high and low camera angles: top-face winding, visible ground, collision, no gaps at road skins or pads. Check slope and crossfall from player height.
+4. Evaluate real water flow: creek must descend, and its crossing needs credible runoff/culvert geometry; current creek is a conceptual low strip, not finished drainage.
+5. Measure frame time and editor load with the intended renderer before committing any dense trees.
+6. Re-run `tests/check_crossroads_village.gd` in Godot and manually revisit Crossroads. Validate that its entry scene, terrain and player are unaffected.
+7. Only after acceptance, add physically separate road/forest composition and reusable timber buildings. Design travel/persistent state as a separate change after the current Crossroads environment playtest evolves beyond its environment-only runtime.
+
+**Acceptance state today:** authored only; Godot scene load, collision walkabout, visual quality and performance **not yet verified**. Keep this on an isolated draft PR until checks are run and corrected.

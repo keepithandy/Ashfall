@@ -193,6 +193,54 @@ func _check() -> void:
             issues.append("The collection of varied houses is incomplete")
         if int(village.get("walkable_gate_count")) != 12:
             issues.append("Each plot needs an open street gate")
+        # Every address has its own curated lived-in history; it is not
+        # enough to clone the six generic yard props to twelve properties.
+        if int(village.get("distinct_homesteads")) != 12:
+            issues.append("Individual homestead identity scenes missing")
+        if int(village.get("named_landmarks")) != 3:
+            issues.append("Missing the three unmistakable village landmark homes")
+        if int(village.get("personal_courtyard_props")) < 60:
+            issues.append("Insufficient distinctive yard details")
+        if int(village.get("indoor_traces")) != 36:
+            issues.append("Interior traces missing from the twelve residences")
+        if homesteads != null:
+            var property_titles := {}
+            for site in PROFILE.HOMES:
+                var plot := homesteads.get_node_or_null(str(site["name"])) as Node3D
+                if plot == null:
+                    continue
+                var identity := plot.get_node_or_null("HomesteadIdentity") as Node3D
+                if identity == null:
+                    issues.append("Personal property details missing at " + str(site["name"]))
+                    continue
+                var title_text := str(identity.get_meta("property_title", ""))
+                if title_text.is_empty() or property_titles.has(title_text):
+                    issues.append("Two homes share the same story or unnamed property")
+                property_titles[title_text] = true
+                if int(identity.get("outdoor_count")) < 5 or int(identity.get("verge_count")) != 3:
+                    issues.append("A property's courtyard or street edge looks empty")
+                if int(identity.get("interior_count")) != 3:
+                    issues.append("Existing home floorplan lacks its three personal details")
+                var room := plot.get_node_or_null("Residence/RoomTraces") as Node3D
+                if room == null or room.get_child_count() != 3:
+                    issues.append("Interior room dressing missing at " + str(site["name"]))
+                var courtyard := identity.get_node_or_null("PersonalCourtyard") as Node3D
+                if courtyard == null or courtyard.get_child_count() < 5:
+                    issues.append("Hand-curated household traces absent at " + str(site["name"]))
+                elif courtyard != null:
+                    # All extra decorations must sit outside the 2.1m
+                    # entrance walkline and must NOT add physics blockers.
+                    for prop in courtyard.get_children():
+                        var asset := prop as Node3D
+                        if absf(asset.position.z - float(site["z"])) < 2.1:
+                            issues.append("New decoration blocks yard walkthrough at " + str(site["name"]))
+                            break
+                        var objects := asset.find_children("*", "CollisionObject3D", true, false)
+                        for obj in objects:
+                            if (obj as CollisionObject3D).collision_layer != 0:
+                                issues.append("Decorative household item blocks traversal at " + str(site["name"]))
+                                break
+
         if int(village.get("fence_sections")) != 60:
             issues.append("A boundary fence is absent or duplicated")
         if int(village.get("garden_props")) < 150:

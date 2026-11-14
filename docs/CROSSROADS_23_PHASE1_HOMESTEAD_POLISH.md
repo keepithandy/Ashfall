@@ -44,6 +44,16 @@ The pre-existing lot widths and gate positions remain unchanged to protect colli
 
 The new courtyards keep visual objects several metres to either side of the gate-to-door centerline. Added interior traces are nonblocking and sit near perimeter walls. Existing structural collision, fences, rooms and doors remain physical, as they were before.
 
+## Second pass — corrected interiors and informal workyard trails
+
+A second audit of the actual authored house scenes found that the first pass treated the original cottage interiors as if their floors extended from `z=0` to `z=depth`. That was incorrect: the older White, Green and Ochre house floor meshes are **centered on their origins**, with the front entrance toward negative local Z. As a result, some room clutter could be placed beyond the actual building walls. It also put mugs and kettles at floor height rather than on usable furniture.
+
+The corrective pass uses real per-house footprints (White ±4.3 × ±5.0 m, Green ±5.9 × ±3.5 m, Ochre ±4.0 × ±4.0 m, and the existing centered 12×8 m / 8×12 m modular floorplans). Floor dressing stays inside the footprint with a modest margin. Cups and kettles now use the actual WoodenBench location in old cottages or the existing `BuiltHouse/LivingSpaces/Table2` anchor in modular houses, and their vertical placement matches the modeled furniture seat/top height. Large box piles and damaged crockery are kept near walls, away from primary room circulation. Existing floorboards, furnishings and house scenes remain untouched.
+
+The workyard pass also adds incomplete, narrow traces of repeatedly walked earth beside each residence, headed toward its rear gardening/storage activities. These are **interrupted, irregular fragments rather than a full new paved path**. They sample the existing collision-matched ground triangles for their height and use only the project's original forest soil texture. The three landmark yards have extra wear on their opposite side. The new meshes are cosmetic, nonblocking and not part of the gate-to-door walking strip. They do not alter terrain heights or physically simulated routes.
+
+This pass specifically guards against over-decorating: no new free-standing props in house-entry channels, no new collisions or interactive objects, no replacement of the original footpaths, and no new gameplay mechanisms. Validation inspects all room-piece coordinates, the raised tabletop/bench objects, grounded wear strips, front-face winding and clear passage near the house approaches. Native rendering screenshots are still required to judge the realism of the wear tone against the existing PBR ground and ensure no repeated visual patterns.
+
 ## Test plan
 
 Run `res://tests/check_crossroads_village.gd` with Godot 4.7.2. Preserve all old collision/gate checks. New regression tests must verify:

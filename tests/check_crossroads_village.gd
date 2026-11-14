@@ -294,6 +294,25 @@ func _check() -> void:
                         if absf(asset.position.z - float(site["z"])) < 2.1:
                             issues.append("New decoration blocks yard walkthrough at " + str(site["name"]))
                             break
+                        # A second art audit caught a new woodpile sitting
+                        # EXACTLY on an existing crate. Ensure the added
+                        # visual items never share their placement origin
+                        # with the older physical yard equipment.
+                        var former_names := [
+                            "Wood", "Barrow", "Bucket", "Crate", "Shovel",
+                            "Chair", "Pots", "Sawhorse", "Table", "Bench",
+                            "Rust", "Pallet", "Tyres", "Wires", "Sheet",
+                            "Logs", "Stone", "Washing", "Branch"
+                        ]
+                        for existing in plot.get_children():
+                            var older := existing as Node3D
+                            if str(older.name).get_slice("_", 0) not in former_names:
+                                continue
+                            var a2 := Vector2(asset.position.x, asset.position.z)
+                            var b2 := Vector2(older.position.x, older.position.z)
+                            if a2.distance_to(b2) < 0.90:
+                                issues.append("New yard prop exactly overlaps old equipment at " + str(site["name"]))
+                                break
                         var objects := asset.find_children("*", "CollisionObject3D", true, false)
                         for obj in objects:
                             if (obj as CollisionObject3D).collision_layer != 0:

@@ -6,6 +6,7 @@ extends Node3D
 ## Reuses existing authored assets. The older homestead geometry is unchanged.
 
 const PROFILE = preload("res://scripts/crossroads/crossroads_profile.gd")
+const EARTH_ALBEDO = preload("res://assets/materials/forest_ground_05/albedo.jpg")
 const ASSETS := {
     "bench": "res://scenes/props/wooden_bench.tscn",
     "chair": "res://scenes/decorative_world/sagging_porch_chair.tscn",
@@ -90,6 +91,9 @@ var outdoor_count := 0
 var interior_count := 0
 var verge_count := 0
 var doorway_clearance := 2.1
+var wear_segment_count := 0
+var surface_placed_count := 0
+var floor_placed_count := 0
 
 
 func configure(site: Dictionary, index: int, home: Node3D, profile: RefCounted) -> void:
@@ -173,6 +177,7 @@ func _decorate() -> void:
             Vector3(x, _ground(x, z), z), float(entry[3]), float(entry[4])):
             outdoor_count += 1
     _interior_details(interior, portrait, str(plot_data["kind"]))
+    _service_wear()
     # A little maintained / neglected roadside growth on both sides of the
     # open gate. Never on the 5.8m asphalt, in the throat, or on the curb.
     var street_x := float(land.call("main_road_x", site_z))
@@ -186,37 +191,139 @@ func _decorate() -> void:
 
 
 func _interior_details(parent: Node3D, portrait: Dictionary, house_kind: String) -> void:
-    # The three existing authored cottage interiors already have a cot,
-    # shelving and stove. Add a few restrained everyday fragments near
-    # outer walls, never a second large furniture row through their aisle.
-    var centered := house_kind == "blue_sill" or house_kind == "lane_brick"
-    var width := 8.0
-    var depth := 8.0
+    # A real floorplan audit exposed a serious error in the first pass:
+    # the old prefab rooms are CENTERED about z=0, while some traces had
+    # been placed at z=depth-1.3 (outside the house). Also cups and kettles
+    # were standing directly on floorboards. Keep floor clutter near the
+    # existing walls and put small household objects onto existing furniture.
+    var half_width := 4.0
+    var half_depth := 4.0
     match house_kind:
         "white":
-            width = 8.6
-            depth = 10.0
+            half_width = 4.3
+            half_depth = 5.0
         "green":
-            width = 11.8
-            depth = 7.0
+            half_width = 5.9
+            half_depth = 3.5
         "ochre":
-            width = 8.0
-            depth = 8.0
+            half_width = 4.0
+            half_depth = 4.0
         "blue_sill":
-            width = 12.0
-            depth = 8.0
+            half_width = 6.0
+            half_depth = 4.0
         "lane_brick":
-            width = 8.0
-            depth = 12.0
+            half_width = 4.0
+            half_depth = 6.0
+    var old_house := house_kind in ["white", "green", "ochre"]
+    var support: Node3D = null
+    if old_house:
+        support = residence.get_node_or_null("WoodenBench") as Node3D
+    else:
+        support = residence.get_node_or_null("BuiltHouse/LivingSpaces/Table2") as Node3D
+    if support == null:
+        push_error("Crossroads Phase 1: missing existing household support in " + str(plot_data["name"]))
+        return
+
+    var small_objects := 0
     for i in range(portrait["room"].size()):
-        var item: String = str(portrait["room"][i])
-        var x := (-1.0 if i % 2 == 0 else 1.0) * (width * 0.5 - 0.76)
-        var z := 0.0
-        if centered:
-            z = -depth * 0.32 if i == 0 else (depth * 0.30 if i == 1 else -depth * 0.12)
+        var item := str(portrait["room"][i])
+        var location := Vector3.ZERO
+        if item == "mug" or item == "kettle":
+            # Bench seating and dining table heights come from the shipped
+            # assets: wooden bench = 0.46m; dining table = 0.93m.
+            var surface_y := 0.46 if old_house else 0.93
+            location = Vector3(
+                support.position.x + (-0.42 if small_objects % 2 == 0 else 0.42),
+                support.position.y + surface_y + 0.015,
+                support.position.z + (-0.045 if small_objects % 2 == 0 else 0.06)
+            )
+            small_objects += 1
+        elif item == "rug":
+            location = Vector3(-0.55, 0.20, -0.35 if old_house else 0.40)
+        elif item == "crockery":
+            location = Vector3(
+                half_width - 1.20, 0.20,
+                0.65 if old_house else -half_depth + 1.15
+            )
+        elif item == "boxes":
+            location = Vector3(
+                half_width - 1.45 if old_house else -half_width + 1.40,
+                0.20, 0.10 if old_house else half_depth - 1.40
+            )
         else:
-            z = 1.25 if i == 0 else (depth - 1.3 if i == 1 else 2.8)
-        # 0.20m is immediately above the existing authored floorboards.
+            # Tools are set beside the wall, not in the front-door aisle.
+            location = Vector3(-half_width + 1.25, 0.20, 0.10)
+        if absf(location.x) >= half_width - 0.15 or absf(location.z) >= half_depth - 0.15:
+            push_error("Crossroads Phase 1: interior prop outside actual house footprint")
+            continue
         if _instantiate(parent, item, "HouseholdTrace_%d_%s" % [i, item],
-            Vector3(x, 0.20, z), float(i) * 0.71 + float(ordinal) * 0.13, 0.9):
+            location, float(i) * 0.17 + float(ordinal) * 0.13, 0.90):
             interior_count += 1
+            if item in ["mug", "kettle"]:
+                surface_placed_count += 1
+            else:
+                floor_placed_count += 1
+
+
+func _service_wear() -> void:
+    # A house should show decades of daily movement, not three identical
+    # perfect garden bars. These irregular, interrupted soil traces lead
+    # past one side of each residence to its rear work area. They are purely
+    # visual, hugging the same exact triangles as the physical ground.
+    # No change to the authored GateToFrontDoor path or garden geometry.
+    var mat := StandardMaterial3D.new()
+    mat.albedo_texture = EARTH_ALBEDO
+    mat.albedo_color = Color(0.41, 0.36, 0.29)
+    mat.roughness = 1.0
+    mat.uv1_triplanar = true
+    mat.uv1_world_triplanar = true
+    mat.uv1_scale = Vector3(0.45, 0.45, 0.45)
+
+    var site_x := float(plot_data["x"])
+    var site_z := float(plot_data["z"])
+    var side := float(plot_data["side"])
+    var history := str(PORTRAITS[ordinal]["title"])
+    var use_side_z := -8.8 if (ordinal % 2 == 0) else 9.1
+    var paths := 2 if bool(PORTRAITS[ordinal]["landmark"]) else 1
+    var st := SurfaceTool.new()
+    st.begin(Mesh.PRIMITIVE_TRIANGLES)
+    st.set_material(mat)
+    for path_index in range(paths):
+        var z_center := site_z + (use_side_z if path_index == 0 else -use_side_z)
+        for section in range(8):
+            # Missing patches: old grass has grown back through the middle.
+            if (section + ordinal + path_index * 2) % 6 == 0:
+                continue
+            var from_back := 7.0 + float(section) * 1.75
+            var to_back := from_back + 1.64
+            var x0 := site_x + side * from_back
+            var x1 := site_x + side * to_back
+            var wobble0 := sin(float(section) * 1.37 + float(ordinal)) * 0.18
+            var wobble1 := sin(float(section + 1) * 1.37 + float(ordinal)) * 0.18
+            var center0 := z_center + wobble0
+            var center1 := z_center + wobble1
+            var half0 := 0.23 + float((section + ordinal) % 3) * 0.065
+            var half1 := 0.23 + float((section + ordinal + 1) % 3) * 0.065
+            var a := _wear_vertex(x0, center0 - half0)
+            var b := _wear_vertex(x1, center1 - half1)
+            var p := _wear_vertex(x0, center0 + half0)
+            var d := _wear_vertex(x1, center1 + half1)
+            # The west/east house sides face opposite ways in world X.
+            var triangles := [a, b, p, b, d, p] if side > 0.0 else [a, p, b, b, p, d]
+            for vertex in triangles:
+                st.set_uv(Vector2(vertex.x / 3.5, vertex.z / 3.5))
+                st.add_vertex(vertex)
+            wear_segment_count += 1
+    if wear_segment_count == 0:
+        return
+    st.generate_normals()
+    var trace := MeshInstance3D.new()
+    trace.name = "InterruptedWorkyardTracks"
+    trace.mesh = st.commit()
+    trace.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
+    trace.set_meta("property_history", history)
+    add_child(trace)
+
+
+func _wear_vertex(x: float, z: float) -> Vector3:
+    return Vector3(x, _ground(x, z) + 0.041, z)

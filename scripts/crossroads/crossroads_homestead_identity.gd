@@ -219,7 +219,15 @@ func _interior_details(parent: Node3D, portrait: Dictionary, house_kind: String)
     if old_house:
         support = residence.get_node_or_null("WoodenBench") as Node3D
     else:
-        support = residence.get_node_or_null("BuiltHouse/LivingSpaces/Table2") as Node3D
+        # Blue Sill's dining table is Table2; Lane Brick has two additional
+        # lean-to furnishings, so its table is Table4. Search the actual
+        # built living room instead of depending on generated node indices.
+        var living := residence.get_node_or_null("BuiltHouse/LivingSpaces") as Node3D
+        if living != null:
+            for furnishing in living.get_children():
+                if str(furnishing.name).begins_with("Table"):
+                    support = furnishing as Node3D
+                    break
     if support == null:
         push_error("Crossroads Phase 1: missing existing household support in " + str(plot_data["name"]))
         return

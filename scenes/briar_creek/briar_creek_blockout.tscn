@@ -1,0 +1,20 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/briar_creek/briar_creek_blockout.gd" id="1_blockout"]
+
+[node name="BriarCreekBlockout" type="Node3D"]
+script = ExtResource("1_blockout")
+metadata/area_id = "briar_creek"
+metadata/design_status = "independent terrain/road/footprint prototype; NOT integrated into Crossroads"
+metadata/map_footprint_metres = Vector2(600, 600)
+
+[node name="PlanCamera" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 620, 170)
+current = true
+far = 1600.0
+fov = 75.0
+
+[node name="BlockoutSun" type="DirectionalLight3D" parent="."]
+rotation = Vector3(-0.91, 0.52, 0.0)
+light_energy = 1.0
+shadow_enabled = false

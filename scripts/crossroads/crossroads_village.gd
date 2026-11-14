@@ -209,7 +209,11 @@ func _homestead(parent: Node3D, site: Dictionary, index: int) -> void:
     var gate_half := 2.2 + float(index % 3) * 0.20
     var front_z := z - lot_half
     var back_z := z + lot_half
-    var palette: StandardMaterial3D = material_fence[index % material_fence.size()]
+    # Not every neighbour repainted the fence at the same time. Individual
+    # modest variations in oxidized paint and timber patina change the
+    # cadence of the street without introducing new materials or meshes.
+    var palette := material_fence[index % material_fence.size()].duplicate() as StandardMaterial3D
+    palette.albedo_color = palette.albedo_color.darkened(float(index % 5) * 0.042)
     _fence(plot, Vector2(near_x, front_z), Vector2(near_x, z - gate_half), palette, index)
     _fence(plot, Vector2(near_x, z + gate_half), Vector2(near_x, back_z), palette, index)
     _fence(plot, Vector2(far_x, front_z), Vector2(far_x, back_z), palette, index)
@@ -239,7 +243,7 @@ func _homestead(parent: Node3D, site: Dictionary, index: int) -> void:
     var road_x := land.main_road_x(z) + float(side) * 4.7
     _footpath(plot, "GateToFrontDoor", Vector2(road_x, z), door_world, 1.65)
     _yard_life(plot, site, index)
-    _garden_beds(plot, site)
+    _garden_beds(plot, site, index)
     _yard_trees(plot, site, index)
     # A hand-authored everyday history unique to this address. Cosmetic
     # scenery and room traces are additive to the original walkable floor.
@@ -413,11 +417,15 @@ func _yard_life(parent: Node3D, site: Dictionary, index: int) -> void:
         garden_props += 1
 
 
-func _garden_beds(parent: Node3D, site: Dictionary) -> void:
-    var x := float(site["x"]) + float(site["side"]) * 13.5
-    var z := float(site["z"])
+func _garden_beds(parent: Node3D, site: Dictionary, index: int) -> void:
+    # Individual families planted differently. The three surviving rows
+    # have different lengths, offsets and work histories at each address.
+    var x := float(site["x"]) + float(site["side"]) * (12.0 + float(index % 4) * 1.25)
+    var z := float(site["z"]) + float((index % 3) - 1) * 1.1
     for row in range(3):
-        var bed_z := z - 6.8 + float(row) * 3.2
+        var bed_z := z - (6.5 + float(index % 2) * 0.4) + float(row) * (3.0 + float(index % 3) * 0.12)
+        var bed_length := 3.8 + float((index + row) % 4) * 0.55
+        var interval := bed_length / 7.0
         # A flat box used to sink into the surrounding uneven ground. Instead
         # drape the actual visible garden soil over the SAME triangle-sampled
         # surface as the player walks on. Garden beds remain visual only.
@@ -425,8 +433,8 @@ func _garden_beds(parent: Node3D, site: Dictionary) -> void:
         st.begin(Mesh.PRIMITIVE_TRIANGLES)
         st.set_material(garden_soil)
         for j in range(7):
-            var start_x := x - 2.8 + float(j) * 0.8
-            var next_x := start_x + 0.8
+            var start_x := x - bed_length * 0.5 + float(j) * interval
+            var next_x := start_x + interval
             var a := _bed_vertex(start_x, bed_z - 0.45)
             var b := _bed_vertex(next_x, bed_z - 0.45)
             var p := _bed_vertex(start_x, bed_z + 0.45)
@@ -443,7 +451,7 @@ func _garden_beds(parent: Node3D, site: Dictionary) -> void:
         bed.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
         parent.add_child(bed)
         for i in range(3):
-            var plant_x := x - 1.8 + float(i) * 1.8
+            var plant_x := x - bed_length * 0.32 + float(i) * bed_length * 0.32
             if _place(parent, "grass" if (row + i) % 3 else "shrub",
                 plant_x, bed_z, float(row + i), 0.75, false) != null:
                 garden_props += 1

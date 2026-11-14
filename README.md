@@ -28,7 +28,9 @@
 
 The outer countryside has a dedicated environment pass: ten mixed agricultural shelterbelts, ten small tree clusters, twelve distinct harvested field parcels, native roadside plants and the continued old utility-pole line. Existing tree, bramble and grass meshes are shared in small GPU-instancing groups instead of thousands of physics prefabs. The cloud palette is calmer and the distant horizon rolls gently without changing the repaired village foundations.
 
-Read the [first village playtest guide](docs/CROSSROADS_23_WALKABLE_VILLAGE.md), [researched countryside composition and visual acceptance guide](docs/CROSSROADS_23_OUTER_COUNTRY.md), and [two-house design freeze](docs/CROSSROADS_HOMESTEAD_DESIGN.md). Local Godot screenshots and target-machine FPS still need inspection before calling the art final.
+The **Phase 1 homestead polish** also gives all twelve addresses different household histories, distinct courtyard layouts, subtle frontage and garden variation, and additional nonblocking room details. Three homes serve as natural visual landmarks without missions or floating text. The old scenes, systems and movement controls remain untouched.
+
+Read the [Phase 1 homestead and interior playtest](docs/CROSSROADS_23_PHASE1_HOMESTEAD_POLISH.md), [first village playtest guide](docs/CROSSROADS_23_WALKABLE_VILLAGE.md), [researched countryside composition](docs/CROSSROADS_23_OUTER_COUNTRY.md), and [two-house design freeze](docs/CROSSROADS_HOMESTEAD_DESIGN.md). Local Godot screenshots and target-machine FPS still need inspection before calling the art final.
 
 ## Archived Station 04 milestones
 

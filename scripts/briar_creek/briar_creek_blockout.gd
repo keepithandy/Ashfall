@@ -3,6 +3,8 @@ extends Node3D
 ## Isolated, disposable Area 02 geometry preview. No gameplay, loot or transitions.
 ## Never use this scene as the project main scene without explicit acceptance.
 const PROFILE = preload("res://scripts/briar_creek/briar_creek_profile.gd")
+const EARTH_SURFACE = preload("res://assets/materials/crossroads_earth.tres")
+const GRAVEL_SURFACE = preload("res://assets/roads/gravel_shoulder.tres")
 var profile = PROFILE.new()
 var generated_vertices := 0
 var route_count := 0
@@ -24,6 +26,7 @@ func rebuild() -> void:
     _terrain(generated)
     _roads(generated)
     _markers(generated)
+    _creek(generated)
 
 func _terrain(root: Node3D) -> void:
     var cells: int = PROFILE.GRID_CELLS
@@ -36,19 +39,29 @@ func _terrain(root: Node3D) -> void:
     vertices.resize(count)
     normals.resize(count)
     uvs.resize(count)
+    # Cache height queries before calculating normals. The original version
+    # evaluated expensive road/pad grading five times per grid vertex.
     for row in range(stride):
         var z := -300.0 + float(row) * step
         for col in range(stride):
             var x := -300.0 + float(col) * step
             var i := row * stride + col
-            var h := profile.height_at(x,z)
-            vertices[i] = Vector3(x,h,z)
-            var west: float = profile.height_at(x - step,z)
-            var east: float = profile.height_at(x + step,z)
-            var north: float = profile.height_at(x,z - step)
-            var south: float = profile.height_at(x,z + step)
-            normals[i] = Vector3((west - east)/(2.0*step),1.0,(north - south)/(2.0*step)).normalized()
+            vertices[i] = Vector3(x,profile.height_at(x,z),z)
             uvs[i] = Vector2(x/12.0,z/12.0)
+    for row in range(stride):
+        for col in range(stride):
+            var i := row * stride + col
+            var west := maxi(col-1,0)
+            var east := mini(col+1,cells)
+            var north := maxi(row-1,0)
+            var south := mini(row+1,cells)
+            var dx := float(east-west)*step
+            var dz := float(south-north)*step
+            var west_h: float = vertices[row*stride+west].y
+            var east_h: float = vertices[row*stride+east].y
+            var north_h: float = vertices[north*stride+col].y
+            var south_h: float = vertices[south*stride+col].y
+            normals[i] = Vector3((west_h-east_h)/dx,1.0,(north_h-south_h)/dz).normalized()
     var tris := PackedInt32Array()
     tris.resize(cells*cells*6)
     var k := 0
@@ -70,10 +83,7 @@ func _terrain(root: Node3D) -> void:
     arrays[Mesh.ARRAY_INDEX]=tris
     var mesh := ArrayMesh.new()
     mesh.add_surface_from_arrays(Mesh.PRIMITIVE_TRIANGLES,arrays)
-    var earth := StandardMaterial3D.new()
-    earth.albedo_color=Color(0.27,0.31,0.24)
-    earth.roughness=1.0
-    mesh.surface_set_material(0,earth)
+    mesh.surface_set_material(0,EARTH_SURFACE)
     var body := StaticBody3D.new()
     body.name="WalkableTerrain"
     body.collision_layer=1
@@ -109,9 +119,7 @@ func _roads(root: Node3D) -> void:
     var holder := Node3D.new()
     holder.name="RoadSurfaces"
     root.add_child(holder)
-    var gravel := StandardMaterial3D.new()
-    gravel.albedo_color=Color(0.43,0.38,0.30)
-    gravel.roughness=1.0
+    var gravel: Material = GRAVEL_SURFACE
     var foot := StandardMaterial3D.new()
     foot.albedo_color=Color(0.34,0.33,0.25)
     foot.roughness=1.0
@@ -164,3 +172,36 @@ func _markers(root: Node3D) -> void:
         node.mesh=box
         node.position=pos
         holder.add_child(node)
+
+func _creek(root: Node3D) -> void:
+    # Visual-only shallow stream. The independent water surface follows the
+    # depressed western bed; no water physics or gameplay are implied.
+    var st := SurfaceTool.new()
+    st.begin(Mesh.PRIMITIVE_TRIANGLES)
+    var water := StandardMaterial3D.new()
+    water.albedo_color=Color(0.16,0.23,0.24,0.83)
+    water.roughness=0.24
+    water.metallic=0.10
+    water.transparency=BaseMaterial3D.TRANSPARENCY_ALPHA
+    water.cull_mode=BaseMaterial3D.CULL_DISABLED
+    st.set_material(water)
+    for j in range(120):
+        var n0 := float(j)*5.0
+        var n1 := float(j+1)*5.0
+        var x0 := profile.creek_x(n0)
+        var x1 := profile.creek_x(n1)
+        var mid0 := profile.to_world(x0,n0)
+        var mid1 := profile.to_world(x1,n1)
+        var h0 := profile.surface_height_at(mid0.x,mid0.z)+0.13
+        var h1 := profile.surface_height_at(mid1.x,mid1.z)+0.13
+        var a := profile.to_world(x0-3.0,n0,h0)
+        var b := profile.to_world(x0+3.0,n0,h0)
+        var c := profile.to_world(x1-3.0,n1,h1)
+        var d := profile.to_world(x1+3.0,n1,h1)
+        _tri(st,a,c,b)
+        _tri(st,b,c,d)
+    var flow := MeshInstance3D.new()
+    flow.name="WesternCreekVisualOnly"
+    flow.mesh=st.commit()
+    flow.cast_shadow=GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
+    root.add_child(flow)

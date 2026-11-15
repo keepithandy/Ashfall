@@ -62,6 +62,24 @@ func _verify() -> void:
             issues.append("Missing static collision matching terrain mesh")
         if roads == null or roads.get_child_count() != 6:
             issues.append("Missing road/path surface geometry")
+        else:
+            # Every adjacent road quad must meet on both banks of the
+            # carriageway; the original separate-segment skins could leave
+            # splits at bends and junction approaches.
+            for route in PROFILE.ROUTES:
+                var strip := roads.get_node_or_null(str(route["id"])) as MeshInstance3D
+                if strip == null or strip.mesh == null:
+                    issues.append("Missing visible route strip: " + str(route["id"]))
+                    continue
+                var road_arrays := strip.mesh.surface_get_arrays(0)
+                var v: PackedVector3Array = road_arrays[Mesh.ARRAY_VERTEX]
+                if v.size() < 6 or v.size() % 6 != 0:
+                    issues.append("Invalid road triangle structure: " + str(route["id"]))
+                    continue
+                for k in range(0,v.size()-6,6):
+                    if v[k+2].distance_to(v[k+6]) > 0.005 or v[k+4].distance_to(v[k+7]) > 0.005:
+                        issues.append("Road strip has a gap or overlapped edge: " + str(route["id"]))
+                        break
         if sites == null or sites.get_child_count() != 7:
             issues.append("Missing seven site footprint markers")
         level.queue_free()

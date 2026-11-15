@@ -108,12 +108,12 @@ func _road_vertex(point: Vector3, side: Vector2, half_width: float, sign: float)
     return Vector3(x,profile.surface_height_at(x,z)+0.055,z)
 
 func _tri(st: SurfaceTool, a: Vector3, b: Vector3, c: Vector3) -> void:
-    st.set_normal(Vector3.UP)
-    st.add_vertex(a)
-    st.set_normal(Vector3.UP)
-    st.add_vertex(b)
-    st.set_normal(Vector3.UP)
-    st.add_vertex(c)
+    # World-space UVs keep the existing gravel material tiled along the full
+    # road rather than sampling one constant corner of its texture.
+    for vertex in [a,b,c]:
+        st.set_normal(Vector3.UP)
+        st.set_uv(Vector2(vertex.x/5.0,vertex.z/5.0))
+        st.add_vertex(vertex)
 
 func _roads(root: Node3D) -> void:
     var holder := Node3D.new()

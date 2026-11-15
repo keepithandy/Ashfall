@@ -65,10 +65,9 @@ func height_at(world_x: float, world_z: float) -> float:
         var radius := Vector2(design_x - float(pad["x"]), north - float(pad["n"])).length()
         var blend := 1.0 - _smooth(float(pad["inner"]), float(pad["outer"]), radius)
         h = lerpf(h, float(pad["y"]), blend)
-    # All vehicle road grades affect the shared physical heightfield.
+    # Grade vehicle lanes AND the narrow lookout footpath into one physical
+    # heightfield; an undraped footpath had an unwalkable ~60% local grade.
     for route in ROUTES:
-        if str(route["kind"]) != "vehicle":
-            continue
         var best_distance := INF
         var target := h
         var points: Array = route["points"]
@@ -83,7 +82,8 @@ func height_at(world_x: float, world_z: float) -> float:
                 best_distance = distance
                 target = lerpf(a.y, b.y, t)
         var width := float(route["width"])
-        var blend := 1.0 - _smooth(width * 0.5 + 0.6, width * 0.5 + 9.0, best_distance)
+        var shoulder: float = 12.0 if str(route["kind"]) == "footpath" else 9.0
+        var blend := 1.0 - _smooth(width * 0.5 + 0.6, width * 0.5 + shoulder, best_distance)
         h = lerpf(h, target, blend)
     return h
 

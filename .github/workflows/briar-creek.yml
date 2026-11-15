@@ -48,7 +48,13 @@ jobs:
         shell: bash
         run: |
           timeout 220s /tmp/Godot_v4.7.2-stable_linux.x86_64 --headless --path . --script res://tests/check_briar_creek_walkthrough.gd
+      - name: Launch independent first-person scene without changing F5 default
+        shell: bash
+        run: |
+          set -euo pipefail
+          timeout 60s /tmp/Godot_v4.7.2-stable_linux.x86_64 --headless --path . --quit-after 30 res://scenes/briar_creek/briar_creek_walkthrough.tscn -- --smoke-test
       - name: Crossroads startup protection
+        if: ${{ always() }}
         shell: bash
         run: |
           timeout 220s /tmp/Godot_v4.7.2-stable_linux.x86_64 --headless --path . --script res://tests/check_crossroads_village.gd

@@ -25,6 +25,7 @@ func rebuild() -> void:
     add_child(generated)
     _terrain(generated)
     _outer_country(generated)
+    _boundary(generated)
     _roads(generated)
     _markers(generated)
     _creek(generated)
@@ -101,6 +102,27 @@ func _terrain(root: Node3D) -> void:
     collider.shape=shape
     body.add_child(collider)
     generated_vertices=count
+
+func _boundary(root: Node3D) -> void:
+    # Keep the walker on the physical terrain while the surrounding hills
+    # remain visual-only and area transitions are not implemented.
+    var body := StaticBody3D.new()
+    body.name = "TerrainBoundary"
+    body.collision_layer = 1
+    body.collision_mask = 0
+    root.add_child(body)
+    for spec in [
+        [Vector3(-299.5, 35.0, 0.0), Vector3(1.0, 200.0, 600.0)],
+        [Vector3(299.5, 35.0, 0.0), Vector3(1.0, 200.0, 600.0)],
+        [Vector3(0.0, 35.0, -299.5), Vector3(600.0, 200.0, 1.0)],
+        [Vector3(0.0, 35.0, 299.5), Vector3(600.0, 200.0, 1.0)]
+    ]:
+        var collision := CollisionShape3D.new()
+        var shape := BoxShape3D.new()
+        shape.size = spec[1]
+        collision.shape = shape
+        collision.position = spec[0]
+        body.add_child(collision)
 
 func _road_vertex(point: Vector3, side: Vector2, half_width: float, sign: float) -> Vector3:
     var local := profile.to_world(point.x,point.z)

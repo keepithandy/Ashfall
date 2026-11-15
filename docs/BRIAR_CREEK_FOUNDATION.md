@@ -84,6 +84,10 @@ The door **does not close or interact**. The detail meshes have no separate coll
 
 This is a clear exterior readability improvement using lightweight primitives, not a Blender production model or a finished interior. It does not require a manual playtest for acceptance; a detailed realistic workshop is a later milestone.
 
+### Building 01 — small exterior follow-up: siding and roof edges
+
+The maintenance workshop receives a second constrained visual pass: ten thin battens distributed across the two outside side walls, six across the back, and four raked timber fascia boards across both gable roof ends. These make the existing low-poly wooden workshop read more clearly from side and rear viewpoints without adding detailed interiors or new systems. The new trim meshes are noncolliding and sit outside the original 16 × 12m shell. The repair-bay entrance, parked sliding door, original eight shell collision shapes, footprint and site remain unchanged. The headless walkthrough regression now verifies the visual detail count, outside-wall placement, roof trim elevation and unchanged collision shape count.
+
 ## Automated foundation acceptance (no user playtest required)
 
 This foundation is delivered and validated through the repository, without asking the user to open Godot or manually test. The scene lives at `scenes/briar_creek/briar_creek_walkthrough.tscn` **on the `feature/briar-creek-foundation` branch** until merged into `main`; it will not appear in a local `main` checkout until that branch has been merged and local files synced.

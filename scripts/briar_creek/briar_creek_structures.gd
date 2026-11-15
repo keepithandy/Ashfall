@@ -109,6 +109,31 @@ func _wooden_workshop(parent: Node3D, wood: Material, roof: Material) -> void:
     _trim(body,"TimberFrontHeader",Vector3(0,3.89,-6.14),Vector3(4.65,0.22,0.22),beams)
     _trim(body,"RoofRidgeCap",Vector3(0,5.64,0),Vector3(0.26,0.18,12.90),iron)
 
+    # Pass 02: board-and-batten accents along the side/rear faces make the
+    # workshop read as a weathered timber building when approached sideways.
+    # Battens are kept outside the original walls and above the foundation;
+    # no extra collision shapes or actual windows/doors are introduced.
+    var weathered := _mat(Color(0.41,0.32,0.235))
+    for sx in [-1.0,1.0]:
+        for index in range(5):
+            var side_z := -4.5 + float(index)*2.25
+            _trim(body,"TimberSideBatten_%s_%02d" % [str(sx),index],
+                Vector3(sx*8.19,2.0,side_z),Vector3(0.12,3.5,0.13),
+                weathered if index%2 == 0 else beams)
+    for index in range(6):
+        var rear_x := -6.5 + float(index)*2.6
+        _trim(body,"TimberRearBatten_%02d" % index,
+            Vector3(rear_x,2.0,6.19),Vector3(0.13,3.5,0.12),weathered)
+
+    # Raked end fascia follows the original 1.6m gable rise; this is wood
+    # trim across the existing roofing edge, not a second colliding roof.
+    var pitch := atan2(1.6,8.0)
+    for sz in [-1.0,1.0]:
+        for sx in [-1.0,1.0]:
+            _trim(body,"TimberGableFascia_%s_%s" % [str(sz),str(sx)],
+                Vector3(sx*4.0,4.8,sz*6.56),Vector3(9.06,0.22,0.2),
+                beams,-pitch if sx > 0.0 else pitch)
+
     # A *parked* sliding timber door visibly explains the large open repair
     # bay. Keep the door to the right of the 4.2m entry. No blocking collision
     # or animation is added; the player's original entrance stays open.

@@ -67,6 +67,7 @@ func _verify() -> void:
             issues.append("South entrance has no ground ray hit")
         elif hit.collider != ground:
             issues.append("South entrance hit %s instead of physical terrain" % str(hit.collider))
+    _check_site_clearances(level, issues)
     level.queue_free()
     if issues.is_empty():
         print("BRIAR CREEK WALKTHROUGH: PASS (construction only; Godot visual/FPS review still needed)")
@@ -75,3 +76,58 @@ func _verify() -> void:
         for issue in issues:
             push_error(issue)
         quit(1)
+
+func _check_site_clearances(level: Node3D, issues: Array[String]) -> void:
+    # Foundations and their visible slab extents must not overlap any
+    # carriageway, including the northbound workshop access and exit gate.
+    var profile = PROFILE.new()
+    var district := level.get_node_or_null("Structures/GeneratedDistrict") as Node3D
+    if district == null:
+        issues.append("Cannot inspect building/road clearance without the generated district")
+        return
+    var checked := 0
+    for name in [
+        "MainSawmill","MillOffice","LogSortingShelter","FinishedTimberShelter",
+        "WorkerCabinA","WorkerCabinB","WorkerCabinC","WorkerCabinD",
+        "MaintenanceWorkshop","EquipmentShelter","CheckpointBooth"
+    ]:
+        var building := district.get_node_or_null(name) as StaticBody3D
+        if building == null:
+            issues.append("Missing important district building: " + name)
+            continue
+        var slab := building.get_node_or_null("Floor") as MeshInstance3D
+        if slab == null:
+            slab = building.get_node_or_null("GroundSlab") as MeshInstance3D
+        if slab == null or not slab.mesh is BoxMesh:
+            issues.append("Building has no measurable foundation: " + name)
+            continue
+        var box := slab.mesh as BoxMesh
+        var dimensions := Vector2(box.size.x,box.size.z)
+        var height := profile.surface_height_at(building.position.x,building.position.z)
+        if absf(building.position.y - height - 0.035) > 0.01:
+            issues.append("Building is not anchored to its physical ground: " + name)
+        checked += 1
+        var overlap := false
+        for route in PROFILE.ROUTES:
+            var points: Array = route["points"]
+            var clearance := float(route["width"])*0.5 + 0.85
+            for i in range(points.size()-1):
+                var a: Vector3 = points[i]
+                var b: Vector3 = points[i+1]
+                var distance := Vector2(b.x-a.x,b.z-a.z).length()
+                var steps := maxi(1,ceili(distance/2.0))
+                for j in range(steps+1):
+                    var along := a.lerp(b,float(j)/float(steps))
+                    var center := profile.to_world(along.x,along.z)
+                    var dx := maxf(0.0,absf(center.x - building.position.x) - dimensions.x*0.5)
+                    var dz := maxf(0.0,absf(center.z - building.position.z) - dimensions.y*0.5)
+                    if Vector2(dx,dz).length() < clearance:
+                        issues.append("Building %s intersects %s road clearance" % [name,str(route["id"])])
+                        overlap = true
+                        break
+                if overlap:
+                    break
+            if overlap:
+                break
+    if checked != 11:
+        issues.append("Not all eleven measured structure foundations were inspected")

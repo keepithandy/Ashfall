@@ -66,9 +66,27 @@ func _verify() -> void:
                 if door.position.x + panel.size.x * 0.5 >= 8.0:
                     issues.append("Workshop sliding door extends beyond the existing shell")
             var solid_shapes := 0
+            var battens := 0
+            var fascia := 0
             for part in workshop.get_children():
                 if part is CollisionShape3D:
                     solid_shapes += 1
+                if part is MeshInstance3D:
+                    var detail := part as MeshInstance3D
+                    if str(detail.name).begins_with("TimberSideBatten_"):
+                        battens += 1
+                        if absf(detail.position.x) < 8.12:
+                            issues.append("Workshop side siding must be outside the shell wall")
+                    if str(detail.name).begins_with("TimberRearBatten_"):
+                        battens += 1
+                        if detail.position.z < 6.12:
+                            issues.append("Workshop rear siding must be outside the shell wall")
+                    if str(detail.name).begins_with("TimberGableFascia_"):
+                        fascia += 1
+                        if absf(detail.position.z) < 6.54 or detail.position.y < 4.5:
+                            issues.append("Workshop gable fascia must stay outside and above the entrance")
+            if battens != 16 or fascia != 4:
+                issues.append("Workshop side/rear wooden siding or gable trim count changed")
             if solid_shapes != 8:
                 issues.append("Workshop decoration must not change the original eight shell colliders")
     if walker == null:

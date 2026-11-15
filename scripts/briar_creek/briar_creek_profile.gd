@@ -65,26 +65,30 @@ func height_at(world_x: float, world_z: float) -> float:
         var radius := Vector2(design_x - float(pad["x"]), north - float(pad["n"])).length()
         var blend := 1.0 - _smooth(float(pad["inner"]), float(pad["outer"]), radius)
         h = lerpf(h, float(pad["y"]), blend)
-    # Grade vehicle lanes AND the narrow lookout footpath into one physical
-    # heightfield; an undraped footpath had an unwalkable ~60% local grade.
+    # Choose the nearest route across the network before grading.
+    # Sequential lerps caused intersecting tracks to fight over the same
+    # heightfield and created unsafe spikes at the road forks.
+    var nearest := INF
+    var target := h
+    var chosen_width := 5.0
+    var chosen_kind := "vehicle"
     for route in ROUTES:
-        var best_distance := INF
-        var target := h
         var points: Array = route["points"]
         for i in range(points.size() - 1):
             var a: Vector3 = points[i]
             var b: Vector3 = points[i + 1]
             var start := Vector2(a.x, a.z)
-            var diff := Vector2(b.x, b.z) - start
-            var t := clampf((Vector2(design_x, north) - start).dot(diff) / maxf(diff.length_squared(), 0.001), 0.0, 1.0)
-            var distance := Vector2(design_x, north).distance_to(start + diff * t)
-            if distance < best_distance:
-                best_distance = distance
+            var delta := Vector2(b.x, b.z) - start
+            var t := clampf((Vector2(design_x, north) - start).dot(delta) / maxf(delta.length_squared(), 0.001), 0.0, 1.0)
+            var distance := Vector2(design_x, north).distance_to(start + delta * t)
+            if distance < nearest:
+                nearest = distance
                 target = lerpf(a.y, b.y, t)
-        var width := float(route["width"])
-        var shoulder: float = 12.0 if str(route["kind"]) == "footpath" else 9.0
-        var blend := 1.0 - _smooth(width * 0.5 + 0.6, width * 0.5 + shoulder, best_distance)
-        h = lerpf(h, target, blend)
+                chosen_width = float(route["width"])
+                chosen_kind = str(route["kind"])
+    var shoulder := 16.0 if chosen_kind == "footpath" else 9.0
+    var blend := 1.0 - _smooth(chosen_width * 0.5 + 0.6, chosen_width * 0.5 + shoulder, nearest)
+    h = lerpf(h, target, blend)
     return h
 
 func surface_height_at(world_x: float, world_z: float) -> float:

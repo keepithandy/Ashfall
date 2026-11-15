@@ -5,6 +5,7 @@ extends Node3D
 const PROFILE = preload("res://scripts/briar_creek/briar_creek_profile.gd")
 var profile=PROFILE.new()
 var buildings_created := 0
+var props_placed := 0
 
 func _ready() -> void:
     build()
@@ -110,4 +111,52 @@ func build() -> void:
             _solid(tower,"TowerLeg",Vector3(dx,6.0,dz),Vector3(0.38,12.0,0.38),wood)
     _solid(tower,"ObservationDeck",Vector3(0,12.0,0),Vector3(5.5,0.36,5.5),wood)
     _solid(tower,"ObservationRoof",Vector3(0,15.8,0),Vector3(6.0,0.22,6.0),steel)
-    # Low guide fences are visual rather than infinite blocking boundaries.
+    # Source-safe physical dressing: all objects are existing Ashfall scenes.
+    # Placement reflects how a small logging yard and service camp would work.
+    props_placed=0
+    for spec in [
+        ["props/wooden_pallet", 337.0,296.0,0.2],
+        ["props/wooden_pallet", 341.0,296.0,-0.1],
+        ["props/shipping_crate", 376.0,310.0,0.1],
+        ["props/cable_spool", 370.0,312.0,1.0],
+        ["props/hand_truck", 377.0,327.0,1.2],
+        ["props/rusted_drum", 383.0,317.0,0.4],
+        ["props/metal_bucket", 348.0,302.0,0.1],
+        ["props/tool_box", 345.0,308.0,0.6],
+        ["workshop/workbench_vise", 459.0,448.0,0.0],
+        ["workshop/discarded_tyre", 480.0,455.0,0.4],
+        ["workshop/coiled_hose", 483.0,440.0,0.8],
+        ["props/gas_cylinder", 496.0,438.0,0.0],
+        ["props/jerrycan", 480.0,442.0,0.2],
+        ["props/filing_cabinet", 386.0,291.0,0.0],
+        ["props/wooden_bench", 125.0,387.0,1.57],
+        ["props/metal_bucket", 152.0,394.0,0.3],
+        ["extra_dressing/firewood_stack", 138.0,367.0,0.2],
+        ["workshop/wheelbarrow", 181.0,380.0,-0.5],
+        ["props/warning_sign", 312.0,67.0,0.1],
+        ["props/rusted_drum", 316.0,77.0,0.8],
+        ["nature/tree_stump", 221.0,462.0,0.1],
+        ["nature/tree_stump", 236.0,442.0,1.0],
+        ["nature/fallen_log", 206.0,448.0,0.6],
+        ["nature/dead_branch_pile", 218.0,473.0,0.4],
+        ["nature/reed_clump", 106.0,260.0,-0.1],
+        ["nature/reed_clump", 112.0,238.0,0.7]
+    ]:
+        _prop(root,str(spec[0]),float(spec[1]),float(spec[2]),float(spec[3]))
+
+func _prop(parent: Node3D, relative: String, x: float, north: float, yaw: float) -> void:
+    var packed := load("res://scenes/" + relative + ".tscn") as PackedScene
+    if packed == null:
+        push_warning("Missing Briar Creek source prop: " + relative)
+        return
+    var prop := packed.instantiate() as Node3D
+    if prop == null:
+        push_warning("Briar Creek source prop is not a 3D node: " + relative)
+        return
+    prop.name=relative.get_file().get_basename() + "_" + str(props_placed)
+    var world := profile.to_world(x,north)
+    world.y=profile.surface_height_at(world.x,world.z)+0.045
+    prop.position=world
+    prop.rotation.y=yaw
+    parent.add_child(prop)
+    props_placed += 1

@@ -1,0 +1,60 @@
+name: Briar Creek Area 02 Walkthrough Acceptance
+
+on:
+  pull_request:
+    paths:
+      - 'scripts/briar_creek/**'
+      - 'scenes/briar_creek/**'
+      - 'tests/check_briar_creek_*.gd'
+      - '.github/workflows/briar-creek.yml'
+  workflow_dispatch:
+
+concurrency:
+  group: briar-creek-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  godot-briar-creek:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install Godot 4.7.2
+        shell: bash
+        run: |
+          set -euo pipefail
+          curl -fL --retry 3 "https://github.com/godotengine/godot/releases/download/4.7.2-stable/Godot_v4.7.2-stable_linux.x86_64.zip" -o /tmp/godot.zip
+          unzip -q /tmp/godot.zip -d /tmp
+          chmod +x /tmp/Godot_v4.7.2-stable_linux.x86_64
+      - name: Import existing Ashfall assets
+        shell: bash
+        run: |
+          /tmp/Godot_v4.7.2-stable_linux.x86_64 --headless --path . --editor --import
+      - name: Parse every Briar Creek script
+        shell: bash
+        run: |
+          set -euo pipefail
+          for file in scripts/briar_creek/*.gd tests/check_briar_creek_*.gd; do
+            /tmp/Godot_v4.7.2-stable_linux.x86_64 --headless --path . --check-only --script "res://$file"
+          done
+      - name: Verify independent terrain and road blockout
+        shell: bash
+        run: |
+          timeout 220s /tmp/Godot_v4.7.2-stable_linux.x86_64 --headless --path . --script res://tests/check_briar_creek_foundation.gd
+      - name: Verify woodland, structures and first-person walkthrough
+        shell: bash
+        run: |
+          timeout 220s /tmp/Godot_v4.7.2-stable_linux.x86_64 --headless --path . --script res://tests/check_briar_creek_walkthrough.gd
+      - name: Launch independent first-person scene without changing F5 default
+        shell: bash
+        run: |
+          set -euo pipefail
+          timeout 60s /tmp/Godot_v4.7.2-stable_linux.x86_64 --headless --path . --quit-after 30 res://scenes/briar_creek/briar_creek_walkthrough.tscn -- --smoke-test
+      - name: Crossroads startup protection
+        if: ${{ always() }}
+        shell: bash
+        run: |
+          timeout 220s /tmp/Godot_v4.7.2-stable_linux.x86_64 --headless --path . --script res://tests/check_crossroads_village.gd

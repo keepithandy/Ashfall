@@ -76,17 +76,20 @@ Existing assets for later review: `scenes/nature/forest_pine.tscn`, `bare_tree.t
 
 The overhead blockout remains a planning scene. A second scene, `briar_creek_walkthrough.tscn`, adds the existing Ashfall first-person controller, HUD/pause UI, multi-mesh pine/bare tree/shrub population with trunk colliders, several collidable structural shells (sawmill, office, four cabins, depot, shelters, checkpoint, unfinished tower), the shared Ashfall dirt/gravel materials, and a **visual-only creek ribbon**. These are physical development shells, **not accepted game-ready architectural models**. There is no inventory, persistent save, enemy, AI, loot, scripted objective, functioning Crossroads exit, finished climbing access or deep-water mechanics.
 
-## Verification procedure and exit gates
+## Automated foundation acceptance (no user playtest required)
 
-1. Open `res://scenes/briar_creek/briar_creek_blockout.tscn` for overhead terrain review. For the first-person walkabout, open `res://scenes/briar_creek/briar_creek_walkthrough.tscn` and run **F6 (current scene)**; F5 still launches Crossroads. Inspect Output/Debugger for script/parser errors.
-2. Run `godot --headless --path . --script res://tests/check_briar_creek_foundation.gd` and `godot --headless --path . --script res://tests/check_briar_creek_walkthrough.gd`. Record exit codes; GitHub Actions also runs them. File existence does not equal test pass.
-3. Inspect terrain from high and low camera angles: top-face winding, visible ground, collision, no gaps at road skins or pads. Check slope and crossfall from player height.
-4. Evaluate real water flow: creek must descend, and its crossing needs credible runoff/culvert geometry; current creek is a conceptual low strip, not finished drainage.
-5. Measure frame time and editor load with the intended renderer before committing any dense trees.
-6. Re-run `tests/check_crossroads_village.gd` in Godot and manually revisit Crossroads. Validate that its entry scene, terrain and player are unaffected.
-7. Accept or rework the existing early forest and building shells after visual/performance checks. Design travel/persistent state as a separate change after Crossroads environment-only runtime is reconciled.
+This foundation is delivered and validated through the repository, without asking the user to open Godot or manually test. The scene lives at `scenes/briar_creek/briar_creek_walkthrough.tscn` **on the `feature/briar-creek-foundation` branch** until merged into `main`; it will not appear in a local `main` checkout until that branch has been merged and local files synced.
 
-**Acceptance state:** standalone environment walkthrough is authored but has **not** been human-playtested in the Godot editor. Automated Godot checks are independent of visual/FPS acceptance. Realistic building assets, full cabin interiors, physical bridge crossing, verified rim/horizon continuity, forest collision/performance profiling, loot, travel, and persistent saves remain open. Keep this in a draft PR until parser, physics, visual review and Crossroads regression are accepted.
+The foundation acceptance checks are:
+1. Godot 4.7.2 resource import and parser checks.
+2. The headless 600 × 600m terrain/road construction check and associated continuity assertions.
+3. The headless independent first-person scene construction test, including tree colliders and building-to-road clearances, and a non-interactive launch smoke run.
+4. Crossroads main-scene and regression checks to establish the existing playable scene is unaffected.
+5. Confirm the PR changes are limited to the isolated Briar Creek environment, tests, docs and workflow; `project.godot`, existing saves and existing Crossroads files remain unchanged.
+
+The GitHub Actions run `43665085963` passed the above pipeline on commit `67bf7004c7462f7a1ab7bfd3929d4796b7280e76`. Automated results validate the **foundation scope**, not photorealism, actual graphics performance or production gameplay quality. No manual user activity is required for the foundation merge.
+
+**Not part of foundation acceptance:** realistic finished models/interiors, connected area travel with persistent inventory, finished lookout access, creek bridge and water physics, full survival gameplay, and high-fidelity performance tuning. Those are subsequent development milestones; they must not be represented as completed work. Automated gameplay, rendering and performance checks should be expanded as those features are implemented.
 
 ### Revision v0.3: technical improvement pass
 
@@ -100,6 +103,6 @@ Additional woodland routes P02 and P03 connect the cabin terrace to the east ban
 
 Original P01 footpath grading did not affect terrain and produced an untenable ~60% slope in sample calculations; the profile now grades the footpath into the heightfield. A second calculation sampling the proposed 4m physical grid returned approximately **17% peak** for the walking path and **up to 12%** on short vehicle road segments at junctions. These are independent numerical estimates, not measured Godot results. Vehicle junction and road crossfall smoothing remain required before any claim of truck traversability. Do not add more forest shortcut paths without checking intersecting road grades.
 
-### First playable walkthrough: developer controls
+### Scene location and status
 
-Open `scenes/briar_creek/briar_creek_walkthrough.tscn` and press **F6** (not F5). Select **ENTER BRIAR CREEK**. Move with WASD/mouse; Shift sprints, Ctrl crouches, Space jumps, F toggles flashlight, Esc pauses. The character starts on the southern checkpoint access road. Mill and cabins are unfinished collision-capable shells, not gameplay rooms. To return to Crossroads right now, stop the scene and run the existing project main scene; no in-world travel link exists yet.
+Briar Creek's walkabout scene is at `scenes/briar_creek/briar_creek_walkthrough.tscn`. This file is only on the development branch until the foundation merges. The project continues to open Crossroads by default. User-side playtesting is not a requested step or acceptance requirement. Future visual refinements should be undertaken by automated/headless checks, screenshots generated in the development environment where supported, and professional review when those tools become available.

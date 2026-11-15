@@ -15,8 +15,8 @@ func _verify() -> void:
         issues.append("Terrain must retain the declared 600m / 4m control grid")
     if PROFILE.SITES.size() != 7:
         issues.append("Expected seven named Briar Creek exploration sites")
-    if PROFILE.ROUTES.size() != 4:
-        issues.append("Expected three vehicle roads and one footpath")
+    if PROFILE.ROUTES.size() != 6:
+        issues.append("Expected three vehicle roads and three woodland footpaths")
     var ids := {}
     for site in PROFILE.SITES:
         var site_id := str(site["id"])
@@ -60,7 +60,7 @@ func _verify() -> void:
                 issues.append("Incorrect heightfield vertex/triangle topology")
         if collision == null or collision.shape == null:
             issues.append("Missing static collision matching terrain mesh")
-        if roads == null or roads.get_child_count() != 4:
+        if roads == null or roads.get_child_count() != 6:
             issues.append("Missing road/path surface geometry")
         if sites == null or sites.get_child_count() != 7:
             issues.append("Missing seven site footprint markers")

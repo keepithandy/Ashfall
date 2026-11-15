@@ -33,8 +33,9 @@ const ROUTES := [
         Vector3(145,23,390), Vector3(170,20,355), Vector3(155,17,315),
         Vector3(172,14,285), Vector3(142,11,263), Vector3(110,8,245)]},
     {"id":"P03","name":"Mill to logged clearing path","width":1.5,"kind":"footpath","points":[
-        Vector3(350,18,305), Vector3(300,21,335),
-        Vector3(260,25,390), Vector3(220,30,460)]}
+        Vector3(350,18,305), Vector3(365,18,350),
+        Vector3(320,21,380), Vector3(270,25,410),
+        Vector3(220,30,460)]}
 ]
 const PADS := [
     {"x":305.0,"n":65.0,"y":5.0,"inner":13.0,"outer":29.0},

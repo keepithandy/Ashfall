@@ -24,6 +24,7 @@ func rebuild() -> void:
     generated.name = "Generated"
     add_child(generated)
     _terrain(generated)
+    _outer_country(generated)
     _roads(generated)
     _markers(generated)
     _creek(generated)
@@ -205,3 +206,83 @@ func _creek(root: Node3D) -> void:
     flow.mesh=st.commit()
     flow.cast_shadow=GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
     root.add_child(flow)
+
+func _outer_height(x: float, z: float) -> float:
+    # Visual continuation exactly meets the physical 600m terrain at x/z
+    # +/-300. Hills rise gradually toward the far rim without vertical cliffs.
+    var out := maxf(maxf(absf(x)-300.0,absf(z)-300.0),0.0)
+    var fade := clampf(out/256.0,0.0,1.0)
+    fade=fade*fade*(3.0-2.0*fade)
+    var ridge := 11.0*fade*(0.78+0.22*sin(x*0.009+z*0.005))
+    return profile.height_at(x,z)+ridge
+
+func _outer_country(root: Node3D) -> void:
+    # Four non-overlapping skirts: adjacent border vertices share the exact
+    # 4m samples of the collision-matched inner heightfield. These are purely
+    # distant visual country; gameplay collision stops at the original rim.
+    var holder := Node3D.new()
+    holder.name="OuterVisualCountry"
+    root.add_child(holder)
+    _outer_strip(holder,"NorthernHills",-300.0,300.0,-556.0,-300.0,150,16)
+    _outer_strip(holder,"SouthernCountry",-300.0,300.0,300.0,556.0,150,16)
+    _outer_strip(holder,"WesternRidges",-556.0,-300.0,-556.0,556.0,16,278)
+    _outer_strip(holder,"EasternRidges",300.0,556.0,-556.0,556.0,16,278)
+
+func _outer_strip(parent: Node3D, label: String, west: float, east: float, north: float, south: float, columns: int, rows: int) -> void:
+    var stride := columns+1
+    var step_x := (east-west)/float(columns)
+    var step_z := (south-north)/float(rows)
+    var count := stride*(rows+1)
+    var verts := PackedVector3Array()
+    var normals := PackedVector3Array()
+    var uv := PackedVector2Array()
+    verts.resize(count)
+    normals.resize(count)
+    uv.resize(count)
+    for row in range(rows+1):
+        var z := north+row*step_z
+        for col in range(columns+1):
+            var x := west+col*step_x
+            var i := row*stride+col
+            verts[i]=Vector3(x,_outer_height(x,z),z)
+            uv[i]=Vector2(x/12.0,z/12.0)
+    for row in range(rows+1):
+        for col in range(columns+1):
+            var i := row*stride+col
+            var w := maxi(0,col-1)
+            var e := mini(columns,col+1)
+            var n := maxi(0,row-1)
+            var so := mini(rows,row+1)
+            var dx := float(e-w)*step_x
+            var dz := float(so-n)*step_z
+            var west_h: float = verts[row*stride+w].y
+            var east_h: float = verts[row*stride+e].y
+            var north_h: float = verts[n*stride+col].y
+            var south_h: float = verts[so*stride+col].y
+            normals[i]=Vector3((west_h-east_h)/dx,1.0,(north_h-south_h)/dz).normalized()
+    var faces := PackedInt32Array()
+    faces.resize(columns*rows*6)
+    var offset := 0
+    for row in range(rows):
+        for col in range(columns):
+            var a := row*stride+col
+            var b := a+1
+            var c := a+stride
+            var d := c+1
+            faces[offset]=a; faces[offset+1]=b; faces[offset+2]=c
+            faces[offset+3]=b; faces[offset+4]=d; faces[offset+5]=c
+            offset+=6
+    var arrays: Array=[]
+    arrays.resize(Mesh.ARRAY_MAX)
+    arrays[Mesh.ARRAY_VERTEX]=verts
+    arrays[Mesh.ARRAY_NORMAL]=normals
+    arrays[Mesh.ARRAY_TEX_UV]=uv
+    arrays[Mesh.ARRAY_INDEX]=faces
+    var mesh := ArrayMesh.new()
+    mesh.add_surface_from_arrays(Mesh.PRIMITIVE_TRIANGLES,arrays)
+    mesh.surface_set_material(0,EARTH_SURFACE)
+    var visual := MeshInstance3D.new()
+    visual.name=label
+    visual.mesh=mesh
+    visual.cast_shadow=GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
+    parent.add_child(visual)

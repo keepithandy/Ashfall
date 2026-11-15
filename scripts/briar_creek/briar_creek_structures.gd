@@ -67,6 +67,60 @@ func _shell(parent: Node3D, label: String, x: float, north: float, y: float, wid
     _solid(body,"RoofEast",Vector3(width*0.25,wall_height+rise*0.5,0),Vector3(rlength,0.17,depth+1.1),roof,-slope)
     return body
 
+func _trim(body: StaticBody3D, label: String, pos: Vector3, size: Vector3, material: Material, angle: float = 0.0) -> void:
+    # Architectural decoration only; the shell retains the simple collision
+    # shapes. A dozen tiny trim colliders would make narrow entryways snag.
+    var mesh := BoxMesh.new()
+    mesh.size=size
+    mesh.material=material
+    var visual := MeshInstance3D.new()
+    visual.name=label
+    visual.mesh=mesh
+    visual.position=pos
+    visual.rotation.z=angle
+    body.add_child(visual)
+
+func _wooden_workshop(parent: Node3D, wood: Material, roof: Material) -> void:
+    # Pass 01: keep the original 16x12m collider, repair-bay opening, location
+    # and roof. Add a readable, low-cost wooden logging shed exterior only.
+    # Interactables, side rooms and production meshes belong to later passes.
+    var body := _shell(parent,"MaintenanceWorkshop",450,465,32,16,12,4.0,4.2,wood,roof)
+    var beams := _mat(Color(0.23,0.17,0.12))
+    var planks := _mat(Color(0.37,0.285,0.205))
+    var iron := _mat(Color(0.22,0.225,0.215))
+
+    # Heavy corner and wall posts make the existing flat walls read as timber
+    # framing. They are set against, rather than through, the base shell.
+    for sx in [-1.0,1.0]:
+        for sz in [-1.0,1.0]:
+            _trim(body,"TimberCorner_%s_%s" % [str(sx),str(sz)],
+                Vector3(sx*7.84,2.03,sz*5.83),Vector3(0.32,4.06,0.32),beams)
+        _trim(body,"TimberSideMid_%s" % str(sx),
+            Vector3(sx*7.93,2.0,0),Vector3(0.22,4.0,0.24),beams)
+        _trim(body,"TimberDoorJamb_%s" % str(sx),
+            Vector3(sx*2.23,1.97,-6.13),Vector3(0.30,3.94,0.30),beams)
+        _trim(body,"TimberFrontBrace_%s" % str(sx),
+            Vector3(sx*6.5,3.10,-6.15),Vector3(0.20,1.45,0.18),beams,sx*0.50)
+
+    # Exposed horizontal bands and roof cap break the current featureless
+    # profile without widening the building or changing its roof collider.
+    _trim(body,"TimberRearSill",Vector3(0,0.28,6.15),Vector3(15.60,0.22,0.18),beams)
+    _trim(body,"TimberRearBeam",Vector3(0,3.87,6.15),Vector3(15.60,0.24,0.18),beams)
+    _trim(body,"TimberFrontHeader",Vector3(0,3.89,-6.14),Vector3(4.65,0.22,0.22),beams)
+    _trim(body,"RoofRidgeCap",Vector3(0,5.64,0),Vector3(0.26,0.18,12.90),iron)
+
+    # A *parked* sliding timber door visibly explains the large open repair
+    # bay. Keep the door to the right of the 4.2m entry. No blocking collision
+    # or animation is added; the player's original entrance stays open.
+    _trim(body,"DoorUpperTrack",Vector3(1.95,4.13,-6.24),Vector3(9.45,0.15,0.15),iron)
+    _trim(body,"ParkedSlidingDoor",Vector3(4.56,1.91,-6.28),Vector3(3.74,3.74,0.18),planks)
+    for sx in [-1.0,1.0]:
+        _trim(body,"DoorIronStrap_%s" % str(sx),
+            Vector3(4.56+sx*1.50,1.91,-6.405),Vector3(0.12,3.56,0.06),iron)
+    _trim(body,"DoorDiagonalBrace",Vector3(4.56,1.91,-6.415),
+        Vector3(0.13,3.70,0.06),beams,-0.70)
+
+
 func _shed(parent: Node3D, label: String, x: float, north: float, y: float, width: float, depth: float, wood: Material, metal: Material) -> void:
     var body := _new_building(parent,label,x,north,y)
     _solid(body,"GroundSlab",Vector3(0,0.04,0),Vector3(width,0.14,depth),wood)
@@ -105,7 +159,7 @@ func build() -> void:
     _shell(root,"WorkerCabinB",155,405,23,8,6,2.9,1.6,pale,steel)
     _shell(root,"WorkerCabinC",130,365,23,8,6,2.9,1.6,wood,rust)
     _shell(root,"WorkerCabinD",170,375,23,8,6,2.9,1.6,pale,rust)
-    _shell(root,"MaintenanceWorkshop",450,465,32,16,12,4.0,4.2,wood,rust)
+    _wooden_workshop(root,wood,rust)
     _shed(root,"EquipmentShelter",500,451,32,18,10,wood,steel)
     _shell(root,"CheckpointBooth",315,72,5,4,4,2.65,1.25,pale,steel)
     # Lookout creates a north-ridge silhouette. Accessible tower stairs are

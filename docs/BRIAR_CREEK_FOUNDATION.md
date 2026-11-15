@@ -1,6 +1,6 @@
 # Ashfall — Briar Creek (Area 02) foundation
 
-Status: **research-informed, isolated unverified blockout**, 14 November 2026. Area name is approved; geometry, dimensions and asset placements remain tentative. This is **not a finished, playable district**.
+Status: **isolated walkabout candidate; 3D runtime acceptance pending**, 14 November 2026. Area name is approved; geometry, dimensions and asset placements remain tentative. This is **not a finished, playable district**.
 
 ## Intent and continuity
 
@@ -64,18 +64,32 @@ Existing assets for later review: `scenes/nature/forest_pine.tscn`, `bare_tree.t
 - `scripts/briar_creek/briar_creek_profile.gd`: map geometry, sites, terrain formula and road/path waypoints.
 - `scripts/briar_creek/briar_creek_blockout.gd`: editor/runtime generation of 4m terrain mesh, shared collision, visible road skins and rough site center markers.
 - `scenes/briar_creek/briar_creek_blockout.tscn`: independently opened plan-camera environment scene (not a first-person playtest).
-- `tests/check_briar_creek_foundation.gd`: a proposed headless geometry regression, pending execution.
+- `scripts/briar_creek/briar_creek_forest.gd`: seeded, 100m-cell GPU-instanced visual forest with physical tree trunk proxies.
+- `scripts/briar_creek/briar_creek_structures.gd`: first collidable logging operation architecture and house shells.
+- `scripts/briar_creek/briar_creek_walkthrough.gd`: independent walker and HUD, no inherited objective/save wiring.
+- `scenes/briar_creek/briar_creek_walkthrough.tscn`: dedicated first-person experimental scene; leave project main set to Crossroads.
+- `tests/check_briar_creek_foundation.gd`: terrain and planning scene regression.
+- `tests/check_briar_creek_walkthrough.gd`: composed runtime scene, forest counts, physical structures and south-entry ray check.
+- `.github/workflows/briar-creek.yml`: Godot 4.7.2 parse and headless checks for both Briar Creek scenes and a Crossroads regression.
 
-The viewport camera is an overhead planning camera. No water mesh, hydrology solution, real forest, buildings, player controller, collision-validated routes, entrance trigger, world streaming, impostors or survival systems are included. The generated markers are **not** finished architecture.
+The overhead blockout remains a planning scene. A second scene, `briar_creek_walkthrough.tscn`, adds the existing Ashfall first-person controller, HUD/pause UI, multi-mesh pine/bare tree/shrub population with trunk colliders, several collidable structural shells (sawmill, office, four cabins, depot, shelters, checkpoint, unfinished tower), the shared Ashfall dirt/gravel materials, and a **visual-only creek ribbon**. These are physical development shells, **not accepted game-ready architectural models**. There is no inventory, persistent save, enemy, AI, loot, scripted objective, functioning Crossroads exit, finished climbing access or deep-water mechanics.
 
 ## Verification procedure and exit gates
 
-1. Open only `res://scenes/briar_creek/briar_creek_blockout.tscn` in Godot 4.7.2 Forward+; inspect the Output/Debugger for script/parser errors.
-2. Run `godot --headless --path . --script res://tests/check_briar_creek_foundation.gd`. Record actual exit status; file existence does not equal test pass.
+1. Open `res://scenes/briar_creek/briar_creek_blockout.tscn` for overhead terrain review. For the first-person walkabout, open `res://scenes/briar_creek/briar_creek_walkthrough.tscn` and run **F6 (current scene)**; F5 still launches Crossroads. Inspect Output/Debugger for script/parser errors.
+2. Run `godot --headless --path . --script res://tests/check_briar_creek_foundation.gd` and `godot --headless --path . --script res://tests/check_briar_creek_walkthrough.gd`. Record exit codes; GitHub Actions also runs them. File existence does not equal test pass.
 3. Inspect terrain from high and low camera angles: top-face winding, visible ground, collision, no gaps at road skins or pads. Check slope and crossfall from player height.
 4. Evaluate real water flow: creek must descend, and its crossing needs credible runoff/culvert geometry; current creek is a conceptual low strip, not finished drainage.
 5. Measure frame time and editor load with the intended renderer before committing any dense trees.
 6. Re-run `tests/check_crossroads_village.gd` in Godot and manually revisit Crossroads. Validate that its entry scene, terrain and player are unaffected.
 7. Only after acceptance, add physically separate road/forest composition and reusable timber buildings. Design travel/persistent state as a separate change after the current Crossroads environment playtest evolves beyond its environment-only runtime.
 
-**Acceptance state today:** authored only; Godot scene load, collision walkabout, visual quality and performance **not yet verified**. Keep this on an isolated draft PR until checks are run and corrected.
+**Acceptance state:** standalone environment walkthrough is authored but has **not** been human-playtested in the Godot editor. Automated Godot checks are independent of visual/FPS acceptance. Realistic building assets, full cabin interiors, physical bridge crossing, rim/horizon continuity, forest collision/performance profiling, loot, travel, and persistent saves remain open. Keep this in a draft PR until parser, physics, visual review and Crossroads regression are accepted.
+
+### Route engineering concerns identified in independent geometry calculations
+
+Original P01 footpath grading did not affect terrain and produced an untenable ~60% slope in sample calculations; the profile now grades the footpath into the heightfield. A second calculation sampling the proposed 4m physical grid returned approximately **17% peak** for the walking path and **up to 12%** on short vehicle road segments at junctions. These are independent numerical estimates, not measured Godot results. Vehicle junction and road crossfall smoothing remain required before any claim of truck traversability. Do not add more forest shortcut paths without checking intersecting road grades.
+
+### First playable walkthrough: developer controls
+
+Open `scenes/briar_creek/briar_creek_walkthrough.tscn` and press **F6** (not F5). Select **ENTER BRIAR CREEK**. Move with WASD/mouse; Shift sprints, Ctrl crouches, Space jumps, F toggles flashlight, Esc pauses. The character starts on the southern checkpoint access road. Mill and cabins are unfinished collision-capable shells, not gameplay rooms. To return to Crossroads right now, stop the scene and run the existing project main scene; no in-world travel link exists yet.

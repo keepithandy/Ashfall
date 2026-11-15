@@ -76,6 +76,14 @@ Existing assets for later review: `scenes/nature/forest_pine.tscn`, `bare_tree.t
 
 The overhead blockout remains a planning scene. A second scene, `briar_creek_walkthrough.tscn`, adds the existing Ashfall first-person controller, HUD/pause UI, multi-mesh pine/bare tree/shrub population with trunk colliders, several collidable structural shells (sawmill, office, four cabins, depot, shelters, checkpoint, unfinished tower), the shared Ashfall dirt/gravel materials, and a **visual-only creek ribbon**. These are physical development shells, **not accepted game-ready architectural models**. There is no inventory, persistent save, enemy, AI, loot, scripted objective, functioning Crossroads exit, finished climbing access or deep-water mechanics.
 
+## Building 01 — wooden logging maintenance workshop (incremental pass)
+
+The first small follow-up to the Area 02 foundation keeps the existing `MaintenanceWorkshop` at the depot's (450,465) design position with the **same 16 × 12m footprint, collidable shell and front repair-bay opening**. The generator now adds visual-only dark timber corner posts, side supports, a front lintel, bracing, a rear sill, a discreet metal ridge cap and a weathered wooden equipment door shown parked on a sliding track beside the opening.
+
+The door **does not close or interact**. The detail meshes have no separate collision, so the existing vehicle/pedestrian opening remains unobstructed. The automatic walkthrough test checks the required visual parts, verifies the parked door's position outside the entry span, and confirms the original eight workshop collision shapes are unchanged. The sawmill, cabins, woodland, roads, area travel and Crossroads are not modified by this pass.
+
+This is a clear exterior readability improvement using lightweight primitives, not a Blender production model or a finished interior. It does not require a manual playtest for acceptance; a detailed realistic workshop is a later milestone.
+
 ## Automated foundation acceptance (no user playtest required)
 
 This foundation is delivered and validated through the repository, without asking the user to open Godot or manually test. The scene lives at `scenes/briar_creek/briar_creek_walkthrough.tscn` **on the `feature/briar-creek-foundation` branch** until merged into `main`; it will not appear in a local `main` checkout until that branch has been merged and local files synced.

@@ -47,6 +47,30 @@ func _verify() -> void:
         var mill := structures.get_node_or_null("GeneratedDistrict/MainSawmill") as StaticBody3D
         if mill == null:
             issues.append("Main sawmill missing")
+        var workshop := structures.get_node_or_null("GeneratedDistrict/MaintenanceWorkshop") as StaticBody3D
+        if workshop == null:
+            issues.append("Maintenance workshop missing")
+        else:
+            # Validate the small wooden workshop pass independently from a
+            # visual review: the original entry must remain physically open.
+            for part in ["TimberFrontHeader","RoofRidgeCap","DoorUpperTrack"]:
+                if workshop.get_node_or_null(part) == null:
+                    issues.append("Workshop exterior timber detail missing: " + part)
+            var door := workshop.get_node_or_null("ParkedSlidingDoor") as MeshInstance3D
+            if door == null or not door.mesh is BoxMesh:
+                issues.append("Workshop parked timber equipment door missing")
+            else:
+                var panel := door.mesh as BoxMesh
+                if door.position.x - panel.size.x * 0.5 <= 2.1:
+                    issues.append("Workshop sliding door obstructs the 4.2m entry")
+                if door.position.x + panel.size.x * 0.5 >= 8.0:
+                    issues.append("Workshop sliding door extends beyond the existing shell")
+            var solid_shapes := 0
+            for part in workshop.get_children():
+                if part is CollisionShape3D:
+                    solid_shapes += 1
+            if solid_shapes != 8:
+                issues.append("Workshop decoration must not change the original eight shell colliders")
     if walker == null:
         issues.append("No first-person walker constructed")
     elif walker.get_node_or_null("CollisionShape3D") == null and walker.get_child_count() == 0:

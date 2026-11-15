@@ -94,9 +94,9 @@ func _wooden_workshop(parent: Node3D, wood: Material, roof: Material) -> void:
     for sx in [-1.0,1.0]:
         for sz in [-1.0,1.0]:
             _trim(body,"TimberCorner_%s_%s" % [str(sx),str(sz)],
-                Vector3(sx*7.84,2.03,sz*5.83),Vector3(0.32,4.06,0.32),beams)
+                Vector3(sx*8.23,2.03,sz*6.23),Vector3(0.32,4.06,0.32),beams)
         _trim(body,"TimberSideMid_%s" % str(sx),
-            Vector3(sx*7.93,2.0,0),Vector3(0.22,4.0,0.24),beams)
+            Vector3(sx*8.22,2.0,0),Vector3(0.22,4.0,0.24),beams)
         _trim(body,"TimberDoorJamb_%s" % str(sx),
             Vector3(sx*2.23,1.97,-6.13),Vector3(0.30,3.94,0.30),beams)
         _trim(body,"TimberFrontBrace_%s" % str(sx),

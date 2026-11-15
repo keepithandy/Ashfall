@@ -106,7 +106,7 @@ func build() -> void:
     _shell(root,"WorkerCabinC",130,365,23,8,6,2.9,1.6,wood,rust)
     _shell(root,"WorkerCabinD",170,375,23,8,6,2.9,1.6,pale,rust)
     _shell(root,"MaintenanceWorkshop",450,465,32,16,12,4.0,4.2,wood,rust)
-    _shed(root,"EquipmentShelter",500,430,32,18,10,wood,steel)
+    _shed(root,"EquipmentShelter",500,451,32,18,10,wood,steel)
     _shell(root,"CheckpointBooth",315,72,5,4,4,2.65,1.25,pale,steel)
     # Lookout creates a north-ridge silhouette. Accessible tower stairs are
     # not built yet: the path currently reaches its base, not the platform.

@@ -37,7 +37,12 @@ func _solid(body: StaticBody3D, label: String, pos: Vector3, size: Vector3, mate
 func _new_building(parent: Node3D, label: String, x: float, north: float, y: float) -> StaticBody3D:
     var body := StaticBody3D.new()
     body.name=label
-    body.position=profile.to_world(x,north,y)
+    # Anchor structures to the actual collision-matched terrain instead
+    # of assuming their intended pad elevation is exact at every coordinate.
+    var anchor := profile.to_world(x,north)
+    anchor.y=profile.surface_height_at(anchor.x,anchor.z)+0.035
+    body.position=anchor
+    body.set_meta("design_elevation_target",y)
     body.collision_layer=1
     body.collision_mask=0
     parent.add_child(body)
@@ -88,21 +93,21 @@ func build() -> void:
     buildings_created=0
     # Mill production logic: incoming log yard to west, saw hall centrally,
     # finished timber in an open-sided covered shelter, office near truck road.
-    _shell(root,"MainSawmill",350,305,18,28,14,7.2,7.0,wood,rust)
+    _shell(root,"MainSawmill",325,320,18,28,14,7.2,7.0,wood,rust)
     _shell(root,"MillOffice",388,292,18,12,8,3.2,1.9,pale,steel)
     _shed(root,"LogSortingShelter",315,334,18,24,10,wood,rust)
     _stack(root,306,302,18,wood)
     _stack(root,314,304,18,wood)
     _stack(root,321,304,18,wood)
-    _shed(root,"FinishedTimberShelter",385,328,18,16,9,wood,steel)
+    _shed(root,"FinishedTimberShelter",395,270,18,16,9,wood,steel)
     # Worker cabins follow a shared lane; distinct footprints face clearing.
     _shell(root,"WorkerCabinA",125,395,23,8,6,2.9,1.6,wood,steel)
     _shell(root,"WorkerCabinB",155,405,23,8,6,2.9,1.6,pale,steel)
     _shell(root,"WorkerCabinC",130,365,23,8,6,2.9,1.6,wood,rust)
     _shell(root,"WorkerCabinD",170,375,23,8,6,2.9,1.6,pale,rust)
-    _shell(root,"MaintenanceWorkshop",465,445,32,16,12,4.0,4.2,wood,rust)
+    _shell(root,"MaintenanceWorkshop",450,465,32,16,12,4.0,4.2,wood,rust)
     _shed(root,"EquipmentShelter",500,430,32,18,10,wood,steel)
-    _shell(root,"CheckpointBooth",305,65,5,4,4,2.65,1.25,pale,steel)
+    _shell(root,"CheckpointBooth",315,72,5,4,4,2.65,1.25,pale,steel)
     # Lookout creates a north-ridge silhouette. Accessible tower stairs are
     # not built yet: the path currently reaches its base, not the platform.
     var tower := _new_building(root,"LookoutTower",335,550,60)
@@ -121,9 +126,9 @@ func build() -> void:
         ["props/cable_spool", 370.0,312.0,1.0],
         ["props/hand_truck", 377.0,327.0,1.2],
         ["props/rusted_drum", 383.0,317.0,0.4],
-        ["props/metal_bucket", 348.0,302.0,0.1],
-        ["props/tool_box", 345.0,308.0,0.6],
-        ["workshop/workbench_vise", 459.0,448.0,0.0],
+        ["props/metal_bucket", 330.0,302.0,0.1],
+        ["props/tool_box", 331.0,306.0,0.6],
+        ["workshop/workbench_vise", 449.0,465.0,0.0],
         ["workshop/discarded_tyre", 480.0,455.0,0.4],
         ["workshop/coiled_hose", 483.0,440.0,0.8],
         ["props/gas_cylinder", 496.0,438.0,0.0],

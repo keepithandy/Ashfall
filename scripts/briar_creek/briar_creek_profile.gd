@@ -28,7 +28,13 @@ const ROUTES := [
     {"id":"P01","name":"Depot to lookout footpath","width":1.6,"kind":"footpath","points":[
         Vector3(470,32,445), Vector3(465,36,488), Vector3(408,40,495),
         Vector3(388,44,525), Vector3(330,47,510), Vector3(290,52,542),
-        Vector3(290,56,585), Vector3(335,60,550)]}
+        Vector3(290,56,585), Vector3(335,60,550)]},
+    {"id":"P02","name":"Cabins to creek pump path","width":1.6,"kind":"footpath","points":[
+        Vector3(145,23,390), Vector3(170,20,355), Vector3(155,17,315),
+        Vector3(172,14,285), Vector3(142,11,263), Vector3(110,8,245)]},
+    {"id":"P03","name":"Mill to logged clearing path","width":1.5,"kind":"footpath","points":[
+        Vector3(350,18,305), Vector3(300,21,335),
+        Vector3(260,25,390), Vector3(220,30,460)]}
 ]
 const PADS := [
     {"x":305.0,"n":65.0,"y":5.0,"inner":13.0,"outer":29.0},

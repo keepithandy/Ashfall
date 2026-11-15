@@ -38,7 +38,7 @@ A 600 × 600m initial heightfield with 4m grid spacing contains **151 × 151 ver
 | creek | 110/245 | +8m provisional | 55 × 35m | Stream-side path and former crossing |
 | clearing | 220/460 | +30m provisional | 65 × 55m | Logged cut with stumps, brash and regrowth |
 
-Targets at the creek and clearing are **labels** until the drainage and relief surfaces are accepted. The script intentionally places only one simple noncolliding footprint marker per site, not the final 11 building types.
+Targets at the creek and clearing are **labels** until the drainage and relief surfaces are accepted. The overhead scene places one noncolliding marker per site. The independent walkthrough additionally places early collision-capable building and shed shells, not the final production asset set.
 
 ### Road network
 
@@ -48,6 +48,8 @@ Targets at the creek and clearing are **labels** until the drainage and relief s
 | R02 | Mill to depot | 4.5m | 222m | 7.7% |
 | R03 | Cabin access lane | 3.7m | 305m | 4.9% |
 | P01 | Depot–lookout footpath | 1.6m | 348m | 11.1% |
+| P02 | Cabins–creek-side footpath | 1.6m | ~194m | 8.7% |
+| P03 | Mill–logged clearing footpath | 1.5m | ~231m | 7.1% |
 
 Calculated control-point grades are planning checks, **not** sampled terrain-grade certification. Smooth the vehicle-road turn radii and verify physical slopes and truck clearance before adding detailed roadside assets. P01 is pedestrian-only: an attempt to drive directly to the +60m lookout was too steep for the small site.
 
@@ -69,7 +71,7 @@ Existing assets for later review: `scenes/nature/forest_pine.tscn`, `bare_tree.t
 - `scripts/briar_creek/briar_creek_walkthrough.gd`: independent walker and HUD, no inherited objective/save wiring.
 - `scenes/briar_creek/briar_creek_walkthrough.tscn`: dedicated first-person experimental scene; leave project main set to Crossroads.
 - `tests/check_briar_creek_foundation.gd`: terrain and planning scene regression.
-- `tests/check_briar_creek_walkthrough.gd`: composed runtime scene, forest counts, physical structures and south-entry ray check.
+- `tests/check_briar_creek_walkthrough.gd`: composed runtime scene, forest counts, physical structures, south-entry terrain ray (excluding the spawned player), and physical building-road clearance checks.
 - `.github/workflows/briar-creek.yml`: Godot 4.7.2 parse and headless checks for both Briar Creek scenes and a Crossroads regression.
 
 The overhead blockout remains a planning scene. A second scene, `briar_creek_walkthrough.tscn`, adds the existing Ashfall first-person controller, HUD/pause UI, multi-mesh pine/bare tree/shrub population with trunk colliders, several collidable structural shells (sawmill, office, four cabins, depot, shelters, checkpoint, unfinished tower), the shared Ashfall dirt/gravel materials, and a **visual-only creek ribbon**. These are physical development shells, **not accepted game-ready architectural models**. There is no inventory, persistent save, enemy, AI, loot, scripted objective, functioning Crossroads exit, finished climbing access or deep-water mechanics.
@@ -82,9 +84,17 @@ The overhead blockout remains a planning scene. A second scene, `briar_creek_wal
 4. Evaluate real water flow: creek must descend, and its crossing needs credible runoff/culvert geometry; current creek is a conceptual low strip, not finished drainage.
 5. Measure frame time and editor load with the intended renderer before committing any dense trees.
 6. Re-run `tests/check_crossroads_village.gd` in Godot and manually revisit Crossroads. Validate that its entry scene, terrain and player are unaffected.
-7. Only after acceptance, add physically separate road/forest composition and reusable timber buildings. Design travel/persistent state as a separate change after the current Crossroads environment playtest evolves beyond its environment-only runtime.
+7. Accept or rework the existing early forest and building shells after visual/performance checks. Design travel/persistent state as a separate change after Crossroads environment-only runtime is reconciled.
 
-**Acceptance state:** standalone environment walkthrough is authored but has **not** been human-playtested in the Godot editor. Automated Godot checks are independent of visual/FPS acceptance. Realistic building assets, full cabin interiors, physical bridge crossing, rim/horizon continuity, forest collision/performance profiling, loot, travel, and persistent saves remain open. Keep this in a draft PR until parser, physics, visual review and Crossroads regression are accepted.
+**Acceptance state:** standalone environment walkthrough is authored but has **not** been human-playtested in the Godot editor. Automated Godot checks are independent of visual/FPS acceptance. Realistic building assets, full cabin interiors, physical bridge crossing, verified rim/horizon continuity, forest collision/performance profiling, loot, travel, and persistent saves remain open. Keep this in a draft PR until parser, physics, visual review and Crossroads regression are accepted.
+
+### Revision v0.3: technical improvement pass
+
+The first CI run (Godot 4.7.2) parsed Briar Creek scripts and passed the 600m terrain foundation test; the full walkthrough test reported its south-spawn terrain ray had struck a non-terrain collider. The new test excludes the player capsule from that ground-only ray. Recheck the latest CI run before claiming resolution.
+
+The original sawmill, depot workshop and checkpoint were located on top of the road network. Sawmill hall is now at design (325,320), workshop at (450,465), equipment shelter at (500,451), and checkpoint booth at (315,72); each is physically terrain-snapped, and the headless walkthrough regression checks eleven primary building footprints against the 6-route access network. Existing mill service props were adjusted to follow those moved structures. Road surface generation now shares mitered vertices across bends, minimizing disconnected cards at the corners.
+
+Additional woodland routes P02 and P03 connect the cabin terrace to the east bank of the creek and the mill yard to the logged clearing. **P02 reaches a creek-side stopping point, not a traversable bridge or opposite-bank connection.** The forestry forest-mask generator excludes these access paths. The rest of the primary road and lookout route retain their planned grading.
 
 ### Route engineering concerns identified in independent geometry calculations
 

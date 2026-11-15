@@ -116,6 +116,25 @@ func _tri(st: SurfaceTool, a: Vector3, b: Vector3, c: Vector3) -> void:
         st.set_uv(Vector2(vertex.x/5.0,vertex.z/5.0))
         st.add_vertex(vertex)
 
+func _joined_side(points: Array[Vector3], index: int) -> Vector2:
+    # Shared miter at each polyline vertex avoids cracks and overlapping road
+    # strips when two successive logging-road segments turn.
+    var here := profile.to_world(points[index].x, points[index].z)
+    var before := profile.to_world(points[maxi(0,index-1)].x, points[maxi(0,index-1)].z)
+    var after := profile.to_world(points[mini(points.size()-1,index+1)].x, points[mini(points.size()-1,index+1)].z)
+    var incoming := Vector2(here.x-before.x,here.z-before.z).normalized()
+    var outgoing := Vector2(after.x-here.x,after.z-here.z).normalized()
+    if incoming.is_zero_approx():
+        incoming=outgoing
+    if outgoing.is_zero_approx():
+        outgoing=incoming
+    var a := Vector2(-incoming.y,incoming.x)
+    var b := Vector2(-outgoing.y,outgoing.x)
+    var joined := (a+b).normalized()
+    if joined.is_zero_approx():
+        return b
+    return joined * minf(1.4,1.0/maxf(0.71,joined.dot(b)))
+
 func _roads(root: Node3D) -> void:
     var holder := Node3D.new()
     holder.name="RoadSurfaces"
@@ -131,29 +150,32 @@ func _roads(root: Node3D) -> void:
         st.set_material(foot if str(route["kind"])=="footpath" else gravel)
         var points: Array=route["points"]
         var half_width := float(route["width"])*0.5
+        var sampled: Array[Vector3] = []
+        sampled.append(points[0])
+        # Connect all segments through one continuous strip with shared
+        # mitered side normals; avoid separately capped segment cards.
         for i in range(points.size()-1):
             var a: Vector3=points[i]
             var b: Vector3=points[i+1]
-            var d := Vector2(b.x-a.x, a.z-b.z).normalized()
-            var side := Vector2(-d.y,d.x)
-            var length := Vector2(b.x-a.x,b.z-a.z).length()
-            var subdivisions := maxi(1,ceili(length/3.0))
-            for j in range(subdivisions):
-                var p0 := a.lerp(b,float(j)/float(subdivisions))
-                var p1 := a.lerp(b,float(j+1)/float(subdivisions))
-                var l0 := _road_vertex(p0,side,half_width,1.0)
-                var r0 := _road_vertex(p0,side,half_width,-1.0)
-                var l1 := _road_vertex(p1,side,half_width,1.0)
-                var r1 := _road_vertex(p1,side,half_width,-1.0)
-                # Use the same top-visible face winding as terrain triangles.
-                _tri(st,l0,r0,l1)
-                _tri(st,r0,r1,l1)
+            var distance := Vector2(b.x-a.x,b.z-a.z).length()
+            var subdivisions := maxi(1,ceili(distance/2.5))
+            for j in range(1,subdivisions+1):
+                sampled.append(a.lerp(b,float(j)/float(subdivisions)))
+        for i in range(sampled.size()-1):
+            var side0 := _joined_side(sampled,i)
+            var side1 := _joined_side(sampled,i+1)
+            var l0 := _road_vertex(sampled[i],side0,half_width,1.0)
+            var r0 := _road_vertex(sampled[i],side0,half_width,-1.0)
+            var l1 := _road_vertex(sampled[i+1],side1,half_width,1.0)
+            var r1 := _road_vertex(sampled[i+1],side1,half_width,-1.0)
+            _tri(st,l0,r0,l1)
+            _tri(st,r0,r1,l1)
         var mesh := st.commit()
         var node := MeshInstance3D.new()
         node.name=str(route["id"])
         node.mesh=mesh
         holder.add_child(node)
-        route_count += 1
+        route_count+=1
 
 func _markers(root: Node3D) -> void:
     var holder := Node3D.new()

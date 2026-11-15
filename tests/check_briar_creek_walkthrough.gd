@@ -58,11 +58,15 @@ func _verify() -> void:
         var at := profile.to_world(305.0,44.0)
         at.y=profile.surface_height_at(at.x,at.z)
         var ray := PhysicsRayQueryParameters3D.create(at+Vector3.UP*8.0,at-Vector3.UP*8.0)
+        # Player occupies this very spawn position. Exclude its capsule when
+        # checking the underlying terrain, but keep the rest of the world.
+        if walker != null:
+            ray.exclude = [walker.get_rid()]
         var hit := level.get_world_3d().direct_space_state.intersect_ray(ray)
         if hit.is_empty():
             issues.append("South entrance has no ground ray hit")
         elif hit.collider != ground:
-            issues.append("South entrance ray collides with something other than physical terrain")
+            issues.append("South entrance hit %s instead of physical terrain" % str(hit.collider))
     level.queue_free()
     if issues.is_empty():
         print("BRIAR CREEK WALKTHROUGH: PASS (construction only; Godot visual/FPS review still needed)")

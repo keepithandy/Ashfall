@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3]
+
+[sub_resource type="StandardMaterial3D" id="mat_0"]
+albedo_color = Color(0.32, 0.245, 0.17, 1)
+roughness = 0.9
+
+[sub_resource type="StandardMaterial3D" id="mat_1"]
+albedo_color = Color(0.33, 0.34, 0.32, 1)
+roughness = 0.9
+
+[sub_resource type="StandardMaterial3D" id="mat_2"]
+albedo_color = Color(0.29, 0.32, 0.3, 1)
+roughness = 0.9
+
+[sub_resource type="StandardMaterial3D" id="mat_3"]
+albedo_color = Color(0.65, 0.63, 0.55, 1)
+roughness = 0.9
+
+[sub_resource type="BoxMesh" id="mesh_0"]
+size = Vector3(0.35, 0.027, 0.239)
+
+[node name="CuttingBoard" type="Node3D"]
+
+[node name="Body" type="MeshInstance3D" parent="."]
+position = Vector3(0, 0.018, 0)
+mesh = SubResource("mesh_0")
+surface_material_override/0 = SubResource("mat_0")
+

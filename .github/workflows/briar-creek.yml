@@ -44,6 +44,10 @@ jobs:
         shell: bash
         run: |
           timeout 220s /tmp/Godot_v4.7.2-stable_linux.x86_64 --headless --path . --script res://tests/check_briar_creek_foundation.gd
+      - name: Verify sampled vehicle-road grades and crossfall
+        shell: bash
+        run: |
+          timeout 220s /tmp/Godot_v4.7.2-stable_linux.x86_64 --headless --path . --script res://tests/check_briar_creek_road_grades.gd
       - name: Verify woodland, structures and first-person walkthrough
         shell: bash
         run: |
